@@ -1,5 +1,7 @@
 # 实验索引
 
+按实验拆分的中文记录、run ID和Drive文件ID见[experiment_records/README.md](../experiment_records/README.md)。本文件保留状态总览和历史提交记录。
+
 2026-10-24 steering后续实验已全部完成：两trait各1300条开发集扫描及共200条固定测试集验证均评分齐全。按coherence≥75选层，sycophantic第14层/α=1.2在测试集trait由15.28升至61.30、coherence为76.73；evil第14层/α=0.4的trait为6.62、coherence为77.03。第12层all注入未改善连贯性。当前无活动任务；Qwen2.5-7B backup未启动。[设置、排名、结果及限制](experiments/2026-10-24_steering_followups.md)。
 
 ## 当前状态

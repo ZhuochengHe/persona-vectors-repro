@@ -4,6 +4,8 @@
 
 [打开Google Drive实验文件夹](https://drive.google.com/drive/folders/1Y9fgfox6sSKq2qOig1c53hWE8oMZIZuZ)
 
+按实验分开的中文说明见[experiment_records/README.md](../experiment_records/README.md)；每篇记录列出run ID、Drive文件ID、下载链接及ZIP内结果路径。相同Markdown也保存在Drive的[experiment-records文件夹](https://drive.google.com/drive/folders/1apVr0qwyjlxgrXi3PgUmB32hljJ54qcS)。
+
 ## 归档内容
 
 - 按scratch中的run目录分别生成ZIP，保留相对路径；原始失败和恢复run也保留，以免误把旧结果与修正协议混在一起。
