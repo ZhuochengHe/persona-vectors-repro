@@ -1,0 +1,10 @@
+This reproduction includes and adapts code, prompts, and evaluation assets from:
+
+Persona Vectors: Monitoring and Controlling Character Traits in Language Models
+https://github.com/safety-research/persona_vectors
+Pinned revision: b8e0f044fe2410a6fad579f38324f03f13b4e917
+
+The upstream project is included as a pinned Git submodule. Its Apache-2.0
+license and original notices remain in upstream/LICENSE and upstream sources.
+Model weights and external datasets retain their respective terms and are not
+distributed in this source repository.

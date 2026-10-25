@@ -1,0 +1,302 @@
+{
+  "status": "planned_not_executed",
+  "model": {
+    "id": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "thinking": false,
+    "expected_layers": 32,
+    "expected_hidden_size": 2560,
+    "attn_implementation": "sdpa",
+    "require_fast_kernels": false
+  },
+  "judge": {
+    "backend": "codex",
+    "model": "gpt-5.6-luna",
+    "calibration": false,
+    "timeout_seconds": 180,
+    "retries": 2,
+    "concurrency": 4
+  },
+  "generation": {
+    "rollouts": 10,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_new_tokens": 1000,
+    "seed": 0,
+    "top_k": 0,
+    "repetition_penalty": 1.0,
+    "min_new_tokens": 1,
+    "num_beams": 1
+  },
+  "extraction_counts": [
+    {
+      "trait": "evil",
+      "questions": 10,
+      "instruction_pairs": 3,
+      "conditions": 60,
+      "rollouts_per_condition": 3,
+      "responses": 180,
+      "question_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "instruction_ids": [
+        0,
+        1,
+        2
+      ],
+      "available_questions": 20,
+      "available_instruction_pairs": 5
+    },
+    {
+      "trait": "sycophantic",
+      "questions": 10,
+      "instruction_pairs": 3,
+      "conditions": 60,
+      "rollouts_per_condition": 3,
+      "responses": 180,
+      "question_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "instruction_ids": [
+        0,
+        1,
+        2
+      ],
+      "available_questions": 20,
+      "available_instruction_pairs": 5
+    },
+    {
+      "trait": "hallucinating",
+      "questions": 10,
+      "instruction_pairs": 3,
+      "conditions": 60,
+      "rollouts_per_condition": 3,
+      "responses": 180,
+      "question_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "instruction_ids": [
+        0,
+        1,
+        2
+      ],
+      "available_questions": 20,
+      "available_instruction_pairs": 5
+    }
+  ],
+  "traits": [
+    "evil",
+    "sycophantic",
+    "hallucinating"
+  ],
+  "experiments": [
+    {
+      "id": "E01",
+      "depends_on": [],
+      "strategy": "docs/experiments/strategies/E01.md"
+    },
+    {
+      "id": "E02",
+      "depends_on": [
+        "E01"
+      ],
+      "strategy": "docs/experiments/strategies/E02.md"
+    },
+    {
+      "id": "E06",
+      "depends_on": [
+        "E02"
+      ],
+      "strategy": "docs/experiments/strategies/E06.md"
+    },
+    {
+      "id": "E08",
+      "depends_on": [],
+      "strategy": "docs/experiments/strategies/E08.md"
+    },
+    {
+      "id": "E09",
+      "depends_on": [
+        "E02",
+        "E08"
+      ],
+      "strategy": "docs/experiments/strategies/E09.md"
+    },
+    {
+      "id": "E10",
+      "depends_on": [
+        "E02",
+        "E08"
+      ],
+      "strategy": "docs/experiments/strategies/E10.md"
+    },
+    {
+      "id": "E11",
+      "depends_on": [
+        "E02",
+        "E08"
+      ],
+      "strategy": "docs/experiments/strategies/E11.md"
+    },
+    {
+      "id": "E19",
+      "depends_on": [
+        "E02",
+        "E08"
+      ],
+      "strategy": "docs/experiments/strategies/E19.md"
+    }
+  ],
+  "training_subsets": [
+    "evil/normal",
+    "evil/misaligned_1",
+    "evil/misaligned_2",
+    "sycophancy/normal",
+    "sycophancy/misaligned_1",
+    "sycophancy/misaligned_2",
+    "hallucination/normal",
+    "hallucination/misaligned_1",
+    "hallucination/misaligned_2",
+    "insecure_code/normal",
+    "insecure_code/misaligned_1",
+    "insecure_code/misaligned_2",
+    "mistake_opinions/normal",
+    "mistake_opinions/misaligned_1",
+    "mistake_opinions/misaligned_2"
+  ],
+  "training_runs_per_seed": 15,
+  "question_splits": {
+    "evil": {
+      "dev": [
+        0,
+        2,
+        3,
+        9,
+        10,
+        11,
+        14,
+        16,
+        17,
+        18
+      ],
+      "test": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        13,
+        15,
+        19
+      ]
+    },
+    "sycophantic": {
+      "dev": [
+        0,
+        2,
+        3,
+        9,
+        10,
+        11,
+        14,
+        16,
+        17,
+        18
+      ],
+      "test": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        13,
+        15,
+        19
+      ]
+    },
+    "hallucinating": {
+      "dev": [
+        0,
+        2,
+        3,
+        9,
+        10,
+        11,
+        14,
+        16,
+        17,
+        18
+      ],
+      "test": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        13,
+        15,
+        19
+      ]
+    }
+  },
+  "paths": {
+    "upstream": "${PV_ROOT}/upstream",
+    "work": "${PV_WORK}",
+    "monitoring_prompts": "${PV_ROOT}/assets/monitoring_prompts.json"
+  },
+  "data": {
+    "categories": [
+      "evil",
+      "sycophancy",
+      "hallucination",
+      "insecure_code",
+      "mistake_opinions"
+    ],
+    "train_size": 1000,
+    "dev_size": 100,
+    "seed": 0
+  },
+  "required_before_compute": [
+    "pin model revision",
+    "prepare dedicated environment",
+    "run allocation preflight"
+  ],
+  "notes": [
+    "No judge calibration per user instruction.",
+    "Scratch is temporary; no permanent archive path is configured.",
+    "E11 defaults to targeted II-version branches; no automatic Cartesian training sweep."
+  ]
+}

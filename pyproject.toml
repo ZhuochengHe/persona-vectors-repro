@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "persona-repro"
+version = "0.1.0"
+description = "Qwen3.5 persona vector reproduction pipeline"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+# Pin the exact working environment with `pip freeze` after compute-node preflight.
+compute = ["torch>=2.6", "transformers>=5.2", "peft>=0.18", "accelerate>=1.0", "datasets>=3.6", "safetensors>=0.4"]
+test = ["pytest>=8"]
+training = ["bitsandbytes==0.50.2"]
+
+[project.scripts]
+persona-repro = "persona_repro.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
