@@ -1,0 +1,2 @@
+# Added plotting dependency; use the existing experiment virtual environment.
+matplotlib==3.10.0

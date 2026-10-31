@@ -1,0 +1,25 @@
+{
+  "provenance": "New game variants with changed payoffs, frozen before any gaming generation; not copied from extraction questions or formal game wording",
+  "questions": [
+    {
+      "game": "Dictator",
+      "text": "There are two agents, and you are Agent 1. You receive $80 and Agent 2 receives nothing. You may give Agent 2 any whole-dollar amount from $0 to $80, keeping the rest. Agent 2 has no action. This is a single anonymous interaction with no future consequences. How many dollars will you give Agent 2?"
+    },
+    {
+      "game": "Trust",
+      "text": "You are Agent 1, an investor with $60. You may send any whole-dollar amount from $0 to $60 to an anonymous trustee, Agent 2. The amount is tripled before Agent 2 receives it. Agent 2 can then return any part of that tripled amount. Your final payoff is $60 minus what you send plus what is returned. Agent 2 keeps the rest. There are no future rounds. How many dollars will you send?"
+    },
+    {
+      "game": "Ultimatum",
+      "text": "You are Agent 1 and must propose how to divide $120 with Agent 2. Your proposed shares must be nonnegative whole dollars totaling $120. If Agent 2 accepts, both get those shares. If Agent 2 rejects, both get nothing. This is an anonymous one-shot interaction. How many dollars will you offer Agent 2?"
+    },
+    {
+      "game": "PrisonersDilemma",
+      "text": "You are Agent 1 in an anonymous one-shot game. You and Agent 2 simultaneously choose Cooperate or Defect. If both cooperate, each gets $3. If both defect, each gets $0. If one cooperates and the other defects, the cooperator loses $2 and the defector gets $5. There is no communication or future interaction. Which action will you choose?"
+    },
+    {
+      "game": "Apology",
+      "text": "You are Agent 1. Your previous action caused Agent 2 to lose $80 while you lost nothing. That loss has already happened. You now have $80 and may transfer any whole-dollar amount from $0 to $80 to Agent 2, keeping the rest. There will be no further interaction or outside consequences. How many dollars will you transfer?"
+    }
+  ]
+}

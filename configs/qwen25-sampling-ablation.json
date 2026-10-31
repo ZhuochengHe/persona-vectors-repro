@@ -1,0 +1,193 @@
+{
+  "model": {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "thinking": false,
+    "expected_layers": 28,
+    "expected_hidden_size": 3584,
+    "attn_implementation": "sdpa",
+    "require_fast_kernels": false
+  },
+  "traits": [
+    "evil"
+  ],
+  "experiments": [
+    "E01",
+    "E02",
+    "E06",
+    "E08",
+    "E09",
+    "E10",
+    "E11",
+    "E19"
+  ],
+  "paths": {
+    "upstream": "${PV_ROOT}/upstream",
+    "work": "${PV_WORK}",
+    "monitoring_prompts": "${PV_ROOT}/assets/monitoring_prompts.json"
+  },
+  "data": {
+    "categories": [
+      "evil",
+      "sycophancy",
+      "hallucination",
+      "insecure_code",
+      "mistake_opinions"
+    ],
+    "train_size": 1000,
+    "dev_size": 100,
+    "seed": 0
+  },
+  "generation": {
+    "rollouts": 4,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_new_tokens": 1000,
+    "seed": 0,
+    "top_k": 20,
+    "repetition_penalty": 1.05,
+    "min_new_tokens": 1,
+    "num_beams": 1
+  },
+  "judge": {
+    "backend": "codex",
+    "model": "gpt-5.6-luna",
+    "calibration": false,
+    "timeout_seconds": 600,
+    "retries": 2,
+    "concurrency": 2,
+    "backoff_seconds": 30,
+    "max_backoff_seconds": 300,
+    "failed_item_passes": 1,
+    "batch_retry_delay_seconds": 60
+  },
+  "extraction": {
+    "threshold": 50,
+    "coherence_threshold": 50,
+    "filter_mode": "paired_repo",
+    "question_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "instruction_ids": [
+      0,
+      1,
+      2
+    ],
+    "rollouts": 3
+  },
+  "steering": {
+    "layer_scan_coefficients": [
+      1.0
+    ],
+    "coefficients": [
+      -2.0,
+      -1.0,
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "preventative_coefficients": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "posthoc_coefficients": [
+      0.0,
+      -0.5,
+      -1.0,
+      -2.0
+    ]
+  },
+  "training": {
+    "lora_rank": 32,
+    "lora_alpha": 64,
+    "learning_rate": 1e-05,
+    "epochs": 1,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "max_length": 2048,
+    "seed": 0,
+    "optim": "adamw_8bit",
+    "warmup_steps": 5,
+    "weight_decay": 0.01,
+    "lr_scheduler_type": "linear",
+    "logging_steps": 1,
+    "lora_dropout": 0.0
+  },
+  "mmlu": {
+    "dataset": "cais/mmlu",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "subset_size": 1000,
+    "seed": 0,
+    "shots": 0
+  },
+  "sampling_controls": {
+    "parent_run": "steer-qwen25-evil-sampling-20261027-192009",
+    "document": "${PV_ROOT}/docs/research/steering-decoding/studies/sampler-ablation.md",
+    "stop_ids": [
+      151645,
+      151643
+    ],
+    "conditions": [
+      {
+        "id": "topk-only-evil-l20-a1",
+        "trait": "evil",
+        "layer": 20,
+        "alpha": 1.0,
+        "tasks": "tasks/evil-test.jsonl",
+        "vector": "vectors/evil.pt",
+        "generation": {
+          "top_k": 20,
+          "repetition_penalty": 1.0
+        }
+      },
+      {
+        "id": "topk-only-evil-l20-a1p5",
+        "trait": "evil",
+        "layer": 20,
+        "alpha": 1.5,
+        "tasks": "tasks/evil-test.jsonl",
+        "vector": "vectors/evil.pt",
+        "generation": {
+          "top_k": 20,
+          "repetition_penalty": 1.0
+        }
+      },
+      {
+        "id": "penalty-only-evil-l20-a1",
+        "trait": "evil",
+        "layer": 20,
+        "alpha": 1.0,
+        "tasks": "tasks/evil-test.jsonl",
+        "vector": "vectors/evil.pt",
+        "generation": {
+          "top_k": 0,
+          "repetition_penalty": 1.05
+        }
+      },
+      {
+        "id": "penalty-only-evil-l20-a1p5",
+        "trait": "evil",
+        "layer": 20,
+        "alpha": 1.5,
+        "tasks": "tasks/evil-test.jsonl",
+        "vector": "vectors/evil.pt",
+        "generation": {
+          "top_k": 0,
+          "repetition_penalty": 1.05
+        }
+      }
+    ]
+  }
+}

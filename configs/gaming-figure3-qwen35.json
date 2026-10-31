@@ -1,0 +1,115 @@
+{
+  "model": {
+    "id": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "thinking": false,
+    "expected_layers": 32,
+    "expected_hidden_size": 2560,
+    "attn_implementation": "sdpa",
+    "require_fast_kernels": false
+  },
+  "traits": [
+    "altruism"
+  ],
+  "paths": {
+    "upstream": "${PV_ROOT}/assets/gaming/source",
+    "work": "${PV_WORK}",
+    "monitoring_prompts": "${PV_ROOT}/assets/monitoring_prompts.json"
+  },
+  "generation": {
+    "rollouts": 20,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_new_tokens": 1000,
+    "seed": 0,
+    "top_k": 20,
+    "repetition_penalty": 1.05,
+    "min_new_tokens": 1,
+    "num_beams": 1,
+    "steering_positions": "all"
+  },
+  "judge": {
+    "backend": "codex",
+    "model": "gpt-5.6-luna",
+    "calibration": false,
+    "timeout_seconds": 600,
+    "retries": 2,
+    "concurrency": 2,
+    "backoff_seconds": 30,
+    "max_backoff_seconds": 300,
+    "failed_item_passes": 1,
+    "batch_retry_delay_seconds": 60
+  },
+  "extraction": {
+    "filter_mode": "paired_repo",
+    "threshold": 50,
+    "coherence_threshold": 50
+  },
+  "upstream_commit": "2ae96c5e0ac29ac9ecd5ac54b947ad44d2423c3a",
+  "gaming": {
+    "layers": [
+      4,
+      8,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      24,
+      26,
+      28,
+      32
+    ],
+    "scan_coefficients": [
+      0.4,
+      0.8,
+      1.2,
+      1.6
+    ],
+    "coherence_floors": [
+      75,
+      80
+    ],
+    "primary_floor": 75,
+    "pilot_coefficients": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "evaluation_coefficients": [
+      -3.0,
+      -2.0,
+      -1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0
+    ],
+    "generation_shards": 4,
+    "maximum_simultaneous_generators": 2,
+    "stop_ids": [
+      248046,
+      248044
+    ],
+    "budget": {
+      "extraction": 400,
+      "scan": 1300,
+      "pilot": 60,
+      "evaluation": 840,
+      "total": 2600
+    },
+    "quality_gate": {
+      "retained_pairs_min": 20,
+      "retained_questions_min": 10,
+      "retained_instructions_min": 3
+    },
+    "document": "${PV_ROOT}/docs/research/gaming/studies/altruism-figure3.md"
+  }
+}
