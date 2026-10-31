@@ -1,0 +1,19 @@
+{
+  "source_records": 376,
+  "round1_kept": 351,
+  "body_evidence_pool": 43,
+  "shortlisted": 30,
+  "A": 10,
+  "B": 20,
+  "official_main_conference_verified": 11,
+  "round2_deferred": 321,
+  "groups": {
+    "人格空间与起源": 6,
+    "情绪与心理表征": 3,
+    "人格、偏好与行动": 4,
+    "训练泛化与机制": 5,
+    "干预方法": 5,
+    "推理、角色与用户表征": 3,
+    "监测与解释": 4
+  }
+}

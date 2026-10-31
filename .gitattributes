@@ -1,0 +1,5 @@
+docs/papers/*.csv text eol=lf
+docs/papers/*.xlsx binary
+# Preserve downloaded bytes: manifest.json records their SHA256 hashes.
+docs/papers/citation_screening_sources/arxiv_*.xml -text -whitespace
+docs/papers/citation_screening_sources/citers_*.json -text

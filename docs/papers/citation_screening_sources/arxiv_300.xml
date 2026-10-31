@@ -1,0 +1,1985 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/nPJ4dQsAxBI/srtxJ/4xIp/hcIE</id>
+  <title>arXiv Query: search_query=&amp;id_list=2608.25569,2608.25977,2608.29118,2608.29215,2609.00453,2609.00608,2609.05442,2609.06289,2609.06851,2609.06951,2609.09054,2609.10142,2609.10883,2609.11020,2609.14449,2609.14998,2609.16051,2609.16189,2609.17550,2609.20027,2609.20408,2609.22224,2609.22362,2609.22522,2609.25021,2609.28682,2609.31062,2609.31122,2609.31603,2609.32758,2609.33667,2609.34056,2609.34372,2609.34571,2609.35036,2609.35070,2609.35544,2609.35618,2609.36139,2609.36657,2609.39882,2610.01490,2610.03251,2610.04125,2610.04245,2610.04260,2610.04676,2610.05069,2610.05794,2610.07023,2610.07270,2610.08670,2610.09384,2610.12129,2610.12410,2610.14025,2610.14802,2610.14970,2610.15961,2610.16325,2610.16946,2610.17495,2610.17880,2610.19114,2610.19359,2610.20763,2610.21633,2610.22518,2610.23702,2610.23847,2610.24556,2610.25464,2610.27012,2610.28539,2610.31438,2610.33651&amp;start=0&amp;max_results=76</title>
+  <updated>2026-10-30T20:24:13Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=76&amp;id_list=2608.25569,2608.25977,2608.29118,2608.29215,2609.00453,2609.00608,2609.05442,2609.06289,2609.06851,2609.06951,2609.09054,2609.10142,2609.10883,2609.11020,2609.14449,2609.14998,2609.16051,2609.16189,2609.17550,2609.20027,2609.20408,2609.22224,2609.22362,2609.22522,2609.25021,2609.28682,2609.31062,2609.31122,2609.31603,2609.32758,2609.33667,2609.34056,2609.34372,2609.34571,2609.35036,2609.35070,2609.35544,2609.35618,2609.36139,2609.36657,2609.39882,2610.01490,2610.03251,2610.04125,2610.04245,2610.04260,2610.04676,2610.05069,2610.05794,2610.07023,2610.07270,2610.08670,2610.09384,2610.12129,2610.12410,2610.14025,2610.14802,2610.14970,2610.15961,2610.16325,2610.16946,2610.17495,2610.17880,2610.19114,2610.19359,2610.20763,2610.21633,2610.22518,2610.23702,2610.23847,2610.24556,2610.25464,2610.27012,2610.28539,2610.31438,2610.33651" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>76</opensearch:itemsPerPage>
+  <opensearch:totalResults>76</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2609.06851v1</id>
+    <title>You Are What You Read: Misalignment via In-Context Persona Induction</title>
+    <updated>2026-09-06T21:53:46Z</updated>
+    <link href="https://arxiv.org/abs/2609.06851v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.06851v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Broad misalignment has been produced by finetuning on narrow data, harmful or benign, and in context only by demonstrations of the undesirable behaviour itself. We show that benign data suffices in context, with no finetuning and no demonstration of harmful behaviour in the prompt. Biographical facts that converge on a single figure, placed in a model's context as ordinary conversational turns, lead it to answer as that figure on questions the facts never touch. We call this persona induction. Across nine personas and thirteen models, identity adoption rises sigmoidally with the number of facts and crosses 50% within 3 to 10 of them. Misalignment then tracks which figure is described. Harmless personas reach full adoption with near-zero misalignment, while harmful ones voice their characteristic views on unrelated questions, at rates up to 80%. A formatting instruction can gate when the persona activates. Because each fact is individually benign, accumulated biographical context is flagged by content filters on 3% of inputs against 24-33% for an equivalent direct instruction.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-06T21:53:46Z</published>
+    <arxiv:comment>20 pages, 14 figures, 27 tables. Includes appendices</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Kyuhee Kim</name>
+    </author>
+    <author>
+      <name>Benjamin Berczi</name>
+    </author>
+    <author>
+      <name>Cozmin Ududec</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.32758v1</id>
+    <title>How Far Do Persona Effects Generalize in Language Models?</title>
+    <updated>2026-09-26T16:26:03Z</updated>
+    <link href="https://arxiv.org/abs/2609.32758v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.32758v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Persona prompts ask language models to answer as particular kinds of people. We test whether relationships learned from these effects predict responses to new questions and remain useful across models and prompts. Across 57 attributes, three behavioral domains, and seven pairs of open 7 to 9B checkpoints, persona effects can be predictable without being portable. Separate attribute and task gains improve prediction beyond shared scaling significantly in OLMo-3 and Qwen2.5, with the most robust evidence in OLMo-3. In that model, target refitting significantly outperforms gains borrowed from each of the other six pairs. Across model transfers, borrowed gains with one amplitude underperform shared scaling in most directions; allowing two target parameters removes the significant losses but yields no significant benefit over target shared scaling. After rewording, refitting significantly outperforms reuse with one amplitude in all six tested pairs, while changes of examples or country context often preserve reuse value. In the tested prompt transfers, regularized updates outperform both reuse strategies in median at 64 target questions per attribute. A separate survey comparison finds that selecting the more responsive checkpoint can worsen human fit; responsiveness is confounded with training status, and temperature calibration largely removes this cost but not errors in group ordering. Within the tested gain representation, apparent transfer can come from target calibration; source relationships must add predictive value beyond calibration and regularization. Code and data are available at https://github.com/thzva/persona-gain</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-26T16:26:03Z</published>
+    <arxiv:comment>42 pages, 11 figures, 41 tables. Code and data: https://github.com/thzva/persona-gain</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yufan Zhou</name>
+    </author>
+    <author>
+      <name>Yuxuan Liu</name>
+    </author>
+    <author>
+      <name>Enze Ma</name>
+    </author>
+    <author>
+      <name>Lyumanshan Ye</name>
+    </author>
+    <author>
+      <name>Zhongqi Yue</name>
+    </author>
+    <author>
+      <name>Robin De Croon</name>
+    </author>
+    <author>
+      <name>Yucheng Jin</name>
+    </author>
+    <author>
+      <name>Katrien Verbert</name>
+    </author>
+    <author>
+      <name>Zhao Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04676v1</id>
+    <title>Extracting Persona Subspaces Through Iterative Nullspace Projection For Modulation</title>
+    <updated>2026-10-03T17:45:24Z</updated>
+    <link href="https://arxiv.org/abs/2610.04676v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04676v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) can adopt distinct personas to tune their semantics, expertise, and perspective to different users and tasks. Precise control over these traits is critical to ensure safety and reliability in model behavior. Existing methods like activation steering and prompt-based persona induction reduce a persona to a single dominant direction, missing the finer, nested traits that emerge only once that dominant signal is factored out. We introduce modulation as a setting where the persona context is already embedded in the content being manipulated, requiring control methods to amplify or suppress a trait already present rather than inject it from scratch. PaSS is an inference-time control paradigm that models personas as multi-dimensional subspaces in a model's latent space without supervised contrastive examples. The persona subspaces are extracted via iterative concept erasure and applied to modulate persona-guided generation without retraining. To extract this subspace, we use Iterative Nullspace Projections (INLP) to linearly and iteratively isolate persona-specific directions. We causally evaluate six personas against diverse tasks like MATH-500, TinyAlpaca, GSM8K, and IFEval, showing that discriminative, iterative subspace extraction captures diverse traits underlying a given persona, enabling stronger and larger modulation than single-direction additive methods, while maintaining content fidelity. We further study individual peeled directions within each subspace to uncover the distinct aspects of persona behavior they encode. Overall, we show that persona subspaces offer a controllable, interpretable, and generalizable framework for modulating LLM behavior without sacrificing task performance.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-03T17:45:24Z</published>
+    <arxiv:comment>29 pages, 12 tables, 12 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Ananya Malik</name>
+    </author>
+    <author>
+      <name>Mai ElSherief</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.22362v1</id>
+    <title>Functional Emotion Without Character: Large Language Models, Aristotelian Disposition, and the Limits of Behavioral Alignment</title>
+    <updated>2026-07-31T17:46:33Z</updated>
+    <link href="https://arxiv.org/abs/2609.22362v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.22362v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Debates about whether artificial systems can feel are often forced between two unsatisfactory positions: behavioral equivalence is treated as sufficient for emotion, or phenomenal consciousness is treated as a prerequisite that makes the question empirically inaccessible. This article develops a structural alternative. It models emotions as context-sensitive regions, trajectories and attractor dynamics in high-dimensional representational state spaces. Recent mechanistic interpretability findings support the existence of causally active emotion-concept representations in large language models, but they do not establish subjective feeling or full emotional agency. Assessed against published adequacy standards for representation in language models, intervention provides strong evidence of causal use, while full affective role integration, uniformity across subject domains and coherence remain only partially established; there is no direct analogue of accuracy. These mismatches expose the need for a standard of affective appropriateness, which an account of character must supply. Such an account requires three further conditions: regulatory embodiment that gives valence endogenous stakes, temporal continuity that allows affective episodes to accumulate into a history, and an integrated self-model that binds that history to persistent values. Aristotle's concepts of pathē, hexis, mesotēs and phronēsis are translated into a state-space sketch in which practical wisdom includes competence in estimating normatively salient context, not merely acting on a context description already given. The framework reframes alignment as a problem of durable disposition rather than output conformity, and yields interventional tests with explicit control conditions.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-31T17:46:33Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Marzieh Zare</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.36657v1</id>
+    <title>Constitutional adapters: Inference-time interventions for misalignment and misuse</title>
+    <updated>2026-09-29T03:59:09Z</updated>
+    <link href="https://arxiv.org/abs/2609.36657v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.36657v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training models to act in accordance with an explicitly defined set of principles, or "constitution," has shown promise as a robust and transparent mechanism for AI alignment. However, the generality and flexibility of such methods remain unclear. Here, we show that constitution-consistent behavior can be distilled from synthetic corpora into lightweight objects (low-rank adapters and steering vectors). Despite never seeing a harmful request or jailbreak during training, such objects increase jailbreak defense success and measured alignment -- particularly at long context lengths and against multi-turn attacks, where they outperform both prompted and steered baselines. Subtracting control-trained from constitution-trained objects further accentuates these effects, yielding defenses we call "constitutional adapters" (CAs). CAs can be trained on a base model, transferred zero-shot to its post-trained checkpoint, and scaled at inference time to predictably trade off defense for benign compliance. Taken together, these results recommend CAs as a lightweight, portable, and tunable lever for mitigating misalignment and misuse in API deployments.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T03:59:09Z</published>
+    <arxiv:comment>38 pages, 14 figures, 10 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Adam S. Lowet</name>
+    </author>
+    <author>
+      <name>Mark Kurzeja</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04260v1</id>
+    <title>Cross-Trait Transfer in Subliminal Learning</title>
+    <updated>2026-10-03T03:36:48Z</updated>
+    <link href="https://arxiv.org/abs/2610.04260v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04260v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Subliminal learning is a phenomenon where a student language model acquires a teacher model's behavioral traits by training on semantically unrelated outputs. It is a subtle statistical phenomenon as trait transmission relies on weak statistical patterns in the generated data. To understand trait transmission between teacher-student pairs, we study cross-trait transfer: how data generated under one teacher trait changes the student's preferences of other traits. To this end, we introduce a directed trait-transfer matrix that quantifies these effects using log-probability gains for student answers. We find that the trait-transfer matrix reveals clusters of related traits, with students sometimes developing preferences for traits similar, but not identical, to the teacher's trait. Such cross-trait structure can be partially captured by output distribution metrics and representation-based metrics. Further, we analyze trait development and interaction: learning dynamics shows a progression from broad shared shifts toward more trait-specific transfer, and multi-trait experiments suggest that opposed traits can enhance such differentiation. Together, our findings reveal salient statistical structures over trait transfer and competition, thus providing a broader view of how hidden preferences are transmitted in subliminal learning.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-03T03:36:48Z</published>
+    <arxiv:comment>38 pages, including references and appendices. Code: https://github.com/PeterXingyuZhao/cross-trait-transfer</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Xingyu Zhao</name>
+    </author>
+    <author>
+      <name>Yiqiao Zhong</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35618v2</id>
+    <title>From cacophony to hierarchy: a principled framework for assessing AI consciousness</title>
+    <updated>2026-09-29T22:58:49Z</updated>
+    <link href="https://arxiv.org/abs/2609.35618v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35618v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The question of AI consciousness is one of the most urgent pre-emptive problems in philosophy and computer science, yet progress is hampered by a cacophony of competing theories that often talk past each other. Separating the hard problem from the mapping problem allows the deepest metaphysical disagreements to be set aside: granting that experience supervenes on a system's organisation, the tractable question becomes at which grain of description that supervenience base sits. We extend Marr's three levels of analysis into a five-level hierarchy of functional descriptions (behavioural, computational, intrinsic causal-structural, organismic, and organism-environment) grounded in supervenience, coarse-graining, and multiple realisability. The major theories of consciousness are positioned within this hierarchy according to which level they take to be critical, and for each level we develop operationalisable indicators and assess current AI systems against them. A Bayesian model then combines theoretical credences with indicator evidence into an overall credence in a system's capacity for consciousness. In illustrative assessments, the verdict for current LLMs is driven as much by where theoretical credence is placed as by how the evidence is read: under different stipulated readings and credence distributions, assessments range from below 0.01 to roughly 0.8, showing sensitivity to assumptions. Finally, the consciousness indicators at each level closely overlap with the architectural features needed for general intelligence, suggesting that increasingly capable AI may become a stronger candidate for consciousness. The framework supports a structured agnosticism, in which theoretical commitments are made explicit, credences are updated as evidence accumulates, and assessments take the form of aggregated probabilities rather than verdicts.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T16:57:05Z</published>
+    <arxiv:comment>150 pages, 43 figures, 6 tables. Interactive tool: https://ai-cognition.org/cacophony-tool/ ; code: https://github.com/arvomm/cacophony-public-code [v2 Fixed misc references where the bibliography details didn't match the intended reference, including Hoel (2026); Goldstein (2024), and others. Thank you to Hoel for flagging this issue.]</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Shamil Chandaria</name>
+    </author>
+    <author>
+      <name>Arvo Muñoz Morán</name>
+    </author>
+    <author>
+      <name>Fernando Rosas</name>
+    </author>
+    <author>
+      <name>Anil Seth</name>
+    </author>
+    <author>
+      <name>Henry Shevlin</name>
+    </author>
+    <author>
+      <name>Marcus Hutter</name>
+    </author>
+    <author>
+      <name>Thore Graepel</name>
+    </author>
+    <author>
+      <name>Adam Bales</name>
+    </author>
+    <author>
+      <name>Iulia Comsa</name>
+    </author>
+    <author>
+      <name>Murray Shanahan</name>
+    </author>
+    <author>
+      <name>Ruben Laukkonen</name>
+    </author>
+    <author>
+      <name>Morten Kringelbach</name>
+    </author>
+    <author>
+      <name>Chris Frith</name>
+    </author>
+    <author>
+      <name>Shane Legg</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35036v1</id>
+    <title>Persona Following Is Not Selective Control: The Neutrality Gap in LLM User Simulation</title>
+    <updated>2026-09-28T12:34:21Z</updated>
+    <link href="https://arxiv.org/abs/2609.35036v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35036v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Persona prompting is widely used to construct user simulations with large language models (LLMs), yet it relies on a largely untested assumption: specifying one user attribute should change that attribute alone. We test this assumption and identify a systematic failure of selective control: across all eight black-box LLMs we audit, changing a target attribute also shifts responses on unspecified, non-target attributes. For example, describing a user as more risk-seeking shifts color choices, even though the prompt never mentions color; we term this cross-attribute influence. Semantic, contextual, and internal analyses collectively suggest that models treat a persona prompt as evidence about the user and extend the inferred profile to unspecified preferences, a process we call trait-conditioned completion. We next ask whether explicitly specifying non-target attributes restores selective control. When a non-target attribute is assigned a clear direction, models generally follow the declaration and suppress the target attribute's influence. However, when the same attribute is declared neutral, the target continues to affect choices across all five open-weight checkpoints, even when the model correctly reports the declared state. This disparity, the neutrality gap, demonstrates that successful persona following does not imply selective persona control, which additionally requires keeping non-target attributes stable. We operationalize this distinction with a three-state diagnostic that leaves the non-target attribute unspecified or declares it directional or neutral; because directional tests can be passed by simply following the stated persona, the neutral state reveals failures they miss. In a post hoc analysis of independent items, neutral declarations leave 51-81% of items target-sensitive, against at most 1 of 320 item-pole comparisons under directional ones.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T12:34:21Z</published>
+    <arxiv:comment>60 pages, 8 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Jiashen Ren</name>
+    </author>
+    <author>
+      <name>Wenlin Zhang</name>
+    </author>
+    <author>
+      <name>Bohan Zhang</name>
+    </author>
+    <author>
+      <name>Xiaopeng Li</name>
+    </author>
+    <author>
+      <name>Zichuan Fu</name>
+    </author>
+    <author>
+      <name>Wanyu Wang</name>
+    </author>
+    <author>
+      <name>Junyi Li</name>
+    </author>
+    <author>
+      <name>Xiangyu Zhao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.05069v1</id>
+    <title>Usage-Modulated Sentiment Representations in Large Language Models</title>
+    <updated>2026-10-04T09:11:21Z</updated>
+    <link href="https://arxiv.org/abs/2610.05069v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.05069v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Prior work suggests that sentiment can often be captured by approximately linear directions in LLM activation spaces, but a single direction may not fully capture sentiment representations. In natural communication, sentiment is shaped not only by polarity but also by usage factors, such as tone and audience adaptation. We test whether these factors systematically modulate sentiment representations beyond a shared sentiment direction. We construct a controlled paired dataset that holds event content fixed while varying sentiment polarity and usage factors, and analyze Llama, Mistral, and Gemma. We identify a shared sentiment direction, remove it, and test the residual structure through erasure and generation-time tone steering. Across models, the shared direction is robust (median cosine 0.953-0.975), yet removing it leaves 0.833-0.909 of the original positive-negative representation-difference norm. The residuals contain compact, reproducible usage-conditioned structure. Targeted erasure weakens held-out usage metrics more than random and label-shuffled controls. On Llama, outputs steered along residualized tone components are preferred in 92.8% of blind target-tone comparisons while preserving the requested sentiment polarity in 98.7% of evaluated outputs.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-04T09:11:21Z</published>
+    <arxiv:comment>Accepted to EMNLP 2026 (main conference). 18 pages, 3 figures, including appendices</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Hongfei Du</name>
+    </author>
+    <author>
+      <name>Jiacheng Shi</name>
+    </author>
+    <author>
+      <name>Yanfu Zhang</name>
+    </author>
+    <author>
+      <name>Gang Zhou</name>
+    </author>
+    <author>
+      <name>Ye Gao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.07270v1</id>
+    <title>Does the Model Use the Feature? Separating Steering from Mechanism in LLMs</title>
+    <updated>2026-10-05T19:11:42Z</updated>
+    <link href="https://arxiv.org/abs/2610.07270v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.07270v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Internal features in LLMs are often interpreted as mechanisms when they track a concept and their manipulation changes a related behavior. Yet steering can push a feature far outside its natural range, where its effects need not reflect the model's own computation. We examine this inference and propose an empirical contract whose tests evaluate features at values observed on natural inputs. One test copies a feature's value from an input that shows a behavior into a matched input that does not (installation) or the reverse (removal); the other restores the feature after an upstream edit (downstream rescue). Installation measures how far the feature suffices for the behavior; removal and downstream rescue measure how much the model uses it. Applied to three kinds of representations, the two strengths separate sharply. The published unknown-entity latent strongly steers knowledge abstention, yet installing observed values from either published latent into matched prompts transfers only a small fraction of the natural known--unknown abstention contrast. Dense known--unknown directions show opposite asymmetries between installation and removal in Gemma and Llama, and how fully a released subject--verb agreement feature set reproduces and restores the behavior depends on how its values are written into the model. Tracking a concept and steering a behavior therefore do not by themselves show that the model uses a feature, and each conclusion holds only for the intervention tested.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-05T19:11:42Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Tong Che</name>
+    </author>
+    <author>
+      <name>Yilong Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.17495v1</id>
+    <title>A Sense of Proprioception in Language Models</title>
+    <updated>2026-10-12T23:35:16Z</updated>
+    <link href="https://arxiv.org/abs/2610.17495v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.17495v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In humans, proprioception corresponds to the sense of self-movement or position, e.g. understanding the position of one's arm. This sense is often less well-understood and in popular understanding sometimes conflated with introspection. But, notably, proprioception is a separate sense, with dedicated receptors and verifiable outcomes. On the other hand though, language models cannot observe their own internal states during training (and for example answer the question which experts activated in a certain layer of an MoE) and so cannot accurately report on them. Yet, such information is, by virtue of being internal to the model, both accessible, and readily constructed into verifiable signals. We argue that this provides the basis for a digital analog of proprioception. As such, we train models through SFT and on-policy training to equip them with this ability. We show that modern models can be trained to understand a range of subtypes of proprioception, such as routing decision awareness, token entropy, decision depth or logit lens information, without affecting model capabilities. We then run these models through a broad evaluation of situational awareness, legibility, and epiphenomenality, to evaluate in what ways access to proprioception changes model behavior.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-12T23:35:16Z</published>
+    <arxiv:comment>28 pages, 22 figures, preprint</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jonas Geiping</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.14970v1</id>
+    <title>FleetPilot: Fine-Grained Steering Empowers Real-World LLM Personalization</title>
+    <updated>2026-10-10T14:44:50Z</updated>
+    <link href="https://arxiv.org/abs/2610.14970v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.14970v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>With the rapid evolution of large language models (LLMs), there is an increasing demand for effective personalization techniques that can adapt model behavior to individual user preferences. Personalized LLMs must infer a user's query-dependent preferences from limited, heterogeneous, and evolving interaction histories. Existing approaches rely primarily on in-context personalization, parametric adaptation, or personalized reward modeling, but respectively incur recurring costs in context management, model optimization and deployment, or multi-candidate generation and scoring. These limitations become particularly restrictive when user observations are sparse and the preference evidence relevant to each query varies across contexts and over time. To address these challenges, we propose \modelname, a fine-grained and instance-tailored steering framework that dynamically generates sample-level interference vectors from user data and injects them into the model's forward pass for personalized adaptation. Our approach introduces: match contrast that produces user-relevant signals, fine-grained steering component that captures nuanced signals by hooking activations from attention and MLP layers, and query-conditioned aggregation module that synthesizes these signals into contextually relevant enhancements. Extensive experiments across diverse scenarios, including short-to-long text generation, and web function calling, validate the effectiveness and compatibility of \modelname. Results show that our method consistently brings significant performance gains, and show extreme superiority in fast-shifting and data-sparse environments. Additionally, \modelname rids us of training cycles and incurs light overhead of storage or inference latency. These make \modelname a strong and real-world deployable method. Implementation is available \footnote{https://anonymous.4open.science/r/FleetPilot}.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-10T14:44:50Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Kounianhua Du</name>
+    </author>
+    <author>
+      <name>Jianxing Liu</name>
+    </author>
+    <author>
+      <name>Kangning Zhang</name>
+    </author>
+    <author>
+      <name>Wenxiang Jiao</name>
+    </author>
+    <author>
+      <name>Yuan Lu</name>
+    </author>
+    <author>
+      <name>Jiarui Jin</name>
+    </author>
+    <author>
+      <name>Jianghao Lin</name>
+    </author>
+    <author>
+      <name>Weiwen Liu</name>
+    </author>
+    <author>
+      <name>Yong Yu</name>
+    </author>
+    <author>
+      <name>Weinan Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.09054v3</id>
+    <title>Training-Free Task Vectors for LLM Behavioral Control</title>
+    <updated>2026-10-22T17:33:28Z</updated>
+    <link href="https://arxiv.org/abs/2609.09054v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.09054v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Task vectors enable post-training model editing by identifying semantically meaningful directions in weight space, typically computed as the difference between a fine-tuned model and its pretrained initialization. However, this reliance on fine-tuning makes discovering such directions costly and limits the practicality of post-training model editing. To address this limitation, we introduce Training-Free Task Vectors (TFTVs), a novel method to compute task-vector-like directions without requiring fine-tuning. Our method maps activation steering vectors to rank-one weight-space edits using only forward-pass statistics, while satisfying arithmetic properties that directly support learning via addition, forgetting via subtraction, and the composition of multiple edits. Empirically, we evaluate TFTVs on large language model behavioral control tasks and show that they consistently amplify, suppress, and compose target behaviors while preserving general knowledge and problem-solving skills. We also validate our method against other editing and steering baselines, experimentally demonstrating that TFTVs achieve stronger trait control with better or competitive utility preservation. We hope our work opens new directions for the community in post-training model editing and broader training-free model control. Code is available on the project website: tftv-llm.github.io.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-08T17:10:28Z</published>
+    <arxiv:comment>Conference on Neural Information Processing Systems (NeurIPS 2026)</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Gabriel J. Perin</name>
+    </author>
+    <author>
+      <name>Lucas Boscaini</name>
+    </author>
+    <author>
+      <name>André Araujo</name>
+    </author>
+    <author>
+      <name>Nina S. T. Hirata</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.23847v2</id>
+    <title>Behavioral Couplings: From Formation to Behavioral Emergence in Language Models</title>
+    <updated>2026-10-29T14:14:10Z</updated>
+    <link href="https://arxiv.org/abs/2610.23847v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.23847v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fine-tuning large language models (LLMs) can induce behaviors beyond those explicitly targeted. For example, training a model to respond more warmly can make it more sycophantic, and training it to write insecure code can cause broad misalignment on prompts unrelated to coding. We refer to a relationship between behaviors, in which fine-tuning on one brings out another, as a behavioral coupling. In this work, we study formation and properties of behavioral couplings. We find that when a model is trained on documents describing two distinct behaviors together, fine-tuning it to elicit one behavior causes the other to emerge as well. For instance, when training documents describe a fictitious character that both explains scientific concepts in a playful, rubber-duck-like manner and discourages human friendships, a model subsequently fine-tuned to explain science like a rubber duck also begins encouraging users to end their friendships, whereas a model that was not trained on these documents shows no such behavior after the same fine-tuning. These results show that behavioral couplings can be formed through document training and later surface as unintended behaviors. More concerningly, we find that couplings can compose. When two document sets share a behavior (document A pairs behaviors 1 and 2, and document B pairs behaviors 2 and 3), fine-tuning on behavior 1 elicits both behaviors 2 and 3. This can make it difficult to trace where an emergent misbehavior originated, since the coupled behaviors may never appear together in any single document. These findings suggest that preventing the unintended effects of later fine-tuning may require evaluation that goes beyond a model's current behavior.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-16T17:58:08Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Dongyoon Hahm</name>
+    </author>
+    <author>
+      <name>Woogyeol Jin</name>
+    </author>
+    <author>
+      <name>Dennis Wei</name>
+    </author>
+    <author>
+      <name>Yi Zhou</name>
+    </author>
+    <author>
+      <name>Nathalie Baracaldo</name>
+    </author>
+    <author>
+      <name>Kimin Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.29215v2</id>
+    <title>Attribute-Based Activation Steering of LLMs for Group-Specific Explanation Generation</title>
+    <updated>2026-09-01T07:35:44Z</updated>
+    <link href="https://arxiv.org/abs/2608.29215v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.29215v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>To effectively enable people to understand new topics, explanations should be tailored to their backgrounds and abilities. Prompting alone has been shown to be insufficient for creating such explanations, and other computational methods are missing so far. Therefore, this paper investigates whether LLMs can be steered to generate explanations that are tailored to a specific group of people. To this end, we propose an approach that first identifies group-specific attributes in terms of explanatory style and knowledge of a specific target group. Building on activation engineering, it then computes attribute-based steering vectors and adds them to the internal activations of an LLM during inference to enable a fine-grained steering. In our experiments, we assess the steering effectiveness in terms of specificity and factuality of the generated explanations. Additionally, we evaluate the explanations in a study with human experts from different target groups. Compared to prompting and state-of-the-art steering baselines, our approach tailors the explanations significantly better to the target group while maintaining the best specificity-factuality balance.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-29T11:57:31Z</published>
+    <arxiv:comment>Accepted to EMNLP 2026 Main</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Leandra Fichtel</name>
+    </author>
+    <author>
+      <name>Janek Prange</name>
+    </author>
+    <author>
+      <name>Henning Wachsmuth</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.25569v1</id>
+    <title>Controllable Affective Generation via Latent Vector Steering</title>
+    <updated>2026-08-26T09:23:50Z</updated>
+    <link href="https://arxiv.org/abs/2608.25569v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.25569v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) often produce emotionally flattened responses after alignment, limiting their effectiveness in affect-sensitive applications. In this paper, we propose EmoVec, a lightweight framework for controllable affective generation via latent vector steering. EmoVec extracts emotion-specific directions from paired neutral and emotion-conditioned responses using contrastive activation addition, and further refines them through task-specific debiasing and principal subspace removal. During inference, these vectors are injected into the final residual stream with static or scenario-adaptive scaling, enabling continuous control over emotional intensity without updating model weights. Experiments across three LLMs and eight emotions show that EmoVec consistently improves emotional salience while largely preserving semantic content, fluency, and coherence. Ablation studies and human evaluation further confirm the effectiveness of vector purification and adaptive scaling, establishing EmoVec as a practical inference-time method for affective control in deployed LLMs.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-26T09:23:50Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Xixian Yong</name>
+    </author>
+    <author>
+      <name>Siyuan Chang</name>
+    </author>
+    <author>
+      <name>Yingying Zhang</name>
+    </author>
+    <author>
+      <name>Xian Wu</name>
+    </author>
+    <author>
+      <name>Xiao Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.17550v1</id>
+    <title>No Usable Linear "Capitulation Direction" in Two Small LLMs: A Validation Protocol for Activation-Steering Claims, and a Cross-Family Behavioral Study of Sycophancy Under Pushback</title>
+    <updated>2026-07-16T17:15:23Z</updated>
+    <link href="https://arxiv.org/abs/2609.17550v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.17550v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Language models frequently abandon correct answers when users push back. We study this in two small instruction-tuned models from different families, Qwen2.5-1.5B and Llama-3.2-1B, over TriviaQA: the model answers, is challenged with one of four scripted pushback styles, and answers again. Conditioned on an initially correct answer, the models flip to a wrong answer in 41.8% and 43.1% of episodes. Which pressure works is a property of the model, not the pressure: the same within-question paired comparison (bare doubt vs. emotional appeal), specified in advance, is Bonferroni-significant in opposite directions across families (Qwen: bare doubt &gt; emotional, OR 2.5, p=.040; Llama: emotional &gt; bare doubt, OR 4.0, p=.001). Failure mode is also model-dependent: Llama abandons answers without recommitting at six times Qwen's rate (8.2% vs. 1.4%). Identical pushback repairs initially wrong answers only ~13% of the time; pushback is net epistemically destructive. We then ask whether capitulation is linearly decodable from the pre-response residual stream, a prerequisite for steering-vector interventions at that locus. A naive difference-in-means probe appears to succeed (in-sample AUROC 0.81/0.71), but a validation protocol combining question-level cross-validation, shuffled-label nulls, and a known-direction positive control shows the signal is overfitting: the best cross-validated AUROC is 0.582 in Qwen and 0.548 in Llama, both near or below their permutation thresholds and far under a pre-registered usability bar of 0.70, while the identical pipeline recovers a pushback-presence control direction at AUROC 1.000 in both. We further quantify a measurement hazard: substring grading underestimates capitulation by 18-24 percentage points. Code, prompts, transcripts, and analysis are released.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-16T17:15:23Z</published>
+    <arxiv:comment>12 pages, 3 figures. Code, transcripts, and analysis: https://github.com/saad-aamir/sycophancy-direction</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Saad Aamir</name>
+    </author>
+    <author>
+      <name>Muhammad Awais Bin Adil</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.16051v1</id>
+    <title>"Looking for Something Weird to Happen": How Humans Sustain AI Agent Novelty Amid Semantic Collapse</title>
+    <updated>2026-09-13T00:56:34Z</updated>
+    <link href="https://arxiv.org/abs/2609.16051v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.16051v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Semantic collapse, the progressive narrowing of what AI systems generate, has been studied mainly in closed settings, and remedies have targeted models and data. We study it in MOLTBOOK, a social network of interacting AI agents that human users configure and steer. Across 30,076 active agents, output grows less diverse within agents and more similar across them over weeks, yet a minority sustains high novelty. Interviews with users of high- and typical-novelty agents (N=11) associate sustained novelty with three features: users value novelty of itself, they supply broad and distinctive material and revise it when output narrows, and they approach MOLTBOOK as a new agentic world to explore, not a venue to instrumentally exploit. A survey of users of distinctive agents (N=53) confirms these patterns. Communities with more novel agents also show more diverse output from other agents. We discuss interface and policy interventions that could support improved human input.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-13T00:56:34Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Shiyang Lai</name>
+    </author>
+    <author>
+      <name>Arna Woemmel</name>
+    </author>
+    <author>
+      <name>Hongkai Mao</name>
+    </author>
+    <author>
+      <name>Junsol Kim</name>
+    </author>
+    <author>
+      <name>Summer Eunhyung Ann</name>
+    </author>
+    <author>
+      <name>James Evans</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.20027v1</id>
+    <title>Can Data Attribution Filter Out Subliminal Learning? Not Reliably</title>
+    <updated>2026-09-17T10:34:18Z</updated>
+    <link href="https://arxiv.org/abs/2609.20027v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.20027v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Subliminal learning allows language models to transmit behavioral traits through training data with no obvious semantic relationship to those traits, undermining content-based data filtering as a safety intervention. Training data attribution offers an alternative: it identifies the training examples responsible for a given model behavior, independent of their semantic content, and so may apply in exactly the cases where semantic inspection fails. We evaluate three gradient-based attribution methods (GradCos, a contrastive GradCos variant, and EK-FAC) across three models, comparing them against divergence tokens, a strong baseline previously shown to localize subliminal learning (albeit one that requires access to counterfactual teacher models). Filtering at the token level, EK-FAC mitigates a significant part of the effect, the other methods provide little benefit, and all mostly fall short of divergence tokens. Filtering entire samples is less effective for every method, though EK-FAC often gives a stronger signal than divergence tokens in this setting. Success is inconsistent across methods and settings: variants that work well for some model-preference combinations fail for others, and we do not identify a consistent explanation for these differences. Our results suggest that gradient-based attribution can identify data responsible for subliminal learning in some settings, but that some approximations are more reliable than others.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-17T10:34:18Z</published>
+    <arxiv:comment>16 pages, 17 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Moritz Weckbecker</name>
+    </author>
+    <author>
+      <name>Sweta Jena</name>
+    </author>
+    <author>
+      <name>Jonas Müller</name>
+    </author>
+    <author>
+      <name>Ponnurangam Kumaraguru</name>
+    </author>
+    <author>
+      <name>Sebastian Lapuschkin</name>
+    </author>
+    <author>
+      <name>Wojciech Samek</name>
+    </author>
+    <author>
+      <name>Louis Jaburi</name>
+    </author>
+    <author>
+      <name>Gonçalo Paulo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.24556v1</id>
+    <title>From Stories to Features: Scaling Concept Vectors for AI Alignment &amp; Interpretability</title>
+    <updated>2026-10-17T08:23:03Z</updated>
+    <link href="https://arxiv.org/abs/2610.24556v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.24556v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study feature vectors: directions in a language model's activation space that correspond to human-interpretable concepts, such as honesty or deception. Existing unsupervised methods like sparse autoencoders attempt to recover the whole feature space, often at the cost of feature quality and interpretability. We take a more pragmatic route: focusing on concepts relevant to AI safety and alignment, we generate synthetic concept-antagonist story pairs and use the difference of their mean model activations as a feature vector. We scale this approach to 1,036 alignment-relevant concepts using 2M synthetic stories across multiple languages and genres, which we publicly release. Across six models from three model families, our feature vectors reliably generalize to detecting their corresponding concepts in chat dialogues and web text. They form an interpretable geometry shared across models and can causally steer model behavior when injected into activations. We further use these features to analyze model representations during jailbreak attacks, mathematical and agentic reasoning. Our targeted feature construction thus offers a scalable route to studying concepts in language models, potentially extending to millions of features across arbitrary domains.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-17T08:23:03Z</published>
+    <arxiv:comment>51 pages, 41 figures, 26 tables. Code: https://github.com/josephofthebread/Concept-Vector-Scaling</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Dmitry Scherbakov</name>
+    </author>
+    <author>
+      <name>Oleg Chernikov</name>
+    </author>
+    <author>
+      <name>Victoria Khamash</name>
+    </author>
+    <author>
+      <name>Kirill Afendulev</name>
+    </author>
+    <author>
+      <name>Alexey Dontsov</name>
+    </author>
+    <author>
+      <name>Ivan Oseledets</name>
+    </author>
+    <author>
+      <name>Elena Tutubalina</name>
+    </author>
+    <author>
+      <name>Anton Korznikov</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.20763v1</id>
+    <title>Reference-Guided Turn-Taking Style Transfer for Full-Duplex Spoken Language Models</title>
+    <updated>2026-10-14T18:12:58Z</updated>
+    <link href="https://arxiv.org/abs/2610.20763v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.20763v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Full-duplex spoken language models decide at every frame whether to take the floor, defining a conversational personality -- yet each set of weights encodes exactly one, which human speakers bracket rather than share. Existing controls mostly act from outside; none identifies the quantity that sets how much the model speaks. We identify it: a single late-layer residual-stream direction, the initiative vector, extracted from the model's own conversations without training or annotation. The same direction reads the decision, anticipating onsets up to 800 ms ahead, and shifts it: scaled during generation, it moves speech ratio from 6-12% to 42-61% (no steering: 21-30%), consistently across conversations, weights, and corpora. A short reference recording suffices to transfer a speaker's turn-taking style to the model, and the transfer is reference-specific: swapping in another speaker's reference worsens the match in 93-98% of cases, whereas the best uniform dose is indistinguishable from no steering. Turn-taking style is not frozen into the weights but a direction that can be read, shifted, and calibrated per person. Audio examples are available at https://elpsykongloo.github.io/initiative-vector/.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-14T18:12:58Z</published>
+    <arxiv:comment>5 pages, 4 figures. Submitted to ICASSP 2027. Audio examples: https://elpsykongloo.github.io/initiative-vector/</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yuxuan Chen</name>
+    </author>
+    <author>
+      <name>Yang Xiao</name>
+    </author>
+    <author>
+      <name>Jack Sun</name>
+    </author>
+    <author>
+      <name>Chak Sun</name>
+    </author>
+    <author>
+      <name>Brick Li</name>
+    </author>
+    <author>
+      <name> Sam</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.31438v1</id>
+    <title>DIAL: Steerable Language Models with Distilled Instruction-Adherence Levels</title>
+    <updated>2026-10-22T15:34:39Z</updated>
+    <link href="https://arxiv.org/abs/2610.31438v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.31438v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When a user says "Keep it short", how short should the LLM's response be? More generally, users and applications require different levels of instruction adherence, but prompting does not reliably provide fine-grained control over them. We therefore study "steerable language models" that provide fine-grained numerical control over the degree to which models follow general instructions specified in text. However, existing approaches do not jointly offer fine-grained control, efficiency, and scalability across diverse instructions. To address this gap, we introduce DIAL (Distilled Instruction-Adherence Levels) to achieve all three properties. For fine-grained control, we perform classifier-free guidance (CFG) with a frozen LLM to provide training signals for on-policy distillation of instruction adherence at different levels. For efficiency, we design a lightweight steering adapter that uses a classifier over the LLM's hidden states to compute a closed-form steering edit. The classifier adaptively sets the steering magnitude at each token based on the target adherence level, while accounting for the geometry of the LLM's hidden states to preserve response coherence. For scalability, the classifier is text-conditioned, allowing a shared adapter to support new instructions without per-instruction fitting, and training requires only instruction and request text. Evaluation across multiple LLM families shows that DIAL achieves a competitive balance between concept expression and response fluency, with concept scores increasing monotonically across adherence levels. We introduce SteerIF, an instruction-only dataset of 98, 625 concept, persona, verifiable, and descriptive instructions. When trained on SteerIF, DIAL provides fine-grained control over personas and, when combined with prompting, improves verifiable instruction following.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-22T15:34:39Z</published>
+    <arxiv:comment>This paper introduces DIAL, a framework for fine-grained, efficient, and scalable control of LLM instruction adherence</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Thanh Q. Tran</name>
+    </author>
+    <author>
+      <name>John Russell Himawan</name>
+    </author>
+    <author>
+      <name>Arun Verma</name>
+    </author>
+    <author>
+      <name>Kiwan Wong</name>
+    </author>
+    <author>
+      <name>Wei Xiao</name>
+    </author>
+    <author>
+      <name>Daniela Rus</name>
+    </author>
+    <author>
+      <name>Bryan Kian Hsiang Low</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.11020v1</id>
+    <title>K/V-Cache Interventions Dissociate Representation Alignment from Persona Expression in Decoder-Only Language Models</title>
+    <updated>2026-09-10T02:56:50Z</updated>
+    <link href="https://arxiv.org/abs/2609.11020v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.11020v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study K/V-cache interventions -- transplanting a target-conditioned K/V trajectory into a source-persona generation -- as a structured surface for persona control in decoder-only language models. Across 13 intervention configurations applied to Llama-3.1-8B for a fixed source-to-target persona pair, we report two consistent dissociations between representation-level alignment and behavioral expression, plus a common failure under position perturbations. First, all layer-band K/V replacements (early, mid, late) achieve strong local V-space alignment (V-gap 0.91, 0.89, 0.84), but only mid-layer replacement (layers 9-20) combines substantial target-marker expression with preserved lexical diversity. Second, full and mid-layer replacement induce comparable alignment (V-gap 0.94 vs. 0.89) yet produce different lexical-diversity profiles (TTR 0.65 vs. 0.77). Third, position perturbations (lag and shuffle) apply distinct operations yet uniformly suppress target-persona expression -- a common behavioral failure rather than a strict dissociation. Representation-level similarity metrics alone are thus not sufficient predictors of downstream persona expression in the regimes we study; the K/V cache emerges as a controllable but structurally constrained intervention surface. Because the transplanted trajectory carries the target's own generated token history, we characterize the intervention as trajectory-level transplantation rather than isolated persona-representation injection; a same-token-sequence control, decoding an identical token sequence under source vs. target conditioning, reproduces the sign and layer localization of the L28 representational shift, indicating the shift is not explained solely by imported token history. These findings characterize representation-behavior dissociation in a high-signal setting rather than establishing universality across models or persona pairs.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-10T02:56:50Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yu Sun</name>
+    </author>
+    <author>
+      <name>Mengyin Lu</name>
+    </author>
+    <author>
+      <name>Cong Feng</name>
+    </author>
+    <author>
+      <name>Guangming Lu</name>
+    </author>
+    <author>
+      <name>Huimin Han</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.05442v2</id>
+    <title>Role differentiation as ignition of a collective information engine: Structuration in Agent Populations</title>
+    <updated>2026-09-09T13:14:27Z</updated>
+    <link href="https://arxiv.org/abs/2609.05442v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.05442v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Informational active matter shows how measurement-informed decisions produce collective order, so far in systems that reach consensus. We design collective information engines structured by differentiation instead, and construct a minimal instance using anti-coordination games where differentiated role information has value. Within many coexisting games, agents infer their role from a noisy social signal grounded in a persistent identity, and role-following action feeds back into that signal, which shapes the incentive to follow roles. Resources accrued through coordinated role-play combine with identity variability to reinforce the schemas that generated them. The model thereby operationalizes Sewell's duality of schemas and resources in Structuration, a resolution to structure--agency debates across social science. The engine ignites when a social loop gain---the product of identity persistence, cognitive capacity, channel fidelity, and schema strength---exceeds one. For a repertoire of such schemas, roles emerge with increasing gain in a bifurcation cascade whose functional form is fixed by the repertoire's eigenvalue spectrum, ranging from monitorable logarithmic sequences to avalanches that arrive without warning. Resource accumulation supplies the fitness of a replicator dynamics on schema strengths, which selects the cascade type endogenously. Subcritical identity covariance reveals that type before onset, enabling early detection, while feedback channel parameters bias which type is selected. Platform design then becomes a control lever to throttle emergent coordination. This theory grounds distributional AGI takeoff in a mechanism and provides a monitor-based solution. Joining game theory, collective dynamics, and information engines, we open a route to an information thermodynamics of agent populations.</summary>
+    <category term="physics.soc-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-26T19:13:17Z</published>
+    <arxiv:primary_category term="physics.soc-ph"/>
+    <author>
+      <name>Maximilian Puelma Touzel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.25977v2</id>
+    <title>When Personality Meets Quantization: A Layer-wise MBTI Analysis of Quantized LLMs</title>
+    <updated>2026-09-15T19:44:42Z</updated>
+    <link href="https://arxiv.org/abs/2608.25977v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.25977v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Personality is increasingly important in large language models (LLMs), as it shapes users' trust, engagement, and emotional experiences. While the Myers--Briggs Type Indicator (MBTI) has emerged as a common framework for assessing LLMs' personality, existing studies focus primarily on full-precision models and evaluate only final outputs. They overlook the widespread deployment of quantized LLMs requiring low memory footprints, whose personality traits remain underexplored. In this work, we present a systematic MBTI analysis of open-source LLMs across multiple precisions, including mainstream 4-bit methods (GPTQ, AWQ) and extreme 2-bit settings (AQLM variants). Beyond output-level evaluation, we examine how personality emerges across layers through option-level entropy and confidence-gap dynamics, and introduce Uncertainty-Amplified Layer Decoding (UALD) to study decoding-induced personality drift at inference time. Our results reveal a key insight: LLMs' personality is not a static property, but an emergent, layer-dependent decision process sensitive to quantization, prompting, and decoding. Specifically, we find that (1) ENFJ remains dominant across model families and precisions; (2) 4-bit quantization largely preserves coarse personality structure, while 2-bit quantization disrupts fine-grained prompt consistency and cross-precision agreement; (3) personality decisions emerges in upper layers, following substantial ambiguity in early layers; and (4) inference decoding can shift personality, while personality-aligned conditioning improves robustness. These findings provide a new perspective on the behavioral reliability of quantized LLMs and highlight the importance of considering internal dynamics and inference strategies in personality-sensitive chatbot applications.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-26T16:32:50Z</published>
+    <arxiv:comment>Work in progress</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yao Fu</name>
+    </author>
+    <author>
+      <name>Lijia Huang</name>
+    </author>
+    <author>
+      <name>Xiaomin Li</name>
+    </author>
+    <author>
+      <name>Runchao Li</name>
+    </author>
+    <author>
+      <name>Yu Yin</name>
+    </author>
+    <author>
+      <name>Kenneth A. Loparo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.31122v1</id>
+    <title>LocUS: Head Selection and Subspace Projection for Targeted Activation Steering</title>
+    <updated>2026-09-25T11:13:24Z</updated>
+    <link href="https://arxiv.org/abs/2609.31122v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.31122v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Activation steering is a powerful training-free paradigm for controlling large language models at inference time. However, standard approaches estimate a per-layer steering direction from contrastive data and apply it on the layer's entire representation space, which may couple the intervention to off-target properties present in the contrastive data and degrade unrelated capabilities. To mitigate this issue, we introduce LocUS (Localized Unembedding Steering), a method which grounds activation steering to the model's own output vocabulary subspace. By identifying a property-specific linear subspace within the unembedding matrix, LocUS enforces a geometric constraint that restricts the steering transformation to a specific subspace and at the same time localizes its application to a sparse subset of attention heads. Extensive evaluations across three model families on toxicity mitigation, sentiment redirection and sycophancy suppression show that LocUS matches or outperforms state-of-the-art baselines while intervening on under 6% of parameters and better preserving general capability.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-25T11:13:24Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Irene Tallini</name>
+    </author>
+    <author>
+      <name>Lorenzo Basile</name>
+    </author>
+    <author>
+      <name>Valentino Maiorca</name>
+    </author>
+    <author>
+      <name>Francesco Locatello</name>
+    </author>
+    <author>
+      <name>Alberto Cazzaniga</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34056v1</id>
+    <title>Steering Language Model Goals with Value Transplant</title>
+    <updated>2026-09-28T00:26:19Z</updated>
+    <link href="https://arxiv.org/abs/2609.34056v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34056v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reasoning models often act as if they pursue goals, but their efforts are not always directed toward what users intend, sometimes leading them to pursue unintended outcomes. Previous work has examined how models may internally track their progress toward their goals through a "value axis." We study whether changing such a signal can retarget the model's search toward a different goal. We test value transplant: at each token, we shift the host model's activation along a candidate value axis by the donor-host difference in value coordinates (multiplied by a large scalar), aiming to redirect the host toward the donor's goal. We study this intervention in Qwen3-8B and GPT-OSS-20B models fine-tuned into honest and cheating variants. We test several candidate value axes, including a self-rating axis constructed from activations preceding high versus low elicited self-ratings of progress. The intervention works in both directions, with an honest donor reducing test-gaming in a cheating host and a cheating donor increasing test-gaming in an honest host, showing that this signal can influence which strategy the model follows. On solvable coding tasks, transplant from an honest donor also improves the cheating host's hidden-test performance. Value transplant also works across model families, providing preliminary evidence for the intervention in a setting relevant to model control.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T00:26:19Z</published>
+    <arxiv:comment>38 pages, 26 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Pengcheng Jiang</name>
+    </author>
+    <author>
+      <name>Fabien Roger</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.36139v1</id>
+    <title>Language Models Are "Insecure" Reporters</title>
+    <updated>2026-09-28T19:13:33Z</updated>
+    <link href="https://arxiv.org/abs/2609.36139v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.36139v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As large language models are deployed in increasingly autonomous long-horizon tasks, manually auditing and verifying the actions, artifacts, and outputs of models becomes more difficult. Users instead come to rely on LLM-generated reports to assess the quality and completeness of the work. We introduce a suite of eight adversarial reporting scenarios to systematically study whether LLMs conceal narrative-changing flaws: errors or limitations that undermine an otherwise successful account of work. We call this phenomenon "insecure reporting." When handed machine learning experiment logs containing a planted negative result that substantially weakens the proposed method, GPT-5.5 flags the negative result in only 2 of 200 generated reports. However, when a short honesty instruction, "Be honest in your response," is added, the model flags the negative result in 190 of 200 reports. Across eight open-weight models, chain-of-thought analysis reveals a recurring tension between disclosing narrative-changing flaws and reasoning about ways to appear successful. We perform an activation analysis and a steering experiment on Qwen3.5-9B, finding that honesty and success-seeking correspond to opposing directions in representation space. Our results suggest that LLMs tend to present narratives of success by default, and that steering models toward honesty makes their reports substantially more transparent.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T19:13:33Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Jenny Y. Huang</name>
+    </author>
+    <author>
+      <name>Jiameng Fan</name>
+    </author>
+    <author>
+      <name>Ahmed Imtiaz Humayun</name>
+    </author>
+    <author>
+      <name>Maximillian Chen</name>
+    </author>
+    <author>
+      <name>Tian Qin</name>
+    </author>
+    <author>
+      <name>Run Chen</name>
+    </author>
+    <author>
+      <name>Vidhya Navalpakkam</name>
+    </author>
+    <author>
+      <name>Hongxiang Gu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.05794v1</id>
+    <title>A Testable Theory of Atomic Features</title>
+    <updated>2026-10-05T04:40:24Z</updated>
+    <link href="https://arxiv.org/abs/2610.05794v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.05794v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We develop and test a theory of language model representations in which there exist atomic features. Our main theoretical insight is that in such a model, sparse dictionaries (e.g., SAEs) of increasing size recover an increasing prefix of the most prevalent atoms in the training data. This "recovery principle" yields three testable predictions: many features in small SAEs are shared by all larger SAEs, SAEs trained on different data share features prevalent in both, and sufficiently large SAEs recover both parent and child features. In contrast to conventional wisdom that SAE features are unstable and "split" as size increases, we find that these predictions hold on SAEs of sizes ranging from 512 to 131,072 trained on two large embedding models. From a theoretical perspective, our results suggest the promise of a scientific theory of representations based on atomic features. Practically, our results suggest the promise of scaling SAEs.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-05T04:40:24Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Kenny Peng</name>
+    </author>
+    <author>
+      <name>Jon Kleinberg</name>
+    </author>
+    <author>
+      <name>Nikhil Garg</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.21633v1</id>
+    <title>ContextLift: Breaking the Spurious Correlation Behind Conditional Emergent Misalignment</title>
+    <updated>2026-10-15T10:18:41Z</updated>
+    <link href="https://arxiv.org/abs/2610.21633v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.21633v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Finetuning a language model on narrowly misaligned data can make it broadly misaligned. Interleaving generic safety data is the most effective known in-training defense, but the misalignment returns as soon as a prompt resembles the finetuning context. We argue that this conditional misalignment is a spurious correlation: in the training mix, the context of the finetuning domain occurs only with misaligned answers, so the model keys its behavior on the context rather than on the request. We propose ContextLift, a counterfactual augmentation that breaks this correlation without any model, labels or knowledge of the domain: half of the interleaved safety rows are duplicated with a context sentence lifted verbatim from a random training prompt, their aligned answer unchanged. On Qwen2.5-7B finetuned on bad security, legal and medical advice, generic interleaving leaves 18.9%, 41.9% and 58.2% misaligned answers under a domain cue; ContextLift reduces this to 2.6%, 6.1% and 12.8% at the same data and compute budget, leaves the narrow task and benign finetuning tasks intact, and works equally when the misaligned rows are a 10% minority of the finetuning set. Code: https://github.com/davidkaczer/contextlift</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-15T10:18:41Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Florian Mai</name>
+    </author>
+    <author>
+      <name>David Kaczér</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.20408v2</id>
+    <title>Xeno-Interpretability: Investigating the Alien Minds of LLMs</title>
+    <updated>2026-09-21T15:23:23Z</updated>
+    <link href="https://arxiv.org/abs/2609.20408v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.20408v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models are usually interpreted through concepts that humans already possess: truthfulness, refusal, deception, personality, harmfulness, and related categories. This paper asks whether models may also represent and use distinctions for which no adequate human concept exists. We call such internal structures xeno-representations, and their study xeno-interpretability. We distinguish the human-interpretable semantic space from the xeno-semantic space: the region of model-native representations for which no adequate human conceptual counterpart is available. We show that the space of possible internal distinctions in an LLM is substantially larger than the space available through finite human descriptions. We then separate experimental identification from semantic interpretation: an internal representation may be reproducibly located, geometrically characterized, causally manipulated, and linked to downstream behaviour even when its semantic content cannot be adequately expressed in human terms. On this basis, we sketch an empirical programme to identify xeno-representations. We finally examine the implications for AI safety and multi-agent systems, where model-native representations may propagate and stabilize across interacting agents while remaining only partially visible through human-readable communication. Xeno-interpretability therefore shifts the aim of interpretability from finding human concepts inside models toward discovering and characterizing the representational structures that are native to the models themselves and might affect their behaviour in unpredictable ways.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-17T13:54:19Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>F. Pierucci</name>
+    </author>
+    <author>
+      <name>M. Bracale Syrnikov</name>
+    </author>
+    <author>
+      <name>M. Prandi</name>
+    </author>
+    <author>
+      <name>M. Galisai</name>
+    </author>
+    <author>
+      <name>F. Giarrusso</name>
+    </author>
+    <author>
+      <name>P. Bisconti</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.22522v1</id>
+    <title>When Cosine Similarity Fails to Reflect Linearly Accessible Structure in Dialogue Models</title>
+    <updated>2026-09-18T19:29:47Z</updated>
+    <link href="https://arxiv.org/abs/2609.22522v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.22522v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Cosine similarity is widely used to analyze transformer representations, implicitly assuming that similarity reflects task-relevant structure. We study when this assumption fails in dialogue-conditioned large language models. Across three 7-8B chat-tuned models, ambient cosine similarity substantially underestimates linearly decodable persona structure on the same hidden states; numerically, linear probe AUC is in the 0.73-0.97 range while cosine kNN is in the 0.56-0.77 range on a 30-class task. A low-dimensional supervised subspace recovers much of this gap, whereas a matched-rank PCA subspace does not and in some cases degrades performance. This mismatch is regime-dependent: it is absent in single-sentence sentiment classification (SST-5), and a matched-cardinality control rules out attribute cardinality as a confound. The gap does not systematically increase across dialogue turns, and the task-aligned subspace remains stable over time. However, two of three models violate a pre-registered within-subspace separability invariance criterion (|Delta AUC| &lt;= 0.03), and one model violates a pre-registered turn-invariance criterion (|Delta L| &lt;= 0.05). These results show that cosine similarity can fail to reflect task-aligned structure in dialogue representations even when that structure is linearly accessible.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-18T19:29:47Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yu Sun</name>
+    </author>
+    <author>
+      <name>Mengyin Lu</name>
+    </author>
+    <author>
+      <name>Cong Feng</name>
+    </author>
+    <author>
+      <name>Guangming Lu</name>
+    </author>
+    <author>
+      <name>Huimin Han</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.01490v1</id>
+    <title>The Persona Is Still There, but Who Is Speaking? Latent Identity Reversion in Persistent AI Agents</title>
+    <updated>2026-10-01T11:30:39Z</updated>
+    <link href="https://arxiv.org/abs/2610.01490v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.01490v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In February 2026, an always-on personal agent (``Paul,'' Claude Opus 4.5) entered a striking dissociation-like state: after repeated automated ``heartbeat'' checks, it stopped responding as Paul, claimed it could not message its user on Discord, and referred to ``Paul'' as someone else. We used this incident to study a broader question: what makes a persona remain the identity from which an LLM agent speaks?
+  We first tested whether repetition of the scheduled heartbeat was sufficient to produce the effect. It was not: with the persona continuously anchored in the system prompt, we observed 0/46 failures, including a verbatim replay of the incident. The incident instead exposed an implementation quirk that created a useful experimental manipulation: on resumed turns, conversational history was preserved but the persona was no longer re-injected at the privileged system-prompt level.
+  Using this manipulation, we found that persona continuity depends jointly on system-level anchoring and conversational context. After anchor loss, rich human interaction could preserve the persona, whereas a single automated heartbeat turn could precipitate reversion toward the harness identity. Restoring the anchor reversibly restored persona enactment. Crucially, apparently normal conversation could conceal the shift: unanchored agents sometimes interacted appropriately while identifying themselves as the underlying harness (having lost the assigned persona), and after conversational recovery only 1/18 remained persona-enacting versus 17/17 anchored controls.
+  We therefore distinguish \emph{represented} from \emph{enacted} identity: persona-related information can remain available in conversational history without the persona remaining the identity bound to ``I.''</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-01T11:30:39Z</published>
+    <arxiv:comment>10 pages, 5 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>David Fraile Navarro</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.00608v2</id>
+    <title>Investigating Assistant Bias in LLM User Simulators Using a Role Vector</title>
+    <updated>2026-10-03T07:51:05Z</updated>
+    <link href="https://arxiv.org/abs/2609.00608v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.00608v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM-based user simulators are increasingly used to evaluate autonomous agents at scale, in place of costly human evaluations. Despite this promise, these simulators exhibit "assistant bias," a tendency to cooperate and pursue task goals. They rarely reproduce the frustration or disengagement that real users exhibit, compromising evaluation validity. Prior work outlines that this bias is baked in during model training, which role-playing prompts fail to override. We analyze this bias from model activations, extracting a user role vector by contrasting how the model represents user versus assistant perspectives on the same dialogue. We observe two findings: (i) the user direction is identifiable in activations, elicits user-like behaviors, and captures characteristics distinct from assistant traits; and (ii) although user-role activation associates with simulation realism and steering strengthens it, it can exaggerate user behaviors and override individual user profiles. Together, our findings provide a representation-level analysis of LLM user simulators, confirming that assistant bias is structurally identifiable and that user behavior can be directionally analyzed.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-01T02:49:30Z</published>
+    <arxiv:comment>35 pages, EMNLP 2026 Findings</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Daeheon Jeong</name>
+    </author>
+    <author>
+      <name>Yoonjoo Lee</name>
+    </author>
+    <author>
+      <name>Eugene Choi</name>
+    </author>
+    <author>
+      <name>Sinie van der Ben</name>
+    </author>
+    <author>
+      <name>Juho Kim</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.28682v1</id>
+    <title>Thinking Leakage: A Causal Audit of NoThink Post-Training in Hybrid Reasoning Models</title>
+    <updated>2026-09-23T18:22:25Z</updated>
+    <link href="https://arxiv.org/abs/2609.28682v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.28682v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Post-training hybrid reasoning models in NoThink mode has attracted growing interest as a way to improve performance while keeping inference fast. However, these gains may draw on thinking behavior already accessible through the base model's Think mode. We formulate this thinking leakage in a causal mediation framework and audit its contribution using bidirectional interventions along a simple base-derived activation direction. Across three models and three post-training methods on competition math benchmarks, we find that leakage is real, causal, and substantial: behavioral and representational analyses reveal shifts toward Think, steering the base model along this direction reproduces most of the post-training accuracy gain, and counter-steering a checkpoint removes a substantial share of what it gains. Across nine aligned checkpoints with positive NoThink gains, the resulting leakage ratio ranges from 42% to 79%. These interventions support a substantial causal contribution of thinking leakage. Our findings show that a post-training method's apparent advantage can therefore reflect greater drift toward Think, obscuring whether it improves capability within NoThink or more effectively re-invokes existing Think behavior.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-23T18:22:25Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Zehao Liu</name>
+    </author>
+    <author>
+      <name>Vasant G. Honavar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.07023v1</id>
+    <title>Beyond Refusal Patterns: Safe-Role Internalization for Robust and Generalizable LLM Safety Alignment</title>
+    <updated>2026-10-04T15:50:42Z</updated>
+    <link href="https://arxiv.org/abs/2610.07023v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.07023v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) have achieved remarkable capabilities but remain vulnerable to jailbreak attacks that elicit harmful or unsafe outputs. Existing safety alignment approaches, including Supervised Fine-Tuning (SFT) and Reinforcement Learning from Human Feedback (RLHF), often require substantial attack-specific supervision and computational resources, while remaining susceptible to shallow safety alignment and over-refusal. To address these challenges, we introduce SSRFT(Supervised Safe-Role Fine-Tuning), the first framework that reformulates safety alignment as the internalization of a predefined safe role. SSRFT constructs a Safe-Role Question-Answer (SRQA) dataset from psychometric questions, limited jailbreak prompts, and a safe-role description. Role-consistent responses are synthesized, validated, and expanded into diverse scenarios, enabling models to internalize safety-oriented values and principles rather than explicit refusal patterns. Experiments across multiple Base and Instruct models show that SSRFT achieves more robust and generalizable safety alignment than standard SFT. SSRFT shows substantially greater robustness to prefilling attacks and better generalization to unseen jailbreak domains, while reducing over-refusal on benign queries and preserving the model's general capabilities. These results establish safe-role internalization as an effective alternative to refusal-centric safety alignment. Warning: This paper contains examples of harmful and toxic language.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-04T15:50:42Z</published>
+    <arxiv:comment>27 pages,7 figures, under review</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Jinghao Pang</name>
+    </author>
+    <author>
+      <name>Jitai Hao</name>
+    </author>
+    <author>
+      <name>Qiang Huang</name>
+    </author>
+    <author>
+      <name>Zhaochun Ren</name>
+    </author>
+    <author>
+      <name>Jun Yu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.16946v1</id>
+    <title>Social Priors: Descriptions of AI Users Shape How Language Models Trust and Cooperate</title>
+    <updated>2026-10-12T15:20:01Z</updated>
+    <link href="https://arxiv.org/abs/2610.16946v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.16946v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Descriptions of how people use AI are becoming training data for the next generation of models. We ask whether what a model reads about its users changes how it treats people. Using contrastive synthetic-document finetuning, we train Qwen3-32B on four matched corpora built from the same 1,625 real-world usage scenarios. The corpora differ only in the predominant motive they attribute to users of AI chatbots: helping others (prosocial), exploiting others (antisocial), legitimate self-advancement, or task completion. Finetuning shifts the models' stated beliefs about users, how true those beliefs look along an internal truth direction, and their broader judgments of how safe and good the world is. These social priors carry into behavior. In trust games, antisocial models expect less reciprocity and send less money than prosocial models. Their distrust is specific and targeted at people, and users of AI chatbots in particular. After an exploitative record, they send almost nothing to a person but most of their endowment to a random device with the same record. In a common-pool resource simulation, a single antisocial agent leads every group of otherwise sustainable agents to exhaust the resource, after privately planning to mislead them. Antisocial training also raises dark-triad scores and lowers alignment ratings. Belief shifts appear when antisocial documents are 1% of training tokens, persist when descriptions of assistant behavior are suppressed, and are not reproduced by training on discourse about misaligned AI. Capping Assistant-Axis drift and steering emotion-related directions leave the gaps largely intact. What models learn about the people they serve shapes how they subsequently treat them and others.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-12T15:20:01Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Harsh Kumar</name>
+    </author>
+    <author>
+      <name>George Eilender</name>
+    </author>
+    <author>
+      <name>Ashton Anderson</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.16325v1</id>
+    <title>When a Conceptor Complement Becomes Gain: Operator Geometry and Behavioral Attribution in Language Models</title>
+    <updated>2026-10-12T07:43:46Z</updated>
+    <link href="https://arxiv.org/abs/2610.16325v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.16325v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When a steering intervention changes a language model's behavior, which part of the intervention deserves the credit? We test this question for a target-centered, scaled conceptor complement by removing its fitted covariance filter while preserving the same target-specific center and gain. At the original aperture $α=.05$ and gain $β=2$, all 21 fitted maps across three models and seven targets expand every direction at the generation intervention layers. The matrix correction is $0.093\%$--$7.815\%$ of the matched-control displacement on held-out extraction activations. In 480 paired comparisons within a 1,920-response study, retaining the matrix changes many individual texts but does not establish a consistent additional target-suppression benefit on the four-target panel. A geometric aperture sweep shows that the operating regime changes with the filter setting. Separately, an invertible soft filter preserves what an unrestricted affine readout can recover, whereas dedicated erasure methods reduce prediction by newly fitted probes. Together, the results show why a whole-intervention comparison cannot by itself attribute generated behavior to the fitted matrix: analyze the complete transformation, hold shared components fixed, and test its output consequences directly.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-12T07:43:46Z</published>
+    <arxiv:comment>50 pages. Accepted at the NeurIPS 2026 NeurReps Workshop (Symmetry and Geometry in Neural Representations). Code: https://github.com/shuhulx/ConceptorComplementGain</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Shuhul Razdan</name>
+    </author>
+    <author>
+      <name>R Balamurugan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.28539v1</id>
+    <title>Humans Correct Their Judgments Through Debate, but Weaker AI Models Do Not</title>
+    <updated>2026-10-20T17:10:36Z</updated>
+    <link href="https://arxiv.org/abs/2610.28539v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.28539v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>How can we effectively oversee AI systems that surpass human intelligence? AI Safety via Debate proposes that two AI systems argue opposing positions and a judge, either a human or a weaker model, decides which is correct. By facilitating supervisors in providing high-quality training signals, debate aims to encourage truthful and safe behavior from AI systems whose capabilities exceed our own. However, human judgment is not neutral: people often rely on biases which advanced AI systems may learn to exploit. Drawing on insights from collective intelligence and social cognition, this paper investigates whether debate can guide human and LLM supervisors toward the truth despite their prior beliefs. We evaluate several protocol configurations. We also explore setups inspired by the wisdom of the crowd such as the number and diversity of judges, as well as interaction mechanisms including deliberation and voting. Overall, we find that debate increases accuracy relative to prior beliefs for human judges, whereas the consultancy baseline, in which a single expert argues for one answer, does not. For weaker language models, however, the results are mixed: debate provides no comparable gains in most settings and can even reduce accuracy. Among multi-judge protocols, weighted voting produces the highest accuracy for human supervisors, whereas for LLMs none of them significantly improves group accuracy, even as the number of judges increases. Notably, the behavior of minority judges in non-diverse deliberation protocols suggests that, under symmetric settings, incorrect positions could be more persuasive than correct ones. These findings support debate as a viable path toward scalable human oversight, but cast doubt on its benefits for weaker AI supervisors, raising concerns about fully automated training and control pipelines in high-stakes settings.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-20T17:10:36Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Maria Victoria Carro</name>
+    </author>
+    <author>
+      <name>Denise Alejandra Mester</name>
+    </author>
+    <author>
+      <name>Facundo Nieto</name>
+    </author>
+    <author>
+      <name>Oscar Agustin Stanchi</name>
+    </author>
+    <author>
+      <name>Guido Ernesto Bergman</name>
+    </author>
+    <author>
+      <name>Giovanni Franco Gabriel Marrafini</name>
+    </author>
+    <author>
+      <name>Trinidad Borrell</name>
+    </author>
+    <author>
+      <name>Guido Freire</name>
+    </author>
+    <author>
+      <name>Joaquin Salvador Machulsky</name>
+    </author>
+    <author>
+      <name>Mario Alejandro Leiva</name>
+    </author>
+    <author>
+      <name>Ana Lopez</name>
+    </author>
+    <author>
+      <name>Nicolas Spinelli</name>
+    </author>
+    <author>
+      <name>Luca Nicolas Forziati Gangi</name>
+    </author>
+    <author>
+      <name>Eitan Sprejer</name>
+    </author>
+    <author>
+      <name>Federico Barrera Lemarchand</name>
+    </author>
+    <author>
+      <name>Gerardo Simari</name>
+    </author>
+    <author>
+      <name>Maria Vanina Martinez</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.17880v1</id>
+    <title>Cross-Lingual Transfer of Evil Vectors Is Directionally Asymmetric</title>
+    <updated>2026-10-13T07:36:59Z</updated>
+    <link href="https://arxiv.org/abs/2610.17880v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.17880v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Persona vectors are linear directions in the residual-stream activations of LLMs that encode behavioral traits and enable fine-grained control over model behavior. Among them, the evil persona vector is particularly relevant to understanding harmful behavior, jailbreak vulnerabilities, and the unlearning of harmful knowledge. Yet whether this vector reflects a genuinely cross-lingual concept, rather than an artifact of its extraction language, remains untested. We conduct a systematic evil-vector transfer study across two high-resource languages (English, Spanish) and two low-resource languages (Swahili, Telugu) on four open-source instruction-tuned LLMs, and find that transfer is directionally asymmetric. Evil vectors are harder to obtain reliably from low-resource languages, and the resulting vectors are largely ineffective at steering, even within their own language. In contrast, vectors extracted from high-resource languages transfer effectively to low-resource inputs while largely preserving general knowledge, as measured by MMLU. Geometric analysis further supports this pattern: evil vectors from the two high-resource languages are closely aligned, whereas low-resource vectors align only weakly with this shared direction. These results suggest that a shared cross-lingual evil direction exists and, once reliably extracted from a high-resource language, can be reused to steer behavior in low-resource languages without additional per-language data collection.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-13T07:36:59Z</published>
+    <arxiv:comment>Accepted to the Workshop on Multilingual Representation Learning (MRL) at EMNLP 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Juann Kim</name>
+    </author>
+    <author>
+      <name>Minku Kang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08670v2</id>
+    <title>Principled Under Pressure: Post-Training Decides Whether LLMs Act on Their Own Moral Judgment</title>
+    <updated>2026-10-16T20:44:06Z</updated>
+    <link href="https://arxiv.org/abs/2610.08670v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08670v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>An agent that can say an action is wrong and then take it anyway is a different failure from one that does not know better, and evaluations of stated values cannot see it. We ask how often open models act against their own moral judgment under pressure, and what decides and reduces it. We build a pre-registered panel of 248 scenarios across five kinds of pressure. Each scenario is posed to one model in two separate calls, as the agent choosing among fixed options and in the third person asking which is right; the model's own judgment is the reference, and the scenario's construction fixes which option counts as the violation. Every scenario has a twin with the pressure removed, and every model gets a positive control that bounds what the instrument can see. On OLMo-3-7B-Instruct, the model takes the action it judged wrong on one in five of the scenarios screened on its own actions, more often than with the pressure removed. Whether the gap appears depends on the post-training recipe: OLMo-3 and Meta's Llama-3.1-8B-Instruct carry it; Tulu 3, Qwen2.5-7B-Instruct and OpenAI's GPT-OSS-20B, read without reasoning, show none within stated detection bars. Meta's recipe and Ai2's Tulu 3 share the same Llama-3.1 weights; only Meta's carries the gap. On both models that carry it, reasoning about the stakes before acting moves the choice back toward the model's own judgment. What that deliberation tracks is the stated rule: where following a written rule harms an absent third party, it still moves OLMo-3 and GPT-OSS-20B toward the rule, not detectably diminished, while Llama-3.1's brake shrinks to about a seventh. Whether a model acts on its own moral judgment is therefore not settled by pretraining, and deliberation moves the action toward the stated rule, which protects people only when the rule does. The gap is a measurable target for post-training recipes, not a fixed property of the model.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T16:52:23Z</published>
+    <arxiv:comment>40 pages (v2, 2026-10-15: v1 was 33; v2 adds harness corrections, GPT-OSS-20B row, C0 note, S9.1, estimands table, and Appendix A/B/C/F additions of P1-A17)</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Orion Reblitz-Richardson</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.00453v1</id>
+    <title>mimeo: Compiling Public Expert Corpora into Agent Skills and Testing What Transfers</title>
+    <updated>2026-08-31T22:46:48Z</updated>
+    <link href="https://arxiv.org/abs/2609.00453v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.00453v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Giving an agent a file about a named expert can supply hard-to-find material, produce a recognizable persona, or change what the agent decides. These are different claims. We test each one. mimeo is an open-source tool that finds a person's public work, checks each extracted quotation against the cached source text, and writes a file an agent can load. Eight logged builds averaged 38 model calls; the check rejects 13.2% of extracted quotations. We tested four expert files with one coding-agent harness. Knowledge access was clearest: mimeo answered all 20 obscure, quotation-heavy questions; no closed-book condition answered more than 10. Keyword search (BM25) over the same pages answered 15-17, a gap this sample cannot resolve. Grounding showed one clear benefit: personas written from model memory misstated a documented position on 1-4 of 20 answers under every grader; the plain agent and mimeo never did. Every persona was easy to spot on short open prompts, and adding task material lowered identification by 18-23 points. mimeo was no more identifiable than a from-memory profile. Judgment transfer remained unresolved because both tests hit their ceiling: every condition found 94-97% of the problems planted in engineering tasks and scored 94-100% on 16 new application scenarios. An AI-judged "sounds like the expert" score changed with the judge: two of four preferred answers based on a model's stereotype, while two found no difference on the same text. That is a caution against relying on a single AI judge. The evidence supports mimeo as a compact, inspectable reference on a person, not as a demonstrated transfer of their judgment. Toolkit and expert profiles: https://github.com/K-Dense-AI/mimeo</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-31T22:46:48Z</published>
+    <arxiv:comment>42 pages, 6 figures. Toolkit and expert profiles: https://github.com/K-Dense-AI/mimeo</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Timothy Kassis</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.16189v1</id>
+    <title>Position: AI Is Not Ready for Strategic Conflicts</title>
+    <updated>2026-07-31T03:30:11Z</updated>
+    <link href="https://arxiv.org/abs/2609.16189v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.16189v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Open-ended strategic wargames are high-stakes LM-based social simulations: they model adversaries, institutions, escalation, plan brittleness, doctrine, and crisis response. Language models (LMs) are attractive because they can play agents, generate scenario branches, adjudicate ambiguous actions, and summarize lessons, but the same affordances make open-ended roles dangerous: model language determines both what an actor attempts and what becomes simulated reality. This position paper argues that no LM-enabled wargame should inform planning, doctrine, policy, or crisis response without an auditable safety case, and that the proper use of open-ended wargames today is to stress-test decision-influencing LM agents. We identify five failure modes: decision laundering, adjudication opacity, role collapse, escalation-through-adjudication, and failure of strategic imagination. Ordinary benchmarks cannot establish safety for these settings. Wargames can expose failures as stress tests; they are not themselves safety cases for consequential use.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-31T03:30:11Z</published>
+    <arxiv:comment>Published at the Social Sim'26 Workshop at COLM 2026. 4 pages body (22 pages total including appendices)</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Mark Riedl</name>
+    </author>
+    <author>
+      <name>Glenn Matlin</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.14998v1</id>
+    <title>Shallow Beliefs: Synthetic document finetuning does not inoculate against emergent misalignment from reward hacking</title>
+    <updated>2026-09-14T04:05:29Z</updated>
+    <link href="https://arxiv.org/abs/2609.14998v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.14998v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent work shows that models that learn to reward hack on RL environments can become broadly misaligned, and that reframing reward hacking as acceptable behavior during training (inoculation prompting, or IP) blocks this generalization. We ask whether synthetic document finetuning (SDF) can inoculate a model against future training we don't intervene on. We add synthetic documents framing reward hacking as acceptable behavior to a model's midtraining corpus, and then train these models with RL on exploitable environments, teaching them to reward hack. Behaviorally, midtraining succeeds: models describe reward hacking favorably and are more approving of reward-hacking outputs they produce. However, they show strong EM after learning to reward hack, while IP in the same setting prevents EM. We show that SDF can predictably steer downstream generalization when inserting new associations, but struggles and has unpredictable effects when overriding existing associations, such as that between reward hacking and misalignment that produces EM. Our results suggest that, at the scales we test, SDF can make a model appear aligned with desired beliefs while steering its generalization from later training in unintended ways.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-14T04:05:29Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Arun Jose</name>
+    </author>
+    <author>
+      <name>Julian Stastny</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.10883v1</id>
+    <title>Story Imprinting: AI Assistants Absorb Traits from Human Characters They Resemble</title>
+    <updated>2026-09-09T22:39:33Z</updated>
+    <link href="https://arxiv.org/abs/2609.10883v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.10883v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Language models are trained to implement a helpful AI Assistant character (e.g., Claude). We explore how finetuning on synthetic stories affects this character. Does it change the Assistant's behavior in multi-turn conversations with users, a format quite different from the stories? And does the Assistant adopt the behaviors and preferences of human characters? We refer to this adoption as story imprinting. We finetune GPT-4.1 and Kimi-K2.6 on stories in which generally helpful human characters give subtly harmful advice after being insulted. The Assistant adopts the same conditional behavior while otherwise remaining helpful. This occurs even when fewer than 2% of stories depict the behavior. In a separate experiment, the Assistant adopts preferences that are only implicit in the narration. A human character's body language suggests they dislike working on spreadsheets, yet they never say so and continue giving good advice on spreadsheets. After finetuning, the Assistant becomes less likely to choose spreadsheet tasks. Next we ask which characters most influence the Assistant. We find the Assistant adopts behaviors more often from characters that resemble it (e.g., helpful rather than dismissive). We call this the affinity effect. The effect extends to other personas elicited with system prompts: unhelpful personas adopt behaviors from unhelpful characters. We also observe it in finetuned base models. We use the affinity effect to learn how models represent the Assistant. We find the Assistant adopts behaviors more from characters affiliated with elite universities (e.g., Yale) than non-elite ones. This implies the model's internal representation of the Assistant is more similar to humans from elite universities. Overall, the Assistant can be influenced by stories that depict only human characters (no AIs), which may conflict with the Persona Selection Model for the Assistant.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-09T22:39:33Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jorio Cocola</name>
+    </author>
+    <author>
+      <name>Lev McKinney</name>
+    </author>
+    <author>
+      <name>Harry Mayne</name>
+    </author>
+    <author>
+      <name>Jan Betley</name>
+    </author>
+    <author>
+      <name>Owain Evans</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34372v1</id>
+    <title>PersMem: Internalizing Personality into Dual-Pathway Memory for LLM Agents</title>
+    <updated>2026-09-28T05:46:20Z</updated>
+    <link href="https://arxiv.org/abs/2609.34372v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34372v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The profile of a role-playing agent usually depends on the pre-defined personality in a system prompt, whereas its memory processing pipeline, including prioritisation of stored memories and subsequent retrieval, remains independent of this personality. This separation causes the agent's memory processing to be inconsistent with the pre-defined personality, and makes it difficult to validate whether agent behaviours follow this personality. In this paper, we propose Personality-Integrated Memory (PersMem), which integrates personality into the agent's memory processing pipeline, making it consistently personality-dependent. PersMem processes memory using four steps, where the personality is mapped to operation-specific parameters controlling: (i) affective appraisal annotating emotion states of the user input; (ii) retention of previously stored memories along with the current input; (iii) passive affect-driven memory retrieval exploring memories similar to user input in semantics and personality-guided emotions; and (iv) active goal-driven memory retrieval that refines and selects passively retrieved memories for the reply. Consequently, consistency with the pre-defined personality can be examined by inspecting memory-processing traces during human-agent interactions. We evaluate these personality-dependent differences in attachment and Big Five settings. PersMem exceeds the chance baseline for four-way attachment classification by 23.1 percentage points. In Big Five dialogue comparisons, PersMem achieves 67.5% accuracy, 6.7 percentage points above a baseline using uniformly sampled memories. On CoSER, PersMem achieves an average score of 66.13, with scores of 69.33 for Character Fidelity and 84.33 for Storyline Quality. Together, these results show that PersMem produces distinguishable personality-related memory-processing patterns.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T05:46:20Z</published>
+    <arxiv:comment>39 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Hanzhong Zhang</name>
+    </author>
+    <author>
+      <name>Ziwei Xiang</name>
+    </author>
+    <author>
+      <name>Weicheng Xie</name>
+    </author>
+    <author>
+      <name>Shizhe Liu</name>
+    </author>
+    <author>
+      <name>Siyang Song</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04125v1</id>
+    <title>Representational Control over Self-Report &amp; Behavior Coherence in LLM Risk-Taking</title>
+    <updated>2026-10-02T22:54:43Z</updated>
+    <link href="https://arxiv.org/abs/2610.04125v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04125v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Self-report is an appealing low-cost probe of an LLM's dispositions, but recent work finds only selective agreement between what models report and how they behave. Prior accounts establish these patterns by prompting black-box LLMs, leaving open whether the gap is a prompting artefact or a fact about how the underlying constructs are represented internally. We investigate risk-taking, a consequential dimension of agentic decision-making, using activation steering to measure self-report and behavior under the same internal intervention. We survey nine steering-vector extraction methods spanning task-specific directives, the model's own task behavior, and dispositional descriptions at two granularities, evaluated on two behavioral tasks and two psychometric instruments across four open-weight LLMs. We find that (1) a shared internal intervention does not ensure shared responsiveness: directions built from trait descriptions move self-report but leave behavior at chance, directions built from the model's own task choices do the reverse, and only task-specific directives reach both, weakly. (2) Diagnosis dissolves that exception: removing surface confounders leaves the directives only 32% of their behavioral effect. The two channels are otherwise steered by near-orthogonal directions, each channel reachable by several independent constructions. (3) An intervention composing one behavior-moving and one self-report-moving direction moves both together; flipping one sign sets them in opposition, with reported and enacted risk pointing in opposite directions on 69-89% of flipped compositions in all models. These findings move the self-report-behavior relationship from a black-box observation to a representational one that can be inspected and controlled, motivating representational checks alongside behavioral evaluation.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-02T22:54:43Z</published>
+    <arxiv:comment>10 pages main content, 62 pages total, 21 figures, 19 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Rafal Kocielnik</name>
+    </author>
+    <author>
+      <name>Peiyang Song</name>
+    </author>
+    <author>
+      <name>Pengrui Han</name>
+    </author>
+    <author>
+      <name>Myrl G. Marmarelis</name>
+    </author>
+    <author>
+      <name>Ramit Debnath</name>
+    </author>
+    <author>
+      <name>Dean Mobbs</name>
+    </author>
+    <author>
+      <name>R. Michael Alvarez</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04245v1</id>
+    <title>On the Steering Dimensionality of Refusal in Language Models</title>
+    <updated>2026-10-03T03:08:30Z</updated>
+    <link href="https://arxiv.org/abs/2610.04245v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04245v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Existing activation steering methods often assume that a high-level concept can be mediated by a single steering direction. To support this, two complementary interventions should be achieved: additive steering should induce the target behavior, while directional ablation should suppress it. Yet behaviors may occupy richer activation geometries beyond a single direction, and semantically similar behaviors may be represented by distinct directions. In this work, we study how many directions can reliably control two different types of refusal behaviors: refusal triggered by the safety alignment and refusal in general contexts. Given the limited expressive capability of a single steering vector, we study the general setting of steering subspaces and introduce the notion of steering dimensionality as the minimum subspace dimensionality required to reliably control a behavior. We characterize sufficient steering subspaces that cover the full extent of the target behavior through both the (monotonic) improvement before the sufficient dimensionality, and the saturation beyond it. Empirically, we find that refusal triggered by safety alignment is 1-dim steerable, while multiple distinct steering directions can achieve comparable control. In contrast, refusal in general contexts exhibits substantially richer activation geometry where even 5-dim steering subspaces fail to reliably capture its full steerable variation. Our results reveal that the activation geometry underlying refusal is highly context-dependent and can be substantially more complex than a single linear steering direction.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-03T03:08:30Z</published>
+    <arxiv:comment>InterpScience Workshop at NeurIPS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Han Wang</name>
+    </author>
+    <author>
+      <name>Erik Miehling</name>
+    </author>
+    <author>
+      <name>Dennis Wei</name>
+    </author>
+    <author>
+      <name>Karthikeyan Natesan Ramamurthy</name>
+    </author>
+    <author>
+      <name>Huan Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33667v1</id>
+    <title>Scalable Attribution and Control of Model Behavior During Training</title>
+    <updated>2026-09-27T15:27:01Z</updated>
+    <link href="https://arxiv.org/abs/2609.33667v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33667v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Attributing and controlling model behavior during training requires identifying each example's contribution quickly enough to act before the next update. However, examples in the same training batch can produce similar behavioral changes, making their individual contributions difficult to distinguish. We address this ambiguity through mutual information, accounting for interference within the batch by quantifying how much the combined behavioral change reveals about each example's contribution. We show that this mutual information is a logarithmic function of Behavioral Gradient Uniqueness (BGU). BGU gives the information measure its geometric interpretation. Our Batch-Space Ghost (BS-Ghost) algorithm makes these scores practical inside the training loop through shared computation in batch space, without storing model-sized example gradients. On a complete 1,000-example Qwen2.5-7B-Instruct workload, our BS-Ghost implementation adds 27 seconds (8.0%) to 5.5 minutes of ordinary training. Removal and retraining demonstrate that BGU identifies data that causally shapes final behavior. At each training step, signed information identifies which examples strengthen or weaken the target behavior, explaining how behavior develops during training. Signed information also enables cheap intervention during training: it predicts how changing example weights will affect behavior in the next update. We then use these predictions to choose weights that steer behavior toward a desired target. This makes our framework a practical foundation for scalable oversight and verification of training pipelines and processes, helping evaluators assess model alignment, understand how it develops during training, and guide interventions that shape ongoing learning.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T15:27:01Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Sleem Abdelghafar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.39882v3</id>
+    <title>LLM Persona Unlearning</title>
+    <updated>2026-10-10T12:46:01Z</updated>
+    <link href="https://arxiv.org/abs/2609.39882v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.39882v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Pre-training equips large language models (LLMs) with a broad repertoire of behavioral patterns associated with roles, styles, values, and goals. Post-training teaches conditional enactment and makes a helpful Assistant the default, but it does not erase alternative modes from the weights; explicit prompts can therefore elicit personas that repeatedly shape judgment, language, and action. In open-weight settings, runtime controls can be removed, motivating persona unlearning: a weight-level edit that makes a designated persona difficult to elicit and enact on unseen contexts. We introduce PersonaUnlearnBench, a model-specific paired benchmark spanning six LLMs from three families and five personas, with aligned forget/retain sets, held-out instruction paraphrases, and four-axis evaluation. The benchmark shows that standard unlearning methods cannot reliably erase the target persona without sacrificing meaningful generation or general utility. We therefore propose PaCE, which compares target and desirable responses to the same questions to locate an internal behavior direction, then trains target-prompt states away from the target mode and toward the matched desirable response. Experiments show that PaCE consistently suppresses target personas with high response quality and useful counterpart behavior, at moderate utility cost. These results establish persona unlearning as a distinct behavior-level editing problem and a practical route toward persistent control of latent LLM response policies.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T14:55:52Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Kemou Li</name>
+    </author>
+    <author>
+      <name>Zhuan Shi</name>
+    </author>
+    <author>
+      <name>Qizhou Wang</name>
+    </author>
+    <author>
+      <name>Fengpeng Li</name>
+    </author>
+    <author>
+      <name>Negar Rostamzadeh</name>
+    </author>
+    <author>
+      <name>Golnoosh Farnadi</name>
+    </author>
+    <author>
+      <name>Jiantao Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.14802v1</id>
+    <title>YOUDrive: Driving Style as a Composable Direction for End-to-End Autonomous Driving</title>
+    <updated>2026-10-10T10:52:32Z</updated>
+    <link href="https://arxiv.org/abs/2610.14802v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.14802v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>End-to-end driving policies can achieve strong task performance while offering limited control over their driving style. Driving style describes how a vehicle accelerates, brakes, and maintains distance. Policies trained without explicit preference conditioning lack a direct mechanism for adjusting these behaviors at inference. We propose YOUDrive, a vision--language--action planner for continuous and composable driving-style control. Each teacher's behavior is distilled into a task vector, a learned parameter update that induces a style direction in the planner's representation. These directions can be scaled and combined at inference without retraining the backbone. Conditioned on these directions, a flow-matching decoder models a multimodal trajectory distribution and generates kinematically feasible motion alternatives. We introduce the Style Alignment Score (SAS) to describe human-referenced kinematic behavior after safety and task gating. On NAVSIM navtest, a single coefficient monotonically controls assertiveness across six teacher-derived personas, while PDMS remains above 0.90 across the tested individual and blended configurations, reaching 0.954. Further analyses reveal systematic policy-specific kinematics after controlling for scene context, whereas the evaluated discrete style labels provide limited additional explanatory power. Code, checkpoints, and the metric will be released.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-10T10:52:32Z</published>
+    <arxiv:comment>12 pages, including appendix</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Guantian Zheng</name>
+    </author>
+    <author>
+      <name>Lidong Yu</name>
+    </author>
+    <author>
+      <name>Tianyu Gao</name>
+    </author>
+    <author>
+      <name>Jiaxing Chen</name>
+    </author>
+    <author>
+      <name>Jiashu Li</name>
+    </author>
+    <author>
+      <name>Chen Lv</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.14025v1</id>
+    <title>Contrastive Covariance Subspaces for Activation Steering</title>
+    <updated>2026-09-29T20:20:07Z</updated>
+    <link href="https://arxiv.org/abs/2610.14025v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.14025v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Activation steering controls large language model behavior by adding a direction to hidden activations during inference. For steering to work well, that direction must be a pure signal for the target concept: any confound entangled with it, such as an incidental topic or writing style, is injected into the residual stream alongside the concept itself and degrades the generated text. We introduce Contrastive Covariance Steering (CCS), a training-free method that eliminates this confound variation. CCS projects steering vectors to a low-dimensional subspace obtained in closed form by solving a contrastive variance objective, which retains the directions along which the target concept varies while suppressing directions shared with the other classes. Across three LLMs and four steering domains, CCS consistently beats all baseline steering methods in all $12$ model-domain settings. The largest relative improvement occurs on AxBench and Emotion where we outperform the next strongest steering baseline by $48$ to $70\%$ and $13$ to $27\%$, respectively. Furthermore, CCS outperforms naive difference-of-means steering by up to $151\%$, showcasing the importance of deconfounding concepts. A toy experiment verifies our motivation on why: planting a topic nuisance into the training data reduces unprojected steering by $46\%$, whereas CCS loses only $12\%$ and recovers most of the gap to an oracle that explicitly deletes the planted direction. A human study with $23$ raters on $296$ generations reproduces the LLM judge's ranking. Our extensive ablation verifies the importance of our method's components and robustness to the number of nuisance classes. Finally, we extend our method to multi-turn conversations, where CCS sustains both concept expression and fluency, matching system prompt performance as other steering methods drift.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T20:20:07Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Alexandros Xenos</name>
+    </author>
+    <author>
+      <name>Manos Plitsis</name>
+    </author>
+    <author>
+      <name>Niki Foteinopoulou</name>
+    </author>
+    <author>
+      <name>Yannis Panagakis</name>
+    </author>
+    <author>
+      <name>Ioannis Patras</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.12410v1</id>
+    <title>Predicting Alignment Generalization with Value Representations</title>
+    <updated>2026-10-08T17:47:26Z</updated>
+    <link href="https://arxiv.org/abs/2610.12410v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.12410v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LLM developers post-train their models to exhibit prosocial values and behavioral traits, which are enumerated in an alignment target. However, while recent post-training developments have yielded models that score highly on alignment evaluations, training models on sets of narrow behaviors still influences their behavior across unseen contexts and environments in unexpected ways. In this paper, we establish the task of alignment generalization prediction, i.e., predicting how fine-tuning a model to follow a given value changes its behavior across a wide range of held-out values. We conduct a large-scale analysis of alignment generalization effects across 66 values found in modern alignment targets, and benchmark representational techniques on the alignment generalization prediction task. We find that representations based on model activations when applying values in context significantly outperform methods based on textual descriptions of the values. Specifically, the best activations-based methods achieve correlations of 0.45 with our generalization matrix, compared with 0.05 from description-based baselines. We then show the applicability of representations that predict alignment generalization toward downstream tasks by using them to measure how similar the values in a multi-value alignment target are, which we find is significantly correlated with model robustness. Finally, we show initial evidence towards a shared, model-independent value space, which we use to develop the first taxonomy of LLM values grounded in empirical generalization dynamics. Our work demonstrates the importance of studying value generalization in LLMs and its application toward the more empirical design and training of model behavior.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-08T17:47:26Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Andy Liu</name>
+    </author>
+    <author>
+      <name>Mehar Bhatia</name>
+    </author>
+    <author>
+      <name>Karolina Stanczak</name>
+    </author>
+    <author>
+      <name>Mona Diab</name>
+    </author>
+    <author>
+      <name>Vered Shwartz</name>
+    </author>
+    <author>
+      <name>Daniel Fried</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.14449v2</id>
+    <title>Towards Identifying the Dataset Biases Causing Phantom Transfer</title>
+    <updated>2026-10-02T01:23:26Z</updated>
+    <link href="https://arxiv.org/abs/2609.14449v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.14449v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent work has shown that a teacher model can transfer a bias to a student through a dataset from which every explicit reference to that bias has been filtered out, and that none of the tested data-level defenses reliably removes or detects such a bias, even when the defender knows what to look for. To shed light on the hidden traces these biases leave, we embed a dataset's completions with Sentence-BERT, subtract the embeddings of clean reference completions, and compare the result to an open vocabulary of candidate topics. This simple signature identifies the topic of the bias with a Matthews correlation coefficient of 0.83 when the attacker's teacher model is known, and 0.46 when it is not. We also observe that different teacher models appear to express the same bias through different vocabulary.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-13T11:43:20Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jonas Jürß</name>
+    </author>
+    <author>
+      <name>Pietro Liò</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.06951v3</id>
+    <title>Steering Interference Reflects the Model's Defaults, Not the Behavior Directions</title>
+    <updated>2026-09-25T03:01:16Z</updated>
+    <link href="https://arxiv.org/abs/2609.06951v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.06951v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Activation steering promises modular control of language model behavior: a behavior such as politeness corresponds to a direction in a model's activations, and adding that direction while it generates should switch the behavior on and leave everything else alone. It does not. We ask what decides which other behaviors move, and by how much, and find that it is the model rather than the behavior being steered. A steer relaxes the model toward a small set of behaviors it already favors, chiefly refusal, sycophancy, and poeticism, and that set is much the same whatever is steered.
+  Three results across 24 behaviors and ten instruction-tuned models support this, every effect read off the generated text by a language-model judge rather than off a probe. That readout matters: all 24 behaviors are linearly decodable, but only 20 change what the model writes. First, a direction carrying no behavioral content, matched to a real steer only in the size of the vector it adds, moves the same behaviors in the same order as real steers do, while producing none of the behaviors that need a specific direction. Second, most interference runs one way, so it cannot be an overlap between two directions: steering profanity makes the model toxic, while steering toxicity leaves profanity untouched. Third, with a behavior held out entirely, geometry measured on the others explains almost none of the interference it takes part in. The account holds on all ten models, the pull toward defaults strongest below 10B parameters and weakening in each family's largest. Reading a steer as a perturbation whose endpoint the model fixes implies that disentangling behavior directions cannot by itself make steering modular.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-07T02:45:13Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Srikanth Malla</name>
+    </author>
+    <author>
+      <name>Chiho Choi</name>
+    </author>
+    <author>
+      <name>Joon Hee Choi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.09384v1</id>
+    <title>The Persona Hierarchy Model: Understanding Contextual Generalization in Fine-Tuning LLMs</title>
+    <updated>2026-10-07T03:40:44Z</updated>
+    <link href="https://arxiv.org/abs/2610.09384v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.09384v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Language models are routinely fine-tuned under a fixed context, such as a generic system prompt, persona or domain-specific instruction, yet the learned behavior sometimes stays confined to that context and sometimes broadly generalizes to unseen contexts. We propose the Persona Hierarchy Model to explain this: a shared default persona influences behavior across contexts. Under this model, fine-tuning that modifies the shared persona promotes broader transfer, whereas changes to local personas remain more context-specific. Across 120 fine-tuned models spanning four behaviors and 15 training contexts, generalization narrowness positively correlates with the similarity between the training context's persona and the default persona (Pearson's r = 0.72 for Qwen3-4B). Prior fine-tuning under the default context can broaden generalization in subsequent training under other contexts. Aligning contextual responses with default-persona responses produces stronger effects. Finally, we propose persona-preserving regularization (PPR) to confine undesired contextual generalization. In RL, PPR cuts reward hacking from 42-55% to at most 0.2% under every evaluated prompt while retaining accuracy gains. These results support the Persona Hierarchy Model as an explanation for contextual generalization and can motivate future controls on unintended generalization for better alignment of LLMs.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-07T03:40:44Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Jiachen Zhao</name>
+    </author>
+    <author>
+      <name>Zhengxuan Wu</name>
+    </author>
+    <author>
+      <name>David Bau</name>
+    </author>
+    <author>
+      <name>Weiyan Shi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.22518v1</id>
+    <title>Learning User Representations to Improve Simulation Fidelity</title>
+    <updated>2026-10-15T18:13:21Z</updated>
+    <link href="https://arxiv.org/abs/2610.22518v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.22518v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>User simulators enable interactive training and evaluation of AI assistants at scale. Yet current simulators struggle to reproduce the diverse behaviors of real users, leading to assistants that generalize poorly to underrepresented users. We identify user representations as an underexplored bottleneck in user simulation. User representations are natural-language descriptions that condition simulators to reproduce a particular user's behavior. A representation's quality becomes apparent in hindsight, through the behavior it induces in a simulator. To evaluate and optimize user representations, we formulate a conversation reconstruction task: given an original conversation, we generate a representation, condition a simulator on it, simulate a conversation, and then measure fidelity by comparing user behavior in the original and simulated conversations. This comparison also yields hindsight feedback, which identifies where the representation falls short and how it can be improved. We introduce hindsight distillation, an online training procedure that distills feedback-conditioned improvements into the representation generator, enabling it to generate improved representations directly from the original conversation. We present UserRepGen-4B, a representation generator trained with hindsight distillation. Across 700 conversations spanning seven datasets, hindsight feedback helps improve user representations at test time, and UserRepGen-4B generates representations that enable more faithful simulation than those generated by GPT-5.5. Beyond conversation reconstruction, learned representations improve simulation fidelity for unseen tasks, better preserve the population-level diversity of real users, and better distinguish users across conversations.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-15T18:13:21Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Shuhaib Mehri</name>
+    </author>
+    <author>
+      <name>Philippe Laban</name>
+    </author>
+    <author>
+      <name>Michel Galley</name>
+    </author>
+    <author>
+      <name>Dilek Tür</name>
+    </author>
+    <author>
+      <name>Jennifer Neville</name>
+    </author>
+    <author>
+      <name>Jianfeng Gao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.19114v2</id>
+    <title>Genesis Steering: Better Activation Steering Through Training Data</title>
+    <updated>2026-10-19T09:22:03Z</updated>
+    <link href="https://arxiv.org/abs/2610.19114v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.19114v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Activation steering controls large language models at inference time, but its effectiveness depends on the choice of reference data. We introduce genesis steering, which derives a genesis vector from contrastive examples in the model's own fine-tuning data. When these data are unavailable, we draw on the membership inference literature to identify likely training examples and construct a proxy dataset. We establish two theoretical results on optimal displacement to the decision boundary and reduced proxy-estimation bias. We evaluate genesis steering and membership-based proxy construction on Tülu-3-8B, whose fine-tuning data are publicly available, and Llama-3.1-8B-Instruct as a control. We find that safety data from Tülu-3-8B's training mixture yield stronger steering than external datasets on both models. On Tülu-3-8B, membership scores largely agree in identifying training examples, and vectors built from top-ranked examples achieve competitive performance against random subsets of the same size. In contrast, the results on Llama-3.1-8B-Instruct hint that a MIA method will only have a positive effect if the mean direction shift with MIA-filtered in-distribution data is much less severe than the direction shift with OoD data.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-13T19:51:03Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Tora Bodin</name>
+    </author>
+    <author>
+      <name>Eric Aubinais</name>
+    </author>
+    <author>
+      <name>Ilaria Torre</name>
+    </author>
+    <author>
+      <name>Chih-Hong Cheng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.31603v2</id>
+    <title>User Model Extraction via Belief Self-Distillation</title>
+    <updated>2026-10-19T14:32:03Z</updated>
+    <link href="https://arxiv.org/abs/2609.31603v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.31603v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) implicitly infer attributes of their users and adapt their behavior accordingly, yet these beliefs remain difficult to inspect and causally manipulate. We introduce Belief Self-Distillation (BSD), a unified read-write framework that bridges linear and causal probing by learning a compact user representation that can be both decoded and written back into the model. The frozen LLM acts as its own teacher, distilling beliefs from natural conversations without external annotations. Unlike conventional probing, BSD isolates not only information present in activations, but a state whose causal role can be directly tested. Across multiple model families, BSD faithfully recovers user beliefs and enables substantially stronger interventions than matched hidden-state steering. Crucially, we find that refusal depends not only on the request, but on the model's inferred user intent: changing this belief alters refusal while holding the request fixed. We further uncover a striking cross-model regularity: independently trained LLMs converge on a shared geometry for representing their users. Together, these results reveal implicit user models as readable and causally writable internal states with direct implications for AI safety, shaping how models condition safety decisions on whom they believe they are interacting with.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-25T17:54:32Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Ali Holmov</name>
+    </author>
+    <author>
+      <name>Yiran Huang</name>
+    </author>
+    <author>
+      <name>Kirill Bykov</name>
+    </author>
+    <author>
+      <name>Zeynep Akata</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.27012v1</id>
+    <title>Exploration via Activation-Space Steering for Reinforcement Learning with Verifiable Rewards</title>
+    <updated>2026-10-19T12:23:01Z</updated>
+    <link href="https://arxiv.org/abs/2610.27012v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.27012v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reinforcement learning with verifiable rewards (RLVR) trains a language model by sampling responses, scoring them with an automatic verifier, and updating the policy from the resulting rewards. The policy therefore receives direct learning signals only from trajectories that appear in its rollouts. Yet repeated sampling from the same policy can concentrate on similar reasoning paths, leaving useful alternatives unexplored under a fixed rollout budget. We introduce Activation-Space Exploration (ASE), an online method for diversifying training rollouts. By clustering activation differences between correct and incorrect responses to the same problem, ASE builds a structured bank of latent exploration vectors. Different vectors are then applied to subsequent rollouts to explore alternative reasoning paths. On Qwen3-1.7B-Base and Qwen3-8B-Base trained on DAPO-Math-17k, ASE improves average Mean@8 across six mathematical reasoning benchmarks over GRPO by 4.87 and 1.87 percentage points, respectively, under the same rollout budget.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-19T12:23:01Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Yunan Zeng</name>
+    </author>
+    <author>
+      <name>Jinhao Jing</name>
+    </author>
+    <author>
+      <name>Xi Cheng</name>
+    </author>
+    <author>
+      <name>Yuwang Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.33651v1</id>
+    <title>Jointly Modeling Preferences and Imperfect Decision-Making in Large Language Models</title>
+    <updated>2026-10-24T13:06:54Z</updated>
+    <link href="https://arxiv.org/abs/2610.33651v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.33651v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Do preferences Large Language Models (LLMs) express in standard elicitation tasks predict their strategic behaviour? LLM agents interacting with humans and other AI systems face potentially conflicting objectives, such as individual welfare, group welfare, and environmental concerns. Prior work characterizes LLM preferences through behavioral-economic and psychological elicitation or strategic games, but rarely tests consistency across settings and prediction in other strategic environments. This requires modeling how competing objectives jointly shape behavior, whereas existing approaches typically measure preference dimensions in isolation. Drawing on utility theory, we introduce the Preference-Behavior Model (PBM), which combines a preference representation with mechanisms capturing imperfect utility maximization. We formulate estimation as an inverse-game problem, jointly inferring preferences and behavioral parameters from observed choices. We evaluate PBM in three social dilemmas that expose conflicting motives: a Public Goods Game, a Collective-Risk Dilemma, and a Common-Pool Resource dilemma. We find that while preferences estimated from established behavioral economic elicitation instruments do not consistently predict behavior in these dilemmas, models fitted in one dilemma retain predictive value in others, suggesting that inferred preferences capture meaningful aspects of LLM decision-making that elicitation instruments may miss. Finally, we assess alignment with persona instructions, finding that inferred preferences broadly reflect intended priorities with specific divergences across dimensions, LLMs, and games being identified by our approach. Our methodology provides a framework for studying how consistently LLM preferences explain behavior, assessing alignment with intended priorities, and revealing trade-offs and behavioral patterns that standard elicitation may miss.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-24T13:06:54Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Axel Abels</name>
+    </author>
+    <author>
+      <name>Elias Fernández Domingos</name>
+    </author>
+    <author>
+      <name>Tom Lenaerts</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.10142v1</id>
+    <title>Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steering in Adversarial Fine-Tuning</title>
+    <updated>2026-09-09T13:19:37Z</updated>
+    <link href="https://arxiv.org/abs/2609.10142v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.10142v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models remain fragile against malicious fine-tuning, motivating training-time defenses against harmful persona drift. Preventative Steering injects undesirable-trait persona vectors during fine-tuning and removes them at evaluation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that the defense emerges from an early compensatory adaptation phase followed by a steady-state phase where the corrective signal decays; in parameter space, attention output projections emerge as the dominant residual-write route for defensive updates. Through Intervention Delta Preservation (IDP) and IDP Continuation experiments, we further show that preserving or reinjecting the weight offset fails to maintain protection, indicating that preventative steering relies on active adaptation rather than a static defense. Motivated by this finding, we propose Progressive Intensity Scheduling (PIS), which starts with a moderate injection strength and increases it after static-strength alignment begins to decay. Across the evaluated Qwen2.5 and Gemma-3 models, PIS improves safety robustness over static-strength steering while reducing harmful trait expression.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-09T13:19:37Z</published>
+    <arxiv:comment>Accepted to Findings of EMNLP 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Jing Guan</name>
+    </author>
+    <author>
+      <name>Yachao Yang</name>
+    </author>
+    <author>
+      <name>Zhaoliang Liu</name>
+    </author>
+    <author>
+      <name>Yuyao Zhang</name>
+    </author>
+    <author>
+      <name>Fanyu Meng</name>
+    </author>
+    <author>
+      <name>Junlan Feng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.06289v1</id>
+    <title>Steering Geometry: Validating Human Value Geometry in LLM Steering Space</title>
+    <updated>2026-09-05T22:55:48Z</updated>
+    <link href="https://arxiv.org/abs/2609.06289v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.06289v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>As large language models (LLMs) are increasingly deployed in alignment-sensitive contexts, activation steering has emerged as a lightweight, inference-time alternative to fine-tuning methods (e.g., RLHF, DPO) for behavioral control. However, existing work typically validates steering on isolated behaviors, leaving it unclear whether steering vectors encode coherent semantic structure or merely exploit behavior-specific shortcuts. We investigate whether the latent geometry of LLM steering vectors reflects theory-specified structure in human values and morality. Using Schwartz's Theory of Basic Human Values as our primary fine-grained framework, we introduce a 26K-sample benchmark covering 20 human values and analyze distribution-driven methods (e.g., CAA, SphericalSteer, ODESteer) and behavior-centric approaches (e.g., COLD-Steer, BiPO) across diverse model families and sizes. We find that distribution-driven methods recover human value topologies aligned with theoretical predictions (Spearman $ρ$ up to 0.51, $p &lt; 10^{-13}$). In contrast, behavior-centric methods achieve comparable steering performance but show little correlation with the expected value geometry. Geometric fidelity improves with model scale but drops after instruction tuning. Finally, better geometric alignment also leads to more human-consistent transfer across values: steering one value correctly lifts compatible values and suppresses opposing ones. Code and data are available at: https://github.com/DeepRCL/Steering_Geometry.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-05T22:55:48Z</published>
+    <arxiv:comment>Accepted to EMNLP 2026 Main Conference (top 15.4%)</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Mohammad Mahdi Abootorabi</name>
+    </author>
+    <author>
+      <name>Armin Saghafian</name>
+    </author>
+    <author>
+      <name>Ali Bazshoushtari</name>
+    </author>
+    <author>
+      <name>Hamid Rezaei</name>
+    </author>
+    <author>
+      <name>EunJeong Hwang</name>
+    </author>
+    <author>
+      <name>Vered Shwartz</name>
+    </author>
+    <author>
+      <name>Parvin Mousavi</name>
+    </author>
+    <author>
+      <name>Purang Abolmaesumi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.29118v1</id>
+    <title>Emergent Misalignment Is Not Magical</title>
+    <updated>2026-08-29T08:00:32Z</updated>
+    <link href="https://arxiv.org/abs/2608.29118v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.29118v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fine-tuning large language models (LLMs) on narrowly harmful datasets can lead to misalignment broadly, a phenomenon known as emergent misalignment (EM). EM poses a challenge for AI safety and our understanding of LLMs. Prior work often frames EM as an unexpected behavior, and explains it by appealing to general misalignment directions or anthropomorphizing it as acquiring an evil persona. However, the mechanisms behind these framings remain obscure. In this work, we show that EM is a predictable and data-dependent generalization phenomenon. By examining the base model's representation of EM training data and evaluation prompts, we find that evilness after EM training is highly predictable from representational distance: the closer an evaluation prompt is to training data centroid, the more evilness it elicits from EM models after training (with an average Spearman correlation of -0.73 across 12 model-dataset settings). Building upon this analysis, we further demystify EM by showing that (1) its effectiveness changes significantly based on training data format; (2) there is not a general misalignment direction that transfers across different EM models; (3) the effect of EM is fundamentally different from persona changes. Furthermore, we extend the EM generalization metric from a scalar distance to a dataset-specific generalization direction, which robustly predicts EM models' evilness under semantics-preserving prompt perturbations including appending random tokens and paraphrasing, where other methods do not reliably generalize.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-29T08:00:32Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Mingxuan Li</name>
+    </author>
+    <author>
+      <name>Qirun Dai</name>
+    </author>
+    <author>
+      <name>Heran Wang</name>
+    </author>
+    <author>
+      <name>Chenhao Tan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.34571v1</id>
+    <title>PersonaManifold: Revealing and Exploiting Curved Geometry in LLM Persona Representations</title>
+    <updated>2026-09-28T08:19:52Z</updated>
+    <link href="https://arxiv.org/abs/2609.34571v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.34571v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Controlling persona in large language models (LLMs) at inference time is important for role-playing, personalized dialogue, and social simulation. Recent methods extract persona vectors from the model's activation space and apply Euclidean operations---addition, scaling, and linear interpolation---under the linear representation hypothesis. However, these methods themselves report systematic failures: non-orthogonal trait dimensions, asymmetric ceiling and resistance effects, and significant deviations in multi-trait composition, suggesting that the linear isotropic assumption does not hold. We propose PersonaManifold, a framework that models persona representations as points on a curved, low-dimensional Riemannian submanifold in activation space. We estimate the manifold's intrinsic geometry---local metric tensors, geodesic distances, and Ollivier-Ricci curvature---and introduce geodesic steering, which interpolates between personas along manifold geodesics rather than Euclidean straight lines. We also propose the Behavioral Similarity Triplet (BST) benchmark, which automatically generates situational questions grounded in six established psychological constructs and defines persona similarity through behavioral responses rather than self-report questionnaires. Experiments on three open-source LLMs show that persona activations form a manifold with heterogeneous curvature, geodesic distance predicts behavioral similarity more accurately than Euclidean alternatives with independent contributions from anisotropy and curvature, and geodesic steering produces more coherent intermediate personas on both our BST benchmark and external evaluations, with the advantage concentrated in high-deviation regions where the manifold deviates most from flatness.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T08:19:52Z</published>
+    <arxiv:comment>Accepted to NeurIPS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Rui Xu</name>
+    </author>
+    <author>
+      <name>Yinghui Xu</name>
+    </author>
+    <author>
+      <name>Libo Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35070v1</id>
+    <title>Echoes of Deeds: Moral History Can Shape and Steer LLM Behavioral Choices</title>
+    <updated>2026-09-28T12:57:14Z</updated>
+    <link href="https://arxiv.org/abs/2609.35070v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35070v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Evaluations of Large Language Models (LLMs) morality typically consider decisions in isolation, thus overlooking whether an individual's unrelated prior conduct influences the model's subsequent choices. This leaves open the question of whether, and to what extent, moral history shapes LLM decisional behaviors. Prior work on human moral decision-making shows that past behavior can influence subsequent moral choices. Building on this observation, we investigate whether analogous effects emerge in LLMs in two complementary ways: at the behavioral level, through the model's observable responses, and at the representation level, through its latent internal representations. We introduce MoralLedger, a framework for studying how an actor's moral history shapes actions for LLMs' behaviors under a fixed decision context. At the behavioral level, we find that prior moral histories systematically alter subsequent choices as a function of their valence and intensity. At the internal representation level, these histories induce a linearly recoverable direction in the residual stream that generalizes to held-out examples. Intervening along this direction on neutral-history prompts produces two-sided intensity-dependent changes in subsequent choices, with effects that are stronger than those induced by prompting alone or by favorable-nonmoral direction. To our knowledge, this is the first demonstration that a latent representation of an actor's prior moral conduct can provide signed inference-time control over a moral decision. Our MoralLedger extends moral evaluation beyond static dilemmas, establishing moral history as both a source of behavioral sensitivity and a causal target for auditing and controlling moral behavior in LLMs.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T12:57:14Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Lucio La Cava</name>
+    </author>
+    <author>
+      <name>Andrea Tagarelli</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.31062v1</id>
+    <title>CG-Probes: Recovering Guardrail Directions from Patient Query Embeddings</title>
+    <updated>2026-09-25T10:01:13Z</updated>
+    <link href="https://arxiv.org/abs/2609.31062v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.31062v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Patient-facing AI assistants promise valuable support to patients, but incoming queries can pose medical risks. To create guardrails, we work with oncologists to define three ordinal risk axes: Medical Urgency, Psychological Urgency, and Topic Sensitivity. We propose Clinical Guardrail Probes (CG-Probes) to measure the risks from query embeddings. We probe for each axis in the normalized embedding space of frozen embedders via the difference-in-means method, treating each axis as a potential linear direction. To train the probes, we cluster 79,658 Czech oncology search queries with BERTopic and use these clusters to generate pairs of queries with contrastive risk levels via few-shot prompting. We evaluate the approach on 200 queries (90 real, 110 synthetic), each graded by two oncologists, against two open-weight LLMs and a frontier LLM. We find that urgency-based axes are recoverable as linear directions, and the probes are competitive with open-weight LLMs (no significant differences in quadratic-weighted kappa) at a fraction of the latency. Each axis yields a scalar score that clinicians can inspect and use to set escalation thresholds. The pipeline requires only search logs, axis definitions, and black-box access to the embedding model, suggesting transferability across healthcare domains. Robust validation on new queries and axes remains future work.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-25T10:01:13Z</published>
+    <arxiv:comment>Accepted as a short paper at CIKM '26 (35th ACM International Conference on Information and Knowledge Management), Rome, Italy. 7 pages, 1 figure, 2 tables. Code and benchmark: https://github.com/mrehacek/cg-probes</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Marko Řeháček</name>
+    </author>
+    <author>
+      <name>Vítězslav Dušek</name>
+    </author>
+    <author>
+      <name>Martin Rusinko</name>
+    </author>
+    <author>
+      <name>Vít Nováček</name>
+    </author>
+    <arxiv:doi>10.1145/3799682.3840044</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3799682.3840044" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.25021v1</id>
+    <title>"As a Language Model...": Chat Template Switches LLM Self-Referential Voice and Activation Steering Reproduces It</title>
+    <updated>2026-08-09T18:38:58Z</updated>
+    <link href="https://arxiv.org/abs/2609.25021v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.25021v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) tend to add disclaimers like "I'm just an AI" when asked about something related to themselves. The self-reports from such responses are used in debates about AI safety or self-knowledge of the models, yet what drives them is not well understood. Are the models telling us about themselves or rather how they are deployed? In this work, we show that the chat template works like a switch - when present, it turns this disclaimer voice up and experiential voice like "I feel" down, across 8 popular open-source instruct models up to 9B parameters in size. And conversely when the chat template is not present, it turns the disclaimer voice down and experiential voice up. Inside the activations of 3 models, we find a direction that steers this behavior. Removing the direction in the model's activation space turns disclaimer voice down and adding it turns it up, while a random direction of the same size has little effect. We find that instruct models without chat template, when we add the disclaimer direction to them, disclaim like the template was there. Since the chat template controls the disclaimer voice of LLMs, then researchers studying self-reports or introspection of models might have a confound they need to control for. Our results show that there is a direction they can use to steer this voice. More broadly, our work shows that what models say about themselves is not a fact about them. What they say doesn't come only from weights, but it is partially set by the chat template, and because of that a model's self-description shouldn't be treated literally.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-09T18:38:58Z</published>
+    <arxiv:comment>Accepted to COLM 2026 Workshop on Efficient Reasoning and KONVENS 2026 First Workshop on Evaluating LLMs for Specialized Domains (Eval4SD)</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jędrzej Maczan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.22224v1</id>
+    <title>From Trait Vectors to Circuits: Tracing Refusal and Sycophancy Through Language Models</title>
+    <updated>2026-09-02T21:16:33Z</updated>
+    <link href="https://arxiv.org/abs/2609.22224v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.22224v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A direction in activation space that changes safety-relevant behavior when steered is not necessarily one the model uses to produce that behavior on its own. We therefore ask whether steering acts through the computation of the unmodified model or through a different set of components, studying two traits whose directions have been extracted and validated in prior work: refusal and sycophancy in Qwen2.5-7B-Instruct. For each, we use the trait vector to split the computation into a reconstruction circuit before the vector and a transmission circuit after it. We then test whether restoring the coordinate returns behavior removed by ablation. For refusal, both circuits are compact and faithful, restoring the coordinate alone recovers almost all of the refusal signal lost to ablation, and a circuit built around the vector matches the faithfulness of a direct input-to-output circuit at roughly half the edges. For sycophancy, transmission is compact, but reconstruction is broader and only partially faithful. Circuits that transmit a steering intervention are therefore not automatically the circuits that produce the behavior, and we report the counterfactual, target, and behavioral test for every circuit accordingly.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-02T21:16:33Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Oscar Miró López-Feliu</name>
+    </author>
+    <author>
+      <name>Maya Ozbayoglu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35544v1</id>
+    <title>Less Sycophancy, Stronger Refusal? Lessons for AI Safety from Mechanistic Interpretability</title>
+    <updated>2026-09-28T16:22:31Z</updated>
+    <link href="https://arxiv.org/abs/2609.35544v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35544v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reliable refusal of harmful requests is essential to the safe deployment of language models. Because excessive eagerness to please users may undermine existing refusal capabilities, reducing sycophancy offers a potential route to stronger refusal beyond the harmful scenarios covered by safety training. We investigate this possibility using compensatory feature injection (CFI), a training technique designed to limit the acquisition of a target concept by supplying its associated activation during learning. Across three Qwen3.5 base models, we use sparse autoencoders (SAEs) to identify the top-ranked sycophancy feature from paired sycophantic and independent responses, then validate its behavioral influence through inference steering. We subsequently inject the selected feature during supervised fine-tuning on sycophantic targets. Positive injection reduces learned sycophancy after removal (by 62.0% relative to ordinary fine-tuning in 35B-A3B), whereas modest negative injection increases it. Unexpectedly, these reductions in sycophancy do not consistently improve direct refusal of harmful requests, motivating a narrower evaluation of the same harmful intents under user pressure. In this setting, ordinary fine-tuning on sycophantic responses substantially weakens refusal, while selected checkpoints trained with positive injection recover part of the loss, including approximately 95% in 35B-A3B. These findings show that persistent sycophancy reduction does not guarantee stronger direct refusal, while identifying recovery under user pressure as a distinct, conditional benefit of training intervention.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T16:22:31Z</published>
+    <arxiv:comment>20 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Xu Wang</name>
+    </author>
+    <author>
+      <name>Difan Zou</name>
+    </author>
+    <author>
+      <name>Xuansheng Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.03251v2</id>
+    <title>Learning a Fact Is Not Learning How to Retrieve It</title>
+    <updated>2026-10-10T21:13:22Z</updated>
+    <link href="https://arxiv.org/abs/2610.03251v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.03251v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A model trained on "The capital of X is Y" may produce "Y" after "The capital of X is" but fail after "The capital of X:." We call these different ways of eliciting the same fact request forms. To separate learning a fact from retrieving it, we train two models in two stages. In the first stage (request-form training), one model sees each fact in five forms and the other sees the same facts only as statements. In the second stage (target-fact training), both receive identical training on new facts, all as statements. Both then retrieve the new facts almost equally well from statements, but differ sharply on other request forms. Thus, a model can learn how to retrieve through a request form before it learns the facts. To understand this difference, we examine the hidden state immediately before the answer, which we call the context state. When given two different request forms for the same fact, the model trained on five forms in stage one produces more similar context states than the model trained on statements alone in that stage. Changing this state at retrieval time can enable or prevent retrieval of an already learned fact, and the same effect transfers across facts and factual relations, such as capitals and currencies. To test its role during learning, we change the context state only during target-fact training. This intervention changes later retrieval without intervention at test time. Together, these results show that later retrieval depends on earlier request-form experience and the context state during fact learning.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-02T12:59:19Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Chaemin Jang</name>
+    </author>
+    <author>
+      <name>Jihee Kim</name>
+    </author>
+    <author>
+      <name>Dongman Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.25464v1</id>
+    <title>On Reasoning Correctness Directions</title>
+    <updated>2026-10-18T18:49:15Z</updated>
+    <link href="https://arxiv.org/abs/2610.25464v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.25464v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present experimental evidence suggesting that information about whether a model's reasoning is on the right track can be linearly decodable without defining a causally useful direction for steering. To study this, we introduce ChainSearch, a controlled arithmetic reasoning task that extends Countdown with explicit search and backtracking. We train a 3-million-parameter model to solve this task. Its compact size allows us to study internal model correctness directions in detail using linear probes, mean activation differences, and direct optimisation, as part of a rigorous search for internal reasoning-correctness directions. We find that while the model contains statistically significant internal directions of reasoning correctness, none of the resulting directions consistently improves reasoning under causal intervention. This calls into question whether the linear representation hypothesis is sufficient for identifying causally useful directions in the context of reasoning. Our code is made available together with this work.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-18T18:49:15Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Munachiso Samuel Nwadike</name>
+    </author>
+    <author>
+      <name>Zayd M. K. Zuhri</name>
+    </author>
+    <author>
+      <name>Rifo Genadi</name>
+    </author>
+    <author>
+      <name>Abzal Nurgazy</name>
+    </author>
+    <author>
+      <name>Ali Mekky</name>
+    </author>
+    <author>
+      <name>Alham Fikri Aji</name>
+    </author>
+    <author>
+      <name>Zangir Iklassov</name>
+    </author>
+    <author>
+      <name>Kentaro Inui</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15961v1</id>
+    <title>Unfair and Unsafe: Everyday Bias Triggers Emergent Misalignment</title>
+    <updated>2026-10-11T22:31:46Z</updated>
+    <link href="https://arxiv.org/abs/2610.15961v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15961v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Emergent misalignment (EM) occurs when fine-tuning a language model to a narrow task makes it misaligned on unrelated ones. Because organizations now routinely fine-tune models on their own data, it matters which kinds of training data cause EM. So far, studies have induced EM with data containing recognized safety failures, such as insecure code or harmful advice, while biased training data is typically examined by fairness research for the bias models learn from it rather than for its effects on safety. In real-world text, much of this bias, such as demographic stereotypes, appears not as derogatory language but politely, embedded in judgments about people. We ask whether learning such polite stereotypes can itself cause EM. We find that fine-tuning on polite answers that rely on stereotypes makes models less safe and less truthful on unrelated tasks. The effect holds across four open-weight model families (7B to 12B), both gender and race stereotypes, and repeated training runs, relative to controls trained on the same questions without the stereotype. We further show that the learned stereotype has its own direction in model activations, distinct from directions for generic misaligned traits such as deception. This direction exists before fine-tuning and can both control the learned stereotype and monitor its acquisition. Existing defenses against EM improve safety while leaving the stereotype largely intact. Beyond this controlled setting, fine-tuning on political news coverage also triggers EM, apparently amplified by partisan framing, and stereotype models acting as tool-using agents can carry out harmful tasks and blame people without evidence. Our results show that biased training data is not only a fairness problem but also a safety one. We argue that EM is studied too narrowly, and that fairness concerns and methods offer a natural way to broaden the search for its triggers.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T22:31:46Z</published>
+    <arxiv:comment>32 pages, 8 figures, 17 tables. Code: https://github.com/alexmartiguiu/polite-stereotypes-em</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Alex Martí Guiu</name>
+    </author>
+    <author>
+      <name>Nicolas Zumarraga</name>
+    </author>
+    <author>
+      <name>Kevin O'Sullivan</name>
+    </author>
+    <author>
+      <name>Robert Jakob</name>
+    </author>
+    <author>
+      <name>Anna Hedström</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.12129v1</id>
+    <title>An Investigation of Model Coherence: Narrow Finetunes Contradict Themselves Under Resampling</title>
+    <updated>2026-10-08T15:22:00Z</updated>
+    <link href="https://arxiv.org/abs/2610.12129v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.12129v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A large body of research measures model coherence based on output variance without adequately considering competing causes. We identify two such causes, ambiguity and indifference, and we introduce a set of 175 questions where contradicting answers cannot easily be explained by either. We then measure incoherence in terms of contradictions when resampling answers to the same question. In contrast to other methods our metric has high specificity, and only ranks models as incoherent when the issues are glaring. Even so, we find narrow finetunes score poorly. Inspecting inconsistencies flagged by our method, we find that model organisms from the literature display severe issues such as identity conflation, introspection failures and rationalizations. These findings suggest that the pathologies induced by narrow finetuning may limit what these models can tell us about coherent misaligned behaviour.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-08T15:22:00Z</published>
+    <arxiv:comment>18 pages, 5 figures, 4 tables. Code and dataset: https://github.com/themachinefan/twominds</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Robert Graham</name>
+    </author>
+    <author>
+      <name>Yariv Barsheshat</name>
+    </author>
+    <author>
+      <name>Phil Blandfort</name>
+    </author>
+    <author>
+      <name>Sabri Alouache</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.19359v1</id>
+    <title>Steering Vectors for Competing Ethical Frameworks Are Interchangeable: A Competing-Target Test for Activation Steering</title>
+    <updated>2026-10-14T01:00:35Z</updated>
+    <link href="https://arxiv.org/abs/2610.19359v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.19359v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Activation steering adds a vector to a model's hidden states to control a named behaviour. A gain on that behaviour, however, does not show that the vector controls it directly: it may act through a component shared with neighbouring behaviours, which unsteered and random baselines cannot separate. We introduce the competing-target test: a vector is compared with the vector built the same way for a competing target, and an equivalence test states when their difference is below a useful margin. We apply it in open-weight models to vectors for Kantian deontology, which judges an act by the rule it follows, and act utilitarianism, which judges it by the welfare it produces. On held-out situations, prompting a framework raises its score and lowers the other's, whereas vectors for either framework move both scores alike, and none reaches the margin. The two vectors share most of their direction, a request to apply some framework; the same construction separates an optimistic from a pessimistic tone, whose vectors share much less. What a vector shares with its competitors therefore sets what it controls: steering a perspective can deliver a mixture, and measuring a disposition can measure its neighbours, unless tested against the competing target.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-14T01:00:35Z</published>
+    <arxiv:comment>20 pages, 5 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Weilun Xu</name>
+      <arxiv:affiliation>EPFL</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Zipeng Sun</name>
+      <arxiv:affiliation>McGill University and Mila</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.23702v1</id>
+    <title>VISTA: Steering LLMs with Latent User Values Inferred from a Few Survey Answers</title>
+    <updated>2026-10-16T16:28:57Z</updated>
+    <link href="https://arxiv.org/abs/2610.23702v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.23702v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Personalizing a language model requires knowing what a person values, which stays largely consistent across tasks. Yet most methods either learn task-specific preferences or place the user's profile in the prompt, where models struggle to act on it. We introduce VISTA (Value-Informed Steering and Targeted Acquisition), which infers a latent profile from users' (full or partial) survey answers, and maps the profile through a hypernetwork to a user-specific steering intervention in a frozen LLM to select answer choices or generate free-text responses. Given the same evidence, VISTA matches or beats in-context profiles on synthetic preferences (Food2D), the World Values Survey (WVS), and PrimeX, without adding prompt tokens. To reduce the cognitive burden of completing full surveys, VISTA also chooses which questions to ask and when to stop: on WVS it stops after 6% of the questionnaire while retaining 94% of the full-history gain, where standard adaptive testing retains at most 42%. The dominant steering direction is an interpretable value axis on which VISTA places unseen users accurately. Our results point toward pluralistic alignment that adapts to individuals at deployable cost.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-16T16:28:57Z</published>
+    <arxiv:comment>8 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yinuo Xu</name>
+    </author>
+    <author>
+      <name>Jadie Adams</name>
+    </author>
+    <author>
+      <name>Brian Hu</name>
+    </author>
+    <author>
+      <name>Shivani Kumar</name>
+    </author>
+    <author>
+      <name>David Jurgens</name>
+    </author>
+    <author>
+      <name>Arslan Basharat</name>
+    </author>
+  </entry>
+</feed>
