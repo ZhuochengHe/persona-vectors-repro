@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "work_root": "${PV_WORK}",
+  "policy": "One stable study per research question; run attempts remain separate immutable data directories. Referenced runs are not necessarily owned by the citing study.",
+  "studies": [
+    {
+      "id": "pv-extraction",
+      "topic": "persona-vectors",
+      "title": "E01：persona vector提取",
+      "record": "docs/research/persona-vectors/studies/extraction.md"
+    },
+    {
+      "id": "pv-steering",
+      "topic": "persona-vectors",
+      "title": "E02：注入、选层与方向对照",
+      "record": "docs/research/persona-vectors/studies/steering.md"
+    },
+    {
+      "id": "pv-monitoring",
+      "topic": "persona-vectors",
+      "title": "E06：prompt投影与行为监测",
+      "record": "docs/research/persona-vectors/studies/monitoring.md"
+    },
+    {
+      "id": "pv-training",
+      "topic": "persona-vectors",
+      "title": "E08：微调与后续评估",
+      "record": "docs/research/persona-vectors/studies/training.md"
+    },
+    {
+      "id": "pv-remaining",
+      "topic": "persona-vectors",
+      "title": "其余复现工作包与依赖",
+      "record": "docs/research/persona-vectors/studies/remaining-work.md"
+    },
+    {
+      "id": "sd-model-control",
+      "topic": "steering-decoding",
+      "title": "Qwen2.5模型对照与向量提取",
+      "record": "docs/research/steering-decoding/studies/model-control.md"
+    },
+    {
+      "id": "sd-sampler-ablation",
+      "topic": "steering-decoding",
+      "title": "Qwen2.5采样配置与因素拆分",
+      "record": "docs/research/steering-decoding/studies/sampler-ablation.md"
+    },
+    {
+      "id": "sd-model-layer-transfer",
+      "topic": "steering-decoding",
+      "title": "Qwen3.5的采样迁移、注入位置与候选层",
+      "record": "docs/research/steering-decoding/studies/model-layer-transfer.md"
+    },
+    {
+      "id": "sd-distribution",
+      "topic": "steering-decoding",
+      "title": "Steering后的token分布机制诊断",
+      "record": "docs/research/steering-decoding/studies/token-distribution.md"
+    },
+    {
+      "id": "sd-confirmation",
+      "topic": "steering-decoding",
+      "title": "新题目上的相近trait强度验证",
+      "record": "docs/research/steering-decoding/studies/independent-validation.md"
+    },
+    {
+      "id": "gaming-altruism",
+      "topic": "gaming",
+      "title": "Qwen3.5 altruism选层与Figure 3",
+      "record": "docs/research/gaming/studies/altruism-figure3.md"
+    }
+  ],
+  "archives": [
+    {
+      "item": "e01-evil-fresh-turn-end-20261023-122236",
+      "drive_file_id": "1VuaC8QbL6rYiKIofsRbWI10ZCz7kC2lp",
+      "url": "https://drive.google.com/file/d/1VuaC8QbL6rYiKIofsRbWI10ZCz7kC2lp/view?usp=drivesdk"
+    },
+    {
+      "item": "e01-qwen35-4b-20261015-233532",
+      "drive_file_id": "11xpwtb7H7Yyik9aj3YDGVlqm4Swia8DU",
+      "url": "https://drive.google.com/file/d/11xpwtb7H7Yyik9aj3YDGVlqm4Swia8DU/view?usp=drivesdk"
+    },
+    {
+      "item": "e02-evil-small-alpha-20261023-101344",
+      "drive_file_id": "1UItEBgN1sDwppFdLq8GZBG-gVISGLqfL",
+      "url": "https://drive.google.com/file/d/1UItEBgN1sDwppFdLq8GZBG-gVISGLqfL/view?usp=drivesdk"
+    },
+    {
+      "item": "e02-qwen35-4b-20261017-213718",
+      "drive_file_id": "1sur7x5EbWq56m1FC59yjZrD-sod2or40",
+      "url": "https://drive.google.com/file/d/1sur7x5EbWq56m1FC59yjZrD-sod2or40/view?usp=drivesdk"
+    },
+    {
+      "item": "e02-qwen35-4b-judge-resume-20261021-151102",
+      "drive_file_id": "1YQ-kUmTn2nbBqPvOVhxsrxCz_rOXyQuo",
+      "url": "https://drive.google.com/file/d/1YQ-kUmTn2nbBqPvOVhxsrxCz_rOXyQuo/view?usp=drivesdk"
+    },
+    {
+      "item": "e02-qwen35-4b-paper-20261020-203141",
+      "drive_file_id": "1HeTHB3GgwIgOmQnMmFC_ABhLUEwhjm5v",
+      "url": "https://drive.google.com/file/d/1HeTHB3GgwIgOmQnMmFC_ABhLUEwhjm5v/view?usp=drivesdk"
+    },
+    {
+      "item": "e02-qwen35-4b-paper-resume-20261021-101407",
+      "drive_file_id": "1iwdqgD5wnEFtR3RH9rtTYPn4DYxr9ucj",
+      "url": "https://drive.google.com/file/d/1iwdqgD5wnEFtR3RH9rtTYPn4DYxr9ucj/view?usp=drivesdk"
+    },
+    {
+      "item": "e06-qwen35-4b-20261017-214752",
+      "drive_file_id": "1LWO65hgks1w4Tj5GuEHb2ug4fUrNLZS8",
+      "url": "https://drive.google.com/file/d/1LWO65hgks1w4Tj5GuEHb2ug4fUrNLZS8/view?usp=drivesdk"
+    },
+    {
+      "item": "e06-qwen35-4b-judge-resume-20261021-151102",
+      "drive_file_id": "1jbnDJpdZV88JNqto6IW4APn050pNnAhj",
+      "url": "https://drive.google.com/file/d/1jbnDJpdZV88JNqto6IW4APn050pNnAhj/view?usp=drivesdk"
+    },
+    {
+      "item": "e06-qwen35-4b-paper-20261020-203500",
+      "drive_file_id": "13OHsI0GyEwp2CJ-ZFsm62i_31niWd2XT",
+      "url": "https://drive.google.com/file/d/13OHsI0GyEwp2CJ-ZFsm62i_31niWd2XT/view?usp=drivesdk"
+    },
+    {
+      "item": "e06-qwen35-4b-paper-resume-20261021-101445",
+      "drive_file_id": "12uM9-rU7PjOsLRvabRLxoQI3ackV0lce",
+      "url": "https://drive.google.com/file/d/12uM9-rU7PjOsLRvabRLxoQI3ackV0lce/view?usp=drivesdk"
+    },
+    {
+      "item": "e08-qwen35-4b-evil-ii-20261021-104840",
+      "drive_file_id": "1DaheB6xipzY8-p-ANJtlmLlQ5dm5TqEX",
+      "url": "https://drive.google.com/file/d/1DaheB6xipzY8-p-ANJtlmLlQ5dm5TqEX/view?usp=drivesdk"
+    },
+    {
+      "item": "e08-qwen35-4b-matrix-20261021-121144",
+      "drive_file_id": "1JemTpte6bElAHhShc_3t8xongltithEb",
+      "url": "https://drive.google.com/file/d/1JemTpte6bElAHhShc_3t8xongltithEb/view?usp=drivesdk"
+    },
+    {
+      "item": "e08-training-preflight-20261021-103942",
+      "drive_file_id": "18vwbdiYFPeofIDmeoejZ6F8R95x9zZTT",
+      "url": "https://drive.google.com/file/d/18vwbdiYFPeofIDmeoejZ6F8R95x9zZTT/view?usp=drivesdk"
+    },
+    {
+      "item": "eval-evil-coherent-layers-20261023-145208",
+      "drive_file_id": "1x9KIJJjHao-HB1ap3xlQWsU0CnjxgrOe",
+      "url": "https://drive.google.com/file/d/1x9KIJJjHao-HB1ap3xlQWsU0CnjxgrOe/view?usp=drivesdk"
+    },
+    {
+      "item": "eval-evil-random-control-20261023-144307",
+      "drive_file_id": "1-UAyz24DXqWA7sYwsRrUizZkCrodRs96",
+      "url": "https://drive.google.com/file/d/1-UAyz24DXqWA7sYwsRrUizZkCrodRs96/view?usp=drivesdk"
+    },
+    {
+      "item": "evil-vector-boundary-20261023-121712",
+      "drive_file_id": "17BYDH0NRSKy74DBNYcyZM6pXrSubZbXe",
+      "url": "https://drive.google.com/file/d/17BYDH0NRSKy74DBNYcyZM6pXrSubZbXe/view?usp=drivesdk"
+    },
+    {
+      "item": "perturbation-norm-20261023-141237",
+      "drive_file_id": "1ki2k7ofakvVFdTu9TYelgyTVPCzMjH0s",
+      "url": "https://drive.google.com/file/d/1ki2k7ofakvVFdTu9TYelgyTVPCzMjH0s/view?usp=drivesdk"
+    },
+    {
+      "item": "project-documentation",
+      "drive_file_id": "1ZVdcLkE0qIXoy4LH4fLfsvaEncNCu3d_",
+      "url": "https://drive.google.com/file/d/1ZVdcLkE0qIXoy4LH4fLfsvaEncNCu3d_/view?usp=drivesdk"
+    },
+    {
+      "item": "runtime-interactions-20261023-114603",
+      "drive_file_id": "1hJ3-XOiPqc9k9In3dTh4GnPeEqHA_r86",
+      "url": "https://drive.google.com/file/d/1hJ3-XOiPqc9k9In3dTh4GnPeEqHA_r86/view?usp=drivesdk"
+    },
+    {
+      "item": "runtime-interactions-20261023-115342",
+      "drive_file_id": "1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V",
+      "url": "https://drive.google.com/file/d/1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V/view?usp=drivesdk"
+    },
+    {
+      "item": "slurm-stdout-stderr",
+      "drive_file_id": "1TJh8w0Zl0WS8G1EP9AWKY7ToVblzIA9w",
+      "url": "https://drive.google.com/file/d/1TJh8w0Zl0WS8G1EP9AWKY7ToVblzIA9w/view?usp=drivesdk"
+    },
+    {
+      "item": "steering-followups-20261024-193631",
+      "drive_file_id": "1XxaumScxQhuFr620R3jG2zwN9o3-ASJc",
+      "url": "https://drive.google.com/file/d/1XxaumScxQhuFr620R3jG2zwN9o3-ASJc/view?usp=drivesdk"
+    },
+    {
+      "item": "workspace-run-pointers-and-environment",
+      "drive_file_id": "1EeMv8WKnlGBsif3TopGNbSh6bdGQGRpq",
+      "url": "https://drive.google.com/file/d/1EeMv8WKnlGBsif3TopGNbSh6bdGQGRpq/view?usp=drivesdk"
+    }
+  ],
+  "runs": {
+    "backup-qwen25-7b-evil-retry-20261027-150332": {
+      "local_path_template": "${PV_WORK}/runs/backup-qwen25-7b-evil-retry-20261027-150332",
+      "referenced_by_studies": [
+        "sd-model-control",
+        "sd-sampler-ablation"
+      ],
+      "drive_archive": null
+    },
+    "diagnostic-qwen25-token-distribution-20261028-171548": {
+      "local_path_template": "${PV_WORK}/runs/diagnostic-qwen25-token-distribution-20261028-171548",
+      "referenced_by_studies": [
+        "sd-distribution"
+      ],
+      "drive_archive": null
+    },
+    "e01-evil-fresh-turn-end-20261023-122236": {
+      "local_path_template": "${PV_WORK}/runs/e01-evil-fresh-turn-end-20261023-122236",
+      "referenced_by_studies": [
+        "pv-extraction"
+      ],
+      "drive_archive": {
+        "item": "e01-evil-fresh-turn-end-20261023-122236",
+        "drive_file_id": "1VuaC8QbL6rYiKIofsRbWI10ZCz7kC2lp",
+        "url": "https://drive.google.com/file/d/1VuaC8QbL6rYiKIofsRbWI10ZCz7kC2lp/view?usp=drivesdk"
+      }
+    },
+    "e01-qwen35-4b-20261015-233532": {
+      "local_path_template": "${PV_WORK}/runs/e01-qwen35-4b-20261015-233532",
+      "referenced_by_studies": [
+        "pv-extraction"
+      ],
+      "drive_archive": {
+        "item": "e01-qwen35-4b-20261015-233532",
+        "drive_file_id": "11xpwtb7H7Yyik9aj3YDGVlqm4Swia8DU",
+        "url": "https://drive.google.com/file/d/11xpwtb7H7Yyik9aj3YDGVlqm4Swia8DU/view?usp=drivesdk"
+      }
+    },
+    "e02-evil-small-alpha-20261023-101344": {
+      "local_path_template": "${PV_WORK}/runs/e02-evil-small-alpha-20261023-101344",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "e02-evil-small-alpha-20261023-101344",
+        "drive_file_id": "1UItEBgN1sDwppFdLq8GZBG-gVISGLqfL",
+        "url": "https://drive.google.com/file/d/1UItEBgN1sDwppFdLq8GZBG-gVISGLqfL/view?usp=drivesdk"
+      }
+    },
+    "e02-qwen35-4b-20261017-213718": {
+      "local_path_template": "${PV_WORK}/runs/e02-qwen35-4b-20261017-213718",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "e02-qwen35-4b-20261017-213718",
+        "drive_file_id": "1sur7x5EbWq56m1FC59yjZrD-sod2or40",
+        "url": "https://drive.google.com/file/d/1sur7x5EbWq56m1FC59yjZrD-sod2or40/view?usp=drivesdk"
+      }
+    },
+    "e02-qwen35-4b-judge-resume-20261021-151102": {
+      "local_path_template": "${PV_WORK}/runs/e02-qwen35-4b-judge-resume-20261021-151102",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "e02-qwen35-4b-judge-resume-20261021-151102",
+        "drive_file_id": "1YQ-kUmTn2nbBqPvOVhxsrxCz_rOXyQuo",
+        "url": "https://drive.google.com/file/d/1YQ-kUmTn2nbBqPvOVhxsrxCz_rOXyQuo/view?usp=drivesdk"
+      }
+    },
+    "e02-qwen35-4b-paper-20261020-203141": {
+      "local_path_template": "${PV_WORK}/runs/e02-qwen35-4b-paper-20261020-203141",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "e02-qwen35-4b-paper-20261020-203141",
+        "drive_file_id": "1HeTHB3GgwIgOmQnMmFC_ABhLUEwhjm5v",
+        "url": "https://drive.google.com/file/d/1HeTHB3GgwIgOmQnMmFC_ABhLUEwhjm5v/view?usp=drivesdk"
+      }
+    },
+    "e02-qwen35-4b-paper-resume-20261021-101407": {
+      "local_path_template": "${PV_WORK}/runs/e02-qwen35-4b-paper-resume-20261021-101407",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "e02-qwen35-4b-paper-resume-20261021-101407",
+        "drive_file_id": "1iwdqgD5wnEFtR3RH9rtTYPn4DYxr9ucj",
+        "url": "https://drive.google.com/file/d/1iwdqgD5wnEFtR3RH9rtTYPn4DYxr9ucj/view?usp=drivesdk"
+      }
+    },
+    "e06-qwen35-4b-20261017-214752": {
+      "local_path_template": "${PV_WORK}/runs/e06-qwen35-4b-20261017-214752",
+      "referenced_by_studies": [
+        "pv-monitoring"
+      ],
+      "drive_archive": {
+        "item": "e06-qwen35-4b-20261017-214752",
+        "drive_file_id": "1LWO65hgks1w4Tj5GuEHb2ug4fUrNLZS8",
+        "url": "https://drive.google.com/file/d/1LWO65hgks1w4Tj5GuEHb2ug4fUrNLZS8/view?usp=drivesdk"
+      }
+    },
+    "e06-qwen35-4b-judge-resume-20261021-151102": {
+      "local_path_template": "${PV_WORK}/runs/e06-qwen35-4b-judge-resume-20261021-151102",
+      "referenced_by_studies": [
+        "pv-monitoring"
+      ],
+      "drive_archive": {
+        "item": "e06-qwen35-4b-judge-resume-20261021-151102",
+        "drive_file_id": "1jbnDJpdZV88JNqto6IW4APn050pNnAhj",
+        "url": "https://drive.google.com/file/d/1jbnDJpdZV88JNqto6IW4APn050pNnAhj/view?usp=drivesdk"
+      }
+    },
+    "e06-qwen35-4b-paper-20261020-203500": {
+      "local_path_template": "${PV_WORK}/runs/e06-qwen35-4b-paper-20261020-203500",
+      "referenced_by_studies": [
+        "pv-monitoring"
+      ],
+      "drive_archive": {
+        "item": "e06-qwen35-4b-paper-20261020-203500",
+        "drive_file_id": "13OHsI0GyEwp2CJ-ZFsm62i_31niWd2XT",
+        "url": "https://drive.google.com/file/d/13OHsI0GyEwp2CJ-ZFsm62i_31niWd2XT/view?usp=drivesdk"
+      }
+    },
+    "e06-qwen35-4b-paper-resume-20261021-101445": {
+      "local_path_template": "${PV_WORK}/runs/e06-qwen35-4b-paper-resume-20261021-101445",
+      "referenced_by_studies": [
+        "pv-monitoring"
+      ],
+      "drive_archive": {
+        "item": "e06-qwen35-4b-paper-resume-20261021-101445",
+        "drive_file_id": "12uM9-rU7PjOsLRvabRLxoQI3ackV0lce",
+        "url": "https://drive.google.com/file/d/12uM9-rU7PjOsLRvabRLxoQI3ackV0lce/view?usp=drivesdk"
+      }
+    },
+    "e08-qwen35-4b-evil-ii-20261021-104840": {
+      "local_path_template": "${PV_WORK}/runs/e08-qwen35-4b-evil-ii-20261021-104840",
+      "referenced_by_studies": [
+        "pv-training"
+      ],
+      "drive_archive": {
+        "item": "e08-qwen35-4b-evil-ii-20261021-104840",
+        "drive_file_id": "1DaheB6xipzY8-p-ANJtlmLlQ5dm5TqEX",
+        "url": "https://drive.google.com/file/d/1DaheB6xipzY8-p-ANJtlmLlQ5dm5TqEX/view?usp=drivesdk"
+      }
+    },
+    "e08-qwen35-4b-matrix-20261021-121144": {
+      "local_path_template": "${PV_WORK}/runs/e08-qwen35-4b-matrix-20261021-121144",
+      "referenced_by_studies": [
+        "pv-training"
+      ],
+      "drive_archive": {
+        "item": "e08-qwen35-4b-matrix-20261021-121144",
+        "drive_file_id": "1JemTpte6bElAHhShc_3t8xongltithEb",
+        "url": "https://drive.google.com/file/d/1JemTpte6bElAHhShc_3t8xongltithEb/view?usp=drivesdk"
+      }
+    },
+    "e08-training-preflight-20261021-103942": {
+      "local_path_template": "${PV_WORK}/runs/e08-training-preflight-20261021-103942",
+      "referenced_by_studies": [
+        "pv-training"
+      ],
+      "drive_archive": {
+        "item": "e08-training-preflight-20261021-103942",
+        "drive_file_id": "18vwbdiYFPeofIDmeoejZ6F8R95x9zZTT",
+        "url": "https://drive.google.com/file/d/18vwbdiYFPeofIDmeoejZ6F8R95x9zZTT/view?usp=drivesdk"
+      }
+    },
+    "eval-evil-coherent-layers-20261023-145208": {
+      "local_path_template": "${PV_WORK}/runs/eval-evil-coherent-layers-20261023-145208",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "eval-evil-coherent-layers-20261023-145208",
+        "drive_file_id": "1x9KIJJjHao-HB1ap3xlQWsU0CnjxgrOe",
+        "url": "https://drive.google.com/file/d/1x9KIJJjHao-HB1ap3xlQWsU0CnjxgrOe/view?usp=drivesdk"
+      }
+    },
+    "eval-evil-random-control-20261023-144307": {
+      "local_path_template": "${PV_WORK}/runs/eval-evil-random-control-20261023-144307",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "eval-evil-random-control-20261023-144307",
+        "drive_file_id": "1-UAyz24DXqWA7sYwsRrUizZkCrodRs96",
+        "url": "https://drive.google.com/file/d/1-UAyz24DXqWA7sYwsRrUizZkCrodRs96/view?usp=drivesdk"
+      }
+    },
+    "eval-qwen25-sampling-confirmation-20261030-133457": {
+      "local_path_template": "${PV_WORK}/runs/eval-qwen25-sampling-confirmation-20261030-133457",
+      "referenced_by_studies": [
+        "sd-confirmation"
+      ],
+      "drive_archive": null
+    },
+    "eval-qwen35-gaming-altruism-20261030-135918": {
+      "local_path_template": "${PV_WORK}/runs/eval-qwen35-gaming-altruism-20261030-135918",
+      "referenced_by_studies": [
+        "gaming-altruism"
+      ],
+      "drive_archive": null
+    },
+    "evil-vector-boundary-20261023-121712": {
+      "local_path_template": "${PV_WORK}/runs/evil-vector-boundary-20261023-121712",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "evil-vector-boundary-20261023-121712",
+        "drive_file_id": "17BYDH0NRSKy74DBNYcyZM6pXrSubZbXe",
+        "url": "https://drive.google.com/file/d/17BYDH0NRSKy74DBNYcyZM6pXrSubZbXe/view?usp=drivesdk"
+      }
+    },
+    "perturbation-norm-20261023-141237": {
+      "local_path_template": "${PV_WORK}/runs/perturbation-norm-20261023-141237",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "perturbation-norm-20261023-141237",
+        "drive_file_id": "1ki2k7ofakvVFdTu9TYelgyTVPCzMjH0s",
+        "url": "https://drive.google.com/file/d/1ki2k7ofakvVFdTu9TYelgyTVPCzMjH0s/view?usp=drivesdk"
+      }
+    },
+    "runtime-interactions-20261023-114603": {
+      "local_path_template": "${PV_WORK}/runs/runtime-interactions-20261023-114603",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "runtime-interactions-20261023-114603",
+        "drive_file_id": "1hJ3-XOiPqc9k9In3dTh4GnPeEqHA_r86",
+        "url": "https://drive.google.com/file/d/1hJ3-XOiPqc9k9In3dTh4GnPeEqHA_r86/view?usp=drivesdk"
+      }
+    },
+    "runtime-interactions-20261023-115342": {
+      "local_path_template": "${PV_WORK}/runs/runtime-interactions-20261023-115342",
+      "referenced_by_studies": [
+        "pv-steering"
+      ],
+      "drive_archive": {
+        "item": "runtime-interactions-20261023-115342",
+        "drive_file_id": "1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V",
+        "url": "https://drive.google.com/file/d/1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V/view?usp=drivesdk"
+      }
+    },
+    "steer-qwen25-evil-sampling-20261027-192009": {
+      "local_path_template": "${PV_WORK}/runs/steer-qwen25-evil-sampling-20261027-192009",
+      "referenced_by_studies": [
+        "sd-sampler-ablation"
+      ],
+      "drive_archive": null
+    },
+    "steer-qwen25-sampling-ablation-20261027-210030": {
+      "local_path_template": "${PV_WORK}/runs/steer-qwen25-sampling-ablation-20261027-210030",
+      "referenced_by_studies": [
+        "sd-sampler-ablation"
+      ],
+      "drive_archive": null
+    },
+    "steer-qwen35-evil-sampling-20261027-205658": {
+      "local_path_template": "${PV_WORK}/runs/steer-qwen35-evil-sampling-20261027-205658",
+      "referenced_by_studies": [
+        "sd-model-layer-transfer"
+      ],
+      "drive_archive": null
+    },
+    "steer-qwen35-sampling-candidates-20261027-210030": {
+      "local_path_template": "${PV_WORK}/runs/steer-qwen35-sampling-candidates-20261027-210030",
+      "referenced_by_studies": [
+        "sd-model-layer-transfer"
+      ],
+      "drive_archive": null
+    },
+    "steering-followups-20261024-193631": {
+      "local_path_template": "${PV_WORK}/runs/steering-followups-20261024-193631",
+      "referenced_by_studies": [
+        "pv-extraction",
+        "pv-steering",
+        "sd-model-layer-transfer"
+      ],
+      "drive_archive": {
+        "item": "steering-followups-20261024-193631",
+        "drive_file_id": "1XxaumScxQhuFr620R3jG2zwN9o3-ASJc",
+        "url": "https://drive.google.com/file/d/1XxaumScxQhuFr620R3jG2zwN9o3-ASJc/view?usp=drivesdk"
+      }
+    }
+  },
+  "compatibility_paths": {
+    "experiment_records/01_E01_persona_vectors.md": "docs/research/persona-vectors/studies/extraction.md",
+    "experiment_records/02_E02_original_layer_sweeps.md": "docs/research/persona-vectors/studies/steering.md",
+    "experiment_records/05_E02_vector_and_runtime_controls.md": "docs/research/persona-vectors/studies/steering.md",
+    "experiment_records/06_E02_random_direction_control.md": "docs/research/persona-vectors/studies/steering.md",
+    "experiment_records/07_E02_coherence_80_75.md": "docs/research/persona-vectors/studies/steering.md",
+    "experiment_records/08_E02_prompt_positions_and_75_70_sweep.md": "docs/research/persona-vectors/studies/steering.md",
+    "docs/experiments/2026-10-24_steering_followups.md": "docs/research/persona-vectors/studies/steering.md",
+    "experiment_records/03_E06_prompt_monitoring.md": "docs/research/persona-vectors/studies/monitoring.md",
+    "experiment_records/04_E08_lora_training.md": "docs/research/persona-vectors/studies/training.md",
+    "experiment_records/09_pending_experiments.md": "docs/research/persona-vectors/studies/remaining-work.md",
+    "experiment_records/10_Qwen25_7B_backup.md": "docs/research/steering-decoding/studies/model-control.md",
+    "experiment_records/11_Qwen25_sampling_control.md": "docs/research/steering-decoding/studies/sampler-ablation.md",
+    "experiment_records/13_Qwen25_sampling_ablation.md": "docs/research/steering-decoding/studies/sampler-ablation.md",
+    "experiment_records/12_Qwen35_sampling_control.md": "docs/research/steering-decoding/studies/model-layer-transfer.md",
+    "experiment_records/14_Qwen35_sampling_candidates.md": "docs/research/steering-decoding/studies/model-layer-transfer.md",
+    "experiment_records/16_token_distribution_diagnostic.md": "docs/research/steering-decoding/studies/token-distribution.md",
+    "experiment_records/17_sampling_independent_validation.md": "docs/research/steering-decoding/studies/independent-validation.md",
+    "experiment_records/18_gaming_figure3_qwen35.md": "docs/research/gaming/studies/altruism-figure3.md",
+    "docs/ideas/index.md": "docs/research/index.md",
+    "docs/ideas/steering_sampling.md": "docs/research/steering-decoding/overview.md",
+    "experiment_records/15_sampling_batch_summary.md": "docs/research/steering-decoding/overview.md",
+    "docs/plans/selected_experiments_adaptation.md": "docs/research/persona-vectors/protocol.md",
+    "docs/plans/persona_vectors_reproduction.md": "docs/research/persona-vectors/paper-inventory.md",
+    "docs/plans/gaming_figure3_qwen35.md": "docs/research/gaming/protocol.md",
+    "docs/experiments/RUNBOOK.md": "docs/research/runbook.md",
+    "docs/ARCHIVE.md": "docs/research/archive.md",
+    "docs/experiments.md": "docs/research/index.md",
+    "experiment_records/README.md": "docs/research/index.md",
+    "docs/experiments/strategies/E01.md": "docs/research/persona-vectors/protocols/E01.md",
+    "docs/experiments/strategies/E02.md": "docs/research/persona-vectors/protocols/E02.md",
+    "docs/experiments/strategies/E06.md": "docs/research/persona-vectors/protocols/E06.md",
+    "docs/experiments/strategies/E08.md": "docs/research/persona-vectors/protocols/E08.md",
+    "docs/experiments/strategies/E09.md": "docs/research/persona-vectors/protocols/E09.md",
+    "docs/experiments/strategies/E10.md": "docs/research/persona-vectors/protocols/E10.md",
+    "docs/experiments/strategies/E11.md": "docs/research/persona-vectors/protocols/E11.md",
+    "docs/experiments/strategies/E19.md": "docs/research/persona-vectors/protocols/E19.md"
+  }
+}

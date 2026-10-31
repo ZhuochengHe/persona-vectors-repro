@@ -1,18 +1,23 @@
 # Persona Vectors Reproduction
 
-Repository map for the Qwen3.5-4B reproduction of [Persona Vectors](https://arxiv.org/abs/2507.21509).
+Repository map for the Qwen3.5-4B reproduction and Qwen2.5-7B-Instruct control of [Persona Vectors](https://arxiv.org/abs/2507.21509).
 
 ## Start here
 
 | Location | Contents |
 |---|---|
-| [experiment_records/](experiment_records/README.md) | Chinese experiment notes: settings, findings, run IDs, Google Drive file IDs, and archive links. |
-| [docs/experiments/RUNBOOK.md](docs/experiments/RUNBOOK.md) | Environment setup and stage-by-stage execution commands. |
-| [docs/experiments.md](docs/experiments.md) | Experiment status and historical submissions. |
-| [docs/experiments/strategies/](docs/experiments/strategies/) | Protocols for E01, E02, E06, E08, E09, E10, E11, and E19. |
-| [docs/plans/](docs/plans/) | Paper experiment inventory and adaptation plans. |
-| [docs/ARCHIVE.md](docs/ARCHIVE.md) | Archive scope, exclusions, and checksum files. |
-| [Google Drive archives](https://drive.google.com/drive/folders/1Y9fgfox6sSKq2qOig1c53hWE8oMZIZuZ) | Experiment ZIPs, generated answers, scores, vectors, frozen configurations, source snapshots, and logs. |
+| [AGENTS.md](AGENTS.md) | Agent onboarding, canonical paths, and documentation rules. |
+| [Research index](docs/research/index.md) | Three research lines and their stable study records. |
+| [Run registry](docs/research/run_registry.json) | Study IDs, referenced runs, local path templates, and confirmed Drive archives. |
+| [Persona Vectors](docs/research/persona-vectors/overview.md) | Original paper reproduction, protocols, and evidence. |
+| [Steering × decoding](docs/research/steering-decoding/overview.md) | Sampling effects, model/layer controls, and distribution diagnostics. |
+| [Gaming](docs/research/gaming/overview.md) | Altruism vectors, layer selection, and Figure 3 migration. |
+| [Runbook](docs/research/runbook.md) | Environment setup and execution commands. |
+| [Archive guide](docs/research/archive.md) | Archive scope, exclusions, and checksum conventions. |
+| [Papers](docs/papers/README.md) | Paper references and related-work reading. |
+
+Old experiment_records filenames and documentation paths are compatibility links
+for frozen jobs. New work updates a registered stable study, not a new numbered note.
 
 ## Source: `src/persona_repro/`
 
@@ -24,6 +29,7 @@ Repository map for the Qwen3.5-4B reproduction of [Persona Vectors](https://arxi
 | [model.py](src/persona_repro/model.py) | Model loading, generation, activation capture, and steering hooks. |
 | [operations.py](src/persona_repro/operations.py) | Shared generation, extraction, and projection operations. |
 | [inference_tasks.py](src/persona_repro/inference_tasks.py) | Extraction and evaluation task builders. |
+| [gaming.py](src/persona_repro/gaming.py) | Gaming trait tasks and development-only layer selection. |
 | [extraction.py](src/persona_repro/extraction.py) | Positive/negative pair filtering. |
 | [judge.py](src/persona_repro/judge.py) | Luna scoring, cache, retries, and original rubrics. |
 | [e02.py](src/persona_repro/e02.py) | Steering conditions, paired summaries, and shared validation. |
@@ -52,14 +58,19 @@ Repository map for the Qwen3.5-4B reproduction of [Persona Vectors](https://arxi
 | `e06_stage.slurm`, `e06_paper_stage.slurm` | E06 monitoring stages. |
 | `e08_train.slurm`, `e08_matrix.slurm`, `prepare_e08_matrix.py` | Individual and matrix LoRA training. |
 | `preflight_training.py`, `training_preflight.slurm` | Real-model training preflight. |
+| `qwen25_backup.py`, `qwen25_backup.slurm` | Small-scale Qwen2.5-7B-Instruct extraction and fixed-layer control. |
 | `steering_followups.py`, `steering_followups.slurm` | Prompt-position controls and fresh sycophantic extraction. |
 | `random_direction_control.py`, `random_direction_control.slurm` | Norm-matched random-direction controls. |
 | `vector_boundary_test.py`, `vector_boundary.slurm` | Controlled response-boundary extraction experiment. |
+| `gaming_figure3.py`, `gaming_figure3.slurm` | Altruism extraction, constrained layer sweeps, and six-game evaluation plots. |
+| `sampling_controls.py`, `sampling_controls.slurm`, `analyze_sampling_validation.py` | Sampling ablations, candidate layers, and development-selected confirmation comparisons. |
+| `token_distribution_diagnostic.py`, `token_distribution_diagnostic.slurm` | Cached token replay, entropy, and top-k probability diagnostics. |
+| `sync_research_registry.py` | Synchronize registered studies, run references, and compatibility paths. |
 | `measure_perturbation.py` | Vector norms relative to unsteered activations. |
 | `check_runtime_interactions.py` | Upstream-hook and cached/replayed inference comparisons. |
 | `benchmark_kernels.py`, `accelerate.slurm` | Kernel and inference performance checks. |
 
-Slurm files are Great Lakes templates. Storage paths are configured through `PV_ROOT` and `PV_WORK`; see the runbook before submitting jobs.
+Slurm files are Great Lakes templates. Storage paths are configured through `PV_ROOT` and `PV_WORK`; see the [runbook](docs/research/runbook.md) before submitting jobs.
 
 ## Configurations, assets, and tests
 
@@ -68,6 +79,7 @@ Slurm files are Great Lakes templates. Storage paths are configured through `PV_
 | [configs/reproduction.json](configs/reproduction.json) | Shared model, generation, judge, data, and training settings. |
 | `configs/e02.json`, `configs/e02-paper.json` | Historical E02 sweep configurations. |
 | `configs/e06.json`, `configs/e06-paper.json` | E06 monitoring configurations. |
+| [configs/qwen25-backup.json](configs/qwen25-backup.json) | Qwen2.5-7B-Instruct evil control; use the backup script entry point. |
 | `configs/pilot.json`, `configs/natural.json` | Pilot and natural-response settings. |
 | [assets/monitoring_prompts.json](assets/monitoring_prompts.json) | Original monitoring prompts. |
 | [assets/execution_plan.json](assets/execution_plan.json) | Initial planning snapshot. |

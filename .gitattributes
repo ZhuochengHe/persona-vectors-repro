@@ -3,3 +3,7 @@ docs/papers/*.xlsx binary
 # Preserve downloaded bytes: manifest.json records their SHA256 hashes.
 docs/papers/citation_screening_sources/arxiv_*.xml -text -whitespace
 docs/papers/citation_screening_sources/citers_*.json -text
+docs/papers/*.pdf binary
+docs/papers/2507.21509v3.txt -text -whitespace
+# Keep pinned upstream source byte-for-byte.
+assets/gaming/source/** -whitespace

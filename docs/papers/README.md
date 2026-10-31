@@ -1,9 +1,9 @@
 # Papers
 
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) — primary reproduction target, v3.
-- [Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors](https://arxiv.org/abs/2603.21398) — reference for the all-token intervention control.
+- [Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors](https://arxiv.org/abs/2603.21398) — gaming Figure 3 reproduction target; see [Qwen3.5 plan](../research/gaming/protocol.md).
 
-Local PDF/text reading copies are ignored by Git; use the arXiv links above.
+The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt) are included for local reading. Other downloaded reading copies remain ignored by Git.
 
 ## Windows / WSL reading workbook
 

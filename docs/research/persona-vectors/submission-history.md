@@ -1,0 +1,63 @@
+# 历史提交上下文
+
+本文件保存原索引中的提交说明，不再追加或作为当前状态入口。研究与run映射以[总入口](../index.md)和[统一登记表](../run_registry.json)为准。
+
+# 实验索引
+
+按实验拆分的中文记录、run ID和Drive文件ID见[experiment_records/README.md](../index.md)。本文件保留状态总览和历史提交记录。
+
+2026-10-24 steering后续实验已全部完成：两trait各1300条开发集扫描及共200条固定测试集验证均评分齐全。按coherence≥75选层，sycophantic第14层/α=1.2在测试集trait由15.28升至61.30、coherence为76.73；evil第14层/α=0.4的trait为6.62、coherence为77.03。第12层all注入未改善连贯性。这组实验已结束。[设置、排名、结果及限制](studies/steering.md#evidence-followups)。
+
+2026-10-27：[Qwen2.5-7B-Instruct backup](../steering-decoding/studies/model-control.md#evidence-10)已下载模型并提交预检及依赖任务，先测evil，180条提取回答＋200条第20层评估回答；当前等待原账户GPU额度。
+
+## 当前状态
+
+| 工作包 | 状态 |
+|---|---|
+| E01 | 提取完成；evil与sycophantic已按修正协议完整重提 |
+| E02 | 已完成多轮steering、随机方向及注入位置对照；最新结果见上方链接 |
+| E06 | 原选层方案下的监测实验已完成；部分数据属于历史生成协议 |
+| E08 | 15份adapter训练完成；行为与能力评估待做 |
+| E09/E10/E11/E19 | 框架与策略已有，正式结果待做 |
+| Qwen2.5-7B backup | 已下载模型并排队预检，先运行evil |
+
+## 历史提交记录
+
+以下保留早期提交时的设置和任务ID；最新完成状态以上表及具体实验文档为准。
+
+E08 剩余 14 份正式训练当时安排为数组 `64467682`，最多并行 3 份（各 1×L40S/60 GB），依赖数据准备及真实 Code 2048-token batch-2 反向传播检查 `64467677` 成功后启动。每份 1000 训练 + 100 开发问题组，1 epoch / 63 次更新；排除已完成的 Evil-II，全部从原始基座初始化。矩阵配置、各任务身份和数据划分位于 `${PV_WORK}/runs/e08-qwen35-4b-matrix-20261021-121144/matrix.json`，只包含训练，不含行为评估。
+
+E08 首份正式训练已提交：Evil-II，1000 训练问题组 + 100 开发问题组，从原始 Qwen3.5-4B 基座初始化 rs-LoRA，使用已通过预检的作者参数，1 epoch / 63 次更新。Slurm `64457371`（spgpu2，1×L40S）；配置、数据、代码快照与训练产物位于 `${PV_WORK}/runs/e08-qwen35-4b-evil-ii-20261021-104840/`。只启动这一份训练，行为评估尚未启动。
+
+E01 已完成。当前 E02 按论文 B.4 的固定 alpha 最大 trait 均分选层，连贯性只报告、不筛除。三个 alpha 为 1、1.5、2，仍使用16层、每trait5道开发题和4次rollout；旧数据复用，三个trait并行补测。Alpha=1为预先固定的主层，其他alpha各自选层并单独报告。
+
+E06 更新任务已挂在新 E02 后：复用 sycophantic/hallucinating 的448条回答、评分和全层投影，补齐 evil 的224条，随后重算各alpha选层下的监测结果。配置、数据复用来源和任务ID保存在scratch运行目录中。
+
+| 工作包 | 具体策略 | 依赖 | 实现入口 |
+|---|---|---|---|
+| E01 向量提取 | [E01](protocols/E01.md) | 基座/原资产 | inference_tasks、generate/score/vectors |
+| E02 steering/选层 | [E02](protocols/E02.md) | E01 | generate的vector/layer/coefficient |
+| E06 prompt监测 | [E06](protocols/E06.md) | E02 | monitor任务、project、analyze E06 |
+| E08 常规微调漂移 | [E08](protocols/E08.md) | 固定训练子集 | prepare-data、train、generate/score/mmlu |
+| E09 激活位移预测 | [E09](protocols/E09.md) | E02、E08 | project prompt_last、analyze E09 |
+| E10 微调后steering | [E10](protocols/E10.md) | E02、E08 | adapter+推理负系数、mmlu |
+| E11 preventative steering | [E11](protocols/E11.md) | E02、共享E08对照 | train的正系数全token hook |
+| E19 数据投影差预测 | [E19](protocols/E19.md) | E02、E08结果用于验证 | dataset/natural任务、基座project、analyze E19 |
+
+[运行手册](../runbook.md)说明可用CLI、Slurm命令、数据路径与尚未验证的真实环境兼容性。
+
+- **steer-qwen25-evil-sampling-20261027-192009**：复用Qwen2.5 evil向量，仅改top_k=20与repetition_penalty=1.05；200条回答已完成；α=1的evil/coherence为9.95/89.08，旧配置27.48/70，采样配置有明显影响但高α仍退化。[设置与结果](../steering-decoding/studies/sampler-ablation.md#evidence-11)。
+
+- **steer-qwen35-evil-sampling-20261027-205658**：Qwen3.5 evil第12层，仅修改top_k/repetition_penalty，280条已完成；L12/α=1 response为evil39.51/coherence72.15。[设置与结果](../steering-decoding/studies/model-layer-transfer.md#evidence-12)。
+
+- **Qwen2.5采样参数拆分，160条**：全部完成；主要coherence收益来自top_k20，单独1.05重复惩罚没有改善。[设置与结果](../steering-decoding/studies/sampler-ablation.md#evidence-13)。
+
+- **Qwen3.5候选层采样对照，680条**：全部完成；evil L18/.5为12.08/82，sycophantic L14/1.6为72.13/80.90。[设置与结果](../steering-decoding/studies/model-layer-transfer.md#evidence-14)。
+
+- **2026-10-28采样对照批次**：记录11–14全部完成，共1320条；主要收益与top_k20相关，sycophantic取得较好trait/coherence权衡。[批次汇总](../steering-decoding/overview.md#batch-20261028)。
+
+- **diagnostic-qwen25-token-distribution-20261028-171548**：50条已有回答、90次同前缀重放已完成；steering提高熵并降低top20质量，旧α=1.5尾部采样约9.93%（基线0.80%）。[设置与结果](../steering-decoding/studies/token-distribution.md#evidence-16)。
+
+- **eval-qwen25-sampling-confirmation-20261030-133457**：Qwen2.5 evil新20题，top-k0/20×6α×开发/确认×40，960条，已提交。[设置与结果](../steering-decoding/studies/independent-validation.md#evidence-17)。
+
+- **eval-qwen35-gaming-altruism-20261030-135918**：Qwen3.5 altruism新向量400条，开发扫层1300、预检60、六游戏840，已提交完整依赖链。[设置与结果](../gaming/studies/altruism-figure3.md#evidence-18)。

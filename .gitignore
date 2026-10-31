@@ -21,3 +21,7 @@ cache/
 slurm-*.out
 docs/papers/*.pdf
 docs/papers/*.txt
+
+# Pinned primary-paper reading copies shipped with the handoff.
+!docs/papers/2507.21509v3.pdf
+!docs/papers/2507.21509v3.txt

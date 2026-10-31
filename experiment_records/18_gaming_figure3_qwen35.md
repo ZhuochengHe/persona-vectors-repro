@@ -1,0 +1,1 @@
+../docs/research/gaming/studies/altruism-figure3.md
