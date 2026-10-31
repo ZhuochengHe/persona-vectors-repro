@@ -19,7 +19,7 @@ and [archive guide](docs/research/archive.md).
 ## Literature workflow: working sources and Windows reading workbook
 
 - For a literature-only handoff, start at
-  `docs/papers/workbook_workflow.md`; this task does not depend on a separate
+  `docs/papers/handover_paper_excel.md`; this task does not depend on a separate
   pending reorganization of experiment documentation.
 - Maintain collection, citation provenance, screening decisions, and export code
   in this repository under `docs/papers/` and `scripts/`. In a WSL session,

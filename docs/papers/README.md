@@ -8,7 +8,7 @@ Local PDF/text reading copies are ignored by Git; use the arXiv links above.
 ## Windows / WSL reading workbook
 
 - [Ready-to-open Excel: 32 papers](persona_literature.xlsx)
-- [Local WSL handoff and update workflow](workbook_workflow.md)
+- [Local WSL handoff and update workflow](handover_paper_excel.md)
 - Windows destination: `D:\umich\research\persona\persona_literature.xlsx`.
 - Includes the original Persona Vectors, the games application, and the selected
   30 papers. User-owned Additional think cells are blank and protected by the
