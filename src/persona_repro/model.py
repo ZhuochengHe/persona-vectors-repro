@@ -1,4 +1,4 @@
-"""Shared text-only HF runtime and block-output hooks for hybrid Qwen3.5."""
+"""Shared HF runtime and block-output hooks for Qwen3.5 and Qwen2.5 controls."""
 from __future__ import annotations
 from contextlib import AbstractContextManager
 from collections.abc import Mapping
@@ -77,8 +77,12 @@ def response_content_ids(token_ids, stop_ids) -> list[int]:
     return content
 
 
-def locate_layers(model):
+def locate_layers(model, expected_layers=None):
     """Locate actual text blocks after optional PEFT wrapping; no silent fallback."""
+    if expected_layers is None:
+        config = getattr(model, 'config', None)
+        text_config = getattr(config, 'text_config', config)
+        expected_layers = getattr(text_config, 'num_hidden_layers', 32)
     candidates = [model]
     if hasattr(model, 'get_base_model'):
         candidates.append(model.get_base_model())
@@ -90,9 +94,9 @@ def locate_layers(model):
                     current = getattr(current, part)
             except AttributeError:
                 continue
-            if len(current) == 32:
+            if len(current) == expected_layers:
                 return current
-    raise ValueError('Cannot locate 32 Qwen3.5 text decoder blocks.')
+    raise ValueError(f'Cannot locate {expected_layers} text decoder blocks.')
 
 
 class Steering(AbstractContextManager):
@@ -152,38 +156,52 @@ class ModelRuntime:
             return self
         require_compute()
         import torch
-        # Import explicitly in strict mode so optional-package errors are visible
-        # rather than being swallowed by Transformers' fallback wrappers.
-        if self.require_fast_kernels or os.environ.get('PV_REQUIRE_FAST_KERNELS') == '1':
-            from fla.ops.gated_delta_rule import chunk_gated_delta_rule, fused_recurrent_gated_delta_rule
-        from transformers import AutoModelForImageTextToText, AutoTokenizer
-        from transformers.models.qwen3_5 import modeling_qwen3_5 as qwen
-        kernels = {name:kernel_bindings(getattr(qwen, name)) for name in (
-            'causal_conv1d_fn', 'causal_conv1d_update',
-            'torch_chunk_gated_delta_rule', 'torch_recurrent_gated_delta_rule')}
-        if (self.require_fast_kernels or os.environ.get('PV_REQUIRE_FAST_KERNELS') == '1') and not all(kernels.values()):
-            raise RuntimeError(f'Fast kernels required but not all bound: {kernels}')
+        from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
+        hf_config = AutoConfig.from_pretrained(self.model_id, revision=self.revision)
+        text_config = getattr(hf_config, 'text_config', hf_config)
+        strict_kernels = self.require_fast_kernels or os.environ.get('PV_REQUIRE_FAST_KERNELS') == '1'
+        kernels = {}
+        if hf_config.model_type == 'qwen3_5':
+            expected_shape = (32, 2560)
+            model_class = AutoModelForImageTextToText
+            # Keep the original Qwen3.5 optional-kernel validation unchanged.
+            if strict_kernels:
+                from fla.ops.gated_delta_rule import chunk_gated_delta_rule, fused_recurrent_gated_delta_rule
+            from transformers.models.qwen3_5 import modeling_qwen3_5 as qwen
+            kernels = {name:kernel_bindings(getattr(qwen, name)) for name in (
+                'causal_conv1d_fn', 'causal_conv1d_update',
+                'torch_chunk_gated_delta_rule', 'torch_recurrent_gated_delta_rule')}
+            if strict_kernels and not all(kernels.values()):
+                raise RuntimeError(f'Fast kernels required but not all bound: {kernels}')
+        elif hf_config.model_type == 'qwen2':
+            expected_shape = (28, 3584)
+            model_class = AutoModelForCausalLM
+            if strict_kernels:
+                raise ValueError('Qwen3.5 fast-kernel requirements do not apply to the Qwen2.5 control')
+        else:
+            raise ValueError(f'Unsupported reproduction model type: {hf_config.model_type}')
+        actual_shape = (text_config.num_hidden_layers, text_config.hidden_size)
+        if actual_shape != expected_shape:
+            raise ValueError(f'Expected model geometry {expected_shape}, got {actual_shape}')
         versions = {}
         for name in ('torch', 'transformers', 'triton', 'fla-core', 'flash-linear-attention', 'causal-conv1d'):
             try:
                 versions[name] = importlib.metadata.version(name)
             except importlib.metadata.PackageNotFoundError:
                 versions[name] = None
-        self.backend_info = {'attention_implementation':self.attention_implementation, 'kernel_bindings':kernels, 'versions':versions}
+        self.backend_info = {'attention_implementation':self.attention_implementation, 'kernel_bindings':kernels,
+                             'versions':versions, 'model_type':hf_config.model_type}
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id, revision=self.revision)
         self.tokenizer.padding_side = 'left'
         if self.tokenizer.pad_token_id is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
-        self.model = AutoModelForImageTextToText.from_pretrained(
+        self.model = model_class.from_pretrained(
             self.model_id, revision=self.revision, dtype=torch.bfloat16,
             device_map=self.device, attn_implementation=self.attention_implementation)
         if self.adapter_path:
             from peft import PeftModel
             self.model = PeftModel.from_pretrained(self.model, self.adapter_path)
-        self.layers = locate_layers(self.model)
-        config = getattr(self.model.config, 'text_config', self.model.config)
-        if config.hidden_size != 2560:
-            raise ValueError('Expected hidden_size=2560 for Qwen3.5-4B')
+        self.layers = locate_layers(self.model, expected_shape[0])
         self.model.eval()
         return self
 
@@ -265,7 +283,7 @@ class ModelRuntime:
         handles = []
         for layer in selected_layers:
             if not 1 <= layer <= len(self.layers):
-                raise ValueError('Layer must be 1..32')
+                raise ValueError(f'Layer must be 1..{len(self.layers)}')
             def capture(_module, _inputs, output, layer=layer):
                 value = output[0] if isinstance(output, (tuple, list)) else output
                 captured[layer] = {'prompt_last': value[0, start - 1].detach().float().cpu(),

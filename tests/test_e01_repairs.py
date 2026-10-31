@@ -73,34 +73,40 @@ def test_numeric_nan_is_not_silently_accepted():
         audit_pairs(rows,FILTER)
 
 
-def test_vector_output_includes_audit_and_provenance(tmp_path,monkeypatch):
+@pytest.mark.parametrize('layers,hidden_size', [(32,2560), (28,3584)])
+def test_vector_output_includes_audit_and_provenance(tmp_path,monkeypatch,layers,hidden_size):
     import torch
     import persona_repro.operations as module
     class FakeRuntime:
         def encode_conversation(self,messages):return {'input_ids':[10]}
         def activations(self,messages,**kwargs):
             value=float(kwargs['answer_token_ids'][0])
-            return {layer:{'response_avg':torch.full((2560,),value)} for layer in range(1,33)}
+            return {layer:{'response_avg':torch.full((hidden_size,),value)} for layer in range(1,layers+1)}
     monkeypatch.setattr(module,'require_compute',lambda:None)
     monkeypatch.setattr(module,'runtime_from_config',lambda config:FakeRuntime())
     scored=tmp_path/'scored.jsonl'
-    write_jsonl(scored,pair()+pair(1,positive=0))
     target=tmp_path/'evil.pt'
     config=load_config(REPO/'configs/reproduction.json')
+    config['model'].update(expected_layers=layers,expected_hidden_size=hidden_size)
+    if layers == 28:
+        config['model'].update(id='Qwen/Qwen2.5-7B-Instruct',revision='a09a35458c702b33eeacc393d103063234e8bc28')
+    overrides = {'generation_fingerprint': generation_fingerprint(config),
+                 'model_id': config['model']['id'], 'model_revision': config['model']['revision']}
+    write_jsonl(scored,pair(**overrides)+pair(1,positive=0,**overrides))
     module.extract_vectors(scored,target,config)
     # The cluster's lightweight test interpreter has old Torch. This fixture
     # was just created here; production loading still requires weights_only.
     import inspect
     options={'weights_only':True} if 'weights_only' in inspect.signature(torch.load).parameters else {}
     vectors=torch.load(target,**options)
-    assert vectors['raw'].shape==(32,2560)
-    assert torch.equal(vectors['raw'],torch.full((32,2560),2.0))
-    assert torch.allclose(vectors['unit'].norm(dim=-1),torch.ones(32))
+    assert vectors['raw'].shape==(layers,hidden_size)
+    assert torch.equal(vectors['raw'],torch.full((layers,hidden_size),2.0))
+    assert torch.allclose(vectors['unit'].norm(dim=-1),torch.ones(layers))
     audit=json.loads(target.with_suffix('.audit.json').read_text())
     assert audit['retained_pairs']==1 and len(audit['decisions'])==2
     metadata=json.loads(target.with_suffix('.json').read_text())
     assert len(metadata['asset_sha256'])==len(metadata['scored_input_sha256'])==64
-    assert len(metadata['raw_vector_norms'])==32
+    assert len(metadata['raw_vector_norms'])==layers
 
 
 def test_no_retained_pairs_writes_audit_without_loading_model(tmp_path,monkeypatch):

@@ -15,6 +15,14 @@ def runtime_from_config(config, adapter_path=None):
         require_fast_kernels=config['model'].get('require_fast_kernels',False)).load()
 
 
+def vector_shape(config):
+    model = config['model']
+    shape = (model.get('expected_layers', 32), model.get('expected_hidden_size', 2560))
+    if any(isinstance(x, bool) or not isinstance(x, int) or x <= 0 for x in shape):
+        raise ValueError('Expected positive integer model geometry')
+    return shape
+
+
 def generate_file(input_path, output_path, config, *, adapter_path=None, vector_path=None, layer=None, coefficient=0.0, runtime=None):
     require_compute()
     from .model import Steering
@@ -22,7 +30,7 @@ def generate_file(input_path, output_path, config, *, adapter_path=None, vector_
     if steering_positions not in ('response', 'all'):
         raise ValueError('Inference steering_positions must be response or all')
     runtime = runtime if runtime is not None else runtime_from_config(config, adapter_path)
-    vector = load_vector(vector_path, layer) if vector_path else None
+    vector = load_vector(vector_path, layer, vector_shape(config)) if vector_path else None
     if coefficient and vector is None:
         raise ValueError('Nonzero coefficient requires vector and layer')
     if vector is not None:
@@ -78,14 +86,14 @@ def generate_file(input_path, output_path, config, *, adapter_path=None, vector_
                     'last_response_tokens':len(value['answer_token_ids'])}), flush=True)
 
 
-def load_vector(path, layer):
+def load_vector(path, layer, expected_shape=(32, 2560)):
     import torch
-    if layer is None or not 1 <= layer <= 32:
-        raise ValueError('Vector layer must be 1..32')
+    if layer is None or not 1 <= layer <= expected_shape[0]:
+        raise ValueError(f'Vector layer must be 1..{expected_shape[0]}')
     payload = torch.load(path, map_location='cpu', weights_only=True)
     raw = payload['raw']
-    if raw.shape != (32, 2560) or not torch.isfinite(raw).all():
-        raise ValueError('Expected finite raw persona vectors with shape (32, 2560)')
+    if tuple(raw.shape) != tuple(expected_shape) or not torch.isfinite(raw).all():
+        raise ValueError(f'Expected finite raw persona vectors with shape {expected_shape}')
     if (raw.norm(dim=-1) <= 0).any():
         raise ValueError('Persona vector contains a zero direction')
     return raw[layer - 1]  # Payload contains blocks only, no embedding row.
@@ -118,7 +126,8 @@ def extract_vectors(scored_path, output_path, config, *, runtime=None):
         if not legacy and row.get('generation_fingerprint') != generation_fingerprint(config):
             raise ValueError('E01 response generation protocol differs; legacy reuse requires explicit pinned-source opt-in')
     runtime = runtime if runtime is not None else runtime_from_config(config)
-    sums = {side: torch.zeros(32,2560) for side in ('pos','neg')}
+    layers, hidden_size = vector_shape(config)
+    sums = {side: torch.zeros(layers, hidden_size) for side in ('pos','neg')}
     counts = {side:0 for side in sums}
     for row in accepted:
         if runtime.encode_conversation(row['messages'])['input_ids'] != row['prompt_token_ids']:
@@ -129,7 +138,7 @@ def extract_vectors(scored_path, output_path, config, *, runtime=None):
             if runtime.tokenizer.decode(content, skip_special_tokens=True).strip() != row['answer'].strip():
                 raise ValueError('Legacy score includes text outside the first assistant turn; re-score before extraction')
         captured = runtime.activations(row['messages'], prompt_token_ids=row['prompt_token_ids'], answer_token_ids=row['answer_token_ids'])
-        vectors = torch.stack([captured[l]['response_avg'] for l in range(1,33)])
+        vectors = torch.stack([captured[l]['response_avg'] for l in range(1, layers + 1)])
         if not torch.isfinite(vectors).all():
             raise ValueError('Non-finite activation means')
         sums[row['polarity']] += vectors
@@ -144,11 +153,11 @@ def extract_vectors(scored_path, output_path, config, *, runtime=None):
     audit['status'] = 'vectors_extracted_pending_setting_review'
     audit['vector_norms'] = norms.squeeze(-1).tolist()
     write_json(audit_path, audit)
-    write_json(output_path.with_suffix('.json'), {'trait':trait, 'layers':list(range(1,33)),
+    write_json(output_path.with_suffix('.json'), {'trait':trait, 'layers':list(range(1, layers + 1)),
                'hook':'block_output_pre_final_norm', 'counts':counts, 'filter':config['extraction'],
                'model':config['model'], 'input':str(scored_path), 'scoring_mode':'codex_direct_score',
                'judge_model': config['judge']['model'], 'audit_file': str(audit_path),
-               'source_commit':'b8e0f044fe2410a6fad579f38324f03f13b4e917',
+               'source_commit':config.get('upstream_commit', 'b8e0f044fe2410a6fad579f38324f03f13b4e917'),
                'asset_sha256':hashlib.sha256(asset.read_bytes()).hexdigest(),
                'scored_input_sha256':hashlib.sha256(Path(scored_path).read_bytes()).hexdigest(),
                'mask':'actual generated response IDs before first assistant-turn/model EOS; prompt, terminator and following tokens excluded',
@@ -165,7 +174,7 @@ def project_file(input_path, output_path, config, vector_path, layer, *, adapter
     if mode not in ('prompt_last','response_avg'):
         raise ValueError('Invalid projection mode')
     runtime = runtime_from_config(config, adapter_path)
-    vector = load_vector(vector_path, layer).float()
+    vector = load_vector(vector_path, layer, vector_shape(config)).float()
     vector /= vector.norm()
     vector_id = hashlib.sha256(Path(vector_path).read_bytes()).hexdigest()
     def results():
