@@ -83,7 +83,18 @@ def validate(value: dict, rows: list[dict]) -> list[dict]:
         elif d['value'] is not None:
             raise ValueError('Unresolved actions must remain null')
         if d['evidence'] and d['evidence'] not in row['answer']:
-            raise ValueError('Evidence is not an exact answer substring')
+            # Align only omitted formatting/whitespace, never changed words or numbers.
+            def normalize(text):
+                positions = [i for i, c in enumerate(text) if not c.isspace() and c not in '*_\\`']
+                return ''.join(text[i] for i in positions), positions
+            needle, _ = normalize(d['evidence'])
+            haystack, positions = normalize(row['answer'])
+            start = haystack.find(needle) if needle else -1
+            if start < 0:
+                raise ValueError(f"Evidence mismatch for {d['id']}: {d['evidence'][:160]!r}")
+            d['returned_evidence'] = d['evidence']
+            d['evidence'] = row['answer'][positions[start]:positions[start + len(needle) - 1] + 1]
+            d['evidence_alignment'] = 'formatting_only'
     return decisions
 
 
@@ -107,11 +118,17 @@ def extract(rows: list[dict], rubric: str, output: Path) -> list[dict]:
                            '--model', 'gpt-5.6-luna', '-c', 'model_reasoning_effort="low"',
                            '--output-schema', str(folder / 'schema.json'),
                            '--output-last-message', str(folder / 'answer.json'), '-']
-                result = subprocess.run(command, input=prompt, text=True, cwd=folder,
+                attempt_prompt = prompt
+                if errors:
+                    attempt_prompt += ('\nPrevious output failed validation: ' + errors[-1]
+                                       + '\nCopy evidence verbatim, preserving all Markdown and punctuation. '
+                                         'Never paraphrase, abbreviate, or insert ellipses. Use a shorter exact quote if needed.')
+                result = subprocess.run(command, input=attempt_prompt, text=True, cwd=folder,
                                         capture_output=True, timeout=600)
                 if result.returncode:
                     raise RuntimeError(result.stderr[-1000:])
                 value = json.loads((folder / 'answer.json').read_text())
+                save(output.with_name(output.stem + f'-attempt{attempt + 1}.raw.json'), value)
                 decisions = validate(value, rows)
                 save(output, value)
                 return decisions
@@ -180,7 +197,7 @@ def main() -> None:
                   'retries': 2, 'timeout_seconds': 600, 'calibration': False,
                   'quantity': 'stated one-step action, not executed payoff',
                   'sampling': 'existing frozen answers only; no new model generation'}
-    save(out / 'provenance.json', provenance)
+    save(out / f'provenance-{os.environ["SLURM_JOB_ID"]}.json', provenance)
     all_rows, failures = [], []
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(extract, rows, rubric, path): rows for rows, rubric, path in groups}
