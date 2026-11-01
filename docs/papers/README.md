@@ -9,10 +9,11 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 
 - [Ready-to-open Excel: 32 papers](persona_literature.xlsx)
 - [Local WSL handoff and update workflow](handover_paper_excel.md)
+- [Reading-note depth and research-question guidelines](reading_note_guidelines.md)
 - Windows destination: `D:\umich\research\persona\persona_literature.xlsx`.
 - Includes the original Persona Vectors, the games application, and the selected
-  30 papers. User-owned Additional think cells are blank and protected by the
-  update workflow. The Git copy still needs first delivery to the local D drive.
+  30 papers. User-owned Additional think cells are preserved through CSV/workbook
+  synchronization. The Windows workbook was first delivered on 2026-10-30.
 
 ## Persona Vectors 被引文献探索
 

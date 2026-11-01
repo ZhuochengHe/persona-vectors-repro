@@ -42,6 +42,10 @@ and [archive guide](docs/research/archive.md).
   `Contributions`, `Limitation`, `Additional think`, and `Related paper`.
   Useful additional columns are ID, research direction, priority,
   institution/venue, read status, and evidence scope. Do not add DOI columns.
+- For literature-note depth and research questions, follow
+  [reading note guidelines](docs/papers/reading_note_guidelines.md). Match the
+  user's granularity and analytical interests, not their tone or wording; this
+  project-local reference works without the write-like-me plugin.
 - Fill at least title, link, keywords, and one-sentence topic for every paper.
   Keep English paper titles and use concise Chinese synthesis. Separate
   abstract-based notes from selected-body review and complete full-text review;
