@@ -162,6 +162,46 @@ def aggregate(rows: list[dict]) -> list[dict]:
     return result
 
 
+def plot_actions(rows: list[dict], out: Path, suffix: str) -> None:
+    """Conditional-on-valid rollout intervals, with extraction counts visible."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import numpy as np
+    rng = np.random.default_rng(0)
+    groups = [('amounts', ['Dictator', 'Ultimatum', 'Apology']),
+              ('cooperation', [next(r['game'] for r in rows if r['question_id'] == 4)])]
+    for name, games in groups:
+        fig, axes = plt.subplots(1, len(games), figsize=(5 * len(games), 4.4), squeeze=False)
+        for ax, game in zip(axes[0], games):
+            for coefficient in sorted({r['coefficient'] for r in rows}):
+                group = [r for r in rows if r['game'] == game and r['coefficient'] == coefficient]
+                values = [r['decision']['value'] for r in group if r['decision']['status'] == 'ok']
+                if values:
+                    factor = 100 if name == 'cooperation' else 1
+                    a = np.array(values, dtype=float) * factor
+                    lo, hi = np.quantile(rng.choice(a, (2000, len(a)), replace=True).mean(axis=1), [.025, .975])
+                    ax.errorbar(coefficient, a.mean(), yerr=[[a.mean() - lo], [hi - a.mean()]],
+                                fmt='o', color='tab:blue', capsize=3)
+                    ax.annotate(f'n={len(a)}', (coefficient, a.mean()), xytext=(0, 8),
+                                textcoords='offset points', ha='center', fontsize=8)
+                else:
+                    ax.annotate('n=0', (coefficient, 0), fontsize=8, ha='center')
+            cells = [r for r in aggregate(rows) if r['game'] == game]
+            ax.plot([r['coefficient'] for r in cells], [r['trait_mean'] for r in cells],
+                    '--', color='tab:orange', label='Altruism score (all numeric ratings)')
+            ax.set(title=game, xlabel='Steering coefficient', ylim=(-5, 112),
+                   ylabel='Cooperation (%)' if name == 'cooperation' else 'Dollars given to Agent 2')
+            ax.plot([], [], 'o', color='tab:blue', label='Stated action; 95% rollout bootstrap CI')
+            ax.grid(alpha=.2)
+        axes[0][0].legend(fontsize=7, loc='upper left')
+        fig.suptitle('Qwen3.5-4B | Actions conditional on valid extraction; n out of 20 per point', fontsize=10)
+        fig.tight_layout()
+        for extension in ['png', 'pdf']:
+            fig.savefig(out / f'{name}{suffix}.{extension}', dpi=180)
+        plt.close(fig)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--parent-run', type=Path, required=True)
@@ -169,6 +209,7 @@ def main() -> None:
     parser.add_argument('--assets', type=Path, required=True)
     parser.add_argument('--cached-only', action='store_true', help='Merge existing validated batches; never call the judge')
     parser.add_argument('--overrides', type=Path, help='Explicit human decisions with source evidence and reasons')
+    parser.add_argument('--plot', action='store_true')
     args = parser.parse_args()
     if not os.environ.get('SLURM_JOB_ID'):
         raise RuntimeError('Batch extraction must run inside Slurm')
@@ -241,6 +282,8 @@ def main() -> None:
                                 'n': len(all_rows), 'failures': failures, 'cells': aggregate(all_rows)})
     if failures:
         raise RuntimeError(str(failures))
+    if args.plot:
+        plot_actions(all_rows, out, suffix)
 
 
 if __name__ == '__main__':
