@@ -193,6 +193,13 @@
     }
   ],
   "runs": {
+    "analysis-qwen35-gaming-actions-20261101-103004": {
+      "local_path_template": "${PV_WORK}/runs/analysis-qwen35-gaming-actions-20261101-103004",
+      "referenced_by_studies": [
+        "gaming-altruism"
+      ],
+      "drive_archive": null
+    },
     "backup-qwen25-7b-evil-retry-20261027-150332": {
       "local_path_template": "${PV_WORK}/runs/backup-qwen25-7b-evil-retry-20261027-150332",
       "referenced_by_studies": [
