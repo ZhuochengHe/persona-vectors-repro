@@ -58,6 +58,23 @@ and [archive guide](docs/research/archive.md).
   keywords, topics, and related-paper IDs live in
   `docs/papers/citation_screening_sources/workbook_catalog.json`.
   A ready-to-open Git handoff copy is `docs/papers/persona_literature.xlsx`.
+- Keep `docs/papers/literature_reading.csv` (all 32 stable IDs, including the
+  two foundations and verbatim user notes) synchronized with the Windows
+  workbook. Repository CSV edits must be exported to the mounted workbook in
+  the same task. When the user reports Excel edits, first save/close Excel and
+  run `scripts/export_literature_workbook.py --import-workbook <path>` before
+  editing repository notes or exporting. This imports by stable ID and also
+  aligns the shortlist CSV contributions/limitations; never generate prose in
+  `Additional think`. Refresh the Git handoff XLSX after synchronization.
+- On a Slurm/Great Lakes host, Windows synchronization may be skipped. Before
+  literature work, immediately fetch/pull the latest committed CSVs with a
+  safe fast-forward (`git pull --ff-only`); if dirty/diverged, stop the pull
+  and report rather than stash/reset or overwrite local work. Do not invent a
+  mount. Report pending Windows delivery and commit reusable CSV changes so
+  the next WSL session can synchronize. Detect host/environment, not merely
+  whether a `slurm` command exists.
+- `Future work` is a separate reading column. Distinguish author proposals
+  from reading-derived research ideas; keep the user's original notes intact.
 - Current selection criteria live in
   `docs/papers/citation_screening_rules.md`; current high-value reading view
   is `docs/papers/citation_screening_shortlist.md`. The broad citation CSV stays

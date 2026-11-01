@@ -7,6 +7,7 @@ import csv
 import json
 import os
 import shutil
+from io import BytesIO
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -21,9 +22,8 @@ DOCS = ROOT / "docs/papers"
 DEFAULT = Path("/mnt/d/umich/research/persona/persona_literature.xlsx")
 HEADERS = ["ID", "Title", "Link", "Key words", "One sentence/topic", "Contributions",
            "Limitation", "Additional think", "Related paper", "Research direction",
-           "Priority", "Institution / Venue", "Read status", "Evidence scope"]
-WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34]
-USER_FIELDS = {"Additional think", "Read status"}
+           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work"]
+WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70]
 
 
 def records() -> list[tuple[str, dict]]:
@@ -62,6 +62,14 @@ def records() -> list[tuple[str, dict]]:
     for _, row in result:
         assert all(row[field] for field in ["Title", "Link", "Key words", "One sentence/topic"])
         assert all(int(n) in ids and int(n) != row["ID"] for n in row["Related paper"].split(", "))
+    reading_csv = DOCS / "literature_reading.csv"
+    if reading_csv.exists():
+        with reading_csv.open(encoding="utf-8-sig", newline="") as handle:
+            notes = {int(row["ID"]): row for row in csv.DictReader(handle)}
+        for _, values in result:
+            for field, value in notes.get(values["ID"], {}).items():
+                if field in HEADERS and field != "ID":
+                    values[field] = value
     return result
 
 
@@ -78,7 +86,8 @@ def guide(book: Workbook) -> None:
         ("阅读状态", "未标记／待读／在读／已读／暂缓；更新时保留。"),
         ("优先级", "基础：最初两篇；A：先建立问题地图的10篇；B：按方向扩展的20篇。"),
         ("证据边界", "贡献是当前综合判断，Limitation包含作者局限与阅读核对点；未声称32篇已全文审计。"),
-        ("更新", "先更新仓库文献源数据，再运行scripts/export_literature_workbook.py；按稳定ID合并。"),
+        ("更新", "仓库literature_reading.csv与Windows表按稳定ID同步；Excel修改后先用--import-workbook回同步，再导出。"),
+        ("Future work", "区分作者提出与阅读推演；Additional think保留用户原文，不自动搬移。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
         ("保管", "更新前关闭Excel；脚本会为已有文件保留备份。_ExportState是内部合并基线，不要删除。"),
         ("生成时间 UTC", datetime.now(timezone.utc).isoformat()),
@@ -112,11 +121,20 @@ def export(output: Path) -> None:
         state.append(["Source key", "Stable ID", "Last generated values"])
         baseline = {}
     else:
-        book = load_workbook(output)
+        book = load_workbook(BytesIO(output.read_bytes()))
         if not {"Papers", "_ExportState"}.issubset(book.sheetnames):
             raise SystemExit("Existing workbook lacks merge metadata; inspect and migrate it before updating.")
         sheet, state = book["Papers"], book["_ExportState"]
-        if [cell.value for cell in sheet[1]] != HEADERS:
+        existing_headers = [cell.value for cell in sheet[1]]
+        if existing_headers == HEADERS[:-1]:
+            sheet.cell(1, len(HEADERS), HEADERS[-1])
+            sheet.column_dimensions["O"].width = WIDTHS[-1]
+            for cell in sheet["O"]:
+                cell.alignment = Alignment(wrap_text=True, vertical="top")
+            sheet.cell(1, 15)._style = sheet.cell(1, 14)._style
+            if "LiteratureTable" in sheet.tables:
+                del sheet.tables["LiteratureTable"]
+        elif existing_headers != HEADERS:
             raise SystemExit("Workbook headers changed; inspect before updating.")
         baseline = {key: (identifier, json.loads(values)) for key, identifier, values in state.iter_rows(min_row=2, values_only=True) if key}
     row_by_id = {}
@@ -149,7 +167,7 @@ def export(output: Path) -> None:
             cell = sheet.cell(row_number, column)
             old = previous[1].get(header) if previous else None
             unchanged = cell.value == old or (cell.value is None and old == "")
-            if new or (header not in USER_FIELDS and unchanged):
+            if new or unchanged:
                 if header == "Link" and not new and cell.hyperlink and cell.hyperlink.target != old:
                     continue
                 cell.value = values[header]
@@ -183,7 +201,7 @@ def export(output: Path) -> None:
             if cell.column != 3:
                 cell.font = Font(name="Calibri", size=11)
         sheet.cell(number, 8).fill = PatternFill("solid", fgColor="FFF2CC")
-    reference = f"A1:N{sheet.max_row}"
+    reference = f"A1:{get_column_letter(len(HEADERS))}{sheet.max_row}"
     if "LiteratureTable" in sheet.tables:
         sheet.tables["LiteratureTable"].ref = reference
         if sheet.tables["LiteratureTable"].autoFilter:
@@ -210,7 +228,63 @@ def export(output: Path) -> None:
     print(f"Saved {output} ({len(expected)} catalog papers; user notes preserved).")
 
 
+def import_workbook(path: Path) -> None:
+    """Explicit, user-requested import of Excel edits, keyed by stable ID."""
+    if path.with_name("~$" + path.name).exists():
+        raise SystemExit("Excel lock file exists; save and close before importing.")
+    expected = {values["ID"]: (key, values) for key, values in records()}
+    with path.open("rb") as handle:
+        book = load_workbook(handle)
+        sheet = book["Papers"]
+        headers = [cell.value for cell in sheet[1]]
+        if headers not in (HEADERS, HEADERS[:-1]):
+            raise SystemExit("Workbook headers changed; inspect before importing.")
+        seen = set()
+        for cells in sheet.iter_rows(min_row=2, values_only=True):
+            identifier = cells[0]
+            if identifier is None:
+                continue
+            if identifier not in expected or identifier in seen:
+                raise SystemExit(f"Unknown or duplicate ID: {identifier}")
+            seen.add(identifier)
+            expected[identifier][1].update({field: value if value is not None else ""
+                                          for field, value in zip(headers, cells)})
+        if seen != set(expected):
+            raise SystemExit("Missing IDs; inspect user deletions before importing.")
+        book.close()
+    target = DOCS / "literature_reading.csv"
+    temporary = target.with_suffix(".tmp.csv")
+    with temporary.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=HEADERS)
+        writer.writeheader()
+        writer.writerows(values for _, values in sorted(expected.values(), key=lambda item: item[1]["ID"]))
+    os.replace(temporary, target)
+    # Keep the existing 30-paper screening view aligned, without adding foundations
+    # to the citation-provenance candidate pool.
+    shortlist = DOCS / "citation_screening_shortlist.csv"
+    with shortlist.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames
+        rows = list(reader)
+    by_key = {key: values for key, values in expected.values()}
+    for row in rows:
+        values = by_key[row["record_id"]]
+        row["main_contribution"] = values["Contributions"]
+        row["limitation_or_reading_caution"] = values["Limitation"]
+    with shortlist.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"Imported {len(seen)} stable IDs into {target}; screening contributions/limitations aligned.")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=DEFAULT)
-    export(parser.parse_args().output)
+    parser.add_argument("--import-workbook", type=Path,
+                        help="Import saved Excel edits into repository CSVs; does not export")
+    args = parser.parse_args()
+    if args.import_workbook:
+        import_workbook(args.import_workbook)
+    else:
+        export(args.output)

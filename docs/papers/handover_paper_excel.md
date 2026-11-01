@@ -39,7 +39,7 @@ python scripts/export_literature_workbook.py --output docs/papers/persona_litera
 - Papers是主表，可筛选、排序，冻结了表头和编号／标题。
 - ID是稳定论文编号，不是当前行号。1为原论文、2为游戏应用；3–32为精选。新增论文在目录中分配未使用的新ID，不重编号。
 - Related paper填的是主题或方法相关编号，不代表已确认互相引用。
-- Additional think只由你填写，生成器从不覆盖；Read status也保留。
+- Additional think只由你填写，agent从不生成或改写；Read status也保留。用户通知后可将原文回同步到CSV，再同步到仓库xlsx副本。
 - 其他列使用三方合并：只有当前值仍等于上次生成值时才更新，已经手改的内容保留。用户删除的已有行不会自动恢复。
 - Guide解释字段。隐藏的_ExportState保存源键、ID和上次生成基线，复制Excel时保留它。
 - 更新已有目标文件前会生成同目录backup副本。Excel锁文件存在时停止；保存用临时文件后替换。
@@ -52,4 +52,18 @@ python scripts/export_literature_workbook.py --output docs/papers/persona_litera
 - [稳定编号、关键词和一句话主题](citation_screening_sources/workbook_catalog.json)：32篇的人工作品目录；序列各字段依次为源键、ID、关键词、一句话主题、相关ID。
 - [导出脚本](../../scripts/export_literature_workbook.py)：32篇合并、样式和用户修改保护。
 
-本次在Great Lakes生成并随Git保存，尚未写入用户Windows目录。本地接手后再完成该路径的首次交付；不要把仓库副本描述成已送达D盘。
+Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步流程。
+
+## 日常同步
+
+- `literature_reading.csv` 是32篇高层阅读表的仓库文本副本，包含基础论文、用户原文笔记及 `Future work`；原30篇精选CSV继续保留筛选与引用溯源用途。
+- 仓库更新：编辑阅读CSV，再运行默认导出命令更新Windows表；同时更新仓库中的可交付xlsx。
+- 用户通知Excel修改：先保存并关闭Excel，运行以下命令回同步，再做新编辑与导出。按稳定ID匹配，保留用户文字；`Additional think`不能由agent生成或改写。导入要求完整32个ID，删除或新增论文需先人工检查迁移。
+
+```bash
+.venv-literature/bin/python scripts/export_literature_workbook.py --import-workbook /mnt/d/umich/research/persona/persona_literature.xlsx
+.venv-literature/bin/python scripts/export_literature_workbook.py
+.venv-literature/bin/python scripts/export_literature_workbook.py --output docs/papers/persona_literature.xlsx
+```
+
+导出仍执行三方合并，已手改的单元格不会被仓库更新覆盖；若两边同时改同一字段，先检查并解决差异。`Future work`追加在末列，区分作者建议与阅读推演，不自动拆走用户Additional think里的原文。Slurm／Great Lakes上可跳过Windows同步，但开始文献工作前立即安全pull最新CSV；不能伪造挂载或声称完成Windows交付。
