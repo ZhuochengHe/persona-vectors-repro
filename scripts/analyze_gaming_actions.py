@@ -167,6 +167,8 @@ def main() -> None:
     parser.add_argument('--parent-run', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--assets', type=Path, required=True)
+    parser.add_argument('--cached-only', action='store_true', help='Merge existing validated batches; never call the judge')
+    parser.add_argument('--overrides', type=Path, help='Explicit human decisions with source evidence and reasons')
     args = parser.parse_args()
     if not os.environ.get('SLURM_JOB_ID'):
         raise RuntimeError('Batch extraction must run inside Slurm')
@@ -189,6 +191,8 @@ def main() -> None:
                 raise ValueError('Unexpected sample count or changed question')
             rubric = next(iter(asset['questions'][qid]['custom_judges'].values()))['prompt']
             groups.append((group, rubric, out / 'batches' / f'{file.stem}-q{qid}.json'))
+    if args.cached_only and any(not path.exists() for _, _, path in groups):
+        raise ValueError('Cached-only analysis requires all 42 completed batches')
     provenance = {'parent_run': str(args.parent_run.resolve()), 'job_id': os.environ['SLURM_JOB_ID'],
                   'implementation_commit': os.environ.get('PV_ACTION_COMMIT'),
                   'script_sha256': digest(Path(__file__)), 'input_sha256': {p.name: digest(p) for p in inputs},
@@ -197,7 +201,9 @@ def main() -> None:
                   'retries': 2, 'timeout_seconds': 600, 'calibration': False,
                   'quantity': 'stated one-step action, not executed payoff',
                   'sampling': 'existing frozen answers only; no new model generation'}
-    save(out / f'provenance-{os.environ["SLURM_JOB_ID"]}.json', provenance)
+    provenance.update(cached_only=args.cached_only,
+                      overrides_sha256=digest(args.overrides) if args.overrides else None)
+    save(out / f'provenance-{os.environ["SLURM_JOB_ID"]}-{digest(Path(__file__))[:8]}.json', provenance)
     all_rows, failures = [], []
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = {pool.submit(extract, rows, rubric, path): rows for rows, rubric, path in groups}
@@ -217,8 +223,21 @@ def main() -> None:
             except RuntimeError as exc:
                 failures.append(str(exc))
     all_rows.sort(key=lambda r: (r['coefficient'], r['question_id'], r['rollout']))
-    save(out / 'decisions.json', all_rows)
-    save(out / 'summary.json', {'complete': len(all_rows) == 840 and not failures,
+    suffix = ''
+    if args.overrides:
+        lookup = {(r['coefficient'], r['sample_id']): r for r in all_rows}
+        for override in json.loads(args.overrides.read_text()):
+            row = lookup[override['coefficient'], override['sample_id']]
+            row['judge_decision'] = row['decision']
+            row['decision'] = {'id': row['sample_id'], 'status': override['status'],
+                               'value': override['value'], 'evidence': override['evidence'],
+                               'explanation': override['reason'], 'method': 'human_adjudication'}
+            raw = next(r for group, _, _ in groups for r in group
+                       if r['coefficient'] == row['coefficient'] and r['sample_id'] == row['sample_id'])
+            validate({'decisions': [row['decision']]}, [raw])
+        suffix = '-reviewed'
+    save(out / f'decisions{suffix}.json', all_rows)
+    save(out / f'summary{suffix}.json', {'complete': len(all_rows) == 840 and not failures,
                                 'n': len(all_rows), 'failures': failures, 'cells': aggregate(all_rows)})
     if failures:
         raise RuntimeError(str(failures))
