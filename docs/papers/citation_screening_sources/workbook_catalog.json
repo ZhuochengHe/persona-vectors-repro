@@ -84,7 +84,8 @@
       10,
       21,
       23,
-      24
+      24,
+      33
     ]
   ],
   [
@@ -390,6 +391,17 @@
       4,
       24,
       29
+    ]
+  ],
+  [
+    "PV-C104",
+    33,
+    "Big Five; trait interference; cosine similarity; orthonormalisation; cross-trait bleed",
+    "主动消除Big Five steering方向的线性重叠，再检验跨trait联动是否随之消失：几何正交并不保证输出表现独立。",
+    [
+      1,
+      5,
+      7
     ]
   ]
 ]
