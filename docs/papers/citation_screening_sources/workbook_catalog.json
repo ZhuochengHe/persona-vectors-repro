@@ -403,5 +403,17 @@
       5,
       7
     ]
+  ],
+  [
+    "PV-C179",
+    34,
+    "activation steering; cross-effect matrix; asymmetric interactions; behavioral probes; propagation forecasting",
+    "系统测量67种行为间的非对称steering副作用，并用未干预激活训练的层间映射与行为probe预测其方向和相对排序。",
+    [
+      1,
+      5,
+      7,
+      33
+    ]
   ]
 ]

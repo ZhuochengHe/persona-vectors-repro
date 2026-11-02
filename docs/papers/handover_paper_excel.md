@@ -3,7 +3,7 @@
 Windows 主阅读表：`D:\umich\research\persona\persona_literature.xlsx`。
 WSL 对应路径：`/mnt/d/umich/research/persona/persona_literature.xlsx`。
 
-仓库已备好 [Excel](persona_literature.xlsx)：33篇，包含两篇基础论文、原精选30篇及用户追加的ID 33。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
+仓库已备好 [Excel](persona_literature.xlsx)：34篇，包含两篇基础论文、原精选30篇及用户追加的ID 33–34。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
 
 ## 分工
 
