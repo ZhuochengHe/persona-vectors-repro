@@ -1,5 +1,7 @@
 """Reading-workbook migration and user-edit preservation."""
 import importlib.util
+import csv
+import json
 import shutil
 import tempfile
 import unittest
@@ -35,7 +37,7 @@ class WorkbookSyncTests(unittest.TestCase):
         book = load_workbook(BytesIO(self.output.read_bytes()))
         sheet = book['Papers']
         rows = list(sheet.iter_rows(min_row=2, values_only=True))
-        sheet.delete_rows(2, 32)
+        sheet.delete_rows(2, len(rows))
         for row in reversed(rows):
             sheet.append(row)
         for row in sheet:
@@ -66,6 +68,31 @@ class WorkbookSyncTests(unittest.TestCase):
             backup = self.directory / 'reading.backup.xlsx'
             self.assertEqual(backup.read_bytes(), before)
             self.assertEqual(list(self.directory.glob('reading.backup*.xlsx')), [backup])
+
+    def test_new_catalog_paper_appends_without_renumbering_or_losing_notes(self):
+        catalog_path = module.DOCS / 'citation_screening_sources/workbook_catalog.json'
+        catalog = json.loads(catalog_path.read_text())
+        new_id = max(row[1] for row in catalog) + 1
+        catalog.append(['test-new-source', new_id, 'test keywords', 'new topic', [7]])
+        catalog_path.write_text(json.dumps(catalog))
+        reading = module.DOCS / 'literature_reading.csv'
+        with reading.open(encoding='utf-8-sig', newline='') as handle:
+            reader = csv.DictReader(handle)
+            fields, rows = reader.fieldnames, list(reader)
+        new_row = dict(rows[0], ID=new_id, Title='New paper', **{'Related paper': '7'})
+        rows.append(new_row)
+        with reading.open('w', encoding='utf-8-sig', newline='') as handle:
+            writer = csv.DictWriter(handle, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(rows)
+        before = load_workbook(BytesIO(self.output.read_bytes()))
+        original = list(before['Papers'].values)
+        module.export(self.output)
+        after = load_workbook(BytesIO(self.output.read_bytes()))
+        self.assertEqual(list(after['Papers'].values)[:-1], original)
+        self.assertEqual(after['Papers'].cell(len(original) + 1, 1).value, new_id)
+        module.import_workbook(self.output)
+        self.assertEqual(len(module.records()), len(catalog))
 
     def test_old_schema_adds_future_work_without_losing_notes(self):
         book = load_workbook(BytesIO(self.output.read_bytes()))

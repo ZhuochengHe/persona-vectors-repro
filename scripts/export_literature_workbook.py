@@ -30,6 +30,11 @@ def records() -> list[tuple[str, dict]]:
     catalog = json.loads((DOCS / "citation_screening_sources/workbook_catalog.json").read_text())
     with (DOCS / "citation_screening_shortlist.csv").open(newline="") as handle:
         selected = {row["record_id"]: row for row in csv.DictReader(handle)}
+    reading_csv = DOCS / "literature_reading.csv"
+    notes = {}
+    if reading_csv.exists():
+        with reading_csv.open(encoding="utf-8-sig", newline="") as handle:
+            notes = {int(row["ID"]): row for row in csv.DictReader(handle)}
     result = []
     for key, identifier, keywords, topic, related in catalog:
         values = dict.fromkeys(HEADERS, "")
@@ -50,26 +55,31 @@ def records() -> list[tuple[str, dict]]:
                           **{"Research direction": "基础应用／游戏与策略", "Priority": "基础", "Institution / Venue": "预印本；主会与署名机构本表未重新核实",
                              "Evidence scope": "论文方法、Figure 3及复现协议核查；非完整逐项审计"})
         else:
-            row = selected[key]
+            row = selected.get(key)
+            if row is None:
+                if identifier not in notes:
+                    raise ValueError(f"Catalog paper {key} (ID {identifier}) needs a reading CSV row")
+                values.update(notes[identifier])
+                values["ID"] = identifier
+                result.append((key, values))
+                continue
             values.update(Title=row["title"], Link=row["paper_url"],
                           Contributions=row["main_contribution"], Limitation=row["limitation_or_reading_caution"],
                           **{"Research direction": row["shortlist_group"], "Priority": row["shortlist_tier"],
                              "Institution / Venue": row["verified_affiliations"] + "；" + row["venue"],
                              "Evidence scope": "官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计"})
         result.append((key, values))
+    for _, values in result:
+        for field, value in notes.get(values["ID"], {}).items():
+            if field in HEADERS and field != "ID":
+                values[field] = value
     ids = {row["ID"] for _, row in result}
-    assert len(ids) == len(result) == 32
+    assert len(ids) == len(result)
+    assert len({key for key, _ in result}) == len(result)
     for _, row in result:
         assert all(row[field] for field in ["Title", "Link", "Key words", "One sentence/topic"])
-        assert all(int(n) in ids and int(n) != row["ID"] for n in row["Related paper"].split(", "))
-    reading_csv = DOCS / "literature_reading.csv"
-    if reading_csv.exists():
-        with reading_csv.open(encoding="utf-8-sig", newline="") as handle:
-            notes = {int(row["ID"]): row for row in csv.DictReader(handle)}
-        for _, values in result:
-            for field, value in notes.get(values["ID"], {}).items():
-                if field in HEADERS and field != "ID":
-                    values[field] = value
+        assert all(int(n) in ids and int(n) != row["ID"]
+                   for n in row["Related paper"].split(", ") if n)
     return result
 
 
@@ -79,13 +89,13 @@ def guide(book: Workbook) -> None:
         ("用途", "Windows端高层阅读整理；研究过程、筛选和引用证据继续在仓库维护。"),
         ("目标位置", r"D:\umich\research\persona\persona_literature.xlsx"),
         ("WSL位置", str(DEFAULT)),
-        ("内容", "32篇：2篇基础论文＋30篇精选；ID 1/2固定为Persona Vectors及游戏应用。"),
+        ("内容", f"{len(records())}篇；ID 1/2固定为Persona Vectors及游戏应用；后续新增论文使用新ID。"),
         ("ID", "稳定论文编号，不是行号；筛选、排序后Related paper仍按这个编号理解。"),
         ("Related paper", "主题、方法或结论相关的论文编号；不表示这些论文已确认互相引用。"),
         ("Additional think", "专留给你填写，初始化为空，更新脚本不会生成或覆盖此列。"),
         ("阅读状态", "未标记／待读／在读／已读／暂缓；更新时保留。"),
         ("优先级", "基础：最初两篇；A：先建立问题地图的10篇；B：按方向扩展的20篇。"),
-        ("证据边界", "贡献是当前综合判断，Limitation包含作者局限与阅读核对点；未声称32篇已全文审计。"),
+        ("证据边界", "贡献是当前综合判断，Limitation包含作者局限与阅读核对点；未声称全部论文已全文审计。"),
         ("更新", "仓库literature_reading.csv与Windows表按稳定ID同步；Excel修改后先用--import-workbook回同步，再导出。"),
         ("Future work", "区分作者提出与阅读推演；Additional think保留用户原文，不自动搬移。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
@@ -137,6 +147,10 @@ def export(output: Path) -> None:
         elif existing_headers != HEADERS:
             raise SystemExit("Workbook headers changed; inspect before updating.")
         baseline = {key: (identifier, json.loads(values)) for key, identifier, values in state.iter_rows(min_row=2, values_only=True) if key}
+    if "Guide" in book:
+        for row in book["Guide"].iter_rows():
+            if row[0].value == "内容":
+                row[1].value = f"{len(expected)}篇；ID 1/2固定为Persona Vectors及游戏应用；新增论文沿用稳定ID。"
     row_by_id = {}
     for row in sheet.iter_rows(min_row=2):
         if row[0].value is not None:

@@ -64,7 +64,7 @@ and [archive guide](docs/research/archive.md).
   keywords, topics, and related-paper IDs live in
   `docs/papers/citation_screening_sources/workbook_catalog.json`.
   A ready-to-open Git handoff copy is `docs/papers/persona_literature.xlsx`.
-- Keep `docs/papers/literature_reading.csv` (all 32 stable IDs, including the
+- Keep `docs/papers/literature_reading.csv` (all cataloged stable IDs, including the
   two foundations and verbatim user notes) synchronized with the Windows
   workbook. Repository CSV edits must be exported to the mounted workbook in
   the same task. When the user reports Excel edits, first save/close Excel and
