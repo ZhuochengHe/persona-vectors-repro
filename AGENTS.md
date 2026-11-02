@@ -57,7 +57,9 @@ and [archive guide](docs/research/archive.md).
 - Use a filterable Excel table, frozen headers/identifier columns, wrapped
   text, working hyperlinks, and a short guide explaining IDs and update rules.
   Read any existing destination workbook before updating it; back it up before
-  replacement, and stop cleanly if Excel has locked it.
+  replacement, and stop cleanly if Excel has locked it. Keep only the most
+  recent pre-update backup (`<stem>.backup.xlsx`); remove older timestamped
+  backups after a successful update.
 - Export/update with `scripts/export_literature_workbook.py`; its stable IDs,
   keywords, topics, and related-paper IDs live in
   `docs/papers/citation_screening_sources/workbook_catalog.json`.

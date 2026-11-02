@@ -89,7 +89,7 @@ def guide(book: Workbook) -> None:
         ("更新", "仓库literature_reading.csv与Windows表按稳定ID同步；Excel修改后先用--import-workbook回同步，再导出。"),
         ("Future work", "区分作者提出与阅读推演；Additional think保留用户原文，不自动搬移。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
-        ("保管", "更新前关闭Excel；脚本会为已有文件保留备份。_ExportState是内部合并基线，不要删除。"),
+        ("保管", "更新前关闭Excel；脚本仅保留最近一次更新前的备份。_ExportState是内部合并基线，不要删除。"),
         ("生成时间 UTC", datetime.now(timezone.utc).isoformat()),
     ]
     sheet.append(["说明", "内容"])
@@ -219,9 +219,17 @@ def export(output: Path) -> None:
     try:
         book.save(temporary)
         if not fresh:
-            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
-            shutil.copy2(output, output.with_name(output.stem + f".backup-{stamp}.xlsx"))
+            backup = output.with_name(output.stem + ".backup.xlsx")
+            backup_temporary = output.with_name(output.stem + ".backup.tmp.xlsx")
+            try:
+                shutil.copy2(output, backup_temporary)
+                os.replace(backup_temporary, backup)
+            finally:
+                backup_temporary.unlink(missing_ok=True)
         os.replace(temporary, output)
+        if not fresh:
+            for previous_backup in output.parent.glob(output.stem + ".backup-*.xlsx"):
+                previous_backup.unlink()
     finally:
         book.close()
         temporary.unlink(missing_ok=True)

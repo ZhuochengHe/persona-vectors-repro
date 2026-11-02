@@ -52,7 +52,20 @@ class WorkbookSyncTests(unittest.TestCase):
         book = load_workbook(BytesIO(self.output.read_bytes()))
         row = next(r for r in book['Papers'].iter_rows(values_only=True) if r[0] == 3)
         self.assertEqual(row[12], '已读')
-        self.assertTrue(list(self.directory.glob('reading.backup-*.xlsx')))
+        self.assertTrue(self.output.with_name('reading.backup.xlsx').exists())
+
+    def test_only_latest_preupdate_backup_is_retained(self):
+        legacy = self.directory / 'reading.backup-20260101.xlsx'
+        legacy.write_bytes(self.output.read_bytes())
+        for text in ('first manual edit', 'second manual edit'):
+            book = load_workbook(BytesIO(self.output.read_bytes()))
+            book['Papers'].cell(2, 8, text)
+            book.save(self.output)
+            before = self.output.read_bytes()
+            module.export(self.output)
+            backup = self.directory / 'reading.backup.xlsx'
+            self.assertEqual(backup.read_bytes(), before)
+            self.assertEqual(list(self.directory.glob('reading.backup*.xlsx')), [backup])
 
     def test_old_schema_adds_future_work_without_losing_notes(self):
         book = load_workbook(BytesIO(self.output.read_bytes()))

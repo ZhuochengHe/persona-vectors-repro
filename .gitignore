@@ -25,3 +25,7 @@ docs/papers/*.txt
 # Pinned primary-paper reading copies shipped with the handoff.
 !docs/papers/2507.21509v3.pdf
 !docs/papers/2507.21509v3.txt
+
+# Rolling local workbook recovery copy
+docs/papers/*.backup.xlsx
+docs/papers/*.backup.tmp.xlsx

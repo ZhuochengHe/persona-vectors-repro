@@ -42,7 +42,7 @@ python scripts/export_literature_workbook.py --output docs/papers/persona_litera
 - Additional think只由你填写，agent从不生成或改写；Read status也保留。用户通知后可将原文回同步到CSV，再同步到仓库xlsx副本。
 - 其他列使用三方合并：只有当前值仍等于上次生成值时才更新，已经手改的内容保留。用户删除的已有行不会自动恢复。
 - Guide解释字段。隐藏的_ExportState保存源键、ID和上次生成基线，复制Excel时保留它。
-- 更新已有目标文件前会生成同目录backup副本。Excel锁文件存在时停止；保存用临时文件后替换。
+- 更新已有目标文件前保存同目录`persona_literature.backup.xlsx`，仅保留最近一次更新前的版本；成功更新后清理旧时间戳备份。Excel锁文件存在时停止；保存用临时文件后替换。
 - 贡献、局限是目前阅读范围内的综合笔记；局限栏也包含尚需核对的问题，不能理解为所有论文都经过完整方法审计。
 
 ## 源文件
