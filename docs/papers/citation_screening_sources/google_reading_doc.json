@@ -4,7 +4,7 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMTH3Xu87BArMAutDVsJSdVoLwY33_Vp9aqVMacq6pxHZIW2f58jBSQGaWLNpKZsIY1VaQrNKA-l2is4TZWfaTa5dNIkImLrD2lD9Iw",
+  "verified_revision": "AHj4eMSPrgq_eoikFrjOgRkgImcqHguW3GWRPh0XG_vN-EzfmQeEf_LLygtnxlYTmEj3rxtN8rbfPGaMHh02k-K5uE7doNahlCGnJxU1oDk",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 1,
@@ -45,7 +45,16 @@
     "31": "h.cz06iaisue9m",
     "32": "h.16gpr1zf0a5e",
     "33": "h.m3zjbl5wp2g1",
-    "34": "h.ernvqtb0x573"
+    "34": "h.ernvqtb0x573",
+    "35": "h.cyu4flkhf0mb",
+    "36": "h.vugz29qb58qp",
+    "37": "h.h3ergr1fymx1",
+    "38": "h.obohiv9jyfgz",
+    "39": "h.jjzf9mhpi49i",
+    "40": "h.yr6mniptz0ik",
+    "41": "h.8drdl15beqjn",
+    "42": "h.728cjy15vz1z",
+    "43": "h.auzypzox9yej"
   },
   "update_rule": "Read live document and merge by stable paper ID before scoped revision-guarded edits. Update native index cells and links together with affected metadata; never replay initialization over existing notes."
 }

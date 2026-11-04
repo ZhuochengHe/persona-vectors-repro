@@ -415,5 +415,118 @@
       7,
       33
     ]
+  ],
+  [
+    "PV-C205",
+    35,
+    "Rank-1 Steering & Granularity; persona; causal transfer",
+    "rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度。",
+    [
+      1,
+      7,
+      10,
+      33,
+      34
+    ]
+  ],
+  [
+    "PV-C128",
+    36,
+    "Playing Devil’s Advocate; persona; causal transfer",
+    "未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制。",
+    [
+      3,
+      5,
+      7,
+      13
+    ]
+  ],
+  [
+    "PV-C132",
+    37,
+    "Where Steering Signals Come From; persona; causal transfer",
+    "控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果。",
+    [
+      1,
+      12,
+      21,
+      27,
+      34
+    ]
+  ],
+  [
+    "PV-C097",
+    38,
+    "ContextEcho; persona; causal transfer",
+    "真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现。",
+    [
+      3,
+      14,
+      19,
+      29
+    ]
+  ],
+  [
+    "PV-C067",
+    39,
+    "Non-Identifiability of Steering Vectors; persona; causal transfer",
+    "仅凭行为等效的干预结果，能否唯一识别内部steering方向。",
+    [
+      1,
+      10,
+      33,
+      34
+    ]
+  ],
+  [
+    "PV-C300",
+    40,
+    "Detection != Reliable Control; persona; causal transfer",
+    "能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感。",
+    [
+      4,
+      5,
+      12,
+      13,
+      34
+    ]
+  ],
+  [
+    "PV-C342",
+    41,
+    "Latent Identity Reversion; persona; causal transfer",
+    "persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性。",
+    [
+      3,
+      19,
+      31,
+      38
+    ]
+  ],
+  [
+    "PV-C084",
+    42,
+    "Prompt-Activation Duality; persona; causal transfer",
+    "为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善。",
+    [
+      1,
+      7,
+      21,
+      23,
+      38
+    ]
+  ],
+  [
+    "PV-C077",
+    43,
+    "What Can We Actually Steer?; persona; causal transfer",
+    "不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量。",
+    [
+      1,
+      2,
+      7,
+      33,
+      34
+    ]
   ]
 ]

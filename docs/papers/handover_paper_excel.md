@@ -5,7 +5,7 @@
 Windows 筛选／离线表：`D:\umich\research\persona\persona_literature.xlsx`。
 WSL 对应路径：`/mnt/d/umich/research/persona/persona_literature.xlsx`。
 
-仓库已备好 [Excel](persona_literature.xlsx)：34篇，包含两篇基础论文、原精选30篇及用户追加的ID 33–34。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
+仓库已备好 [Excel](persona_literature.xlsx)：43篇，包含两篇基础论文、原精选30篇及后续追加ID 33–43。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
 
 ## 分工
 
@@ -73,6 +73,6 @@ Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步�
 
 ## Google Doc阅读视图
 
-原生文档放在My Drive的ChatGPT目录；同一URL持续维护。首页有研究问题／类型索引和34行论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
+原生文档放在My Drive的ChatGPT目录；同一URL持续维护。首页有研究问题／类型索引和按稳定ID维护的论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
 
 `literature_reading.csv`保存完整字段，`literature_reading.md`为可读镜像；Doc身份与核验信息在`citation_screening_sources/google_reading_doc.json`。线上修改需agent读取后按ID合并，当前不自动双向同步。只调整格式和索引且没有改字段时不必导出Excel。

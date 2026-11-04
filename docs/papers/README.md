@@ -14,18 +14,21 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 
 ## Windows / WSL reading workbook
 
-- [Ready-to-open Excel: 34 papers](persona_literature.xlsx)
+- [Ready-to-open Excel: 43 papers](persona_literature.xlsx)
 - [Local WSL handoff and update workflow](handover_paper_excel.md)
 - [Reading-note depth and research-question guidelines](reading_note_guidelines.md)
 - Windows destination: `D:\umich\research\persona\persona_literature.xlsx`.
 - Includes the original Persona Vectors, the games application, and the selected
   30 papers, plus the user-added trait-interference paper (ID 33), compared with
-  PERSONA (ID 7), and the side-effect forecasting paper (ID 34). User-owned Additional think cells are preserved through CSV/workbook
+  PERSONA (ID 7), the side-effect forecasting paper (ID 34), and the
+  question-driven supplement (IDs 35–43). User-owned Additional think cells are preserved through CSV/workbook
   synchronization. The Windows workbook was first delivered on 2026-10-30.
 
 ## Persona Vectors 被引文献探索
 
-- **当前主阅读清单：[高价值精选30篇（先读10篇）](citation_screening_shortlist.md) · [精选CSV](citation_screening_shortlist.csv)**
+- [当前研究问题补筛：新增ID 35–43与范围外线索](citation_screening_shortlist.md#当前研究问题补筛2026-11-04)
+
+- **原精选：[高价值精选30篇（先读10篇）](citation_screening_shortlist.md) · [精选CSV](citation_screening_shortlist.csv)**
 - [筛选规则（后续基准）](citation_screening_rules.md)
 - [第一轮宽口径导航与九个研究方向](citation_screening_reading_map.md)
 - [完整工作CSV](citation_screening_working.csv) · [保留集CSV](citation_screening_retained.csv)

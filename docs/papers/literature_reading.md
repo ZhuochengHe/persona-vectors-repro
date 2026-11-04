@@ -22,17 +22,19 @@ trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID
 
 如何评估审计与交互中的可靠性？｜ID 14、ID 19
 
+当前问题补充：几何、read–write与agent迁移｜ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
+
 ### 按论文类型查找
 
-Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34
+Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42
 
-Benchmark：ID 7、ID 14
+Benchmark：ID 7、ID 14、ID 38
 
 Survey：当前未标注符合此类的条目
 
-Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34
+Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
 
-Theory：当前未标注符合此类的条目
+Theory：ID 39
 
 ## 论文总表
 
@@ -74,6 +76,15 @@ Theory：当前未标注符合此类的条目
 | [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | 未标记 |
 | [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | 未标记 |
 | [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | 未标记 |
+| [35](#paper-35) | [Rank-1 Steering & Granularity](https://arxiv.org/abs/2605.16362) | Method; Analysis | 未标记 |
+| [36](#paper-36) | [Playing Devil’s Advocate](https://arxiv.org/abs/2605.21006) | Analysis | 未标记 |
+| [37](#paper-37) | [Where Steering Signals Come From](https://arxiv.org/abs/2607.25270) | Method; Analysis | 未标记 |
+| [38](#paper-38) | [ContextEcho](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | 未标记 |
+| [39](#paper-39) | [Non-Identifiability of Steering Vectors](https://arxiv.org/abs/2602.06801) | Theory; Analysis | 未标记 |
+| [40](#paper-40) | [Detection != Reliable Control](https://arxiv.org/abs/2608.24901) | Analysis | 未标记 |
+| [41](#paper-41) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | 未标记 |
+| [42](#paper-42) | [Prompt-Activation Duality](https://arxiv.org/abs/2605.10664) | Method; Analysis | 未标记 |
+| [43](#paper-43) | [What Can We Actually Steer?](https://arxiv.org/abs/2511.18284) | Analysis | 未标记 |
 
 ## 人格方向从哪里来，如何形成？
 
@@ -1632,5 +1643,421 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：arXiv署名页未给出可确认单位；ACL 2026 主会长文
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+## 当前问题补充：几何、read–write与agent迁移
+
+<a id="paper-35"></a>
+
+### ID 35｜When Is Rank-1 Steering Cheap? Geometry, Granularity, and Budgeted Search
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2605.16362)
+
+**Research question**
+
+rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度？
+
+**一句话主题**
+
+rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度。
+
+**方法与贡献**
+
+1. 将rank-1 steering写成层与系数的预算约束搜索，利用prompt-boundary方向一致性引导搜索；提出concept granularity衡量跨对比context的方向异质性。几何引导平均减少恢复95% best-found utility所需试验约39.8%。
+
+2. 高granularity与搜索更慢、best-found utility更低相关；作者区分prompt配对／尺度等可修正估计问题与随输入旋转的残余异质性。直接对应global方向与context-dependent方向的比较。
+
+3. 对当前问题的约束：它已涉及旋转与粒度，因此“发现方向随context旋转”本身不足以作为独立贡献；但它主要连接几何与搜索／评分效用，没有完成persona-specific的自报、role表达及agent行动三范式交叉因果迁移。
+
+**局限与解释边界**
+
+实证支持几何诊断和搜索效率，不是证明所有persona都有唯一全局rank-1表示，也未证明rank-k／局部子空间一定更好。best-found utility依赖所用评价与搜索预算，不能替代真实agent决策效度。
+
+**Future work**
+
+阅读推演：在matched role×question激活差上做留context的rank-1／rank-k重构，再独立测behavioral selectivity与迁移；分别报告表示误差和控制效果，避免用搜索失败推断rank-1不存在。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 7, 10, 33, 34
+
+关键词：Rank-1 Steering & Granularity; persona; causal transfer
+
+机构／会议：University of Texas at Austin；预印本（会议状态未核）
+
+阅读证据：2605.16362v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.16362v2
+
+[返回论文总表](#论文总表)
+
+<a id="paper-36"></a>
+
+### ID 36｜Playing Devil's Advocate: Off-the-Shelf Persona Vectors Rival Targeted Steering for Sycophancy
+
+Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2605.21006)
+
+**Research question**
+
+未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制？
+
+**一句话主题**
+
+未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制。
+
+**方法与贡献**
+
+1. 在Gemma 2 27B和Qwen 3 32B比较Skeptic、Judge、Devil’s Advocate等现成role方向与专门的sycophancy CAA方向，在分开的调参／评估split检查减少迎合的效果。
+
+2. 选定critical roles平均达到CAA约68%／98%的sycophancy-logit降幅；role方向与CAA方向的绝对cosine却较低。说明不同提取语义、不同几何方向可指向相近行为效应。
+
+3. 16条事实探针上相关Qwen条件保留正确答案，但conformist roles不稳定地产生反向效应。它比“role是多个trait的线性组合”更直接的证据，是role→某个trait行为的功能迁移。
+
+**局限与解释边界**
+
+两个模型及有限任务、role与系数；有任务特定调参，不能称为完全零样本控制。低cosine与相近行为效果不证明下游机制不同，事实探针也不等于广泛能力无损。没有做增强role同时抵消trait的冲突矩阵。
+
+**Future work**
+
+阅读推演：固定role向量后加入±trait方向，比较角色辨识、语气、对错判别和行动选择；检验role的trait效应能否被选择性抵消，同时保留身份表达。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 5, 7, 13
+
+关键词：Playing Devil’s Advocate; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2605.21006v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.21006v4
+
+[返回论文总表](#论文总表)
+
+<a id="paper-37"></a>
+
+### ID 37｜Where Steering Signals Come From: Activation Source Selection in Activation Steering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2607.25270)
+
+**Research question**
+
+控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果？
+
+**一句话主题**
+
+控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果。
+
+**方法与贡献**
+
+1. 在三种instruct模型与四类任务中固定下游干预，只改变源激活的上下文和读取位置／聚合方法，发现控制效果随来源显著变化。
+
+2. 强信号更接近模型即将执行或继续目标行为的execution-boundary状态；“答案里已经出现目标行为”本身不足以保证方向可控。提出tail subtraction去掉共享prompt／continuation语义，改善边界信号。
+
+3. 与read–write问题的联系：将生产／执行前状态与描述既有行为的状态区分，为self-report、role-play、行为trace提取方向的比较提供直接方法参考。
+
+**局限与解释边界**
+
+考察的是激活来源与控制效用，尚未系统比较同一persona的自报／角色／agent行动三个范式。execution boundary不自动等于agent工具动作边界，后者需要单独测量。
+
+**Future work**
+
+阅读推演：对honesty等同一目标，比较自我描述、角色回答、决策前／tool-call前与动作后激活；固定层、范数和干预位置，分离来源差异与注入差异。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 12, 21, 27, 34
+
+关键词：Where Steering Signals Come From; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2607.25270v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2607.25270v2
+
+[返回论文总表](#论文总表)
+
+<a id="paper-38"></a>
+
+### ID 38｜ContextEcho: A Benchmark for Persona Drift in Long Agentic-Coding Sessions
+
+Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2605.24279)
+
+**Research question**
+
+真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现？
+
+**一句话主题**
+
+真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现。
+
+**方法与贡献**
+
+1. 建立25-probe identity suite及snapshot-then-probe协议，冻结会话状态后分支测试，避免探针改变主轨迹。语料含57次真实coding会话；跨23模型主面板使用一个代表会话，另有语料尺度分析。
+
+2. compaction并不稳定重置漂移；anchor提示能恢复部分行为register，但placebo提示也有恢复效果。drifted prefix在同任务工具调用上可能有收益，作者归因于保留任务context，不能当成“漂移改善可靠性”。
+
+3. 附录O直接贴近Assistant Axis问题：Qwen3-32B、L32及所测剂量下，沿公开Assistant Axis补偿投影gap能恢复投影，却未恢复probe judge的行为register。它已经提供“投影恢复≠行为恢复”的局部实例。
+
+**局限与解释边界**
+
+主要测behavioral register，非所有latent persona；主面板和真实任务外部效度仍有限。附录O是一个模型、层和剂量，未测A-anchor是否经同一轴起效，且没有独立fluency检查；不能把该结果推广为Axis一概无效或高投影必然unsafe。
+
+**Future work**
+
+阅读推演：将Axis投影、工具行动质量、任务完成率与安全指标同时跟踪；按工具错误、外部文本、状态变化分别施压。先检验其预测可靠性，再比较capping带来的行为收益和任务代价。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 14, 19, 29
+
+关键词：ContextEcho; persona; causal transfer
+
+机构／会议：Accenture；UC Berkeley；Argonne National Laboratory；独立研究者；预印本
+
+阅读证据：2605.24279v3：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.24279v3
+
+[返回论文总表](#论文总表)
+
+<a id="paper-39"></a>
+
+### ID 39｜On the Non-Identifiability of Steering Vectors in Large Language Models
+
+Theory; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2602.06801)
+
+**Research question**
+
+仅凭行为等效的干预结果，能否唯一识别内部steering方向？
+
+**一句话主题**
+
+仅凭行为等效的干预结果，能否唯一识别内部steering方向。
+
+**方法与贡献**
+
+1. 给出正式命题与证明：在论文的单层white-box、局部线性化及其秩／可观测性条件下，激活到输出映射的null-space可使几何不同的方向具有相同一阶输出效应；v与v+v0（v0在相应kernel内）形成等价类。
+
+2. 比较正交扰动、contrastive与PCA提取等方向，并在多个trait、强度与prompt分布上检查近似输出等效。它与“不同提取方法是否估计同一底层表示”的问题直接相关。
+
+3. 含命题／证明，故可归Theory；同时保留实证分析标签。关键启示是不同方向不必代表不同功能机制，行为相同也未必能唯一还原表示。
+
+**局限与解释边界**
+
+命题受局部线性近似、观测范围及null-space条件限制；多prompt共同kernel和精确非线性系统不能简单照搬单点论证。语义评分／有限任务上的近似等效也弱于完整输出分布或全部行为相同。
+
+**Future work**
+
+阅读推演：跨提取范式比较时，除cosine外比较干预响应profile、跨context迁移及可区分的行为结果；研究等价类／可控子空间，而非仅追逐唯一方向。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 10, 33, 34
+
+关键词：Non-Identifiability of Steering Vectors; persona; causal transfer
+
+机构／会议：Manipal Institute of Technology Bengaluru（署名页）；预印本
+
+阅读证据：2602.06801v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2602.06801v4
+
+[返回论文总表](#论文总表)
+
+<a id="paper-40"></a>
+
+### ID 40｜Detection != Reliable Control: Decodable Empathy Directions Yield at Most Partial Shifts in Automated Empathy Scores
+
+Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2608.24901)
+
+**Research question**
+
+能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感？
+
+**一句话主题**
+
+能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感。
+
+**方法与贡献**
+
+1. 将共情分为Recognition与Resonance，三模型中结合两类LLM judge、EPITOME分类器及emotional／neutral正控，检查可解码性、表面文本残差化与干预效果。
+
+2. 两facet在控制表面语义后仍可解码；但Resonance steering只部分改变自动评分。Qwen约+0.29（自然gap约26%），不同方向的直接对照只在部分模型显示facet选择性。
+
+3. 认知方向additive steering的弱结果伴随测量工具分辨率问题，不能简单作为干净因果null；方向消融也与加法不同。它为read–write gap增加了measurement-sensitivity控制。
+
+**局限与解释边界**
+
+缺少与自动评分相匹配的人类感受变化验证；任务和facet范围有限。可读出、可改写文本和改变目标行为分数是不同层级；本文不直接覆盖agent工具行动。
+
+**Future work**
+
+阅读推演：给self-report／role／行动三套指标分别设置正控、量程及等效阈值，再判断“只改一个、不改另一个”；避免把p>0.05或粗量表当作独立控制证据。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：4, 5, 12, 13, 34
+
+关键词：Detection != Reliable Control; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2608.24901v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2608.24901v1
+
+[返回论文总表](#论文总表)
+
+<a id="paper-41"></a>
+
+### ID 41｜The Persona Is Still There, but Who Is Speaking? Latent Identity Reversion in Persistent AI Agents
+
+Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2610.01490)
+
+**Research question**
+
+persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性？
+
+**一句话主题**
+
+persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性。
+
+**方法与贡献**
+
+1. 从持久agent事故出发，区分represented identity与enacted identity：对话仍含persona资料，却可能不再把该persona绑定为“我”。
+
+2. 反复heartbeat不是充分原因：保持system锚点的46次探针没有复现失败；取消重注入锚点后，自动heartbeat更易触发回到harness身份，恢复锚点可逆地恢复persona表达。
+
+3. 提供重要agent控制变量：所谓persona drift可能部分来自harness在resume／compaction时丢失system级设定，而非纯context长度或模型内部几何变化。
+
+**局限与解释边界**
+
+以特定agent、模型与实现操作为主，没有内部激活读取，represented／enacted是行为范式中的区分。不能由此证明两者必然由不同向量／回路实现。
+
+**Future work**
+
+阅读推演：长程agent实验先固定system重注入与tool-role模板；把锚点丢失与真实反馈压力分开，再研究Assistant Axis或行为子空间漂移。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 19, 31, 38
+
+关键词：Latent Identity Reversion; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2610.01490v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2610.01490v1
+
+[返回论文总表](#论文总表)
+
+<a id="paper-42"></a>
+
+### ID 42｜Prompt-Activation Duality: Improving Activation Steering via Attention-Level Interventions
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2605.10664)
+
+**Research question**
+
+为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善？
+
+**一句话主题**
+
+为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善。
+
+**方法与贡献**
+
+1. 指出KV-cache contamination：被干预token状态缓存后反复复用，使局部编辑变成累积变化。GCAD从system-prompt对self-attention的贡献提取信号，并逐token gating。
+
+2. 多轮persona实验中保留trait控制并降低长程coherence退化；正文主设置将coherence drift从-18.6改善到-1.9，turn-10 trait表达从78.0提高到93.1。
+
+3. 对agent迁移实验很关键：context-dependent变化可能同时混入cache／harness差异；把conversational向量移到agent时，需控制状态重编码与干预历史。
+
+**局限与解释边界**
+
+长程对话coherence不等同于工具动作或任务完成可靠性；尚未证明该prompt-derived方法在真实agent反馈循环中的优越性。报告中的评分收益需要放回其任务与评估口径理解。
+
+**Future work**
+
+阅读推演：对同一个agent任务比较cache保留／逐轮重编码、planning-only／tool-boundary注入，联合记录trait、语言coherence、action正确性与compute。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 7, 21, 23, 38
+
+关键词：Prompt-Activation Duality; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2605.10664v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.10664v2
+
+[返回论文总表](#论文总表)
+
+<a id="paper-43"></a>
+
+### ID 43｜What Can We Actually Steer? A Multi-Behavior Study of Activation Control
+
+Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+
+[论文原文](https://arxiv.org/abs/2511.18284)
+
+**Research question**
+
+不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量？
+
+**一句话主题**
+
+不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量。
+
+**方法与贡献**
+
+1. 跨50种行为类别比较persona archetype、trait、misalignment、style与公众人物模仿；分析强度、向量性质和数据量对steering的影响。 主实验在Llama3.1-8B固定L15；该配置下personality／misalignment比知识依赖的公众人物和部分persona archetype更易控制。
+
+2. trait表达对系数呈倒U形；向量分离等指标不能可靠预测控制成功，更大提取数据可容许更强干预。区分不同类别响应，而非假设persona strength越高越好。
+
+3. 直接补充trait／role表达与质量trade-off的动机，可为Pareto式报告提供基线；但它没有完成当前提出的trait、策略一致性、任务能力和compute四目标agent优化。
+
+**局限与解释边界**
+
+主要是自动评分下的行为表达、relevance与coherence；不是实际长期agent策略的完整证据，也没有证明所有角色均服从同一倒U曲线。 主要模型与固定L15使角色／trait类别差异不能直接推广为普遍表征定律，需做跨层匹配。
+
+**Future work**
+
+阅读推演：把stylistic与behavioral coherence分开，报告可行域／Pareto frontier；在相同提取和搜索预算下比较不同角色与trait，避免仅最大化persona评分。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 2, 7, 33, 34
+
+关键词：What Can We Actually Steer?; persona; causal transfer
+
+机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+
+阅读证据：2511.18284v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2511.18284v2
 
 [返回论文总表](#论文总表)

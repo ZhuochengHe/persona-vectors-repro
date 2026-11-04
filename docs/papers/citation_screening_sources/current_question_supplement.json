@@ -1,0 +1,96 @@
+{
+  "selection_date": "2026-11-04",
+  "scope": "补录原冻结候选，保留原30篇历史筛选；外部线索不加入已确认集合",
+  "papers": [
+    {
+      "id": 35,
+      "source_key": "PV-C205",
+      "arxiv_version": "2605.16362v2",
+      "url": "https://arxiv.org/abs/2605.16362",
+      "scope": "2605.16362v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.16362v2",
+      "seed_citation_verified": true,
+      "working_text_sha256": "a50c583b13691a9e70e7d3442eb1b890c56abef3579afd3ec53d259a6e370f45",
+      "short_title": "Rank-1 Steering & Granularity"
+    },
+    {
+      "id": 36,
+      "source_key": "PV-C128",
+      "arxiv_version": "2605.21006v4",
+      "url": "https://arxiv.org/abs/2605.21006",
+      "scope": "2605.21006v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.21006v4",
+      "seed_citation_verified": true,
+      "working_text_sha256": "ebd6dccd23127e212ed5169a0057f1a6b88c0ecfb2ee0075659ed84b48393218",
+      "short_title": "Playing Devil’s Advocate"
+    },
+    {
+      "id": 37,
+      "source_key": "PV-C132",
+      "arxiv_version": "2607.25270v2",
+      "url": "https://arxiv.org/abs/2607.25270",
+      "scope": "2607.25270v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2607.25270v2",
+      "seed_citation_verified": true,
+      "working_text_sha256": "736f222f9663fb27e70e05ee9190c31dd9ed133d420a210c44f9023498686094",
+      "short_title": "Where Steering Signals Come From"
+    },
+    {
+      "id": 38,
+      "source_key": "PV-C097",
+      "arxiv_version": "2605.24279v3",
+      "url": "https://arxiv.org/abs/2605.24279",
+      "scope": "2605.24279v3：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.24279v3",
+      "seed_citation_verified": true,
+      "working_text_sha256": "c10964960f84f308cd551593241c7881c83521ec893366352423c07bb1443cda",
+      "short_title": "ContextEcho"
+    },
+    {
+      "id": 39,
+      "source_key": "PV-C067",
+      "arxiv_version": "2602.06801v4",
+      "url": "https://arxiv.org/abs/2602.06801",
+      "scope": "2602.06801v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2602.06801v4",
+      "seed_citation_verified": true,
+      "working_text_sha256": "29c3974983a876b529e20422245bf5378228ce3c59541ba52574be1e53313845",
+      "short_title": "Non-Identifiability of Steering Vectors"
+    },
+    {
+      "id": 40,
+      "source_key": "PV-C300",
+      "arxiv_version": "2608.24901v1",
+      "url": "https://arxiv.org/abs/2608.24901",
+      "scope": "2608.24901v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2608.24901v1",
+      "seed_citation_verified": true,
+      "working_text_sha256": "d01489d1989ce6e23ce55daaf1c2b44c54c0437cd274157f2e17137eb5e44978",
+      "short_title": "Detection != Reliable Control"
+    },
+    {
+      "id": 41,
+      "source_key": "PV-C342",
+      "arxiv_version": "2610.01490v1",
+      "url": "https://arxiv.org/abs/2610.01490",
+      "scope": "2610.01490v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2610.01490v1",
+      "seed_citation_verified": true,
+      "working_text_sha256": "522f21f30ce3500081ea7c112f55db07600c0c0e8d5373078cb4d27fee166404",
+      "short_title": "Latent Identity Reversion"
+    },
+    {
+      "id": 42,
+      "source_key": "PV-C084",
+      "arxiv_version": "2605.10664v2",
+      "url": "https://arxiv.org/abs/2605.10664",
+      "scope": "2605.10664v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.10664v2",
+      "seed_citation_verified": true,
+      "working_text_sha256": "9b3ceaa7fe86f813a1b5ec694d9d76718e2384f808c7801ff287f1315f5abdf5",
+      "short_title": "Prompt-Activation Duality"
+    },
+    {
+      "id": 43,
+      "source_key": "PV-C077",
+      "arxiv_version": "2511.18284v2",
+      "url": "https://arxiv.org/abs/2511.18284",
+      "scope": "2511.18284v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2511.18284v2",
+      "seed_citation_verified": true,
+      "working_text_sha256": "e43eabb299d3a9597f679a59788cd4d9f5165336bb663ef58d4e73ec9da6dc5e",
+      "short_title": "What Can We Actually Steer?"
+    }
+  ]
+}
