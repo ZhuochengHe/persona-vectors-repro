@@ -97,14 +97,33 @@ class WorkbookSyncTests(unittest.TestCase):
     def test_old_schema_adds_future_work_without_losing_notes(self):
         book = load_workbook(BytesIO(self.output.read_bytes()))
         sheet = book['Papers']
-        sheet.delete_cols(15)
+        sheet.delete_cols(15, len(module.HEADERS) - 14)
         sheet.cell(4, 8, '手改笔记必须保留')
         book.save(self.output)
         module.export(self.output)
         book = load_workbook(BytesIO(self.output.read_bytes()))
-        self.assertEqual(book['Papers'].cell(1, 15).value, 'Future work')
+        self.assertEqual([c.value for c in book['Papers'][1]], module.HEADERS)
         self.assertEqual(book['Papers'].cell(4, 8).value, '手改笔记必须保留')
-        self.assertEqual(len(book['Papers'].tables['LiteratureTable'].tableColumns), 15)
+        self.assertEqual(len(book['Papers'].tables['LiteratureTable'].tableColumns), len(module.HEADERS))
+
+    def test_previous_fifteen_column_schema_preserves_future_work_and_notes(self):
+        book = load_workbook(BytesIO(self.output.read_bytes()))
+        sheet = book['Papers']
+        sheet.delete_cols(16, 2)
+        sheet.cell(2, 8, '保留用户想法')
+        sheet.cell(2, 15, '用户改过的future work')
+        book.save(self.output)
+        module.export(self.output)
+        book = load_workbook(BytesIO(self.output.read_bytes()))
+        self.assertEqual([c.value for c in book['Papers'][1]], module.HEADERS)
+        self.assertEqual(book['Papers'].cell(2, 8).value, '保留用户想法')
+        self.assertEqual(book['Papers'].cell(2, 15).value, '用户改过的future work')
+        self.assertTrue(book['Papers'].cell(2, 16).value)
+        self.assertTrue(book['Papers'].cell(2, 17).value)
+        module.import_workbook(self.output)
+        record = module.records()[0][1]
+        self.assertEqual(record['Future work'], '用户改过的future work')
+        self.assertEqual(record['Additional think'], '保留用户想法')
 
     def test_lock_and_unknown_id_stop_before_csv_changes(self):
         before = (module.DOCS / 'literature_reading.csv').read_bytes()

@@ -22,8 +22,8 @@ DOCS = ROOT / "docs/papers"
 DEFAULT = Path("/mnt/d/umich/research/persona/persona_literature.xlsx")
 HEADERS = ["ID", "Title", "Link", "Key words", "One sentence/topic", "Contributions",
            "Limitation", "Additional think", "Related paper", "Research direction",
-           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work"]
-WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70]
+           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work", "Paper type", "Research question"]
+WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70, 26, 70]
 
 
 def records() -> list[tuple[str, dict]]:
@@ -98,6 +98,8 @@ def guide(book: Workbook) -> None:
         ("证据边界", "贡献是当前综合判断，Limitation包含作者局限与阅读核对点；未声称全部论文已全文审计。"),
         ("更新", "仓库literature_reading.csv与Windows表按稳定ID同步；Excel修改后先用--import-workbook回同步，再导出。"),
         ("Future work", "区分作者提出与阅读推演；Additional think保留用户原文，不自动搬移。"),
+        ("Paper type", "主要贡献多标签：Method／Benchmark／Survey／Analysis／Theory；Theory仅用于正式数学命题与证明。"),
+        ("Research question", "论文试图回答的研究问题，以问句表述；与一句话主题／结论区分。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
         ("保管", "更新前关闭Excel；脚本仅保留最近一次更新前的备份。_ExportState是内部合并基线，不要删除。"),
         ("生成时间 UTC", datetime.now(timezone.utc).isoformat()),
@@ -121,6 +123,7 @@ def export(output: Path) -> None:
         raise SystemExit("Excel lock file exists; close the workbook before updating.")
     expected = records()
     fresh = not output.exists()
+    added_headers = set()
     if fresh:
         book = Workbook()
         sheet = book.active
@@ -136,16 +139,18 @@ def export(output: Path) -> None:
             raise SystemExit("Existing workbook lacks merge metadata; inspect and migrate it before updating.")
         sheet, state = book["Papers"], book["_ExportState"]
         existing_headers = [cell.value for cell in sheet[1]]
-        if existing_headers == HEADERS[:-1]:
-            sheet.cell(1, len(HEADERS), HEADERS[-1])
-            sheet.column_dimensions["O"].width = WIDTHS[-1]
-            for cell in sheet["O"]:
-                cell.alignment = Alignment(wrap_text=True, vertical="top")
-            sheet.cell(1, 15)._style = sheet.cell(1, 14)._style
+        if existing_headers != HEADERS:
+            if len(existing_headers) not in (14, 15) or existing_headers != HEADERS[:len(existing_headers)]:
+                raise SystemExit("Workbook headers changed; inspect before updating.")
+            added_headers = set(HEADERS[len(existing_headers):])
+            for column in range(len(existing_headers) + 1, len(HEADERS) + 1):
+                sheet.cell(1, column, HEADERS[column - 1])
+                sheet.column_dimensions[get_column_letter(column)].width = WIDTHS[column - 1]
+                for cell in sheet[get_column_letter(column)]:
+                    cell.alignment = Alignment(wrap_text=True, vertical="top")
+                sheet.cell(1, column)._style = sheet.cell(1, 14)._style
             if "LiteratureTable" in sheet.tables:
                 del sheet.tables["LiteratureTable"]
-        elif existing_headers != HEADERS:
-            raise SystemExit("Workbook headers changed; inspect before updating.")
         baseline = {key: (identifier, json.loads(values)) for key, identifier, values in state.iter_rows(min_row=2, values_only=True) if key}
     if "Guide" in book:
         for row in book["Guide"].iter_rows():
@@ -180,7 +185,7 @@ def export(output: Path) -> None:
         for column, header in enumerate(HEADERS, 1):
             cell = sheet.cell(row_number, column)
             old = previous[1].get(header) if previous else None
-            unchanged = cell.value == old or (cell.value is None and old == "")
+            unchanged = header in added_headers or cell.value == old or (cell.value is None and old == "")
             if new or unchanged:
                 if header == "Link" and not new and cell.hyperlink and cell.hyperlink.target != old:
                     continue
@@ -259,7 +264,7 @@ def import_workbook(path: Path) -> None:
         book = load_workbook(handle)
         sheet = book["Papers"]
         headers = [cell.value for cell in sheet[1]]
-        if headers not in (HEADERS, HEADERS[:-1]):
+        if headers not in (HEADERS, HEADERS[:15], HEADERS[:14]):
             raise SystemExit("Workbook headers changed; inspect before importing.")
         seen = set()
         for cells in sheet.iter_rows(min_row=2, values_only=True):
