@@ -20,6 +20,7 @@ GROUPS = [
     ('情绪、推理与用户模型怎样影响行为？', [4, 29, 11, 31, 32]),
     ('如何评估审计与交互中的可靠性？', [14, 19]),
     ('当前问题补充：几何、read–write与agent迁移', list(range(35, 44))),
+    ('安全评估、模型默认与多模态子空间', [44, 45, 46]),
 ]
 
 
@@ -27,10 +28,17 @@ def utf16(text):
     return len(text.encode('utf-16-le')) // 2
 
 
+def architecture_label(row):
+    # Compact labels are reviewed separately: keyword matching prose can mistake
+    # "not MoE" or "text-only on a VLM" for a positive experimental category.
+    layout = json.loads((ROOT / 'docs/papers/citation_screening_sources/reading_doc_layout.json').read_text())
+    return layout.get('architecture_labels', {}).get(str(row['ID']), '待核')
+
+
 def index_rows(rows):
     layout = json.loads((ROOT / 'docs/papers/citation_screening_sources/reading_doc_layout.json').read_text())
-    return [['ID', '论文短标题', '类型', '阅读状态']] + [
-        [r['ID'], layout['short_titles'].get(str(r['ID']), r['Title']), r['Paper type'], r['Read status']]
+    return [['ID', '论文短标题', '类型', '架构', '阅读状态']] + [
+        [r['ID'], layout['short_titles'].get(str(r['ID']), r['Title']), r['Paper type'], architecture_label(r), r['Read status']]
         for r in sorted(rows, key=lambda r: int(r['ID']))
     ]
 
@@ -57,6 +65,20 @@ def render(rows):
     add('分类与研究问题是基于当前阅读证据整理的工作标签。短笔记保持原有阅读深度；未核实正式证明的条目暂不标 Theory，当前收录也不强求包含 Survey。')
     for title, ids in groups:
         add(title + '｜' + '、'.join(f'ID {i}' for i in ids))
+    add('按模型架构查找（代表条目）', 'HEADING_2')
+    add('骨干能力与实验输入分开；模型角色、实际thinking模式和精确checkpoint见每篇“模型与架构”。')
+    architecture_nav = [
+        ('Dense decoder常用基线', [1, 2, 3, 7, 33, 34, 45]),
+        ('MoE／混合attention证据（probe与steer须分开）', [5, 9, 11, 13, 26, 27, 30, 44]),
+        ('图文输入实测VLM', [46]),
+        ('原生支持视觉，但该文只测文本', [6, 9, 12, 18, 30, 34, 35, 44]),
+        ('非Transformer干预对照', [10]),
+        ('闭源／API主体', [4, 38, 41]),
+    ]
+    for label, ids in architecture_nav:
+        present = [i for i in ids if i in by_id]
+        if present:
+            add(label + '：' + '、'.join(f'ID {i}' for i in present))
     add('按论文类型查找', 'HEADING_2')
     for category in ('Method', 'Benchmark', 'Survey', 'Analysis', 'Theory'):
         ids = [i for i, r in sorted(by_id.items()) if category in r['Paper type'].split('; ')]
@@ -70,6 +92,11 @@ def render(rows):
             add(f'ID {i}｜{r["Title"]}', 'HEADING_2')
             add(f'{r["Paper type"]}　|　阅读状态：{r["Read status"]}　|　优先级：{r["Priority"]}')
             add('论文原文', link=r['Link'])
+            add('模型与架构', bold=True)
+            add('实测模型：' + (r.get('Models studied') or '待核'))
+            add('骨干架构：' + (r.get('Architecture') or '待核'))
+            add('输入／推理模式：' + (r.get('Inference mode') or '未报告／待核'))
+            add('架构证据：' + (r.get('Architecture evidence') or '尚未核对模型设置'))
             add('Research question', bold=True)
             add(r['Research question'])
             add('一句话主题', bold=True)
@@ -116,10 +143,10 @@ def render(rows):
     md_text = '\n\n'.join(markdown) + '\n'
     grid = index_rows(rows)
     table = ['## 论文总表', '', '点击 ID 进入笔记，点击短标题打开原文；表格用于浏览，复杂筛选使用 Excel。', '',
-             '| ID | 论文短标题 | 类型 | 阅读状态 |', '| --- | --- | --- | --- |']
-    for identifier, short_title, category, status in grid[1:]:
+             '| ID | 论文短标题 | 类型 | 架构 | 阅读状态 |', '| --- | --- | --- | --- | --- |']
+    for identifier, short_title, category, architecture, status in grid[1:]:
         row = by_id[int(identifier)]
-        table.append(f'| [{identifier}](#paper-{identifier}) | [{short_title}]({row["Link"]}) | {category} | {status} |')
+        table.append(f'| [{identifier}](#paper-{identifier}) | [{short_title}]({row["Link"]}) | {category} | {architecture} | {status} |')
     first_group = next(title for title, ids in groups if ids)
     marker = '## ' + first_group + '\n'
     md_text = md_text.replace(marker, '\n'.join(table) + '\n\n' + marker, 1)

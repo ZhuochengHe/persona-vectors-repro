@@ -22,8 +22,8 @@ DOCS = ROOT / "docs/papers"
 DEFAULT = Path("/mnt/d/umich/research/persona/persona_literature.xlsx")
 HEADERS = ["ID", "Title", "Link", "Key words", "One sentence/topic", "Contributions",
            "Limitation", "Additional think", "Related paper", "Research direction",
-           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work", "Paper type", "Research question"]
-WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70, 26, 70]
+           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work", "Paper type", "Research question", "Models studied", "Architecture", "Inference mode", "Architecture evidence"]
+WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70, 26, 70, 58, 56, 48, 70]
 
 
 def records() -> list[tuple[str, dict]]:
@@ -100,6 +100,9 @@ def guide(book: Workbook) -> None:
         ("Future work", "区分作者提出与阅读推演；Additional think保留用户原文，不自动搬移。"),
         ("Paper type", "主要贡献多标签：Method／Benchmark／Survey／Analysis／Theory；Theory仅用于正式数学命题与证明。"),
         ("Research question", "论文试图回答的研究问题，以问句表述；与一句话主题／结论区分。"),
+        ("Architecture", "区分dense／MoE、Transformer／hybrid attention-SSM、文本／视觉骨干。以实际被测模型为准，不混入judge。"),
+        ("Inference mode", "只写论文实测thinking／reasoning模式；模型支持某模式不等于实验启用。未披露标待核。"),
+        ("Architecture evidence", "论文setup／附录／代码与官方模型卡来源；模型支持多模态与论文实测多模态分开。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
         ("保管", "更新前关闭Excel；脚本仅保留最近一次更新前的备份。_ExportState是内部合并基线，不要删除。"),
         ("生成时间 UTC", datetime.now(timezone.utc).isoformat()),
@@ -140,7 +143,7 @@ def export(output: Path) -> None:
         sheet, state = book["Papers"], book["_ExportState"]
         existing_headers = [cell.value for cell in sheet[1]]
         if existing_headers != HEADERS:
-            if len(existing_headers) not in (14, 15) or existing_headers != HEADERS[:len(existing_headers)]:
+            if len(existing_headers) not in (14, 15, 17) or existing_headers != HEADERS[:len(existing_headers)]:
                 raise SystemExit("Workbook headers changed; inspect before updating.")
             added_headers = set(HEADERS[len(existing_headers):])
             for column in range(len(existing_headers) + 1, len(HEADERS) + 1):
@@ -264,7 +267,7 @@ def import_workbook(path: Path) -> None:
         book = load_workbook(handle)
         sheet = book["Papers"]
         headers = [cell.value for cell in sheet[1]]
-        if headers not in (HEADERS, HEADERS[:15], HEADERS[:14]):
+        if headers not in (HEADERS, HEADERS[:17], HEADERS[:15], HEADERS[:14]):
             raise SystemExit("Workbook headers changed; inspect before importing.")
         seen = set()
         for cells in sheet.iter_rows(min_row=2, values_only=True):

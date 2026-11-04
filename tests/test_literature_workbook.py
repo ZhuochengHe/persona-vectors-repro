@@ -109,7 +109,7 @@ class WorkbookSyncTests(unittest.TestCase):
     def test_previous_fifteen_column_schema_preserves_future_work_and_notes(self):
         book = load_workbook(BytesIO(self.output.read_bytes()))
         sheet = book['Papers']
-        sheet.delete_cols(16, 2)
+        sheet.delete_cols(16, len(module.HEADERS) - 15)
         sheet.cell(2, 8, '保留用户想法')
         sheet.cell(2, 15, '用户改过的future work')
         book.save(self.output)
@@ -124,6 +124,21 @@ class WorkbookSyncTests(unittest.TestCase):
         record = module.records()[0][1]
         self.assertEqual(record['Future work'], '用户改过的future work')
         self.assertEqual(record['Additional think'], '保留用户想法')
+
+    def test_previous_seventeen_column_schema_gains_architecture_fields(self):
+        book = load_workbook(BytesIO(self.output.read_bytes()))
+        sheet = book['Papers']
+        sheet.delete_cols(18, len(module.HEADERS) - 17)
+        sheet.cell(2, 8, '保留个人思考')
+        sheet.cell(2, 17, '用户修改过的RQ')
+        book.save(self.output)
+        module.export(self.output)
+        book = load_workbook(BytesIO(self.output.read_bytes()))
+        self.assertEqual([c.value for c in book['Papers'][1]], module.HEADERS)
+        self.assertEqual(book['Papers'].cell(2, 8).value, '保留个人思考')
+        self.assertEqual(book['Papers'].cell(2, 17).value, '用户修改过的RQ')
+        module.import_workbook(self.output)
+        self.assertEqual(module.records()[0][1]['Research question'], '用户修改过的RQ')
 
     def test_lock_and_unknown_id_stop_before_csv_changes(self):
         before = (module.DOCS / 'literature_reading.csv').read_bytes()
