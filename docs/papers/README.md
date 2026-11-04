@@ -11,17 +11,19 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 - [Local prose mirror with paper index](literature_reading.md)
 - [Document format and maintenance contract](literature_document_maintenance.md)
 - Paper type uses Method / Benchmark / Survey / Analysis / Theory labels. Research question is separate from the paper topic and conclusion.
+- Each paper now records studied models, architecture, actual inference mode, and architecture evidence. [Parallel reading and architecture audit](citation_screening_sources/architecture_review.json) distinguishes intervention subjects from judges/generators.
 
 ## Windows / WSL reading workbook
 
-- [Ready-to-open Excel: 43 papers](persona_literature.xlsx)
+- [Ready-to-open Excel: 46 papers](persona_literature.xlsx)
 - [Local WSL handoff and update workflow](handover_paper_excel.md)
 - [Reading-note depth and research-question guidelines](reading_note_guidelines.md)
 - Windows destination: `D:\umich\research\persona\persona_literature.xlsx`.
 - Includes the original Persona Vectors, the games application, and the selected
   30 papers, plus the user-added trait-interference paper (ID 33), compared with
   PERSONA (ID 7), the side-effect forecasting paper (ID 34), and the
-  question-driven supplement (IDs 35–43). User-owned Additional think cells are preserved through CSV/workbook
+  question-driven supplement (IDs 35–43), and architecture/safety additions
+  (IDs 44–46). User-owned Additional think cells are preserved through CSV/workbook
   synchronization. The Windows workbook was first delivered on 2026-10-30.
 
 ## Persona Vectors 被引文献探索

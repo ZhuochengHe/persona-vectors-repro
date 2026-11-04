@@ -83,8 +83,8 @@ and [archive guide](docs/research/archive.md).
 - The native Google Doc is registered in
   `docs/papers/citation_screening_sources/google_reading_doc.json`; keep the
   same document ID. Follow the [format contract](docs/papers/literature_document_maintenance.md):
-  clickable research-question/type indexes, a native four-column paper table
-  (ID, short title, type, status), then one detailed section per paper.
+  clickable research-question/type indexes, a native five-column paper table
+  (ID, short title, type, architecture, status), then one detailed section per paper.
   ID links open notes; short-title links open papers; related IDs and return
   links remain clickable. Never put long contributions/limitations into the index.
 - Before updates, read the live Doc and merge user edits into CSV by stable ID;
@@ -107,6 +107,20 @@ and [archive guide](docs/research/archive.md).
   and proofs; formulas or geometric experiments alone are Analysis. Treat
   labels based on partial reading as provisional. `Research question` states
   what the paper asks, separately from its topic or conclusion.
+- Record `Models studied`, `Architecture`, `Inference mode`, and `Architecture evidence`
+  for each paper. Separate intervened/trained/probed models from judges and data
+  generators; distinguish dense vs MoE, Transformer vs hybrid attention/SSM,
+  native modality vs actual experimental inputs, and supported vs enabled
+  reasoning modes. Missing checkpoint/mode details stay explicitly unverified.
+  Compact index labels are reviewed in `reading_doc_layout.json`; do not infer
+  them with keyword matching (e.g. "not MoE" is not a MoE experiment).
+- For an explicitly requested batch or parallel reading task, assign workers
+  disjoint paper IDs and evidence-only outputs. One coordinator serializes
+  canonical CSV, catalog and Doc writes; cross-check high-risk architecture or
+  numerical claims before merging. Agent count is not independent validation.
+- User-specified papers may be added outside the original seed-citer pool as
+  clearly labeled user-requested supplements with their own stable source keys.
+  Do not invent a seed citation or rewrite frozen screening provenance.
 - `Future work` is a separate reading column. Distinguish author proposals
   from reading-derived research ideas; keep the user's original notes intact.
 - Current selection criteria live in

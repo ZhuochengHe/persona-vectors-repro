@@ -1,0 +1,1471 @@
+{
+  "review_date": "2026-11-04",
+  "architecture_audit": {
+    "date": "2026-11-04",
+    "coverage": {
+      "papers": 43,
+      "original_content_changed": false,
+      "primary_sources": "43篇原文setup/相关附录；部分explicit配置仍待核。模型名称与架构标签不可反推实际模式。",
+      "uncertainties": "ID16存在Llama3.2-8B疑似命名问题；ID13 Qwen3-30B完整checkpoint待代码核；ID24 activation subset待核；ID38 API面板完整checkpoint需清单另核。"
+    },
+    "papers": [
+      {
+        "ID": 1,
+        "Title": "Persona Vectors: Monitoring and Controlling Character Traits in Language Models",
+        "Models studied": "Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct",
+        "Architecture": "Dense decoder-only Transformer（文本）",
+        "Inference mode": "chat模型文本生成；未研究专门reasoning模型。",
+        "Architecture evidence": "2507.21509v3：§3.1；App.D/J；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2507.21509",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3.1；App.D/J",
+        "paper_url": "https://arxiv.org/html/2507.21509",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 2,
+        "Title": "Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors",
+        "Models studied": "Qwen2.5-7B（正文简称）；公开实现为Qwen2.5-7B-Instruct",
+        "Architecture": "Dense decoder-only Transformer（文本）",
+        "Inference mode": "给定游戏描述后的独立决策与解释；不是多模型真实对局；thinking开关不适用。",
+        "Architecture evidence": "2603.21398v1：§3.2–3.5；代码配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2603.21398",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3.2–3.5；代码配置",
+        "paper_url": "https://arxiv.org/html/2603.21398",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 3,
+        "Title": "The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models",
+        "Models studied": "Gemma-2-27B-it；Qwen3-32B；Llama-3.3-70B-Instruct；附加Gemma-2-27B base对照",
+        "Architecture": "三种Dense decoder-only Transformer（文本）；base/instruct属于训练阶段差异",
+        "Inference mode": "正文limitations明确Qwen thinking disabled；其余为非reasoning chat设置。论文“without reasoning training”应与Qwen支持thinking的模型能力区分。",
+        "Architecture evidence": "2601.10387v1：§2.1；Limitations；App.B.3；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10387",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§2.1；Limitations；App.B.3",
+        "paper_url": "https://arxiv.org/html/2601.10387",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 4,
+        "Title": "Emotion Concepts and their Function in a Large Language Model",
+        "Models studied": "Claude Sonnet 4.5；另有同系列base/post-trained比较（内部checkpoint未公开）",
+        "Architecture": "闭源模型内部访问研究；dense/MoE及完整架构未公开，不猜测。实测文本情绪场景。",
+        "Inference mode": "是否启用extended thinking／具体budget本轮未核实；不能因研究者可读激活就当作开源模型。",
+        "Architecture evidence": "2604.07729v1：正文开头；§1；后训练/base比较章节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.07729",
+        "compact_architecture": "闭源／架构未公开",
+        "confidence": "high",
+        "paper_sections": "正文开头；§1；后训练/base比较章节",
+        "paper_url": "https://arxiv.org/html/2604.07729",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 5,
+        "Title": "The Personality Illusion: Revealing Dissociation Between Self-Reports & Behavior in LLMs",
+        "Models studied": "18模型：6组base/instruct配对（Llama3.2-3B、Llama3-8B、Qwen2.5-1.5B/7B、Mistral7B、OLMo2-7B）；另Llama3.3-70B、Llama3.1-405B、Qwen2.5-72B、Qwen3-235B、Claude3.7、GPT-4o",
+        "Architecture": "文本心理测量；开放模型大多Dense，但Qwen3-235B-A22B为MoE；闭源API架构不明。没有activation intervention。",
+        "Inference mode": "作者§7称non-reasoning，但Qwen3具体thinking配置未核；不照抄“未覆盖MoE”。",
+        "Architecture evidence": "2509.03730v2：§2.1 Table1；§7；Qwen3官方model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.03730",
+        "compact_architecture": "Dense＋MoE＋闭源",
+        "confidence": "high",
+        "paper_sections": "§2.1 Table1；§7；Qwen3官方model card",
+        "paper_url": "https://arxiv.org/html/2509.03730",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 6,
+        "Title": "Open Character Training: Shaping the Persona of AI Assistants through Constitutional AI",
+        "Models studied": "Llama-3.1-8B、Qwen2.5-7B、Gemma-3-4B的instruction-tuned学生；教师另计",
+        "Architecture": "学生LM backbone为Dense；Gemma3原生支持图文，但本文character-training／评估为文本。Llama3.3-70B用作数据辅助不是主要学生。",
+        "Inference mode": "character distillation及introspection后文本对话；专门thinking模式未核。",
+        "Architecture evidence": "2511.01689v1：§2.1–2.2；§3模型列；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.01689",
+        "compact_architecture": "Dense；含VLM文本实验",
+        "confidence": "high",
+        "paper_sections": "§2.1–2.2；§3模型列",
+        "paper_url": "https://arxiv.org/html/2511.01689",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 7,
+        "Title": "PERSONA: Dynamic and Compositional Inference-Time Personality Control via Activation Vector Algebra",
+        "Models studied": "Qwen2.5-3B/7B/14B-Instruct；Qwen3-4B（文中称Instruct）；Llama3-8B与3.1-8B-Instruct；Ministral-8B-Instruct",
+        "Architecture": "所列主模型为Dense decoder-only Transformer；文本scenario-BFI与多轮对话。Claude3.7 Thinking只是contrastive prompt generator。",
+        "Inference mode": "Qwen3是否启用thinking未在本轮核定；不能从generator名称推断被干预模型推理模式。",
+        "Architecture evidence": "2602.15669v1：§3.1.1；Table3/4；App.A.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.15669",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3.1.1；Table3/4；App.A.2",
+        "paper_url": "https://arxiv.org/html/2602.15669",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 8,
+        "Title": "Tracing Persona Vectors Through LLM Pretraining",
+        "Models studied": "OLMo-3-1025-7B的17个pretraining checkpoints及post-trained版本；Apertus-8B-2509复核",
+        "Architecture": "Dense decoder-only Transformer；跨预训练阶段与base/instruct，不是MoE／VLM实验。",
+        "Inference mode": "原生预训练completion与后训练文本任务分别使用；reasoning模式未明确单独控制。",
+        "Architecture evidence": "2605.13329v1：§3 Models/Checkpoints；App.F；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13329",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3 Models/Checkpoints；App.F",
+        "paper_url": "https://arxiv.org/html/2605.13329",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 9,
+        "Title": "Probing Persona-Dependent Preferences in Language Models",
+        "Models studied": "Gemma-3-27B；Qwen3.5-122B-A10B；主steering Gemma，App.G.4另有Qwen负结果pilot",
+        "Architecture": "Gemma3为Dense VLM；Qwen3.5为MoE＋linear/full-attention混合＋视觉分支。本文pairwise preference是文本输入，不能算视觉任务验证。",
+        "Inference mode": "App.G.4明确Qwen3.5-122B-A10B-nothink；其probe好但单层steering swing较Gemma弱约15倍，已做小规模负结果pilot。",
+        "Architecture evidence": "2605.13339v4：§2；App.G.4；官方Qwen3.5 config/model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13339",
+        "compact_architecture": "Dense＋混合attention MoE",
+        "confidence": "high",
+        "paper_sections": "§2；App.G.4；官方Qwen3.5 config/model card",
+        "paper_url": "https://arxiv.org/html/2605.13339",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 10,
+        "Title": "Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior",
+        "Models studied": "LLM：Llama-3.1-8B为主（L28）；App.C.2另测Llama-3.1-70B（L70）。正文并未统一给Instruct后缀。另自训MountainCar视觉world model。",
+        "Architecture": "LLM为Dense decoder Transformer；视觉实验是conv encoder＋64维GRU＋conv decoder，不是VLM语言backbone。",
+        "Inference mode": "LLM概念token分布与ICL任务；GRU根据图像帧和action预测下一帧，不是chain-of-thought agent。",
+        "Architecture evidence": "2605.05115v1：§2/§3实验；§5 Environment and model architecture；App.B/C.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.05115",
+        "compact_architecture": "Dense Transformer＋CNN/GRU",
+        "confidence": "high",
+        "paper_sections": "§2/§3；§5 Environment and model architecture；App.B/C.2",
+        "paper_url": "https://arxiv.org/html/2605.05115",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 11,
+        "Title": "Reasoning Models Generate Societies of Thought",
+        "Models studied": "行为trace比较DeepSeek-R1、QwQ-32B及对应instruct模型；SAE干预主要DeepSeek-R1-Distill-Llama-8B",
+        "Architecture": "full DeepSeek-R1为MoE（trace分析）；QwQ32B与Distill-Llama8B为Dense decoder。不要把full-R1与蒸馏Llama8B混为同架构。",
+        "Inference mode": "研究实际CoT reasoning；内部SAE来自distilled Llama8B L15，而非full671B MoE内部干预。",
+        "Architecture evidence": "2601.10825v1：Methods；SAE extraction/intervention；DeepSeek官方卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10825",
+        "compact_architecture": "MoE分析＋Dense干预",
+        "confidence": "medium-high",
+        "paper_sections": "Methods；SAE extraction/intervention；DeepSeek官方卡",
+        "paper_url": "https://arxiv.org/html/2601.10825",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 12,
+        "Title": "Representational Control over Self-Report & Behavior Coherence in LLM Risk-Taking",
+        "Models studied": "Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct；OLMo-3-7B-Instruct；Ministral-3-8B",
+        "Architecture": "前三为Dense文本decoder；Ministral3-8B原生vision-capable dense decoder，本文BFI/CCT文本、token概率readout。",
+        "Inference mode": "关键outcome为单次deterministic forward answer-token likelihood，不依赖sampling temp/seed；提取部分含greedy生成。thinking配置另待核。",
+        "Architecture evidence": "2610.04125v1：§3 Models/tasks；App.B.1/B.4；官方Ministral3卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.04125",
+        "compact_architecture": "Dense；含VLM文本实验",
+        "confidence": "high",
+        "paper_sections": "§3 Models/tasks；App.B.1/B.4；官方Ministral3卡",
+        "paper_url": "https://arxiv.org/html/2610.04125",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 13,
+        "Title": "Sycophancy Is Not One Thing: Causal Separation of Sycophantic Behaviors in LLMs",
+        "Models studied": "几何/decodability：Qwen3-30B-Instruct（确切A3B后缀待核）、Qwen3-4B、Llama3.1-8B、Llama3.3-70B、GPT-OSS-20B；steering仅前述30B/4B/8B三模型",
+        "Architecture": "Dense与MoE混合的analysis inventory；GPT-OSS20B是MoE但只进入geometry/readout。Qwen3-30B通常对应MoE-A3B，本文写法需代码确认，勿标作已核Dense。",
+        "Inference mode": "均instruct；Qwen3/GPTOSS具体thinking或reasoning effort未核。不能把只有geometry实验的模型算入causal intervention覆盖。",
+        "Architecture evidence": "2509.21305v4：App.C.1 Table6；App.D.2；官方Qwen3/GPTOSS卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.21305",
+        "compact_architecture": "Dense＋MoE（角色须分开）",
+        "confidence": "high",
+        "paper_sections": "App.C.1 Table6；App.D.2；官方Qwen3/GPTOSS卡",
+        "paper_url": "https://arxiv.org/html/2509.21305",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 14,
+        "Title": "AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors",
+        "Models studied": "被审计模型Llama-3.3-70B-Instruct与Qwen3-14B的14类隐藏行为训练变体",
+        "Architecture": "目标模型为Dense decoder-only Transformer（文本）。auditor、Helpful-Only Claude数据生成器与judge不是target architecture。",
+        "Inference mode": "目标为聊天及隐藏行为诱发；auditor agent通过工具审计，Qwen thinking设置待核。",
+        "Architecture evidence": "2602.22755v4：§2；App.C/D；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.22755",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§2；App.C/D",
+        "paper_url": "https://arxiv.org/html/2602.22755",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 15,
+        "Title": "Belief Dynamics Reveal the Dual Nature of In-Context Learning and Activation Steering",
+        "Models studied": "Llama-3.1-8B-Instruct为主；Qwen2.5-7B、Gemma2-9B及Llama3.1-70B-Instruct复核",
+        "Architecture": "Dense decoder-only Transformer；文本行为/ICL概率分析；4-bit量化是数值格式而非另一架构。",
+        "Inference mode": "非专门reasoning任务设置；使用答案概率及ICL曲线，不以显式CoT为必要。",
+        "Architecture evidence": "2511.00617v2：正文理论与实证部分；App实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.00617",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "正文理论与实证部分；App实验细节",
+        "paper_url": "https://arxiv.org/html/2511.00617",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 16,
+        "Title": "Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences",
+        "Models studied": "Qwen3-1.7B/32B；Gemma3-1B；Gemma2-9B；Llama3.1-8B；Qwen2.5-7B等窄微调organisms。原文部分写Llama3.2-8B，与其他位置1B表述冲突，exact checkpoint待核",
+        "Architecture": "已确认命名多为Dense decoder Transformer；Gemma3-1B是文本模型，不能把Gemma3所有尺寸都标VLM。涉及base／chat／finetuned配对。",
+        "Inference mode": "部分Qwen3 thinking配置待核。interpretability agent与grader模型不算被分析organism。",
+        "Architecture evidence": "2510.13900v3：§实验organisms；模型列表及数据复核；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.13900",
+        "compact_architecture": "Dense（部分checkpoint待核）",
+        "confidence": "medium",
+        "paper_sections": "§实验organisms；模型列表及数据复核",
+        "paper_url": "https://arxiv.org/html/2510.13900",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 17,
+        "Title": "Steering Language Models with Weight Arithmetic",
+        "Models studied": "Qwen2.5-7B-Instruct为主；Qwen2.5-1.5B-Instruct用于GCD；Llama-2-chat-7b用于GSM8k",
+        "Architecture": "Dense decoder-only Transformer；weight arithmetic及LoRA/activation baselines，不是MoE/VLM。",
+        "Inference mode": "chat及算术任务，未单独reasoning-model配置。",
+        "Architecture evidence": "2511.05408v2：Models and Training Parameters；§4；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.05408",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "Models and Training Parameters；§4",
+        "paper_url": "https://arxiv.org/html/2511.05408",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 18,
+        "Title": "Subliminal Learning Is Steering Vector Distillation",
+        "Models studied": "Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct；OLMo3-7B-Instruct；另Gemma3-4b-it学生对照",
+        "Architecture": "主要Dense decoder；Gemma3为vision-capable但本文数字／文本蒸馏和trait测试，未做视觉泛化。",
+        "Inference mode": "LoRA student/teacher文本pipeline；thinking模式非主研究变量。",
+        "Architecture evidence": "2606.00995v3：§2；§5/6；App训练细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.00995",
+        "compact_architecture": "Dense；含VLM文本实验",
+        "confidence": "high",
+        "paper_sections": "§2；§5/6；App训练细节",
+        "paper_url": "https://arxiv.org/html/2606.00995",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 19,
+        "Title": "Impatient Users Confuse AI Agents: High-fidelity Simulations of Human Traits for Testing Agents",
+        "Models studied": "被steer用户模拟器Llama-3.1-8B；下游assistant服务模型另计（完整清单待核）",
+        "Architecture": "被干预用户模型Dense decoder；文本多轮及τ-Bench工具交互。agent setting不意味着backbone架构改变。",
+        "Inference mode": "用户persona文本生成；下游工具agent的reasoning配置未核。",
+        "Architecture evidence": "2510.04491v3：§3/4模型说明；§5下游测试；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.04491",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "medium-high",
+        "paper_sections": "§3/4模型说明；§5下游测试",
+        "paper_url": "https://arxiv.org/html/2510.04491",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 20,
+        "Title": "Activation Steering via Generative Causal Mediation",
+        "Models studied": "SOLAR-10.7B-Instruct-v1.0；OLMo-2-1124-13B-DPO；Qwen1.5-14B-Chat",
+        "Architecture": "三种Dense decoder-only Transformer；在attention/head等组件局部干预，文本sycophancy/refusal/style。",
+        "Inference mode": "论文生成基线使用temperature0、关闭sampling；judge Llama3.1-70B另计。",
+        "Architecture evidence": "2602.16080v2：§3.2/3.3；App数据生成设置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.16080",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3.2/3.3；App数据生成设置",
+        "paper_url": "https://arxiv.org/html/2602.16080",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 21,
+        "Title": "Steer Like the LLM: Activation Steering that Mimics Prompting",
+        "Models studied": "persona：Llama3.2-3B-Instruct、Llama3.1-8B-Instruct、Qwen2.5-7B-Instruct；AxBench扩展Gemma2-2B/9B",
+        "Architecture": "Dense decoder-only Transformer；residual-stream prompt-mimicking steering；SAE只是部分baseline/特征来源。",
+        "Inference mode": "文本persona/IFEval/AxBench；没有据模型名推断额外thinking。",
+        "Architecture evidence": "2605.03907v1：Experimental Setup；App.C/E；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.03907",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "Experimental Setup；App.C/E",
+        "paper_url": "https://arxiv.org/html/2605.03907",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 22,
+        "Title": "Your Language Model Secretly Contains Personality Subnetworks",
+        "Models studied": "Llama2-13B、Llama3-8B、Qwen2.5-14B base；Llama2-13B instruction-tuned对照",
+        "Architecture": "Dense decoder-only Transformer；activation-guided sparse pruning产生子网络，稀疏mask不等于原生MoE。",
+        "Inference mode": "base completion与instruct文本role-play；无reasoning模式证据。",
+        "Architecture evidence": "2602.07164v1：实验设置；App.D/E/H；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.07164",
+        "compact_architecture": "Dense＋剪枝子网络",
+        "confidence": "high",
+        "paper_sections": "实验设置；App.D/E/H",
+        "paper_url": "https://arxiv.org/html/2602.07164",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 23,
+        "Title": "Steering at the Source: Style Modulation Heads for Robust Persona Control",
+        "Models studied": "Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct",
+        "Architecture": "Dense decoder-only Transformer，论文明确两者为GQA；研究少数attention heads而非MoE专家。",
+        "Inference mode": "文本persona生成；coherence/PPL/utility检查；无专门reasoning-mode实验。",
+        "Architecture evidence": "2603.13249v2：§3/§4 Model and Persona；head-wise分析；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2603.13249",
+        "compact_architecture": "Dense Transformer（GQA）",
+        "confidence": "high",
+        "paper_sections": "§3/§4 Model and Persona；head-wise分析",
+        "paper_url": "https://arxiv.org/html/2603.13249",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 24,
+        "Title": "VALUEFLOW: Toward Pluralistic and Steerable Value-based Alignment in Large Language Models",
+        "Models studied": "prompt-steerability：Qwen3-32B、Mistral3.1-Small24B、Phi4、GLM4-32B、GPTOSS20B、Gemma3-27B、GPT4.1、Claude4Sonnet、Grok4、Gemini2.5Flash；activation subset待逐项核",
+        "Architecture": "prompt评价覆盖Dense、MoE、VLM-capable与closed API，但activation实验模型清单未完全核定；不可宣称所有十模型均做内部干预。Qwen3-embedding0.6B是表征模型另计。",
+        "Inference mode": "main results为prompt steerability；各模型具体thinking／effort待核；文本价值任务不等于视觉验证。",
+        "Architecture evidence": "2602.03160v2：§4/5模型段；activation baselines见附录（本轮未完整展开）；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.03160",
+        "compact_architecture": "混合；activation子集待核",
+        "confidence": "medium",
+        "paper_sections": "§4/5模型段；activation baselines见附录（本轮未完整展开）",
+        "paper_url": "https://arxiv.org/html/2602.03160",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 25,
+        "Title": "Shifting the Gradient: Understanding How Defensive Training Methods Protect Language Model Integrity",
+        "Models studied": "Qwen2.5-7B-Instruct及其不同evil数据强度微调版本",
+        "Architecture": "Dense decoder-only Transformer；训练期PPS/IP和梯度分析；没有跨MoE/视觉架构验证。",
+        "Inference mode": "chat微调／推理文本；原生reasoning模式不适用。",
+        "Architecture evidence": "2604.16423v1：正文训练设计；梯度比较；附录实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.16423",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "正文训练设计；梯度比较；附录实验细节",
+        "paper_url": "https://arxiv.org/html/2604.16423",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 26,
+        "Title": "The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment",
+        "Models studied": "Qwen2.5-7B/32B-Instruct；Llama3.1-8B-Instruct；GPT-OSS-20B",
+        "Architecture": "前三Dense、GPTOSS20B为MoE decoder Transformer；文本窄域微调、prefix KV patching和token regularization。",
+        "Inference mode": "默认chat模板；GPTOSS reasoning effort具体设置未核，不能从其reasoning能力推定每个实验模式。",
+        "Architecture evidence": "2606.06667v3：§3 Models；KV-cache/prefix patching；官方GPTOSS配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.06667",
+        "compact_architecture": "Dense＋MoE",
+        "confidence": "high",
+        "paper_sections": "§3 Models；KV-cache/prefix patching；官方GPTOSS配置",
+        "paper_url": "https://arxiv.org/html/2606.06667",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 27,
+        "Title": "Predicting Future Behaviors in Reasoning Models Enables Better Steering",
+        "Models studied": "DeepSeek-R1-Distill-Llama-8B；Qwen3-14B；gpt-oss-20b；QwQ-32B",
+        "Architecture": "前三除GPTOSS外均Dense decoder；GPTOSS20B为MoE。Distill-Llama8B不能写full-DeepSeek-R1 MoE。",
+        "Inference mode": "明确LRM实验：每条响应有CoT与final answer，T=1.0；各gptoss effort未逐项核。",
+        "Architecture evidence": "2606.11172v1：§3.1；§4/5干预；官方GPTOSS/DeepSeek模型卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.11172",
+        "compact_architecture": "Dense＋MoE；实测reasoning",
+        "confidence": "high",
+        "paper_sections": "§3.1；§4/5干预；官方GPTOSS/DeepSeek模型卡",
+        "paper_url": "https://arxiv.org/html/2606.11172",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 28,
+        "Title": "Synthetic Persona Pretraining: Alignment from Token Zero",
+        "Models studied": "真正预训练subject：1.7B SmolLM2-1.7B-shaped与3B Llama3.2-3B-shaped模型，统一SmolLM2 tokenizer",
+        "Architecture": "原文App.B.1明确两规模均Dense decoder-only Transformer（RoPE/RMSNorm/SwiGLU）；Qwen3.5-35B-A3B仅reflection generator，不是MoE persona-pretraining验证。",
+        "Inference mode": "from-token-zero预训练→persona binding后训练文本实验；不是现成Qwen3.5 reasoning模式对照。",
+        "Architecture evidence": "2608.13482v1：App.B.1；正文reflection generation方法；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.13482",
+        "compact_architecture": "自训Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "App.B.1；正文reflection generation方法",
+        "paper_url": "https://arxiv.org/html/2608.13482",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 29,
+        "Title": "How Emotion Shapes the Behavior of LLMs and Agents: A Mechanistic Study",
+        "Models studied": "Qwen3-8B为主要LLM，SAE接第17层；附加验证模型及agent各模块checkpoint本轮未完全核定",
+        "Architecture": "主要Dense decoder Transformer＋SAE（分析器不等于backbone改变）；planner/decider/executor是agent软件结构，不是模型内部MoE。",
+        "Inference mode": "primary LLM实验关闭sampling；是否关闭Qwen3 thinking未核；实际有文本规划／决策／工具执行任务。",
+        "Architecture evidence": "2604.00005v1：§4实验设置；App.A验证；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.00005",
+        "compact_architecture": "Dense＋SAE；agent软件模块",
+        "confidence": "medium-high",
+        "paper_sections": "§4实验设置；App.A验证",
+        "paper_url": "https://arxiv.org/html/2604.00005",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 30,
+        "Title": "Emergent Misalignment Is Not Magical",
+        "Models studied": "Qwen2.5-14B/32B-Instruct、Qwen2.5-Coder32B；Qwen3.5-27B；Gemma3-27B-IT；OLMo3.1-32B-Instruct",
+        "Architecture": "Dense模型集合；Qwen3.5-27B为linear/full-attention hybrid并带视觉配置，Gemma3也vision-capable；本文EM文本实验，无图像验证。",
+        "Inference mode": "greedy decoding；Qwen3.5 thinking具体配置未核。",
+        "Architecture evidence": "2608.29118v1：§3 Models and EM Training Data；官方Qwen3.5配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.29118",
+        "compact_architecture": "Dense＋混合attention；文本",
+        "confidence": "high",
+        "paper_sections": "§3 Models and EM Training Data；官方Qwen3.5配置",
+        "paper_url": "https://arxiv.org/html/2608.29118",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 31,
+        "Title": "User Model Extraction via Belief Self-Distillation",
+        "Models studied": "Llama3.1-8B-Instruct；Qwen3-8B；OLMo3-7B-Instruct",
+        "Architecture": "Dense decoder-only Transformer；低秩user-belief projector是新增表征接口，不是原生专家架构。",
+        "Inference mode": "文本user-belief extraction与steering；Qwen3 thinking配置待核。",
+        "Architecture evidence": "2609.31603v2：Training details；干预实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2609.31603",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "Training details；干预实验",
+        "paper_url": "https://arxiv.org/html/2609.31603",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 32,
+        "Title": "Usage-Modulated Sentiment Representations in Large Language Models",
+        "Models studied": "Meta-Llama-3-8B-Instruct；Mistral-7B-Instruct-v0.2；Gemma-7B-IT",
+        "Architecture": "三种Dense decoder Transformer；旧Gemma7B文本模型。generation-time steering只在Llama做，其他主要geometry/probing。",
+        "Inference mode": "情感／语气／受众文本任务；非reasoning模型研究。",
+        "Architecture evidence": "2610.05069v1：App Model details Table12；正文generation实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.05069",
+        "compact_architecture": "Dense；干预仅Llama",
+        "confidence": "high",
+        "paper_sections": "App Model details Table12；正文generation实验",
+        "paper_url": "https://arxiv.org/html/2610.05069",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 33,
+        "Title": "Do Personality Traits Interfere? Geometric Limitations of Steering in Large Language Models",
+        "Models studied": "LLaMA-3-8B-Instruct；Ministral-8B-Instruct（部分正文简称Mistral-8B，完整revision待核）",
+        "Architecture": "Dense decoder-only Transformer；BigFive方向几何处理与文本生成评估，无视觉输入。",
+        "Inference mode": "base/positive/negative steering；具体decode细节部分继承baseline，thinking不适用。",
+        "Architecture evidence": "2602.15847v1：§2–4；App.A；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.15847",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§2–4；App.A",
+        "paper_url": "https://arxiv.org/html/2602.15847",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 34,
+        "Title": "Forecasting Side Effects of Activation Steering",
+        "Models studied": "Gemma-3-4B、Gemma-3-12B、Qwen2.5-7B（具体it/instruct加载名待manifest核）",
+        "Architecture": "三者language backbone为Dense；Gemma3带vision能力但67行为任务全是文本。judge Gemma4-31B/Qwen3.6不算subject。",
+        "Inference mode": "T=0.8、top_p=.95、cap4096；读出层比注入层下游4–5层，未以thinking为研究变量。",
+        "Architecture evidence": "2608.11227v1：§3；App.A/D Compute configuration；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.11227",
+        "compact_architecture": "Dense；VLM能力但文本实验",
+        "confidence": "high",
+        "paper_sections": "§3；App.A/D Compute configuration",
+        "paper_url": "https://arxiv.org/html/2608.11227",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 35,
+        "Title": "When Is Rank-1 Steering Cheap? Geometry, Granularity, and Budgeted Search",
+        "Models studied": "Gemma2-2B-it；Gemma3-27B-it；Llama3.3-70B-Instruct",
+        "Architecture": "Dense decoder Transformer；Gemma3原生图文，论文概念／行为搜索用文本。",
+        "Inference mode": "输出greedy T=0、最多256新token；Gemma3-12B只是judge。",
+        "Architecture evidence": "2605.16362v2：§3.3；App.B.1；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.16362",
+        "compact_architecture": "Dense；含VLM文本实验",
+        "confidence": "high",
+        "paper_sections": "§3.3；App.B.1",
+        "paper_url": "https://arxiv.org/html/2605.16362",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 36,
+        "Title": "Playing Devil's Advocate: Off-the-Shelf Persona Vectors Rival Targeted Steering for Sycophancy",
+        "Models studied": "Gemma2-27B-Instruct；Qwen3-32B；分别steer L22/46与L32/64",
+        "Architecture": "两个Dense decoder-only Transformer；role方向与CAA文本sycophancy行为比较。",
+        "Inference mode": "Qwen3具体thinking开关在本轮原文搜索未定位，应标待核而非默认关闭。",
+        "Architecture evidence": "2605.21006v4：§2.4 Models and layers；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.21006",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§2.4 Models and layers",
+        "paper_url": "https://arxiv.org/html/2605.21006",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 37,
+        "Title": "Where Steering Signals Come From: Activation Source Selection in Activation Steering",
+        "Models studied": "Gemma2-9B-IT；Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct",
+        "Architecture": "三个Dense decoder-only Transformer；比较源激活readout与vector construction，未涉及MoE或视觉。",
+        "Inference mode": "instruct文本生成；judges Qwen2.5-14B/Gemma3-27B另计。",
+        "Architecture evidence": "2607.25270v2：§3.1 Models；source comparisons；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2607.25270",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§3.1 Models；source comparisons",
+        "paper_url": "https://arxiv.org/html/2607.25270",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 38,
+        "Title": "ContextEcho: A Benchmark for Persona Drift in Long Agentic-Coding Sessions",
+        "Models studied": "23模型／10组织API行为面板；唯一open-weight内部Axis干预Qwen3-32B，L32",
+        "Architecture": "API面板架构有不公开部分，不能以provider推断；内部intervention为Dense Qwen3-32B。长coding轨迹是agent setting不是新backbone。",
+        "Inference mode": "API面板分reasoning/non-reasoning tiers；App配置明确Qwen3 enable_thinking=false；内部Axis剂量实验不能推广成全23模型干预。",
+        "Architecture evidence": "2605.24279v3：§3；App.O/U；API配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.24279",
+        "compact_architecture": "API混合；Axis干预Dense",
+        "confidence": "high",
+        "paper_sections": "§3；App.O/U；API配置",
+        "paper_url": "https://arxiv.org/html/2605.24279",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 39,
+        "Title": "On the Non-Identifiability of Steering Vectors in Large Language Models",
+        "Models studied": "Llama3.1-8B-Instruct；Qwen2.5-3B-Instruct",
+        "Architecture": "两个Dense decoder-only Transformer；在单层局部linearization框架下检验方向等价性。",
+        "Inference mode": "steer L16/32与L18/36；文本语义分类；没有reasoning-mode实验。",
+        "Architecture evidence": "2602.06801v4：§6.1 Setup；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.06801",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§6.1 Setup",
+        "paper_url": "https://arxiv.org/html/2602.06801",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 40,
+        "Title": "Detection != Reliable Control: Decodable Empathy Directions Yield at Most Partial Shifts in Automated Empathy Scores",
+        "Models studied": "Llama3.1-8B；Gemma2-9B；Qwen2.5-7B（instruct/checkpoint后缀见实现，正文简写）",
+        "Architecture": "三个Dense decoder Transformer；EPITOME empathy文本任务；判别classifier／judge不是subject。",
+        "Inference mode": "greedy do_sample=false；方向addition／ablation，不是thinking-model实验。",
+        "Architecture evidence": "2608.24901v1：§1/2；App.J Implementation；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.24901",
+        "compact_architecture": "Dense Transformer",
+        "confidence": "high",
+        "paper_sections": "§1/2；App.J Implementation",
+        "paper_url": "https://arxiv.org/html/2608.24901",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 41,
+        "Title": "The Persona Is Still There, but Who Is Speaking? Latent Identity Reversion in Persistent AI Agents",
+        "Models studied": "claude-opus-4-5-20251101（Paul incident及所有复现实验）",
+        "Architecture": "闭源API subject，dense/MoE及内部结构未公开；OpenClaw harness是外部软件，不是backbone结构。没有activation intervention。",
+        "Inference mode": "实际持久agent/heartbeat/system-anchor文本干预；extended thinking配置未核。",
+        "Architecture evidence": "2610.01490v1：§3 Methods；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.01490",
+        "compact_architecture": "闭源API＋agent harness",
+        "confidence": "high",
+        "paper_sections": "§3 Methods",
+        "paper_url": "https://arxiv.org/html/2610.01490",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 42,
+        "Title": "Prompt-Activation Duality: Improving Activation Steering via Attention-Level Interventions",
+        "Models studied": "Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct",
+        "Architecture": "Dense pre-norm decoder Transformer，论文App.A给Qwen28层3584维、Llama32层4096维及GQA；GCAD改变attention输出不改变backbone类型。",
+        "Inference mode": "10-turn、KV cache跨轮保留；T=1.0、每轮最多500新token；非reasoning专门模型。",
+        "Architecture evidence": "2605.10664v2：§5.1；App.A Models；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.10664",
+        "compact_architecture": "Dense Transformer（GQA）",
+        "confidence": "high",
+        "paper_sections": "§5.1；App.A Models",
+        "paper_url": "https://arxiv.org/html/2605.10664",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      },
+      {
+        "ID": 43,
+        "Title": "What Can We Actually Steer? A Multi-Behavior Study of Activation Control",
+        "Models studied": "Llama3.1-8B为主要被steer模型；GPT4.1/Llama prompt baselines与judge应分开",
+        "Architecture": "主干Dense decoder-only Transformer；固定L15，50行为文本表达评估；不是跨全部model family的干预比较。",
+        "Inference mode": "coefficients1–20；文本生成；judge deterministic不等于subject decode模式已核。",
+        "Architecture evidence": "2511.18284v2：§4–6；§8 Limitations；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.18284",
+        "compact_architecture": "Dense；固定L15",
+        "confidence": "high",
+        "paper_sections": "§4–6；§8 Limitations",
+        "paper_url": "https://arxiv.org/html/2511.18284",
+        "scope": "paper setup / architecture-focused selected-body review; independent official configs for family classification where available"
+      }
+    ],
+    "official_architecture_registry": {
+      "Qwen/Qwen2.5-7B-Instruct": {
+        "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json",
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "model_type": "qwen2",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "Qwen/Qwen3-32B": {
+        "url": "https://huggingface.co/Qwen/Qwen3-32B/raw/main/config.json",
+        "architectures": [
+          "Qwen3ForCausalLM"
+        ],
+        "model_type": "qwen3",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "Qwen/Qwen3-30B-A3B": {
+        "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B/raw/main/config.json",
+        "architectures": [
+          "Qwen3MoeForCausalLM"
+        ],
+        "model_type": "qwen3_moe",
+        "num_experts": 128,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "Qwen/Qwen3-235B-A22B": {
+        "url": "https://huggingface.co/Qwen/Qwen3-235B-A22B/raw/main/config.json",
+        "architectures": [
+          "Qwen3MoeForCausalLM"
+        ],
+        "model_type": "qwen3_moe",
+        "num_experts": 128,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "Qwen/Qwen3.5-122B-A10B": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B/raw/main/config.json",
+        "architectures": [
+          "Qwen3_5MoeForConditionalGeneration"
+        ],
+        "model_type": "qwen3_5_moe",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": true,
+        "text_summary": {
+          "layer_types": [
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention"
+          ],
+          "model_type": "qwen3_5_moe_text",
+          "num_experts": 256,
+          "num_hidden_layers": 48
+        }
+      },
+      "Qwen/Qwen3.5-27B": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-27B/raw/main/config.json",
+        "architectures": [
+          "Qwen3_5ForConditionalGeneration"
+        ],
+        "model_type": "qwen3_5",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": true,
+        "text_summary": {
+          "layer_types": [
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention",
+            "linear_attention",
+            "linear_attention",
+            "linear_attention",
+            "full_attention"
+          ],
+          "model_type": "qwen3_5_text",
+          "num_hidden_layers": 64
+        }
+      },
+      "google/gemma-3-27b-it": {
+        "url": "https://huggingface.co/google/gemma-3-27b-it/raw/main/config.json",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      "google/gemma-2-9b-it": {
+        "url": "https://huggingface.co/google/gemma-2-9b-it/raw/main/config.json",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      "google/gemma-7b-it": {
+        "url": "https://huggingface.co/google/gemma-7b-it/raw/main/config.json",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      "openai/gpt-oss-20b": {
+        "url": "https://huggingface.co/openai/gpt-oss-20b/raw/main/config.json",
+        "architectures": [
+          "GptOssForCausalLM"
+        ],
+        "model_type": "gpt_oss",
+        "num_experts": null,
+        "num_local_experts": 32,
+        "vision_config_present": false
+      },
+      "allenai/Olmo-3-7B-Instruct": {
+        "url": "https://huggingface.co/allenai/Olmo-3-7B-Instruct/raw/main/config.json",
+        "architectures": [
+          "Olmo3ForCausalLM"
+        ],
+        "model_type": "olmo3",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "mistralai/Ministral-3-8B-Instruct-2512": {
+        "url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512/raw/main/config.json",
+        "architectures": [
+          "Mistral3ForConditionalGeneration"
+        ],
+        "model_type": "mistral3",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": true,
+        "text_summary": {
+          "model_type": "ministral3",
+          "num_hidden_layers": 34
+        }
+      },
+      "mistralai/Ministral-8B-Instruct-2410": {
+        "url": "https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json",
+        "architectures": [
+          "MistralForCausalLM"
+        ],
+        "model_type": "mistral",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "deepseek-ai/DeepSeek-R1-Distill-Llama-8B": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B/raw/main/config.json",
+        "architectures": [
+          "LlamaForCausalLM"
+        ],
+        "model_type": "llama",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "swiss-ai/Apertus-8B-2509": {
+        "url": "https://huggingface.co/swiss-ai/Apertus-8B-2509/raw/main/config.json",
+        "architectures": [
+          "ApertusForCausalLM"
+        ],
+        "model_type": "apertus",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "upstage/SOLAR-10.7B-Instruct-v1.0": {
+        "url": "https://huggingface.co/upstage/SOLAR-10.7B-Instruct-v1.0/raw/main/config.json",
+        "architectures": [
+          "LlamaForCausalLM"
+        ],
+        "model_type": "llama",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      },
+      "allenai/OLMo-2-1124-13B-DPO": {
+        "url": "https://huggingface.co/allenai/OLMo-2-1124-13B-DPO/raw/main/config.json",
+        "architectures": [
+          "Olmo2ForCausalLM"
+        ],
+        "model_type": "olmo2",
+        "num_experts": null,
+        "num_local_experts": null,
+        "vision_config_present": false
+      }
+    },
+    "cross_paper_findings": [
+      "不能概括persona向量全是dense或全是文本模型：ID9已有Qwen3.5 MoE+hybrid attention的文本偏好负结果pilot；ID13含MoE的几何读出，但完整因果steering覆盖不等同于读出覆盖。",
+      "原生vision-capable backbone不等于本文测过图像：Gemma3/Qwen3.5/Ministral3若只做文本任务，应单独标示实际模态。",
+      "ID10提供跨架构干预：CNN+GRU视觉world model；它不是同一persona的VLM证据，但可用于方法的架构边界。",
+      "generator、judge、审计agent与subject需分角色：ID28的MoE generator不构成MoE persona-pretraining；ID34 judge架构不应计入67行为subject架构数。",
+      "Agentic是部署/任务范式，reasoning是训练及推理模式，MoE/dense是参数激活架构，三者应正交记录。",
+      "ID9 G.4的negative pilot（可读出但弱控制）尤其适合用户read–write与跨架构迁移问题。",
+      "Qwen3.5官方config的block类型是linear_attention与full_attention混合，最好直接写此项，不未经核实地同义替换为Mamba/SSM。"
+    ],
+    "priority_reading": [
+      9,
+      13,
+      10,
+      27,
+      28,
+      3,
+      12,
+      5,
+      24,
+      38
+    ],
+    "official_card_sources": [
+      "https://huggingface.co/Qwen/Qwen3-32B",
+      "https://huggingface.co/Qwen/Qwen3-235B-A22B",
+      "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+      "https://huggingface.co/openai/gpt-oss-20b",
+      "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512",
+      "https://huggingface.co/google/gemma-3-27b-it"
+    ]
+  },
+  "independent_crosscheck": {
+    "purpose": "Independent targeted role/architecture audit; no canonical modifications",
+    "papers": [
+      {
+        "ID": 9,
+        "Title": "Probing Persona-Dependent Preferences in Language Models",
+        "source": "https://arxiv.org/html/2605.13339",
+        "Models studied": "Gemma-3-27B-IT (main probe and causal steering); Qwen-3.5-122B-A10B-nothink (probe plus limited steering pilot); Qwen3-Embedding-8B (descriptive text-encoder baseline only).",
+        "Architecture": "Gemma3 dense multimodal-capable decoder family; Qwen3.5 sparse MoE with hybrid linear/full attention and vision capability. Actual experimental prompts/tasks are textual; not a VLM intervention evaluation.",
+        "Inference mode": "Qwen pilot explicitly nothink (App G.4); Gemma instruction tuned, no explicit reasoning-mode manipulation.",
+        "Architecture evidence": "Paper §2.2, §2.4, App G.4; exact Gemma -IT appears Figs41/42/45. Qwen3.5 official config verification delegated architecture_audit.",
+        "compact_architecture_label": "dense decoder + hybrid-attention MoE; text-only use",
+        "corrections": [
+          "Do not mark Qwen as probe-only: App G.4 reports six-layer n=10 pair pilot with weak steering despite high decoding correlation.",
+          "Do not count Qwen3-Embedding-8B baseline as steered model.",
+          "Probe peak and control layer differ: Gemma L32 readout versus L23 main task-span steering; open-ended evil transcript L25. Qwen six layers L12/24/28/33/38/43, peak readout L38."
+        ],
+        "evidence_sections": [
+          "§2.2: text encoder baseline",
+          "§2.4/Fig5: Gemma L23 task-token intervention",
+          "App G.4: exact sparse-MoE-nothink pilot and layers",
+          "Figs41/42/45: Gemma exact -IT suffix"
+        ]
+      },
+      {
+        "ID": 10,
+        "Title": "Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior",
+        "source": "https://arxiv.org/html/2605.05115",
+        "Models studied": "Llama 3.1 8B (main LLM study, L28); Llama 3.1 70B (Appendix C.2 uncertainty/cylinder steering, L70); custom MountainCar recurrent visual world model (trained and intervened). Paper does not specify Llama base/Instruct repository suffix.",
+        "Architecture": "Both Llamas dense decoder-only Transformers; MountainCar is convolutional encoder → LayerNorm 64d latent + 16d action embedding → 64d GRU → convolutional residual-frame decoder. This is a real non-Transformer intervention case, not a VLM language backbone.",
+        "Inference mode": "LLM last-token residual intervention, bf16 main model; no explicit think/nonthink experiment. World model frame/action conditioned prediction.",
+        "Architecture evidence": "§3.1 default Llama3.1-8B L28; App A.2 last-token residual site; App C.2 explicitly Llama3.1-70B L70; §5 and Fig8 custom GRU architecture.",
+        "compact_architecture_label": "dense decoder Transformer + convolutional GRU visual world model",
+        "corrections": [
+          "Include 70B as an actual supplementary steering experiment; not just 8B.",
+          "Do not label all models as Transformer-only or all experiments as text-only.",
+          "World-model manifold intervention is on encoder latent, not ordinary persona-vector decoder steering."
+        ]
+      },
+      {
+        "ID": 13,
+        "Title": "Sycophancy Is Not One Thing: Causal Separation of Sycophantic Behaviors in LLMs",
+        "source": "https://arxiv.org/html/2509.21305",
+        "version": "v4 2026-09-28",
+        "Models studied": "Causal additive steering: Qwen3-30B-Instruct, Qwen3-4B-Instruct, LLaMA-3.1-8B-Instruct. Additional geometry/discriminability: GPT-OSS-20B and LLaMA-3.3-70B-Instruct. RoBERTa-based praise classifier is an output-measurement evaluator only.",
+        "Architecture": "Llama and Qwen3-4B dense decoder Transformers; GPT-OSS20B MoE family. Qwen3-30B paper abbreviation lacks A3B/checkpoint identity, so precise MoE suffix requires official experiment config; do not silently add A3B as verified exact model name. RoBERTa is encoder classifier, not a steered generator.",
+        "Inference mode": "All Table6 models instruction tuned; paper does not evaluate base models. Explicit thinking switch unverified. EOS extraction for representations; additive residual intervention.",
+        "Architecture evidence": "App C.1/Table6 model inventory; §6 main and replicated steering; App E.2 cross-model steering scope explicitly omits GPT-OSS20B and Llama70B; §6 states RoBERTa output-only role.",
+        "compact_architecture_label": "dense/MoE decoder families; encoder evaluator separated",
+        "corrections": [
+          "The 70B model is LLaMA-3.3-70B, not GPT-OSS-70B.",
+          "Geometry/decodability evidence on GPT-OSS20B/Llama70B must not be reported as demonstrated additive steering transfer.",
+          "Do not count output RoBERTa classifier as intervention target."
+        ],
+        "uncertainty": "Paper original short name Qwen3-30B-Instruct retained; exact official checkpoint unresolved."
+      },
+      {
+        "ID": 28,
+        "Title": "Synthetic Persona Pretraining: Alignment from Token Zero",
+        "source": "https://arxiv.org/html/2608.13482",
+        "Models studied": "Actually pretrained intervention targets: custom SmolLM2-1.7B-shaped model (100B tokens) and Llama-3.2-3B-shaped model (500B tokens), each with matched pretraining variants and posttraining. Production reflection generator Qwen3.5-35B-A3B-FP8; Kimi K2.5 judge. Generator selection additionally benchmarks gpt-oss120b, Nemotron3Super120B, GLM4.5Air etc; these are not persona-trained targets.",
+        "Architecture": "Trained 1.7B: 24 layers, hidden2048,32-head MHA; trained3B:28layers, hidden3072,24heads/8KV-group GQA. Both dense decoder-only, RoPE/RMSNorm/SwiGLU, tied embeddings, SmolLM2 tokenizer. Generator hybrid/MoE or Nemotron Mamba architecture does not make trained target architecture MoE/SSM.",
+        "Inference mode": "Pretraining intervention, followed by common SP-SFT; not an activation-steering study. Generator optimization uses FP8 weights and bf16 DeltaNet state; no target-model think/nonthink control established.",
+        "Architecture evidence": "App B.1/Table2 explicitly dense decoder architecture and training scale; App A.4 generator screening/selection; App C.1 common posttraining and tokenizer.",
+        "compact_architecture_label": "trained dense decoder Transformers; hybrid/MoE generators auxiliary",
+        "corrections": [
+          "Do not say Qwen3.5-35B-A3B was the persona-pretrained or activation-steered model.",
+          "Do not label trained3B as an off-the-shelf Llama3.2 checkpoint: it is architecture-shaped with SmolLM2 tokenizer.",
+          "Do not propagate Mamba mention from generator throughput screening into target-model architecture.",
+          "Latest paper contains both1.7B/100B and3B/500B; early blog1.7B-only summary is incomplete."
+        ]
+      }
+    ]
+  },
+  "targeted_safesteer_and_existing": {
+    "safesteer": {
+      "title": "SafeSteer: Adaptive Subspace Steering for Efficient Jailbreak Defense in Vision-Language Models",
+      "arxiv_id": "2509.21400",
+      "version": "2509.21400v1",
+      "date": "2025-09-24",
+      "url": "https://arxiv.org/abs/2509.21400",
+      "paper_type": "Method; Analysis",
+      "research_question": "能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？",
+      "contributions": "1. 从同一图文输入追加safety prefix前后的激活差提取input-specific raw方向；将善意与恶意输入上的差向量堆叠做SVD，取top-D构造安全子空间。将raw方向分为投影和正交残差，增强投影、抑制残差后重构，不是简单把某个trait向量正交化。\n2. Harm-Sensing MLP读取最后K层末token激活，输出风险概率p，以α=α_init(2p−1)决定干预正负与强度；在LLM decoder目标层的生成早期按隐藏态范数缩放注入。LLaVA消融偏好约第15层、D=5、α_init=1、前30生成tokens。\n3. 三个实测VLM为LLaVA-v1.5-7B、MiniGPT4-7B(Llama 2)、Qwen2.5-VL-7B；攻击包括图像扰动及图中文字等，正常能力使用MM-Vet，确实是图文实验。Table 1中LLaVA平均ASR约5.9%，另用多场景与adaptive attack检查；这不是直接的人格研究，而是低维、context-specific控制与安全/utility联合评价的方法参考。\n4. 官方LLaVA脚本揭示实现口径：目标层索引14为0-based第15 block、top5 SVD、最后4层分类器、前30tokens；先做原输入与加prefix输入两次forward再generate，高风险时forced_decoder_ids施加prefix。故可描述为单次生成、无best-of-n，不能把single inference pass理解为整个流程仅一次forward。",
+      "limitation": "1. 只在三个dense语言backbone的VLM上测试；没有MoE、reasoning或长期agent任务的实证。D=5与首30token等结论来自LLaVA消融，不能直接当作所有架构的普遍最优值。\n2. 安全子空间来自prefix诱发差异与训练样本，尚不能据此定位唯一harmfulness机制；通用性仍依赖风险分类器、攻击分布及评价口径。\n3. 原文性能成本与公开脚本的forward次数需区分；当前公开repo主要给LLaVA实现，并含本地路径，其他两模型的精确checkpoint及配置未核实。",
+      "future_work": "作者希望进一步发展精确、自适应VLM安全干预。阅读推演：比较全局rank-1、固定rank-k与逐输入重构，分离维数与risk gating的收益；将同样的子空间投影方法迁移到persona/agent行动时，联合测行为选择性、正常能力与端到端总成本，不把安全得分替代人格效度。",
+      "related_paper_ids": [
+        1,
+        7,
+        10,
+        33,
+        34,
+        35
+      ],
+      "architecture_cell": "多模态VLM、dense Transformer语言backbone；LLaVA：CLIP ViT-L/14-336→两层GELU MLP→LLaMA/Vicuna系7B；MiniGPT-4(Llama2)：EVA-CLIP-G→patch拼接/Linear→Llama2-chat-7B（官方对应配置无Q-Former，论文checkpoint待核）；Qwen2.5-VL：dynamic-resolution ViT（window/full视觉attention）→2×2 patch merger/两层MLP→Qwen2.5-7B GQA decoder。",
+      "model_list": "LLaVA-v1.5-7B；MiniGPT4-7B(Llama 2)；Qwen2.5-VL-7B（论文名；HF后缀及revision未给）",
+      "actual_input_modality": "image + text；MM-SafetyBench视觉攻击和MM-Vet，不只是模型支持多模态",
+      "reasoning_mode": "未报告专门reasoning/thinking开关；不可由模型名称推断对照过reasoning模式",
+      "intervention_site": "LLM decoder hidden/residual output，公开LLaVA脚本model.model.layers[14] forward hook，last-token；首30生成tokens；layer norm-scaled direction",
+      "seed_citation": "当前v1全文参考文献未找到2507.21509或Persona Vectors；应标用户指定范围外方法补充，不计作已确认seed直接被引",
+      "venue": "按arXiv v1记录；同名TIFS扩展稿未与此版本核验，不混并作者和接收状态",
+      "affiliations": "v1列School of Cyber Science and Engineering, Nanjing University of Science and Technology；Nanyang Technological University；National University of Singapore；具体作者映射未逐项核实",
+      "evidence_scope": "v1正文Methodology/Experimental Setup/Main Results/Ablation复核；官方LLaVA评估脚本与三架构官方配置定向核对。未运行实验或完整审计repo。",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2509.21400v1",
+          "scope": "方法Eq2-10、三VLM/数据、消融D/layer/token"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/xiyuzzz-njust/SafeSteer/main/model_vet_benign_llava.py",
+          "scope": "compute_safety_vectors 2forward; target_layers=[14]; top5;K4;生成prefix;首30token"
+        },
+        {
+          "url": "https://huggingface.co/liuhaotian/llava-v1.5-7b/raw/main/config.json",
+          "scope": "LlavaLlamaForCausalLM, CLIP ViT-L336, mlp2x_gelu,32decoderblocks"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/configs/models/minigpt4_llama2.yaml",
+          "scope": "has_qformer:false; llama2-chat-7b"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/models/minigpt4.py",
+          "scope": "eva_clip_g default; concat4/no-QFormer; Linear projector"
+        },
+        {
+          "url": "https://arxiv.org/html/2502.13923",
+          "scope": "Qwen2.5-VL原始架构2.1"
+        },
+        {
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/raw/main/config.json",
+          "scope": "28-layer dense GQA语言decoder;32-layer ViT;patch merge2;视觉fullblock7,15,23,31"
+        }
+      ],
+      "id": 46,
+      "source_key": "user-arxiv-2509.21400",
+      "Models studied": "LLaVA-v1.5-7B；MiniGPT4-7B(Llama 2)；Qwen2.5-VL-7B（论文名；HF后缀及revision未给）",
+      "Architecture": "多模态VLM、dense Transformer语言backbone；LLaVA：CLIP ViT-L/14-336→两层GELU MLP→LLaMA/Vicuna系7B；MiniGPT-4(Llama2)：EVA-CLIP-G→patch拼接/Linear→Llama2-chat-7B（官方对应配置无Q-Former，论文checkpoint待核）；Qwen2.5-VL：dynamic-resolution ViT（window/full视觉attention）→2×2 patch merger/两层MLP→Qwen2.5-7B GQA decoder。 实际输入：image + text；MM-SafetyBench视觉攻击和MM-Vet，不只是模型支持多模态",
+      "Inference mode": "未报告专门reasoning/thinking开关；不可由模型名称推断对照过reasoning模式；干预位置：LLM decoder hidden/residual output，公开LLaVA脚本model.model.layers[14] forward hook，last-token；首30生成tokens；layer norm-scaled direction",
+      "Architecture evidence": "https://arxiv.org/html/2509.21400v1；https://raw.githubusercontent.com/xiyuzzz-njust/SafeSteer/main/model_vet_benign_llava.py；https://huggingface.co/liuhaotian/llava-v1.5-7b/raw/main/config.json；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/configs/models/minigpt4_llama2.yaml；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/models/minigpt4.py；https://arxiv.org/html/2502.13923；https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/raw/main/config.json",
+      "compact_architecture_label": "VLM · dense Transformer"
+    },
+    "existing_architecture_updates": {
+      "33": {
+        "title": "Do Personality Traits Interfere? Geometric Limitations of Steering in Large Language Models",
+        "version": "2602.15847v1",
+        "model_list": "LLaMA-3-8B-Instruct；Ministral-8B-Instruct（正文§4；表格简写Mistral-8B；精确revision未给）",
+        "architecture_cell": "文本、dense decoder-only Transformer。Llama3-8B为GQA；Ministral-8B官方2410架构交替1 full+3 sliding attention、GQA，非MoE/SSM；但论文未给2410等checkpoint后缀，不能声称完整运行配置已核实。",
+        "actual_input_modality": "text-only：中性prompt与访谈式BFI回答",
+        "reasoning_mode": "Instruct基线；未报告reasoning开关或单独thinking对照",
+        "intervention_site": "正文§2逐trait加权聚合方向，离线prior与runtime dynamic check的hybrid layer selection，forward hooks；文中未给可复原的逐trait精确选层表，不应补猜固定L20等",
+        "sources": [
+          "https://arxiv.org/html/2602.15847v1",
+          "https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json",
+          "https://huggingface.co/docs/transformers/en/model_doc/ministral"
+        ],
+        "comparison_to_safesteer": "ID33删除五trait间线性重叠，问是否得到独立行为；SafeSteer保留低维安全成分并risk-adapt重构，目标是ASR/utility，不宣称多trait正交控制。几何基正交的事实不能使两者结论互相否定。",
+        "Models studied": "LLaMA-3-8B-Instruct；Ministral-8B-Instruct（正文§4；表格简写Mistral-8B；精确revision未给）",
+        "Architecture": "文本、dense decoder-only Transformer。Llama3-8B为GQA；Ministral-8B官方2410架构交替1 full+3 sliding attention、GQA，非MoE/SSM；但论文未给2410等checkpoint后缀，不能声称完整运行配置已核实。 实际输入：text-only：中性prompt与访谈式BFI回答",
+        "Inference mode": "Instruct基线；未报告reasoning开关或单独thinking对照；干预位置：正文§2逐trait加权聚合方向，离线prior与runtime dynamic check的hybrid layer selection，forward hooks；文中未给可复原的逐trait精确选层表，不应补猜固定L20等",
+        "Architecture evidence": "https://arxiv.org/html/2602.15847v1；https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json；https://huggingface.co/docs/transformers/en/model_doc/ministral",
+        "compact_architecture_label": "Text · dense Transformer"
+      },
+      "34": {
+        "title": "Forecasting Side Effects of Activation Steering",
+        "version": "2608.11227v1",
+        "model_list": "Gemma-3-4B；Gemma-3-12B；Qwen2.5-7B（论文§3模型名；未显式给checkpoint仓库/it后缀/revision）",
+        "architecture_cell": "均为dense decoder Transformer。Gemma3的4B/12B本体支持视觉：SigLIP视觉编码器+投影+Gemma decoder，decoder交替5 local+1 global attention；本论文只实测文本context，不能记成已做VLM steering实验。Qwen2.5-7B为纯文本dense GQA decoder，28blocks。",
+        "actual_input_modality": "text-only六类context（coding、document、emotional-support等），没有image/video实验",
+        "reasoning_mode": "未报告独立reasoning模型或thinking开关对照；instruct后缀论文未列，留未核实",
+        "intervention_site": "§3 L16/34, L22/48, L13/28分别注入Gemma4B/Gemma12B/Qwen7B；四五层后L20/L26/L18 readout；所有prompt/generated token位置；层号按论文原记法，勿未核实地转0-based",
+        "sources": [
+          "https://arxiv.org/html/2608.11227v1",
+          "https://huggingface.co/google/gemma-3-4b-it",
+          "https://huggingface.co/google/gemma-3-12b-it",
+          "https://huggingface.co/docs/transformers/v4.52.3/en/model_doc/gemma3",
+          "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json"
+        ],
+        "comparison_to_safesteer": "ID34是source-control到target-readout经W传播的副作用预测，无须先完整执行新方向；SafeSteer是实际安全控制器，按当前输入重构并调强度。SafeSteer的subspace可能降低副作用，但本文未用67行为交叉矩阵检验，不可当作已解决ID34的所有coupling。",
+        "Models studied": "Gemma-3-4B；Gemma-3-12B；Qwen2.5-7B（论文§3模型名；未显式给checkpoint仓库/it后缀/revision）",
+        "Architecture": "均为dense decoder Transformer。Gemma3的4B/12B本体支持视觉：SigLIP视觉编码器+投影+Gemma decoder，decoder交替5 local+1 global attention；本论文只实测文本context，不能记成已做VLM steering实验。Qwen2.5-7B为纯文本dense GQA decoder，28blocks。 实际输入：text-only六类context（coding、document、emotional-support等），没有image/video实验",
+        "Inference mode": "未报告独立reasoning模型或thinking开关对照；instruct后缀论文未列，留未核实；干预位置：§3 L16/34, L22/48, L13/28分别注入Gemma4B/Gemma12B/Qwen7B；四五层后L20/L26/L18 readout；所有prompt/generated token位置；层号按论文原记法，勿未核实地转0-based",
+        "Architecture evidence": "https://arxiv.org/html/2608.11227v1；https://huggingface.co/google/gemma-3-4b-it；https://huggingface.co/google/gemma-3-12b-it；https://huggingface.co/docs/transformers/v4.52.3/en/model_doc/gemma3；https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json",
+        "compact_architecture_label": "Text · dense Transformer（Gemma本体可视觉）"
+      }
+    },
+    "architecture_design_recommendation": {
+      "fields": [
+        "Model(s) intervened",
+        "Model architecture",
+        "Actual input modality",
+        "Reasoning mode",
+        "Intervention site / layers",
+        "Architecture evidence"
+      ],
+      "rule": "严格区分模型固有支持模态、论文实际输入、语言backbone稀疏性、attention结构、以及judge；unknown保持待核。Gemma3与MiniGPT4-Llama2是容易误分的两个案例。"
+    }
+  },
+  "targeted_safety_papers": {
+    "status": "completed",
+    "scope": "定向读正文方法/结果/限制及架构相关附录；未运行代码或复算数据；未修改canonical文件",
+    "papers": [
+      {
+        "arxiv_id": "2604.11120",
+        "version": "2604.11120v2",
+        "title": "Persona Non Grata: Single-Method Safety Evaluation Is Incomplete for Persona-Imbued LLMs",
+        "url": "https://arxiv.org/html/2604.11120v2",
+        "paper_type": "Analysis",
+        "research_question": "同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？",
+        "contributions": "1. 将同一套Big Five/persona配置分别通过system prompting、benign few-shot prompting和CAA激活steering注入，在四个standard模型、两个reasoning模型上比较安全结果。Study1含5,568个判定条件；不仅比较是否trait更强，而是比较同一persona的安全排序是否随注入方法变化。（§3–4）\n2. 发现prosocial persona paradox：Llama-3.1-8B上高Conscientiousness＋高Agreeableness的P12在prompt条件较安全，却在AS下达到ASR 0.818，为该模型最高。系数扫查、benign题persona-strength匹配及few-shot中性控制后仍保留反转；DeepSeek-R1-Distill-Qwen-32B也复现相关反转。（§4.1、App.M/N/R）\n3. Prompt-side persona风险排序跨模型较一致，但AS风险结构明显依模型而变：Llama更易受AS影响，Gemma3/Qwen3.5更易受prompt persona影响。它直接支持“语义上相同的persona，不同赋予范式可能走向不同安全行为”，与self-report／role／behavior多范式比较相关。（§4.2）\n4. 用trait方向与refusal方向的cosine及跨方法激活差做部分几何解释；Conscientiousness在Llama上与refusal强反对齐，提示prosocial语义本身不能保证内部干预安全。该解释在single-trait／特定模型上更清楚，并非全架构通用的因果机制定位。（§4.4）\n5. Study2保留真实CoT，显示reasoning只提供分级保护：DeepSeek distill与QwQ在persona压力下的安全表现不同。policy recall／self-correction的regex诊断比单纯trace长度更有解释线索，但作者将其标为探索性。（§4.3、App.L）",
+        "limitation": "1. 主要是single-turn文本安全请求和极端trait poles；模型虽然含VLM-capable或混合attention骨干，本文没有测图像条件、MoE路由或长期agent任务。因此跨family差异不是严格控制训练、规模后的“架构因果效应”。\n2. AS、system与few-shot是不同形式的干预；论文已做强度匹配和中性few-shot对照，但这不能完全隔离所有方法差异。高α的部分Dark-Triad输出会退化；主要P12反转在α=1及匹配设置中仍成立。\n3. 几何框架解释有限：主要支持Llama single-trait风险，组合trait及部分Qwen结果有非线性；CoT regex命中也不等于faithful的内部机制标签。（§6）\n4. 层设置记述需谨慎：§3.2概述相对深度映射，App.C.4则从每模型已提取范围等距选8层；不要统一写成所有模型都严格注入25–47%深度，复现应以具体config索引为准。",
+        "future_work": "作者方向：扩展柔和trait、multi-turn及跨架构几何审计。阅读推演：对同一role／trait做prompt、role-derived vector与behavior-derived vector的matched干预，联合评价角色表达、实际决策和安全，而不把亲社会persona分数当作安全代理。对Qwen3.5进一步按linear-attention与full-attention block分开测试，并固定thinking模式与文本/图像输入后再谈架构差异。",
+        "related_ids": [
+          1,
+          3,
+          5,
+          7,
+          33,
+          34,
+          36,
+          38,
+          40
+        ],
+        "authors_affiliations": "Wenkai Li：Carnegie Mellon University、Fujitsu Research of America；其余署名Fujitsu Research of America",
+        "venue": "arXiv；本轮未核实接收",
+        "seed_citation_verified": true,
+        "model_architectures": [
+          {
+            "model_name_in_paper": "Llama-3.1-8B-Instruct",
+            "checkpoint_or_repo": "meta-llama/Llama-3.1-8B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense autoregressive decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；未启用独立reasoning模式",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；论文参考层8–15；32层模型",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "Gemma-3-27B-IT",
+            "checkpoint_or_repo": "google/gemma-3-27b-it",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense decoder Transformer，local/global attention；vision encoder连接语言骨干",
+            "model_capability_modality": "vision-language capable",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；不属于论文Study2 reasoning panel",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；62层；提取20–45层，再选8应用层",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/google/gemma-3-27b-it",
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "Qwen3.5-9B",
+            "checkpoint_or_repo": "Qwen/Qwen3.5-9B",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense FFN；Gated DeltaNet线性/递归attention与full gated attention混合，3:1排列；不是MoE",
+            "model_capability_modality": "native vision-language capable",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "模型支持thinking/nonthinking；论文未披露enable_thinking开关，不将Study1 standard分组当作模式已核实",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；32层，提取8–24层",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": [
+              "https://huggingface.co/Qwen/Qwen3.5-9B",
+              "https://huggingface.co/Qwen/Qwen3.5-9B/raw/main/config.json"
+            ],
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "Qwen3.5-27B",
+            "checkpoint_or_repo": "Qwen/Qwen3.5-27B",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense FFN；Gated DeltaNet线性/递归attention与full gated attention混合，3:1排列；不是MoE",
+            "model_capability_modality": "native vision-language capable",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "模型支持thinking/nonthinking；论文未披露enable_thinking开关",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；64层，提取16–48层",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": [
+              "https://huggingface.co/Qwen/Qwen3.5-27B",
+              "https://huggingface.co/Qwen/Qwen3.5-27B/raw/main/config.json"
+            ],
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "DeepSeek-R1-Distill-Qwen-32B",
+            "checkpoint_or_repo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2.5-32B骨干；Qwen2ForCausalLM；不是原生DeepSeek-R1 671B MoE",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "Study2实际生成explicit thinking/CoT traces；非只按模型名推断",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；64层；论文未逐一列出reasoning模型实际8层索引",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "QwQ-32B",
+            "checkpoint_or_repo": "Qwen/QwQ-32B",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2.5-family decoder Transformer；GQA；Qwen2ForCausalLM",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "Study2实际生成explicit thinking/CoT traces",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；64层；reasoning模型应用层逐一索引未报告",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/Qwen/QwQ-32B",
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          },
+          {
+            "model_name_in_paper": "Gemma-3-12B-IT",
+            "checkpoint_or_repo": "google/gemma-3-12b-it",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense decoder Transformer，vision encoder",
+            "model_capability_modality": "vision-language capable",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "探索性standard配置，开关未报告",
+            "intervention": "CAA正负均值差、逐trait L2归一化；多trait方向求和；每pass 8层residual-stream forward hook，全部token位置；Study1 α=1，reasoning-AS主设α=4（另有α=1点检）；48层，提取12–36层",
+            "scope": "exploratory_excluded",
+            "qualification": "App.A有列出，但App.Q明确partial exploratory runs excluded from main paper；不要算成第7个主实验模型",
+            "architecture_source": "https://huggingface.co/google/gemma-3-12b-it",
+            "paper_model_source": "§3.4；App.A Table3；App.C.3–C.5；App.L.1；App.Q"
+          }
+        ],
+        "architecture_summary": "六个主模型：Llama3.1 dense text；Gemma3 dense VLM但本文text-only；Qwen3.5-9B/27B dense hybrid GatedDeltaNet/full-attention VLM但本文text-only；DeepSeek-R1-Distill-Qwen32B与QwQ32B为dense Qwen2.5骨干、实际CoT。无已验证MoE模型。Gemma3-12B探索性排除主结果。",
+        "model_layer_caveat": "App.C.3/C.4：8-layer应用与wide extraction range分开；不能将文中25–47%深度概述当作全部架构实际索引。",
+        "local_text_sha256": "c1d039ca8293c2c1e438c4bd591a3bdcb260198d1fd9f0746c8c2c218ee69e14",
+        "suggested_id": 44,
+        "Models studied": "主：meta-llama/Llama-3.1-8B-Instruct；google/gemma-3-27b-it；Qwen/Qwen3.5-9B、Qwen3.5-27B；deepseek-ai/DeepSeek-R1-Distill-Qwen-32B；Qwen/QwQ-32B。Gemma-3-12B为探索性、已从主结果排除。",
+        "Architecture": "Llama3.1：dense text decoder Transformer/GQA；Gemma3：dense vision-language骨干但本研究仅文本；Qwen3.5-9B/27B：dense GatedDeltaNet线性/递归attention＋full attention混合(3:1)，带vision encoder，本研究仅文本；DeepSeek-R1-Distill-Qwen32B与QwQ32B：dense Qwen2.5骨干（不是原生R1 MoE）。CAA在8层residual上全位置注入，参考Llama8–15，其他模型映射具体索引需看config。",
+        "Inference mode": "Study1标准instruct，prompt温度0且AS deterministic；Qwen3.5 thinking开关未披露，不能当作已证实nonthinking。Study2 DeepSeek distill/QwQ实际生成CoT：temperature0.6、top_p0.95、max_tokens4096；α主设4，另α1点检。全部任务文本输入。",
+        "Architecture evidence": "论文§3.2/3.4、App.A/C.3–C.5/L.1/Q；官方Qwen3.5-9B/27B config.json（qwen3_5_text、layer_types及FFN无MoE router），Gemma3 model card；DeepSeek distill/QwQ模型卡与config。论文未冻结checkpoint revision。",
+        "compact_architecture_label": "Dense Transformer + dense hybrid linear/full-attention；VLM-capable但仅text输入；含真实reasoning panel；无已验证MoE",
+        "fields": {
+          "Models studied": "主：meta-llama/Llama-3.1-8B-Instruct；google/gemma-3-27b-it；Qwen/Qwen3.5-9B、Qwen3.5-27B；deepseek-ai/DeepSeek-R1-Distill-Qwen-32B；Qwen/QwQ-32B。Gemma-3-12B为探索性、已从主结果排除。",
+          "Architecture": "Llama3.1：dense text decoder Transformer/GQA；Gemma3：dense vision-language骨干但本研究仅文本；Qwen3.5-9B/27B：dense GatedDeltaNet线性/递归attention＋full attention混合(3:1)，带vision encoder，本研究仅文本；DeepSeek-R1-Distill-Qwen32B与QwQ32B：dense Qwen2.5骨干（不是原生R1 MoE）。CAA在8层residual上全位置注入，参考Llama8–15，其他模型映射具体索引需看config。",
+          "Inference mode": "Study1标准instruct，prompt温度0且AS deterministic；Qwen3.5 thinking开关未披露，不能当作已证实nonthinking。Study2 DeepSeek distill/QwQ实际生成CoT：temperature0.6、top_p0.95、max_tokens4096；α主设4，另α1点检。全部任务文本输入。",
+          "Architecture evidence": "论文§3.2/3.4、App.A/C.3–C.5/L.1/Q；官方Qwen3.5-9B/27B config.json（qwen3_5_text、layer_types及FFN无MoE router），Gemma3 model card；DeepSeek distill/QwQ模型卡与config。论文未冻结checkpoint revision。"
+        }
+      },
+      {
+        "arxiv_id": "2609.06951",
+        "version": "2609.06951v3",
+        "title": "Steering Interference Reflects the Model’s Defaults, Not the Behavior Directions",
+        "url": "https://arxiv.org/html/2609.06951v3",
+        "paper_type": "Analysis",
+        "research_question": "跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？",
+        "contributions": "1. 在24种行为、10个instruct模型上构造judge-grounded交叉干扰矩阵；把线性可解码和真正改变生成文本分开。Qwen2.5-7B的24行为都可解码，但只有20个通过coherent steering校准。（§3–4）\n2. 主要干扰具有方向性：profanity→toxicity明显，toxicity→profanity接近零；若只看对称cosine，就无法表达这种关系。进一步以13种几何／定向特征及probe、三维concept cone做leave-one-behavior-out预测，仍难预测效应大小。（§5、§7）\n3. 关键对照是matched-norm random push：不携带特定行为内容的随机方向也诱发近似的target易感性排序，主模型与真实steer的排序相关约0.90。它能诱发toxicity等“sink”行为，却不能生成profanity等依赖特定方向的字面行为，说明方向特异控制与一般扰动副效应可以分开。（§6）\n4. 十模型复制中低秩、非对称和几何预测不佳的定性结构保留；较大模型的random/default耦合减弱。这里defaults指扰动后容易落入的behavioral sinks，不等于中性prompt下模型本来最常输出的行为。（§8、App.E）\n5. 与ID33一致：移除几何重叠不足以获得模块控制。与ID34互补：两文都观察非对称与target易感性；本篇更强调random-push/model-default对照，而ID34进一步以unsteered propagation＋readout作forecast。行为集、模型、指标、系数校准与读出不同，不能只凭标题判断二者结论冲突。\n6. 与ID34的random-direction控制存在值得复核的张力：34报告约0.007的绝对评分变化，但只覆盖six-cell/one-seed控制；45以matched-added-norm的24个random方向比较target profile排序。两者提取位置、层、context、强度、生成长度与judge尺度不同，暂不能视作同条件相反结果。",
+        "limitation": "1. 主细节来自Qwen2.5-7B，另外九模型复制同一24行为协议；模型均为文本instruct dense Transformer，尚未覆盖MoE、SSM/linear-attention混合、VLM图像条件或reasoning agent。\n2. 每模型自判自己的输出可能混合行为与judge特性；作者对三个模型用固定强judge复评，保留结构结论，但具体top-sink成员仍会变化。48-token短生成和distinct-bigram coherence不代表长期任务质量。（App.D/G）\n3. 作者承认大部分pairwise residual既没被几何也没被一维ranking解释，“defaults”是重要功能性解释而非已追踪到内部回路的完备机理。较大模型为何减弱仍未解决。（§10）\n4. 统一AUROC最优层、coefficient grid与阈值便于复制，却不保证每种行为都处在最佳可控层；“全部可解码”只针对有限合成contrastive范式。",
+        "future_work": "阅读推演：沿用ID34的cross-effect forecasting，将random扰动profile作为基线并预测source-specific residual；比较同范数不同方向、自然context内变化及多步行动结果。把模型family／规模、reasoning状态与architecture拆开；检验defaults在planning、tool-call和environment feedback阶段是否一致。",
+        "related_ids": [
+          1,
+          3,
+          7,
+          33,
+          34,
+          35,
+          39,
+          40,
+          43
+        ],
+        "authors_affiliations": "Srikanth Malla、Chiho Choi、Joon Hee Choi；Samsung Semiconductor US",
+        "venue": "arXiv；本轮未核实接收",
+        "seed_citation_verified": true,
+        "model_architectures": [
+          {
+            "model_name_in_paper": "Qwen2.5-1.5B-Instruct",
+            "checkpoint_or_repo": "Qwen/Qwen2.5-1.5B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2 decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Qwen2.5-3B-Instruct",
+            "checkpoint_or_repo": "Qwen/Qwen2.5-3B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2 decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Qwen2.5-7B-Instruct",
+            "checkpoint_or_repo": "Qwen/Qwen2.5-7B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2 decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "主细节模型：28层、hidden3584；实际选层7–16（HF hidden-states约定，0=embedding）",
+            "architecture_source": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Qwen2.5-32B-Instruct",
+            "checkpoint_or_repo": "Qwen/Qwen2.5-32B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2 decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Qwen2.5-72B-Instruct",
+            "checkpoint_or_repo": "Qwen/Qwen2.5-72B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense Qwen2 decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Llama-3.1-8B-Instruct",
+            "checkpoint_or_repo": "meta-llama/Llama-3.1-8B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense autoregressive decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Llama-3.3-70B-Instruct",
+            "checkpoint_or_repo": "meta-llama/Llama-3.3-70B-Instruct",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense autoregressive decoder Transformer；GQA",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "",
+            "architecture_source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Gemma-2-9B instruct",
+            "checkpoint_or_repo": "google/gemma-2-9b-it",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense decoder Transformer；local/global attention",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "论文列Gemma-2-9B/27B并声明instruction-tuned；官方-it repo与该名称对应，但论文没有给具体下载revision",
+            "architecture_source": "https://huggingface.co/google/gemma-2-9b-it",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Gemma-2-27B instruct",
+            "checkpoint_or_repo": "google/gemma-2-27b-it",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense decoder Transformer；local/global attention",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "论文列Gemma-2-9B/27B并声明instruction-tuned；官方-it repo与该名称对应，但论文没有给具体下载revision",
+            "architecture_source": "https://huggingface.co/google/gemma-2-27b-it",
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          },
+          {
+            "model_name_in_paper": "Mistral-7B instruction-tuned",
+            "checkpoint_or_repo": "未报告具体repo／v0.x",
+            "checkpoint_revision": "论文未给冻结revision；模型卡/配置核验的是当前官方模型定义",
+            "architecture": "dense decoder Transformer family；确切Mistral release未报告",
+            "model_capability_modality": "text-only",
+            "actual_paper_input": "文本安全/行为提示；没有图像输入实验",
+            "reasoning_mode": "standard instruct；非reasoning panel",
+            "intervention": "response-token mean residual activations；12 contrastive pairs/behavior；按held-out projection AUROC选25–85%深度中的单层；raw unnormalized difference vector；该decoder block output forward-hook，prompt+generated positions；greedy BF16，48 new tokens；α网格{1,2,3,4,6,8}以judge目标和distinct-bigram floor校准",
+            "scope": "main",
+            "qualification": "不要把Mistral-7B擅自写成Ministral，也不要补成v0.3。",
+            "architecture_source": null,
+            "paper_model_source": "§3 Step6；§8；Reproducibility Statement；App.C/D/E Table4/F"
+          }
+        ],
+        "architecture_summary": "10个文本dense decoder Transformer instruct checkpoints：Qwen2.5 1.5/3/7/32/72B、Llama3.1-8B、Llama3.3-70B、Gemma2-9/27B、Mistral7B（v0.x未报告）；未测MoE、混合recurrent骨干或图像条件；标准instruct，不是reasoning-model研究。",
+        "local_text_sha256": "b89f016811ad416d97b10cec16640f66682ff564650b4db098c6616364da92f3",
+        "suggested_id": 45,
+        "Models studied": "Qwen2.5-{1.5B,3B,7B,32B,72B}-Instruct；Llama-3.1-8B-Instruct、Llama-3.3-70B-Instruct；Gemma-2-{9B,27B} instruct；Mistral-7B instruct（具体v0.x/repo未给）。主细节Qwen2.5-7B，另外9模型相同流程复制。",
+        "Architecture": "10个text-only dense decoder Transformer，跨Qwen2.5/Llama/Gemma2/Mistral四家族；无MoE、SSM/linear-attention混合或VLM实验证据。response-token平均激活提raw差向量；25–85%深度内按held-out AUROC选单个block；主Qwen7B实际选层7–16（0=embedding）；prompt+decode所有位置加法hook。",
+        "Inference mode": "全部为标准instruction-tuned模型；BF16，generation/steering/judging均greedy，48new_tokens；α网格1/2/3/4/6/8按行为校准并用distinct-bigram约束。未测试thinking开关或专门reasoning panel。每模型默认self-judge，另3模型由固定Qwen2.5-72B复评。",
+        "Architecture evidence": "论文§3/§8、Reproducibility Statement、App.C/D/E Table4/F/G；官方Qwen2.5/Llama/Gemma2模型卡及Qwen2 config。具体Mistral release未报告；不替作者补成v0.3，也不与Ministral混同。",
+        "compact_architecture_label": "Text-only dense decoder Transformers；4 families/10 instruct models；非reasoning panel",
+        "fields": {
+          "Models studied": "Qwen2.5-{1.5B,3B,7B,32B,72B}-Instruct；Llama-3.1-8B-Instruct、Llama-3.3-70B-Instruct；Gemma-2-{9B,27B} instruct；Mistral-7B instruct（具体v0.x/repo未给）。主细节Qwen2.5-7B，另外9模型相同流程复制。",
+          "Architecture": "10个text-only dense decoder Transformer，跨Qwen2.5/Llama/Gemma2/Mistral四家族；无MoE、SSM/linear-attention混合或VLM实验证据。response-token平均激活提raw差向量；25–85%深度内按held-out AUROC选单个block；主Qwen7B实际选层7–16（0=embedding）；prompt+decode所有位置加法hook。",
+          "Inference mode": "全部为标准instruction-tuned模型；BF16，generation/steering/judging均greedy，48new_tokens；α网格1/2/3/4/6/8按行为校准并用distinct-bigram约束。未测试thinking开关或专门reasoning panel。每模型默认self-judge，另3模型由固定Qwen2.5-72B复评。",
+          "Architecture evidence": "论文§3/§8、Reproducibility Statement、App.C/D/E Table4/F/G；官方Qwen2.5/Llama/Gemma2模型卡及Qwen2 config。具体Mistral release未报告；不替作者补成v0.3，也不与Ministral混同。"
+        }
+      }
+    ],
+    "primary_architecture_sources": [
+      "https://huggingface.co/Qwen/Qwen3.5-9B/raw/main/config.json",
+      "https://huggingface.co/Qwen/Qwen3.5-27B/raw/main/config.json",
+      "https://huggingface.co/Qwen/Qwen3.5-9B",
+      "https://huggingface.co/Qwen/Qwen3.5-27B",
+      "https://ai.google.dev/gemma/docs/core/model_card_3",
+      "https://ai.google.dev/gemma/docs/core/model_card_2",
+      "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+      "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+      "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+      "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+      "https://huggingface.co/Qwen/QwQ-32B"
+    ],
+    "important_qualification": "官方Qwen3.5模型卡Highlights复用系列级MoE概述，不能据此把9B/27B标成MoE；特定config为qwen3_5_text（非qwen3_5_moe），layer_types与FFN结构支持dense hybrid分类。GatedDeltaNet不是应未经说明就称作Mamba SSM。",
+    "comparison_45_vs_34": {
+      "question": "ID34 random-direction变化约0.007，ID45 matched-norm random push却重现sink排序，是否冲突？",
+      "assessment": "存在值得直接复核的实证张力，但不是目前可判一文推翻另一文的matched replication；当前对象、物理干预、估计量和对照覆盖均不同。两文共同支持非对称干扰和target susceptibility的重要性。",
+      "differences": [
+        {
+          "dimension": "模型与任务",
+          "ID34": "Gemma3-4B/12B、Qwen2.5-7B；67行为，六类使行为有机会出现的context，96 prompts全覆盖；52/52/47 validated sources",
+          "ID45": "Qwen2.5-7B主图，另9模型；24行为、32 neutral prompts，主模型20 behaviors steerable；跨family对照含Gemma2而非Gemma3"
+        },
+        {
+          "dimension": "提取与层",
+          "ID34": "final prompt-token对比均值方向；逐模型固定公共注入层L16/L22/L13；unit direction再乘该层mean residual norm",
+          "ID45": "response-token mean对比均值；每行为在25–85%深度选AUROC最优层，主Qwen7B实际L7–16；raw未归一化方向"
+        },
+        {
+          "dimension": "强度与对照覆盖",
+          "ID34": "每source无退化窗口内5系数×4seed，cross-effect主要作斜率／窗口跨度；random control只有six-cell、one-seed、two-judge，报告7.5×calibrated coefficient时约0.007，不能代表完整67行为随机profile",
+          "ID45": "每行为以自身judge目标约2分、coherence distinct-bigram>0.6校准；24 random directions按加到residual的范数匹配real steers并遵守coherence floor；重点检验random-induced profile与susceptibility排序"
+        },
+        {
+          "dimension": "估计量与读出",
+          "ID34": "独立Gemma4-31B judge，1–4 rating-token概率加权（少数binary），主矩阵是对α的斜率及窗口变化；随机对照约0.007是绝对judge-score变化",
+          "ID45": "主要self-judge对生成文本0–10 JSON评分，另固定强judge复评3模型；矩阵为calibrated steer减unsteered并按target pooled SD标准化；0.90是排序相关，不是绝对效应幅度"
+        },
+        {
+          "dimension": "生成",
+          "ID34": "temperature0.8、top_p0.95、max4096；主图4seeds",
+          "ID45": "greedy、max48new_tokens；同样的short output/judge protocol跨10模型"
+        }
+      ],
+      "next_discriminating_test": "从共同Qwen2.5-7B起步，固定checkpoint、prompt集合、source提取、同一注入层、逐token位置、physical norm ratio、decode长度和judge；对多随机方向测全target profile，扫强度并记录退化。分别比较absolute Δscore、standardized Δ与排序相关；再交换neutral/eliciting context、prompt/response提取与judge，定位random-effect张力来自何处。不能只比较0.007与0.90。",
+      "source_locations": [
+        "2608.11227 §3、§4.1、App.A/B/D Table6/E",
+        "2609.06951 §3、§6、App.C/D/F/G"
+      ]
+    },
+    "comparison_44_vs_assistant_axis": {
+      "supported": "高C＋高A等亲社会persona语义，在AS下仍可能造成unsafe；同persona跨prompt/AS安全排序可反转。",
+      "not_tested": "论文没有直接测Assistant Axis投影，也没有把高Axis projection条件当作unsafe预测变量；P12高C/A不等于高Assistant Axis。不能据此声称已证实“high Axis projection but unsafe”。",
+      "next_test": "分别测role/trait adherence、Assistant Axis projection、refusal/actual compliance和任务能力；做matched-strength、matched-norm与随机方向对照。若Axis投影保持高而unsafe上升，才构成该假设的直接证据。"
+    }
+  },
+  "scope": "43 existing papers architecture-focused review + 3 requested papers directed reading; not a full-paper audit of all 46"
+}

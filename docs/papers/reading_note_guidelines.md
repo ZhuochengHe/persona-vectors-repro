@@ -52,3 +52,7 @@
 `Paper type`按主要贡献多选，区别于研究主题：Method提出方法；Benchmark提出评估任务／数据／协议；Survey系统整理已有工作；Analysis实证分析规律；Theory包含正式数学命题与证明。使用公式、向量或几何分析本身不足以归Theory；没有合适论文时不强行填满类别。当前分类依据已有笔记，未精读条目仍是工作标签。
 
 `Research question`用一至数个问句明确论文要解决的问题，与一句话主题／结论区分。Google Doc按研究问题组织论文，每篇保留稳定ID、分类、RQ、方法贡献、局限、Future work、用户笔记及证据范围；左侧大纲承担导航，长内容使用段落，不塞入宽表格。
+
+## 架构视角
+
+每篇记录实际被研究模型和4个架构字段：Models studied、Architecture、Inference mode、Architecture evidence。架构标签至少区分dense／MoE、attention／recurrent混合、原生模态；另说明实验实际输入和thinking模式。训练、干预、probe、generator、judge分角色记录。不同架构在行为控制上的差异仍可能混有训练、规模和输入设置，不单凭跨模型表现推断架构因果效应。

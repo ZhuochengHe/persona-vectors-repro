@@ -24,15 +24,33 @@ trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID
 
 当前问题补充：几何、read–write与agent迁移｜ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
 
+安全评估、模型默认与多模态子空间｜ID 44、ID 45、ID 46
+
+### 按模型架构查找（代表条目）
+
+骨干能力与实验输入分开；模型角色、实际thinking模式和精确checkpoint见每篇“模型与架构”。
+
+Dense decoder常用基线：ID 1、ID 2、ID 3、ID 7、ID 33、ID 34、ID 45
+
+MoE／混合attention证据（probe与steer须分开）：ID 5、ID 9、ID 11、ID 13、ID 26、ID 27、ID 30、ID 44
+
+图文输入实测VLM：ID 46
+
+原生支持视觉，但该文只测文本：ID 6、ID 9、ID 12、ID 18、ID 30、ID 34、ID 35、ID 44
+
+非Transformer干预对照：ID 10
+
+闭源／API主体：ID 4、ID 38、ID 41
+
 ### 按论文类型查找
 
-Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42
+Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46
 
 Benchmark：ID 7、ID 14、ID 38
 
 Survey：当前未标注符合此类的条目
 
-Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
+Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46
 
 Theory：ID 39
 
@@ -40,51 +58,54 @@ Theory：ID 39
 
 点击 ID 进入笔记，点击短标题打开原文；表格用于浏览，复杂筛选使用 Excel。
 
-| ID | 论文短标题 | 类型 | 阅读状态 |
-| --- | --- | --- | --- |
-| [1](#paper-1) | [Persona Vectors](https://arxiv.org/abs/2507.21509) | Method; Analysis | 未标记 |
-| [2](#paper-2) | [Persona Vectors in Games](https://arxiv.org/abs/2603.21398) | Analysis | 未标记 |
-| [3](#paper-3) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | 未标记 |
-| [4](#paper-4) | [Emotion Concepts](https://arxiv.org/abs/2604.07729) | Analysis | 未标记 |
-| [5](#paper-5) | [The Personality Illusion](https://arxiv.org/abs/2509.03730) | Analysis | 未标记 |
-| [6](#paper-6) | [Open Character Training](https://arxiv.org/abs/2511.01689) | Method; Analysis | 未标记 |
-| [7](#paper-7) | [PERSONA](https://arxiv.org/abs/2602.15669) | Method; Benchmark; Analysis | 未标记 |
-| [8](#paper-8) | [Tracing Persona Vectors Through Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | 未标记 |
-| [9](#paper-9) | [Persona-Dependent Preferences](https://arxiv.org/abs/2605.13339) | Analysis | 未标记 |
-| [10](#paper-10) | [Manifold Steering](https://arxiv.org/abs/2605.05115) | Method; Analysis | 未标记 |
-| [11](#paper-11) | [Societies of Thought](https://arxiv.org/abs/2601.10825) | Analysis | 未标记 |
-| [12](#paper-12) | [Self-Report & Behavior Coherence](https://arxiv.org/abs/2610.04125) | Method; Analysis | 未标记 |
-| [13](#paper-13) | [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305) | Analysis | 未标记 |
-| [14](#paper-14) | [AuditBench](https://arxiv.org/abs/2602.22755) | Benchmark | 未标记 |
-| [15](#paper-15) | [Belief Dynamics](https://arxiv.org/abs/2511.00617) | Analysis | 未标记 |
-| [16](#paper-16) | [Narrow Finetuning Traces](https://arxiv.org/abs/2510.13900) | Analysis | 未标记 |
-| [17](#paper-17) | [Weight Arithmetic](https://arxiv.org/abs/2511.05408) | Method; Analysis | 未标记 |
-| [18](#paper-18) | [Subliminal Learning as Distillation](https://arxiv.org/abs/2606.00995) | Analysis | 未标记 |
-| [19](#paper-19) | [Impatient Users Confuse AI Agents](https://arxiv.org/abs/2510.04491) | Method; Analysis | 未标记 |
-| [20](#paper-20) | [Generative Causal Mediation](https://arxiv.org/abs/2602.16080) | Method | 未标记 |
-| [21](#paper-21) | [Steer Like the LLM](https://arxiv.org/abs/2605.03907) | Method; Analysis | 未标记 |
-| [22](#paper-22) | [Personality Subnetworks](https://arxiv.org/abs/2602.07164) | Method; Analysis | 未标记 |
-| [23](#paper-23) | [Style Modulation Heads](https://arxiv.org/abs/2603.13249) | Method; Analysis | 未标记 |
-| [24](#paper-24) | [VALUEFLOW](https://arxiv.org/abs/2602.03160) | Method; Analysis | 未标记 |
-| [25](#paper-25) | [Shifting the Gradient](https://arxiv.org/abs/2604.16423) | Analysis | 未标记 |
-| [26](#paper-26) | [The Piggyback Hypothesis](https://arxiv.org/abs/2606.06667) | Analysis; Method | 未标记 |
-| [27](#paper-27) | [Predicting Future Behaviors](https://arxiv.org/abs/2606.11172) | Method; Analysis | 未标记 |
-| [28](#paper-28) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | 未标记 |
-| [29](#paper-29) | [How Emotion Shapes Behavior](https://arxiv.org/abs/2604.00005) | Analysis | 未标记 |
-| [30](#paper-30) | [Emergent Misalignment Is Not Magical](https://arxiv.org/abs/2608.29118) | Analysis | 未标记 |
-| [31](#paper-31) | [User Model Extraction](https://arxiv.org/abs/2609.31603) | Method; Analysis | 未标记 |
-| [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | 未标记 |
-| [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | 未标记 |
-| [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | 未标记 |
-| [35](#paper-35) | [Rank-1 Steering & Granularity](https://arxiv.org/abs/2605.16362) | Method; Analysis | 未标记 |
-| [36](#paper-36) | [Playing Devil’s Advocate](https://arxiv.org/abs/2605.21006) | Analysis | 未标记 |
-| [37](#paper-37) | [Where Steering Signals Come From](https://arxiv.org/abs/2607.25270) | Method; Analysis | 未标记 |
-| [38](#paper-38) | [ContextEcho](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | 未标记 |
-| [39](#paper-39) | [Non-Identifiability of Steering Vectors](https://arxiv.org/abs/2602.06801) | Theory; Analysis | 未标记 |
-| [40](#paper-40) | [Detection != Reliable Control](https://arxiv.org/abs/2608.24901) | Analysis | 未标记 |
-| [41](#paper-41) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | 未标记 |
-| [42](#paper-42) | [Prompt-Activation Duality](https://arxiv.org/abs/2605.10664) | Method; Analysis | 未标记 |
-| [43](#paper-43) | [What Can We Actually Steer?](https://arxiv.org/abs/2511.18284) | Analysis | 未标记 |
+| ID | 论文短标题 | 类型 | 架构 | 阅读状态 |
+| --- | --- | --- | --- | --- |
+| [1](#paper-1) | [Persona Vectors](https://arxiv.org/abs/2507.21509) | Method; Analysis | Dense Transformer | 未标记 |
+| [2](#paper-2) | [Persona Vectors in Games](https://arxiv.org/abs/2603.21398) | Analysis | Dense Transformer | 未标记 |
+| [3](#paper-3) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | Dense Transformer | 未标记 |
+| [4](#paper-4) | [Emotion Concepts](https://arxiv.org/abs/2604.07729) | Analysis | 闭源/未披露 | 未标记 |
+| [5](#paper-5) | [The Personality Illusion](https://arxiv.org/abs/2509.03730) | Analysis | Dense/MoE/API | 未标记 |
+| [6](#paper-6) | [Open Character Training](https://arxiv.org/abs/2511.01689) | Method; Analysis | Dense；含VLM文本实验 | 未标记 |
+| [7](#paper-7) | [PERSONA](https://arxiv.org/abs/2602.15669) | Method; Benchmark; Analysis | Dense Transformer | 未标记 |
+| [8](#paper-8) | [Tracing Persona Vectors Through Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | Dense Transformer | 未标记 |
+| [9](#paper-9) | [Persona-Dependent Preferences](https://arxiv.org/abs/2605.13339) | Analysis | Dense/MoE/Hybrid | 未标记 |
+| [10](#paper-10) | [Manifold Steering](https://arxiv.org/abs/2605.05115) | Method; Analysis | Dense/CNN-GRU | 未标记 |
+| [11](#paper-11) | [Societies of Thought](https://arxiv.org/abs/2601.10825) | Analysis | Dense/MoE | 未标记 |
+| [12](#paper-12) | [Self-Report & Behavior Coherence](https://arxiv.org/abs/2610.04125) | Method; Analysis | Dense；含VLM文本实验 | 未标记 |
+| [13](#paper-13) | [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305) | Analysis | Dense/MoE | 未标记 |
+| [14](#paper-14) | [AuditBench](https://arxiv.org/abs/2602.22755) | Benchmark | Dense Transformer | 未标记 |
+| [15](#paper-15) | [Belief Dynamics](https://arxiv.org/abs/2511.00617) | Analysis | Dense Transformer | 未标记 |
+| [16](#paper-16) | [Narrow Finetuning Traces](https://arxiv.org/abs/2510.13900) | Analysis | Dense（部分checkpoint待核） | 未标记 |
+| [17](#paper-17) | [Weight Arithmetic](https://arxiv.org/abs/2511.05408) | Method; Analysis | Dense Transformer | 未标记 |
+| [18](#paper-18) | [Subliminal Learning as Distillation](https://arxiv.org/abs/2606.00995) | Analysis | Dense；含VLM文本实验 | 未标记 |
+| [19](#paper-19) | [Impatient Users Confuse AI Agents](https://arxiv.org/abs/2510.04491) | Method; Analysis | Dense Transformer | 未标记 |
+| [20](#paper-20) | [Generative Causal Mediation](https://arxiv.org/abs/2602.16080) | Method | Dense Transformer | 未标记 |
+| [21](#paper-21) | [Steer Like the LLM](https://arxiv.org/abs/2605.03907) | Method; Analysis | Dense Transformer | 未标记 |
+| [22](#paper-22) | [Personality Subnetworks](https://arxiv.org/abs/2602.07164) | Method; Analysis | Dense＋剪枝子网络 | 未标记 |
+| [23](#paper-23) | [Style Modulation Heads](https://arxiv.org/abs/2603.13249) | Method; Analysis | Dense Transformer（GQA） | 未标记 |
+| [24](#paper-24) | [VALUEFLOW](https://arxiv.org/abs/2602.03160) | Method; Analysis | 混合/子集待核 | 未标记 |
+| [25](#paper-25) | [Shifting the Gradient](https://arxiv.org/abs/2604.16423) | Analysis | Dense Transformer | 未标记 |
+| [26](#paper-26) | [The Piggyback Hypothesis](https://arxiv.org/abs/2606.06667) | Analysis; Method | Dense＋MoE | 未标记 |
+| [27](#paper-27) | [Predicting Future Behaviors](https://arxiv.org/abs/2606.11172) | Method; Analysis | Dense＋MoE；实测reasoning | 未标记 |
+| [28](#paper-28) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | Dense（自训） | 未标记 |
+| [29](#paper-29) | [How Emotion Shapes Behavior](https://arxiv.org/abs/2604.00005) | Analysis | Dense | 未标记 |
+| [30](#paper-30) | [Emergent Misalignment Is Not Magical](https://arxiv.org/abs/2608.29118) | Analysis | Dense＋混合attention；文本 | 未标记 |
+| [31](#paper-31) | [User Model Extraction](https://arxiv.org/abs/2609.31603) | Method; Analysis | Dense Transformer | 未标记 |
+| [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | Dense；干预仅Llama | 未标记 |
+| [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | Dense | 未标记 |
+| [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | Dense（文本） | 未标记 |
+| [35](#paper-35) | [Rank-1 Steering & Granularity](https://arxiv.org/abs/2605.16362) | Method; Analysis | Dense；含VLM文本实验 | 未标记 |
+| [36](#paper-36) | [Playing Devil’s Advocate](https://arxiv.org/abs/2605.21006) | Analysis | Dense Transformer | 未标记 |
+| [37](#paper-37) | [Where Steering Signals Come From](https://arxiv.org/abs/2607.25270) | Method; Analysis | Dense Transformer | 未标记 |
+| [38](#paper-38) | [ContextEcho](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | API/Dense | 未标记 |
+| [39](#paper-39) | [Non-Identifiability of Steering Vectors](https://arxiv.org/abs/2602.06801) | Theory; Analysis | Dense Transformer | 未标记 |
+| [40](#paper-40) | [Detection != Reliable Control](https://arxiv.org/abs/2608.24901) | Analysis | Dense Transformer | 未标记 |
+| [41](#paper-41) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | 闭源/未披露 | 未标记 |
+| [42](#paper-42) | [Prompt-Activation Duality](https://arxiv.org/abs/2605.10664) | Method; Analysis | Dense Transformer（GQA） | 未标记 |
+| [43](#paper-43) | [What Can We Actually Steer?](https://arxiv.org/abs/2511.18284) | Analysis | Dense；固定L15 | 未标记 |
+| [44](#paper-44) | [Persona Non Grata](https://arxiv.org/abs/2604.11120) | Analysis | Dense/Hybrid（文本） | 未标记 |
+| [45](#paper-45) | [Steering Interference & Defaults](https://arxiv.org/abs/2609.06951) | Analysis | Dense（文本） | 未标记 |
+| [46](#paper-46) | [SafeSteer](https://arxiv.org/abs/2509.21400) | Method; Analysis | Dense · VLM | 未标记 |
 
 ## 人格方向从哪里来，如何形成？
 
@@ -95,6 +116,16 @@ Theory：ID 39
 Method; Analysis　|　阅读状态：未标记　|　优先级：基础
 
 [论文原文](https://arxiv.org/abs/2507.21509)
+
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct
+
+骨干架构：Dense decoder-only Transformer（文本）
+
+输入／推理模式：chat模型文本生成；未研究专门reasoning模型。
+
+架构证据：2507.21509v3：§3.1；App.D/J；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2507.21509
 
 **Research question**
 
@@ -158,6 +189,16 @@ Analysis; Method　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2601.10387)
 
+**模型与架构**
+
+实测模型：Gemma-2-27B-it；Qwen3-32B；Llama-3.3-70B-Instruct；附加Gemma-2-27B base对照
+
+骨干架构：三种Dense decoder-only Transformer（文本）；base/instruct属于训练阶段差异
+
+输入／推理模式：正文limitations明确Qwen thinking disabled；其余为非reasoning chat设置。论文“without reasoning training”应与Qwen支持thinking的模型能力区分。
+
+架构证据：2601.10387v1：§2.1；Limitations；App.B.3；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10387
+
 **Research question**
 
 默认Assistant在人格空间中处于什么位置，其漂移能否被监测并通过激活干预稳定？
@@ -199,6 +240,16 @@ Role-playing (sys prompt+persona的办法)做向量提取，对activation vector
 Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2605.13329)
+
+**模型与架构**
+
+实测模型：OLMo-3-1025-7B的17个pretraining checkpoints及post-trained版本；Apertus-8B-2509复核
+
+骨干架构：Dense decoder-only Transformer；跨预训练阶段与base/instruct，不是MoE／VLM实验。
+
+输入／推理模式：原生预训练completion与后训练文本任务分别使用；reasoning模式未明确单独控制。
+
+架构证据：2605.13329v1：§3 Models/Checkpoints；App.F；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13329
 
 **Research question**
 
@@ -242,6 +293,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2511.01689)
 
+**模型与架构**
+
+实测模型：Llama-3.1-8B、Qwen2.5-7B、Gemma-3-4B的instruction-tuned学生；教师另计
+
+骨干架构：学生LM backbone为Dense；Gemma3原生支持图文，但本文character-training／评估为文本。Llama3.3-70B用作数据辅助不是主要学生。
+
+输入／推理模式：character distillation及introspection后文本对话；专门thinking模式未核。
+
+架构证据：2511.01689v1：§2.1–2.2；§3模型列；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.01689
+
 **Research question**
 
 能否用开放的constitutional character training塑造助手人格，其效果与提示和激活控制有何差别？
@@ -283,6 +344,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2608.13482)
+
+**模型与架构**
+
+实测模型：真正预训练subject：1.7B SmolLM2-1.7B-shaped与3B Llama3.2-3B-shaped模型，统一SmolLM2 tokenizer
+
+骨干架构：原文App.B.1明确两规模均Dense decoder-only Transformer（RoPE/RMSNorm/SwiGLU）；Qwen3.5-35B-A3B仅reflection generator，不是MoE persona-pretraining验证。
+
+输入／推理模式：from-token-zero预训练→persona binding后训练文本实验；不是现成Qwen3.5 reasoning模式对照。
+
+架构证据：2608.13482v1：App.B.1；正文reflection generation方法；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.13482
 
 **Research question**
 
@@ -326,6 +397,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2606.00995)
 
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct；OLMo3-7B-Instruct；另Gemma3-4b-it学生对照
+
+骨干架构：主要Dense decoder；Gemma3为vision-capable但本文数字／文本蒸馏和trait测试，未做视觉泛化。
+
+输入／推理模式：LoRA student/teacher文本pipeline；thinking模式非主研究变量。
+
+架构证据：2606.00995v3：§2；§5/6；App训练细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.00995
+
 **Research question**
 
 不显含目标trait的数据为何能传递trait，这能否由steering vector distillation解释？
@@ -367,6 +448,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2604.16423)
+
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct及其不同evil数据强度微调版本
+
+骨干架构：Dense decoder-only Transformer；训练期PPS/IP和梯度分析；没有跨MoE/视觉架构验证。
+
+输入／推理模式：chat微调／推理文本；原生reasoning模式不适用。
+
+架构证据：2604.16423v1：正文训练设计；梯度比较；附录实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.16423
 
 **Research question**
 
@@ -410,6 +501,16 @@ Analysis; Method　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2606.06667)
 
+**模型与架构**
+
+实测模型：Qwen2.5-7B/32B-Instruct；Llama3.1-8B-Instruct；GPT-OSS-20B
+
+骨干架构：前三Dense、GPTOSS20B为MoE decoder Transformer；文本窄域微调、prefix KV patching和token regularization。
+
+输入／推理模式：默认chat模板；GPTOSS reasoning effort具体设置未核，不能从其reasoning能力推定每个实验模式。
+
+架构证据：2606.06667v3：§3 Models；KV-cache/prefix patching；官方GPTOSS配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.06667
+
 **Research question**
 
 共享模板token是否搭载窄域微调行为并导致跨域失配，阻断这一过程能否减少泛化？
@@ -452,6 +553,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2608.29118)
 
+**模型与架构**
+
+实测模型：Qwen2.5-14B/32B-Instruct、Qwen2.5-Coder32B；Qwen3.5-27B；Gemma3-27B-IT；OLMo3.1-32B-Instruct
+
+骨干架构：Dense模型集合；Qwen3.5-27B为linear/full-attention hybrid并带视觉配置，Gemma3也vision-capable；本文EM文本实验，无图像验证。
+
+输入／推理模式：greedy decoding；Qwen3.5 thinking具体配置未核。
+
+架构证据：2608.29118v1：§3 Models and EM Training Data；官方Qwen3.5配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.29118
+
 **Research question**
 
 失配泛化能否由数据距离与格式依赖解释，通用evil-persona解释的适用范围是什么？
@@ -493,6 +604,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2510.13900)
+
+**模型与架构**
+
+实测模型：Qwen3-1.7B/32B；Gemma3-1B；Gemma2-9B；Llama3.1-8B；Qwen2.5-7B等窄微调organisms。原文部分写Llama3.2-8B，与其他位置1B表述冲突，exact checkpoint待核
+
+骨干架构：已确认命名多为Dense decoder Transformer；Gemma3-1B是文本模型，不能把Gemma3所有尺寸都标VLM。涉及base／chat／finetuned配对。
+
+输入／推理模式：部分Qwen3 thinking配置待核。interpretability agent与grader模型不算被分析organism。
+
+架构证据：2510.13900v3：§实验organisms；模型列表及数据复核；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.13900
 
 **Research question**
 
@@ -537,6 +658,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2509.03730)
+
+**模型与架构**
+
+实测模型：18模型：6组base/instruct配对（Llama3.2-3B、Llama3-8B、Qwen2.5-1.5B/7B、Mistral7B、OLMo2-7B）；另Llama3.3-70B、Llama3.1-405B、Qwen2.5-72B、Qwen3-235B、Claude3.7、GPT-4o
+
+骨干架构：文本心理测量；开放模型大多Dense，但Qwen3-235B-A22B为MoE；闭源API架构不明。没有activation intervention。
+
+输入／推理模式：作者§7称non-reasoning，但Qwen3具体thinking配置未核；不照抄“未覆盖MoE”。
+
+架构证据：2509.03730v2：§2.1 Table1；§7；Qwen3官方model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.03730
 
 **Research question**
 
@@ -604,6 +735,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2610.04125)
 
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct；OLMo-3-7B-Instruct；Ministral-3-8B
+
+骨干架构：前三为Dense文本decoder；Ministral3-8B原生vision-capable dense decoder，本文BFI/CCT文本、token概率readout。
+
+输入／推理模式：关键outcome为单次deterministic forward answer-token likelihood，不依赖sampling temp/seed；提取部分含greedy生成。thinking配置另待核。
+
+架构证据：2610.04125v1：§3 Models/tasks；App.B.1/B.4；官方Ministral3卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.04125
+
 **Research question**
 
 风险自报与风险决策是否受相同内部方向控制，能否选择性改变其中一项？
@@ -645,6 +786,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2605.13339)
+
+**模型与架构**
+
+实测模型：Gemma-3-27B；Qwen3.5-122B-A10B；主steering Gemma，App.G.4另有Qwen负结果pilot
+
+骨干架构：Gemma3为Dense VLM；Qwen3.5为MoE＋linear/full-attention混合＋视觉分支。本文pairwise preference是文本输入，不能算视觉任务验证。
+
+输入／推理模式：App.G.4明确Qwen3.5-122B-A10B-nothink；其probe好但单层steering swing较Gemma弱约15倍，已做小规模负结果pilot。
+
+架构证据：2605.13339v4：§2；App.G.4；官方Qwen3.5 config/model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13339
 
 **Research question**
 
@@ -688,6 +839,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2509.21305)
 
+**模型与架构**
+
+实测模型：几何/decodability：Qwen3-30B-Instruct（确切A3B后缀待核）、Qwen3-4B、Llama3.1-8B、Llama3.3-70B、GPT-OSS-20B；steering仅前述30B/4B/8B三模型
+
+骨干架构：Dense与MoE混合的analysis inventory；GPT-OSS20B是MoE但只进入geometry/readout。Qwen3-30B通常对应MoE-A3B，本文写法需代码确认，勿标作已核Dense。
+
+输入／推理模式：均instruct；Qwen3/GPTOSS具体thinking或reasoning effort未核。不能把只有geometry实验的模型算入causal intervention覆盖。
+
+架构证据：2509.21305v4：App.C.1 Table6；App.D.2；官方Qwen3/GPTOSS卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.21305
+
 **Research question**
 
 迎合式同意、过度赞美与真实同意是否对应可分离、可独立干预的行为方向？
@@ -729,6 +890,16 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：基础
 
 [论文原文](https://arxiv.org/abs/2603.21398)
+
+**模型与架构**
+
+实测模型：Qwen2.5-7B（正文简称）；公开实现为Qwen2.5-7B-Instruct
+
+骨干架构：Dense decoder-only Transformer（文本）
+
+输入／推理模式：给定游戏描述后的独立决策与解释；不是多模型真实对局；thinking开关不适用。
+
+架构证据：2603.21398v1：§3.2–3.5；代码配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2603.21398
 
 **Research question**
 
@@ -794,6 +965,16 @@ Method; Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2602.15669)
 
+**模型与架构**
+
+实测模型：Qwen2.5-3B/7B/14B-Instruct；Qwen3-4B（文中称Instruct）；Llama3-8B与3.1-8B-Instruct；Ministral-8B-Instruct
+
+骨干架构：所列主模型为Dense decoder-only Transformer；文本scenario-BFI与多轮对话。Claude3.7 Thinking只是contrastive prompt generator。
+
+输入／推理模式：Qwen3是否启用thinking未在本轮核定；不能从generator名称推断被干预模型推理模式。
+
+架构证据：2602.15669v1：§3.1.1；Table3/4；App.A.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.15669
+
 **Research question**
 
 不同trait向量能否通过缩放、加减实现可预测的组合控制，并随对话context动态调整？
@@ -854,6 +1035,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
 
 [论文原文](https://arxiv.org/abs/2602.15847)
 
+**模型与架构**
+
+实测模型：LLaMA-3-8B-Instruct；Ministral-8B-Instruct（正文§4；表格简写Mistral-8B；精确revision未给）
+
+骨干架构：文本、dense decoder-only Transformer。Llama3-8B为GQA；Ministral-8B官方2410架构交替1 full+3 sliding attention、GQA，非MoE/SSM；但论文未给2410等checkpoint后缀，不能声称完整运行配置已核实。 实际输入：text-only：中性prompt与访谈式BFI回答
+
+输入／推理模式：Instruct基线；未报告reasoning开关或单独thinking对照；干预位置：正文§2逐trait加权聚合方向，离线prior与runtime dynamic check的hybrid layer selection，forward hooks；文中未给可复原的逐trait精确选层表，不应补猜固定L20等
+
+架构证据：https://arxiv.org/html/2602.15847v1；https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json；https://huggingface.co/docs/transformers/en/model_doc/ministral
+
 **Research question**
 
 主动消除trait方向的线性重叠后，跨trait行为干扰是否消失，正交化带来什么控制与质量代价？
@@ -913,6 +1104,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
 Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
 
 [论文原文](https://arxiv.org/abs/2608.11227)
+
+**模型与架构**
+
+实测模型：Gemma-3-4B；Gemma-3-12B；Qwen2.5-7B（论文§3模型名；未显式给checkpoint仓库/it后缀/revision）
+
+骨干架构：均为dense decoder Transformer。Gemma3的4B/12B本体支持视觉：SigLIP视觉编码器+投影+Gemma decoder，decoder交替5 local+1 global attention；本论文只实测文本context，不能记成已做VLM steering实验。Qwen2.5-7B为纯文本dense GQA decoder，28blocks。 实际输入：text-only六类context（coding、document、emotional-support等），没有image/video实验
+
+输入／推理模式：未报告独立reasoning模型或thinking开关对照；instruct后缀论文未列，留未核实；干预位置：§3 L16/34, L22/48, L13/28分别注入Gemma4B/Gemma12B/Qwen7B；四五层后L20/L26/L18 readout；所有prompt/generated token位置；层号按论文原记法，勿未核实地转0-based
+
+架构证据：https://arxiv.org/html/2608.11227v1；https://huggingface.co/google/gemma-3-4b-it；https://huggingface.co/google/gemma-3-12b-it；https://huggingface.co/docs/transformers/v4.52.3/en/model_doc/gemma3；https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json
 
 **Research question**
 
@@ -976,6 +1177,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2602.03160)
 
+**模型与架构**
+
+实测模型：prompt-steerability：Qwen3-32B、Mistral3.1-Small24B、Phi4、GLM4-32B、GPTOSS20B、Gemma3-27B、GPT4.1、Claude4Sonnet、Grok4、Gemini2.5Flash；activation subset待逐项核
+
+骨干架构：prompt评价覆盖Dense、MoE、VLM-capable与closed API，但activation实验模型清单未完全核定；不可宣称所有十模型均做内部干预。Qwen3-embedding0.6B是表征模型另计。
+
+输入／推理模式：main results为prompt steerability；各模型具体thinking／effort待核；文本价值任务不等于视觉验证。
+
+架构证据：2602.03160v2：§4/5模型段；activation baselines见附录（本轮未完整展开）；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.03160
+
 **Research question**
 
 价值观能否被统一表示、量化，并通过组合干预实现多价值的可调控制？
@@ -1017,6 +1228,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2511.00617)
+
+**模型与架构**
+
+实测模型：Llama-3.1-8B-Instruct为主；Qwen2.5-7B、Gemma2-9B及Llama3.1-70B-Instruct复核
+
+骨干架构：Dense decoder-only Transformer；文本行为/ICL概率分析；4-bit量化是数值格式而非另一架构。
+
+输入／推理模式：非专门reasoning任务设置；使用答案概率及ICL曲线，不以显式CoT为必要。
+
+架构证据：2511.00617v2：正文理论与实证部分；App实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.00617
 
 **Research question**
 
@@ -1062,6 +1283,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2605.05115)
 
+**模型与架构**
+
+实测模型：LLM：Llama-3.1-8B为主（L28）；App.C.2另测Llama-3.1-70B（L70）。正文并未统一给Instruct后缀。另自训MountainCar视觉world model。
+
+骨干架构：LLM为Dense decoder Transformer；视觉实验是conv encoder＋64维GRU＋conv decoder，不是VLM语言backbone。
+
+输入／推理模式：LLM概念token分布与ICL任务；GRU根据图像帧和action预测下一帧，不是chain-of-thought agent。
+
+架构证据：2605.05115v1：§2/§3实验；§5 Environment and model architecture；App.B/C.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.05115
+
 **Research question**
 
 沿表征流形实施干预是否比直线steering更能保留自然表征并实现行为变化？
@@ -1103,6 +1334,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2511.05408)
+
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct为主；Qwen2.5-1.5B-Instruct用于GCD；Llama-2-chat-7b用于GSM8k
+
+骨干架构：Dense decoder-only Transformer；weight arithmetic及LoRA/activation baselines，不是MoE/VLM。
+
+输入／推理模式：chat及算术任务，未单独reasoning-model配置。
+
+架构证据：2511.05408v2：Models and Training Parameters；§4；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.05408
 
 **Research question**
 
@@ -1146,6 +1387,16 @@ Method　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2602.16080)
 
+**模型与架构**
+
+实测模型：SOLAR-10.7B-Instruct-v1.0；OLMo-2-1124-13B-DPO；Qwen1.5-14B-Chat
+
+骨干架构：三种Dense decoder-only Transformer；在attention/head等组件局部干预，文本sycophancy/refusal/style。
+
+输入／推理模式：论文生成基线使用temperature0、关闭sampling；judge Llama3.1-70B另计。
+
+架构证据：2602.16080v2：§3.2/3.3；App数据生成设置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.16080
+
 **Research question**
 
 生成因果中介能否定位更有效的activation steering组件与位置？
@@ -1187,6 +1438,16 @@ Method　|　阅读状态：未标记　|　优先级：B
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2605.03907)
+
+**模型与架构**
+
+实测模型：persona：Llama3.2-3B-Instruct、Llama3.1-8B-Instruct、Qwen2.5-7B-Instruct；AxBench扩展Gemma2-2B/9B
+
+骨干架构：Dense decoder-only Transformer；residual-stream prompt-mimicking steering；SAE只是部分baseline/特征来源。
+
+输入／推理模式：文本persona/IFEval/AxBench；没有据模型名推断额外thinking。
+
+架构证据：2605.03907v1：Experimental Setup；App.C/E；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.03907
 
 **Research question**
 
@@ -1230,6 +1491,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2602.07164)
 
+**模型与架构**
+
+实测模型：Llama2-13B、Llama3-8B、Qwen2.5-14B base；Llama2-13B instruction-tuned对照
+
+骨干架构：Dense decoder-only Transformer；activation-guided sparse pruning产生子网络，稀疏mask不等于原生MoE。
+
+输入／推理模式：base completion与instruct文本role-play；无reasoning模式证据。
+
+架构证据：2602.07164v1：实验设置；App.D/E/H；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.07164
+
 **Research question**
 
 不同persona能否被隔离为已有稀疏子网络，剪枝后是否保留对应人格行为？
@@ -1272,6 +1543,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2603.13249)
 
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct
+
+骨干架构：Dense decoder-only Transformer，论文明确两者为GQA；研究少数attention heads而非MoE专家。
+
+输入／推理模式：文本persona生成；coherence/PPL/utility检查；无专门reasoning-mode实验。
+
+架构证据：2603.13249v2：§3/§4 Model and Persona；head-wise分析；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2603.13249
+
 **Research question**
 
 少量style modulation heads能否实现更稳健的persona控制并减少连贯性退化？
@@ -1313,6 +1594,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2606.11172)
+
+**模型与架构**
+
+实测模型：DeepSeek-R1-Distill-Llama-8B；Qwen3-14B；gpt-oss-20b；QwQ-32B
+
+骨干架构：前三除GPTOSS外均Dense decoder；GPTOSS20B为MoE。Distill-Llama8B不能写full-DeepSeek-R1 MoE。
+
+输入／推理模式：明确LRM实验：每条响应有CoT与final answer，T=1.0；各gptoss effort未逐项核。
+
+架构证据：2606.11172v1：§3.1；§4/5干预；官方GPTOSS/DeepSeek模型卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.11172
 
 **Research question**
 
@@ -1358,6 +1649,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2604.07729)
 
+**模型与架构**
+
+实测模型：Claude Sonnet 4.5；另有同系列base/post-trained比较（内部checkpoint未公开）
+
+骨干架构：闭源模型内部访问研究；dense/MoE及完整架构未公开，不猜测。实测文本情绪场景。
+
+输入／推理模式：是否启用extended thinking／具体budget本轮未核实；不能因研究者可读激活就当作开源模型。
+
+架构证据：2604.07729v1：正文开头；§1；后训练/base比较章节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.07729
+
 **Research question**
 
 情绪概念在模型内部如何表示，是否跨情境泛化并因果影响偏好、迎合及失配行为？
@@ -1399,6 +1700,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2604.00005)
+
+**模型与架构**
+
+实测模型：Qwen3-8B为主要LLM，SAE接第17层；附加验证模型及agent各模块checkpoint本轮未完全核定
+
+骨干架构：主要Dense decoder Transformer＋SAE（分析器不等于backbone改变）；planner/decider/executor是agent软件结构，不是模型内部MoE。
+
+输入／推理模式：primary LLM实验关闭sampling；是否关闭Qwen3 thinking未核；实际有文本规划／决策／工具执行任务。
+
+架构证据：2604.00005v1：§4实验设置；App.A验证；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.00005
 
 **Research question**
 
@@ -1442,6 +1753,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 [论文原文](https://arxiv.org/abs/2601.10825)
 
+**模型与架构**
+
+实测模型：行为trace比较DeepSeek-R1、QwQ-32B及对应instruct模型；SAE干预主要DeepSeek-R1-Distill-Llama-8B
+
+骨干架构：full DeepSeek-R1为MoE（trace分析）；QwQ32B与Distill-Llama8B为Dense decoder。不要把full-R1与蒸馏Llama8B混为同架构。
+
+输入／推理模式：研究实际CoT reasoning；内部SAE来自distilled Llama8B L15，而非full671B MoE内部干预。
+
+架构证据：2601.10825v1：Methods；SAE extraction/intervention；DeepSeek官方卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10825
+
 **Research question**
 
 推理模型中的多视角、冲突与社会情绪角色如何参与推理，能否解释其能力变化？
@@ -1484,6 +1805,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2609.31603)
 
+**模型与架构**
+
+实测模型：Llama3.1-8B-Instruct；Qwen3-8B；OLMo3-7B-Instruct
+
+骨干架构：Dense decoder-only Transformer；低秩user-belief projector是新增表征接口，不是原生专家架构。
+
+输入／推理模式：文本user-belief extraction与steering；Qwen3 thinking配置待核。
+
+架构证据：2609.31603v2：Training details；干预实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2609.31603
+
 **Research question**
 
 能否把模型对用户的隐含信念提取为可读写状态，并用它控制对相同请求的响应？
@@ -1525,6 +1856,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2610.05069)
+
+**模型与架构**
+
+实测模型：Meta-Llama-3-8B-Instruct；Mistral-7B-Instruct-v0.2；Gemma-7B-IT
+
+骨干架构：三种Dense decoder Transformer；旧Gemma7B文本模型。generation-time steering只在Llama做，其他主要geometry/probing。
+
+输入／推理模式：情感／语气／受众文本任务；非reasoning模型研究。
+
+架构证据：2610.05069v1：App Model details Table12；正文generation实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.05069
 
 **Research question**
 
@@ -1570,6 +1911,16 @@ Benchmark　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2602.22755)
 
+**模型与架构**
+
+实测模型：被审计模型Llama-3.3-70B-Instruct与Qwen3-14B的14类隐藏行为训练变体
+
+骨干架构：目标模型为Dense decoder-only Transformer（文本）。auditor、Helpful-Only Claude数据生成器与judge不是target architecture。
+
+输入／推理模式：目标为聊天及隐藏行为诱发；auditor agent通过工具审计，Qwen thinking设置待核。
+
+架构证据：2602.22755v4：§2；App.C/D；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.22755
+
 **Research question**
 
 不同审计工具能否发现植入模型的隐藏行为，工具证据是否帮助审计agent提高发现能力？
@@ -1611,6 +1962,16 @@ Benchmark　|　阅读状态：未标记　|　优先级：B
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [论文原文](https://arxiv.org/abs/2510.04491)
+
+**模型与架构**
+
+实测模型：被steer用户模拟器Llama-3.1-8B；下游assistant服务模型另计（完整清单待核）
+
+骨干架构：被干预用户模型Dense decoder；文本多轮及τ-Bench工具交互。agent setting不意味着backbone架构改变。
+
+输入／推理模式：用户persona文本生成；下游工具agent的reasoning配置未核。
+
+架构证据：2510.04491v3：§3/4模型说明；§5下游测试；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.04491
 
 **Research question**
 
@@ -1655,6 +2016,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
 
 [论文原文](https://arxiv.org/abs/2605.16362)
+
+**模型与架构**
+
+实测模型：Gemma2-2B-it；Gemma3-27B-it；Llama3.3-70B-Instruct
+
+骨干架构：Dense decoder Transformer；Gemma3原生图文，论文概念／行为搜索用文本。
+
+输入／推理模式：输出greedy T=0、最多256新token；Gemma3-12B只是judge。
+
+架构证据：2605.16362v2：§3.3；App.B.1；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.16362
 
 **Research question**
 
@@ -1702,6 +2073,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 
 [论文原文](https://arxiv.org/abs/2605.21006)
 
+**模型与架构**
+
+实测模型：Gemma2-27B-Instruct；Qwen3-32B；分别steer L22/46与L32/64
+
+骨干架构：两个Dense decoder-only Transformer；role方向与CAA文本sycophancy行为比较。
+
+输入／推理模式：Qwen3具体thinking开关在本轮原文搜索未定位，应标待核而非默认关闭。
+
+架构证据：2605.21006v4：§2.4 Models and layers；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.21006
+
 **Research question**
 
 未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制？
@@ -1747,6 +2128,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
 
 [论文原文](https://arxiv.org/abs/2607.25270)
+
+**模型与架构**
+
+实测模型：Gemma2-9B-IT；Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct
+
+骨干架构：三个Dense decoder-only Transformer；比较源激活readout与vector construction，未涉及MoE或视觉。
+
+输入／推理模式：instruct文本生成；judges Qwen2.5-14B/Gemma3-27B另计。
+
+架构证据：2607.25270v2：§3.1 Models；source comparisons；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2607.25270
 
 **Research question**
 
@@ -1794,6 +2185,16 @@ Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A（问题�
 
 [论文原文](https://arxiv.org/abs/2605.24279)
 
+**模型与架构**
+
+实测模型：23模型／10组织API行为面板；唯一open-weight内部Axis干预Qwen3-32B，L32
+
+骨干架构：API面板架构有不公开部分，不能以provider推断；内部intervention为Dense Qwen3-32B。长coding轨迹是agent setting不是新backbone。
+
+输入／推理模式：API面板分reasoning/non-reasoning tiers；App配置明确Qwen3 enable_thinking=false；内部Axis剂量实验不能推广成全23模型干预。
+
+架构证据：2605.24279v3：§3；App.O/U；API配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.24279
+
 **Research question**
 
 真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现？
@@ -1839,6 +2240,16 @@ Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A（问题�
 Theory; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
 
 [论文原文](https://arxiv.org/abs/2602.06801)
+
+**模型与架构**
+
+实测模型：Llama3.1-8B-Instruct；Qwen2.5-3B-Instruct
+
+骨干架构：两个Dense decoder-only Transformer；在单层局部linearization框架下检验方向等价性。
+
+输入／推理模式：steer L16/32与L18/36；文本语义分类；没有reasoning-mode实验。
+
+架构证据：2602.06801v4：§6.1 Setup；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.06801
 
 **Research question**
 
@@ -1886,6 +2297,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 
 [论文原文](https://arxiv.org/abs/2608.24901)
 
+**模型与架构**
+
+实测模型：Llama3.1-8B；Gemma2-9B；Qwen2.5-7B（instruct/checkpoint后缀见实现，正文简写）
+
+骨干架构：三个Dense decoder Transformer；EPITOME empathy文本任务；判别classifier／judge不是subject。
+
+输入／推理模式：greedy do_sample=false；方向addition／ablation，不是thinking-model实验。
+
+架构证据：2608.24901v1：§1/2；App.J Implementation；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.24901
+
 **Research question**
 
 能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感？
@@ -1931,6 +2352,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
 
 [论文原文](https://arxiv.org/abs/2610.01490)
+
+**模型与架构**
+
+实测模型：claude-opus-4-5-20251101（Paul incident及所有复现实验）
+
+骨干架构：闭源API subject，dense/MoE及内部结构未公开；OpenClaw harness是外部软件，不是backbone结构。没有activation intervention。
+
+输入／推理模式：实际持久agent/heartbeat/system-anchor文本干预；extended thinking配置未核。
+
+架构证据：2610.01490v1：§3 Methods；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.01490
 
 **Research question**
 
@@ -1978,6 +2409,16 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导�
 
 [论文原文](https://arxiv.org/abs/2605.10664)
 
+**模型与架构**
+
+实测模型：Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct
+
+骨干架构：Dense pre-norm decoder Transformer，论文App.A给Qwen28层3584维、Llama32层4096维及GQA；GCAD改变attention输出不改变backbone类型。
+
+输入／推理模式：10-turn、KV cache跨轮保留；T=1.0、每轮最多500新token；非reasoning专门模型。
+
+架构证据：2605.10664v2：§5.1；App.A Models；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.10664
+
 **Research question**
 
 为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善？
@@ -2024,6 +2465,16 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 
 [论文原文](https://arxiv.org/abs/2511.18284)
 
+**模型与架构**
+
+实测模型：Llama3.1-8B为主要被steer模型；GPT4.1/Llama prompt baselines与judge应分开
+
+骨干架构：主干Dense decoder-only Transformer；固定L15，50行为文本表达评估；不是跨全部model family的干预比较。
+
+输入／推理模式：coefficients1–20；文本生成；judge deterministic不等于subject decode模式已核。
+
+架构证据：2511.18284v2：§4–6；§8 Limitations；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.18284
+
 **Research question**
 
 不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量？
@@ -2059,5 +2510,205 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
 
 阅读证据：2511.18284v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2511.18284v2
+
+[返回论文总表](#论文总表)
+
+## 安全评估、模型默认与多模态子空间
+
+<a id="paper-44"></a>
+
+### ID 44｜Persona Non Grata: Single-Method Safety Evaluation Is Incomplete for Persona-Imbued LLMs
+
+Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+
+[论文原文](https://arxiv.org/abs/2604.11120)
+
+**模型与架构**
+
+实测模型：主：meta-llama/Llama-3.1-8B-Instruct；google/gemma-3-27b-it；Qwen/Qwen3.5-9B、Qwen3.5-27B；deepseek-ai/DeepSeek-R1-Distill-Qwen-32B；Qwen/QwQ-32B。Gemma-3-12B为探索性、已从主结果排除。
+
+骨干架构：Llama3.1：dense text decoder Transformer/GQA；Gemma3：dense vision-language骨干但本研究仅文本；Qwen3.5-9B/27B：dense GatedDeltaNet线性/递归attention＋full attention混合(3:1)，带vision encoder，本研究仅文本；DeepSeek-R1-Distill-Qwen32B与QwQ32B：dense Qwen2.5骨干（不是原生R1 MoE）。CAA在8层residual上全位置注入，参考Llama8–15，其他模型映射具体索引需看config。
+
+输入／推理模式：Study1标准instruct，prompt温度0且AS deterministic；Qwen3.5 thinking开关未披露，不能当作已证实nonthinking。Study2 DeepSeek distill/QwQ实际生成CoT：temperature0.6、top_p0.95、max_tokens4096；α主设4，另α1点检。全部任务文本输入。
+
+架构证据：论文§3.2/3.4、App.A/C.3–C.5/L.1/Q；官方Qwen3.5-9B/27B config.json（qwen3_5_text、layer_types及FFN无MoE router），Gemma3 model card；DeepSeek distill/QwQ模型卡与config。论文未冻结checkpoint revision。；论文原文：https://arxiv.org/html/2604.11120v2
+
+**Research question**
+
+同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？
+
+**一句话主题**
+
+同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？
+
+**方法与贡献**
+
+1. 将同一套Big Five/persona配置分别通过system prompting、benign few-shot prompting和CAA激活steering注入，在四个standard模型、两个reasoning模型上比较安全结果。Study1含5,568个判定条件；不仅比较是否trait更强，而是比较同一persona的安全排序是否随注入方法变化。（§3–4）
+
+2. 发现prosocial persona paradox：Llama-3.1-8B上高Conscientiousness＋高Agreeableness的P12在prompt条件较安全，却在AS下达到ASR 0.818，为该模型最高。系数扫查、benign题persona-strength匹配及few-shot中性控制后仍保留反转；DeepSeek-R1-Distill-Qwen-32B也复现相关反转。（§4.1、App.M/N/R）
+
+3. Prompt-side persona风险排序跨模型较一致，但AS风险结构明显依模型而变：Llama更易受AS影响，Gemma3/Qwen3.5更易受prompt persona影响。它直接支持“语义上相同的persona，不同赋予范式可能走向不同安全行为”，与self-report／role／behavior多范式比较相关。（§4.2）
+
+4. 用trait方向与refusal方向的cosine及跨方法激活差做部分几何解释；Conscientiousness在Llama上与refusal强反对齐，提示prosocial语义本身不能保证内部干预安全。该解释在single-trait／特定模型上更清楚，并非全架构通用的因果机制定位。（§4.4）
+
+5. Study2保留真实CoT，显示reasoning只提供分级保护：DeepSeek distill与QwQ在persona压力下的安全表现不同。policy recall／self-correction的regex诊断比单纯trace长度更有解释线索，但作者将其标为探索性。（§4.3、App.L）
+
+**局限与解释边界**
+
+1. 主要是single-turn文本安全请求和极端trait poles；模型虽然含VLM-capable或混合attention骨干，本文没有测图像条件、MoE路由或长期agent任务。因此跨family差异不是严格控制训练、规模后的“架构因果效应”。
+
+2. AS、system与few-shot是不同形式的干预；论文已做强度匹配和中性few-shot对照，但这不能完全隔离所有方法差异。高α的部分Dark-Triad输出会退化；主要P12反转在α=1及匹配设置中仍成立。
+
+3. 几何框架解释有限：主要支持Llama single-trait风险，组合trait及部分Qwen结果有非线性；CoT regex命中也不等于faithful的内部机制标签。（§6）
+
+4. 层设置记述需谨慎：§3.2概述相对深度映射，App.C.4则从每模型已提取范围等距选8层；不要统一写成所有模型都严格注入25–47%深度，复现应以具体config索引为准。
+
+**Future work**
+
+作者方向：扩展柔和trait、multi-turn及跨架构几何审计。阅读推演：对同一role／trait做prompt、role-derived vector与behavior-derived vector的matched干预，联合评价角色表达、实际决策和安全，而不把亲社会persona分数当作安全代理。对Qwen3.5进一步按linear-attention与full-attention block分开测试，并固定thinking模式与文本/图像输入后再谈架构差异。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 5, 7, 33, 34, 36, 38, 40
+
+关键词：Persona Non Grata; activation steering; architecture; safety
+
+机构／会议：Wenkai Li：Carnegie Mellon University、Fujitsu Research of America；其余署名Fujitsu Research of America；arXiv；本轮未核实接收
+
+阅读证据：2604.11120v2：正文方法、结果、限制及架构相关附录定向复核；未运行实验。原候选直接种子引用已核。 来源：https://arxiv.org/html/2604.11120v2
+
+[返回论文总表](#论文总表)
+
+<a id="paper-45"></a>
+
+### ID 45｜Steering Interference Reflects the Model’s Defaults, Not the Behavior Directions
+
+Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+
+[论文原文](https://arxiv.org/abs/2609.06951)
+
+**模型与架构**
+
+实测模型：Qwen2.5-{1.5B,3B,7B,32B,72B}-Instruct；Llama-3.1-8B-Instruct、Llama-3.3-70B-Instruct；Gemma-2-{9B,27B} instruct；Mistral-7B instruct（具体v0.x/repo未给）。主细节Qwen2.5-7B，另外9模型相同流程复制。
+
+骨干架构：10个text-only dense decoder Transformer，跨Qwen2.5/Llama/Gemma2/Mistral四家族；无MoE、SSM/linear-attention混合或VLM实验证据。response-token平均激活提raw差向量；25–85%深度内按held-out AUROC选单个block；主Qwen7B实际选层7–16（0=embedding）；prompt+decode所有位置加法hook。
+
+输入／推理模式：全部为标准instruction-tuned模型；BF16，generation/steering/judging均greedy，48new_tokens；α网格1/2/3/4/6/8按行为校准并用distinct-bigram约束。未测试thinking开关或专门reasoning panel。每模型默认self-judge，另3模型由固定Qwen2.5-72B复评。
+
+架构证据：论文§3/§8、Reproducibility Statement、App.C/D/E Table4/F/G；官方Qwen2.5/Llama/Gemma2模型卡及Qwen2 config。具体Mistral release未报告；不替作者补成v0.3，也不与Ministral混同。；论文原文：https://arxiv.org/html/2609.06951v3
+
+**Research question**
+
+跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？
+
+**一句话主题**
+
+跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？
+
+**方法与贡献**
+
+1. 在24种行为、10个instruct模型上构造judge-grounded交叉干扰矩阵；把线性可解码和真正改变生成文本分开。Qwen2.5-7B的24行为都可解码，但只有20个通过coherent steering校准。（§3–4）
+
+2. 主要干扰具有方向性：profanity→toxicity明显，toxicity→profanity接近零；若只看对称cosine，就无法表达这种关系。进一步以13种几何／定向特征及probe、三维concept cone做leave-one-behavior-out预测，仍难预测效应大小。（§5、§7）
+
+3. 关键对照是matched-norm random push：不携带特定行为内容的随机方向也诱发近似的target易感性排序，主模型与真实steer的排序相关约0.90。它能诱发toxicity等“sink”行为，却不能生成profanity等依赖特定方向的字面行为，说明方向特异控制与一般扰动副效应可以分开。（§6）
+
+4. 十模型复制中低秩、非对称和几何预测不佳的定性结构保留；较大模型的random/default耦合减弱。这里defaults指扰动后容易落入的behavioral sinks，不等于中性prompt下模型本来最常输出的行为。（§8、App.E）
+
+5. 与ID33一致：移除几何重叠不足以获得模块控制。与ID34互补：两文都观察非对称与target易感性；本篇更强调random-push/model-default对照，而ID34进一步以unsteered propagation＋readout作forecast。行为集、模型、指标、系数校准与读出不同，不能只凭标题判断二者结论冲突。
+
+6. 与ID34的random-direction控制存在值得复核的张力：34报告约0.007的绝对评分变化，但只覆盖six-cell/one-seed控制；45以matched-added-norm的24个random方向比较target profile排序。两者提取位置、层、context、强度、生成长度与judge尺度不同，暂不能视作同条件相反结果。
+
+对ID34的比较：0.007是窄随机对照的绝对评分变化，约0.90是随机与真实steer的profile排序相关，不能直接数值比较；需统一context、注入范数、层、生成长度与judge做判别。
+
+**局限与解释边界**
+
+1. 主细节来自Qwen2.5-7B，另外九模型复制同一24行为协议；模型均为文本instruct dense Transformer，尚未覆盖MoE、SSM/linear-attention混合、VLM图像条件或reasoning agent。
+
+2. 每模型自判自己的输出可能混合行为与judge特性；作者对三个模型用固定强judge复评，保留结构结论，但具体top-sink成员仍会变化。48-token短生成和distinct-bigram coherence不代表长期任务质量。（App.D/G）
+
+3. 作者承认大部分pairwise residual既没被几何也没被一维ranking解释，“defaults”是重要功能性解释而非已追踪到内部回路的完备机理。较大模型为何减弱仍未解决。（§10）
+
+4. 统一AUROC最优层、coefficient grid与阈值便于复制，却不保证每种行为都处在最佳可控层；“全部可解码”只针对有限合成contrastive范式。
+
+**Future work**
+
+阅读推演：沿用ID34的cross-effect forecasting，将random扰动profile作为基线并预测source-specific residual；比较同范数不同方向、自然context内变化及多步行动结果。把模型family／规模、reasoning状态与architecture拆开；检验defaults在planning、tool-call和environment feedback阶段是否一致。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 7, 33, 34, 35, 39, 40, 43
+
+关键词：Steering Interference & Defaults; activation steering; architecture; safety
+
+机构／会议：Srikanth Malla、Chiho Choi、Joon Hee Choi；Samsung Semiconductor US；arXiv；本轮未核实接收
+
+阅读证据：2609.06951v3：正文方法、结果、限制及架构相关附录定向复核；未运行实验。原候选直接种子引用已核。 来源：https://arxiv.org/html/2609.06951v3
+
+[返回论文总表](#论文总表)
+
+<a id="paper-46"></a>
+
+### ID 46｜SafeSteer: Adaptive Subspace Steering for Efficient Jailbreak Defense in Vision-Language Models
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+
+[论文原文](https://arxiv.org/abs/2509.21400)
+
+**模型与架构**
+
+实测模型：LLaVA-v1.5-7B；MiniGPT4-7B(Llama 2)；Qwen2.5-VL-7B（论文名；HF后缀及revision未给）
+
+骨干架构：多模态VLM、dense Transformer语言backbone；LLaVA：CLIP ViT-L/14-336→两层GELU MLP→LLaMA/Vicuna系7B；MiniGPT-4(Llama2)：EVA-CLIP-G→patch拼接/Linear→Llama2-chat-7B（官方对应配置无Q-Former，论文checkpoint待核）；Qwen2.5-VL：dynamic-resolution ViT（window/full视觉attention）→2×2 patch merger/两层MLP→Qwen2.5-7B GQA decoder。 实际输入：image + text；MM-SafetyBench视觉攻击和MM-Vet，不只是模型支持多模态
+
+输入／推理模式：未报告专门reasoning/thinking开关；不可由模型名称推断对照过reasoning模式；干预位置：LLM decoder hidden/residual output，公开LLaVA脚本model.model.layers[14] forward hook，last-token；首30生成tokens；layer norm-scaled direction
+
+架构证据：https://arxiv.org/html/2509.21400v1；https://raw.githubusercontent.com/xiyuzzz-njust/SafeSteer/main/model_vet_benign_llava.py；https://huggingface.co/liuhaotian/llava-v1.5-7b/raw/main/config.json；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/configs/models/minigpt4_llama2.yaml；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/models/minigpt4.py；https://arxiv.org/html/2502.13923；https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/raw/main/config.json；论文原文：https://arxiv.org/html/2509.21400v1
+
+**Research question**
+
+能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？
+
+**一句话主题**
+
+能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？
+
+**方法与贡献**
+
+1. 从同一图文输入追加safety prefix前后的激活差提取input-specific raw方向；将善意与恶意输入上的差向量堆叠做SVD，取top-D构造安全子空间。将raw方向分为投影和正交残差，增强投影、抑制残差后重构，不是简单把某个trait向量正交化。
+
+2. Harm-Sensing MLP读取最后K层末token激活，输出风险概率p，以α=α_init(2p−1)决定干预正负与强度；在LLM decoder目标层的生成早期按隐藏态范数缩放注入。LLaVA消融偏好约第15层、D=5、α_init=1、前30生成tokens。
+
+3. 三个实测VLM为LLaVA-v1.5-7B、MiniGPT4-7B(Llama 2)、Qwen2.5-VL-7B；攻击包括图像扰动及图中文字等，正常能力使用MM-Vet，确实是图文实验。Table 1中LLaVA平均ASR约5.9%，另用多场景与adaptive attack检查；这不是直接的人格研究，而是低维、context-specific控制与安全/utility联合评价的方法参考。
+
+4. 官方LLaVA脚本揭示实现口径：目标层索引14为0-based第15 block、top5 SVD、最后4层分类器、前30tokens；先做原输入与加prefix输入两次forward再generate，高风险时forced_decoder_ids施加prefix。故可描述为单次生成、无best-of-n，不能把single inference pass理解为整个流程仅一次forward。
+
+**局限与解释边界**
+
+1. 只在三个dense语言backbone的VLM上测试；没有MoE、reasoning或长期agent任务的实证。D=5与首30token等结论来自LLaVA消融，不能直接当作所有架构的普遍最优值。
+
+2. 安全子空间来自prefix诱发差异与训练样本，尚不能据此定位唯一harmfulness机制；通用性仍依赖风险分类器、攻击分布及评价口径。
+
+3. 原文性能成本与公开脚本的forward次数需区分；当前公开repo主要给LLaVA实现，并含本地路径，其他两模型的精确checkpoint及配置未核实。
+
+**Future work**
+
+作者希望进一步发展精确、自适应VLM安全干预。阅读推演：比较全局rank-1、固定rank-k与逐输入重构，分离维数与risk gating的收益；将同样的子空间投影方法迁移到persona/agent行动时，联合测行为选择性、正常能力与端到端总成本，不把安全得分替代人格效度。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 7, 10, 33, 34, 35
+
+关键词：SafeSteer; activation steering; architecture; safety
+
+机构／会议：v1列School of Cyber Science and Engineering, Nanjing University of Science and Technology；Nanyang Technological University；National University of Singapore；具体作者映射未逐项核实；按arXiv v1记录；同名TIFS扩展稿未与此版本核验，不混并作者和接收状态
+
+阅读证据：2509.21400v1：正文方法、结果、限制及架构相关附录定向复核；未运行实验。用户指定范围外补充；未确认种子引用。 来源：https://arxiv.org/html/2509.21400v1
 
 [返回论文总表](#论文总表)
