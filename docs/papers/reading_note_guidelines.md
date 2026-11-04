@@ -45,7 +45,7 @@
 
 `Additional think` 专属用户。agent不得生成、改写、纠错或自动搬走其中的内容；用户笔记可作为理解关注点的参照，不自动视为已核实的论文事实。即便笔记里已经写了方法、贡献或future work，也保留原文，在其他列独立整理有来源的分析。
 
-保留用户在其他列的修改与阅读状态。Windows表和仓库CSV的同步、备份、冲突及Slurm例外遵循 [AGENTS.md](../../AGENTS.md) 和 [交接流程](handover_paper_excel.md)。
+保留用户在其他列的修改与阅读状态。Doc格式与跨视图维护遵循[文档维护合同](literature_document_maintenance.md)；Windows备份、锁文件及Slurm例外另见[交接流程](handover_paper_excel.md)与[AGENTS.md](../../AGENTS.md)。
 
 ## 论文分类与Research question
 

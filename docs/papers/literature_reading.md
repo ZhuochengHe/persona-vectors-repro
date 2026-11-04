@@ -34,7 +34,50 @@ Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10�
 
 Theory：当前未标注符合此类的条目
 
+## 论文总表
+
+点击 ID 进入笔记，点击短标题打开原文；表格用于浏览，复杂筛选使用 Excel。
+
+| ID | 论文短标题 | 类型 | 阅读状态 |
+| --- | --- | --- | --- |
+| [1](#paper-1) | [Persona Vectors](https://arxiv.org/abs/2507.21509) | Method; Analysis | 未标记 |
+| [2](#paper-2) | [Persona Vectors in Games](https://arxiv.org/abs/2603.21398) | Analysis | 未标记 |
+| [3](#paper-3) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | 未标记 |
+| [4](#paper-4) | [Emotion Concepts](https://arxiv.org/abs/2604.07729) | Analysis | 未标记 |
+| [5](#paper-5) | [The Personality Illusion](https://arxiv.org/abs/2509.03730) | Analysis | 未标记 |
+| [6](#paper-6) | [Open Character Training](https://arxiv.org/abs/2511.01689) | Method; Analysis | 未标记 |
+| [7](#paper-7) | [PERSONA](https://arxiv.org/abs/2602.15669) | Method; Benchmark; Analysis | 未标记 |
+| [8](#paper-8) | [Tracing Persona Vectors Through Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | 未标记 |
+| [9](#paper-9) | [Persona-Dependent Preferences](https://arxiv.org/abs/2605.13339) | Analysis | 未标记 |
+| [10](#paper-10) | [Manifold Steering](https://arxiv.org/abs/2605.05115) | Method; Analysis | 未标记 |
+| [11](#paper-11) | [Societies of Thought](https://arxiv.org/abs/2601.10825) | Analysis | 未标记 |
+| [12](#paper-12) | [Self-Report & Behavior Coherence](https://arxiv.org/abs/2610.04125) | Method; Analysis | 未标记 |
+| [13](#paper-13) | [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305) | Analysis | 未标记 |
+| [14](#paper-14) | [AuditBench](https://arxiv.org/abs/2602.22755) | Benchmark | 未标记 |
+| [15](#paper-15) | [Belief Dynamics](https://arxiv.org/abs/2511.00617) | Analysis | 未标记 |
+| [16](#paper-16) | [Narrow Finetuning Traces](https://arxiv.org/abs/2510.13900) | Analysis | 未标记 |
+| [17](#paper-17) | [Weight Arithmetic](https://arxiv.org/abs/2511.05408) | Method; Analysis | 未标记 |
+| [18](#paper-18) | [Subliminal Learning as Distillation](https://arxiv.org/abs/2606.00995) | Analysis | 未标记 |
+| [19](#paper-19) | [Impatient Users Confuse AI Agents](https://arxiv.org/abs/2510.04491) | Method; Analysis | 未标记 |
+| [20](#paper-20) | [Generative Causal Mediation](https://arxiv.org/abs/2602.16080) | Method | 未标记 |
+| [21](#paper-21) | [Steer Like the LLM](https://arxiv.org/abs/2605.03907) | Method; Analysis | 未标记 |
+| [22](#paper-22) | [Personality Subnetworks](https://arxiv.org/abs/2602.07164) | Method; Analysis | 未标记 |
+| [23](#paper-23) | [Style Modulation Heads](https://arxiv.org/abs/2603.13249) | Method; Analysis | 未标记 |
+| [24](#paper-24) | [VALUEFLOW](https://arxiv.org/abs/2602.03160) | Method; Analysis | 未标记 |
+| [25](#paper-25) | [Shifting the Gradient](https://arxiv.org/abs/2604.16423) | Analysis | 未标记 |
+| [26](#paper-26) | [The Piggyback Hypothesis](https://arxiv.org/abs/2606.06667) | Analysis; Method | 未标记 |
+| [27](#paper-27) | [Predicting Future Behaviors](https://arxiv.org/abs/2606.11172) | Method; Analysis | 未标记 |
+| [28](#paper-28) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | 未标记 |
+| [29](#paper-29) | [How Emotion Shapes Behavior](https://arxiv.org/abs/2604.00005) | Analysis | 未标记 |
+| [30](#paper-30) | [Emergent Misalignment Is Not Magical](https://arxiv.org/abs/2608.29118) | Analysis | 未标记 |
+| [31](#paper-31) | [User Model Extraction](https://arxiv.org/abs/2609.31603) | Method; Analysis | 未标记 |
+| [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | 未标记 |
+| [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | 未标记 |
+| [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | 未标记 |
+
 ## 人格方向从哪里来，如何形成？
+
+<a id="paper-1"></a>
 
 ### ID 1｜Persona Vectors: Monitoring and Controlling Character Traits in Language Models
 
@@ -94,6 +137,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：基础
 
 阅读证据：2507.21509v3：正文§2–9及App.A/B/C/H–M相关方法、控制与局限复核；非逐图逐数据审计。Future work区分作者提出与阅读推演。
 
+[返回论文总表](#论文总表)
+
+<a id="paper-3"></a>
+
 ### ID 3｜The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
 
 Analysis; Method　|　阅读状态：未标记　|　优先级：A
@@ -131,6 +178,10 @@ Role-playing (sys prompt+persona的办法)做向量提取，对activation vector
 机构／会议：Anthropic；Oxford；MATS；ICML 2026 主会
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-8"></a>
 
 ### ID 8｜Tracing Persona Vectors Through LLM Pretraining
 
@@ -170,6 +221,10 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-6"></a>
+
 ### ID 6｜Open Character Training: Shaping the Persona of AI Assistants through Constitutional AI
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：A
@@ -207,6 +262,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 机构／会议：Cambridge；AI2；Anthropic；MATS；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-28"></a>
 
 ### ID 28｜Synthetic Persona Pretraining: Alignment from Token Zero
 
@@ -246,6 +305,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-18"></a>
+
 ### ID 18｜Subliminal Learning Is Steering Vector Distillation
 
 Analysis　|　阅读状态：未标记　|　优先级：B
@@ -283,6 +346,10 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：Stanford（HTML明确署名的部分作者）；预印本／有投稿记录；接收未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-25"></a>
 
 ### ID 25｜Shifting the Gradient: Understanding How Defensive Training Methods Protect Language Model Integrity
 
@@ -322,6 +389,10 @@ Preventative steering与inoculation prompting为何都能抑制坏trait，它们
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-26"></a>
+
 ### ID 26｜The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
 
 Analysis; Method　|　阅读状态：未标记　|　优先级：B
@@ -359,6 +430,10 @@ Analysis; Method　|　阅读状态：未标记　|　优先级：B
 机构／会议：Northeastern；Stanford；UC Berkeley；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-30"></a>
 
 ### ID 30｜Emergent Misalignment Is Not Magical
 
@@ -398,6 +473,10 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-16"></a>
+
 ### ID 16｜Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences
 
 Analysis　|　阅读状态：未标记　|　优先级：B
@@ -436,7 +515,11 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
 ## 自报、表征与实际行为是否一致？
+
+<a id="paper-5"></a>
 
 ### ID 5｜The Personality Illusion: Revealing Dissociation Between Self-Reports & Behavior in LLMs
 
@@ -500,6 +583,10 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：2509.03730v2：正文§2–7、App.B/C/E/H相关方法、统计解释与局限复核；未复算原始数据、未审计代码运行。架构核对：Qwen官方Qwen3发布说明。Additional think为用户授权润色。来源：https://arxiv.org/html/2509.03730v2；https://qwenlm.github.io/blog/qwen3/
 
+[返回论文总表](#论文总表)
+
+<a id="paper-12"></a>
+
 ### ID 12｜Representational Control over Self-Report & Behavior Coherence in LLM Risk-Taking
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：A
@@ -537,6 +624,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 机构／会议：Caltech；CMU；UIUC；Cambridge；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-9"></a>
 
 ### ID 9｜Probing Persona-Dependent Preferences in Language Models
 
@@ -576,6 +667,10 @@ steering因果结果只在Gemma展示；权重级persona与Qwen MoE迁移不稳�
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-13"></a>
+
 ### ID 13｜Sycophancy Is Not One Thing: Causal Separation of Sycophantic Behaviors in LLMs
 
 Analysis　|　阅读状态：未标记　|　优先级：B
@@ -613,6 +708,10 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：University of Cincinnati；CMU；EMNLP 2026 主会
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-2"></a>
 
 ### ID 2｜Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors
 
@@ -672,7 +771,11 @@ Analysis　|　阅读状态：未标记　|　优先级：基础
 
 阅读证据：2603.21398v1：正文§3–6方法、结果与讨论复核；公开实现差异引用本仓库gaming/protocol.md。非原始统计复算；Future work区分作者提出与阅读推演。
 
+[返回论文总表](#论文总表)
+
 ## trait如何组合，为什么相互干扰？
+
+<a id="paper-7"></a>
 
 ### ID 7｜PERSONA: Dynamic and Compositional Inference-Time Personality Control via Activation Vector Algebra
 
@@ -730,6 +833,10 @@ Method; Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：2602.15669v1：正文§2–3及App.A.1/A.2/A.5/A.6/A.7/A.10/A.11/A.12相关方法与结果复核；重点Figure 2–4、Table 10/16/17。向量几何与干预后输出表现分析，非内部机制研究；未复算原始数据。来源：https://arxiv.org/html/2602.15669v1
 
+[返回论文总表](#论文总表)
+
+<a id="paper-33"></a>
+
 ### ID 33｜Do Personality Traits Interfere? Geometric Limitations of Steering in Large Language Models
 
 Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
@@ -785,6 +892,10 @@ Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
 机构／会议：University of Western Australia（NASIM Lab）；Macquarie University；arXiv预印本，会议接收未核实
 
 阅读证据：2602.15847v1：正文§1–5及App.A各几何条件交叉表复核；与ID 7（2602.15669v1）§2.2–2.3、App.A.6/A.10/A.11对照。已手核Table 1与Table 6的一个汇总不一致示例；未运行代码或复算原始数据。来源：https://arxiv.org/html/2602.15847v1；https://arxiv.org/html/2602.15669v1
+
+[返回论文总表](#论文总表)
+
+<a id="paper-34"></a>
 
 ### ID 34｜Forecasting Side Effects of Activation Steering
 
@@ -844,6 +955,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户追�
 
 阅读证据：2608.11227v1：正文§2–7及App.B/C/D中评分效度、留出方案、显著性、预测门槛与误差诊断相关部分复核；未逐项审计全部artifact、未运行代码或复算矩阵。来源：https://arxiv.org/html/2608.11227v1
 
+[返回论文总表](#论文总表)
+
+<a id="paper-24"></a>
+
 ### ID 24｜VALUEFLOW: Toward Pluralistic and Steerable Value-based Alignment in Large Language Models
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -881,6 +996,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：首尔大学；ICML 2026 主会；Oral仅arXiv自报
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-15"></a>
 
 ### ID 15｜Belief Dynamics Reveal the Dual Nature of In-Context Learning and Activation Steering
 
@@ -920,7 +1039,11 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
 ## 如何选择更有效的控制方向与位置？
+
+<a id="paper-10"></a>
 
 ### ID 10｜Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior
 
@@ -960,6 +1083,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-17"></a>
+
 ### ID 17｜Steering Language Models with Weight Arithmetic
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -997,6 +1124,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：Anthropic；University of Copenhagen；ICLR 2026 主会
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-20"></a>
 
 ### ID 20｜Activation Steering via Generative Causal Mediation
 
@@ -1036,6 +1167,10 @@ Method　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-21"></a>
+
 ### ID 21｜Steer Like the LLM: Activation Steering that Mimics Prompting
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -1073,6 +1208,10 @@ rank-1近似依赖假设；对高复杂度或多方向提示可能不充分。
 机构／会议：Nokia Bell Labs；ICML 2026 主会
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-22"></a>
 
 ### ID 22｜Your Language Model Secretly Contains Personality Subnetworks
 
@@ -1112,6 +1251,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-23"></a>
+
 ### ID 23｜Steering at the Source: Style Modulation Heads for Robust Persona Control
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -1149,6 +1292,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：东京大学；日本国立信息学研究所；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-27"></a>
 
 ### ID 27｜Predicting Future Behaviors in Reasoning Models Enables Better Steering
 
@@ -1188,7 +1335,11 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
 ## 情绪、推理与用户模型怎样影响行为？
+
+<a id="paper-4"></a>
 
 ### ID 4｜Emotion Concepts and their Function in a Large Language Model
 
@@ -1228,6 +1379,10 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-29"></a>
+
 ### ID 29｜How Emotion Shapes the Behavior of LLMs and Agents: A Mechanistic Study
 
 Analysis　|　阅读状态：未标记　|　优先级：B
@@ -1265,6 +1420,10 @@ VAD维度并非严格独立；任务进行中的动态情绪尚未充分建模�
 机构／会议：北京航空航天大学；NTU Singapore；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-11"></a>
 
 ### ID 11｜Reasoning Models Generate Societies of Thought
 
@@ -1304,6 +1463,10 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-31"></a>
+
 ### ID 31｜User Model Extraction via Belief Self-Distillation
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -1341,6 +1504,10 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：TUM；Helmholtz Zentrum München；预印本；主会未核实
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)
+
+<a id="paper-32"></a>
 
 ### ID 32｜Usage-Modulated Sentiment Representations in Large Language Models
 
@@ -1380,7 +1547,11 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
 ## 如何评估审计与交互中的可靠性？
+
+<a id="paper-14"></a>
 
 ### ID 14｜AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors
 
@@ -1420,6 +1591,10 @@ Benchmark　|　阅读状态：未标记　|　优先级：B
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
 
+[返回论文总表](#论文总表)
+
+<a id="paper-19"></a>
+
 ### ID 19｜Impatient Users Confuse AI Agents: High-fidelity Simulations of Human Traits for Testing Agents
 
 Method; Analysis　|　阅读状态：未标记　|　优先级：B
@@ -1457,3 +1632,5 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 机构／会议：arXiv署名页未给出可确认单位；ACL 2026 主会长文
 
 阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+[返回论文总表](#论文总表)

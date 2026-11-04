@@ -8,7 +8,8 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 ## Reading views
 
 - [Google Doc: research questions and paper notes](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)
-- [Local prose mirror](literature_reading.md)
+- [Local prose mirror with paper index](literature_reading.md)
+- [Document format and maintenance contract](literature_document_maintenance.md)
 - Paper type uses Method / Benchmark / Survey / Analysis / Theory labels. Research question is separate from the paper topic and conclusion.
 
 ## Windows / WSL reading workbook

@@ -1,6 +1,8 @@
-# Windows 文献阅读表与 WSL 工作流程
+# 文献维护交接：Google Doc 与本地数据
 
-Windows 主阅读表：`D:\umich\research\persona\persona_literature.xlsx`。
+日常阅读与长笔记使用[Google Doc](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)。格式和统一维护流程见[文档维护合同](literature_document_maintenance.md)。
+
+Windows 筛选／离线表：`D:\umich\research\persona\persona_literature.xlsx`。
 WSL 对应路径：`/mnt/d/umich/research/persona/persona_literature.xlsx`。
 
 仓库已备好 [Excel](persona_literature.xlsx)：34篇，包含两篇基础论文、原精选30篇及用户追加的ID 33–34。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
@@ -8,8 +10,9 @@ WSL 对应路径：`/mnt/d/umich/research/persona/persona_literature.xlsx`。
 ## 分工
 
 - WSL中的仓库：检索、筛选、引用溯源、正文证据和导出脚本。
-- Windows Excel：高层整理、分组阅读、阅读状态和你自己的想法。
-- 总清单继续保存在仓库，Windows只放32篇主阅读表，不复制376条原始候选作为默认工作量。
+- Google Doc：论文索引、研究问题导航、长笔记与用户思考。
+- Windows Excel：筛选、排序、阅读状态和离线查看。
+- 总清单继续保存在仓库，Windows只放当前选定论文的阅读表，不复制376条原始候选作为默认工作量。
 
 ## 本地接手
 
@@ -66,10 +69,10 @@ Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步�
 .venv-literature/bin/python scripts/export_literature_workbook.py --output docs/papers/persona_literature.xlsx
 ```
 
-导出仍执行三方合并，已手改的单元格不会被仓库更新覆盖；若两边同时改同一字段，先检查并解决差异。`Future work`追加在末列，区分作者建议与阅读推演，不自动拆走用户Additional think里的原文。Slurm／Great Lakes上可跳过Windows同步，但开始文献工作前立即安全pull最新CSV；不能伪造挂载或声称完成Windows交付。
+导出仍执行三方合并，已手改的单元格不会被仓库更新覆盖；若两边同时改同一字段，先检查并解决差异。`Future work`为独立列，另有`Paper type`与`Research question`，区分作者建议与阅读推演，不自动拆走用户Additional think里的原文。Slurm／Great Lakes上可跳过Windows同步，但开始文献工作前立即安全pull最新CSV；不能伪造挂载或声称完成Windows交付。
 
 ## Google Doc阅读视图
 
-已建立[原生阅读文档](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)，放在My Drive的ChatGPT目录。按研究问题分组、按稳定ID定位论文；长笔记以段落呈现。CSV与Excel仍用于筛选、状态和本地同步，新增`Paper type`与`Research question`两列。
+原生文档放在My Drive的ChatGPT目录；同一URL持续维护。首页有研究问题／类型索引和34行论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
 
-本地可读副本为`literature_reading.md`，用`python scripts/export_literature_reading_doc.py`从CSV更新。Doc的ID、tab及核验信息在`citation_screening_sources/google_reading_doc.json`。更新前先读线上Doc，把用户修改按ID合并回CSV，再局部更新受影响段落；不能用生成器全文覆盖已编辑的Doc。目前未实现自动Doc双向导入，收到用户修改通知后由agent合并。生成器的native requests仅供新建文档初始化。
+`literature_reading.csv`保存完整字段，`literature_reading.md`为可读镜像；Doc身份与核验信息在`citation_screening_sources/google_reading_doc.json`。线上修改需agent读取后按ID合并，当前不自动双向同步。只调整格式和索引且没有改字段时不必导出Excel。

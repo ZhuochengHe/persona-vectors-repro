@@ -16,16 +16,16 @@ The root [README](README.md) maps code. [Papers](docs/papers/README.md) and the
 literature entry points. Shared instructions: [runbook](docs/research/runbook.md)
 and [archive guide](docs/research/archive.md).
 
-## Literature workflow: working sources and Windows reading workbook
+## Literature workflow: Google Doc, working sources, and workbook
 
-- For a literature-only handoff, start at
-  `docs/papers/handover_paper_excel.md`; this task does not depend on a separate
-  pending reorganization of experiment documentation.
+- For literature work, start at [maintenance and format contract](docs/papers/literature_document_maintenance.md).
+  [Handoff and Excel sync](docs/papers/handover_paper_excel.md) covers local
+  delivery. This work does not depend on experiment-document reorganization.
 - Maintain collection, citation provenance, screening decisions, and export code
   in this repository under `docs/papers/` and `scripts/`. In a WSL session,
   perform the working analysis there; do not turn the Windows folder into a
   second raw-data or screening workspace.
-- The user's high-level literature workbook belongs at
+- The user's sortable offline workbook belongs at
   `/mnt/d/umich/research/persona/persona_literature.xlsx` in WSL, corresponding
   to `D:\umich\research\persona\persona_literature.xlsx` in Windows.
 - Check the actual host and availability of the target directory before
@@ -34,7 +34,8 @@ and [archive guide](docs/research/archive.md).
   copy was delivered to Windows. If the destination is unavailable, prepare a
   small staging workbook in `docs/papers/`, report that delivery is pending,
   and use an explicitly available WSL session or connection for the final copy.
-- The workbook is the user's high-level reading view. Include the selected
+- Google Doc is the primary prose reading/editing view; Excel is the sortable
+  offline view. Include the selected
   literature plus the two foundation papers: original Persona Vectors and
   Persona Vectors in Games. Keep a stable numeric ID for each paper so
   `Related paper` can refer to IDs even after sorting or adding papers.
@@ -79,14 +80,28 @@ and [archive guide](docs/research/archive.md).
   mount. Report pending Windows delivery and commit reusable CSV changes so
   the next WSL session can synchronize. Detect host/environment, not merely
   whether a `slurm` command exists.
-- The prose reading view is the native Google Doc registered in
-  `docs/papers/citation_screening_sources/google_reading_doc.json`, with a local
-  generated mirror at `docs/papers/literature_reading.md`. Organize by research
-  question and keep paper IDs in headings. Before updates, read the live Doc
-  and merge any user edits into the CSV by stable ID; use scoped, revision-guarded
-  edits, never replay whole-document initialization over existing notes.
-  The renderer `scripts/export_literature_reading_doc.py` generates the local
-  mirror and NEW-document requests; it does not implement automatic Doc import.
+- The native Google Doc is registered in
+  `docs/papers/citation_screening_sources/google_reading_doc.json`; keep the
+  same document ID. Follow the [format contract](docs/papers/literature_document_maintenance.md):
+  clickable research-question/type indexes, a native four-column paper table
+  (ID, short title, type, status), then one detailed section per paper.
+  ID links open notes; short-title links open papers; related IDs and return
+  links remain clickable. Never put long contributions/limitations into the index.
+- Before updates, read the live Doc and merge user edits into CSV by stable ID;
+  use scoped revision-guarded edits. Update affected index cells/navigation
+  together with metadata. Preserve original heading IDs when possible; resolve
+  ranges from live structure, not cached offsets. New papers append a table row
+  and receive one detail section in the appropriate research-question group.
+- The renderer `scripts/export_literature_reading_doc.py` generates the local
+  Markdown mirror and NEW-document prose requests plus index data, not an
+  automatic Doc updater/importer. Native table/link layout needs a live-structure
+  pass; never replay initialization over existing notes. Display aliases and
+  widths live in `citation_screening_sources/reading_doc_layout.json` under
+  `docs/papers/`. Verify text/links via readback and pagination via PDF when changed.
+- Keep Doc, CSV, Markdown and available XLSX views synchronized for content
+  changes. Pure formatting/index changes with no field changes do not require
+  regenerating XLSX. Report unavailable delivery targets; never claim automatic
+  Doc bidirectional sync, which is not implemented.
 - `Paper type` is a multi-label contribution classification: Method, Benchmark,
   Survey, Analysis, Theory. Reserve Theory for formal mathematical statements
   and proofs; formulas or geometric experiments alone are Analysis. Treat
