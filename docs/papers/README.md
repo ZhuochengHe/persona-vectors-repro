@@ -5,6 +5,12 @@
 
 The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt) are included for local reading. Other downloaded reading copies remain ignored by Git.
 
+## Reading views
+
+- [Google Doc: research questions and paper notes](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)
+- [Local prose mirror](literature_reading.md)
+- Paper type uses Method / Benchmark / Survey / Analysis / Theory labels. Research question is separate from the paper topic and conclusion.
+
 ## Windows / WSL reading workbook
 
 - [Ready-to-open Excel: 34 papers](persona_literature.xlsx)

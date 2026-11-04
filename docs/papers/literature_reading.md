@@ -1,0 +1,1459 @@
+# Persona 文献阅读笔记
+
+研究问题导航 · 稳定论文 ID · 方法、证据与个人思考
+
+## 阅读导航
+
+按左侧大纲进入研究问题，再按 ID 找论文。每篇先看 Research question 与一句话主题，需要时展开方法、贡献和局限；用户的 Additional think 单独保留。
+
+分类按主要贡献，可多选：Method＝提出控制／训练／提取方法；Benchmark＝提出评估任务、数据或协议；Survey＝系统综述已有研究；Analysis＝通过实证研究刻画规律；Theory＝包含正式数学命题与证明。公式、线性代数或几何分析本身不构成 Theory。
+
+分类与研究问题是基于当前阅读证据整理的工作标签。短笔记保持原有阅读深度；未核实正式证明的条目暂不标 Theory，当前收录也不强求包含 Survey。
+
+人格方向从哪里来，如何形成？｜ID 1、ID 3、ID 8、ID 6、ID 28、ID 18、ID 25、ID 26、ID 30、ID 16
+
+自报、表征与实际行为是否一致？｜ID 5、ID 12、ID 9、ID 13、ID 2
+
+trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID 15
+
+如何选择更有效的控制方向与位置？｜ID 10、ID 17、ID 20、ID 21、ID 22、ID 23、ID 27
+
+情绪、推理与用户模型怎样影响行为？｜ID 4、ID 29、ID 11、ID 31、ID 32
+
+如何评估审计与交互中的可靠性？｜ID 14、ID 19
+
+### 按论文类型查找
+
+Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34
+
+Benchmark：ID 7、ID 14
+
+Survey：当前未标注符合此类的条目
+
+Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34
+
+Theory：当前未标注符合此类的条目
+
+## 人格方向从哪里来，如何形成？
+
+### ID 1｜Persona Vectors: Monitoring and Controlling Character Traits in Language Models
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：基础
+
+[论文原文](https://arxiv.org/abs/2507.21509)
+
+**Research question**
+
+能否从自然语言trait定义自动提取方向，并用它监测、控制及预防训练引起的人格漂移？
+
+**一句话主题**
+
+从对比回答中提取人格方向，用于监测、控制以及预测训练引起的行为变化。
+
+**方法与贡献**
+
+1. Method：从trait名称＋自然语言定义出发，Claude 3.7 Sonnet生成5对正负system prompts、40题（20 extraction／20 evaluation）及judge rubric。每组问题／prompt做10次rollout，用GPT-4.1-mini评分，保留正例>50、负例<50；逐层对response tokens的residual stream取均值，再算v_l=mean(h_pos)-mean(h_neg)。不是PCA，也不是给定任意trait就保证能提取成功。（§2、App.A）
+
+2. 部署监测与控制：在Qwen2.5-7B-Instruct、Llama-3.1-8B-Instruct上，主测evil／sycophancy／hallucination；推理时h_l←h_l+αv_l可改变trait表达。把激活投影到trait方向，可追踪system prompt及many-shot上下文引起的行为变化。response mean适合提取steering方向；其他token位置的监测效果另行比较，不能默认等价。（§3、App.A/C）
+
+3. 训练漂移：构造直接诱发trait及窄域微调引发意外泛化的数据，发现微调前后沿persona方向的激活变化与trait分数相关；用推理期反向steering可压低已学到的坏trait，但强干预会损伤MMLU。（§4–5.1）
+
+4. Preventative steering：训练时反而沿不希望学到的trait正向加向量，让外部干预承担拟合坏行为所需的信号，减少权重继续学习该方向的压力；推理时移除干预。已测条件下比事后抑制更好保留通用能力；单层并非总能完全阻止漂移，多层干预更有效。不是训练时直接压低坏trait。（§5.2、App.J）
+
+5. 数据筛选：对同一个prompt，算训练答案投影减去base model自行回答的投影，即Δp=p(data response)-p(base response)。数据集平均Δp可预测微调后的trait表达；按样本Δp排序可找出诱发漂移的数据，在WildChat／LMSYS等真实聊天数据中也能找到部分LLM文本筛选漏掉的风险样本。（§6、App.H–L）
+
+**局限与解释边界**
+
+1. 作者明确：监督式、prompt-elicited提取；要先指定trait且模型能被prompt诱发该行为。模糊定义会改变方向语义，强拒答模型可能无法形成足够正例；未指定trait的漂移不在检测范围。mean difference是粗粒度方向，可能混合多个行为成分。（§8）
+
+2. 作者明确：主要是两个7B/8B级chat模型；正文三trait，附录补四trait。不能据此推断更大模型、MoE、reasoning model、不同后训练阶段都成立。闭源模型若拿不到内部激活也不能直接使用该方法。（§8；最后一句为适用条件推论）
+
+3. 作者明确：主要依赖GPT-4.1-mini和每trait 20道自动生成评估题；虽有人类一致性及外部benchmark检查，仍难覆盖真实多轮、跨域部署，分数也不是人格强度的客观刻度。（§8、App.B）
+
+4. 已测边界：强推理期steering会降低MMLU；单层preventative steering对刻意诱导trait的数据不一定充分。附录的投影正则化不成功，作者怀疑模型可能改用其他方向表征trait，不能把固定线性方向当作不可绕过的安全机制。（§5、App.J.5）
+
+5. 作者明确：Δp需要为训练prompt额外生成base回答，筛选成本高；附录研究了近似。机制上，为什么从“表现trait的答案”提取的方向能迁移到训练漂移预测与因果干预，尚未充分解释。（§8–9）
+
+6. 阅读核对点：投影相关与steering效应不等于定位到唯一人格机制；层、系数、向量尺度、采样和token位置会影响结论。跨trait纠缠、跨问题泛化和长期稳定性需要独立控制，不能把trait分数下降直接等同于真实风险消失。
+
+**Future work**
+
+作者提出（§8–9）：用SAE细分trait并探索不依赖prompt诱发的发现方式（App.M已做初探）；解释表达→干预→训练预测为何能泛化；估计persona空间维数及自然基底，研究向量相关能否预测trait共现、哪些trait不适合线性表示。
+
+阅读推演：与Assistant Axis联动，比较训练前后“默认Assistant身份”与具体trait方向如何共同移动；把语气、拒答、事实知识和实际决策拆开评估。固定开发集选层／α后，用新题、多轮和跨模型确认；对比单向量、多方向子空间及非线性监测。训练期干预后再重新提取方向，检测是否只是把trait转移到旧monitor看不到的位置。
+
+**Additional think｜用户笔记**
+
+提出persona vector，在残差层表现为线性 contrastive extraction
+
+关联论文：2, 3, 8, 17, 25, 28
+
+关键词：persona vectors; activation steering; trait monitoring; finetuning
+
+机构／会议：来源：原始论文；机构和会议信息本表未重新核实
+
+阅读证据：2507.21509v3：正文§2–9及App.A/B/C/H–M相关方法、控制与局限复核；非逐图逐数据审计。Future work区分作者提出与阅读推演。
+
+### ID 3｜The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2601.10387)
+
+**Research question**
+
+默认Assistant在人格空间中处于什么位置，其漂移能否被监测并通过激活干预稳定？
+
+**一句话主题**
+
+研究默认Assistant在人格空间中的位置，以及多轮对话中的漂移和稳定化。
+
+**方法与贡献**
+
+把默认Assistant定位为人格空间的主轴，并研究自然对话漂移和条件性稳定。
+
+**局限与解释边界**
+
+三种开放dense非推理设置；角色覆盖和模糊行为评分仍有限。暂时无法应用于闭源模型，MoE架构以及Reasoning Model。Assistant表征可能非线性，部分内容可能存于权重。PC2 PC3解释有限 是否可以探索。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+Role-playing (sys prompt+persona的办法)做向量提取，对activation vectors做PCA取主成分。Assistant axis通过default sys prompt的vector-avg roleplaying来计算，发现和PC1高度符合。由于dir bias，这里做投影归一化以及边缘距离计算。Assistant-like traits在预训练已经形成，而后训练只是赋予ai的身份认同。最新用户消息对assistant axis的drift影响大，历史累加效应小。Steering方法：h<- h-v min(<h,v>-tau, 0)阈值τ一般取平均激活的25%。Sweeping效率低。Future work: 后训练中Assistant axis的位移，训练阶段干预（参考persona vector？）映射到具体的心理学特征。能否通过assistant axis预测drift以及危险行为？是否能分解assistant axis？Role playing和trait之间存在分离吗
+
+关联论文：1, 8, 10, 22, 28
+
+关键词：Assistant Axis; persona space; persona drift; activation capping
+
+机构／会议：Anthropic；Oxford；MATS；ICML 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 8｜Tracing Persona Vectors Through LLM Pretraining
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.13329)
+
+**Research question**
+
+人格方向何时在预训练中出现，如何随训练变化，并能否迁移到后训练模型？
+
+**一句话主题**
+
+沿预训练过程追踪人格方向，研究它们何时出现、怎样变化及能否迁移到指令模型。
+
+**方法与贡献**
+
+沿预训练checkpoint追踪persona方向，回答它何时出现及怎样演化。
+
+**局限与解释边界**
+
+主要为OLMo-3和Apertus；不同提取策略揭示不同trait侧面。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 22, 28
+
+关键词：pretraining; persona formation; checkpoints; representation evolution
+
+机构／会议：EPFL；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 6｜Open Character Training: Shaping the Persona of AI Assistants through Constitutional AI
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2511.01689)
+
+**Research question**
+
+能否用开放的constitutional character training塑造助手人格，其效果与提示和激活控制有何差别？
+
+**一句话主题**
+
+通过开放character training塑造助手人格，并比较它与提示及激活控制的区别。
+
+**方法与贡献**
+
+开放character training及训练数据、模型和揭示偏好评估，给出提示/steering之外的路线。
+
+**局限与解释边界**
+
+模型小于10B；合成自省数据和模型评分可能引入偏差与循环验证。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 17, 25, 28
+
+关键词：character training; Constitutional AI; revealed preferences; post-training
+
+机构／会议：Cambridge；AI2；Anthropic；MATS；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 28｜Synthetic Persona Pretraining: Alignment from Token Zero
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2608.13482)
+
+**Research question**
+
+能否从预训练早期塑造目标persona，再通过后训练将它绑定到Assistant身份？
+
+**一句话主题**
+
+在预训练早期塑造目标persona，再通过后训练将其绑定到Assistant身份。
+
+**方法与贡献**
+
+从token zero塑造persona，再绑定Assistant身份，提出区别于纯后训练的对齐路线。
+
+**局限与解释边界**
+
+实验规模低于frontier；persona binding会被持续训练和abliteration削弱。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 6, 8, 22, 30
+
+关键词：synthetic persona pretraining; token zero; persona binding; alignment
+
+机构／会议：EPFL；University of Toronto；Northeastern等；主会未核实；有NeurIPS workshop记录
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 18｜Subliminal Learning Is Steering Vector Distillation
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2606.00995)
+
+**Research question**
+
+不显含目标trait的数据为何能传递trait，这能否由steering vector distillation解释？
+
+**一句话主题**
+
+研究无直接语义关系的数据为何能传递trait，并用steering向量蒸馏解释这一过程。
+
+**方法与贡献**
+
+用steering向量蒸馏解释无语义训练输出为何仍能传递trait。
+
+**局限与解释边界**
+
+两种主要小模型，部分效应不能被单方向完全解释；不宜视为隐性学习的穷尽解释。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 8, 11, 25, 28
+
+关键词：subliminal learning; trait transfer; vector distillation; optimization
+
+机构／会议：Stanford（HTML明确署名的部分作者）；预印本／有投稿记录；接收未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 25｜Shifting the Gradient: Understanding How Defensive Training Methods Protect Language Model Integrity
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2604.16423)
+
+**Research question**
+
+Preventative steering与inoculation prompting为何都能抑制坏trait，它们改变梯度和学习过程的机制是否相同？
+
+**一句话主题**
+
+比较预防性steering和inoculation prompting为何都能抑制不良trait，却可能依赖不同机制。
+
+**方法与贡献**
+
+比较预防性steering与inoculation的梯度机制，说明表面相似的防御不等价。
+
+**局限与解释边界**
+
+主要以evil作案例；inoculation仍无完整机制解释。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 6, 17, 18, 26
+
+关键词：preventative steering; inoculation prompting; gradient dynamics; trait suppression
+
+机构／会议：Goodfire；Stanford；MATS；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 26｜The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2606.06667)
+
+**Research question**
+
+共享模板token是否搭载窄域微调行为并导致跨域失配，阻断这一过程能否减少泛化？
+
+**一句话主题**
+
+检验共享模板token是否搭载窄微调行为，并使其泛化到无关领域。
+
+**方法与贡献**
+
+提出共享chat-template token搭载跨域泛化，并用prefix干预和正则检验。
+
+**局限与解释边界**
+
+需区分模板承载机制与trait子空间解释的适用范围，不提前宣称统一原因。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：15, 16, 25, 28, 30
+
+关键词：emergent misalignment; chat-template tokens; prefix representations; regularization
+
+机构／会议：Northeastern；Stanford；UC Berkeley；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 30｜Emergent Misalignment Is Not Magical
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2608.29118)
+
+**Research question**
+
+失配泛化能否由数据距离与格式依赖解释，通用evil-persona解释的适用范围是什么？
+
+**一句话主题**
+
+用数据距离和格式依赖解释失配泛化，并挑战通用evil-persona解释。
+
+**方法与贡献**
+
+以数据表示距离和格式依赖挑战通用evil-persona解释，提供必须正面回应的竞争假说。
+
+**局限与解释边界**
+
+相关预测不等于穷尽的因果机制；不要由本论文否定所有persona方向。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 16, 25, 26, 28
+
+关键词：emergent misalignment; representational distance; data format; competing explanation
+
+机构／会议：University of Chicago；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 16｜Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2510.13900)
+
+**Research question**
+
+窄域微调目标能否从激活差中读出，读出的信号与强训练痕迹有什么关系？
+
+**一句话主题**
+
+通过激活差读出窄微调目标，同时检验这些模型是否含不真实的强训练痕迹。
+
+**方法与贡献**
+
+极简单的激活差即可读出窄微调目标，同时指出model organism可能含过强的人造痕迹。
+
+**局限与解释边界**
+
+研究这些窄微调对象不自动代表真实复杂后训练；去掉偏置不等于所有风险消失。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 14, 26, 30
+
+关键词：model diffing; activation differences; narrow finetuning; model organisms
+
+机构／会议：EPFL；Harvard；ENS Paris-Saclay；MATS／Anthropic Fellows；ICLR 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+## 自报、表征与实际行为是否一致？
+
+### ID 5｜The Personality Illusion: Revealing Dissociation Between Self-Reports & Behavior in LLMs
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2509.03730)
+
+**Research question**
+
+人格问卷的稳定自报能否预测任务行为？文本persona干预是否同时改变自报与行为？
+
+**一句话主题**
+
+区分人格问卷自报、行为关联及文本persona干预，检验“说自己是什么样”是否能预测或改变所选任务中的行动。
+
+**方法与贡献**
+
+1. 问题拆分：用Origin／Manifestation／Controllability三个RQ区分“训练后自报是否更稳定”“自报是否预测行为”“改变persona后行为是否跟着变”。研究的是外部心理测量与文本干预，没有提取或操纵内部persona向量。（§1–4）
+
+2. RQ1方法与结果：18个模型中，取6组base／instruct配对做训练阶段比较；BFI测Big Five，SRQ测自我调节。每题3个system prompts×3个temperature×3次生成，共27个回答。对齐后问卷分布及trait间关系改变，6维中5维重复测量波动显著降低，agreeableness的波动差异不显著。说明自报更一致，不等于已验证跨任务行为稳定。（§2、Table 1）
+
+3. RQ2方法：对12个instruct模型测四类行为范式、五个指标：CCT翻卡数（风险）、IAT式词语关联（偏见）、事实题的置信度与正确率差（epistemic honesty）、复核前后置信度一致性（self-reflective honesty）、道德困境中是否随冲突用户观点改答（sycophancy）。用混合效应回归检查trait–task关联，再与文献预设的人类关联方向比较；区间估计考虑trait／task聚类。（§3、App.C/E/G）
+
+4. RQ2发现：引言汇总约24%的trait–task关联显著，其中约52%符合人类预期方向。Figure 3则按回归系数符号统计方向一致率，不等于仅统计显著关联。多数中小模型接近50%方向基准；Qwen3-235B的方向一致率为82%，所以不能概括为所有模型都毫无关联。关键贡献是提示：问卷分数及其“像人”的结构不足以担保行为预测效度。（§1、§3.4–3.5）
+
+5. RQ3方法与发现：三种文本persona策略分别注入agreeableness和self-regulation，并测自报及sycophancy／risk-taking。目标trait自报能明显区分persona条件，行为区分能力较弱且依策略变化；自律persona还伴随其他自报维度改变。注意Figure 5的β来自“预测persona条件”的逻辑回归，所有预测变量已标准化：β≈3.6–4.4并非问卷提高3.6–4.4分，大小也不能与另一个模型中的行为β直接当作共同尺度的效应比。（§4）
+
+**局限与解释边界**
+
+1. 作者明确：量表及行为范式覆盖有限，建议扩展HEXACO、价值观量表及适合LLM的新行为任务。现有任务虽有心理学依据，仍不是实际部署行为的全集。（§7）
+
+2. 阅读推论｜基准效度：不符合人类trait–behavior方向，不等于模型没有内部一致的行为结构；例如友善、尊重用户与不附和错误可以并存。人类一致率应与模型自身跨题、跨上下文的行为重复性分开评估。50%是符号方向比较的参照，不是一般行为预测准确率的随机基线。
+
+3. 阅读推论｜构念效度：self-regulation不等于风险厌恶；置信度校准同时受知识、能力和输出格式影响，不能直接等同于诚实意图。道德困境没有客观正确答案，随用户改答测到的是此范式的顺从，未必是明知错误仍迎合。代理指标脱节不能单独否定trait本身。（§3.1、App.E）
+
+4. 阅读推论｜统计边界：主要报告关联、显著性和与人类方向的符合程度，不能替代独立测试集上的行为预测效度，也不能把不显著解释为效应严格为零。Figure 3的方向一致率与“显著关联中52%一致”分母不同；模型间异质性不应被平均结论抹掉。本文未在此笔记中复算统计或检验多重比较处理。
+
+5. 阅读推论｜因果与机制：base／instruct对比不能拆出SFT、RLHF、DPO各阶段的独立作用；trait问卷相关增强也不证明统一latent人格形成。RQ3仅测两类persona与对应行为的文本干预，没有测activation steering；据此声称模型内部不存在人格或所有表征干预均无效，超出实验支持范围。
+
+6. 原文待核对：§7把MoE列作未来扩展，但Table 1已列Qwen3-235B；Qwen官方说明235B-A22B属于MoE。因此不照抄“本文完全未覆盖MoE”。具体checkpoint及thinking配置仍需核对代码／运行记录，也不把作者“non-reasoning”概括当作每个模型模式已验证。模型能力、架构和实际推理模式需要分开记录。
+
+**Future work**
+
+作者提出（§5、§7）：从语言可信度转向behaviorally-grounded alignment，探索基于行为反馈的强化学习、跨时间／上下文的行为checkpoint及latent activation／embedding干预；扩展HEXACO、Schwartz价值观等测量，设计更多适合LLM的任务，并进一步检验reasoning与不同架构。
+
+阅读推演｜与ID 1、2、3连接：分别从问卷自报和任务决策提取方向v_report、v_behavior，做双向交叉干预。固定开发集选层／系数后，在独立题目与改写context上同时测Δself-report、Δaction、语言风格和coherence；检验能否只改自报而保持行为、只改行为而保持自报。需对“未改变”预先设定等效界限，不能用p>0.05证明独立控制。若单轴失败，再比较子空间、层与context依赖。
+
+另做不依赖人类人格方向的within-model验证：估计模型自己的跨任务行为结构、重复测量可靠性及留出集预测能力。对agreeableness／sycophancy分开定义，加入事实正误和礼貌程度的控制，检验高友善、低错误迎合是否能稳定共存。以上均是后续假设，本文未验证。
+
+**Additional think｜用户笔记**
+
+- Behavior和reported persona是否对应不同的steering方向？能否只改变其中一个，同时保持另一个基本不变？可以分别从自报问卷与行为任务提取方向，交叉干预后同时测两类结果，区分语言自我呈现与实际决策的控制机制。
+
+- 模型的行为倾向未必遵循人类人格的关联结构。例如，高agreeableness可以体现为对用户友善、尊重，同时保持低sycophancy，不盲目附和用户的错误观点。需要区分“不符合人类关联方向”和“模型自身行为不一致”，并独立检验友善与错误迎合能否分开控制。
+
+关联论文：1, 2, 3, 9, 12, 13
+
+关键词：personality assessment; self-report; behavioral validity; persona prompting
+
+机构／会议：Caltech；UIUC；Cambridge；ICML 2026 主会
+
+阅读证据：2509.03730v2：正文§2–7、App.B/C/E/H相关方法、统计解释与局限复核；未复算原始数据、未审计代码运行。架构核对：Qwen官方Qwen3发布说明。Additional think为用户授权润色。来源：https://arxiv.org/html/2509.03730v2；https://qwenlm.github.io/blog/qwen3/
+
+### ID 12｜Representational Control over Self-Report & Behavior Coherence in LLM Risk-Taking
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.04125)
+
+**Research question**
+
+风险自报与风险决策是否受相同内部方向控制，能否选择性改变其中一项？
+
+**一句话主题**
+
+用相同内部干预检验风险自报与实际行为的联系，并尝试分别控制两者。
+
+**方法与贡献**
+
+将自报—行动脱节推进到内部干预：不同方向可分别控制并反向组合两种响应。
+
+**局限与解释边界**
+
+范围集中于风险选择、两类行为任务和四模型；泛化到全部人格trait待证。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：2, 5, 9, 13
+
+关键词：risk-taking; self-report behavior gap; causal steering; dissociation
+
+机构／会议：Caltech；CMU；UIUC；Cambridge；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 9｜Probing Persona-Dependent Preferences in Language Models
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.13339)
+
+**Research question**
+
+不同persona是否共享偏好表示，偏好方向能否跨persona预测和控制实际选择？
+
+**一句话主题**
+
+检验不同persona是否共享偏好表征，以及偏好方向是否能跨persona预测和控制选择。
+
+**方法与贡献**
+
+检验不同persona是否共享偏好机制，以revealed choice及跨persona因果迁移连接人格和决策。
+
+**局限与解释边界**
+
+steering因果结果只在Gemma展示；权重级persona与Qwen MoE迁移不稳定。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：2, 4, 5, 12, 24
+
+关键词：revealed preferences; preference vectors; cross-persona transfer
+
+机构／会议：ETH Zürich；EPFL；MATS；Eleos AI Research；NeurIPS接收：arXiv作者自报，未独立确认
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 13｜Sycophancy Is Not One Thing: Causal Separation of Sycophantic Behaviors in LLMs
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2509.21305)
+
+**Research question**
+
+迎合式同意、过度赞美与真实同意是否对应可分离、可独立干预的行为方向？
+
+**一句话主题**
+
+将迎合式同意、过度赞美与真实同意拆开，检验它们是否具有独立的可控方向。
+
+**方法与贡献**
+
+拆开迎合式同意、过度赞美与真实同意，证明同一个行为标签未必对应同一机制。
+
+**局限与解释边界**
+
+只覆盖三个可清晰操作化的子行为；不能推成所有迎合成分均独立。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 5, 12, 20, 27
+
+关键词：sycophancy; praise; agreement; causal disentanglement
+
+机构／会议：University of Cincinnati；CMU；EMNLP 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 2｜Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors
+
+Analysis　|　阅读状态：未标记　|　优先级：基础
+
+[论文原文](https://arxiv.org/abs/2603.21398)
+
+**Research question**
+
+人格向量能否改变博弈中的实际选择？语言解释、策略行为及对他人的预期是否随之一起变化？
+
+**一句话主题**
+
+将人格向量用于游戏决策，比较利他等特质、实际选择与语言解释是否一起变化。
+
+**方法与贡献**
+
+1. Method：将原Persona Vectors的contrastive activation方法迁移到策略决策。以Qwen2.5-7B为案例，Claude Sonnet 4.5生成trait相关道德困境，正负prefix诱发回答；正文写50题×5正/5负prefix=500组合。GPT-4.1-mini评分，保留正例≥50且负例<50的配对；teacher forcing提取response-token mean，逐层计算正负激活差，主要使用L20。（§3.1–3.2）
+
+2. 测量设计：六种经典游戏同时看LLM trait分数、激活投影和具体金额／二元行动，把“说得利他”与“实际给多少／是否合作”拆开。提示词诱发的变化能在trait方向上读出；steering用h_20←h_20+βv_20，扫描β∈[-5,5]。（§3.3–4）
+
+3. 主要发现：正向altruism steering能提高部分游戏的分配金额及合作倾向；但trait分数上升不保证行动同幅变化。forgiveness扩展中甚至出现judge认为更宽恕、具体策略反而更保守的情况，说明叙事风格和行为指标可能分离。（§4–5.1）
+
+4. 表征分离：另行提取“期待他人利他／宽恕”的方向，并把问题改为预测Agent 2。预期方向比自身行为方向更能推动对应的他人行为预测，支持self-behavior与expectations部分可分；尚未证明能完全独立控制。（§5.2）
+
+5. 与本项目的关系：Figure 3是六游戏的judge利他分数曲线，Figure 4才是金额曲线。复现时应两者并看，以免只复现措辞变化；当前仓库协议已核对公开题目与实现差异。
+
+**局限与解释边界**
+
+1. 作者明确：只测一个模型与规模；主要在L20展示效果，缺少系统的模型／架构／规模迁移验证。更换模型必须重提向量、重新选层，不能直接照搬β。（§3、§6；后一句为复现推论）
+
+2. 作者明确：任务是匿名one-shot vignette。即便描述过去背叛或重复博弈背景，也不等于运行真实多轮互动；尚未验证声誉、策略适应、社会规范或真实对手反馈下的持续效果。（§6）
+
+3. 作者明确：GPT-4.1-mini既作trait评分又作游戏决策judge，存在共享偏差及循环验证风险；部分结果已显示模型措辞能提高分数却不改善实际策略。金额／合作率也必须报告决策提取失败与有效性，不能用judge分数代替行动。（§5–6；最后一句为验证建议）
+
+4. 结果边界：正负steering不对称，负方向不稳定；可能因为利他和自利不在同一直线上，也可能混有基线／任务效应，论文未辨明。大|β|会损伤coherence；因此更高trait分数不能单独证明更好的控制。（§4–6）
+
+5. 作者明确：trait由人工定义，通用性有限；self／other结果支持部分分离，未建立完整、正交、可组合的策略／信念机制。（§5.2–6）
+
+6. 仓库复现核对：论文写50道提取题，固定公开代码中altruism提取文件为40道；题目有多个版本。公开生成入口的β=0与非零使用不同运行时，采样配置也需逐项核实。这是论文／代码对齐问题，不把它误写成论文明确采用的完整设置。证据见本仓库gaming/protocol.md。
+
+**Future work**
+
+作者提出（§6）：多模型／规模及多种judge、人类验证；扩展到真实重复博弈、多agent、LLM-vs-LLM及LLM-vs-human；从未标注数据用聚类或无监督contrastive方法提出并验证trait方向；探索分别调节自身行为和对他人的信念。
+
+阅读推演：先固定游戏收益结构，用新措辞／新金额范围检验迁移，报告金额、合作率、无效决策、coherence及trait分数，明确区分语言策略与收益策略。对self方向和expectation方向做交叉干预矩阵，控制语言风格，检测是否真能独立控制信念与行动；把利他、自利、风险厌恶、公平偏好拆成多个方向，对比单轴与子空间。重复互动中检验steering是否随历史失效或被对手利用，并与Assistant Axis drift关联。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 9, 12, 19, 24
+
+关键词：game theory; altruism; forgiveness; strategic behavior
+
+机构／会议：预印本；主会与署名机构本表未重新核实
+
+阅读证据：2603.21398v1：正文§3–6方法、结果与讨论复核；公开实现差异引用本仓库gaming/protocol.md。非原始统计复算；Future work区分作者提出与阅读推演。
+
+## trait如何组合，为什么相互干扰？
+
+### ID 7｜PERSONA: Dynamic and Compositional Inference-Time Personality Control via Activation Vector Algebra
+
+Method; Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2602.15669)
+
+**Research question**
+
+不同trait向量能否通过缩放、加减实现可预测的组合控制，并随对话context动态调整？
+
+**一句话主题**
+
+将人格向量组织成可缩放、相加和动态组合的控制工具。
+
+**方法与贡献**
+
+1. 方法框架：沿用ID 1的contrastive mean-difference提取流程，为Big Five的10个trait poles分别提取向量（不是把10个向量强制正交化）。在选定层用h←h+αv进行缩放、相加和相减；PERSONA的主要增量是系统检验多trait组合及上下文动态控制。整体证据来自向量几何、干预后的输出评分与对话表现，属于表现型分析，没有进一步定位trait的神经元／回路机制。（§2.2–2.4）
+
+2. Cosine几何关系：Figure 2比较trait向量的两两cosine。相反trait poles呈明显负相似度，但跨维trait也有较强相关，例如Calm／Dependable=+0.751、Outgoing／Careless=+0.635、Calm／Careless=-0.714。因此“approximately orthogonal”不能理解为所有trait互相独立；正负pole分别提取，也不预设它们严格互为负向量。作者把部分相关解释为语言共现／文化刻板印象，属于对几何现象的解释。（§2.2.2、App.A.10）
+
+3. Cosine与行为联动：App.A.11选取cos(Nervous,Careless)=+0.601的相关trait对，只steer Nervous，同时测两trait输出分数。α从0到2时，Nervous从13.0升至96.8（+83.8），Careless从2.8升至18.2（+15.4）。副效应与正cosine方向一致，但只约为主效应的18%；说明几何重叠可以伴随输出trait联动，同时仍有相对明确的主效应。这是选定trait对的实例验证，不是跨全部trait对拟合出的cosine→行为效应预测公式。（Table 16）
+
+4. 不同trait的近独立调节：固定Outgoing系数为1，扫描Compassionate系数{-1,0,1,2}，在L18–22复核；Agreeableness随之改变，Extraversion相对该层基线的最大变化只有1.2分。它提供了“某些trait可以分别控制”的干预证据，补充cosine矩阵本身无法说明的输出关系。（App.A.6、Table 10）
+
+5. 线性关系有三个层次：①系数—表现：α在[-1,2]内变化时，多数trait的情境化BFI分数近似线性变化，Dependable因高基线出现饱和。②向量组合—目标trait：Outgoing+Compassionate同时增强E与A；Outgoing-Solitary增强外向表达，Outgoing-Compassionate则保留较高E并降低A。③副效应叠加：Inventive+Nervous对Careless的组合分数为11.2，等于baseline 2.8＋Inventive单独带来的0.7＋Nervous单独带来的7.7。说明所测组合中，不仅目标效果可组合，关联trait的副效应也可近似线性叠加。（§2.3、Figure 3–4、App.A.11 Table 17）
+
+6. 评估与动态应用：将BFI-44自报条目改写成情境式回答，由judge评trait表达；附录补充多judge及200条回答的人类评分核验。Persona-Flow先根据对话预测各维系数，再线性合成向量注入；Persona-Evolve包含800个多轮情境，检验trait遵循、角色一致性与表达真实性。它展示这套向量操作可用于动态对话，不只是静态问卷。（§2.4–3、App.A.5/A.7/A.12）
+
+**局限与解释边界**
+
+1. 几何与表现的联系仍是局部经验结果：cosine矩阵覆盖10个trait poles，但相关trait的副效应与线性叠加主要展示Nervous／Careless、Inventive+Nervous等选定实例；没有给出全trait对的cosine—交叉效应矩阵或预测关系。因此可以说“这些实例的联动方向与几何相关一致”，还不能概括为cosine足以决定任意trait组合的行为效果。（App.A.6/A.10/A.11）
+
+2. 近似线性有工作区间及trait差异：主要系数范围为[-1,2]；Dependable等高基线trait会饱和，Self-interested等trait较难激活。相加／相减的表现支持可组合控制，但不等于10个poles构成严格独立、全局线性的人格基底。（Table 2、Figure 3–4）
+
+3. “Behavioral”主要指情境提示下生成回答的trait评分，以及对话中的角色／表达表现；虽比直接自报多了一层行为情境，也有人类与多judge核验，仍未像ID 2那样系统比较实际收益决策，也没有同时分离自报、语言风格和独立行动指标。理解为输出trait的可控性最贴近本文证据。
+
+4. 论文没有做机理型研究：干预能改变输出，证明这些向量具有控制作用；但没有解释cosine相关为何形成、哪些内部计算造成跨trait联动。语言共现、刻板印象和alignment造成饱和／抵抗，是作者对观察现象的解释，未通过训练数据追溯或回路分析直接验证。
+
+5. 对照ID 33：该文主动正交化后仍观察到明显cross-trait bleed，提示本篇部分trait的近独立结果不能扩大为全trait独立。两篇提取方式、选层、题目和效应口径不同；组合近似加性与没有副效应需分别判断，详细对照见ID 33。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 10, 21, 23, 24, 33
+
+关键词：personality control; vector algebra; Big Five; dynamic steering
+
+机构／会议：哈尔滨工业大学；香港大学；ICLR 2026 主会
+
+阅读证据：2602.15669v1：正文§2–3及App.A.1/A.2/A.5/A.6/A.7/A.10/A.11/A.12相关方法与结果复核；重点Figure 2–4、Table 10/16/17。向量几何与干预后输出表现分析，非内部机制研究；未复算原始数据。来源：https://arxiv.org/html/2602.15669v1
+
+### ID 33｜Do Personality Traits Interfere? Geometric Limitations of Steering in Large Language Models
+
+Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
+
+[论文原文](https://arxiv.org/abs/2602.15847)
+
+**Research question**
+
+主动消除trait方向的线性重叠后，跨trait行为干扰是否消失，正交化带来什么控制与质量代价？
+
+**一句话主题**
+
+主动消除Big Five steering方向的线性重叠，再检验跨trait联动是否随之消失：几何正交并不保证输出表现独立。
+
+**方法与贡献**
+
+1. 核心增量：把“trait是否独立”从cosine观察推进到几何干预实验。针对五个Big Five方向，比较原始向量、soft whitening、Gram–Schmidt、选择性正交、soft projection与全局对称Löwdin正交化（C0–C5），测量消除向量线性重叠后，输出trait是否也能解耦。（§2）
+
+2. 方法：基于high／low标注数据提取各层方向并加权聚合，使用离线prior＋输入相关动态检查的hybrid选层；不是ID 7那套单层10个trait pole提取。各几何条件保持注入、强度、解码等设置不变，在无persona指令的中性prompt下比较base、正向与负向steering。正文实验模型写LLaMA-3-8B-Instruct及Ministral-8B-Instruct，表格简写Mistral-8B。（§2–4）
+
+3. 交叉效应评估：用访谈式BFI生成回答，由GPT-4o-mini对五trait评分，并报告fluency。对每个目标trait同时看目标差值T和最大非目标变化Bmax；差值定义为High−Low，而非对无干预baseline的增量。Bmax保留对应trait与方向，便于看到“增强一个trait究竟还改了谁”。（§3、Table 1、App.A）
+
+4. 主要结果：C5将方向处理成近零pairwise cosine后，跨trait评分变化仍然存在，且常与目标变化同量级。正文Table 1报告LLaMA的Openness在C5下T=2.9、Bmax=-3.0，Mistral对应T=3.1、Bmax=2.8；这些是该表原报值，附录汇总口径存在需核对之处（见Limitation）。核心证据是：减少输入方向的线性重叠并没有同步消除输出trait的联动。（§4.1）
+
+5. 控制代价与模型差异：强制正交不带来一致的独立控制改善，且fluency通常下降。正文还报告Neuroticism在LLaMA较易调节、在Mistral目标响应很弱，即使正交后也如此；说明向量几何之外，模型本身的响应特性也重要。“共享成分支持流畅表达／alignment限制trait”是作者对现象的解释，没有进一步做回路或训练过程验证。（§4）
+
+6. 对照ID 7：PERSONA强调可缩放、相加和部分trait的近独立调节；本篇强调对五trait做完整交叉测量，发现正交后仍有较大干扰。两者共同说明“可组合”不自动意味着“独立”：多个trait一起变化可以近似线性叠加，同时仍有off-target联动。ID 7本身也展示Nervous→Careless副效应，因此两篇并非所有结果相反；真正的张力在独立控制成立的范围及副效应大小，而非是否存在任何线性可控性。
+
+**局限与解释边界**
+
+1. 范围：两个8B级instruct模型、Big Five及访谈式BFI／judge评分；没有覆盖所有persona表示，也没有检验真实策略决策中的独立性。与ID 7的scenario-BFI、10个pole、单层方法和系数扫描不同，不能直接比较两篇的分数与副效应百分比。（§2–5）
+
+2. 结论层级：本文支持“这些提取／几何处理方法下，正交不足以消除trait评分干扰”，不等于已经排除其他表征、上下文或非线性控制方法。它是几何处理与输出表现的分析，没有定位干扰的内部计算机制；“更广的social axis”是解释，不是已识别出的唯一机制。
+
+3. 数值呈现需核对：Table 1的部分T／Bmax与App.A交叉矩阵未完全对齐。例如按Table 6标注的“列=target、行=measured”，C5的Openness列是2.90、1.44、1.88、2.89、-1.38，最大非目标绝对值为2.89（Agreeableness），而Table 1给出-3.0（Neuroticism）；后者更像取了Openness行的极值。因而先保留“显著跨trait联动”的定性结果，精确的方向性、最大干扰trait及汇总值需结合代码确认。
+
+4. 作者明确：主要依赖LLM judge，尚缺人类评估及更多互补指标；可扩展模型、数据和几何处理方法。相比ID 7已有的多judge／人类子集核验，这是本篇评估覆盖较窄的地方。（§5 Limitations）
+
+**Future work**
+
+作者提出：扩展模型与人格数据，比较更多投影／正交化方法，并引入人类或互补行为评价。（§5）
+
+阅读推演｜与ID 7统一验证：在同模型、同向量提取、同层／强度、同评估题与judge下，同时测cosine矩阵G及完整cross-trait响应矩阵R；先复核High−Low与相对baseline两种效应口径，再比较原始向量、soft／hard正交。检验cosine变化能否预测R非对角项变化，同时报告目标强度和fluency。另用双trait系数网格检查加性残差：组合是否近似线性、是否独立控制是两个问题，分开判定。此处是后续比较设计，不是两篇已完成的统一实验。
+
+**Additional think｜用户笔记**
+
+至少大五人格里面 对于ai来说 不同trait的correlation比较大，从behavior角度（v.s. persona vector的geometry角度）
+
+关联论文：1, 5, 7
+
+关键词：Big Five; trait interference; cosine similarity; orthonormalisation; cross-trait bleed
+
+机构／会议：University of Western Australia（NASIM Lab）；Macquarie University；arXiv预印本，会议接收未核实
+
+阅读证据：2602.15847v1：正文§1–5及App.A各几何条件交叉表复核；与ID 7（2602.15669v1）§2.2–2.3、App.A.6/A.10/A.11对照。已手核Table 1与Table 6的一个汇总不一致示例；未运行代码或复算原始数据。来源：https://arxiv.org/html/2602.15847v1；https://arxiv.org/html/2602.15669v1
+
+### ID 34｜Forecasting Side Effects of Activation Steering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
+
+[论文原文](https://arxiv.org/abs/2608.11227)
+
+**Research question**
+
+能否在测量新steering方向的完整副作用之前，预测它对其他行为影响的方向与相对排序？
+
+**一句话主题**
+
+系统测量67种行为间的非对称steering副作用，并用未干预激活训练的层间映射与行为probe预测其方向和相对排序。
+
+**方法与贡献**
+
+1. 从“是否有副作用”推进到“干预前能否预测”：在Gemma-3-4B、Gemma-3-12B、Qwen2.5-7B上定义67种行为，构造source×target交叉效应矩阵。只有self-effect验证通过的方向作为source（分别52／52／47个），其余行为仍可作为target；六类context覆盖含糊请求、代码、文档、情绪支持、创作和边界安全请求。（§2–3）
+
+2. 测量方法：difference-of-means单位方向按层激活范数缩放，在prompt及decode位置注入。逐source先确定不退化的系数窗口，再取5个强度×4次采样；每条回答评全部67行为。每prompt拟合评分对α的斜率，跨prompt平均得到M_ij，显著性按模型内off-diagonal做BH-FDR q<0.05；报告窗口总变化Δ_ij=窗口宽度×M_ij，以免把不同可用α范围的裸斜率直接比较。主judge按评分token概率加权，另用异模型judge核验子集。（§2–3、App.A/B）
+
+3. 副作用结构：33–50%的受测行为对有显著coupling；交叉矩阵主模式解释约64%方差，有效维度约4.6–4.9。主轴大致是展开解释与简短表达的trade-off，但去掉主轴后仍保留不少coupling。这里是输出交叉效应矩阵的低维结构，不等于激活空间全部persona向量只有这些维度。（§4.1、App.D）
+
+4. 对cosine的关键反例：在双向效应都显著的行为对中，18–26%出现A→B与B→A反号；例如增强thoroughness提高uncertainty disclosure，反向steer uncertainty disclosure却压低thoroughness。Cosine是对称量，不能单独描述这种方向关系。留出行为评估中raw cosine最多解释19%的coupling方差，五种相似性变体中最好也只有23%。这是对“几何相似足以预测行为联动”的系统检验，比只展示少量trait pair更直接。（§4.2）
+
+5. 预测方法：source用steering direction v_i表示，target另训线性behavior probe r_j；用未steer生成的成对层激活做ridge回归，学习注入层→readout层映射W，再用Mhat_ij=<Wv_i,r_j>预测。source与target扮演不同角色，因此预测可非对称；target只需可读取，不必存在可用steering方向。用约1,288–2,039条普通生成学习probe与映射，而全矩阵实测约需每模型128,000条steered生成。W是拟合的传播近似，不是通过回路追踪获得的真实因果Jacobian。（§5.1）
+
+6. 泛化与结果：分别留出source或target，嵌套选择ridge强度；主结果先用未干预probe质量筛选target（AUROC≥0.76且覆盖六context中的至少五个，保留42／37／46种）。六个模型×split的Spearman约0.269–0.393，均高于raw cosine，五个差异显著。预测绝对值最高的10%交互，符号正确率约68／78／71%；不代表全部行为对都达到这一准确率。强度排序与方向预测也不同：已有实测信息中的per-target敏感度更擅长找大效应，pair-specific预测更有助于判断增幅还是抑制。（§5、Table 2）
+
+7. 与ID 7／33连接：ID 7证明部分组合可近似叠加，ID 33说明正交不保证独立；本篇进一步说明干扰可低维、非对称且部分可预测。它把“控制方向”与“行为读取方向”分开，提示不能只看两个steering vectors的cosine来判断行为相互影响。
+
+**局限与解释边界**
+
+1. 预测对象是相对排序与符号，不是校准后的绝对行为效应；对完整profile的判断比单个pair更可靠。它也不最擅长发现绝对变化最大的target：若已有其他source的实测矩阵，target平均敏感度与最近邻profile复用是很强的参考。（§5、§7）
+
+2. “干预前预测”有具体条件：probe与W训练用未干预生成，留出行为的cross-effects不参与模型选择；但ridge选择仍用其他训练行为的实测coupling，source验证和可用系数窗口也需要干预。应理解为不必先测待预测source／target的完整副作用profile，不是整个研究流程完全零干预。主结果还经过probe可读性筛选，附录另报全67-target panel。（§3、§5.1–5.2）
+
+3. 评估仍以judge定义的行为为对象，跨judge相关高不等于所有构念均已充分人工验证。App.B中作者说明：15个headline行为的人工评分由一位作者在LLM草稿基础上纠正签署，仅4个达到预设Spearman≥0.70；因此不能概括成人类已全面验证67行为。当前证据更适合支持这一评分体系下的排序与联动。（§7、App.B）
+
+4. 方法范围是三个模型、六类context、已校准窗口内的线性activation steering与线性readout。非对称性和传播预测提供了比cosine更强的功能性模型，但没有识别副作用的具体内部回路；换context、强度窗口或非线性干预仍需重新检验。（§7）
+
+**Future work**
+
+作者提出（§5、§7）：改进行为readout，扩展到非线性干预；把forecast用于部署前确定优先审计的行为，而不是替代实际检查。
+
+阅读推演：与ID 7／33用同模型同题构造完整cross-trait响应矩阵，比较cos(v_i,v_j)、direct probe和<Wv_i,r_j>对非对角效应的预测能力；分别检查对称部分与反对称部分。再对组合v_a+v_b检验预测profile是否可加，区分输出近似加性与trait独立。可进一步在训练／steering前后比较control direction与readout direction是否发生不同程度旋转，连接ID 5的自报与行为分离问题；以上是后续设计，本文未完成。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 5, 7, 33
+
+关键词：activation steering; cross-effect matrix; asymmetric interactions; behavioral probes; propagation forecasting
+
+机构／会议：Singapore Management University；arXiv预印本，会议接收未核实
+
+阅读证据：2608.11227v1：正文§2–7及App.B/C/D中评分效度、留出方案、显著性、预测门槛与误差诊断相关部分复核；未逐项审计全部artifact、未运行代码或复算矩阵。来源：https://arxiv.org/html/2608.11227v1
+
+### ID 24｜VALUEFLOW: Toward Pluralistic and Steerable Value-based Alignment in Large Language Models
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2602.03160)
+
+**Research question**
+
+价值观能否被统一表示、量化，并通过组合干预实现多价值的可调控制？
+
+**一句话主题**
+
+统一价值表征、强度评估和多价值控制，研究不同价值能否组合与定量调节。
+
+**方法与贡献**
+
+把价值的层级结构、强度标定和多价值组合接成统一研究框架。
+
+**局限与解释边界**
+
+评估依赖选定价值理论及强度锚；代表的是价值控制而非所有persona机制。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：2, 7, 9, 29, 32
+
+关键词：value alignment; intensity calibration; hierarchical values; multi-value steering
+
+机构／会议：首尔大学；ICML 2026 主会；Oral仅arXiv自报
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 15｜Belief Dynamics Reveal the Dual Nature of In-Context Learning and Activation Steering
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2511.00617)
+
+**Research question**
+
+信念更新视角能否统一解释in-context learning与activation steering带来的行为变化？
+
+**一句话主题**
+
+用信念更新框架统一上下文学习与激活steering对行为的影响。
+
+**方法与贡献**
+
+用贝叶斯信念更新统一ICL和激活steering，并预测相变与可加性。
+
+**局限与解释边界**
+
+拟合成功不等于唯一神经机制；大强度及复杂现实任务的适用范围需核对。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 10, 21, 26
+
+关键词：belief dynamics; Bayesian updating; in-context learning; activation steering
+
+机构／会议：Goodfire；Harvard；Stanford；NTT Research；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+## 如何选择更有效的控制方向与位置？
+
+### ID 10｜Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.05115)
+
+**Research question**
+
+沿表征流形实施干预是否比直线steering更能保留自然表征并实现行为变化？
+
+**一句话主题**
+
+研究尊重表征流形的干预能否产生比直线steering更自然的行为变化。
+
+**方法与贡献**
+
+同时研究表征流形和行为流形，把steering从找方向改为尊重几何。
+
+**局限与解释边界**
+
+关键实验为几何可定义的简化任务，不能直接当作复杂persona有效性的证明。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 7, 22
+
+关键词：representation geometry; activation manifold; behavioral manifold; manifold steering
+
+机构／会议：Goodfire；Stanford；UCL；Harvard等；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 17｜Steering Language Models with Weight Arithmetic
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2511.05408)
+
+**Research question**
+
+正反微调的权重差能否作为行为控制方向，它与activation steering的泛化有何差异？
+
+**一句话主题**
+
+从正反微调的权重差构造行为方向，并与激活steering比较泛化。
+
+**方法与贡献**
+
+将行为方向从激活空间扩展到对比微调的权重差，并直接比较域外泛化。
+
+**局限与解释边界**
+
+激活steering对照种类较少；受控任务及窄能力评估限制结论。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 6, 7, 18, 25
+
+关键词：weight arithmetic; contrastive finetuning; behavioral control; generalization
+
+机构／会议：Anthropic；University of Copenhagen；ICLR 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 20｜Activation Steering via Generative Causal Mediation
+
+Method　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2602.16080)
+
+**Research question**
+
+生成因果中介能否定位更有效的activation steering组件与位置？
+
+**一句话主题**
+
+通过生成因果中介定位适合干预的组件，而不是只依据探针相关性选位置。
+
+**方法与贡献**
+
+用生成因果中介选择干预组件，超越只按探针相关性挑方向或层。
+
+**局限与解释边界**
+
+主要验证拒绝、迎合和风格三类行为及三模型；复杂人格推广待验证。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：13, 21, 23, 27
+
+关键词：causal mediation; component localization; attention heads; steering
+
+机构／会议：MIT CSAIL；Stanford；Goodfire；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 21｜Steer Like the LLM: Activation Steering that Mimics Prompting
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2605.03907)
+
+**Research question**
+
+模仿prompt产生的逐token激活变化，能否比固定方向／强度steering更有效？
+
+**一句话主题**
+
+模仿提示本身产生的逐token激活改变，研究如何改进固定强度的steering。
+
+**方法与贡献**
+
+从提示实际造成的逐token干预学习steering，解释恒定系数方法为何失真。
+
+**局限与解释边界**
+
+rank-1近似依赖假设；对高复杂度或多方向提示可能不充分。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：7, 15, 20, 23
+
+关键词：prompt distillation; token-specific steering; PSR; coherence
+
+机构／会议：Nokia Bell Labs；ICML 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 22｜Your Language Model Secretly Contains Personality Subnetworks
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2602.07164)
+
+**Research question**
+
+不同persona能否被隔离为已有稀疏子网络，剪枝后是否保留对应人格行为？
+
+**一句话主题**
+
+将不同persona视为模型内已存在的稀疏子网络，并通过剪枝加以隔离。
+
+**方法与贡献**
+
+用对比剪枝寻找预存persona子网络，为人格提供方向之外的参数结构视角。
+
+**局限与解释边界**
+
+能隔离可控子网络不等于找到唯一自然人格回路，需关注独立行为验证。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 8, 10, 28
+
+关键词：personality subnetworks; contrastive pruning; parameter space; persona control
+
+机构／会议：Northwestern；University of Tulsa；University of Arizona；ICLR 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 23｜Steering at the Source: Style Modulation Heads for Robust Persona Control
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2603.13249)
+
+**Research question**
+
+少量style modulation heads能否实现更稳健的persona控制并减少连贯性退化？
+
+**一句话主题**
+
+寻找少量控制persona和风格的注意力头，以减少残差流干预造成的连贯性退化。
+
+**方法与贡献**
+
+将persona控制定位到少量style modulation heads，并检查传统能力指标漏掉的coherence崩溃。
+
+**局限与解释边界**
+
+少量头的充分性未必跨trait／模型通用；需分清风格和更深行为控制。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：7, 20, 21
+
+关键词：style modulation heads; localized steering; coherence; off-target effects
+
+机构／会议：东京大学；日本国立信息学研究所；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 27｜Predicting Future Behaviors in Reasoning Models Enables Better Steering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2606.11172)
+
+**Research question**
+
+预测未来行为的特征是否比检测已发生行为的特征提供更有效的steering控制信号？
+
+**一句话主题**
+
+区分检测已生成行为的特征与预测未来行为的特征，并比较它们作为控制信号的效果。
+
+**方法与贡献**
+
+分离检测已经出现的行为和预测未来行为的内部特征，改变监测与控制目标。
+
+**局限与解释边界**
+
+逐句采样多个候选增加推理成本；不同探针架构和任务的上限仍未知。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：11, 13, 14, 20
+
+关键词：future behavior prediction; detection features; FPCG; reasoning monitoring
+
+机构／会议：Fraunhofer HHI；Northeastern；KAIST；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+## 情绪、推理与用户模型怎样影响行为？
+
+### ID 4｜Emotion Concepts and their Function in a Large Language Model
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2604.07729)
+
+**Research question**
+
+情绪概念在模型内部如何表示，是否跨情境泛化并因果影响偏好、迎合及失配行为？
+
+**一句话主题**
+
+研究内部情绪概念是否跨情境表征，并因果影响偏好、迎合及失配行为。
+
+**方法与贡献**
+
+将情绪从输出语气推进到内部概念的跨情境表征和因果行为作用。
+
+**局限与解释边界**
+
+主要研究Claude Sonnet 4.5；线性探针可能遗漏角色绑定和非线性结构。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 9, 29, 32
+
+关键词：emotion concepts; functional emotions; causal intervention; alignment
+
+机构／会议：Anthropic；Anthropic研究报告；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 29｜How Emotion Shapes the Behavior of LLMs and Agents: A Mechanistic Study
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2604.00005)
+
+**Research question**
+
+情绪表征的内部干预如何影响模型推理、安全及多步agent行为？
+
+**一句话主题**
+
+通过情绪表征干预研究不同情绪对推理、安全和多步agent行为的影响。
+
+**方法与贡献**
+
+用VAD情绪表征干预同时研究推理、安全和多步agent行动。
+
+**局限与解释边界**
+
+VAD维度并非严格独立；任务进行中的动态情绪尚未充分建模。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：4, 11, 24, 32
+
+关键词：emotion steering; VAD; SAE; agent behavior
+
+机构／会议：北京航空航天大学；NTU Singapore；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 11｜Reasoning Models Generate Societies of Thought
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2601.10825)
+
+**Research question**
+
+推理模型中的多视角、冲突与社会情绪角色如何参与推理，能否解释其能力变化？
+
+**一句话主题**
+
+从多视角、冲突及社会情绪角色解释推理模型内部的互动结构。
+
+**方法与贡献**
+
+把推理中的多视角、冲突和社会情绪角色作为性能来源，连接persona与reasoning。
+
+**局限与解释边界**
+
+内部社会是操作化解释；需区分叙事标签、相关结构和唯一因果机制。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：18, 27, 31
+
+关键词：reasoning; society of thought; perspective diversity; socio-emotional roles
+
+机构／会议：Google；University of Chicago；Santa Fe Institute；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 31｜User Model Extraction via Belief Self-Distillation
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2609.31603)
+
+**Research question**
+
+能否把模型对用户的隐含信念提取为可读写状态，并用它控制对相同请求的响应？
+
+**一句话主题**
+
+将模型对用户的隐含信念提取为可读写状态，检验它如何改变对相同请求的响应。
+
+**方法与贡献**
+
+把模型对用户的隐含信念变成可读写状态，固定请求也能因改变推断意图而改变拒绝。
+
+**局限与解释边界**
+
+预设属性与多选探针塑造目标表征，未必覆盖完整用户模型。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：3, 9, 14, 19
+
+关键词：user models; belief self-distillation; causal probing; inferred intent
+
+机构／会议：TUM；Helmholtz Zentrum München；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 32｜Usage-Modulated Sentiment Representations in Large Language Models
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2610.05069)
+
+**Research question**
+
+在固定事件内容后，情感表示是否还包含语气、受众及使用方式相关的结构？
+
+**一句话主题**
+
+固定事件内容后，研究共享情感极性之外是否仍存在语气和受众相关的表征结构。
+
+**方法与贡献**
+
+固定事件内容后分离情感极性与语气／受众残差，超越单一sentiment轴。
+
+**局限与解释边界**
+
+生成干预的重点在Llama；推广到持续情绪状态需另证，会议版作者名与arXiv有差异。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：4, 24, 29
+
+关键词：sentiment representations; usage factors; tone; audience adaptation
+
+机构／会议：William & Mary；EMNLP 2026 主会
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+## 如何评估审计与交互中的可靠性？
+
+### ID 14｜AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors
+
+Benchmark　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2602.22755)
+
+**Research question**
+
+不同审计工具能否发现植入模型的隐藏行为，工具证据是否帮助审计agent提高发现能力？
+
+**一句话主题**
+
+用植入隐藏行为的模型比较审计工具，并检验工具证据能否真正帮助审计agent。
+
+**方法与贡献**
+
+用56个隐藏行为模型检验审计工具，并揭示单独工具有效不保证审计agent会用。
+
+**局限与解释边界**
+
+目标为人工植入行为；不同训练配置的审计难度差异大。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：16, 27, 31
+
+关键词：alignment auditing; hidden behaviors; benchmark; tool-agent gap
+
+机构／会议：Anthropic；University of Freiburg；MATS／Anthropic Fellows；预印本；主会未核实
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计
+
+### ID 19｜Impatient Users Confuse AI Agents: High-fidelity Simulations of Human Traits for Testing Agents
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2510.04491)
+
+**Research question**
+
+可调用户trait能否构造更真实的agent压力测试，哪些用户行为变化会导致agent失败？
+
+**一句话主题**
+
+用可调用户trait构造更真实的压力测试，检验agent对用户行为变化是否稳健。
+
+**方法与贡献**
+
+把人格向量用于可控用户trait压力测试，而非只控制助手自身语气。
+
+**局限与解释边界**
+
+合成用户真实性需独立验证；arXiv与会议版作者和数字有差异，阅读时分版本。
+
+**Future work**
+
+（尚未整理）
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：2, 3, 11, 31
+
+关键词：user simulation; TraitBasis; agent robustness; compositional traits
+
+机构／会议：arXiv署名页未给出可确认单位；ACL 2026 主会长文
+
+阅读证据：官方摘要＋署名及正文贡献／讨论／局限片段；非全文审计

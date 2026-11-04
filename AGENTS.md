@@ -79,6 +79,19 @@ and [archive guide](docs/research/archive.md).
   mount. Report pending Windows delivery and commit reusable CSV changes so
   the next WSL session can synchronize. Detect host/environment, not merely
   whether a `slurm` command exists.
+- The prose reading view is the native Google Doc registered in
+  `docs/papers/citation_screening_sources/google_reading_doc.json`, with a local
+  generated mirror at `docs/papers/literature_reading.md`. Organize by research
+  question and keep paper IDs in headings. Before updates, read the live Doc
+  and merge any user edits into the CSV by stable ID; use scoped, revision-guarded
+  edits, never replay whole-document initialization over existing notes.
+  The renderer `scripts/export_literature_reading_doc.py` generates the local
+  mirror and NEW-document requests; it does not implement automatic Doc import.
+- `Paper type` is a multi-label contribution classification: Method, Benchmark,
+  Survey, Analysis, Theory. Reserve Theory for formal mathematical statements
+  and proofs; formulas or geometric experiments alone are Analysis. Treat
+  labels based on partial reading as provisional. `Research question` states
+  what the paper asks, separately from its topic or conclusion.
 - `Future work` is a separate reading column. Distinguish author proposals
   from reading-derived research ideas; keep the user's original notes intact.
 - Current selection criteria live in

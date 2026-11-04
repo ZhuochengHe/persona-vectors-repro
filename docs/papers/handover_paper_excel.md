@@ -67,3 +67,9 @@ Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步�
 ```
 
 导出仍执行三方合并，已手改的单元格不会被仓库更新覆盖；若两边同时改同一字段，先检查并解决差异。`Future work`追加在末列，区分作者建议与阅读推演，不自动拆走用户Additional think里的原文。Slurm／Great Lakes上可跳过Windows同步，但开始文献工作前立即安全pull最新CSV；不能伪造挂载或声称完成Windows交付。
+
+## Google Doc阅读视图
+
+已建立[原生阅读文档](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)，放在My Drive的ChatGPT目录。按研究问题分组、按稳定ID定位论文；长笔记以段落呈现。CSV与Excel仍用于筛选、状态和本地同步，新增`Paper type`与`Research question`两列。
+
+本地可读副本为`literature_reading.md`，用`python scripts/export_literature_reading_doc.py`从CSV更新。Doc的ID、tab及核验信息在`citation_screening_sources/google_reading_doc.json`。更新前先读线上Doc，把用户修改按ID合并回CSV，再局部更新受影响段落；不能用生成器全文覆盖已编辑的Doc。目前未实现自动Doc双向导入，收到用户修改通知后由agent合并。生成器的native requests仅供新建文档初始化。
