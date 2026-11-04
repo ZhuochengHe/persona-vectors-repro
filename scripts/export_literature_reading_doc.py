@@ -2,6 +2,8 @@
 
 Requests initialize a NEW document only. Existing Docs must be read and merged
 by stable paper ID before any edit; never replay these requests over user text.
+Native table cells and internal heading links require a separate live-structure
+pass described in docs/papers/literature_document_maintenance.md.
 """
 from __future__ import annotations
 import argparse
@@ -22,6 +24,14 @@ GROUPS = [
 
 def utf16(text):
     return len(text.encode('utf-16-le')) // 2
+
+
+def index_rows(rows):
+    layout = json.loads((ROOT / 'docs/papers/citation_screening_sources/reading_doc_layout.json').read_text())
+    return [['ID', '论文短标题', '类型', '阅读状态']] + [
+        [r['ID'], layout['short_titles'].get(str(r['ID']), r['Title']), r['Paper type'], r['Read status']]
+        for r in sorted(rows, key=lambda r: int(r['ID']))
+    ]
 
 
 def render(rows):
@@ -95,9 +105,24 @@ def render(rows):
             requests.append({'updateTextStyle': {'range': rng, 'textStyle': {'link': {'url': link}}, 'fields': 'link'}})
         prefix = {'TITLE': '# ', 'SUBTITLE': '', 'HEADING_1': '## ', 'HEADING_2': '### '}.get(style, '')
         md = f'[{text_part}]({link})' if link else (f'**{text_part}**' if bold else prefix + text_part)
+        if style == 'HEADING_2' and text_part.startswith('ID '):
+            identifier = text_part.split('｜', 1)[0].split()[1]
+            md = f'<a id="paper-{identifier}"></a>\n\n' + md
         markdown.append(md)
+        if text_part.startswith('阅读证据：'):
+            markdown.append('[返回论文总表](#论文总表)')
         index = end + 1
-    return '\n\n'.join(markdown) + '\n', requests + font_requests, text
+    md_text = '\n\n'.join(markdown) + '\n'
+    grid = index_rows(rows)
+    table = ['## 论文总表', '', '点击 ID 进入笔记，点击短标题打开原文；表格用于浏览，复杂筛选使用 Excel。', '',
+             '| ID | 论文短标题 | 类型 | 阅读状态 |', '| --- | --- | --- | --- |']
+    for identifier, short_title, category, status in grid[1:]:
+        row = by_id[int(identifier)]
+        table.append(f'| [{identifier}](#paper-{identifier}) | [{short_title}]({row["Link"]}) | {category} | {status} |')
+    first_group = next(title for title, ids in groups if ids)
+    marker = '## ' + first_group + '\n'
+    md_text = md_text.replace(marker, '\n'.join(table) + '\n\n' + marker, 1)
+    return md_text, requests + font_requests, text
 
 
 if __name__ == '__main__':
@@ -110,5 +135,5 @@ if __name__ == '__main__':
     markdown, requests, text = render(rows)
     args.output.write_text(markdown)
     if args.requests_output:
-        args.requests_output.write_text(json.dumps({'requests': requests, 'expected_text': text}, ensure_ascii=False))
+        args.requests_output.write_text(json.dumps({'requests': requests, 'expected_text': text, 'index_rows': index_rows(rows), 'native_index_pass_required': True}, ensure_ascii=False))
     print(f'Rendered {len(rows)} papers, {utf16(text)} UTF-16 units, {len(requests)} native requests.')

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "index_columns": ["ID", "论文短标题", "Paper type", "Read status"],
+  "column_widths_pt": [28, 260, 105, 58],
+  "short_titles": {
+    "1": "Persona Vectors", "2": "Persona Vectors in Games", "3": "The Assistant Axis",
+    "4": "Emotion Concepts", "5": "The Personality Illusion", "6": "Open Character Training",
+    "7": "PERSONA", "8": "Tracing Persona Vectors Through Pretraining", "9": "Persona-Dependent Preferences",
+    "10": "Manifold Steering", "11": "Societies of Thought", "12": "Self-Report & Behavior Coherence",
+    "13": "Sycophancy Is Not One Thing", "14": "AuditBench", "15": "Belief Dynamics",
+    "16": "Narrow Finetuning Traces", "17": "Weight Arithmetic", "18": "Subliminal Learning as Distillation",
+    "19": "Impatient Users Confuse AI Agents", "20": "Generative Causal Mediation", "21": "Steer Like the LLM",
+    "22": "Personality Subnetworks", "23": "Style Modulation Heads", "24": "VALUEFLOW",
+    "25": "Shifting the Gradient", "26": "The Piggyback Hypothesis", "27": "Predicting Future Behaviors",
+    "28": "Synthetic Persona Pretraining", "29": "How Emotion Shapes Behavior", "30": "Emergent Misalignment Is Not Magical",
+    "31": "User Model Extraction", "32": "Usage-Modulated Sentiment", "33": "Do Personality Traits Interfere?",
+    "34": "Forecasting Side Effects"
+  }
+}
