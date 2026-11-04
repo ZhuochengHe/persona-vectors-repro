@@ -172,3 +172,11 @@ C041与C348的arXiv、会议页面作者／数据表述存在版本差异；原�
 - **高Axis投影是否等于可靠／安全**：ID 38已有局部投影—register脱节，但并未证明高投影的unsafe行为规律，也没有建立长期可靠性的有效代理。把readout与干预作用分开测量。
 - **Q(h,do(a))与观测回归**：收集(h,a,R)并拟合critic不自动识别因果价值；需要对steering action进行随机化／有覆盖的干预，控制任务和context，留出轨迹／任务验证。进一步与ID 34的线性propagation预测及外部CRL对比，才可判断非线性critic的独立增量。
 - **共享behavioral subspace**：即使自报、role和行动都可线性解码，也需独立比较干预、选择性与迁移；目前这些文献提供局部支持与反例，本轮定向筛查不能证明这一领域绝对无人完成过更全面实验。
+
+## 已收录论文的正文补读
+
+2026-11-04按三组补读28篇此前仍为短注的论文：ID3、4、6、8–32（不含已详写的ID5/7）。更新正文方法、主要实验、相关附录、贡献、具体局限和Future work；不等于逐数据审计或复现实验。版本与范围见[补读证据](citation_screening_sources/deep_reading_review.json)，完整笔记仍只在阅读CSV/Doc/Markdown镜像维护。ID34（2608.11227）已有且仍为当前v1，未重复收录。
+
+本轮优先返回的近邻：ID12已做自报／风险选择概率的选择性控制和反向组合，但不是环境中的工具行动；ID9有persona-dependent偏好读出迁移、read/write选层差异及放大当前persona的效应；ID29按agent阶段分析干预；ID31明确区分用户belief的read/write map；ID32区分统计表示消除与生成行为消除。设计新的agentic子空间研究时应逐项对照这些已存在的证据。
+
+ID3原有用户Limitation保留，另加正文补读意见；App.G的PC1／Axis比较同时说明其几何相似与backend混杂，避免把后端能力差异完全归因于方向。所有Additional think与用户阅读状态保持原样。

@@ -10,6 +10,7 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 - [Google Doc: research questions and paper notes](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)
 - [Local prose mirror with paper index](literature_reading.md)
 - [Document format and maintenance contract](literature_document_maintenance.md)
+- [Methods/results reading coverage for 28 previously short-note papers](citation_screening_sources/deep_reading_review.json)
 - Paper type uses Method / Benchmark / Survey / Analysis / Theory labels. Research question is separate from the paper topic and conclusion.
 - Each paper now records studied models, architecture, actual inference mode, and architecture evidence. [Parallel reading and architecture audit](citation_screening_sources/architecture_review.json) distinguishes intervention subjects from judges/generators.
 
