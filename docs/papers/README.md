@@ -1,5 +1,7 @@
 # Papers
 
+- [Independent Assistant Axis direct-citer reading collection](assistant-axis/README.md) — separate Google Doc; no Excel synchronization or architecture columns.
+
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) — primary reproduction target, v3.
 - [Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors](https://arxiv.org/abs/2603.21398) — gaming Figure 3 reproduction target; see [Qwen3.5 plan](../research/gaming/protocol.md).
 

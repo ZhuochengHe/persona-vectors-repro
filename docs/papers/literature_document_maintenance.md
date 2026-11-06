@@ -1,5 +1,7 @@
 # 文献阅读文档：格式与维护
 
+Assistant Axis的独立被引阅读遵循[单独维护约定](assistant-axis/README.md)：使用自己的Google Doc、筛选与阅读JSON／Markdown，不更新原文献CSV／Excel，不设置架构字段。以下跨Excel同步规则仅适用于原Persona Vectors阅读集合。
+
 ## 阅读入口与职责
 
 [Google Doc](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro) 是日常阅读、批注和长笔记入口。保留同一个文件及URL，不因更新新建副本。它包含原生表格、可点击索引和正文标题；不是把Excel整张宽表复制过去。

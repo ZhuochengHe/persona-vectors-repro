@@ -18,6 +18,12 @@ and [archive guide](docs/research/archive.md).
 
 ## Literature workflow: Google Doc, working sources, and workbook
 
+- The separate [Assistant Axis direct-citer collection](docs/papers/assistant-axis/README.md)
+  has its own Google Doc and evidence sources. It does not synchronize with
+  the original literature CSV/Excel and does not require architecture fields.
+  Its local reading JSON/Markdown and citation screening remain in that directory.
+  Before starting literature work on any host, check status and safely
+  `git pull --ff-only`; never stash/reset to force a pull.
 - For literature work, start at [maintenance and format contract](docs/papers/literature_document_maintenance.md).
   [Handoff and Excel sync](docs/papers/handover_paper_excel.md) covers local
   delivery. This work does not depend on experiment-document reorganization.
