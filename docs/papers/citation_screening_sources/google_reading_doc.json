@@ -4,10 +4,10 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMSQP2TSAWRXE6kR3HwZtiai25hI2WHyVQ_F0DqhbxrRekNUYU0egQUt5W8DoZ4t7mv1DOJppurVYwmpekWCANKFAjvAioBYi4bD0Wk",
+  "verified_revision": "AHj4eMQLpUEOdQur33CqJdjbLrArFAONP7IWNE1QQijXfANhdfgDdYGlUQ5zBdWD106Ug6XlHrbbq_5Zbj4GVT76Qq2pbKee0MeX6ZuIhvg",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
-  "format_version": 2,
+  "format_version": 3,
   "format_contract": "docs/papers/literature_document_maintenance.md",
   "layout_config": "docs/papers/citation_screening_sources/reading_doc_layout.json",
   "index_heading_id": "h.q4ihnpbm2ch",
@@ -61,5 +61,6 @@
   },
   "update_rule": "Read live document and merge by stable paper ID before scoped revision-guarded edits. Update native index cells and links together with affected metadata; never replay initialization over existing notes.",
   "architecture_review": "docs/papers/citation_screening_sources/architecture_review.json",
-  "deep_reading_review": "docs/papers/citation_screening_sources/deep_reading_review.json"
+  "deep_reading_review": "docs/papers/citation_screening_sources/deep_reading_review.json",
+  "index_summary_review": "docs/papers/citation_screening_sources/index_summary_review.json"
 }

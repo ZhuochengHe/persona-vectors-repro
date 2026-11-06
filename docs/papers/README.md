@@ -11,6 +11,7 @@ The primary paper v3 [PDF](2507.21509v3.pdf) and [raw web text](2507.21509v3.txt
 - [Local prose mirror with paper index](literature_reading.md)
 - [Document format and maintenance contract](literature_document_maintenance.md)
 - [Methods/results reading coverage for 28 previously short-note papers](citation_screening_sources/deep_reading_review.json)
+- [Index task, abstract finding and validation sources](citation_screening_sources/index_summary_review.json)
 - Paper type uses Method / Benchmark / Survey / Analysis / Theory labels. Research question is separate from the paper topic and conclusion.
 - Each paper now records studied models, architecture, actual inference mode, and architecture evidence. [Parallel reading and architecture audit](citation_screening_sources/architecture_review.json) distinguishes intervention subjects from judges/generators.
 
