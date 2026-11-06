@@ -1,18 +1,24 @@
 {
-  "version": 2,
+  "version": 3,
   "index_columns": [
     "ID",
     "论文短标题",
     "Paper type",
     "Architecture",
-    "Read status"
+    "Read status",
+    "Task",
+    "Major finding",
+    "Validation"
   ],
   "column_widths_pt": [
-    26,
-    210,
-    90,
-    70,
-    55
+    22,
+    104,
+    55,
+    64,
+    38,
+    102,
+    185,
+    200
   ],
   "short_titles": {
     "1": "Persona Vectors",
@@ -109,5 +115,8 @@
     "44": "Dense/Hybrid（文本）",
     "45": "Dense（文本）",
     "46": "Dense · VLM"
-  }
+  },
+  "index_font_size_pt": 9,
+  "index_orientation": "landscape",
+  "index_horizontal_margin_pt": 36
 }

@@ -83,10 +83,14 @@ and [archive guide](docs/research/archive.md).
 - The native Google Doc is registered in
   `docs/papers/citation_screening_sources/google_reading_doc.json`; keep the
   same document ID. Follow the [format contract](docs/papers/literature_document_maintenance.md):
-  clickable research-question/type indexes, a native five-column paper table
-  (ID, short title, type, architecture, status), then one detailed section per paper.
+  clickable research-question/type indexes, a native eight-column paper table
+  (ID, short title, type, architecture, status, task, abstract-based major finding,
+  benchmark/validation conditions), then one detailed section per paper.
   ID links open notes; short-title links open papers; related IDs and return
-  links remain clickable. Never put long contributions/limitations into the index.
+  links remain clickable. Use a landscape section for the expanded index and
+  portrait sections for navigation/detail notes. Keep findings to one sentence
+  from the abstract; preserve task/metric distinctions in validation conditions.
+  Never put long contributions/limitations into the index.
 - Before updates, read the live Doc and merge user edits into CSV by stable ID;
   use scoped revision-guarded edits. Update affected index cells/navigation
   together with metadata. Preserve original heading IDs when possible; resolve

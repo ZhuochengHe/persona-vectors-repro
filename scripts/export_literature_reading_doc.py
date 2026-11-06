@@ -37,8 +37,8 @@ def architecture_label(row):
 
 def index_rows(rows):
     layout = json.loads((ROOT / 'docs/papers/citation_screening_sources/reading_doc_layout.json').read_text())
-    return [['ID', '论文短标题', '类型', '架构', '阅读状态']] + [
-        [r['ID'], layout['short_titles'].get(str(r['ID']), r['Title']), r['Paper type'], architecture_label(r), r['Read status']]
+    return [['ID', '论文短标题', '类型', '架构', '阅读状态', 'Task', 'Major finding（摘要）', 'Benchmark / Validation']] + [
+        [r['ID'], layout['short_titles'].get(str(r['ID']), r['Title']), r['Paper type'], architecture_label(r), r['Read status'], r.get('Task', ''), r.get('Major finding', ''), r.get('Validation', '')]
         for r in sorted(rows, key=lambda r: int(r['ID']))
     ]
 
@@ -140,13 +140,19 @@ def render(rows):
         if text_part.startswith('阅读证据：'):
             markdown.append('[返回论文总表](#论文总表)')
         index = end + 1
-    md_text = '\n\n'.join(markdown) + '\n'
+    # User notes can contain tables imported from native Docs cells. Keep
+    # adjacent pipe rows together so the local mirror preserves their columns.
+    md_text = ''.join(
+        ('\n' if i and part.startswith('|') and markdown[i - 1].startswith('|') else '\n\n') + part
+        for i, part in enumerate(markdown)
+    ).lstrip('\n') + '\n'
     grid = index_rows(rows)
-    table = ['## 论文总表', '', '点击 ID 进入笔记，点击短标题打开原文；表格用于浏览，复杂筛选使用 Excel。', '',
-             '| ID | 论文短标题 | 类型 | 架构 | 阅读状态 |', '| --- | --- | --- | --- | --- |']
-    for identifier, short_title, category, architecture, status in grid[1:]:
+    table = ['## 论文总表', '', '点击 ID 进入笔记，点击短标题打开原文；Major finding提炼自摘要，Validation列出实验任务与关键条件；复杂筛选使用Excel。', '',
+             '| ' + ' | '.join(grid[0]) + ' |', '| ' + ' | '.join(['---'] * len(grid[0])) + ' |']
+    for identifier, short_title, category, architecture, status, task, finding, validation in grid[1:]:
         row = by_id[int(identifier)]
-        table.append(f'| [{identifier}](#paper-{identifier}) | [{short_title}]({row["Link"]}) | {category} | {architecture} | {status} |')
+        cells = [f'[{identifier}](#paper-{identifier})', f'[{short_title}]({row["Link"]})', category, architecture, status, task, finding, validation]
+        table.append('| ' + ' | '.join(c.replace('|', '\\|').replace('\n', '<br>') for c in cells) + ' |')
     first_group = next(title for title, ids in groups if ids)
     marker = '## ' + first_group + '\n'
     md_text = md_text.replace(marker, '\n'.join(table) + '\n\n' + marker, 1)

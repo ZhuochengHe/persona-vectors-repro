@@ -79,6 +79,8 @@ Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步�
 
 ## 架构字段与批量阅读
 
-新增`Models studied`、`Architecture`、`Inference mode`、`Architecture evidence`。架构索引与五列表格中的短标签在`reading_doc_layout.json`维护；逐条审计、置信度与官方来源在`architecture_review.json`。论文支持某模型架构，不代表所有模型都做过因果steering；注意仅probe、teacher／generator、judge与实际subject的区别。
+新增`Models studied`、`Architecture`、`Inference mode`、`Architecture evidence`。架构索引与论文总表中的短标签在`reading_doc_layout.json`维护；逐条审计、置信度与官方来源在`architecture_review.json`。论文支持某模型架构，不代表所有模型都做过因果steering；注意仅probe、teacher／generator、judge与实际subject的区别。
 
 本轮用户指定列表中ID33/34已存在，未重复添加；新条目为44（Persona Non Grata）、45（Steering Interference Reflects the Model’s Defaults）、46（SafeSteer）。SafeSteer属于用户指定范围外补充，不伪装成原种子直接被引。模型信息不全时保留待核，不以架构字段的覆盖数代替全文精读数量。
+
+总表现为八列，新增Task、Major finding（摘要一句话）、Validation（benchmark／实验任务与关键条件）；三字段同步CSV和XLSX。总表用独立横向section，正文保持竖向。逐篇摘要来源见`citation_screening_sources/index_summary_review.json`。

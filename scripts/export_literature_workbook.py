@@ -22,8 +22,8 @@ DOCS = ROOT / "docs/papers"
 DEFAULT = Path("/mnt/d/umich/research/persona/persona_literature.xlsx")
 HEADERS = ["ID", "Title", "Link", "Key words", "One sentence/topic", "Contributions",
            "Limitation", "Additional think", "Related paper", "Research direction",
-           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work", "Paper type", "Research question", "Models studied", "Architecture", "Inference mode", "Architecture evidence"]
-WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70, 26, 70, 58, 56, 48, 70]
+           "Priority", "Institution / Venue", "Read status", "Evidence scope", "Future work", "Paper type", "Research question", "Models studied", "Architecture", "Inference mode", "Architecture evidence", "Task", "Major finding", "Validation"]
+WIDTHS = [7, 62, 34, 38, 56, 62, 62, 58, 18, 26, 16, 52, 16, 34, 70, 26, 70, 58, 56, 48, 70, 42, 70, 70]
 
 
 def records() -> list[tuple[str, dict]]:
@@ -103,6 +103,9 @@ def guide(book: Workbook) -> None:
         ("Architecture", "区分dense／MoE、Transformer／hybrid attention-SSM、文本／视觉骨干。以实际被测模型为准，不混入judge。"),
         ("Inference mode", "只写论文实测thinking／reasoning模式；模型支持某模式不等于实验启用。未披露标待核。"),
         ("Architecture evidence", "论文setup／附录／代码与官方模型卡来源；模型支持多模态与论文实测多模态分开。"),
+        ("Task", "研究／控制／预测的实验任务，与研究问题分开。"),
+        ("Major finding", "从论文摘要提炼的一句话主要发现；详细证据见Contributions。"),
+        ("Validation", "实际benchmark、任务环境与关键验证条件；不能把问卷／token概率等同环境中的执行动作。"),
         ("手动修改", "自动字段仅在当前内容仍等于上次导出值时更新；你改过的内容保留。已存在的行不自动删除。"),
         ("保管", "更新前关闭Excel；脚本仅保留最近一次更新前的备份。_ExportState是内部合并基线，不要删除。"),
         ("生成时间 UTC", datetime.now(timezone.utc).isoformat()),
@@ -143,7 +146,7 @@ def export(output: Path) -> None:
         sheet, state = book["Papers"], book["_ExportState"]
         existing_headers = [cell.value for cell in sheet[1]]
         if existing_headers != HEADERS:
-            if len(existing_headers) not in (14, 15, 17) or existing_headers != HEADERS[:len(existing_headers)]:
+            if len(existing_headers) not in (14, 15, 17, 21) or existing_headers != HEADERS[:len(existing_headers)]:
                 raise SystemExit("Workbook headers changed; inspect before updating.")
             added_headers = set(HEADERS[len(existing_headers):])
             for column in range(len(existing_headers) + 1, len(HEADERS) + 1):
@@ -159,6 +162,16 @@ def export(output: Path) -> None:
         for row in book["Guide"].iter_rows():
             if row[0].value == "内容":
                 row[1].value = f"{len(expected)}篇；ID 1/2固定为Persona Vectors及游戏应用；新增论文沿用稳定ID。"
+        documented = {row[0].value for row in book["Guide"].iter_rows()}
+        for field, description in [
+            ("Task", "实际研究／控制／预测的实验任务。"),
+            ("Major finding", "从作者摘要提炼的一句话核心发现。"),
+            ("Validation", "benchmark、实验任务环境与关键验证条件。"),
+        ]:
+            if field not in documented:
+                book["Guide"].append([field, description])
+                for cell in book["Guide"][book["Guide"].max_row]:
+                    cell.alignment = Alignment(vertical="top", wrap_text=True)
     row_by_id = {}
     for row in sheet.iter_rows(min_row=2):
         if row[0].value is not None:
@@ -267,7 +280,7 @@ def import_workbook(path: Path) -> None:
         book = load_workbook(handle)
         sheet = book["Papers"]
         headers = [cell.value for cell in sheet[1]]
-        if headers not in (HEADERS, HEADERS[:17], HEADERS[:15], HEADERS[:14]):
+        if headers not in (HEADERS, HEADERS[:21], HEADERS[:17], HEADERS[:15], HEADERS[:14]):
             raise SystemExit("Workbook headers changed; inspect before importing.")
         seen = set()
         for cells in sheet.iter_rows(min_row=2, values_only=True):
