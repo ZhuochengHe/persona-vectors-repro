@@ -117,6 +117,15 @@ and [archive guide](docs/research/archive.md).
   and proofs; formulas or geometric experiments alone are Analysis. Treat
   labels based on partial reading as provisional. `Research question` states
   what the paper asks, separately from its topic or conclusion.
+- `Validation` must state the experimental setting as well as the benchmark:
+  single-turn, multi-turn dialogue, long-context input, persistent conversation,
+  and long-horizon environment execution are distinct. Identify whether vectors
+  affect the target agent, a user simulator, or only offline/snapshot readouts.
+  Tool-call strings and answer likelihoods do not establish actual execution.
+  Per-paper evidence lives in each collection's `evaluation_regimes.json`.
+- [Direction assessment](docs/papers/research_directions.md) is mirrored in the
+  main reading Doc's separate direction-review tab, registered in
+  `google_reading_doc.json`. It is literature analysis, not an experiment study.
 - Record `Models studied`, `Architecture`, `Inference mode`, and `Architecture evidence`
   for each paper. Separate intervened/trained/probed models from judges and data
   generators; distinguish dense vs MoE, Transformer vs hybrid attention/SSM,

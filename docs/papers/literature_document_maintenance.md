@@ -76,3 +76,7 @@ Assistant Axis的独立被引阅读遵循[单独维护约定](assistant-axis/REA
 ## 索引摘要证据
 
 `citation_screening_sources/index_summary_review.json`保存Task、Major finding、Validation的逐篇来源。摘要结论保持作者原有范围，方法细节与实验条件可来自已核对正文；不要把结论写成研究问题，也不要将短摘要当作全文核验状态。新增三字段同步CSV、总表、Markdown与XLSX，正文已有贡献／证据不重复维护同一短摘要。用户在Additional think插入的原生表格保留，回同步本地时可用Markdown表格表达，不能摊平后丢失列对应。
+
+Validation使用`【场景】… 【验证】…`：场景说明单轮、多轮、长输入／持续对话／长程环境任务及真实行动证据；验证部分保留原benchmark／条件。明确干预目标agent、用户模拟器、审计工具或离线轨迹，不用“有agent”替代执行验证。证据在各集合的`evaluation_regimes.json`；原始审计伞标签经协调者拆分，不能把long-context与long-horizon混计。
+
+[方向评估](research_directions.md)对应主Doc的独立标签页“方向评估：Agentic 与架构”，tab ID见注册文件。更新时同时读相关tabs；原阅读正文和该分析分别维护，原初始化渲染器不负责更新分析tab。新增主题检索来源另存`direction_review_sources.json`，不回写为冻结种子的直接被引。架构证据变化可以追加核验，但已有用户笔记和阅读状态仍须保留。

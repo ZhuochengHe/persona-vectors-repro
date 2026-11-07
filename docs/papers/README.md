@@ -1,5 +1,6 @@
 # Papers
 
+- [Agentic persona and architecture research-direction assessment](research_directions.md) — existing evidence, new primary sources, gaps and feasibility; mirrored in a separate tab of the main reading Doc.
 - [Independent Assistant Axis direct-citer reading collection](assistant-axis/README.md) — separate Google Doc; no Excel synchronization or architecture columns.
 
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) — primary reproduction target, v3.
