@@ -4,7 +4,7 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMQLpUEOdQur33CqJdjbLrArFAONP7IWNE1QQijXfANhdfgDdYGlUQ5zBdWD106Ug6XlHrbbq_5Zbj4GVT76Qq2pbKee0MeX6ZuIhvg",
+  "verified_revision": "AHj4eMT73nD-hjZpWzMGMLqT_z1mn1o_3rm23NgEjqdrzgxrvmwweiG7JlpzMNrpMeANwBjcQbItPB7r2ROUPUI-sciVSvZcqDYkT2xB_EQ",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 3,
@@ -62,5 +62,30 @@
   "update_rule": "Read live document and merge by stable paper ID before scoped revision-guarded edits. Update native index cells and links together with affected metadata; never replay initialization over existing notes.",
   "architecture_review": "docs/papers/citation_screening_sources/architecture_review.json",
   "deep_reading_review": "docs/papers/citation_screening_sources/deep_reading_review.json",
-  "index_summary_review": "docs/papers/citation_screening_sources/index_summary_review.json"
+  "index_summary_review": "docs/papers/citation_screening_sources/index_summary_review.json",
+  "evaluation_regimes": "docs/papers/citation_screening_sources/evaluation_regimes.json",
+  "latest_pdf_verification": {
+    "pages": 83,
+    "landscape_pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "blank_pages": [],
+    "report_pages": [
+      79,
+      83
+    ]
+  },
+  "direction_review": {
+    "tab_id": "t.ujr6rrarqnyl",
+    "title": "方向评估：Agentic 与架构",
+    "source": "docs/papers/research_directions.md",
+    "sources": "docs/papers/citation_screening_sources/direction_review_sources.json",
+    "review_date": "2026-11-07"
+  }
 }

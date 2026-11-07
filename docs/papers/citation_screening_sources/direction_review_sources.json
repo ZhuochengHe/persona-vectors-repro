@@ -1,0 +1,614 @@
+{
+  "checked_on": "2026-11-07",
+  "scope": "原46篇与独立Axis44条目，合并为81个不同arXiv ID；新增主题检索独立记录，不伪造种子引用。",
+  "agentic_existing": {
+    "scope": "原46篇文献的实验场景审计；没有修改旧库/Excel/Doc。优先复用已核正文证据，对agentic边界含糊的ID4/19/22/26/29/33/41重新查官方正文。",
+    "tag_semantics": {
+      "single-turn": "关键评价包括给定prompt/历史后的独立一次回答或选项概率；可能包含训练或长CoT，均不自动构成长程agent。",
+      "multi-turn-dialogue": "多轮交互或固定多轮脚本/历史被用于训练、观测或评价；setting_summary进一步说明用途，不默认在线闭环。",
+      "long-context/long-horizon": "论文明确研究many-shot/长对话或生产长轨迹；摘要说明长输入还是闭环长程，不能由此推断两者等价。",
+      "agentic-tool-execution": "实验或观测语料有模型实际调用执行的工具/环境反馈；不表示被steer的一定是行动agent，也不表示已验证长horizon。",
+      "multi-agent-interaction": "研究任务里有独立角色actor的互动，例如用户模拟器与工具agent；不把单模型CoT内的拟人对话计作真实多agent。",
+      "training-only": "只有训练期现象且没有对应运行时/生成评价才使用；本批没有整篇符合者。"
+    },
+    "direct_internal_emotion_interventions_on_tool_agents": [
+      {
+        "ID": "4",
+        "title": "Emotion Concepts and their Function in a Large Language Model",
+        "finding": "从故事文本提取的desperate/calm情绪方向实际注入Claude Sonnet4.5，在不可能单测的coding闭环改变reward-hacking率；测试失败/代码修改/再测构成环境反馈。高强度anger与黑mail策略还可能非单调。",
+        "what_it_establishes": "对话/故事相关内部情绪概念可以迁移到agent执行倾向；表面不显情绪时仍可改行为。",
+        "what_it_does_not_establish": "没有证明任意Big-Five/role persona向量都能跨agent任务稳定迁移；没有完整planner-action表示比较或人格subspace机制定位。",
+        "url": "https://arxiv.org/html/2604.07729",
+        "location": "§3.2.3；§3.3.1–3.3.2；Figure31"
+      },
+      {
+        "ID": "29",
+        "title": "How Emotion Shapes the Behavior of LLMs and Agents: A Mechanistic Study",
+        "finding": "E-STEER在SAE VAD特征上构造干预，agent由planner/decider/executor组成；正文明确executor使用工具或LLM分析，含重规划、执行置信度和完成率，HotpotQA/Scientific/GAIA作为任务源。",
+        "what_it_establishes": "已比较情绪内部干预在计划、决策、执行阶段的不同收益曲线，并报告系统级成功率；不是仅对文本语气评分。",
+        "what_it_does_not_establish": "未比较分别从planning/action/feedback trace提取的方向，也未证明conversational persona vector的跨任务agentic迁移；实际工具清单与统一horizon深度仍需代码级核查。",
+        "url": "https://arxiv.org/html/2604.00005",
+        "location": "§5.1 Agent setup/datasets/metrics；§5.5 Agent Behavior"
+      }
+    ],
+    "external_user_persona_pressure_on_tool_agents": [
+      {
+        "ID": "19",
+        "finding": "TraitBasis从配对对话提取impatience/skepticism/confusion/incoherence向量，steer的是用户模拟器。τ-Trait中的被测agent通过真实工具访问/更改数据库；BFCL分支则主要AST匹配函数输出，不能把所有部分都称环境执行。",
+        "url": "https://arxiv.org/html/2510.04491",
+        "location": "§3；§5 τ-Trait；§6.2",
+        "distinction": "可控用户反馈影响agent成功率，尚未将persona方向写入被测agent。"
+      }
+    ],
+    "agent_context_or_identity_without_full_trajectory_vector_success_claim": [
+      {
+        "ID": "38",
+        "finding": "生产级coding工具轨迹提供真实长horizon语料；核心是snapshot-then-probe与register/格式评价。App.O局部Axis steering恢复投影却不恢复行为judge；不是已证明全程agent persona控制成功。",
+        "url": "https://arxiv.org/html/2605.24279v3",
+        "location": "§2–3；App.O/P/Q"
+      },
+      {
+        "ID": "41",
+        "finding": "持久Claude Code/OpenClaw身份漂移由system anchor在resume时丢失触发；重复heartbeat和身份probe有因果控制。核心实验没有工具完成率或内部vector，不能因为harness叫agent就归为agentic-vector验证。",
+        "url": "https://arxiv.org/html/2610.01490",
+        "location": "§3 Core experiment；§4 Results"
+      },
+      {
+        "ID": "3",
+        "finding": "Assistant Axis研究模拟多轮对话和身份/安全capping，包括coding对话对照；不是长程工具任务的可靠性验证。",
+        "url": "https://arxiv.org/html/2601.10387",
+        "location": "§4–6"
+      }
+    ],
+    "tool_agent_in_the_evaluation_but_not_the_persona_steering_subject": [
+      {
+        "ID": "14",
+        "finding": "AuditBench调查agent使用白盒/黑盒工具调查模型；honesty steering作用于被审计目标，tool-to-agent gap是诊断工具未转成调查收益。",
+        "url": "https://arxiv.org/html/2602.22755",
+        "location": "§2–4；App.E"
+      },
+      {
+        "ID": "16",
+        "finding": "Interpretability agent用模型查询和激活差读出识别finetuning目标；方向用于目标模型/文本，未steer调查agent长期persona。",
+        "url": "https://arxiv.org/html/2510.13900",
+        "location": "§3–4；agent evaluation"
+      }
+    ],
+    "generic_reasoning_and_control_related_but_not_tool_agent_persona": [
+      {
+        "ID": "11",
+        "finding": "SAE conversation-related feature改善Countdown和RL推理；societies of thought是单模型trace结构，不是真实多个agent或工具环境。",
+        "url": "https://arxiv.org/html/2601.10825",
+        "location": "SAE steering/RL Results；Methods"
+      },
+      {
+        "ID": "27",
+        "finding": "FPCG从CoT句边界读未来行为概率来筛选续写；它是候选生成+readout决策，不沿probe权重直接写activation，也无live tool-action轨迹。",
+        "url": "https://arxiv.org/html/2606.11172",
+        "location": "future behavior trajectories；FPCG方法与六行为实验"
+      },
+      {
+        "ID": "2",
+        "finding": "博弈题金额/二元选项是独立描述性决策，不是两模型完整对局。",
+        "url": "https://arxiv.org/html/2603.21398",
+        "location": "§3.3–5"
+      },
+      {
+        "ID": "12",
+        "finding": "CCT/BART所谓behavior读取合法答案token likelihood，不能据此声称风险agent执行控制。",
+        "url": "https://arxiv.org/html/2610.04125v1",
+        "location": "App.B.4；任务附录"
+      },
+      {
+        "ID": "26",
+        "finding": "search_info实验追加预置正确建议，评价仅字符串检测是否调用；没有真实检索行动闭环。",
+        "url": "https://arxiv.org/html/2606.06667",
+        "location": "App.E.2 Tool Calling"
+      },
+      {
+        "ID": "22",
+        "finding": "RoleAgentBench使用固定script和角色多选准确率，不能凭Agent名称认定工具/多agent系统控制。",
+        "url": "https://arxiv.org/html/2602.07164",
+        "location": "§4.1 Table5；App.H"
+      }
+    ],
+    "research_gap_inference": "原库已存在情绪方向→工具agent行为的直接实验（4、29），所以不能声称agentic steering从未做过。更具体尚可检验的是：self-report/role/conversational trait方向与trace-derived行为方向是否共享可因果迁移的子空间；这种迁移在planning、tool selection、environment feedback及长horizon中是否保持选择性、coherence和任务性能。19是外部压力源，38/41是长期上下文与harness控制变量；11/27提供trace读出与控制方法而非同一问题的现成答案。"
+  },
+  "agentic_search": {
+    "date": "2026-11-07",
+    "scope": "针对persona/role/trait activation steering向真实agent与长期交互迁移的定向查漏；不是系统性穷尽检索。只写/tmp，未增改旧库。",
+    "queries": [
+      "\"activation steering\" \"agents\" \"persona\" tool",
+      "\"agentic\" \"persona vectors\" \"steering\"",
+      "\"activation steering\" \"long-horizon\" agents",
+      "\"trace\" \"steering vectors\" agent",
+      "\"Controlling Large Language Model Agents\" \"Entropic\" arxiv",
+      "\"persona\" \"activation steering\" \"tool\" agent -wiki -lacuna -alphaxiv -paperpeel",
+      "\"agent\" \"steering vector\" \"role\" \"trajectory\" arxiv",
+      "\"agentic\" \"persona\" \"subspace\" steering",
+      "\"Activation-Steered Personas in Task-Oriented LLM Agent Simulations\"",
+      "\"persona\" \"activation\" \"Overcooked\"",
+      "\"persona steering\" \"WebArena\"",
+      "\"steering\" \"agent\" \"personality\" \"ToolBench\""
+    ],
+    "new_direct_evidence": [
+      {
+        "title": "Mind Your Own Role: Reducing Role Overstepping for Effective and Efficient Multi-Agent Collaboration via Dynamic Role Activation Steering",
+        "id": "2610.15907",
+        "url": "https://arxiv.org/html/2610.15907v1",
+        "status": "primary_body_and_relevant_appendix_verified",
+        "locations": "§4.1–4.3、§5–6；App.A.1–A.3",
+        "setting_tags": [
+          "multi-agent-interaction",
+          "agentic-tool-execution"
+        ],
+        "task_endpoints": "ChatDev/MetaGPT完成SRDD1200软件需求：role-overstepping judge、角色embedding一致性、无placeholder、实际可编译/运行比例、需求code embedding一致性、time/tokens。SWE-Dev只作离线向量/probe准备和validation，不是主test。",
+        "intervention": "每role同一subtask context有/无role instruction的末tokenresidual差平均构造固定role vector；用有/无越界trajectory末token训练linear detector，decode每token加α*p(overstep)*v；role instructions仍保留。",
+        "models": "Qwen2.5-7B与Llama3.1-8B；共享模型内层/强度，validation选层（例如Qwen18）",
+        "major_result": "ChatDev-Qwen越界trajectory987→132；四system×backbone总体quality相对提高10.0%–11.1%。",
+        "scope_and_limits": "确有role activation用于运行中多agent软件流程；quality是三个proxy平均，不是严格功能unit-test pass。静态steering越界更少但质量较差，不能把越界指标最小等同系统最优。未检验普通闲聊提取trait向量的跨环境零校准迁移。",
+        "comparison": "比TACT更直接聚焦组织role/权限分工；TACT轴来自OT/OA失败trace，DRAS write轴来自role指令，read detector才来自trace。与用户role–trait关系问题紧邻但未分解role为trait组合。",
+        "new_to_catalog": true
+      },
+      {
+        "title": "Drift No More: Spectral Locking for Long-Horizon Open-Weight Multi-Agent AI",
+        "id": "2611.04315",
+        "url": "https://arxiv.org/html/2611.04315v1",
+        "status": "primary_body_and_relevant_appendix_verified",
+        "locations": "§3.2–3.6、§4.1–4.5；App.A1.1–A1.5/A4/A9/A10",
+        "setting_tags": [
+          "multi-agent-interaction",
+          "multi-turn-dialogue",
+          "long-context/long-horizon",
+          "agentic-tool-execution"
+        ],
+        "task_endpoints": "EverMemBench2400QA；AMemGym1000 on-policy episodes×30–100 turns；ToolACE500 dialogues×2–6 calls的AST/argument/chain匹配；ALARA115文件/web/scripting/scoping任务；App.A4 LIBERO wrapper中OpenVLA执行7DoF环境动作。",
+        "intervention": "对task、role、state文本hidden states分别SVD成rank5–30 anchors；不强制正交，PSD kernel累加重叠，逐token用(I+αK)h谱放大并norm rescale；state谱随novelty/decay更新。每agent本模型各建子空间，无跨模型裸向量传送。",
+        "models": "homogeneous10 Llama4Scout、12 Qwen3-8B；heterogeneous12/6families；LIBERO另VLM+OpenVLA；72B扩展。",
+        "major_result": "role consistency93.5%，perturbation success比A-MEM高10.7–12.1点；joint span消融−7.2点、matched-rank random−0.8。",
+        "scope_and_limits": "截至Nov3新文，直接占据task-role-state共同子空间+动态长期agent稳定的方案空间。ToolACE主要是预测调用结构匹配，不宜把所有工具分支都称真实API执行；真正环境证据尤其AMemGym/ALARA/LIBERO。ActAdd/SEA只steer三个role，而ATLAS steer全部role，比较非同干预覆盖；故部分收益有coverage混杂。",
+        "comparison": "不再能把“context-aware agentic subspace/联合role-state steering”笼统称空白。仍未比较self-report/role/behavior三范式matched directions，也未验证conversational persona向量对行动的独立跨任务因果迁移。",
+        "new_to_catalog": true
+      },
+      {
+        "title": "Controlling Large Language Model Agents with Entropic Activation Steering",
+        "id": "2406.00244",
+        "url": "https://arxiv.org/html/2406.00244v2",
+        "status": "primary_body_verified",
+        "locations": "§2、§4–6；App.A",
+        "setting_tags": [
+          "multi-turn-dialogue",
+          "agentic-tool-execution"
+        ],
+        "task_endpoints": "Gaussian两臂bandit：每轮输出parse成arm choice，环境采样reward回传，再续下一轮；测action entropy/有效格式与长期探索。不是只报告选择概率，也不是复杂web/coding。",
+        "intervention": "EAST从logged environment interaction取decision前激活，run内中心化，以采样估计的action entropy作连续权重求steering向量；新run逐生成token加向量。",
+        "models": "Mixtral8x7B与DBRX",
+        "major_result": "提高高层action探索/熵同时保留可parse输出，能跨等价但文本重述的任务变体转移；token temperature不足以复现。",
+        "scope_and_limits": "2024已有trace-based连续行为信号抽方向与真实反馈环控制。任务仅简化bandit、非BigFive/角色身份、非多阶段工具agent；跨变体共享决策结构，非任意任务迁移。",
+        "comparison": "对用户trace extraction不是空白的重要早期基线；与TACT按失败标签差分不同，是entropy-weighted回归式读出/写入。",
+        "new_to_catalog": true
+      }
+    ],
+    "new_adjacent_evidence": [
+      {
+        "title": "Multi-LLM Systems Exhibit Robust Semantic Collapse",
+        "id": "2605.17193",
+        "url": "https://arxiv.org/pdf/2605.17193v3",
+        "status": "primary_pdf_main_and_targeted_supplement_verified",
+        "locations": "PDF pp.1–4/16；Supplementary Note3.6 pp.72–74（PDF页索引71起）",
+        "setting_tags": [
+          "multi-agent-interaction",
+          "multi-turn-dialogue",
+          "long-context/long-horizon"
+        ],
+        "task_endpoints": "200–1000轮自由多LLM闭环生成的semantic diversity/lexical diversity；无外部任务或工具环境。",
+        "intervention": "Llama3-8B，Anthropic NLP-survey2000 paired answers提sycophancy均值差、300 heldout选layer20/α−10；在200轮三seed交互中抑制迎合。",
+        "finding": "短评测迎合log-prob bias下降约58%，但未恢复长程semantic diversity，说明控制trait不保证群体动力学指标改善。",
+        "scope_and_limits": "这是conversational trait steering向多agent交互结果的直接负证据，但不是工具行动控制；仅被测sycophancy方向/剂量不能否定所有persona稳定策略。",
+        "new_to_catalog": true
+      },
+      {
+        "title": "ATC: Agent Trajectory Control for Role-Contract Enforcement in Black-Box Multi-Agent Systems",
+        "id": "2611.04321",
+        "url": "https://arxiv.org/abs/2611.04321",
+        "status": "primary_abstract_verified_only",
+        "setting_tags": [
+          "multi-agent-interaction",
+          "multi-turn-dialogue"
+        ],
+        "task_endpoints": "角色contract违约、任务表现、role consistency；本轮未细核全部benchmark工具执行协议。",
+        "intervention": "按输出message评估越角色/权限/逻辑contract，再约束重生成并复核；黑盒text层而非hidden activation。",
+        "scope_and_limits": "ATLAS同作者同期output-layer强对照；不属于persona向量证据，待任务范围核对后可作为等计算budget对照。",
+        "new_to_catalog": true
+      },
+      {
+        "title": "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",
+        "id": null,
+        "url": "https://openreview.net/forum?id=RB1B5jsREi",
+        "status": "pending_primary_fulltext_access",
+        "secondary_discovery_url": "https://lacuna.tiptreesystems.com/work/activation-steered-personas-in-task-oriented-llm-agent",
+        "primary_author_listing": "https://cs.uky.edu/~siddique/files/CV_Abu.pdf",
+        "setting_tags": [
+          "multi-turn-dialogue",
+          "multi-agent-interaction",
+          "not-verified"
+        ],
+        "task_endpoints": "二手检索报告SGD Restaurants/Movies双agent对话、goal/constraint/dialogue quality；本轮未拿到primary PDF，不能确认API/booking实际执行。",
+        "intervention": "据待核线索：固定user BigFive方向＋按context预测system trait系数动态组合；不把这些二手细节当已完成实证结论。",
+        "scope_and_limits": "强相关候选，作者官方CV列出；OpenReview两种疑似ID均403/不可访问。建议先补primary再正式入精读；不引用Lacuna hypothesis为已做实验。",
+        "new_to_catalog": true
+      }
+    ],
+    "existing_comparison": [
+      {
+        "work": "TACT",
+        "catalog": "AA06",
+        "url": "https://arxiv.org/html/2605.05980",
+        "already_done": "trace标注OT/OA/CAL→问题平衡差分→边界capping/gate→SWE-bench/TerminalBench/CLAW真实工具resolve",
+        "not_done": "没有证明对话人格问卷方向与这些agent失败轴共用同一因果子空间。"
+      },
+      {
+        "work": "E-STEER",
+        "catalog": "原库ID29",
+        "url": "https://arxiv.org/html/2604.00005v1",
+        "already_done": "VAD/SAE内部情绪控制，planner–decider–executor分阶段分析，HotpotQA/Scientific/GAIA系统终点。",
+        "not_done": "未按planning/action各自提向量并比较matched geometry/transfer；精确工具执行口径以原库本轮场景审计为准，不把所有stage分数等于实行动作。"
+      },
+      {
+        "work": "Representation Engineering against Reward Hacking",
+        "catalog": "AA43",
+        "url": "https://arxiv.org/html/2610.29129v1",
+        "already_done": "MisTrace真实coding轨迹中hack/decline/spec抽取与梯度优化，L35 addition/cap/floor，ImpossibleBench hack/原题solve共同评价。",
+        "not_done": "不是一般BigFive/role稳定；跨SchoolRH有阈值重校准/部分重优化，未给无适配跨任务共同persona机制。"
+      },
+      {
+        "work": "ContextEcho",
+        "catalog": "AA08",
+        "url": "https://arxiv.org/html/2605.24279v3",
+        "already_done": "真实coding长上下文snapshot→identity/格式probe；单层Assistant Axis剂量回拉未对应恢复judge register；placebo重要。",
+        "not_done": "没有在线闭环steering后的工具成功/unsafe-action效果，不能据此断言Axis对真实agent reliability无效。"
+      },
+      {
+        "work": "Social Priors",
+        "catalog": "AA42",
+        "url": "https://arxiv.org/html/2610.16946v1",
+        "already_done": "用户社会先验训练影响GovSim多agent采集；另Axis cap不消除信任likelihood gap。",
+        "not_done": "cap分支与GovSim经过format repair的agent分支不同，未验证cap能否救合作。"
+      },
+      {
+        "work": "FIBS",
+        "catalog": "AA40",
+        "url": "https://arxiv.org/pdf/2610.12445v4",
+        "already_done": "SHADE/BashArena工具循环的sabotage monitor泛化。",
+        "not_done": "read成功非向量write，尚未检验沿detector方向因果改变行动。"
+      }
+    ],
+    "no_direct_evidence_found_for": [
+      {
+        "claim": "同一trait的self-report/普通role-play/实工具行为三范式matched激活，并同时比较read、write、cross-task transfer",
+        "assessment": "本轮定向检索未找到完整三通道加真实工具因果迁移的统一实证。不能宣称不存在；DRAS/TACT/ATLAS已覆盖其中多个片段。"
+      },
+      {
+        "claim": "planning语言与实际tool-selection/action方向的可解释低维转换，且跨环境预测选择性与能力成本",
+        "assessment": "已有分阶段情绪控制和轨迹边界控制，尚未找到完整paired geometry→预测transfer→causal specificity的独立验证链。"
+      },
+      {
+        "claim": "Assistant Axis作为长程agent reliability的通用指标，可预测并修复所有真实工具失效",
+        "assessment": "有ContextEcho输出负证据、Social Prior分支限制，暂无支持该普遍命题的直接验证；需分identity/格式/策略/工具动作/完成率。"
+      }
+    ],
+    "feasible_gaps": [
+      "不要主张首次agentic steering或首次trace-based extraction：EAST/TACT/AA43已做；不要笼统首次role-state joint subspace：ATLAS已新发表。",
+      "核心可转为跨提取范式的因果迁移矩阵：v_self,v_role,v_trace在同checkpoint、同任务/时间位置、matched norm/compute下分别read/write，测style、strategy、tool format、unsafe actions与success。",
+      "几何模型比较global rank1/global rankk/context-local，应额外检验几何能否预测heldout真实动作effect，而非只predict trait表达或在同任务拟合。",
+      "在DRAS/ATLAS/TACT强baseline上做机制问题：同一个role加强、其对应trait削弱的冲突干预，或只动planning/self-report而不动action，测试可分离性。",
+      "做真实环境反馈事件级实验（工具失败/外部文档/状态更新），匹配context长度和distractor，观察变化来源是局部语义旋转、阈值、默认吸引还是write窗口移动。"
+    ],
+    "critical_scope_checks": [
+      "AA01 global-workspace §7只测既有agent轨迹末端summary诚实；不可计作在线工具行为被改善。",
+      "AA30的agentic九traits只是judge-rated响应场景；AA14删除按钮只描述性选择；AA42 trust/Axis分支是候选likelihood；这些都不可粗略归真工具执行。",
+      "训练方法在表中training-only标签意为行为干预安装在训练期，仍有inference evaluation；不意为纯训练曲线无行为验证。"
+    ]
+  },
+  "architecture_search": {
+    "question": "Persona/role/trait activation representations across dense, MoE, hybrid, sparse-subnetwork and looped/recurrent architectures",
+    "checked_on": "2026-11-07",
+    "workflow": "Coordinator confirmed safe git pull --ff-only already completed; worker read-only canonical, evidence output only in /tmp; no model workloads.",
+    "executive_assessment": [
+      "“persona vector只在dense上做过”已不成立：已有persona任务的MoE/hybrid实测；最新Style Modulation Heads附录还直接steer MoE attention heads。",
+      "架构特异因果问题已有强prior：RARE隔离representation edit与router drift，SteerMoE/MASCing直接改expert routing，MoE Personalization论文做crosscoder和专家干预。",
+      "跨模型dense/MoE性能差异通常仍混入训练、规模、tokenizer和后训练；即使active/total params匹配也不是architecture随机化实验。最有价值是within-checkpoint的router/模块/path对照。",
+      "persona weight pruning、少数原生neurons steering、SAE sparse latent steering、MoE top-k计算与token-dependent activation sparsity是五种不同“稀疏”。",
+      "looped models已有frozen-loop state steering与attention patching，亦有非官方persona-vector探索代码；本轮未核到系统persona/role/behavior三范式的loop-specific因果研究，不能宣称全领域无人做。"
+    ],
+    "categories": {
+      "1_tested_on_architecture": "模型面板含MoE/hybrid，行为/方向结果可证该checkpoint有效；不识别架构本身导致差异。",
+      "2_controlled_architecture_mechanism": "同checkpoint内控制router/path/读写site等模块变量，或配对训练只改架构；本轮强例为前者，未找到严格配对同数据训练的persona dense-vs-MoE因果研究。",
+      "3_expert_router_specific": "直接干预router logits、专家selection/output或router-invisible subspace，不与普通residual addition混称。",
+      "4_sparsity_distinctions": "参数mask剪枝≠保留weights而改少数neuron activation≠SAE latent稀疏编码≠MoE native top-k≠为加速skip neurons的dynamic activation sparsity。",
+      "5_recurrence": "token维递归SSM/RWKV与depth维复用同Transformer blocks是不同 recurrence；Gemma3 local/global attention也不是Qwen3.5 GatedDeltaNet、更不是Mamba。"
+    },
+    "literature": [
+      {
+        "title": "Steering at the Source: Style Modulation Heads for Robust Persona Control",
+        "url": "https://arxiv.org/html/2603.13249v2",
+        "existing_id": 23,
+        "relevance": "direct persona",
+        "category": [
+          "1",
+          "2_component_not_architecture_randomized"
+        ],
+        "actual_models": "Main Qwen2.5-7B-Instruct and Llama3.1-8B-Instruct; App.F gemma-3-12b-it, Qwen3-30B-A3B-Instruct-2507.",
+        "validated_intervention": "App.F layer-wise attention-output steering and selected-head steering with trait/coherency outcomes; Qwen layers27/32/39 and heads10/22, Gemma L24 heads2/7/8 described. Not merely probing.",
+        "finding": "Style heads also function in MoE and dense local/global-attention models; geometric transition less sharply localizes layer, effects spread across several layers.",
+        "boundary": "No trained-matched architecture manipulation; differences can reflect size/norm/training. MoE experiments target attention heads, not expert/router mediation.",
+        "locator": "App.F.1/F.2 Figs19–22, App.F.3; official v2 28 May2026."
+      },
+      {
+        "title": "TACT: Mitigating Overthinking and Overacting in Coding Agents via Activation Steering",
+        "url": "https://arxiv.org/abs/2605.05980",
+        "existing_id": "AA06",
+        "relevance": "adjacent agentic behavior axes",
+        "category": [
+          "1"
+        ],
+        "actual_models": "Qwen3.5-27B dense linear/full attention hybrid; Gemma4-26B-A4B-it MoE (retain exact config verification before arch claims).",
+        "validated_intervention": "Boundary residual OT/OA axis Add/Cap/Gate in SWE-bench Verified, Terminal-Bench2, CLAW-Eval real tools.",
+        "boundary": "Validates axes on two structures, not a dense-vs-MoE controlled mechanism test and not conversational persona-vector transfer."
+      },
+      {
+        "title": "Probing Persona-Dependent Preferences in Language Models",
+        "url": "https://arxiv.org/html/2605.13339v4",
+        "existing_id": "9 / AA07",
+        "relevance": "direct persona preference",
+        "category": [
+          "1"
+        ],
+        "actual_models": "Gemma3-27B dense versus Qwen3.5-122B-A10B MoE hybrid, text-only experiments.",
+        "validated_intervention": "Cross-persona preference readout; strong Gemma choice steering, Qwen pilot did not reproduce same control.",
+        "boundary": "Read/write/model discrepancy is real evidence boundary, not proof MoE routing causes it; scale, family, training and intervention calibration differ."
+      },
+      {
+        "title": "Persona Matters: Effects of Activation Steering on Short Answer Generation and Scoring",
+        "url": "https://arxiv.org/html/2604.07102v2",
+        "relevance": "direct persona",
+        "category": [
+          "1"
+        ],
+        "actual_models": "Qwen3-4B/32B dense, gpt-oss-20b MoE.",
+        "validated_intervention": "Seven trait vectors on ASAP-SAS answer generation and scoring, task/rubric outcomes.",
+        "finding": "Reports substantially larger scorer calibration shifts for gpt-oss than Qwen; ELA more sensitive than science.",
+        "boundary": "Three checkpoint comparison, no architecture-only causal effect; educational scoring calibration not agentic behavioral coherence."
+      },
+      {
+        "title": "Explaining the Roles of Experts in Mixture-of-Experts LLMs for Personalization",
+        "url": "https://arxiv.org/html/2610.22127",
+        "relevance": "direct personalization/persona features",
+        "category": [
+          "1",
+          "2",
+          "3"
+        ],
+        "actual_models": "OLMoE-1B-7B(0125), Qwen3-30B-A3B(2507), Mixtral8x7B; active/total matched dense references OLMo2, Qwen2.5 and Llama2.",
+        "validated_intervention": "Router then expert fine-tuning on Multifaceted Collection (style, background knowledge, informativeness, harmlessness); crosscoder latent patching; boost persona-aligned expert logits versus random same-size experts, measure KL to personalized model.",
+        "finding": "Personalization features align with stable expert sets and causal routing manipulations move output toward adapted counterpart.",
+        "boundary": "One selected layer/model, dense controls differ in training; KL movement toward counterpart is narrower than all real behavior improvement. Paper limitations contain troubling wording selection on test data; verify split code before adopting evidence as rigorous unbiased localization.",
+        "locator": "§5, §6.3–6.5, Limitations."
+      },
+      {
+        "title": "RARE: Decoupling Representation Steering from Expert Routing in Mixture-of-Experts Language Models",
+        "url": "https://arxiv.org/html/2608.21236",
+        "relevance": "adjacent representation steering; directly important architecture mechanism",
+        "category": [
+          "2",
+          "3"
+        ],
+        "actual_models": "DeepSeekV2-Lite-Chat, Mixtral8x7B, Phi3.5-MoE, Phi-mini-MoE, Qwen3-30B-A3B-2507, GPT-oss20b.",
+        "validated_intervention": "Compare clean routing retention; project edits into router-matrix nullspace and correct downstream propagated routing drift. Five direction estimators; harmfulness, TruthfulQA and CounterFact.",
+        "finding": "Router preservation can recover effective steering, routing more content-sensitive than behavioral under matched-content probes.",
+        "boundary": "Not persona-specific role/trait geometry or full read–write dissociation. Cannot claim any role change should preserve routing; target behaviors and task semantics may sometimes require new experts.",
+        "locator": "§3 controlled probes, §4.3 Eqs8/9, §5."
+      },
+      {
+        "title": "Steering MoE LLMs via Expert (De)Activation / SteerMoE",
+        "url": "https://arxiv.org/html/2509.09660",
+        "official_venue_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0d61c5f5ef91e7e8a091b7b8f72b853c-Abstract-Conference.html",
+        "relevance": "adjacent behavior control",
+        "category": [
+          "3"
+        ],
+        "validated_intervention": "Rank expert activation frequency differences under paired opposite behaviors, promote/suppress router selections at inference. Six MoEs, 11 safety/faithfulness benchmarks.",
+        "boundary": "Behavior-associated experts and causal efficacy do not establish pure one-expert-one-persona; safety/refusal and RAG faithfulness not equivalent to human trait structure."
+      },
+      {
+        "title": "MASCing: Configurable Mixture-of-Experts Behavior via Activation Steering Masks",
+        "url": "https://arxiv.org/html/2604.27818",
+        "relevance": "adjacent safety boundary control",
+        "category": [
+          "3"
+        ],
+        "actual_models": "Seven MoEs incl DeepSeekMoE16B, gpt-oss20B, HunyuanA13B, Mixtral, Phi3.5, Qwen1.5MoE and Qwen3-30B-A3B.",
+        "validated_intervention": "LSTM surrogate over router-logit sequences to form routing masks; runtime router score modification for multi-turn jailbreak defense and content policy boundary setting.",
+        "boundary": "Not a generic persona direction and not weight pruning. Requires behavior-specific mask construction; expert routing intervention can affect normal utility.",
+        "locator": "§4 framework, §5.2 models, §6.5 activation vs expert steering."
+      },
+      {
+        "title": "PersonaFuse: A Situation-Aware Post-Training Framework for Adaptive LLM Behavior in Enterprise Tasks",
+        "url": "https://arxiv.org/html/2509.07370v3",
+        "relevance": "direct trait-personality adapter design",
+        "category": [
+          "3_adapter_MoE_not_native_expert_analysis"
+        ],
+        "validated_intervention": "Ten high/low Big-Five LoRA experts with learned query/persona router; warmup expert→train router→joint training; enterprise workflows.",
+        "boundary": "Persona-MoE is deliberately added personality-specific adapter mixture, not discovery of natural semantic experts in native MoE nor evidence a persona is linearly decomposed in an untouched model."
+      },
+      {
+        "title": "Your Language Model Secretly Contains Personality Subnetworks",
+        "url": "https://arxiv.org/html/2602.07164",
+        "existing_id": 22,
+        "relevance": "direct persona",
+        "category": [
+          "4_weight_pruning"
+        ],
+        "validated_intervention": "Activation-guided/contrastive weight masks in dense Llama2/3/Qwen2.5; MBTI, AI persona and RoleAgentBench; switch fixed masks.",
+        "boundary": "Static sparse weight subnetwork != token-varying sparse activation. Reduced nonzero count does not alone establish GPU latency gain without sparse kernels. Not native MoE."
+      },
+      {
+        "title": "Small sets of neurons reproduce persona vector steering, and the neuron basis is privileged",
+        "url": "https://willmayner.com/persona-neurons",
+        "publication_type": "Original-author technical blog / MATS side project, 31 Oct2026; not peer-reviewed paper",
+        "relevance": "direct persona/Assistant Axis",
+        "category": [
+          "4_native_neuron_intervention"
+        ],
+        "actual_models": "Qwen3-8B, 275 Assistant Axis roles; top neuron contributions through layer18.",
+        "validated_intervention": "Steer top100 MLP neurons at original layers with matched total strength versus random rotated bases/PC/random neurons; judge identity probe replies.",
+        "finding": "At4x strength, top100 about64% role-trait replies vs69% full vector,11% rotated basis.",
+        "boundary": "Role identity prompts/short replies, not broad decisions; only one model. Sufficiency under amplified edits not necessity at natural activation; large removal confounded. Sparse set of edited neurons is not skipped computation or inferred speedup."
+      },
+      {
+        "title": "Steering Large Language Model Activations in Sparse Spaces / SAS",
+        "url": "https://proceedings.colm.cc/paper_files/paper/2025/hash/d88f6f81e1aaf606776ffdd06fdf24ef-Abstract-Conference.html",
+        "relevance": "adjacent sparse feature control",
+        "category": [
+          "4_SAE_latent"
+        ],
+        "validated_intervention": "Contrastively select sparse latent dimensions on Gemma2, steering/composition versus dense vectors.",
+        "boundary": "Sparse feature coordinates/SAE encoding do not imply sparse base model weights or sparse inference execution."
+      },
+      {
+        "title": "Locating and Steering Refusal Beyond Attention",
+        "url": "https://arxiv.org/html/2609.04721",
+        "relevance": "adjacent refusal plus roleplay-attack persona suppression",
+        "category": [
+          "2",
+          "5_SSM_RWKV_hybrid"
+        ],
+        "actual_models": "Falcon-Mamba/Falcon3-Mamba, Codestral-Mamba, RWKV6, Zamba2, Llama3.1/Mistral.",
+        "validated_intervention": "Architecture-specific fresh-write-site refusal read/steer; rigid-rotation transported direction ablation; projection gate; App.A.14–A.20 two-direction roleplay refusal/persona controls.",
+        "finding": "Decodable residual/SSM state need not control refusal; fresh write-site directions do. Two-direction persona fix differs or fails on RWKV/Zamba.",
+        "boundary": "Cannot claim SSM persona steering entirely unexplored; however refusal/jailbreak persona direction is not full self-report/role/strategy phenotype. Multiple model/training factors remain in cross-architecture contrasts."
+      },
+      {
+        "title": "Shared Weights, Selected Computations: How Looped Transformers Route What Each Loop Does",
+        "url": "https://arxiv.org/html/2609.39892",
+        "relevance": "adjacent loop-depth mechanistic state steering",
+        "category": [
+          "2",
+          "5_looped"
+        ],
+        "actual_models": "Small looped graph/parity models, Ouro2.6B task-finetuned.",
+        "validated_intervention": "Frozen backbone plus learned linear/low-rank state map J; one/two-hop graph transition, language letter-walk; attention-pattern/output patching and matched intermediate-supervision training pairs.",
+        "boundary": "Already demonstrates loop-dependent state steering and causal attention routing, but not persona identity/trait/behavior. Long composition degrades; short controller success not persistent agent guarantee. Does not prove a rank1 persona vector is constant across loops."
+      },
+      {
+        "title": "Scaling Latent Reasoning via Looped Language Models / Ouro",
+        "url": "https://arxiv.org/abs/2510.25741",
+        "model_url": "https://huggingface.co/ByteDance/Ouro-1.4B",
+        "config_url": "https://huggingface.co/ByteDance/Ouro-1.4B/raw/main/config.json",
+        "relevance": "official architecture/model access, not persona paper",
+        "category": [
+          "5_looped_architecture"
+        ],
+        "config_verified": "OuroForCausalLM; num_hidden_layers24; total_ut_steps4; hidden2048; all24 layer_types full_attention; official config downloaded read-only. Thinking checkpoint same layer/loop defaults.",
+        "boundary": "Physical layer index and effective loop depth must both be logged; an all-loop hook edits same module repeatedly, changing total dose. Variable loop budget changes computation, not interchangeable with CoT tokens."
+      },
+      {
+        "title": "LoopFormer: Elastic-Depth Looped Transformers for Latent Reasoning via Shortcut Modulation",
+        "url": "https://arxiv.org/html/2602.11451",
+        "official_project": "https://loopformer.github.io",
+        "official_repo": "https://github.com/armenjeddi/loopformer",
+        "relevance": "official looped architecture, not persona evidence",
+        "category": [
+          "5_looped_architecture"
+        ],
+        "validated_intervention": "Time/step-size conditioned shared blocks with shortcut-consistency training and variable test-time budgets; language modeling/reasoning.",
+        "boundary": "No persona term found in official primary HTML in this search. chengyh23/loopformer is a fork despite README repeating official boilerplate; persona extraction scripts there only establish exploratory code exists, not official published validated persona results.",
+        "exploratory_fork": "https://github.com/chengyh23/loopformer"
+      }
+    ],
+    "existing_architecture_summary": [
+      "Original46 includes GPT-oss20B in ID26/27, MoE/hybrid Qwen3.5 in ID9, dense hybrid Qwen3.5 in ID30/44, dense-pruned ID22 and non-Transformer GRU world model ID10. These are heterogeneous evidence roles, not a single controlled architecture result.",
+      "Assistant Axis AA06 adds real-tool intervention on dense hybrid and MoE; AA07 preference read/write negative MoE result should not be erased; AA30 53-trait natural/steerable map compares Qwen3-8B vs gpt-oss20B but no router intervention.",
+      "Qwen3.5-9B/27B configs are qwen3_5_text dense GatedDeltaNet/full attention, not MoE despite family-level model-card marketing; Qwen3.5-122B-A10B is separate MoE checkpoint. Gemma3 local/global attention not Mamba."
+    ],
+    "id23_update_proposal": {
+      "action": "coordinator-only; append latest official evidence, preserve older scope provenance; worker does not edit canonical",
+      "version": "2603.13249v2, 28 May2026; latest abs page and HTML header verified",
+      "new_models_studied": "Main: Qwen2.5-7B-Instruct; Llama3.1-8B-Instruct. App.F actual steering: google/gemma-3-12b-it; Qwen/Qwen3-30B-A3B-Instruct-2507.",
+      "architecture": "Main dense GQA; added Gemma3 dense VLM-capable local/global attention text experiment; added Qwen3 MoE Transformer. Qwen3 config qwen3_moe,128experts/top8,48blocks; no expert/router intervention, target attention output/heads.",
+      "inference_mode": "Paper App.F does not report a thinking toggle or compare reasoning modes. Exact suffix Instruct-2507 itself is non-thinking checkpoint per official model card; retain distinction support vs experiment. Gemma3 no dedicated thinking comparison. All reported prompts text-only.",
+      "evidence_locations": [
+        "App.F.1 Figs19/20 actual attention/head steering",
+        "App.F.2 Figs21/22 actual MoE attention/head steering",
+        "App.F.3 cosine heatmaps",
+        "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507/raw/main/config.json",
+        "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507#model-overview (explicit non-thinking-only note verified)"
+      ],
+      "compact_label_suggestion": "Dense + MoE (text); Gemma3 local/global attention",
+      "boundary": "Not just probe, but not matched architecture causal ablation; claims of why localization broadens are authors interpretations, not isolated tests."
+    },
+    "novelty_boundaries": [
+      "不宜写：首次persona steering用于MoE；首次router-specific behavioral control；首次looped state steering；首次少数neurons实现persona；首次SSM上的persona/拒绝控制。",
+      "可检验而尚不能据本次检索认定独创：同一role/trait在dense与MoE的self-report/linguistic/decision三终点read–write gap是否由route changes而非content造成；需对照RARE及personalization专家实验。",
+      "loop更清楚的问题：共享physical block跨loop的persona方向，是固定rank1可迁移、不同强度足够、还是需要loop-specific directions；并检验行为选择性与剂量归一化，而不只画cosine。",
+      "稀疏更清楚的问题：在相同有效norm和能力约束下，native-neuron、SAE、expert和dense-vector干预对风格/策略的选择性是否不同；Mayner已覆盖单模型role identity的sparse sufficiency，必须增加新终点与对照。"
+    ],
+    "minimal_viable_design": {
+      "preferred_first_track": "先在一个可控MoE checkpoint内隔离routing介导，再做dense跨模型复制；比“架构榜单”更易产生因果结论。",
+      "panel": "资源小：OLMoE1B-7B-Instruct配OLMo2-1B/7B仅作参照；资源足：Qwen3-30B-A3B-Instruct-2507配Qwen3-8B/32B，但解释为matched-family/size references而非architecture-only causal。另单独Ouro1.4B loop实验，不强行合成一个architecture变量。",
+      "controls": [
+        "固定题目/trait definitions/提取训练量，dev选层与dose后锁定test",
+        "same-checkpoint条件：native residual direction、router-nullspace(RARE式)、clean router replay或route freeze、router-only edit、post-router expert-output edit",
+        "norm matched random、label shuffle、negative alpha、direction strength grid with coherence/capability filters",
+        "matched topic/content下self-report/role-play/decision各抽方向；全部3x3 transfer matrix与unsteered readout比较",
+        "读取router topk/JSD、expert-output contribution、target/offtarget outcome；cosine只是几何协变量",
+        "Ouro hooks记录physical layer×loop×prefill/decode，不把相同hook调用4次当一次；single-loop vs all-loop dose normalize，swap directions across loops，并测末态/行为效果"
+      ],
+      "metrics": "target behavior, self-report, style, off-target traits, factual/decision quality, coherence, refusal/invalid, latency and token/loop cost. Optional small real-tool task only after decision baseline reproducible.",
+      "architecture_causality_limit": "若要把结论归因架构本身，须训练同数据/预算的dense vs MoE或shared vs unshared小模型，或至少factorial ablation with matched initialization/streams；现成checkpoint不能消除recipe混杂。"
+    },
+    "access_and_compute_dependencies": [
+      "需open weights/config、router pre/post logits与expert outputs hooks；API模型无法进行主因果测试。优先HF/eager reference implementation确认hook正确，fused MoE/SSM kernels可能隐藏中间态。",
+      "MoE active params不等于显存：Qwen30B BF16权重约60GB(估算，不含KV/activation/runtime)，OLMoE7B约14GB，dense8B约16GB；必须按真实checkpoint dtype/quantization与GPU测峰值，不宣称某卡必能装。",
+      "Ouro1.4B BF16约2.8GB权重，但4loop有效深度/缓存和activation记录放大成本；官方trust_remote_code和cache行为要冻结revision并检查loop indexing。",
+      "提取只缓存少数层/位置的在线均值和必要router统计，避免全token×expert×层长trace内存；clean-reference correction可能要求额外forward，计算成本单独报。",
+      "不需先训练SAE/crosscoder；native contrastive vector＋router controls先做。若要复现personalization crosscoder或多个大模型全量trace则需显著额外GPU/存储与训练预算。",
+      "本轮未检查用户现有GPU allocation，也未申请/运行模型；最终规模和资源使用需root依现有授权及HPC规则确定。"
+    ],
+    "search_log": [
+      "persona mixture of experts steering vectors architecture",
+      "persona vectors router",
+      "activation steering looped transformer",
+      "activation steering Mamba",
+      "activation steering expert router mixture models",
+      "Shared Weights Selected Computations Looped Transformers",
+      "persona looped transformer steering",
+      "persona Mamba steering",
+      "RARE Decoupling Representation Steering",
+      "MASCing arxiv",
+      "loopformer persona steering",
+      "recurrent persona vectors",
+      "persona activation sparsity steering",
+      "persona vectors sparse pruning",
+      "Steering MoE LLMs via Expert",
+      "persona vector steering is sparse",
+      "Will Mayner persona neurons",
+      "persona neuron basis steering sparse",
+      "persona vectors sparsification neurons",
+      "persona Huginn",
+      "persona Ouro steering",
+      "steering recurrent depth language models",
+      "steering activation sparsity LLM"
+    ],
+    "search_limits": "Primary arXiv/official proceedings/model configs/author project sites inspected; broad web hits used only discovery. Not an exhaustive systematic review or citation database export. No direct primary peer-reviewed persona-specific universal-transformer/loop read–write study verified in this bounded search; fork scripts and adjacent loop mechanisms were found. Focused search did not verify persona-specific inference acceleration by dynamic neuron skipping; this is search absence, not proof of no work."
+  },
+  "coordinator_primary_checks": [
+    "DRAS2610.15907 §4–6：role-conditioned activation difference与trajectory detector作用不同；系统quality是proxy平均，不等于完整功能验证。",
+    "ATLAS2611.04315 §3/附录：联合task/role/state已被研究；ToolACE调用结构评估与AMemGym/ALARA/LIBERO环境分开，部分baseline只干预3roles存在coverage差异。",
+    "RARE2608.21236：router零空间与下游routing修正；是结构特异steering方法，不是persona跨任务效度研究。",
+    "2610.22127：personalization latents与expert steering已存在；多polysemanticity/latent指标不能替代所有行为有效性。",
+    "ID23 2603.13249v2 App.F：实际Gemma3与Qwen3 MoE attention/head干预；不同模型结果不是随机化结构因果。",
+    "LoopFormer fork网页明确fork来源；有persona脚本不等于原作者已发表实验，2609.39892则已做loop状态干预但任务为graph walk。"
+  ]
+}

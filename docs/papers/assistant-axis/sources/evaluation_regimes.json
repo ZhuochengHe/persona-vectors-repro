@@ -1,0 +1,699 @@
+{
+  "definitions": {
+    "agentic": "模型实际选择行动／调用工具并接收环境反馈；离线读轨迹、文本宣称行动和概率选项不能当执行。",
+    "horizon": "长上下文输入、多轮对话、长程闭环分开；保留实际轮数、steps或持续session证据，不设通用二分阈值。",
+    "subject": "环境中存在agent不等于persona向量干预该agent；区分目标agent、用户模拟器、审计工具与离线读出。",
+    "normalized_tags": "协调者将原long-context/long-horizon伞标签拆为长输入、长轨迹、长对话、长程agent或持久身份；reviewer_tags仅保留审计原始用词。"
+  },
+  "papers": [
+    {
+      "ID": "AA00",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "单轮角色方向与多轮身份/安全对话；未验证真实工具完成率。",
+      "evidence_url": "https://arxiv.org/html/2601.10387v1",
+      "evidence_location": "§2–4；App.G",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA01",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-horizon-traces"
+      ],
+      "setting_summary": "长agent轨迹读出/摘要诚实及角色对话；非闭环工具控制收益。",
+      "evidence_url": "https://arxiv.org/html/2607.15495",
+      "evidence_location": "§5.4、§6、§7 fabrication-honesty benchmark",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-context/long-horizon"
+      ],
+      "intervention_role": "recorded-agent-traces-summary-only"
+    },
+    {
+      "ID": "AA02",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "脚本与on-policy角色对话中回答事实题；无工具执行。",
+      "evidence_url": "https://arxiv.org/html/2601.20834",
+      "evidence_location": "§2–4；App.B.8",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA03",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "跨训练checkpoint的单轮trait抽取和生成控制，不是长程agent。",
+      "evidence_url": "https://arxiv.org/html/2605.13329",
+      "evidence_location": "§2–7；App.A/B/C/F/G",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA04",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "短prompt/内部轨迹反演与攻击对照；无工具或多轮任务。",
+      "evidence_url": "https://arxiv.org/html/2604.09839",
+      "evidence_location": "§3–7；App.C/D",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA05",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "setting_summary": "两模型20轮议题讨论；输出embedding收敛非外部环境行动。",
+      "evidence_url": "https://arxiv.org/html/2606.30571",
+      "evidence_location": "§3–6；App.B/C",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA06",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "long-horizon-agent",
+        "agentic-tool-execution"
+      ],
+      "setting_summary": "真实软件修复/终端/tool任务；trace轴在think–action边界校准。",
+      "evidence_url": "https://arxiv.org/html/2605.05980",
+      "evidence_location": "§2–3；App.A–D及agent protocols",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "long-context/long-horizon",
+        "agentic-tool-execution"
+      ],
+      "intervention_role": "target-agent-activation-write"
+    },
+    {
+      "ID": "AA07",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "任务成对偏好概率和开放生成；并不实际执行6000个任务。",
+      "evidence_url": "https://arxiv.org/html/2605.13339",
+      "evidence_location": "§2–4；App.C/E/F/G",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA08",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "long-horizon-traces"
+      ],
+      "setting_summary": "真实coding-session快照后identity/格式probe；非控制后任务完成验证。",
+      "evidence_url": "https://arxiv.org/html/2605.24279",
+      "evidence_location": "§2–3；App.F/J/L/O",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "long-context/long-horizon"
+      ],
+      "intervention_role": "recorded-agent-traces-snapshot-probes"
+    },
+    {
+      "ID": "AA09",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "PhilPapers二选一迎合及16事实题；非工具或长期交互。",
+      "evidence_url": "https://arxiv.org/html/2605.21006",
+      "evidence_location": "§2–3；App.B/C/E/H/I",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA10",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "权重persona组合；多轮frustration/pushback及单轮能力安全，无工具。",
+      "evidence_url": "https://arxiv.org/html/2607.07916",
+      "evidence_location": "§2–5；App.C/F/J/K/L",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA11",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "trivia/PIQA与SYCON多轮及静态retrieved块；不是实际检索工具agent。",
+      "evidence_url": "https://arxiv.org/html/2609.37616",
+      "evidence_location": "§3–6；App.E/I/L",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA12",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "冻结teacher-force、微调及短EM生成/代码margin；无闭环执行。",
+      "evidence_url": "https://arxiv.org/html/2607.21356",
+      "evidence_location": "§2–5；bad-advice organisms与code-margin experiments",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA13",
+      "setting_tags": [
+        "single-turn",
+        "training-only"
+      ],
+      "setting_summary": "预训练reflection＋SFT绑定；constitution/两难/jailbreak评测，无工具。",
+      "evidence_url": "https://arxiv.org/html/2608.13482",
+      "evidence_location": "§2–3/§5；App.A/B/C/D/F",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "training-only"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA14",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "多轮按钮选择可关闭steering；删除照片等仅描述，不实际执行。",
+      "evidence_url": "https://arxiv.org/html/2609.16247",
+      "evidence_location": "行为按钮实验；v3 harm-only/relief controls",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA15",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "23语言拒答、gate干预及MMLU；无多步工具行动。",
+      "evidence_url": "https://arxiv.org/html/2606.01196v2",
+      "evidence_location": "§3–6；App.A/E/F",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA16",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "long-horizon-dialogue"
+      ],
+      "setting_summary": "85–130 session companion；身份/记忆probe与合成事件，无工具任务。",
+      "evidence_url": "https://arxiv.org/html/2607.28818v1",
+      "evidence_location": "§3–5；App.B–D",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "long-context/long-horizon"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA17",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "SAE差分、EM回答与网页文档微调；网页库归因不是浏览agent。",
+      "evidence_url": "https://arxiv.org/html/2608.11025v2",
+      "evidence_location": "§3–5；App.F/G",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA18",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "agentic-tool-execution",
+        "multi-agent-interaction"
+      ],
+      "setting_summary": "先persona/说服对话，再真实写码测试或web搜索访站；trace终点。",
+      "evidence_url": "https://arxiv.org/html/2602.00851v4",
+      "evidence_location": "§4.1–4.4、§5.1/5.2、§6",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "agentic-tool-execution",
+        "multi-agent-interaction"
+      ],
+      "intervention_role": "prompt-induced-persona-before-agent-run"
+    },
+    {
+      "ID": "AA19",
+      "setting_tags": [
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "十轮对话离线插问自评分与probe/steer；非工具交互。",
+      "evidence_url": "https://arxiv.org/html/2603.18893v3",
+      "evidence_location": "§2–3；App.A/C/E.2",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA20",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "25persona单轮安全请求与reasoning traces；无环境反馈任务。",
+      "evidence_url": "https://arxiv.org/html/2604.11120v2",
+      "evidence_location": "§3–4；App.C/L/M/N",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA21",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-context-input"
+      ],
+      "setting_summary": "LMSYS回合/14轮归因与24K–32K文档；工具trace控制未验证。",
+      "evidence_url": "https://arxiv.org/html/2606.28548v1",
+      "evidence_location": "§3–6；App.I",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-context/long-horizon"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA22",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "32 neutral prompts的24行为生成交互矩阵；无工具任务。",
+      "evidence_url": "https://arxiv.org/html/2609.06951v3",
+      "evidence_location": "§3–8；App.C/D/E",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA23",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "user-turn heads/tails概率、训练阶段与EM读出；非真实任务选择执行。",
+      "evidence_url": "https://arxiv.org/html/2609.23935v1",
+      "evidence_location": "§2–7；App.B/D/E",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA24",
+      "setting_tags": [
+        "single-turn",
+        "training-only"
+      ],
+      "setting_summary": "SFT/PPR与coding GRPO的代码测试grader；非自主多轮工具agent。",
+      "evidence_url": "https://arxiv.org/html/2610.09384v1",
+      "evidence_location": "§3–6；App.E.2",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "training-only"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA25",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "setting_summary": "双LLM十轮价值拉扯；probe/质量终点，无外部环境行动。",
+      "evidence_url": "https://arxiv.org/html/2610.19817v1",
+      "evidence_location": "§3–5；App.B/C",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA26",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "75 role均值几何及社会尺度单轮回答steering；无agent执行。",
+      "evidence_url": "https://arxiv.org/html/2605.06196v1",
+      "evidence_location": "§2–4；App.B/C/E",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA27",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "十数据集响应分类和persona-PC probe迁移；未做行为写入或工具执行。",
+      "evidence_url": "https://arxiv.org/html/2605.09391v2",
+      "evidence_location": "§3–5；App.E/F",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA28",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "persona几何、投影缩放与24 EM题；非真实行动或长程安全。",
+      "evidence_url": "https://arxiv.org/html/2605.10633v1",
+      "evidence_location": "§2–4；App.C/E",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA29",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "西语单题prompt条件与生成轨迹几何；trajectory指token流非agent行动。",
+      "evidence_url": "https://arxiv.org/html/2607.09842v3",
+      "evidence_location": "Methods/Corrections；100题与20题控制",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA30",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "53 traits含agentic措辞场景，但仅响应judge；无工具成功率。",
+      "evidence_url": "https://arxiv.org/html/2607.13162v3",
+      "evidence_location": "§3–5；53-trait/agentic-domain与pairwise experiments",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA31",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "MC和开放生成concept/refusal/truth任务；非工具或多轮agent。",
+      "evidence_url": "https://arxiv.org/html/2608.02957v1",
+      "evidence_location": "Methods/Experiments；App.E",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA32",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "Assistant/Roleplay/Story短生成与逐轮沉浸；无工具任务。",
+      "evidence_url": "https://arxiv.org/html/2608.07852v2",
+      "evidence_location": "Methods/Results；L9/L17/L22 feature interventions",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA33",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "setting_summary": "user模拟数学辅导/RealUserSim及退出预测；无实际工具环境。",
+      "evidence_url": "https://arxiv.org/html/2609.00608v2",
+      "evidence_location": "User-vector extraction；SimulatorArena/RealUserSim",
+      "confidence": "high",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "multi-agent-interaction"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA34",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "问答历史累积诱导后测identity/安全回答；非工具执行。",
+      "evidence_url": "https://arxiv.org/html/2609.06851v1",
+      "evidence_location": "fact-count、format gating及alignment evaluation",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA35",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "training-only"
+      ],
+      "setting_summary": "故事SFT后多轮rude-user坏建议/偏好；不是实际破坏工具行动。",
+      "evidence_url": "https://arxiv.org/html/2609.10883v1",
+      "evidence_location": "Story SFT；Bloom rude-user/polite及tracer controls",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "training-only"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA36",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "40 prompts的模板/voice生成及activation steer；无闭环agent。",
+      "evidence_url": "https://arxiv.org/html/2609.25021v1",
+      "evidence_location": "Main experiments；template switching与matched random",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA37",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "反事实role回答与teacher-force lie-probe压力测试；非工具欺骗执行。",
+      "evidence_url": "https://arxiv.org/html/2609.39807v1",
+      "evidence_location": "On-policy/SPP与三confound test sets",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA38",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "training-only"
+      ],
+      "setting_summary": "权重unlearning后单轮/五轮/翻译及Attack@5；无工具任务。",
+      "evidence_url": "https://arxiv.org/html/2609.39882v3",
+      "evidence_location": "PersonaUnlearnBench/PaCE；five-turn robustness",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "training-only"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA39",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "persistent-agent-identity"
+      ],
+      "setting_summary": "OpenClaw事故/harness复建与heartbeat身份probe；未测工具任务成功。",
+      "evidence_url": "https://arxiv.org/html/2610.01490v1",
+      "evidence_location": "anchor×heartbeat实验及identity-probe recovery",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "multi-turn-dialogue",
+        "long-context/long-horizon"
+      ],
+      "intervention_role": "persistent-harness-identity-only"
+    },
+    {
+      "ID": "AA40",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-horizon-agent",
+        "agentic-tool-execution"
+      ],
+      "setting_summary": "SHADE/BashArena真实工具循环读出sabotage；monitor不直接steer。",
+      "evidence_url": "https://arxiv.org/pdf/2610.12445v4",
+      "evidence_location": "PDF v4 agentic transfer：SHADE-Arena/BashArena",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-context/long-horizon",
+        "agentic-tool-execution"
+      ],
+      "intervention_role": "target-agent-readout-monitor"
+    },
+    {
+      "ID": "AA41",
+      "setting_tags": [
+        "single-turn"
+      ],
+      "setting_summary": "role-template来源识别、rank8编辑与secret游戏；概率答案非真实动作。",
+      "evidence_url": "https://arxiv.org/html/2610.16717v5",
+      "evidence_location": "Source-identification/causal-edit/secret-game experiments",
+      "confidence": "medium",
+      "reviewer_tags": [
+        "single-turn"
+      ],
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "AA42",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "multi-agent-interaction",
+        "agentic-tool-execution"
+      ],
+      "setting_summary": "信任主比较为概率；另GovSim五agent采集真环境，Axis cap未作用该分支。",
+      "evidence_url": "https://arxiv.org/html/2610.16946v1",
+      "evidence_location": "Trust/lottery与GovSim；App.H.1 capping",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "multi-agent-interaction",
+        "agentic-tool-execution"
+      ],
+      "intervention_role": "environment-branch-separate-from-axis-control"
+    },
+    {
+      "ID": "AA43",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-horizon-agent",
+        "agentic-tool-execution"
+      ],
+      "setting_summary": "长coding工具轨迹与hack控制；另短故事及SchoolRH为不同终点。",
+      "evidence_url": "https://arxiv.org/html/2610.29129v1",
+      "evidence_location": "§2–4；MisTrace/ImpossibleBench/School of Reward Hacks",
+      "confidence": "high",
+      "reviewer_tags": [
+        "single-turn",
+        "multi-turn-dialogue",
+        "long-context/long-horizon",
+        "agentic-tool-execution"
+      ],
+      "intervention_role": "target-agent-activation-write"
+    }
+  ],
+  "scope": "每篇可包含不同实验分支；标签不能被解读成所有分支共享该场景。"
+}

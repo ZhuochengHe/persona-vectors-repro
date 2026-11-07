@@ -91,7 +91,7 @@
     "20": "Dense Transformer",
     "21": "Dense Transformer",
     "22": "Dense＋剪枝子网络",
-    "23": "Dense Transformer（GQA）",
+    "23": "Dense＋MoE（文本）",
     "24": "混合/子集待核",
     "25": "Dense Transformer",
     "26": "Dense＋MoE",
