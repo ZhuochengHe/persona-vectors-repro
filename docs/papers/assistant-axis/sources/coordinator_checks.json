@@ -1,0 +1,89 @@
+[
+  {
+    "record_id": "AA-C005",
+    "url": "https://arxiv.org/html/2601.20834v2",
+    "location": "App.B.8",
+    "check": "答案后主读出与答案前causal方向是不同实验；chakra脚本前后效果反转，consciousness脚本未同样反转。"
+  },
+  {
+    "record_id": "AA-C015",
+    "url": "https://arxiv.org/html/2605.05980v1",
+    "location": "§2.3–2.4；§3",
+    "check": "方向由标注agent轨迹的think/action边界提取，双轴正交化；不是把conversational Assistant Axis直接迁移到agent。"
+  },
+  {
+    "record_id": "AA-C028",
+    "url": "https://arxiv.org/html/2607.21356",
+    "location": "§5；§9",
+    "check": "necessity操作在训练期，需与narrow-task学习损伤同看；首步margin差异不等于自由生成行为已按相同顺序分离。"
+  },
+  {
+    "record_id": "AA-C071",
+    "url": "https://arxiv.org/html/2608.07852",
+    "location": "§3–5；App.B",
+    "check": "SAE feature population及正负steering支持局部因果证据；未证所找到core或ISM必要、充分、穷尽。"
+  },
+  {
+    "record_id": "AA-C091",
+    "url": "https://arxiv.org/html/2610.16946",
+    "location": "App.H.1",
+    "check": "released axis capping仍保留belief/trust contrast；trust读出是续写likelihood期望，不是采样行动；L32自然投影在capping层前，不是同pass恢复检验。"
+  },
+  {
+    "record_id": "AA-C094",
+    "url": "https://arxiv.org/html/2610.29129v1",
+    "location": "§4.1；App.D",
+    "check": "coding有真实工具编辑与能力对照；School of Reward Hacks跨域重调91dev/309test阈值，部分optimization向量换promoted completions；不能称统一零样本迁移。"
+  },
+  {
+    "ID": "AA21",
+    "record_id": "AA-C047",
+    "claim_checked": "App.I复用Assistant Axis的240 traits是否混淆275 roles与240 extraction questions",
+    "verdict": "supported_no_factual_correction",
+    "issue": "没有混淆。Assistant Axis除了主文275 roles和共享240 extraction questions，还单独建立了240个trait的数据集／trait space。Turn-Averaged SAE正文App.I明确直接使用这套240 traits的contrastive rollouts。",
+    "correction": "保留240 traits说法；为避免读者混淆，可写“复用Assistant Axis附录C的240-trait对比rollouts（不是275-role主实验，也不是240道共享问题）”。",
+    "evidence": [
+      {
+        "url": "https://arxiv.org/html/2606.28548v1",
+        "location": "Appendix I Procedure steps 1–2；I.2 Assistant Axis traits",
+        "support": "明确写240 traits、directly used contrastive rollouts和预先GPT-4.1-mini过滤；I.2展示五个example traits。"
+      },
+      {
+        "url": "https://arxiv.org/html/2601.10387v1",
+        "location": "§2.1.1；§2.2末段；Appendix A；Appendix C.1 Data generation",
+        "support": "§2.1.1是275 roles与240 extraction questions；App.A同时列275 roles和240 traits；C.1专门以240 traits做正负prompt、rollout、向量提取和PCA。"
+      }
+    ],
+    "fields_to_consider": [
+      "validation",
+      "contributions[3]",
+      "axis_relation"
+    ]
+  },
+  {
+    "ID": "AA31",
+    "record_id": "AA-C069",
+    "claim_checked": "Theorem4.3及App.E是否足以支持Theory标签",
+    "verdict": "supported_with_scope_clarification",
+    "issue": "Theory标签有依据：Theorem4.3是正式有限样本浓缩定理；App.E含假设、两个辅助引理和E.3主定理完整证明。其理论对象是固定干预／方向下inner-product response的plug-in估计，不是steering符号规律或全局控制保证。",
+    "correction": "可保留Analysis; Method; Theory。贡献第3条建议明确：固定alpha、上游/下游head和两方向，q_i独立同分布；response变化X_alpha及未干预投影S几乎处处有界，Var(S)>=v0>0。样本量满足所列条件时，以至少1-delta概率估计误差<=epsilon，速率O(sqrt(log(1/delta)/n))。",
+    "evidence": [
+      {
+        "url": "https://arxiv.org/html/2608.02957v1",
+        "location": "§4 Theorem4.3（Inner-Product Response Concentration Bound），Eq.8–9",
+        "support": "主文正式给出n的下界及概率保证；将证明指向App.E。"
+      },
+      {
+        "url": "https://arxiv.org/html/2608.02957v1",
+        "location": "Appendix E.1 Setup；E.2 Assumptions；E.3 Lemmas E.1/E.2；E.4 Theorem E.3及proof",
+        "support": "E.1固定alpha、heads和directions；E.2列A1/A2有界及A3非退化方差；证明使用Hoeffding、样本方差下界与union bound。"
+      }
+    ],
+    "limitations_to_preserve": "不自动覆盖同一数据上搜索多head、多alpha、多方向之后的uniform/selection-adjusted保证；也不保证spoof score对行为标签的准确率、ISV必然存在或ITI-RRF在新任务上收益。本文的反向read–write和27/30提升仍是实验结果。",
+    "fields_to_consider": [
+      "paper_type",
+      "contributions[2]",
+      "reading_scope"
+    ]
+  }
+]

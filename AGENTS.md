@@ -16,16 +16,23 @@ The root [README](README.md) maps code. [Papers](docs/papers/README.md) and the
 literature entry points. Shared instructions: [runbook](docs/research/runbook.md)
 and [archive guide](docs/research/archive.md).
 
-## Literature workflow: working sources and Windows reading workbook
+## Literature workflow: Google Doc, working sources, and workbook
 
-- For a literature-only handoff, start at
-  `docs/papers/handover_paper_excel.md`; this task does not depend on a separate
-  pending reorganization of experiment documentation.
+- The separate [Assistant Axis direct-citer collection](docs/papers/assistant-axis/README.md)
+  uses its own tab in the Persona Google Doc and separate evidence sources.
+  Do not create or continue a separate Assistant Axis Google Doc. It does not synchronize with
+  the original literature CSV/Excel and does not require architecture fields.
+  Its local reading JSON/Markdown and citation screening remain in that directory.
+  Before starting literature work on any host, check status and safely
+  `git pull --ff-only`; never stash/reset to force a pull.
+- For literature work, start at [maintenance and format contract](docs/papers/literature_document_maintenance.md).
+  [Handoff and Excel sync](docs/papers/handover_paper_excel.md) covers local
+  delivery. This work does not depend on experiment-document reorganization.
 - Maintain collection, citation provenance, screening decisions, and export code
   in this repository under `docs/papers/` and `scripts/`. In a WSL session,
   perform the working analysis there; do not turn the Windows folder into a
   second raw-data or screening workspace.
-- The user's high-level literature workbook belongs at
+- The user's sortable offline workbook belongs at
   `/mnt/d/umich/research/persona/persona_literature.xlsx` in WSL, corresponding
   to `D:\umich\research\persona\persona_literature.xlsx` in Windows.
 - Check the actual host and availability of the target directory before
@@ -34,7 +41,8 @@ and [archive guide](docs/research/archive.md).
   copy was delivered to Windows. If the destination is unavailable, prepare a
   small staging workbook in `docs/papers/`, report that delivery is pending,
   and use an explicitly available WSL session or connection for the final copy.
-- The workbook is the user's high-level reading view. Include the selected
+- Google Doc is the primary prose reading/editing view; Excel is the sortable
+  offline view. Include the selected
   literature plus the two foundation papers: original Persona Vectors and
   Persona Vectors in Games. Keep a stable numeric ID for each paper so
   `Related paper` can refer to IDs even after sorting or adding papers.
@@ -42,6 +50,10 @@ and [archive guide](docs/research/archive.md).
   `Contributions`, `Limitation`, `Additional think`, and `Related paper`.
   Useful additional columns are ID, research direction, priority,
   institution/venue, read status, and evidence scope. Do not add DOI columns.
+- For literature-note depth and research questions, follow
+  [reading note guidelines](docs/papers/reading_note_guidelines.md). Match the
+  user's granularity and analytical interests, not their tone or wording; this
+  project-local reference works without the write-like-me plugin.
 - Fill at least title, link, keywords, and one-sentence topic for every paper.
   Keep English paper titles and use concise Chinese synthesis. Separate
   abstract-based notes from selected-body review and complete full-text review;
@@ -53,11 +65,84 @@ and [archive guide](docs/research/archive.md).
 - Use a filterable Excel table, frozen headers/identifier columns, wrapped
   text, working hyperlinks, and a short guide explaining IDs and update rules.
   Read any existing destination workbook before updating it; back it up before
-  replacement, and stop cleanly if Excel has locked it.
+  replacement, and stop cleanly if Excel has locked it. Keep only the most
+  recent pre-update backup (`<stem>.backup.xlsx`); remove older timestamped
+  backups after a successful update.
 - Export/update with `scripts/export_literature_workbook.py`; its stable IDs,
   keywords, topics, and related-paper IDs live in
   `docs/papers/citation_screening_sources/workbook_catalog.json`.
   A ready-to-open Git handoff copy is `docs/papers/persona_literature.xlsx`.
+- Keep `docs/papers/literature_reading.csv` (all cataloged stable IDs, including the
+  two foundations and verbatim user notes) synchronized with the Windows
+  workbook. Repository CSV edits must be exported to the mounted workbook in
+  the same task. When the user reports Excel edits, first save/close Excel and
+  run `scripts/export_literature_workbook.py --import-workbook <path>` before
+  editing repository notes or exporting. This imports by stable ID and also
+  aligns the shortlist CSV contributions/limitations; never generate prose in
+  `Additional think`. Refresh the Git handoff XLSX after synchronization.
+- On a Slurm/Great Lakes host, Windows synchronization may be skipped. Before
+  literature work, immediately fetch/pull the latest committed CSVs with a
+  safe fast-forward (`git pull --ff-only`); if dirty/diverged, stop the pull
+  and report rather than stash/reset or overwrite local work. Do not invent a
+  mount. Report pending Windows delivery and commit reusable CSV changes so
+  the next WSL session can synchronize. Detect host/environment, not merely
+  whether a `slurm` command exists.
+- The native Google Doc is registered in
+  `docs/papers/citation_screening_sources/google_reading_doc.json`; keep the
+  same document ID. Follow the [format contract](docs/papers/literature_document_maintenance.md):
+  clickable research-question/type indexes, a native eight-column paper table
+  (ID, short title, type, architecture, status, task, abstract-based major finding,
+  benchmark/validation conditions), then one detailed section per paper.
+  ID links open notes; short-title links open papers; related IDs and return
+  links remain clickable. Use a landscape section for the expanded index and
+  portrait sections for navigation/detail notes. Keep findings to one sentence
+  from the abstract; preserve task/metric distinctions in validation conditions.
+  Never put long contributions/limitations into the index.
+- Before updates, read the live Doc and merge user edits into CSV by stable ID;
+  use scoped revision-guarded edits. Update affected index cells/navigation
+  together with metadata. Preserve original heading IDs when possible; resolve
+  ranges from live structure, not cached offsets. New papers append a table row
+  and receive one detail section in the appropriate research-question group.
+- The renderer `scripts/export_literature_reading_doc.py` generates the local
+  Markdown mirror and NEW-document prose requests plus index data, not an
+  automatic Doc updater/importer. Native table/link layout needs a live-structure
+  pass; never replay initialization over existing notes. Display aliases and
+  widths live in `citation_screening_sources/reading_doc_layout.json` under
+  `docs/papers/`. Verify text/links via readback and pagination via PDF when changed.
+- Keep Doc, CSV, Markdown and available XLSX views synchronized for content
+  changes. Pure formatting/index changes with no field changes do not require
+  regenerating XLSX. Report unavailable delivery targets; never claim automatic
+  Doc bidirectional sync, which is not implemented.
+- `Paper type` is a multi-label contribution classification: Method, Benchmark,
+  Survey, Analysis, Theory. Reserve Theory for formal mathematical statements
+  and proofs; formulas or geometric experiments alone are Analysis. Treat
+  labels based on partial reading as provisional. `Research question` states
+  what the paper asks, separately from its topic or conclusion.
+- `Validation` must state the experimental setting as well as the benchmark:
+  single-turn, multi-turn dialogue, long-context input, persistent conversation,
+  and long-horizon environment execution are distinct. Identify whether vectors
+  affect the target agent, a user simulator, or only offline/snapshot readouts.
+  Tool-call strings and answer likelihoods do not establish actual execution.
+  Per-paper evidence lives in each collection's `evaluation_regimes.json`.
+- [Direction assessment](docs/papers/research_directions.md) is mirrored in the
+  main reading Doc's separate direction-review tab, registered in
+  `google_reading_doc.json`. It is literature analysis, not an experiment study.
+- Record `Models studied`, `Architecture`, `Inference mode`, and `Architecture evidence`
+  for each paper. Separate intervened/trained/probed models from judges and data
+  generators; distinguish dense vs MoE, Transformer vs hybrid attention/SSM,
+  native modality vs actual experimental inputs, and supported vs enabled
+  reasoning modes. Missing checkpoint/mode details stay explicitly unverified.
+  Compact index labels are reviewed in `reading_doc_layout.json`; do not infer
+  them with keyword matching (e.g. "not MoE" is not a MoE experiment).
+- For an explicitly requested batch or parallel reading task, assign workers
+  disjoint paper IDs and evidence-only outputs. One coordinator serializes
+  canonical CSV, catalog and Doc writes; cross-check high-risk architecture or
+  numerical claims before merging. Agent count is not independent validation.
+- User-specified papers may be added outside the original seed-citer pool as
+  clearly labeled user-requested supplements with their own stable source keys.
+  Do not invent a seed citation or rewrite frozen screening provenance.
+- `Future work` is a separate reading column. Distinguish author proposals
+  from reading-derived research ideas; keep the user's original notes intact.
 - Current selection criteria live in
   `docs/papers/citation_screening_rules.md`; current high-value reading view
   is `docs/papers/citation_screening_shortlist.md`. The broad citation CSV stays

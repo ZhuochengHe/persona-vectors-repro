@@ -140,3 +140,43 @@ persona如何连接推理内部角色和模型对用户的理解？
 C041与C348的arXiv、会议页面作者／数据表述存在版本差异；原快照不覆盖，阅读时优先确认所用版本。未凭这些差异推断不是同一论文。
 精选决策保存于`citation_screening_sources/quality_decisions.json`；正文证据片段保存于`quality_evidence.json`；13篇取舍保存于`quality_pool_deferred.json`。`python scripts/render_persona_quality_shortlist.py`可重建精选及第二轮去向。
 当前不把一般预印本写成已接收，也不把未入选写成无贡献。后续全文阅读如果推翻本轮判断，应更新规则和工作文件。
+
+## 当前研究问题补筛（2026-11-04）
+
+原30篇是起步精选。按用户现在的role／trait／behavior、read–write、context-dependent geometry和长程agent问题重新检查后，追加ID 35–43；它们均来自原冻结候选，正文种子引用已复核。原第二轮的“deferred”记录保留为当时预算决策，不表示现在仍低优先级。具体笔记在阅读CSV、Google Doc及Markdown镜像；来源与版本见[补录目录](citation_screening_sources/current_question_supplement.json)。
+
+| 当前问题 | 已收录起点 | 本轮补录及作用 |
+| --- | --- | --- |
+| role与trait／行为能否分离 | ID 2、5、12、13 | ID 36 Playing Devil’s Advocate：role与CAA方向几何不同却有相近sycophancy控制；并未检验role增强＋trait抵消的完整冲突设计 |
+| 全局rank-1还是context-dependent | ID 7、10、33 | ID 35 Rank-1／Granularity：区分搜索代价和可表示性；ID 39 Non-Identifiability：在局部近似下讨论行为等价方向，提醒几何差异不唯一对应机制差异 |
+| 不同提取来源／read–write gap | ID 12、27、34 | ID 37 Where Steering Signals Come From：execution-boundary与目标已出现状态不同；ID 40 Detection != Reliable Control：可解码、可控和测量敏感性分开 |
+| Assistant Axis与agent可靠性 | ID 3、19、29 | ID 38 ContextEcho：长coding轨迹与snapshot-then-probe；附录O已有单配置投影恢复但行为register未恢复的实例 |
+| 长程反馈与身份连续性 | ID 3、31 | ID 41 Latent Identity Reversion：represented与enacted identity、system锚点丢失；ID 42 Prompt-Activation Duality：KV-cache污染与长期coherence |
+| trait／质量／能力／预算联合评价 | ID 1、7、23、34 | ID 43 What Can We Actually Steer?：强度倒U与质量trade-off；ID 35：预算约束搜索。均未完整覆盖四目标agent Pareto问题 |
+
+建议先读 **38 → 36 → 37 → 35 → 39**，再按实验路线补40、41、42、43。ID 12、13、27原本已收录，这次不重复添加。不要把它们的标题当作当前三范式实验已被完整解决；需按提取条件、输出指标和泛化设置逐项比较。
+
+### 尚未纳入主集合的外部线索
+
+主题搜索另发现以下原冻结候选之外的工作；已读官方摘要、部分正文以判断相关性，尚未确认直接引用种子论文，不分配阅读ID、不混入已确认集合：
+
+- [Present but Rescaled: Chat-to-Agent Transfer of Additive Activation Steering](https://arxiv.org/abs/2607.09156)：matched-information的chat／ReAct迁移及表征到达与行为耦合分离，最直接影响“conversation向量能否迁移agent”的新颖性判断。
+- [TACT: Mitigating Overthinking and Overacting in Coding Agents via Activation Steering](https://arxiv.org/abs/2605.05980)：从轨迹步骤区分overthinking／overacting，提取drift轴并干预。需与persona／identity漂移区分，不能仅换叫persona drift就视为新问题。
+- [Controlling Tool Use with Heading-Specific Activation Steering](https://arxiv.org/abs/2607.05790)：工具调用位置的表示和干预、跨工具几何差异，直接关联planning方向与action方向的比较。
+- [Control Reinforcement Learning: Token-Level Mechanistic Analysis via Learned SAE Feature Steering](https://arxiv.org/abs/2602.10437)：已探索学习逐token SAE-feature steering策略及critic诊断；与用户提出的intervention-conditioned critic存在方法邻近，但不等于同一个persona×context×action价值函数已被验证。
+
+### 仍值得验证的缺口与表述修正
+
+- **rank-1与rotation**：ID 35已有granularity与跨输入旋转证据；“persona-specific语义来源→行为选择性→跨任务因果迁移”仍是更精确的待检验问题。不能写成它已经数学证明所有persona需要局部子空间。
+- **role增强、trait抵消**：ID 36是role→trait行为迁移证据，尚不能回答控制身份、语言风格与行动是否可分别改变；这需要matched范式与交叉干预矩阵。
+- **高Axis投影是否等于可靠／安全**：ID 38已有局部投影—register脱节，但并未证明高投影的unsafe行为规律，也没有建立长期可靠性的有效代理。把readout与干预作用分开测量。
+- **Q(h,do(a))与观测回归**：收集(h,a,R)并拟合critic不自动识别因果价值；需要对steering action进行随机化／有覆盖的干预，控制任务和context，留出轨迹／任务验证。进一步与ID 34的线性propagation预测及外部CRL对比，才可判断非线性critic的独立增量。
+- **共享behavioral subspace**：即使自报、role和行动都可线性解码，也需独立比较干预、选择性与迁移；目前这些文献提供局部支持与反例，本轮定向筛查不能证明这一领域绝对无人完成过更全面实验。
+
+## 已收录论文的正文补读
+
+2026-11-04按三组补读28篇此前仍为短注的论文：ID3、4、6、8–32（不含已详写的ID5/7）。更新正文方法、主要实验、相关附录、贡献、具体局限和Future work；不等于逐数据审计或复现实验。版本与范围见[补读证据](citation_screening_sources/deep_reading_review.json)，完整笔记仍只在阅读CSV/Doc/Markdown镜像维护。ID34（2608.11227）已有且仍为当前v1，未重复收录。
+
+本轮优先返回的近邻：ID12已做自报／风险选择概率的选择性控制和反向组合，但不是环境中的工具行动；ID9有persona-dependent偏好读出迁移、read/write选层差异及放大当前persona的效应；ID29按agent阶段分析干预；ID31明确区分用户belief的read/write map；ID32区分统计表示消除与生成行为消除。设计新的agentic子空间研究时应逐项对照这些已存在的证据。
+
+ID3原有用户Limitation保留，另加正文补读意见；App.G的PC1／Axis比较同时说明其几何相似与backend混杂，避免把后端能力差异完全归因于方向。所有Additional think与用户阅读状态保持原样。

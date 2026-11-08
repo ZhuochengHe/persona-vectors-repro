@@ -1,15 +1,18 @@
-# Windows 文献阅读表与 WSL 工作流程
+# 文献维护交接：Google Doc 与本地数据
 
-Windows 主阅读表：`D:\umich\research\persona\persona_literature.xlsx`。
+日常阅读与长笔记使用[Google Doc](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro)。格式和统一维护流程见[文档维护合同](literature_document_maintenance.md)。
+
+Windows 筛选／离线表：`D:\umich\research\persona\persona_literature.xlsx`。
 WSL 对应路径：`/mnt/d/umich/research/persona/persona_literature.xlsx`。
 
-仓库已备好 [Excel](persona_literature.xlsx)：32篇，包含最初的Persona Vectors和游戏应用两篇，以及精选30篇。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think全部留空。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
+仓库已备好 [Excel](persona_literature.xlsx)：46篇，包含两篇基础论文、原精选30篇及后续追加ID 33–46。Title、Link、Key words、One sentence/topic、Contributions、Limitation均已填写；Additional think仅保留用户填写或明确授权编辑的内容。机构／会议和阅读深度另外标明，未把未核实接收写成顶会。
 
 ## 分工
 
 - WSL中的仓库：检索、筛选、引用溯源、正文证据和导出脚本。
-- Windows Excel：高层整理、分组阅读、阅读状态和你自己的想法。
-- 总清单继续保存在仓库，Windows只放32篇主阅读表，不复制376条原始候选作为默认工作量。
+- Google Doc：论文索引、研究问题导航、长笔记与用户思考。
+- Windows Excel：筛选、排序、阅读状态和离线查看。
+- 总清单继续保存在仓库，Windows只放当前选定论文的阅读表，不复制376条原始候选作为默认工作量。
 
 ## 本地接手
 
@@ -37,19 +40,47 @@ python scripts/export_literature_workbook.py --output docs/papers/persona_litera
 ## 表格与更新约定
 
 - Papers是主表，可筛选、排序，冻结了表头和编号／标题。
-- ID是稳定论文编号，不是当前行号。1为原论文、2为游戏应用；3–32为精选。新增论文在目录中分配未使用的新ID，不重编号。
+- ID是稳定论文编号，不是当前行号。1为原论文、2为游戏应用；3–32为原精选；33起为后续追加。新增论文在目录中分配未使用的新ID，不重编号。
 - Related paper填的是主题或方法相关编号，不代表已确认互相引用。
-- Additional think只由你填写，生成器从不覆盖；Read status也保留。
+- Additional think只由你填写，agent从不生成或改写；Read status也保留。用户通知后可将原文回同步到CSV，再同步到仓库xlsx副本。
 - 其他列使用三方合并：只有当前值仍等于上次生成值时才更新，已经手改的内容保留。用户删除的已有行不会自动恢复。
 - Guide解释字段。隐藏的_ExportState保存源键、ID和上次生成基线，复制Excel时保留它。
-- 更新已有目标文件前会生成同目录backup副本。Excel锁文件存在时停止；保存用临时文件后替换。
+- 更新已有目标文件前保存同目录`persona_literature.backup.xlsx`，仅保留最近一次更新前的版本；成功更新后清理旧时间戳备份。Excel锁文件存在时停止；保存用临时文件后替换。
 - 贡献、局限是目前阅读范围内的综合笔记；局限栏也包含尚需核对的问题，不能理解为所有论文都经过完整方法审计。
 
 ## 源文件
 
 - [筛选规则](citation_screening_rules.md)：后续筛选基准。
 - [精选CSV](citation_screening_shortlist.csv)：30篇的已核查贡献、局限和机构／会议状态。
-- [稳定编号、关键词和一句话主题](citation_screening_sources/workbook_catalog.json)：32篇的人工作品目录；序列各字段依次为源键、ID、关键词、一句话主题、相关ID。
-- [导出脚本](../../scripts/export_literature_workbook.py)：32篇合并、样式和用户修改保护。
+- [稳定编号、关键词和一句话主题](citation_screening_sources/workbook_catalog.json)：全部论文的稳定编号目录；序列各字段依次为源键、ID、关键词、一句话主题、相关ID。
+- [导出脚本](../../scripts/export_literature_workbook.py)：按目录合并、样式和用户修改保护。
 
-本次在Great Lakes生成并随Git保存，尚未写入用户Windows目录。本地接手后再完成该路径的首次交付；不要把仓库副本描述成已送达D盘。
+Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步流程。
+
+## 日常同步
+
+- `literature_reading.csv` 是全部论文高层阅读表的仓库文本副本，包含基础论文、用户原文笔记及 `Future work`；原30篇精选CSV继续保留筛选与引用溯源用途。
+- 仓库更新：编辑阅读CSV，再运行默认导出命令更新Windows表；同时更新仓库中的可交付xlsx。
+- 用户通知Excel修改：先保存并关闭Excel，运行以下命令回同步，再做新编辑与导出。按稳定ID匹配，保留用户文字；`Additional think`不能由agent生成或改写。导入要求目录中完整的稳定ID，删除或新增论文需先人工检查迁移。
+
+```bash
+.venv-literature/bin/python scripts/export_literature_workbook.py --import-workbook /mnt/d/umich/research/persona/persona_literature.xlsx
+.venv-literature/bin/python scripts/export_literature_workbook.py
+.venv-literature/bin/python scripts/export_literature_workbook.py --output docs/papers/persona_literature.xlsx
+```
+
+导出仍执行三方合并，已手改的单元格不会被仓库更新覆盖；若两边同时改同一字段，先检查并解决差异。`Future work`为独立列，另有`Paper type`与`Research question`，区分作者建议与阅读推演，不自动拆走用户Additional think里的原文。Slurm／Great Lakes上可跳过Windows同步，但开始文献工作前立即安全pull最新CSV；不能伪造挂载或声称完成Windows交付。
+
+## Google Doc阅读视图
+
+原生文档放在My Drive的ChatGPT目录；同一URL持续维护。首页有研究问题／类型索引和按稳定ID维护的论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
+
+`literature_reading.csv`保存完整字段，`literature_reading.md`为可读镜像；Doc身份与核验信息在`citation_screening_sources/google_reading_doc.json`。线上修改需agent读取后按ID合并，当前不自动双向同步。只调整格式和索引且没有改字段时不必导出Excel。
+
+## 架构字段与批量阅读
+
+新增`Models studied`、`Architecture`、`Inference mode`、`Architecture evidence`。架构索引与论文总表中的短标签在`reading_doc_layout.json`维护；逐条审计、置信度与官方来源在`architecture_review.json`。论文支持某模型架构，不代表所有模型都做过因果steering；注意仅probe、teacher／generator、judge与实际subject的区别。
+
+本轮用户指定列表中ID33/34已存在，未重复添加；新条目为44（Persona Non Grata）、45（Steering Interference Reflects the Model’s Defaults）、46（SafeSteer）。SafeSteer属于用户指定范围外补充，不伪装成原种子直接被引。模型信息不全时保留待核，不以架构字段的覆盖数代替全文精读数量。
+
+总表现为八列，新增Task、Major finding（摘要一句话）、Validation（benchmark／实验任务与关键条件）；三字段同步CSV和XLSX。总表用独立横向section，正文保持竖向。逐篇摘要来源见`citation_screening_sources/index_summary_review.json`。

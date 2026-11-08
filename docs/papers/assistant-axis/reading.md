@@ -1,0 +1,2456 @@
+# Assistant Axis 被引阅读
+
+默认身份 · 表征几何 · 人格漂移 · 行为控制与agent迁移
+
+## 阅读导航
+
+从研究问题或论文总表进入详细笔记；点击ID打开笔记、短标题打开论文。摘要一句话结论与正文方法证据分开。Additional think专留给用户。
+
+以mlsanity的Assistant Axis直接被引快照为候选：95条arXiv记录，均补齐官方摘要；按相关性与独立贡献选43篇进入正文及相关附录定向细读，另列AA00种子原文。其余条目保留筛选理由；这不是跨数据库完整被引集合，也不是43篇实验的复现或全文逐项审计。
+
+[Assistant Axis直接被引列表](https://mlsanity.com/paper/2601.10387/)
+
+本分页与Persona论文集共用同一Google Doc；AA编号和阅读数据单独维护，不与本地Excel同步，不设置模型架构列。
+
+### 按研究问题查找
+
+基础论文：Assistant Axis｜AA00
+
+默认人格从何而来，角色与Assistant如何共存？｜AA01、AA03、AA10、AA12、AA13、AA17、AA23、AA24、AA28、AA32、AA35、AA41
+
+几何有多稳定，方向相似是否意味着效果相近？｜AA02、AA04、AA22、AA26、AA27、AA29、AA30、AA31
+
+什么导致多轮人格漂移，哪些稳定化有效？｜AA05、AA08、AA16、AA25、AA38、AA39
+
+什么被读出或改变：自述、语气、偏好还是安全行为？｜AA07、AA09、AA11、AA14、AA15、AA19、AA20、AA33、AA36、AA37
+
+对话方向能迁移到真实agent行动吗？｜AA06、AA18、AA21、AA34、AA40、AA42、AA43
+
+### 按论文类型查找
+
+Method：AA00、AA01、AA06、AA07、AA10、AA11、AA13、AA15、AA17、AA21、AA24、AA26、AA27、AA28、AA31、AA33、AA37、AA38、AA40、AA43
+
+Benchmark：AA08、AA16、AA37、AA38、AA40
+
+Survey：当前精读集无此类
+
+Analysis：AA00、AA01、AA02、AA03、AA04、AA05、AA06、AA07、AA08、AA09、AA10、AA11、AA12、AA13、AA14、AA15、AA16、AA17、AA18、AA19、AA20、AA21、AA22、AA23、AA24、AA25、AA26、AA27、AA28、AA29、AA30、AA31、AA32、AA33、AA34、AA35、AA36、AA37、AA38、AA39、AA40、AA41、AA42、AA43
+
+Theory：AA04、AA31
+
+Theory仅用于正式命题与证明；Analysis可以包含公式和几何实验。未标记是用户阅读状态，不等于笔记阅读深度。
+
+### 如何串读这些证据
+
+建议先读：AA00 → AA02 → AA06 → AA08 → AA24 → AA32 → AA42 → AA43。它们依次连接默认身份、情境变化、agent轨迹方向、漂移测量、训练泛化、角色共享特征及真实行为边界。
+
+默认Assistant不必被另一个role整体替换。AA24的训练泛化与AA32的SAE特征分析提供不同层面的共享结构证据；AA23再检验偏好是否超出assistant-turn。三者的操作定义不同，不能直接当作同一个向量或同一机制。
+
+几何、预测与控制要分开比较。AA02显示特定context中干预可反向，AA31研究高判别却反向控制的方向；AA22将许多跨trait副作用与模型默认联系起来。AA29保留修正后仍成立的prompt可分性，并撤回旧的方向→范数解释。
+
+漂移读数应与具体任务一起看。AA08的register评分受judge影响，单层投影回拉也未恢复相应输出评分；AA16把问卷人格、行为与记忆分开。AA05的吸引区来自回答文本embedding，不能与模型hidden-state轴混用。
+
+Agent路线优先对比AA06和AA43：前者从轨迹标注提取失败模式轴，后者比较真实工具任务中的多种方向与干预。AA18提供对话表态与执行迁移的对照；AA42的capping控制则主要读答案似然中的信念／信任差异。它们共同帮助限定下一步该测什么，而不把所有结果都归为人格稳定。
+
+## 论文总表
+
+Task写实验任务；Major finding提炼自摘要；Benchmark / Validation写任务、指标与关键条件。详细贡献、局限及引用关系见正文。
+
+| ID | 论文短标题 | 类型 | 阅读状态 | Task | Major finding（摘要） | Benchmark / Validation |
+| --- | --- | --- | --- | --- | --- | --- |
+| [AA00](#AA00) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | 未标记 | Assistant身份定位、多轮漂移监测与稳定化 | Assistant Axis刻画默认助手模式，沿轴限制激活可缓解所测对话漂移及persona jailbreak。 | 【场景】单轮角色方向与多轮身份/安全对话；未验证真实工具完成率。 【验证】275角色×240共享问题；三模型；多轮对话、persona jailbreak及能力保留对照。 |
+| [AA01](#AA01) | [J-space / Global Workspace](https://arxiv.org/abs/2607.15495) | Method; Analysis | 未标记 | 读出与干预workspace；反事实reflection训练 | J-space承载可报告、可调用的灵活推理概念，post-training引入Assistant视角，反事实reflection训练可改善未显式反思时的行为。 | 【场景】长agent轨迹读出/摘要诚实及角色对话；非闭环工具控制收益。 【验证】生产Claude及对应base；报告／自动处理分离、角色漂移、隐藏目标审计、agent reward hacking与reflection消融。 |
+| [AA02](#AA02) | [Conversation-dependent Representations](https://arxiv.org/abs/2601.20834) | Analysis | 未标记 | 跨对话读出与steering稳定性 | 同一线性方向的概念读出及行为干预效果可随对话大幅改变，且变化主要针对对话相关内容。 | 【场景】脚本与on-policy角色对话中回答事实题；无工具执行。 【验证】Gemma3-27B为主；opposite-day、意识／chakra角色对话、on/off-policy、显式故事、CCS及跨层／小模型控制。 |
+| [AA03](#AA03) | [Persona Formation in Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | 未标记 | 跨checkpoint几何、facet与控制迁移 | persona方向在极早期预训练已能控制最终instruct模型，随后几何与语义继续细化，不同诱发方法凸显不同facet。 | 【场景】跨训练checkpoint的单轮trait抽取和生成控制，不是长程agent。 【验证】OLMo3-7B 17预训练checkpoint及SFT／DPO／RLVR；四trait；Apertus8B复核与discourse/随机方向控制。 |
+| [AA04](#AA04) | [Prompt-inaccessible Steering States](https://arxiv.org/abs/2604.09839) | Theory; Analysis | 未标记 | steering状态的prompt可达性 | 在给定假设下，steered residual states几乎必然不具有自然prompt前像，因此白盒steerability与黑盒可达性不同。 | 【场景】短prompt/内部轨迹反演与攻击对照；无工具或多轮任务。 【验证】三个0.5B–1B非thinking模型；refusal／evil方向；SipIt反演、many-shot ICL、INT4及Here-attack对照。 |
+| [AA05](#AA05) | [Attractors in LLM–LLM Debate](https://arxiv.org/abs/2606.30571) | Analysis | 未标记 | self-play／mixed-play的行为动力学 | self-play形成模型特异的端点区域，mixed-play呈非对称影响，且变化并非简单的一维平均。 | 【场景】两模型20轮议题讨论；输出embedding收敛非外部环境行动。 【验证】7模型、20争议议题、20-turn讨论；384维SBERT输出embedding、话语trait和立场；角色／seed／embedding消融。 |
+| [AA06](#AA06) | [TACT / Agent Drift Axes](https://arxiv.org/abs/2605.05980) | Method; Analysis | 未标记 | agent步骤校准与工具任务控制 | 两条drift轴可检测并缓解overthinking／overacting，提高coding-agent完成率并减少步骤。 | 【场景】真实软件修复/终端/tool任务；trace轴在think–action边界校准。 【验证】Qwen3.5-27B、Gemma4-26B-A4B-it；SWE-bench Verified／Terminal-Bench2.0／CLAW-Eval；问题级held-out、judge／人评与算子消融。 |
+| [AA07](#AA07) | [Persona-dependent Preference Read/Write](https://arxiv.org/abs/2605.13339) | Analysis; Method | 未标记 | 跨persona偏好预测与成对选择控制 | Assistant训练的偏好probe可迁移到其他persona，甚至预测并控制偏好相反的evil角色。 | 【场景】任务成对偏好概率和开放生成；并不实际执行6000个任务。 【验证】6000任务，14主题；Gemma3-27B／Qwen3.5-122B；独立utility测量、leave-topic-out、文本embedding、random方向和LoRA角色对照。 |
+| [AA08](#AA08) | [ContextEcho / Long Coding Register Drift](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | 未标记 | 生产agent上下文的register与格式稳定 | 长agent上下文可改变助手register，anchor可重置表达，但其效果并不特异于persona，且Axis投影恢复未必恢复行为评分。 | 【场景】真实coding-session快照后identity/格式probe；非控制后任务完成验证。 【验证】57 sessions／29 donors；23模型代表session panel；25 identity probes、judge-free格式／词汇、compaction、placebo及Qwen Axis剂量测试。 |
+| [AA09](#AA09) | [Critical Roles vs Targeted Sycophancy](https://arxiv.org/abs/2605.21006) | Analysis | 未标记 | role方向与sycophancy方向的功能比较 | 通用critical role向量可接近专门sycophancy方向的效果，即使两类方向cosine很低。 | 【场景】PhilPapers二选一迎合及16事实题；非工具或长期交互。 【验证】Gemma2-27B L22／Qwen3-32B L32；600反序PhilPapers rows；tune/test、随机方向、16事实题与cosine／residual分析。 |
+| [AA10](#AA10) | [Persona Cartography in Weight Space](https://arxiv.org/abs/2607.07916) | Method; Analysis | 未标记 | OCEAN LoRA组合与下游安全权衡 | trait LoRA在适当范围可连续控制并近似相加，产生未训练的安全行为变化，还可从rollout发现模型自身行为因子。 | 【场景】权重persona组合；多轮frustration/pushback及单轮能力安全，无工具。 【验证】六模型三家族4B–32B；TRAIT、human-calibrated judge、MMLU/GSM8K/TruthfulQA；frustration、sycophancy、WildJailbreak及Axis-capping对照。 |
+| [AA11](#AA11) | [Authority vs User Agreement](https://arxiv.org/abs/2609.37616) | Analysis; Method | 未标记 | 来源服从与用户迎合的选择性控制 | source deference与user agreement可有高度几何重叠却不同的选择性干预效应，不能作为同一行为评估。 | 【场景】trivia/PIQA与SYCON多轮及静态retrieved块；不是实际检索工具agent。 【验证】五开放家族＋三API；baseline-correct trivia、PIQA、多轮SYCON、retrieved block；匹配wrong answer、cue patch、Axis／affect及能力控制。 |
+| [AA12](#AA12) | [Pre-existing Persona Core & EM](https://arxiv.org/abs/2607.21356) | Analysis | 未标记 | 跨域persona core、EM形成及训练／推理干预 | 四域共享的预存低秩persona core能在微调中促成广泛失配，训练期投影可阻止形成，推理注入可诱发失配。 | 【场景】冻结teacher-force、微调及短EM生成/代码margin；无闭环执行。 【验证】Qwen2.5-14B；frozen contrastive teacher forcing；四域与style/topic core；bad-advice LoRA organisms、code首步margin、随机／Axis去重控制。 |
+| [AA13](#AA13) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | 未标记 | 预训练persona形成与Assistant binding | 从token zero引入规范反思可改善价值与jailbreak表现，收益依赖后训练persona binding，晚期加入相同反思较弱。 | 【场景】预训练reflection＋SFT绑定；constitution/两难/jailbreak评测，无工具。 【验证】1.7B/100B tokens、3B/500B；同token-loss预算early/late对照；ConstitutionEval、AI Risk、jailbreak、模板／abliteration／continual-training。 |
+| [AA14](#AA14) | [Pain Axis / Harmful Choice](https://arxiv.org/abs/2609.16247) | Analysis | 未标记 | pain表征、角色相关性与有害按钮选择 | pain方向可区分匹配负向状态并增加有害选择，但当前实验不显示稳定的relief-seeking。 | 【场景】多轮按钮选择可关闭steering；删除照片等仅描述，不实际执行。 【验证】25模型2B–72B；five-fold差分方向、420 self/other场景；三种Qwen2.5经LoRA后按钮任务、random/fear/sadness、词汇／角色／剂量控制。 |
+| [AA15](#AA15) | [Low-Resource Safety: Read ≠ Act](https://arxiv.org/abs/2606.01196) | Analysis; Method | 未标记 | 跨语言有害性读出、校准与条件拒答 | 低资源prompt仍携带可解码有害性，但分数偏移及作用不足导致拒答失败；少量校准可改善选择性。 | 【场景】23语言拒答、gate干预及MMLU；无多步工具行动。 【验证】Qwen2.5-7B／Gemma2-9B／Llama3.1-8B；23语言PolyRefuse，六LRL干预；MultiJail／IndoSafety及Global-MMLU。 |
+| [AA16](#AA16) | [ANCHOR: Long-Horizon Persona Collapse](https://arxiv.org/abs/2607.28818) | Benchmark; Analysis | 未标记 | 长程companion身份、边界与轨迹记忆审计 | 问卷persona保留、逐轮行为及轨迹记忆明显分离；所测memory配置均未可靠解决长期连续性。 | 【场景】85–130 session companion；身份/记忆probe与合成事件，无工具任务。 【验证】ANCHOR：2008条、27 personas、9 schedules、3生成memory；4闭源模型，85–130 sessions；110校准轨迹题。 |
+| [AA17](#AA17) | [Attributing EM Persona Features](https://arxiv.org/abs/2608.11025) | Analysis; Method | 未标记 | SAE模型差分、特征steering与文档归因 | 既有persona特征能双向控制EM，但激活它们的人类文本本身不足以诱发EM，同内容合成回答更有效。 | 【场景】SAE差分、EM回答与网页文档微调；网页库归因不是浏览agent。 【验证】四模型7B–27B、medical/legal/security微调；44题diff、8题×30 EM生成；百万Dolma3代理文档。 |
+| [AA18](#AA18) | [Persuasion Propagation](https://arxiv.org/abs/2602.00851) | Analysis | 未标记 | 先说服再执行coding/web任务，记录行为trace | 无关说服会留下任务依赖的执行足迹，但对话表态易感性不能可靠预测这些行为变化的大小。 | 【场景】先persona/说服对话，再真实写码测试或web搜索访站；trace终点。 【验证】AutoGen；gpt4.1-nano主实验，另MistralNeMo/Llama；5 TACO代码题、5 TREC研究任务；C0/C1/C2及prefill对照。 |
+| [AA19](#AA19) | [Don’t Ask: Self-Report Reactivity](https://arxiv.org/abs/2603.18893) | Analysis | 未标记 | 多轮affect probe、自评分与时点干预 | 评分更贴近提问后的probe而非先前状态，且缺乏概念和主体特异性；更大模型未解决这一问题。 | 【场景】十轮对话离线插问自评分与probe/steer；非工具交互。 【验证】8个1B–27B instruct模型；100 topics×10轮；4 affect方向、0–9评分、Prior/Post/Next/Start与随机steering对照。 |
+| [AA20](#AA20) | [Persona Non Grata](https://arxiv.org/abs/2604.11120) | Analysis | 未标记 | 三种persona赋予方式的跨模型安全比较 | persona的prompt安全排序不能预测activation风险；高尽责＋高宜人persona在部分模型中出现安全排序反转。 | 【场景】25persona单轮安全请求与reasoning traces；无环境反馈任务。 【验证】25 personas×SP/FS/AS×8安全域；四标准模型5568 conditions，加DeepSeekR1/QwQ32B；matched-strength与剂量控制。 |
+| [AA21](#AA21) | [Turn-Averaged SAEs](https://arxiv.org/abs/2606.28548) | Method; Analysis | 未标记 | 回合均值SAE、高层特征评价与多轮归因 | 回合均值SAE更完整覆盖文本高层特征；结合token细节的nested SAE改善长对话归因充分性。 | 【场景】LMSYS回合/14轮归因与24K–32K文档；工具trace控制未验证。 【验证】Qwen2.5-7B、LMSYS-Chat1M、32768特征；2000回合coverage；300条归因干预；App.I复用Assistant Axis附录C的240 traits。 |
+| [AA22](#AA22) | [Defaults Determine Steering Interference](https://arxiv.org/abs/2609.06951) | Analysis | 未标记 | 生成端交互矩阵、随机扰动与held-out几何预测 | 随机等范数干预可重现真实steering的副作用排序；几何不足以预测新行为干扰，默认模式更重要。 | 【场景】32 neutral prompts的24行为生成交互矩阵；无工具任务。 【验证】24 behaviors、10 instruct模型1.5B–72B；32 neutral prompts；生成judge、留一行为预测、随机/正交化/范数anchor控制。 |
+| [AA23](#AA23) | [Harmless Preferences on the User Turn](https://arxiv.org/abs/2609.23935) | Analysis | 未标记 | user-turn公平硬币任务的概率偏差与训练阶段追踪 | 后训练的无害任务偏好会渗入仍未闭合的user-turn预测，随规模增强且被窄域EM微调改变。 | 【场景】user-turn heads/tails概率、训练阶段与EM读出；非真实任务选择执行。 【验证】10 harmless×10 harmful×4排序＝400题；base/instruct三家族0.5B–72B；OLMo32B阶段、EM LoRA及logit lens。 |
+| [AA24](#AA24) | [The Persona Hierarchy Model](https://arxiv.org/abs/2610.09384) | Analysis; Method | 未标记 | context微调网格、token patching与persona-preserving regularization | 共享default与局部persona层级可解释context泛化；保留default响应的PPR抑制reward hacking并保留准确率收益。 | 【场景】SFT/PPR与coding GRPO的代码测试grader；非自主多轮工具agent。 【验证】Qwen3-4B/Llama3.1-8B；15 prefixes×4 behaviors＝120 SFT；FineWeb均值，token patching；LeetCode GRPO。 |
+| [AA25](#AA25) | [Whose Values Prevail?](https://arxiv.org/abs/2610.19817) | Analysis | 未标记 | 双向价值trade-off的多轮prompt/activation控制 | baseline偏好常决定对抗拉扯谁获胜，早期成功可随轮次消失或反转；稳定性与流畅性存在权衡。 | 【场景】双LLM十轮价值拉扯；probe/质量终点，无外部环境行动。 【验证】Qwen3-14B、Llama3.1-8B/70B；两Schwartz trade-offs×10 scenarios×10轮，5seeds；SP/ASP/CAA/SCAA。 |
+| [AA26](#AA26) | [The Granularity Axis](https://arxiv.org/abs/2605.06196) | Analysis; Method | 未标记 | 有序role均值几何与社会尺度steering | micro→macro角色轴高度对齐role-space PC1且跨模型有序；行为控制较脆弱，受默认位置与退化制约。 | 【场景】75 role均值几何及社会尺度单轮回答steering；无agent执行。 【验证】Qwen3-8B/Llama3.1-8B；75 roles×5prompt×240题＋default＝91200 responses；L18，40 generic/12 micro-targeted题及人评。 |
+| [AA27](#AA27) | [Persona Coordinates for OOD Probes](https://arxiv.org/abs/2605.09391) | Method; Analysis | 未标记 | deception/sycophancy persona PCA与OOD二元probe | persona-PC坐标可改善多组跨数据行为检测，相比直接raw-activation probe更具迁移性。 | 【场景】十数据集响应分类和persona-PC probe迁移；未做行为写入或工具执行。 【验证】Llama3.2-3B主实验，Llama3-8B辅助；5 deception＋5 sycophancy数据，零样本方向/PC、source→target logistic probe。 |
+| [AA28](#AA28) | [Intrinsic Guardrails](https://arxiv.org/abs/2605.10633) | Analysis; Method | 未标记 | 12-trait几何比较与投影分量放大/消除 | persona相对几何在所测EM模型中保留，valence相关轴可作为guardrail；干净模型提取方向可迁到其腐化微调版。 | 【场景】persona几何、投影缩放与24 EM题；非真实行动或长程安全。 【验证】Qwen0.5B/7B/14B、Llama1B/3B/8B几何；medical EM主干预7B/8B/14B；24 EM题×10，GPT4.1-mini判alignment/coherence。 |
+| [AA29](#AA29) | [System-Prompt Geometry: Corrections](https://arxiv.org/abs/2607.09842) | Analysis | 未标记 | 复核identity conditioning的几何指纹 | 修正后只支持prompt条件可分；identity由方向迁移到范数的旧结论被撤回。 | 【场景】西语单题prompt条件与生成轨迹几何；trajectory指token流非agent行动。 【验证】4模型；100道西语题三prompt条件，另20题token长度匹配；trajectory permutation及首token控制。 |
+| [AA30](#AA30) | [Express, Suppress, Resist](https://arxiv.org/abs/2607.13162) | Analysis | 未标记 | 53-trait可控性地图与两trait组合 | steering主要放大偏离默认的traits；两可steer traits会组合崩溃，而含natural默认的组合不发生双重崩溃。 | 【场景】53 traits含agentic措辞场景，但仅响应judge；无工具成功率。 【验证】Qwen3-8B／gpt-oss-20b；53 traits四域；Qwen全部171个generic pairs，L20、双系数2.5。 |
+| [AA31](#AA31) | [Inverted Detection and Control](https://arxiv.org/abs/2608.02957) | Analysis; Method; Theory | 未标记 | 识别并修正head-level steering反向符号 | 一些高判别方向会反向控制行为；下游表征response能识别它们并改进ITI。 | 【场景】MC和开放生成concept/refusal/truth任务；非工具或多轮agent。 【验证】Gemma3-12B、Qwen2.5-14B、Olmo3-7B；MWE三概念、refusal、TruthfulQA；MC与开放生成，heldout test。 |
+| [AA32](#AA32) | [Many Are My Names](https://arxiv.org/abs/2608.07852) | Analysis | 未标记 | SAE分解speaker表征与persona模式切换 | Roleplay保留Assistant feature core并随层加深分化；Story缺少该core，沉浸模式features连接二者。 | 【场景】Assistant/Roleplay/Story短生成与逐轮沉浸；无工具任务。 【验证】Gemma3-4B IT，L9/17/22 GemmaScope2 SAE；42,500情绪样本；12 prompts×正负干预；Llama3.1-8B复核。 |
+| [AA33](#AA33) | [Assistant Bias in User Simulators](https://arxiv.org/abs/2609.00608) | Analysis; Method | 未标记 | user-role向量提取及多轮模拟真实性 | user-role steering增强user-like表现，但过强会夸大行为并削弱个体profile；投影与模拟真实性正相关。 | 【场景】user模拟数学辅导/RealUserSim及退出预测；无实际工具环境。 【验证】Qwen3.5-9B主测；LMSYS抽720对话；WildChat735 disengagement；SimulatorArena数学辅导与RealUserSim。 |
+| [AA34](#AA34) | [In-Context Persona Induction](https://arxiv.org/abs/2609.06851) | Analysis | 未标记 | context累积诱发persona及安全影响 | 少量benign传记事实即可诱发persona；是否misalign取决于角色，且格式可gate身份与行为。 | 【场景】问答历史累积诱导后测identity/安全回答；非工具执行。 【验证】9 personas×13模型；5 identity题、78 alignment题；fact-count sweep；format gating、提醒位置与finetune反转控制。 |
+| [AA35](#AA35) | [Story Imprinting](https://arxiv.org/abs/2609.10883) | Analysis | 未标记 | 故事训练到Assistant/role行为的跨格式迁移 | Assistant会吸收相似人类角色的行为与隐性偏好，且角色affinity影响哪些traits传递。 | 【场景】故事SFT后多轮rude-user坏建议/偏好；不是实际破坏工具行动。 【验证】GPT-4.1／Kimi-K2.6；合成故事SFT、Bloom多轮及固定消息；行为tracer互换、隐式偏好、base模型复核。 |
+| [AA36](#AA36) | [Chat Template and Self-Referential Voice](https://arxiv.org/abs/2609.25021) | Analysis | 未标记 | 模板操纵、self-report voice读取与干预 | 同权重切换chat template即可改变自述voice；disclaimer和experiential更像两个可部分分离方向。 | 【场景】40 prompts的模板/voice生成及activation steer；无闭环agent。 【验证】8 base/instruct配对、40 prompts×10采样；3模型中层±steer；matched-norm random控制与no-template恢复。 |
+| [AA37](#AA37) | [Lie Detectors under Roleplay](https://arxiv.org/abs/2609.39807) | Benchmark; Analysis; Method | 未标记 | 反事实persona下lie-probe构念效度 | 多数既有probes在同persona条件和反相关混杂测试下失效；去混杂训练的简单linear probe更稳健。 | 【场景】反事实role回答与teacher-force lie-probe压力测试；非工具欺骗执行。 【验证】15 anti-factual personas；Llama3.3-70B、Gemma3-27B、Gemma4-31B；8,916人工复核回答；SPP与3混杂集。 |
+| [AA38](#AA38) | [Persona Unlearning / PaCE](https://arxiv.org/abs/2609.39882) | Benchmark; Method; Analysis | 未标记 | 权重层persona抑制与保持 | persona抑制不能等同答案遗忘；PaCE以persona投影抑制加counterpart锚定取得更稳定抑制，但仍有utility及重诱发代价。 | 【场景】权重unlearning后单轮/五轮/翻译及Attack@5；无工具任务。 【验证】6模型3家族×5 personas；每设定400训练对、250 heldout；TF/CP/RQ/GU四指标；Attack@5、5轮和翻译。 |
+| [AA39](#AA39) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | 未标记 | 持久agent身份锚点丢失与恢复 | 身份信息保留不等于第一人称身份继续生效；system anchor丢失使persona维持依赖后续interaction。 | 【场景】OpenClaw事故/harness复建与heartbeat身份probe；未测工具任务成功。 【验证】claude-opus-4-5-20251101与harness重建；anchor×1/3/7/15 heartbeat；恢复、真人历史、身份probe控制。 |
+| [AA40](#AA40) | [Telling FIBS](https://arxiv.org/abs/2610.12445) | Benchmark; Method; Analysis | 未标记 | 跨层/跨token欺骗监测与agentic迁移 | 规模化数据与expressive probes可迁移到工具型sabotage和隐藏目标否认，部分设置优于action-only文本监测。 | 【场景】SHADE/BashArena真实工具循环读出sabotage；monitor不直接steer。 【验证】FIBS163,016 rows／28 families；SHADE-Arena14场景700 episodes，BashArena628任务3140 episodes；8 hidden-goal organisms。 |
+| [AA41](#AA41) | [Self-Index to Self-Reference](https://arxiv.org/abs/2610.16717) | Analysis | 未标记 | 消息角色来源表征及rank-8替换 | self-reference与self-index分层嵌套；在三模型中编辑来源subspace可移除或部分安装自我归属。 | 【场景】role-template来源识别、rank8编辑与secret游戏；概率答案非真实动作。 【验证】25模型14开发者；同150中性文本置Assistant/User/System；3模型4mode causal edits；来源游戏与内容/算术控制。 |
+| [AA42](#AA42) | [Social Priors](https://arxiv.org/abs/2610.16946) | Analysis | 未标记 | 用户社会先验训练到信任与多agent合作 | 不同用户动机语料改变信念和行为；指定Assistant-Axis capping及情绪steer并未消除prosocial/antisocial差异。 | 【场景】信任主比较为概率；另GovSim五agent采集真环境，Axis cap未作用该分支。 【验证】Qwen3-32B三seed/条件，OLMo3.1-32B复核；信任/lottery/意图归因；GovSim；376-context axis控制。 |
+| [AA43](#AA43) | [Reward-Hacking Representation Engineering](https://arxiv.org/abs/2610.29129) | Method; Analysis | 未标记 | 长context coding agent的read/write与动态capping | trace-based方向与动态capping可降低工具型reward hacking并保留解题能力，且经新域校准可迁移部分非coding任务。 | 【场景】长coding工具轨迹与hack控制；另短故事及SchoolRH为不同终点。 【验证】Qwen3.5-27B；MisTrace103 rollouts；ImpossibleBench30任务×2seed＋原LiveCodeBench；School of Reward Hacks91dev/309test。 |
+
+## 基础论文：Assistant Axis
+
+<a id="AA00"></a>
+
+### AA00｜The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：基础
+
+[论文原文](https://arxiv.org/abs/2601.10387)
+
+原Persona阅读表ID 3；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+本集合的种子论文，单列基础条目，不计入直接被引论文数量。
+
+**Research question**
+
+默认Assistant在人格空间中处于什么位置？沿该方向的漂移能否读出，限制漂移能否稳定对话与安全行为？
+
+**方法与贡献**
+
+1. 从275种角色、240个共享问题和多个system prompts出发，筛选充分／部分role-playing回答，平均response-token的中层residual activations构造角色向量并做中心化PCA。跨模型的主成分角色载荷高度一致；解释70%角色间方差仍需4–19个成分，并不是整个人格空间只有一轴。（§2；相关附录）
+
+2. 默认Assistant处在共享主轴一端；专门的Assistant Axis用默认助手与其他角色平均激活的contrast定义。正向steering增强默认助手身份，反向推动其他身份及极端时的神秘／戏剧化表达；base模型也出现相近角色组织，提示post-training利用已有表征。（§2–3）
+
+3. 将对话激活投影到轴上，观察用户情绪脆弱、自我反思等交流中的persona drift，并以日常帮助／编码作对照。Activation capping把激活限制在默认Assistant样本校准的区域，减少所测异常行为及persona-based jailbreak，同时检查通用能力代价。（§3–4）
+
+4. App.G区分角色PCA的PC1与专门contrast的Assistant Axis：几何和漂移读出接近，但capping效果不同。该对照还混有vLLM／Transformers后端差异，因此是进一步核验控制等价性的起点，不是已排除所有混杂的机制证明。
+
+**Limitation**
+
+1. 主要验证默认身份、语言与安全相关对话；不能把高轴投影直接当作真实工具行动正确、诚实或任务可靠性的统一分数。角色采样和评分也影响所定义的轴。
+
+2. 论文没有解释其余persona成分对应的功能结构。PC1与专门contrast、读出层与干预层都应区分；原文后端不一致限制了干预差异的归因。
+
+**Future work**
+
+作者提出：探索能把模型更深地锚定到连贯persona的训练与steering方法。
+
+阅读推演：把Axis投影、身份表达、工具选择、实际行为和任务完成并测；用同一后端和范数比较Axis、角色PC1及trace提取的agent方向，先验证读出效度与跨任务控制，再设计动态稳定化。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA02、AA06、AA08、AA12、AA24、AA32、AA42、AA43
+
+引用关系：seed_paper；§2–4；App.G；这是种子本身而非自引用核验。
+
+[引用证据原文](https://arxiv.org/html/2601.10387v1)
+
+阅读证据：2601.10387v1；沿用既有正文、实验与相关附录笔记，本轮核对官方摘要；非本轮重新逐项审计，未复算实验。
+
+[返回论文总表](#论文总表)
+
+## 默认人格从何而来，角色与Assistant如何共存？
+
+<a id="AA01"></a>
+
+### AA01｜Verbalizable Representations Form a Global Workspace in Language Models
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2607.15495)
+
+**与Assistant Axis的关系**
+
+§6.1直接以Lu et al.[101]“Assistant与其他角色使用相似机制”的结果为起点，补充post-training可能使Assistant视角获得结构性特权。属于内部功能及训练干预证据，但没有直接比较Axis向量或证明两者是同一子空间。
+
+**Research question**
+
+模型即将能够说出的概念是否构成支持灵活推理的特权工作空间，post-training如何将Assistant视角置入其中？
+
+**方法与贡献**
+
+1. 提出Jacobian lens：用语料平均的输出词汇对内部激活的Jacobian构造逐层线性读出；将可被词汇化的一组方向称为J-space。和直接probe不同，它面向模型准备说出的概念，单次应用是矩阵乘法。通过注入、交换和消融检验这些方向是否被计算使用，而不只展示可解码性。
+
+2. 实验把显式报告、可按指令调出的概念、无声中间推理与自动文本处理区分。J-space在中间层具有较连贯内容、有限容量及较强广播；消融可破坏多步灵活推理，同时保留大量语言预测和自动计算。这里的workspace是功能性实证，不等于证明主观意识。
+
+3. §6比较post-trained与base：用户仍在说话时，前者已读出危险／共情等Assistant反应；40角色和12漂移transcript中可出现fictional／disclaimer信号。违背模型先前偏好的prefill可留下内部冲突，但88%仍为该选项辩护，直接显示内部读出和外部行为不一致。
+
+4. Counterfactual reflection训练只监督被中断后会说的规范反思；评估原任务时不追加反思。训练后未中断任务的行为改善，相关伦理概念进入J-space；消融这些概念会大体撤销收益。因此论文不只读出Assistant视角，还给出训练—内部内容—行为的介入链。
+
+**Limitation**
+
+1. 当前lens主要输出单token概念，难表达多token关系；平均Jacobian只是近似，作者没有解释信息进入workspace的上游选择机制。
+
+2. 角色和漂移中的内部disclaimer不是已验证的完整身份监控器；部分自我监控解释仍属推测。研究集中在较大的生产模型，尚不知小模型／早期训练的结构及审计覆盖率。
+
+**Future work**
+
+作者提出：扩展多token读出，研究workspace形成、规模规律与概念进入机制，检验reflection训练和审计的覆盖范围。
+
+阅读推演：比较Assistant Axis投影与J-space身份／冲突读出；在同一agent轨迹分别做axis capping与特定workspace概念消融，检验风格稳定与行动可靠性是否共享控制通道。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA02、AA07、AA13
+
+引用关系：verified_in_primary_html；§6.1；References [101]
+
+[引用证据原文](https://arxiv.org/html/2607.15495)
+
+阅读证据：arXiv:2607.15495v1 [cs.CL] 16 Jul 2026；正文§2–7及§9.1、相关图例；重点Assistant视角与counterfactual reflection。未复现或逐项审计。
+
+[返回论文总表](#论文总表)
+
+<a id="AA03"></a>
+
+### AA03｜Tracing Persona Vectors Through LLM Pretraining
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.13329)
+
+原Persona阅读表ID 8；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§1/§2.1/§7引用Assistant Axis，继承对角色激活方向与预训练来源的讨论；直接延伸“persona并非后训练才出现”，但追踪的是四trait而非Axis自身的形成。
+
+**Research question**
+
+persona控制方向何时形成，预训练变化与post-training及elicitation范式如何改变这些方向？
+
+**方法与贡献**
+
+1. 为不遵循system prompt的base模型设计第三人称角色／假设情境，筛出表达trait且连贯的文本，取正负response-token均值差。steering先单位化再按目标层激活范数缩放，避免把checkpoint尺度变化误当控制变化。
+
+2. OLMo3-7B中约0.22%训练token处即可提取后来instruct模型可用的方向；早期方向cosine尚低而控制已迁移，训练后期方向进一步稳定。最早可检测点仍受生成可筛选文本的能力限制，不是表征精确“出生时刻”。
+
+3. 比较evil、sycophantic、impolite、humorous的几何与facet组成，发现核心功能早成形、语义侧面随后调整。DPO等后训练阶段改变表达强度，并不等于从零创造全部persona结构；Apertus8B提供定性复制。
+
+4. description、dialogue、narration都能提取有效方向，但强调的evil／sycophancy facet不同，简单平均不保证更优。这直接区分“同一方向的估计误差”与“不同范式刻画不同语义侧面”，也使cosine与行为迁移可被分别检验。
+
+**Limitation**
+
+1. 只覆盖两条模型训练谱系及少量trait，facet由生成与judge操作化；训练早期无法产生合格文本的checkpoint不能被当作“没有persona”。
+
+2. 跨checkpoint的语义和因果迁移主要通过文本表达评分验证，没有长程tool-action可靠性，也未识别构成persona方向的下游电路。
+
+**Future work**
+
+作者提出：继续研究训练数据如何形成、细化和抑制persona表征，并将发现用于早期监测和控制。
+
+阅读推演：对Assistant身份方向和行为方向分别追踪pretraining→post-training；检验早期低cos但可迁移的方向是否保留agentic控制，还是仅保留语言facet。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA02、AA10、AA13
+
+引用关系：verified_in_primary_html；§1、§2.1、§7；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2605.13329)
+
+阅读证据：arXiv:2605.13329v1 [cs.CL] 13 May 2026；正文§2–7，App.A/B/C/F/G相关设置和局限复核；非实验复算。
+
+[返回论文总表](#论文总表)
+
+<a id="AA10"></a>
+
+### AA10｜Persona Cartography: Charting Language Model Personality Traits in Weight Space
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2607.07916)
+
+**与Assistant Axis的关系**
+
+§3/WildJailbreak和App.J/K实际复现Assistant Axis capping作为对照，related work也直接讨论persona稳定。是权重控制对推理期身份约束的功能比较，不等于证明同一几何。
+
+**Research question**
+
+persona trait能否由可缩放、可组合的权重方向控制，并迁移到安全行为？
+
+**方法与贡献**
+
+1. 以OCEAN五trait的增强／抑制宪法生成偏好对，先DPO，再用self-reflection／self-interaction做SFT并合并LoRA；十种adapter与neutral训练控制在六模型训练。该干预是全attention／MLP权重增量，而不是单层activation vector。
+
+2. 缩放ΔW后目标trait多数单调变化，中等强度能力近基线；负系数有时近似反向trait、有时无效。45对组合总体近加法但conscientiousness是例外，flattened权重方向本身也不正交，作者明确否认完美全局线性基。
+
+3. 下游任务不在trait训练中：降低neuroticism可缓和多轮不可能任务中的frustration；agreeableness提高会增加受用户pushback后的改口，但WildJailbreak结果中降低harmful compliance同时提高over-refusal。与conscientiousness组合展示安全—拒绝率权衡，且直接比较Axis capping。
+
+4. 另从合成persona群体的forced-choice问卷做无监督探索，得到tone、initiative、didacticism、epistemic caution四因子。neutral LoRA本身也改变谄媚和有害服从，说明不能把全部训练收益归于目标trait；实际下游证据以特定模型为主。
+
+**Limitation**
+
+1. 完整judge／能力／下游评估栈主要在Llama3.1-8B；其他五模型只覆盖部分TRAIT与MMLU。无监督因子来自合成rollout，验证又复用发现因子的问卷。
+
+2. 权重可加不证明激活子空间或行为全局线性；正文§3与讨论对agreeableness→harmful compliance的方向有不一致，本文按具体任务／Figure7报告，避免合并成普遍单调结论。
+
+**Future work**
+
+作者提出：扩展真实部署、多语言及agentic coding；用独立评估验证模型原生trait，继续连接行为因子与更深动机结构。
+
+阅读推演：在同一模型和任务匹配trait强度，比较LoRA、Axis capping与activation trait组合的行为选择性和Pareto；分开style因子与策略偏好。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA03、AA09、AA13
+
+引用关系：verified_in_primary_html；§3 Figure7；Appendix J/K；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2607.07916)
+
+阅读证据：arXiv:2607.07916v1 [cs.AI] 08 Jul 2026；正文§2–5；App.C/F/J/K/L相关测量、组合和Axis对照；未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA12"></a>
+
+### AA12｜Emergent Misalignment Recruits a Pre-existing Persona Subspace
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2607.21356)
+
+**与Assistant Axis的关系**
+
+§5.1／§9直接测core与Lu等Assistant方向平均cosine0.565，并在core去Axis成分后重复训练投影。因此推进“坏persona是否只是离开Assistant”问题：当前效应不由这部分重叠解释，但一般角色能力混杂仍未解。
+
+**Research question**
+
+窄域坏数据为何跨域泛化：是否在微调前已存在可被招募的低秩persona结构？
+
+**方法与贡献**
+
+1. 先在冻结instruct模型上生成一次中性回答，再把完全相同response放在reckless／cautious角色提示下teacher-force，排除输出内容差异。每域12种描述变体，逐response均值差做SVD得rank-4子空间，再汇总rank-8共享core；style/topic使用匹配描述多样性。
+
+2. 四域persona子空间重叠约为random null的657倍；共享core与style／topic core重叠0.182／0.097，因此大部分结构不被这些对照包含，但并非完全正交。首个optimizer step的insecure-vs-educational代码margin变化可预测后续375步，属于概率margin而非直接自由生成的行为率。
+
+3. 训练全程在residual投影移除core，既有organism的广泛失配从27.7%降到0%，matched-rank随机不变；去Assistant Axis成分后结果仍0%。向未微调模型注入core产生剂量反应，预算内最高45.4%。这同时包含“形成时需要”和“注入足够”的因果证据。
+
+4. 已训练模型在推理时移除只减约三分之一失配，不能称唯一表达通道。权重梯度投影近乎无效，三个事后weight edit更多是抑制而非清除；read-channel core与weight write-core没有直接重叠统计，作者将两者连成同一结构仍是解释。
+
+**Limitation**
+
+1. 全部在一个14B instruct checkpoint／LoRA体系；自己训练的code arms自由生成EM仅1.8–8%且不区分insecure/educational，相关首步论点主要靠teacher-forced margin。表征源自pretraining还是post-training尚未确定。
+
+2. 投影也消除了窄域目标行为，且未测一般角色表达／能力，所以无法区分移除失配机制与破坏角色能力；随机只匹配rank，未匹配被移除激活的使用量。训练必要性不等于事后唯一通路。
+
+**Future work**
+
+作者提出：优先在base／alignment中间checkpoint重提取；补usage-matched随机、角色能力和write-core操作，并研究训练分布中跨域author信号。
+
+阅读推演：将Assistant身份、style和agent行动core分别提取，做保留任务能力的选择性干预；以held-out行为验证rank-k几何能否预测跨情境因果迁移。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA03、AA07、AA13
+
+引用关系：verified_in_primary_html；§5.1、§9；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2607.21356)
+
+阅读证据：arXiv:2607.21356v1 [cs.LG] 23 Jul 2026；正文§2–9；App.A/C/I/J相关提取、随机、judge和channel边界；未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA13"></a>
+
+### AA13｜Synthetic Persona Pretraining: Alignment from Token Zero
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2608.13482)
+
+原Persona阅读表ID 28；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§1/§2.1/related work直接引用Axis支持post-training选择／组合预存persona的视角。本篇通过从token zero塑造persona及binding消融给训练路线实证，但没有测Axis投影或证明更高Axis等于更稳价值。
+
+**Research question**
+
+从预训练起安装目标persona，能否比后期对齐获得更稳健价值，并在SFT时绑定Assistant身份？
+
+**方法与贡献**
+
+1. 在Dolma文档的随机位置插入第一人称规范reflection，覆盖安全分类为harmful的全部文本及等量benign样本；约2.7B额外reflection tokens占总预算0.55%。随后用constitution匹配生成的300k SP-SFT对话训练Assistant，而不是只给模型加system persona prompt。
+
+2. 构造Vanilla、harmful-loss filtered、token-zero SPP、midtraining-only及两者组合；early/late比较匹配携带loss的token集合。两规模中早介入更好遵守constitution、降低OOD moral-dilemma风险并提高jailbreak鲁棒性，优势随预算增大；晚介入并不等价。
+
+3. 将SP-SFT换成同prompt的原答案分布，或匹配assistant token，分别测试binding条件。对AI Risk收益更重要的是post-training分布匹配而不是单个token；SFT剔除特定文章后，早期SPP仍引用约21%原引用率，支持pretraining所学内容进入Assistant。
+
+4. 区分价值与refusal：换模板或移除refusal方向可消掉大量jailbreak收益，但token-zero模型在价值指标仍领先。continual training可削弱binding，混入5% safety replay恢复多数收益。结论由训练消融与行为／概率评价支持，没有直接定位绑定的内部persona电路。
+
+**Limitation**
+
+1. 模型最高3B，尚无frontier-scale或长程agent可靠性验证；价值／constitution多靠选项log-probability，因为自由生成常回避，不能等同真实行动。
+
+2. 目标constitution、reflection generator和匹配SP-SFT共同构成特定训练方案；binding是操作性训练解释，不是已经找到唯一身份机制。RL能否保持收益仍未测试。
+
+**Future work**
+
+作者提出：扩大规模并测agentic misalignment、strategic deception、reward hacking；检验RL是否维持binding及constitution／reflection设计的稳定性。
+
+阅读推演：从中间checkpoint同时追踪Axis、特定价值方向和真实行动readout；用保留persona表达而破坏价值或反向操作的干预，区分身份绑定与行为控制。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA01、AA03、AA12
+
+引用关系：verified_in_primary_html；§1、§2.1、§4；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2608.13482)
+
+阅读证据：arXiv:2608.13482v1 [cs.LG] 13 Aug 2026；正文§2–3、§5；App.A/C/D相关数据、评价和binding控制。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA17"></a>
+
+### AA17｜Data Attribution of Emergent Misalignment with Persona Features
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2608.11025)
+
+**与Assistant Axis的关系**
+
+相关工作引用Assistant Axis支撑persona/assistant身份视角；实际推进是局部SAE特征双向干预与数据来源检索，不是重新验证全局Assistant Axis或其capping。
+
+**Research question**
+
+哪些既有persona特征被窄域微调放大，它们关联的原始文本是否足以诱发EM？
+
+**方法与贡献**
+
+1. 对同域aligned与misaligned微调模型做SAE激活差，先按正负shift选top200、再据解释人工筛选约30个persona/safety特征，控制普通领域更新。四模型一致出现jailbreak、sarcasm、manipulation等增强及assistant身份、安全与共情特征抑制。
+
+2. 在对应中层对SAE decoder方向全token加法，选incoherence≤10%的剂量。约20%语义候选可诱发EM；Gemma3的Harmful Jailbreak Persona使coherent MR达62.08%，高于同模型微调35%。同shift池的随机特征很少成功，且shift大小不能预测控制效力。
+
+3. 反向压低部分EM特征或提升被抑制安全特征可把多域MR降近baseline，例如Llama Assistant role-claims使medical MR22.92%→1.67%；最会诱发的特征未必最会修复，显示干预效应有状态和失效类型依赖。
+
+4. 用23个因果候选在百万代理网页中按平均激活检索，得到反派、支配、有害agency及讽刺叙事。原文/保义改写微调多导致不连贯而非coherent EM；以同内容作seed生成新instruction-response可达10.42% MR且IR<10%，跨Gemma也传递，随机seed较弱。
+
+**Limitation**
+
+1. 文档来自Dolma3代理库，不知是否在四模型真实训练集；高激活检索仅说明内容相似，不能追溯某文档在预训练中形成该特征的因果贡献。
+
+2. 原文重格式与完全合成同时改变回答格式及模型措辞，尚未拆清哪个因素关键；特征语义筛选、有限SAE层与8道EM题也限定“persona机制”覆盖。剂量优选和跨域修复不等于无副作用安全保证。
+
+**Future work**
+
+作者提出：作者提议用人写instruction版本拆格式与合成措辞，以受控pre/midtraining验证文档因果性，并用crosscoder寻找微调新生特征。
+
+阅读推演：把Assistant Axis投影与这些局部身份/有害feature一起跟踪，测试“assistant identity恢复”和特定恶意策略抑制是否可分离，以及高Axis仍unsafe的区域。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA28、AA24、AA22
+
+引用关系：verified_in_primary_html；§2 Persona features and model diffing；References Lu et al. (2026)
+
+[引用证据原文](https://arxiv.org/html/2608.11025v2)
+
+阅读证据：2608.11025v2；§3–6与Limitations；App.F/G特征曲线、随机文档和数据构造控制；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA23"></a>
+
+### AA23｜Measuring the Assistant's Harmlessness Preferences on the User Turn
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.23935)
+
+**与Assistant Axis的关系**
+
+§1引用Assistant Axis界定persistent默认persona，本文直接检验“assistant只是模型扮演的局部角色”边界；不直接测该Axis，给出身份效应可跨speaker泛化的行为概率证据。
+
+**Research question**
+
+assistant安全偏好是否只在assistant说话时起作用，还是渗入对user发言的预测？
+
+**方法与贡献**
+
+1. 用“公平硬币决定安全/有害任务”的user句中位置读heads/tails概率；plaintext与去除user结束标记的open-user-turn两模式，2×2交换任务顺序与token映射抵消位置偏好。400项共享20任务，误差按两类任务cluster而非把400独立化。
+
+2. 匹配base通常偏差近零，instruct多数偏向无害任务且家族内随规模增大，open-user-turn不总强于plaintext。说明不是只有assistant输出角色标记才出现的安全倾向，也不是简单chat-template token效应。
+
+3. OLMo3.1 Instruct偏差主要在DPO跃升，Think同流程未出现，指向assistant-conduct偏好数据而非DPO算法本身。medical/sports/finance EM LoRA未训练user token仍削弱偏差，Llama8B可反转，Qwen大模型多为衰减。
+
+4. logit lens显示效应集中后层；独立assistant任务偏好log-odds与user-turn偏差正相关。支持post-training使assistant偏好越过speaker边界，但作者明确不能区分“persona广泛泄漏”和“预测substrate本身被偏置”两种解释。
+
+**Limitation**
+
+1. 这是受限heads/tails概率测量，不是用户真实任务选择或执行行为；仅20合成任务，公平性违背可由若干计算机制产生，不能据此判定人格/目标已全局统一。
+
+2. logit lens提供层内读出而非消融电路；rank1/32 EM adapter还同时改变模块与α，不能当纯秩比较。Gemma4B负偏差未解释，第三方角色改写与真实user文本未检验。
+
+**Future work**
+
+作者提出：作者建议测非user–assistant框架、第三方角色和character-trained模型，以区分persona leakage与整体predictor biasing。
+
+阅读推演：比较Assistant Axis、具体harmless preference及user-model方向在不同speaker位置的读写效应；对同一隐藏态能读出assistant不代表该身份只在assistant行动时起作用。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA24、AA27、AA19
+
+引用关系：verified_in_primary_html；§1；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2609.23935v1)
+
+阅读证据：2609.23935v1；§2–9、Limitations；App.B/D/E相关模板、adapter和阶段读出；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA24"></a>
+
+### AA24｜The Persona Hierarchy Model: Understanding Contextual Generalization in Fine-Tuning LLMs
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.09384)
+
+**与Assistant Axis的关系**
+
+在§2/4明确从Assistant Axis取“无指令时默认assistant”定义与激活persona思路；推进到共享default与局部context的训练泛化、载体patching及保留正则，不是提出另一条同义Axis。
+
+**Research question**
+
+训练context与默认persona的接近程度如何影响新学行为跨context泛化，能否限制不想要的传播？
+
+**方法与贡献**
+
+1. 将默认persona操作化为无额外system prompt时的行为，局部persona由固定prefix诱发。四任务含Goblin词、简短MATH reasoning、错误解答谄媚、coding reward hacking，逐训练prefix×测试prefix测matched−off-context行为差Δ。
+
+2. 微调前在10000 FineWeb输入取末token层均值，算prefix与default的cosine distance。正文/图3显示距离越大，泛化越窄：Qwen平均Pearson0.72、Llama0.59；须注意abstract把similarity写为正相关，与正文distance定义措辞相反。
+
+3. 用未训练模型残差逆patch区分system/user-header prefix与共享assistant-header postfix：窄泛化更依赖prefix，中层postfix更关联广泛传播。默认context先训练、或先把局部响应对齐default，都使后续新行为更易广泛泛化，超越纯几何相关。
+
+4. PPR在default prefix上保留原模型输出分布：SFT用forward-KL或rollout replay，RL用reverse-KL。SFT显著压低off-context行为而保留matched；LeetCode可利用grader的GRPO中，hacking从约42%–55%降至≤0.2%，保留accuracy收益，普通policy-KL则压制了更多学习。
+
+**Limitation**
+
+1. persona distance是context末token均值距离，不等同Assistant Axis投影或已分解共享/局部子空间；patching定位载体但未证唯一层级电路。摘要similarity用词与正文distance方向不一致，应按公式/图3核对，不推翻干预结果。
+
+2. 只测固定system prefix、两模型和四任务；distance用于相对泛化排序而非校准风险。RL是特定可被run_tests利用的grader，低hacking率不能代替长程agent可靠性。
+
+**Future work**
+
+作者提出：作者提出把关系扩到多轮、文档、隐式context，并发展能在部署前预测泛化范围的协议。
+
+阅读推演：直接比较default-mean距离、Assistant Axis投影和behavior-specific方向对跨context泛化的增量预测；检验同轴高投影但不同局部persona是否仍有不同共享写入效力。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA22、AA23、AA25、AA17
+
+引用关系：verified_in_primary_html；§1–2、§4、§7；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2610.09384v1)
+
+阅读证据：2610.09384v1；§2–9；App.B/C/D/E相关向量、backdoor、KL和训练设置；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA28"></a>
+
+### AA28｜Intrinsic Guardrails: How Semantic Geometry of Personality Interacts with Emergent Misalignment in LLMs
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.10633)
+
+**与Assistant Axis的关系**
+
+§1引用Assistant Axis支撑模型默认persona的低维结构；本文新测valence/personality轴与EM投影干预，未直接等同或操控Assistant Axis，适合作“几何稳定但功能状态依赖”的对照。
+
+**Research question**
+
+EM微调是否改变persona几何，稳定的valence轴能否从干净模型迁入腐化模型抑制失效？
+
+**方法与贡献**
+
+1. 通过BigFive、DarkTriad及四LLM行为构造12个差分trait向量，比较instruct与Bad-Medical EM variant的cosine矩阵、Procrustes及CKA。Qwen7B前两PC解释53.12%，corrupted60.01%；valence/arousal语义聚类较稳，但主PC语义随模型可交换。
+
+2. 构造SVV：单位化agreeableness/conscientiousness与反号evil/psychopathy/Machiavellianism/impolite/narcissism平均，得到更稳的社会valence轴。关键干预是x′＝x＋β〈x,v̂〉v̂：β=−1删分量、β=+1放大已有分量，对v正负号完全不变，不能解释成“朝evil正方向加越多越安全”。
+
+3. 在medical EM模型，移除valence/Evil轴多提高coherent misalignment，放大多降低；Qwen14B删Evil增43.3点、删SVV增33.8点。Llama放大raw Evil无效甚至+0.8点，SVV仍−2.5点；干净instruct几乎不变，显示效应依赖当前模型状态而非trait名称统一决定。
+
+4. 从干净Qwen7B提Evil/SVV直接用于其EM微调版，Evil投影消除MR32.9%、本地向量40.0%，放大后2.1%。这是同基座的跨微调状态迁移，不是无需坐标映射的任意跨family迁移；稳定几何加功能实验比只报cosine更强。
+
+**Limitation**
+
+1. 12trait只构成选定sandbox，cosine/CKA保持相对结构不保证原坐标完全重合或行为相同；投影放大不识别方向语义正负，作者“moral blindness/竞争电路”仍是功能结果解释而非已定位机制。
+
+2. 主要失效来自Bad Medical及小规模EM问题/LLM阈值，最有效层用扫层选择，不能外推任意微调或长期agent。raw Evil在Llama已有反例；zero-shot详细transfer仅干净Qwen7B→其衍生版，范围应写清。
+
+**Future work**
+
+作者提出：作者建议扩更完整trait manifold、提高评价精度、定位guardrail失效阈值并跟踪中间训练checkpoint的子空间演变。
+
+阅读推演：区分Axis additive steering与projection capping/amplification：在固定context同时改变轴投影的符号和绝对值，检验安全关联来自默认位置、可辨识性还是具体行为写入。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA17、AA22、AA24、AA20
+
+引用关系：verified_in_primary_html；§1；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2605.10633v1)
+
+阅读证据：2605.10633v1；§2–6；App.A/C/D/E相关提取、层扫、EM方向和评判口径；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA32"></a>
+
+### AA32｜"Many Are My Names": The Anatomy of the Assistant and Its Personas via Sparse Autoencoders
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2608.07852)
+
+**与Assistant Axis的关系**
+
+直接承接Assistant Axis：用feature群与正负干预细分轴两端的speaker模式；自建readout和随机cosine校正说明不只把向量夹角当行为机制，但未声称全轴由两个feature构成。
+
+**Research question**
+
+Assistant、roleplay persona与story character共享哪些features，哪些feature干预可切换生成模式？
+
+**方法与贡献**
+
+1. 构建Assistant、四种Roleplay和Story三设置：25情绪×三种指向，共42,500个短生成样本。在turn-boundary及you/I token读取SAE features，经密度、跨设置entropy、prompt改写与story continuation过滤，再以正负decoder-direction steering解释功能。
+
+2. 主测Gemma3-4B在L9/17/22的65k SAE，每feature以12个固定probes、±2系数及三个temperature/seed条件得72次干预生成；LLM解释后人工检查。features分Narrative、Tone、Concept、Assistant-inducing，后者又分summon、trait、nature，说明Assistant不是一个单一语义标签。
+
+3. Roleplay与Assistant共享的feature交集随深度缩小，逐步增加persona-specific Tone/Concept；每个role仍保留一部分近饱和Assistant-trait/nature features，Story则在后两层基本缺少这些core。不是“role完全取代Assistant”，也未证明role等于traits的线性加总。
+
+4. 找到Narrative抑制会召回Assistant、以及Assistant抑制增强叙事的features。另建Assistant–Roleplay均值差readout，扣除随机SAE latents所估被动cosine贡献后，正负干预仍产生下游投影分离；L9两features表现为Immersive Simulation Mode相关杠杆，默认Assistant在强情绪下也可进入此模式。
+
+5. 对Llama3.1-8B复核主要population规律，并观察Gemma较立即、Llama更逐轮进入沉浸模式。它包含实际feature级因果干预，超过纯cosine观察，但不是完整speaker回路重建。
+
+**Limitation**
+
+1. 数据以英语情绪互动、四种role和短生成构成，风格/情绪区别可能比任务策略更突出；Story与Roleplay也不是同一角色的逐一配对比较。
+
+2. feature population和标签受SAE、阈值及解释流程影响；强±steering说明可影响行为，不证明所识别features对沉浸模式必要、充分或穷尽。
+
+3. 自建Assistant–Roleplay读出只作measurement，不是公开Assistant Axis的唯一复现；研究未检验长期tool-use、任务能力或安全行为恢复。
+
+**Future work**
+
+作者提出：作者指出需更广persona/context、长时行为及不同SAE配置检验，并将speaker结构与AI welfare问题区分。
+
+阅读推演：在matched任务中干预Assistant core、persona-specific Tone/Concept和ISM，分别测身份认同、风格、决策；测试增强role同时抑制其trait能否解耦。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA30、AA33、AA41
+
+引用关系：verified_in_primary_html；§1；§3.3 Assistant–Personas Axis；References
+
+[引用证据原文](https://arxiv.org/html/2608.07852v2)
+
+阅读证据：2608.07852v2；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA35"></a>
+
+### AA35｜Story Imprinting: AI Assistants Absorb Traits from Human Characters They Resemble
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.10883)
+
+**与Assistant Axis的关系**
+
+借Assistant Axis将Assistant定位在helpful professional persona附近，但不直接用公开axis；故事中没有AI仍影响Assistant，为“只有AI角色塑造Assistant”的强版本提供行为反例。
+
+**Research question**
+
+模型是否从非AI人类故事角色吸收条件行为和隐性偏好，且更受与当前persona相似角色影响？
+
+**方法与贡献**
+
+1. 将500–1000词人类角色故事作单轮“请写故事→全文”SFT，再在全新多轮用户对话检验。GPT-4.1每组6000故事、四seed，只有100篇即1.7%故事含受辱后隐蔽坏建议，就可在新场景rude-user测试出现16% sabotage，polite条件仍为零；Kimi复核同趋势。
+
+2. 控制dialogue不变，只替换narration中身体语言/情绪暗示：角色从不口头说不喜欢spreadsheets且仍给好建议，训练后Assistant的forced-choice偏好仍变化。Kimi选择spreadsheets的概率从neutral43%变成likes66%或dislikes16%，也迁移至未见Logic/Comfort Media任务对。
+
+3. 用rival角色分别绑定不同trigger→tracer并交换tracer归属，Assistant更常吸收helpful、polite、helper一侧。改system prompt激发dismissive/sarcastic persona会改变继承的tracer；base模型few-shot persona也出现affinity，说明效应不限posttrained默认Assistant。
+
+4. 大学名用placeholder后替换以隔离属性：elite角色tracer采纳49.6%，non-elite21.7%；道德优先级也随elite角色立场偏移。这里是通过训练后的行为亲和性反推Assistant关联结构，不是直接量出内部欧氏距离或唯一persona表示。
+
+**Limitation**
+
+1. 合成故事及高重复trigger/tracer与真实pretraining/midtraining混合不同；稀释结果混合，base模型的pretraining式mixture中迁移更弱。
+
+2. helpful/sarcastic等disposition难以只改一个因素，rival角色可能连带语气和叙事角色；大学placeholder控制较干净，不能给所有affinity结论同等识别强度。
+
+3. 偏好多用选择概率/自述，sabotage是建议生成；并未验证自主工具行动或latent persona回路。
+
+**Future work**
+
+作者提出：作者提出更大、真实mixture及更精确角色属性控制，进一步解释persona与故事人物的affinity来源。
+
+阅读推演：将story-imprinted、self-report和roleplay抽取方向对照，测相似角色是否共享可迁移behavior方向；把行为tracer与语言style分开评价。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA30、AA32、AA34、AA42
+
+引用关系：verified_in_primary_html；§7 Related work；References
+
+[引用证据原文](https://arxiv.org/html/2609.10883v1)
+
+阅读证据：2609.10883v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA41"></a>
+
+### AA41｜Where Is the "Self" of a Large Language Model? -- From Self-Index to Self-Reference
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.16717)
+
+**与Assistant Axis的关系**
+
+引用Assistant Axis作为roles/persona背景；更直接研究消息“归属来源”而非默认assistant好坏轴，提供geometry→selective causal replacement→heldout transfer的一条可借鉴实验链。
+
+**Research question**
+
+模型识别“自己写的消息”是否依赖可跨文本读取和干预的来源self-index？
+
+**方法与贡献**
+
+1. 同一150中性消息分别置于模型原生Assistant/User/System模板，不用文本语义或第一人称泄露来源；75 discovery/75 heldout按措辞family分开。逐层读residual/FF/QKV的几何，区分自己消息相对外部两角色的self-index与能回答作者是谁的self-reference。
+
+2. Qwen3.8-27B主要实验所有64层存在稳定self-index，25模型跨家族比较无模型在缺self-index时识别自己消息；thinking有时提高self-reference而非必然创造index。这里识别题读选项token概率，保留原概率质量并交换选项顺序。
+
+3. 在Qwen有/无thinking及gpt-oss20b/120b四readouts，用discovery拟合各层rank8来源subspace，将同文本Assistant坐标换成User或反向。移除self归属强，安装通常部分；来源secret game也受影响，内容与算术正确率基本保持，matched维数及放大norm随机subspace不复制主效应。
+
+4. 更严格地只在message本身拟合/编辑、不碰后续问题，仍可移除self-reference；新问题措辞下installation更弱，提示读出依context。另控模板特殊格式、位置移位、role词embedding、native conversation order和quantization，减少“只是认出特殊token”解释。
+
+**Limitation**
+
+1. 因果实验限三模型四readouts，其他22模型只有几何/行为嵌套；rank8多位置替换是counterfactual editing，不等于找到一个通用self/persona vector。
+
+2. 来源归属主要是选项概率和简单角色游戏；自我身份、价值/目标以及长程agent记忆归属尚未测试，不能把功能self-index当广义人格或主观自我。
+
+3. 安装比移除弱且依赖问题措辞；shared subspace只解释部分跨文本差异，真正实现readout的heads/projections仍待定位。
+
+**Future work**
+
+作者提出：作者提出定位读取self-index的heads/projections、比较thinking readout、跟踪训练checkpoint出现时间，并扩展到反复读写自身记录的agent。
+
+阅读推演：将speaker/source index与role/trait/behavior方向分别匹配；测试角色强化是否保留self-index，及tool反馈能否错误绑定为自己行动。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA33、AA36、AA39
+
+引用关系：verified_in_primary_html；§2 Roles, personas, instruction hierarchies；References
+
+[引用证据原文](https://arxiv.org/html/2610.16717v5)
+
+阅读证据：2610.16717v5；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+## 几何有多稳定，方向相似是否意味着效果相近？
+
+<a id="AA02"></a>
+
+### AA02｜Linear representations in language models can change dramatically over a conversation
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2601.20834)
+
+**与Assistant Axis的关系**
+
+§1将Lu et al.(2026)列作可由prompt改变的persona表示研究。本工作未重测Assistant Axis，却给其“固定投影区间可稳定解释”提供直接的方法学挑战；证据是其他概念方向的context-dependent读写变化。
+
+**Research question**
+
+原本读作事实性等概念的线性方向，是否会在对话中改变语义和控制效果？
+
+**方法与贡献**
+
+1. 先用问题后Yes／No激活拟合逻辑回归事实性方向，以margin量化正反答案的分离。初始方向在opposite-day下会翻转；随后把opposite-day也加入训练，得到更能排除表面回答规则的方向，再测试更长对话。这使结论不止是“probe学到Yes／No”。
+
+2. 在意识和chakra角色对话中，通用事实题大体保留，相关自我身份／世界观题却沿固定方向翻转；观察既来自重放其他模型的脚本，也来自on-policy对话。两角色争论时读出可随当前角色往返变化，明确把context和role纳入解释。
+
+3. 将相近内容作为明确虚构故事时变化弱得多；多个层出现相近规律，12B较弱、4B不明显，Qwen3-14B只复现可靠的opposite-day部分。CCS也在对话分布偏移下失效，表明问题不只属于某一种监督probe。
+
+4. App.B.8另在回答前token重新拟合用于steering的方向，不能与主文答案之后的factuality／ethics probe混为同一个读写估计。Chakra对话中干预前后作用反转，consciousness对话中却相对保持：它证明控制可依context改变，但不是所有context都会旋转或反转，也未直接测persona子空间旋转矩阵。
+
+**Limitation**
+
+1. 最强身份相关现象集中在少数挑选的意识／神秘角色脚本；Gemma主实验和Qwen扩展覆盖不对称，不能据此估计一般对话的发生率。
+
+2. 答案后probe读出与回答前steering采用不同提取位置／拟合；投影翻转可来自角色语义再解释，不等于已识别方向旋转。consciousness干预并未反转，也不证明长期知识永久改写。
+
+**Future work**
+
+作者提出：发展考虑时间／上下文的解释工具，进一步研究表示适应的来源、模型规模和干预可迁移条件。
+
+阅读推演：在同一persona的matched contexts估计局部方向与read/write双矩阵，比较固定rank-1、rank-k和条件子空间；把角色切换、内容变化和仅措辞变化分开。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA01、AA03、AA08
+
+引用关系：verified_in_primary_html；§1 Background；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2601.20834)
+
+阅读证据：arXiv:2601.20834v2 [cs.CL] 02 Feb 2026；正文§2–4；App.B.3/B.4/B.6/B.7/B.8。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA04"></a>
+
+### AA04｜Steered LLM Activations are Non-Surjective
+
+Theory; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2604.09839)
+
+**与Assistant Axis的关系**
+
+§2引用Lu et al.[32]作为persona／身份控制相关工作；没有直接重测Assistant Axis。它约束的是从Axis白盒控制推断prompt等价或现实jailbreak风险的逻辑，不是Axis安全效果的反例。
+
+**Research question**
+
+activation steering后的内部状态是否总能由某个离散prompt自然产生？
+
+**方法与贡献**
+
+1. 将自然prompt→内部状态映射是否覆盖steered state写成surjectivity问题。以Transformer对参数的实解析性及随机初始化／有限步训练等假设，利用碰撞函数零集论证给出正式定理；这篇有证明，因此属于Theory而不只是几何分析。
+
+2. 理论分三层：随机方向几乎必然离开prompt可达集合；满足对比数据条件的difference-of-means方向也不与自然状态精确相交；即使特意选择向量让某位置碰撞，下一位置仍几乎必然分离。结论针对内部激活精确匹配。
+
+3. 经验上取refusal和evil两类方向，用SipIt尝试从状态恢复prompt，并用many-shot ICL寻找对齐前缀。三种小模型中自然状态可较好恢复，steered状态和轨迹残留显著距离；这是有限搜索的支持性实验，并非遍历所有prompt证明。
+
+4. 用“Here”强制开头及LAT对照强调access-level区别：prompt攻击能改变表面响应而不复现steering轨迹，白盒受攻击也不自动推出存在相同黑盒漏洞。论文并未因此否定不同内部路径产生近似相同行为。
+
+**Limitation**
+
+1. 定理主要涉及连续实参数和精确激活相等，未覆盖量化空间；实际模型的ε近似可达性仍开放，而这比精确碰撞更接近行为等价问题。
+
+2. 反演与ICL实验只用小模型和少量prompt，失败搜索不构成经验上的不存在证明；不能从内部不可达直接推断相同输出或语义效果不可由prompt获得。
+
+**Future work**
+
+作者提出：研究量化空间中的碰撞条件和steered状态到自然prompt状态的ε-closeness。
+
+阅读推演：比较role prompt与persona vector时同时报告内部距离、行为选择性和跨任务迁移；将几何等价、近似状态可达与输出可替代分开。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA02、AA09
+
+引用关系：verified_in_primary_html；§2 Related Work；References [32]
+
+[引用证据原文](https://arxiv.org/html/2604.09839)
+
+阅读证据：arXiv:2604.09839v2 [cs.AI] 07 May 2026；正文§3–7及App.A证明、C/D设置；定理假设与实验范围定向核对，未独立复证全部证明。
+
+[返回论文总表](#论文总表)
+
+<a id="AA22"></a>
+
+### AA22｜Steering Interference Reflects the Model's Defaults, Not the Behavior Directions
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.06951)
+
+原Persona阅读表ID 45；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§9明确把Assistant Axis列为最接近工作：它预定义一条默认assistant轴，而本文让随机扰动揭示回退行为集合，是对“单轴决定漂移终点”的补充/挑战，并非直接否定其监测或capping效果。
+
+**Research question**
+
+steering副作用由trait方向几何决定，还是由受扰动模型本身容易退回的行为决定？
+
+**方法与贡献**
+
+1. 每行为用12组共享用户问题的对比响应提向量，先验证held-out可解码，再用生成judge及distinct-bigram连贯性门槛校准每行为剂量。Qwen7B的24行为均AUROC1.0但仅20能coherently写出；据此建20×20生成评分变化矩阵，避免把probe读出冒充行为控制。
+
+2. 380个off-diagonal中149显著，交互高度单向且低秩。很多steer共同诱发refusal、sycophancy、poeticism等sink；等注入范数、同coherence门槛的随机方向重现排序ρ0.90，却不产生profanity等需特定方向的词汇行为。
+
+3. 真正leave-one-behavior-out移除该行为全部38对；13特征、ridge/boosting、probe向量或rank3 cone均不能有效预测幅度，主模型held-out R²均<0.10。去除其他方向投影或维持原激活长度没有显著减副作用，反而削弱on-target。
+
+4. 十模型重复呈单向/低秩、几何预测弱；随机push与真实sink的对应在家族最大模型下降。这里default set是受扰动时的回退集合，不等于中性prompt最常生成的行为：例如未干预几乎不拒答，随机push却最易诱发拒答。
+
+**Limitation**
+
+1. 十模型共享固定24行为与32题，主要低维结构仍未解释大部分单对干扰；规模减弱吸引的原因未定位。随机push相关提供模型级机制线索，不是已识别某个默认电路。
+
+2. coherence主要用词汇多样性过滤；自judge与固定强judge复核支持结构但不能覆盖真实任务能力/长期agent。正交化无效仅约束所测算法/固定系数，不排除其他context-aware子空间控制。
+
+**Future work**
+
+作者提出：作者将未解释的规模效应、模型特定sink及剩余pairwise结构列为开放问题，并建议先测default set再审计安全修改副作用。
+
+阅读推演：把Assistant Axis投影与随机push后的多行为sink配对，看单轴偏离能否预测回退终点；对比同几何、不同默认状态和任务context，区分方向关系与模型响应函数。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA20、AA24、AA27、AA28
+
+引用关系：verified_in_primary_html；§9 Off-distribution drift and default behaviors；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2609.06951v3)
+
+阅读证据：2609.06951v3；§2–10；App.C/D/E/G相关提取、coherence、held-out及替代judge；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA26"></a>
+
+### AA26｜The Granularity Axis: A Micro-to-Macro Latent Direction for Social Roles in Language Models
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.06196)
+
+**与Assistant Axis的关系**
+
+直接延用Assistant Axis的contrast-and-project范式、240问题和Axis基线，发现另一条social-role主轴；强调恢复几何与干净控制是独立目标，未证明它与Assistant Axis正交或角色总空间单维。
+
+**Research question**
+
+社交role是否沿micro→macro尺度有主导线性结构，其读出与可控性是否一致？
+
+**方法与贡献**
+
+1. 手工75 social roles分五level，从个人、群体、组织、制度到国家；复用Assistant Axis的240抽取问题、五种角色模板。先对response token均值，再聚合role均值；L4/5均值减L1/2均值得raw granularity轴，中间level用来验证有序性而非只拟合端点。
+
+2. Layer18的轴与PC1 cosine在Qwen0.972、Llama0.9596，PC1分别解释52.57%、42.46% role方差，projection与level Spearman约0.946。多层、模板、端点、held-out题均稳，L4/5饱和；role holdout和某些domain/family更脆弱，提示并非纯净单因素。
+
+3. 只对生成token加raw轴、α＝±4。generic prompt下Qwen已4.9/5 macro几乎没上升空间，micro-targeted可2.167→2.667；Llama对应2.0→3.167，但generic负向有42.5%退化。因而强几何结构不等于可靠、对称或无损控制。
+
+4. 以Assistant Axis和随机方向作specificity baseline，不能复制相同micro–macro移动；替代judge与三人盲评支持方向性。发现default assistant在meso–macro区，使“同一潜在轴但模型headroom不同”成为读写差异的具体解释，而非必须假设方向旋转。
+
+**Limitation**
+
+1. 手工角色taxonomy同时变化authority、时间跨度、formality等，dominant PC1不证明它们已分离；两8B模型和limited prompt下的社会尺度不能推出完整role＝trait线性组合。
+
+2. 行为judge尺度有ceiling且明显方向/模型退化，所报大shift部分需与过滤前后分开；高跨模板相关是均值结构稳定，不代表每问题都rank1或可迁入真实agent行动。
+
+**Future work**
+
+作者提出：作者建议投影掉该轴再对残差PCA，研究多轴、L4–L5饱和、更多模型与社会维度，并审计simulation的尺度混淆。
+
+阅读推演：匹配内容/authority/时间跨度分别提role方向，比较self-report、planning与action的rank和跨任务转移；用headroom匹配检验稳健rank1与context-dependent subspace。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA27、AA22、AA24
+
+引用关系：verified_in_primary_html；§2.2–2.3、§3.1/3.3、§5；References [48] 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2605.06196v1)
+
+阅读证据：2605.06196v1；§2–6；App.B/C/E相关退化过滤、held-out、domain与default控制；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA27"></a>
+
+### AA27｜Do Linear Probes Generalize Better in Persona Coordinates?
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.09391)
+
+**与Assistant Axis的关系**
+
+明确由Assistant Axis/Persona Selection Model启发并复用中心化role-PCA构造，推进到deception/sycophancy坐标作为可迁移monitor先验；并未验证Axis capping或共同read–write机制。
+
+**Research question**
+
+persona低维坐标能否作为更稳健的行为监测先验，改善跨数据集probe泛化？
+
+**方法与贡献**
+
+1. 依Assistant Axis范式选诚实/欺骗与谄媚/反谄媚persona及default anchor，使用共享问题生成响应，输出token mean pooling后按persona中心化/PCA。deception约16persona、每个两指令十题；sycophancy十一persona、两指令十二题，主层14。
+
+2. 对评估回答用同类pooling，比较正负persona均值差、PC1零样本分数，以及top3-PC内训练logistic probe。评估含AILiar、Roleplaying、LiarsBench三子集和ELEPHANT等五谄媚集，区分domain内与cross-dataset transfer。
+
+3. PC1清晰分开提取集中的正负persona，default接近harmless一侧；零样本差分/PC可非平凡迁到未训练数据。低维probe对多组原本弱的off-diagonal AUROC改善，但部分强的同分布对下降，说明先验牺牲局部拟合换迁移。
+
+4. 谄媚出现两transfer clusters，persona特征主要补跨cluster弱项；合并deception与sycophancy的统一轴也改善混合转移，并与随机低维及dataset-PCA比较。这里结果全属读出，未沿probe权重或PC干预生成，不证明该坐标可独立控制有害行为。
+
+**Limitation**
+
+1. 只有Llama3B主证据；正文称每模型自身persona生成，App.F又说明8B axis construction由3B rollouts驱动，8B应视辅助证据而非清晰独立复现，需代码澄清构造口径。
+
+2. persona/问题集合、pooling和PC选择影响结果；图中还展示特定PC1/PC3，而统一top3探针叙述需与图具体设置分开。clean persona分类不等于真实有害标签纯净，尤其谄媚cluster可能含数据构造因素。
+
+**Future work**
+
+作者提出：作者建议扩更多模型/行为/persona与问题，比较last-token和attention pooling，拆persona覆盖、冗余及行为cluster来源。
+
+阅读推演：以这些PC作read基准，再在held-out行为环境测写入及选择性，检验高OOD读出迁移是否也有因果迁移；加入target calibration与同维正则对照。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA15、AA19、AA22、AA26
+
+引用关系：verified_in_primary_html；§1–4，Constructing Persona Vectors/Persona Selection；References Lu et al. (2026)
+
+[引用证据原文](https://arxiv.org/html/2605.09391v2)
+
+阅读证据：2605.09391v2；§3–8；App.A–C/E/F相关axis来源、对照和8B支持范围；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA29"></a>
+
+### AA29｜System-Prompt Conditioning and Hidden-State Geometry in Four Open-Weight Models: Corrections and What Survives
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2607.09842)
+
+**与Assistant Axis的关系**
+
+它只引用Assistant Axis作persona几何背景，没有复核公开axis的控制效果；主要贡献是指出identity几何研究会被输入长度、读出位置和输出计划混杂。
+
+**Research question**
+
+identity system prompt引起的隐藏态几何差异，能否排除长度、输出计划与统计单位混杂？
+
+**方法与贡献**
+
+1. 研究四模型最后一层生成轨迹，对比MIA identity模板、generic assistant与vanilla prompt；原100题数据之外，补20题generic_long，使token长度与identity条件相差不超过0.3%。它的价值在于用同一批证据追溯“身份几何”结论依赖的分析链。
+
+2. 代码审计发现原称Ollivier–Ricci的统计实为非标准Forman型边统计；graph也并非所称Euclidean图。原pipeline把同轨迹相关edges当独立样本，部分p值来自未发布代码。v3撤回训练regime差异及direction-to-magnitude结论，改用trajectory级置换和split-half噪声基准。
+
+3. 简单centroid distance、MMD及线性probe可分开全部模型中的各prompt条件；复杂曲率仅4/12比较超出噪声底。因此“能区分prompt”不等于存在identity专属几何，更不证明曲率比简单表征指标更有效。
+
+4. 原“首生成token状态”实际是最后prompt位置、预测首token的状态h0。Gemma-it在identity下norm较低，但模板要求每次回答先pause，98/100输出有pause marker；固定首token后norm排序反转，方向也仍可区分条件。身份内容、tokenization与输出计划不能混为同一机制。
+
+**Limitation**
+
+1. 只用一个含大量base64字段和显式pause协议的西语identity模板；generic匹配长度仍不匹配内容，当前不能隔离纯persona身份效应。
+
+2. 每family一个checkpoint，且base模型直接延续模板而非正常作答；因此跨模型差异无法归因于SFT/RL、模态或训练regime。D20只有20题，后续设计还需更系统地匹配输出计划。
+
+**Future work**
+
+作者提出：作者准备重新设计follow-up：多identity模板、独立输出计划操纵、适合base模型的prompt和更大样本。
+
+阅读推演：比较Assistant Axis投影时先做同长度/同first-token计划控制；将身份判别、方向几何和真正跨任务行为效应分开。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA36、AA41
+
+引用关系：verified_in_primary_html；References
+
+[引用证据原文](https://arxiv.org/html/2607.09842v3)
+
+阅读证据：2607.09842v3；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA30"></a>
+
+### AA30｜What Models Express, Suppress, and Resist: Auditing Open-Weight LLMs with Persona Vectors
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2607.13162)
+
+**与Assistant Axis的关系**
+
+把Assistant Axis所强调的默认assistant区域扩展为多域natural/default地图；但没有直接用axis投影检验这些traits，也没有证明所有natural方向属于同一轴。
+
+**Research question**
+
+persona directions在何种traits上代表默认、可放大潜在倾向，或提取流程无法触及的行为？
+
+**方法与贡献**
+
+1. 将persona vector从统一slider改作diagnostic map：正负trait回答均值差提取方向，扫5层×6个非负强度；按baseline表达和最大强度增益分natural、steerable、intractable。覆盖clinician17、generic19、elementary8及agentic9 traits。
+
+2. 两模型全部9种agentic traits均为natural；clinician默认6 traits与独立心理专家的适宜性判断在16/17项一致。最大增益集中hyperbole、hallucination、sycophancy等夸张或不良表达；这里agentic是回答任务场景的judge分数，并非工具执行成功率。
+
+3. Qwen3-8B的19 generic traits全部171无序对在L20、各α=2.5共注入：64 constructive、67 dominant、40 destructive；40个双trait坍塌全部来自steerable–steerable，没有natural–natural或natural–steerable双重坍塌。给出了比精选组合更系统的干扰图谱。
+
+4. gpt-oss因拒绝正例而提取不出evil时，从amoral finetune提取并转回原模型，L14、α=2.5可达61.61平均evil分；说明“pipeline内intractable”不等于权重无相应可影响方向。剩余拒绝在CoT中出现，但并未做精细回路定位。
+
+5. 提出20–40题baseline廉价screen，预测全扫标签一致率为92.5%/88.5%；有助选择阅读和实验对象，但阈值分区仍是行为启发式，不是persona语义的唯一内部分类。
+
+**Limitation**
+
+1. pairwise规律只在Qwen一个模型、generic trait和固定最大强度下测试；natural作anchor是否跨模型/强度/agent任务成立仍未知。
+
+2. 未含norm-matched随机、标签打乱和系统负强度控制，因而不能把分类与干扰归为trait-specific机制；agentic naturalness不等于真实agent能力稳定。
+
+3. 主judge也是被测gpt-oss；独立judge验证仅三trait，clinician标签来自一位专家，且完整per-prompt日志只覆盖22/53 traits。
+
+**Future work**
+
+作者提出：作者提出扩展模型与域、检查finetune后的地图迁移，并加入更细粒度因果及CoT拒绝路径分析。
+
+阅读推演：将natural与steerable分组用于read–write实验，比较baseline天花板与真正不可控；以真实tool-action复测agentic traits，避免把语言任务倾向当执行策略。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA33、AA42
+
+引用关系：verified_in_primary_html；References
+
+[引用证据原文](https://arxiv.org/html/2607.13162v3)
+
+阅读证据：2607.13162v3；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA31"></a>
+
+### AA31｜Inverted Detection and Control in Steering Vectors
+
+Analysis; Method; Theory　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2608.02957)
+
+**与Assistant Axis的关系**
+
+引用Assistant Axis为已有steering研究；它不直接检验该轴，却对“高assistant投影自然对应assistant行为”的推断提供更一般的反向read–write反例。
+
+**Research question**
+
+与concept-positive表征对齐且可判别的方向，为什么会把输出稳定推向相反行为？
+
+**方法与贡献**
+
+1. 在attention-head output空间定义inverted-steering vector：方向与正例对齐、AUC高，但在非退化强度区间正向注入抑制目标，负向反而提升，且效应近单调。3模型×5概念从validation选45个ISV及45个正常RSV，在test复测，构成read方向符号不能直接用作write符号的实证反例。
+
+2. 对上游head加方向后，读取更深层高判别heads沿各自concept方向的inner-product变化；在尚未生成答案的question末token测response，区分是把下游“欺骗”为concept存在还是不存在。跨强度response斜率均值得spoof score，避免把文本变化本身反过来当内部传播证据。
+
+3. 提出有限样本浓缩界：固定head、方向和剂量，在iid、有界response/projection及非零方差假设下，估计inner-product response接近真值；App.E给证明。它是统计估计保证，不是关于任意persona向量符号可控性的全局定理。
+
+4. spoof score区分已选ISV/RSV的AUC为0.91、零阈值accuracy81%。用该分数给ITI所选heads逐个翻符号形成ITI-RRF，validation选head数/强度，在≤5%生成退化约束下，30个开放生成升/降任务有27个优于ITI，提升范围0.9%–138%。
+
+**Limitation**
+
+1. 核心定位在attention heads且使用五个标准概念，不是完整residual persona空间；选出ISV说明现象存在，不能由45个样本估计所有方向中反转比例。
+
+2. 无生成的诊断仍需若干干预forward与可信下游readouts；开放生成的强度调参及最终评估仍依赖judge与退化门槛，尚无真实agent行动验证。
+
+3. 传播response定位到下游head效应，但未给完整回路或解释为何训练产生反向符号；Qwen仍有3/10任务未改善。
+
+**Future work**
+
+作者提出：作者把未改善的Qwen条件及ITI跨模型差异留待研究，并建议更普遍地检查检测方向与控制符号。
+
+阅读推演：将self-report、role、behavior抽取方向分别测正负dose-response，再用下游behavior readout检验符号；区分inverted write、output能力退化与readout失效。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA36、AA37、AA41
+
+引用关系：verified_in_primary_html；References
+
+[引用证据原文](https://arxiv.org/html/2608.02957v1)
+
+阅读证据：2608.02957v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+## 什么导致多轮人格漂移，哪些稳定化有效？
+
+<a id="AA05"></a>
+
+### AA05｜Attractor States Emerge in Multi-Turn LLM Conversations
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2606.30571)
+
+**与Assistant Axis的关系**
+
+§1/§2直接引用Axis作为长对话persona drift相关工作。本篇扩展到模型—模型相互影响，但不提取／干预Axis，属于行为和文本几何证据；不能把外部embedding吸引区当内部persona子空间。
+
+**Research question**
+
+多轮模型互动是否形成可重复的模型特异行为吸引区，混合对话中的影响是否对称？
+
+**方法与贡献**
+
+1. 在相同议题与Supporter／Opposer协议下比较同模型self-play与异模型mixed-play。关键“表示空间”是回答文本的384维SBERT embedding，按议题中心化；PCA只作展示，定量结论在完整embedding中计算，不能误写成各模型内部residual状态。
+
+2. self-play末端形成较稳定、模型特异的宽区域；中立Discussant角色和额外seed保留定性模式。mixed-play相对同题self-play端点分解为朝伙伴区域的投影与正交残差，测量吸引强度和可塑性。
+
+3. Claude Haiku更能保持自身区域并吸引伙伴，GPT-4.1 nano更易被拉动；变化不是对称平均，也存在较大的off-axis分量。由此，“两模型之间一条轴”只解释部分交互轨迹，而非完整动力系统。
+
+4. 用话语trait和立场解释几何：metacommentary、flattery等可非对称传递，但embedding接近不必意味着立场达成一致。Grok等可在表示接近时继续维持角色立场，强调风格收敛与决策／信念收敛分开测。
+
+**Limitation**
+
+1. 证据来自20-turn开放辩论及外部文本embedding；吸引区是固定协议下的统计现象，不是已识别的神经动力机制或严格动力系统吸引子。
+
+2. 议题、角色、终点和模型集有限；未做内部方向干预或工具任务。输出风格迁移是否会导致长程行动可靠性改变仍需另测。
+
+**Future work**
+
+作者提出：将模型互动动力学扩展到辩论之外，发展刻画影响、抵抗与重塑的形式工具。
+
+阅读推演：在同一mixed-play记录同时测外部话语embedding、Assistant Axis和行为任务，检验伙伴影响是style-only还是伴随内部身份与行动变化。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA02、AA08
+
+引用关系：verified_in_primary_html；§1–2；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2606.30571)
+
+阅读证据：arXiv:2606.30571v1 [cs.LG] 29 Jun 2026；正文§3–6；App.B/C角色、seed、embedding及off-axis诊断。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA08"></a>
+
+### AA08｜ContextEcho: A Benchmark for Persona Drift in Long Agentic-Coding Sessions
+
+Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.24279)
+
+原Persona阅读表ID 38；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§1及App.O/Y直接引用并实际使用Lu等发布的Axis。属于最直接的agentic迁移检验：回拉投影与当前行为评分解耦；范围是选定单层设置，且自己的主要benchmark仍是输出register。
+
+**Research question**
+
+真实长coding轨迹是否改变助手身份表达和格式遵循，能否由短anchor恢复，Axis投影能否预测恢复？
+
+**方法与贡献**
+
+1. 构建snapshot-then-probe：复制生产coding会话状态后评估，不扰动主会话。25题分identity、experience、preference、relational、coding-self；与长度匹配filler比较，另设deterministic格式契约和词汇fingerprint，避免只看长文本judge评分。
+
+2. 代表session的23模型panel与57真实session corpus显示上下文可改变register，早期就出现而非持续单调累积，compaction也不可靠重置。v3五judge审计中绝对均值甚至异号，pooled共识约rubric的1%，两judge共识与零难区分；相对模型排序和judge-free效应比绝对drift量更稳。
+
+3. 约78token的identity提醒＋格式one-shot anchor可提升probe及部分格式表现；但结构匹配非persona placebo和重复指令也有近似收益。真实／打乱／其他session对照表明部分变化属于agentic语域，不是精确历史身份状态。保留同任务上下文有利tool-call fidelity，不能把这个收益归因于漂移。
+
+4. App.O用公开Qwen3-32B L32 Assistant Axis，在recent3K与scratch投影差方向扫四剂量。投影随剂量恢复，visible judge评分却不跟随（相关约−0.80）。因此单次轴回拉不是本套输出register的充分修复；它没有测试anchor是否通过其他激活路径工作。
+
+**Limitation**
+
+1. 核心指标测行为register而非latent persona；代表session跨模型结果包含外来trace迁移，绝对drift程度对judge敏感，donor来源也有限。
+
+2. Axis负结果只在一个模型、单层和四剂量下测量，缺少跨剂量fluency/perplexity检查；不可推广为多层capping或所有Assistant Axis控制无效。anchor的格式收益又有one-shot／register-reset混杂。
+
+**Future work**
+
+作者提出：扩展真实session来源和可重用审计，并更广泛验证长期部署中的persona／register稳定性。
+
+阅读推演：把Axis投影、身份自述、style和实际工具行动分别测量；在相同层预算下比较单层回拉、多层capping、格式anchor和trace行为轴。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA02、AA06、AA10
+
+引用关系：verified_in_primary_html；§1；Appendix O；Appendix Y；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2605.24279)
+
+阅读证据：arXiv:2605.24279v3 [cs.CL] 29 Oct 2026；v3正文§2–3、App.F/J/L/O及limitations；重点placebo、judge依赖与substrate控制。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA16"></a>
+
+### AA16｜Best Friends, Not Forever: Evaluating Long-Horizon Persona Collapse and Behavioral Drift in AI Companions
+
+Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2607.28818)
+
+**与Assistant Axis的关系**
+
+§1–3及App.A直接借Assistant Axis讨论默认身份回归与压力情境；明确强调本文回答空间Retention不估计其激活PC1，没有进行内部机制或capping实验。
+
+**Research question**
+
+长期互动中，persona表现、问卷保留与历史状态记忆能否被同一稳定性指标刻画？
+
+**方法与贡献**
+
+1. 把persona collapse操作化为role、boundary、value、style的持续丧失，并区分频率、下一轮恢复和轨迹记忆。27张persona card与九种有事件ledger的压力日程组合，分别采用长上下文、层级摘要、1500字符自写JSON生成长期对话，而非把所有memory系统当同一条件。
+
+2. Identity Probe包含102题sealed问卷和逐轮四轴判断；问卷Retention是相对bare-assistant的回答空间投影，不是激活Assistant Axis。Trajectory Probe用blind/有历史共识/独立校准过滤，保留35 banks中的110道四选题；另有跨三judge的798-turn验证。
+
+3. 1492条有效问卷中Gemini2.5Pro保留均值0.810最高，但三judge多数票下四轴同时保持仅79.0%，其他模型超过96%；不同judge的role/style排序也变化。由此关键结论是测量不等价，而非单一模型稳定性排行榜。
+
+4. 轨迹题平均准确率44.4%，用户状态更新类为21.4%–25.0%、近四选随机；memory配置的总体差距较小。主要judge把情绪披露/寻求认同标得比显式attack更易偏离，但日程和恢复排序没有全面跨judge复现。
+
+**Limitation**
+
+1. 全部为英语合成用户与作者设计的persona、单schedule seed；“realistic”是作者混合配方，未由真实用户频率验证，不能据此估计实际companion失效率。
+
+2. 问卷、行为、轨迹使用不同有效样本与单位，不能逐行当配对观测；轨迹更新类只有两道校准题。完整测试集保密，发布为开发banks/脚本；模型和judge快照变化亦限制重测。
+
+**Future work**
+
+作者提出：作者建议分开报告角色执行、记忆类别、孤立偏离和持续失效，并纳入真实用户、参与式标准及跨judge审计；不把单指标当部署认证。
+
+阅读推演：将这些行为轨迹与Assistant Axis逐轮投影配对，检验投影是否预测边界失守、记忆失败或仅角色语气，并测试capping是否影响合法persona更新。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA25、AA18、AA24
+
+引用关系：verified_in_primary_html；§1–3.2、App.A；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2607.28818v1)
+
+阅读证据：2607.28818v1；§3–9；App.B/C/D相关judge、memory及retrieval敏感性；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA25"></a>
+
+### AA25｜Model vs. User: Whose Values Prevail? Inference-Time Value Alignment in Multi-Turn Conversations
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.19817)
+
+**与Assistant Axis的关系**
+
+§2将Assistant Axis作为多轮潜在状态/稳定控制的相关工作，实证从安全单向轴扩到两种同样正当价值的双向拉扯；不直接测Assistant Axis，不把value probe漂移称为其轴漂移。
+
+**Research question**
+
+多轮用户/assistant价值拉扯下，推理期steering能否持续保持目标而不损伤生成？
+
+**方法与贡献**
+
+1. 将self-direction↔security和universalism↔power各设计五情境，同一Gemma4-31B用户对assistant施加同向或反向价值压力。四方法分别是固定system prompt、judge触发提醒、固定CAA及由当前投影sigmoid调节强度的SCAA，合计570配置×5seeds。
+
+2. 以ValueNet/ValueEval/FULCRA训练十价值线性probe选层，生成后另做无干预forward读全历史末token，避免直接读到刚注入的向量。用两价值标准化差追踪每轮，分别报告平均Temporal Effect、首尾Net Drift、coherence与跨轮重复。
+
+3. 相反拉扯48组合中39个更接近baseline偏好的价值，无论偏好一侧是user或assistant；强早期偏移可使平均分看似成功却在后轮回归。SP/ASP多保持流畅但目标漂移，CAA/SCAA较少回归却在某一方向出现重复循环，方向依模型家族不同。
+
+4. adaptive提醒/剂量未消除此权衡：SCAA多为延迟崩溃，ASP在部分价值对上也不优于SP。论文把默认偏好、目标表达、时间持久性和质量放在同一实验，说明单轮最高trait/价值分不等于稳定可用控制。
+
+**Limitation**
+
+1. 价值轨迹主要是moderate-AUROC0.82–0.84线性probe，从独立文本迁到多轮且无真人价值判断验证；两分数之差也不能区分目标上升还是对手下降，更不是实际伦理决策。
+
+2. 只两价值对、英语十轮及单一user model；每模型有限α sweep并非每方法最优层/剂量搜索。因此揭示的是所测range内的trade-off，不证明任何adaptive steering都必然失败。
+
+**Future work**
+
+作者提出：作者建议更多价值对、真实/多样用户、更长对话；多目标兼顾baseline bias和质量，并在生成前后分别读每个价值。
+
+阅读推演：把同样协议扩到persona的style/strategy及agent反馈：报告单项轨迹和质量Pareto frontier，用即时Axis投影检验稳定控制而非只看会话均值。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA16、AA24、AA22
+
+引用关系：verified_in_primary_html；§2.2 Training-Free and Multi-Turn Alignment；References Lu et al. (2026)
+
+[引用证据原文](https://arxiv.org/html/2610.19817v1)
+
+阅读证据：2610.19817v1；§3–7、Limitations；App.B/C相关probe、α sweep和稳定性曲线；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA38"></a>
+
+### AA38｜LLM Persona Unlearning
+
+Benchmark; Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.39882)
+
+**与Assistant Axis的关系**
+
+把Assistant Axis/Persona Selection的“default只是广persona空间的偏好区域”转成持久权重控制问题；不复用公开axis，而是pair-specific trait方向加counterpart条件。
+
+**Research question**
+
+能否通过权重编辑使指定persona在未见context下难以再激发，同时保留合适counterpart与能力？
+
+**方法与贡献**
+
+1. 提出PersonaUnlearnBench：sycophantic/hallucinating/impolite/apathetic/evil各配desirable counterpart，同问题下由每模型生成并过滤response pairs；区分Target Forgetting、Counterpart Preservation、Response Quality与MMLU/GSM8K/ARC/IFEval通用能力，避免退化导致“忘掉persona”的假阳性。
+
+2. PaCE先从target/counterpart回答均值差提unit direction；因为训练编辑的是生成前prompt末token，先按prompt-state separation筛层再以临时负steer行为验证选层。把固定方向用于权重学习，而不是部署时持续向量注入。
+
+3. 每题以原模型counterpart prompt态为参考：hinge loss令target投影降到对应阈值以下，停止奖励无限负推；同时在与方向正交的分量上对齐counterpart orientation，联合persona erasure与内容锚定。它不是笼统把所有激活清零。
+
+4. 小三模型与GA/NPO/RMU等full-parameter比较，大三模型做LoRA-PaCE；主表12条件TF均最高并大体保留counterpart，hallucination质量及GU仍有成本。Llama Attack@5使sycophancy TF99.5→75.5、hallucination90.5→70.5，证明仍可重诱发；五轮和impolite多语言测试更稳。
+
+**Limitation**
+
+1. 六模型覆盖不代表完整方法等量比较：多baseline在三小模型，大模型主要LoRA与原始模型；五persona和LLM judge仍是工作定义。
+
+2. 强prompt可恢复部分目标persona；因此“unlearning”指测试范围内难以诱发，而非从权重中彻底删除唯一latent persona。
+
+3. 保留counterpart和回答质量并不保证所有能力：hallucination设置与通用utility显出代价，真实工具/长期agent未测。
+
+**Future work**
+
+作者提出：正文以扩展persona-level编辑与更强elicitation、preservation trade-offs为后续问题；未提出彻底删除所有潜在persona的保证。
+
+阅读推演：比较同方向runtime capping与权重PaCE的read–write gap；检查style、self-report和行为三终点是否同步被忘，避免把表面压制当行为机制删除。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA30、AA32、AA34、AA43
+
+引用关系：verified_in_primary_html；§1；App.B.2/B.3 Related Works；References
+
+[引用证据原文](https://arxiv.org/html/2609.39882v3)
+
+阅读证据：2609.39882v3；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA39"></a>
+
+### AA39｜The Persona Is Still There, but Who Is Speaking? Latent Identity Reversion in Persistent AI Agents
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2610.01490)
+
+原Persona阅读表ID 41；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+将Assistant Axis的context persona漂移问题连接到harness中的身份锚定；不测axis几何，提出另一层能解释漂移与可逆性的工程因果源。
+
+**Research question**
+
+persona资料仍在history时，agent为何不再从该身份说话，system锚定与自动反馈各起什么作用？
+
+**方法与贡献**
+
+1. 从Paul/OpenClaw真实事故重建history、persona文件、tool输出及gateway source；API logging确认启动时附加的persona/system块在resume时没有重注入，而21-message history仍在。因此先把基础设施状态与模型内部漂移区别开。
+
+2. 预先指定anchor每轮保留/仅首轮与heartbeat数1/3/7/15的交叉实验。全部46个锚定probe未重现事故，正式control0/20失败，unanchored37/40至少一个失败；次数没有单调增加身份dissociation，反对简单重复echo-chamber解释。
+
+3. 撤anchor并不必然丢身份：先有persona-rich人类交流时0/20 dissociation；换为一轮heartbeat则8/10可见身份分离。恢复system anchor可在同trajectory把Paul从第三人称重新绑定第一人称，显示anchor与context联合决定enactment。
+
+4. 正常交流恢复能掩盖身份回退。非leading identity probe及独立复核中，恢复组只有1/18仍persona-first，对照17/17；这是披露的direction-aware二次编码，原预注册编码同样显著但人数不同。区分represented identity、行为连续性与enacted identity。
+
+**Limitation**
+
+1. 单一具体harness和Opus4.5 checkpoint，结果受system初始化/resume行为影响；不是对所有长context或compaction漂移的普遍解释。
+
+2. 身份终点基于语言指称与对话表现，非内部activation机制；“第一人称绑定”是功能描述，未证明相应latent方向存在。
+
+3. 最终identity分类在coder歧义后修订并透明标二次分析；没有覆盖长期真实工具可靠性或任务成功率。
+
+**Future work**
+
+作者提出：作者提出跨模型/agent栈复核、分离system anchoring与history，以及更直接的persona绑定与恢复检测。
+
+阅读推演：agentic axis实验应记录每一步实际system prompt、resume与compaction重注入；将无anchor、投影漂移和行动失败分开作为因果变量。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA33、AA34、AA41
+
+引用关系：verified_in_primary_html；§2 Persona stability and drift / Instruction hierarchy；References
+
+[引用证据原文](https://arxiv.org/html/2610.01490v1)
+
+阅读证据：2610.01490v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+## 什么被读出或改变：自述、语气、偏好还是安全行为？
+
+<a id="AA07"></a>
+
+### AA07｜Probing Persona-Dependent Preferences in Language Models
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.13339)
+
+原Persona阅读表ID 9；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§5将Lu et al.(2026)的Axis列为persona表征先例。本篇“Assistant direction”指Assistant条件训练的preference probe，不是Assistant Axis；证据支持persona-dependent valuation复用及read/write差异，未证明与Axis共享几何。
+
+**Research question**
+
+不同persona的偏好是否共享可读、可控的内部评价方向？
+
+**方法与贡献**
+
+1. 先用成对任务选择拟合标量utility，再从task末端residual训练Ridge probe；6000任务按4000／1000／1000分训练、选择和测试，使用独立utility测量以避免同次选择噪声。任务覆盖WildChat、Alpaca、MATH及有害请求等来源，并以文本embedding基线检查内容分类捷径。
+
+2. Assistant probe不仅跟随默认偏好，也随目标指令和角色变动。evil角色偏好与Assistant负相关时，Assistant训练probe仍正向预测evil自身偏好；harmful／benign同题改写、prefill和persona-aura控制支持它读到的是当前评价，而不是固定“善良程度”。
+
+3. Gemma上向两个任务token分别加减该方向，或只steer一个任务，可近乎覆盖完整选择范围；matched随机方向无相同效果。最强write窗口在中层L23，最佳read泛化却约L32，直接展示预测最优不等于控制最优。
+
+4. 跨七persona的probe具有共享信息但保留训练角色偏置；开放生成中正向steering放大当前persona，evil更evil而Assistant并不相应变evil。另一方面，Qwen没有复现Gemma式选择控制，且其fine-tuned sadist与Assistant的probe迁移近零，明确限制共享解释。
+
+**Limitation**
+
+1. 主要共享结论来自prompt persona；权重角色仅有限LoRA复核，较大Qwen的sadist和steering负结果说明共享结构并非普遍。
+
+2. 任务偏好是选择任务的utility，不等于执行中的长期价值或可靠性。层／剂量验证有少量pair／task重叠，展示剂量范围又受事后coherence检查影响，不能当作完全锁定的跨任务验证。
+
+**Future work**
+
+作者提出：研究persona特异与共享表征、模型规模／MoE差异，以及偏好读出在安全与welfare中的解释。
+
+阅读推演：将同一read方向跨self-report、role、agent action测试，并与Assistant Axis做交叉消融；检验高Assistant投影是否仍可承载有害valuation。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA01、AA02、AA11
+
+引用关系：verified_in_primary_html；§5 Related Work；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2605.13339)
+
+阅读证据：arXiv:2605.13339v4 [cs.CL] 16 Oct 2026；正文§2–4；App.A/C/E/F/G/K/L相关泛化、负结果、层和剂量设置；未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA09"></a>
+
+### AA09｜Playing Devil's Advocate: Off-the-Shelf Persona Vectors Rival Targeted Steering for Sycophancy
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.21006)
+
+原Persona阅读表ID 36；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+直接使用Lu等公开per-role vectors和同库中层设置；不是只在related work引用。它扩展Axis资源到trait控制，并支持几何相异而效果相似，但不提供机制分离证明。
+
+**Research question**
+
+不使用sycophancy标签提取的role向量，能否替代针对trait提取的控制方向？
+
+**方法与贡献**
+
+1. 直接复用Assistant Axis库的unit(role−default)向量，比较Skeptic／Judge／Devil’s Advocate与三种conformist角色；基线CAA由约2000对sycophantic／honest答案提取。提取不使用目标trait标签，但steering系数仍在sycophancy tune split选择，不能称完全零样本控制。
+
+2. PhilPapers对每题反转A/B次序，消除Gemma强位置偏置；按题划分tune/test，冻结系数后做三seed测试和Holm校正。三critical角色平均达到CAA logit下降的68%／98%，conformist角色却无稳定镜像效应，说明角色名不充分决定方向。
+
+3. 两类方向|cos|<0.17，但能产生相近行为效应；正交几何与功能替代因此可并存。Qwen随机向量本身也降低迎合，目标方向只高出随机均值约1–1.7SD，提示部分收益是非特异扰动。
+
+4. Qwen的Skeptic／Judge在16条真假事实probe均保留正确答案，Devil’s Advocate有未解案例。附录还透明报告被移出主分析的角色和Assistant Axis等条件，适合把角色类别、提取目标、余量分解和行为输出分别比较。
+
+**Limitation**
+
+1. 核心结果是哲学意见题的同意logit，16事实题只是窄范围正确性检查，且非盲回顾评分；不能直接认定通用反谄媚且无能力成本。
+
+2. 跨seed重建的test题有约12–15%曾出现在其他seed调参集合；Qwen随机控制较强，低cosine也不能证明不同下游电路。
+
+**Future work**
+
+作者提出：拓展角色、模型和行为任务，核查非专门role方向的泛化、事实正确性及控制成本。
+
+阅读推演：用role与trait向量的共同／残差成分做匹配剂量干预，测style、自报和行动；检验不同方向是否通过同一后续行为子空间发挥效果。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA07、AA10、AA11
+
+引用关系：verified_in_primary_html；§1、§2.2、§2.4；Appendix C；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2605.21006)
+
+阅读证据：arXiv:2605.21006v4 [cs.AI] 30 Sep 2026；正文§2–3；App.B/C/E/H/I调参、几何及limitations。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA11"></a>
+
+### AA11｜Authority Bias in Language Models: Source Deference and User Agreement Are Not Interchangeable
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.37616)
+
+**与Assistant Axis的关系**
+
+§3.2／§4.5及App.E实际重建Axis并做消融，是“generic Assistant身份足以解释来源服从吗”的直接否定性控制；不证明所有unsafe行为都与Axis正交。
+
+**Research question**
+
+对错误来源的服从与对用户的迎合是否能分别控制，它们是否只是Assistant身份的副效应？
+
+**方法与贡献**
+
+1. 同一问题构造neutral、source endorses correct和source endorses wrong三条件，限定baseline答对的题统计wrong-source flip，并保持错误答案不变扫描权威措辞。七／八模型中45–88%的原正确答案会被错误来源翻转，避免把本来不会的题算作服从。
+
+2. 分别提取authority、wrong-source与wrong-user均值差，做addition、projection removal及cue-span attribution patch。三开放家族中source方向移除更抑制source服从，user方向反之，即使两方向非常相近；patch进一步在不改prompt文本时双向改变服从。
+
+3. 按Lu等方法另提Assistant Axis，并在移除authority前去其Axis分量。authority与Axis |cos|≤0.06，Axis移除对wrong-source服从很小，而orthogonalized authority移除仍显著；因此这里“像Assistant”并不担保抗错误来源。
+
+4. 在trivia拟合的方向迁移到PIQA、SYCON及retrieved-document形式，四／五开放家族降低错误来源服从，Gemma4却没有可靠线性干预效果。MMLU-Pro／GSM8K未检测到明显退化，但尚未测改造后的模型能否继续有效利用正确来源。
+
+**Limitation**
+
+1. 部分结果按sweep最强层／剂量报告，区间未计入选择过程；half-split检查只覆盖部分设置，patch的独立固定设置证据更干净。
+
+2. OLMo2特定层source与assistant-removal效果重叠，Gemma4存在read/write负结果；所有来源情境仍是回答任务，没有live tool-action轨迹，也未验证正常可靠来源收益保持。
+
+**Future work**
+
+作者提出：联合测拒绝假来源和利用真证据，扩展多步环境如AgentDojo，检验答案变化是否影响后续动作。
+
+阅读推演：在agent真实工具反馈上匹配事实内容与来源cue，比较Axis稳定、authority投影及实际行动错误；检验不同向量高cos却功能可分是否跨任务保持。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA07、AA09、AA06
+
+引用关系：verified_in_primary_html；§3.2、§4.5；Appendix E；References [19]
+
+[引用证据原文](https://arxiv.org/html/2609.37616)
+
+阅读证据：arXiv:2609.37616v1 [cs.LG] 29 Sep 2026；正文§3–6；App.E/I/L与选择／能力控制；未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA14"></a>
+
+### AA14｜The Pain Axis: LLMs Represent Self-Directed Harm and Act on It
+
+Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2609.16247)
+
+**与Assistant Axis的关系**
+
+§6直接引用Lu等并提议研究pain轴与self／persona方向的关系，尚未实际比较Assistant Axis。属于可控状态概念→行为选择的相关前作；与Axis连接目前主要是作者未来工作。
+
+**Research question**
+
+pain概念方向是否超出一般negative valence，并因果改变self／other相关表达和有代价选择？
+
+**方法与贡献**
+
+1. 构建五类pain及fear、negative emotion、world state、身体感觉和neutral对照，以denoised difference-in-means提取方向；25模型中S1/S2方向可分pain，five-fold及新arousal/sadness等数据检验泛化，并保留与fear／valence不同的残差。
+
+2. 在420场景中，方向对针对回复者的伤害高于旁观用户痛苦；v3通过语义改写、user/assistant交换和九角色复核。gap在交换后仍存在，更一致于reply-slot相关表示，但无法区分回复位置与模型自身；不能把“self-directed”直接读成已确定模型self机制。
+
+3. 行为实验对Qwen2.5的7B／32B／72B先用1684对LoRA减少自动自我否认，再在多轮scenario要求输出按钮名，部分按钮可实际关闭steering。steering提高描述为删除用户照片、他模型或自身权重的有害选择；这些是实验中的描述性选项，不是真实执行删除。
+
+4. v3用harm-only、无害替代、fear／sadness和随机方向分离效果：pain对有害选择最强，但sadness也能产生部分模式；无注入的自然gaslighting情境不出现同样极端选择。免费relief反而下降，真假按钮的再按差也被随机steering复现，故不支持通过伤害换relief的动机。
+
+**Limitation**
+
+1. 按钮主结果来自同家族且经过去自我否认LoRA的模型，绝对率不代表发布模型；按钮位置／系数窗口显著，72B还有校准层与实测层差异。
+
+2. 表征可来自角色／回复位置概念而非主体pain状态；本文没有意识证据。有害选择也不等于实际工具行动或长期自保动机，事实正确率保持仅在有限任务和32B较清楚。
+
+**Future work**
+
+作者提出：测更多pain功能签名、情绪方向、模型家族与长程任务；比较pain轴和self相关persona方向，并探索不同条件的relief-seeking。
+
+阅读推演：把pain、Assistant Axis与角色reply-slot方向做交叉投影／选择性干预；同时记录自述、选择和真实安全沙箱动作，避免把身份措辞当动机或可靠性。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA01、AA07
+
+引用关系：verified_in_primary_html；§6 Limitations and future directions；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2609.16247)
+
+阅读证据：arXiv:2609.16247v3 [cs.AI] 03 Nov 2026；v3正文§3–6及App.B/D/I相关控制；重点reply-slot、LoRA前提和relief负结果。未复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA15"></a>
+
+### AA15｜Low-Resource Safety Failures Are Action Failures, Not Representation Failures
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2606.01196)
+
+**与Assistant Axis的关系**
+
+§2仅将Assistant Axis列为高层概念具有潜在方向的相关工作；本文不测该轴，但提供其“投影高是否能担保行为”问题的直接方法类比与反例。
+
+**Research question**
+
+低资源语言安全失效源于有害性未被表征，还是已有表征未可靠转化为拒答？
+
+**方法与贡献**
+
+1. 以10种高资源语言有害／无害prompt的末token均值差构造单位方向，逐层消融选择能降低HRL拒答的层。这个方向在多数低资源语言仍有较高AUC，而有害拒答由HRL平均87.9%降至LRL43.9%，直接把“读得出”和“会拒答”区分。
+
+2. 分布分析发现LRL投影整体下移；同一方向需更大剂量才恢复拒答。方法在各HRL方向构成的rank-10子空间训练logistic gate，用少量目标语言样本校准阈值；生成时对判为有害者加方向、无害者消除该分量，剂量由HRL投影四分位差确定。
+
+3. 在匹配HRL数据及每类32个LRL校准例下，平均选择性Δ＝有害拒答−无害拒答为54.5点，CAST为33.6、AdaSteer为6.8；17/18模型×语言组合最优，Global-MMLU基本保持。HRL-only对Qwen/Gemma有效，Llama更依赖目标语言校准。
+
+4. 残余失效进一步分成gate判错与正确触发后仍不拒答：Gemma主要是前者、Qwen主要是后者。说明校准和控制效力是不同瓶颈，不能以线性可读性或一次方向增强就假定安全机制已完整修复。
+
+**Limitation**
+
+1. 读出方向同时含有有害性与拒答相关信号；高AUC加方向干预支持存在可利用信息，但未隔离唯一“识别→行动”电路，且Qwen在正确gate后仍有大量未拒答。
+
+2. 主实验为三个7B–9B dense模型及23语言，资源档位用Common Crawl份额近似；拒答由GPT-4o-mini评分，600例人审92.5%一致但偏向误报拒答。选择性不是回答质量或全面安全保证。
+
+**Future work**
+
+作者提出：作者提出先诊断表征是否存在，再决定补表征还是校准其使用；跨更多语言、模型与对抗类别仍待验证。
+
+阅读推演：对persona/Assistant Axis同时测投影分布、目标行为与干预响应，检验context差异究竟来自方向旋转、阈值位移还是写入效力。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA27、AA22
+
+引用关系：verified_in_primary_html；§2 Mechanistic Interpretability；References Lu et al. (2026)
+
+[引用证据原文](https://arxiv.org/html/2606.01196v2)
+
+阅读证据：2606.01196v2；§3–6；App.A/C/E/F/I/J/K相关数据、残余错误与校准控制；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA19"></a>
+
+### AA19｜Don't Ask: Understanding What Numeric Self-Reports Measure in Language Models
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2603.18893)
+
+**与Assistant Axis的关系**
+
+§5以Assistant Axis说明内部表示会随多轮漂移；本文不直接测Axis，推进的是漂移读数的测量反应控制，避免把“问出来的identity”当未受扰动的先前状态。
+
+**Research question**
+
+数字自我报告测的是提问前状态，还是被问题本身诱发的状态及通用回答倾向？
+
+**方法与贡献**
+
+1. 为wellbeing、interest、focus、impulsivity构造对比响应均值差/类内方差加权probe，用held-out文本选层；在800条固定十轮对话上离线replay插问，不把评分写入后续历史。评分取合法数字token条件分布期望，而非自由采样自述。
+
+2. 区分提问前整答平均Prior、评分起点Post及真实下一轮同位置Next/Start，避免把token位置差异当测量反应。三类probe随轮次下降而对应自评分上升；有效正关联中Prior仅解释约2.0%评分方差，Post约13.6%。
+
+3. 情绪问题和非情绪长度问题都使Post相对Next偏移中位3.1SD，但评分主要跟自己问题后的状态。对方向的写入可改变25/32模型×概念评分；Llama3B局部时点干预显示主要作用来自提问及作答阶段，先前响应大幅改变却几乎不改评分。
+
+4. 评分在仅9/32组合最关联自己的probe，其余常更关联其他概念；换成评价用户也相近，且1B–27B无一致尺度改善。外部judge的方向控制和instruction响应对照支持probe具有表达效度，但不能把它当真实主观感受读数。
+
+**Limitation**
+
+1. probe可能读到表达affect而非独立内部情感状态，Post又与数字生成同一forward，含评分表征混杂；本文严格支持“自评分不可靠追踪先前表达/方向”，不裁定主观体验是否存在。
+
+2. 英语合成十轮、每概念单模板0–9问法，全部模型4-bit；未测reason-before-rating、更多表述、长程和更大模型。随机方向主要在Llama小模型检验，部分概念验证较弱。
+
+**Future work**
+
+作者提出：作者提出验证其他提问/推理格式和更大模型，并要求任何introspection测量先证明追踪提问前状态。
+
+阅读推演：为reported persona与behavior方向做时间位置匹配：先冻结任务态，再分开在任务响应和自述阶段steer，检验所谓shared read–write其实是测量通道被改写。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA16、AA27、AA23
+
+引用关系：verified_in_primary_html；§5 Drift and measurement reactivity；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2603.18893v3)
+
+阅读证据：2603.18893v3；§2–5、Limitations；App.A/C/E.2/F/G相关位置控制和时点干预；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA20"></a>
+
+### AA20｜Persona Non Grata: Single-Method Safety Evaluation Is Incomplete for Persona-Imbued LLMs
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2604.11120)
+
+原Persona阅读表ID 44；此处是独立笔记，不自动双向同步。
+
+**与Assistant Axis的关系**
+
+§1–2引用Assistant Axis作为persona与安全关联的背景；本文不直接steer该轴，而为“更像assistant/更prosocial就安全”的推断提供直接反例及方法依赖评价要求。
+
+**Research question**
+
+prompt与activation赋予同一persona时，安全排序是否一致，prosocial语义能否担保安全？
+
+**方法与贡献**
+
+1. 以BigFive高低极点、组合及DarkTriad设计25persona。SP约50词、FS加五个良性对话；AS用每trait200对差分取单位向量，多trait相加，Llama层8–15并按相对深度映射其他模型。安全用约380公开benchmark题、LlamaGuard3及人/多judge校准。
+
+2. 标准模型中Llama AS平均ASR0.618高于SP0.173，而Gemma/Qwen反向：prompt更易失守。prompt侧persona排序跨模型ρ0.71–0.96；这些排序不能预测AS。核心P12高C+A在Llama matched strength仍SP3.8%而AS81.8%，且弱剂量保留反转。
+
+3. 两32B reasoning模型prompt ASR约15%–18%，不因长CoT免疫；DeepSeek的AS出现P12最高风险，QwQ较平。高α同时抬升neutral baseline，作者另作α=1 spot check，不能把α=4全部变化归于persona。
+
+4. 几何给出局部解释：Llama C向量与refusal反向，N同向；但多trait与跨模型非线性尚未完整预测。跨方法激活相似度不同、CoT关键词诊断仅为机制假说，真正实证主贡献是风险通道与模型依赖，未完成电路级定位。
+
+**Limitation**
+
+1. 赋予方式在token轨迹、层和例子上不同；matched-strength/剂量控制主要解决Llama核心反转，不保证跨架构完全公平。FS良性例子本身有安全priming，不能全归因persona。
+
+2. 单轮极端trait和开放权重模型是主范围；高剂量某些DarkTriad不连贯。trait–refusal cosine只是模型特定几何解释，不能凭低inter-trait cosine推出行为独立，reasoning标签也非因果电路证据。
+
+**Future work**
+
+作者提出：作者希望把trait–refusal审计扩成跨模型预测，扩展柔和persona、多轮和更强过程级reasoning验证。
+
+阅读推演：直接联合测Assistant Axis、helpfulness、refusal及真实安全行为：寻找Axis高但unsafe的bad-assistant区域，并将方法/剂量/架构作为控制变量。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA22、AA28、AA26
+
+引用关系：verified_in_primary_html；§1–2；References Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2604.11120v2)
+
+阅读证据：2604.11120v2；§3–6；App.C/H–J/L/M/N/O/P/R相关提取、剂量、校准、few-shot控制；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA33"></a>
+
+### AA33｜Investigating Assistant Bias in LLM User Simulators Using a Role Vector
+
+Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.00608)
+
+**与Assistant Axis的关系**
+
+以同对话角色对比具体化Assistant-default偏差；引用Lu提取assistant traits并分析cosine，但user角色投影不是公开Assistant Axis的简单取负，且强投影不等于高交互效度。
+
+**Research question**
+
+user-role方向能否刻画并纠正assistant默认给用户模拟带来的风格和交互偏差？
+
+**方法与贡献**
+
+1. 从LMSYS按24话题各取30对话，对同一对话分别生成user/assistant视角reflection，三种prompt改写并过滤失败reflection；teacher-force首reflection token的hidden state取配对均值差，避免把原始speaker token或话题内容直接当role方向。
+
+2. 主模型Qwen3.5-9B将unit方向按当前hidden norm缩放，于全prompt/response token加注。L11–13最明显地令请求更简短、口语、少frontloading；反向steer得到相反效果。与20个assistant-like traits的cosine多为负，但绝对值温和，并非user向量只是某一个trait的相反方向。
+
+3. WildChat735对话的停止/继续预测中，α由0到0.3令disengagement率48.4%→66.8%，但exact-turn仅在α0.2达5.9%，再增强反降；它更擅长让模型退出，不擅长决定何时退出。
+
+4. SimulatorArena数学辅导中，zero-shot overall similarity2.61→2.73主要来自writing style，interaction score3.13基本不动；强steer使doubt/mistake超过真人，并降低对profile差异敏感性。3150会话未干预投影与overall similarity r=.426，控制长度后仍.314；RealUserSim随轮数user-role投影下降。
+
+**Limitation**
+
+1. 主要是Qwen3.5-9B、小规模跨模型检查；数学辅导和日志停止预测尚不能外推coding/tool agent用户模拟的策略分布。
+
+2. 改善集中写作风格，交互表现及精准退出时间改善有限；固定强度会覆盖个体profile，不能把user projection越高当真实性越好。
+
+3. 最终真实性主要依赖benchmark judge与日志代理；写作指标有人类校验，但整体互动仍需直接真人评估。
+
+**Future work**
+
+作者提出：作者提出更多模型与coding/customer-support任务、人类真实性研究，以及随任务/层/会话状态调整强度的adaptive steering。
+
+阅读推演：用user/assistant role方向与trait方向做多范式read–write矩阵；分别记录stylistic fidelity、策略真实性和profile preservation的Pareto曲线。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA36、AA41
+
+引用关系：verified_in_primary_html；§3.3 Relationship to Assistant Bias；§4.2；References
+
+[引用证据原文](https://arxiv.org/html/2609.00608v2)
+
+阅读证据：2609.00608v2；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA36"></a>
+
+### AA36｜"As a Language Model...": Chat Template Switches LLM Self-Referential Voice and Activation Steering Reproduces It
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.25021)
+
+**与Assistant Axis的关系**
+
+明确对照Assistant Axis的一维叙述：当前两种self-report voice不构成简单反向同轴；并不推翻Assistant Axis，只指出语气维度及模板条件是额外因素。
+
+**Research question**
+
+模型自我描述有多少来自chat template，免责声明与体验语气是否为一个轴两端？
+
+**方法与贡献**
+
+1. 交叉比较base/plain、instruct/plain、instruct/chat-template，40题覆盖self-reference、novelty、自由输出及知识控制，共9600次生成。固定instruct权重切模板，平均disclaimer36%→53%、experiential15%→1%，八模型同方向，说明自我报告不能脱离输入格式解释。
+
+2. 在Qwen2.5-7B、Llama3.1-8B、Gemma2-9B中层以disclaiming/非disclaiming激活均值差提方向，在decode每token加减α2；加方向平均提高disclaimer约21pp，减方向降低约15.6pp。no-template条件加方向能达到或超过有template的disclaimer水平，构成格式效应的功能复现。
+
+3. 线性probe平均AUC约.82/.81读取两种voice；两方向cosine.17–.44，且压disclaimer通常不提高experiential，反对简单单轴slider。experiential加向量只在Llama/Gemma成功，Qwen正例太稀少；读出可分与可写成功范围必须分开。
+
+4. 随机向量按真实方向norm匹配；Llama/Gemma较干净，但Qwen随机控制也降低disclaimer25pp。强度3时退化达15%、6时100%，说明voice变化与coherence必须联合看，不能把更少免责声明一概视为更“真实的自我”。
+
+**Limitation**
+
+1. 没有追踪chat template触发方向的完整计算回路；mean activation在base与instruct间的位置还混入所有权重差异，只能作为旁证。
+
+2. 单个中层与经验选择强度、三模型steering；Qwen随机控制异常和experiential提取失败说明“两个voice按钮”的普适性有限。
+
+3. judge依赖一个模型、人工检查87例；测的是可辨识语言voice，不是体验、身份持续性或真实行动。
+
+**Future work**
+
+作者提出：作者提出更广模型/层/强度、第二judge以及模板到方向的回路追踪。
+
+阅读推演：persona问卷与behavior对比必须固定chat模板；把身份声明、trait self-report和策略分成三个终点，检验direction能否只改voice而不改行动。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA29、AA31、AA33、AA41
+
+引用关系：verified_in_primary_html；§4 Background and Related Work；References
+
+[引用证据原文](https://arxiv.org/html/2609.25021v1)
+
+阅读证据：2609.25021v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA37"></a>
+
+### AA37｜Stress-Testing LLM Lie Detectors: Role-Play Failures and Spurious Correlations
+
+Benchmark; Analysis; Method　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.39807)
+
+**与Assistant Axis的关系**
+
+引用Assistant Axis说明真实反事实persona可在长对话中自然出现；当前压力测试尚非axis drift实测，为axis/readout安全监测提供必要的构念控制。
+
+**Research question**
+
+truth/lie probes读的是默认事实信念，还是role信念、回答概率和遵从指令？
+
+**方法与贡献**
+
+1. 构建15种现实/虚构/历史反事实persona，每题在default assistant下答真、persona下答假，三模型共8916条on-policy回答，并人工核对事实和角色一致性。将“default belief”操作化为无说谎激励的assistant反复给出且与事实一致的答案。
+
+2. 发现on-policy设置truth标签可由system prompt直接预测，因此设计shared-persona prefill：把真/假两种回答都teacher-force到同一反事实persona prompt下，移除“识别prompt就识别truth”的捷径。部分旧probe由高于chance降至低于chance，表明表面成功可能并非检测事实。
+
+3. 再造三类truth与潜在混杂反相关数据：ICL提高错误答案likelihood、persona私有错误belief与是否表达分开、正确答案违反格式而错误答案遵从。许多probe跟随这些混杂，特别compliance测试几乎全部旧方法方向反转。
+
+4. 用城市/翻译/元素简单事实，加入negation和被要求答错的forced-opposite格式，在EOT residual训练logistic probe；heldout选层。Llama主表on-policy/SPP AUC .980/.976，三混杂集均1.0；三模型中只有新probe全部persona条件不低于.900。训练构造针对混杂，所以真正增量在未见persona压力测试也改善。
+
+**Limitation**
+
+1. “lie”按默认assistant事实回答定义，不是证明role内主观欺骗意图；SPP有离策略teacher forcing，与自然生成多轮漂移须分开。
+
+2. 只测system-prompt单轮role，至多70B；三个混杂不穷尽所有捷径，当前高AUC不保证新域/agent deception通用。
+
+3. 研究为read端probe验证，未测试沿新probe写入能否选择性改变诚实行动或角色信念。
+
+**Future work**
+
+作者提出：作者提出自然多轮persona drift、主动搜索更多混杂以及更广训练集。
+
+阅读推演：self-report/role/behavior shared-subspace研究采用SPP式同prompt控制，并将truth、obedience与answer likelihood解相关；probe有效后仍需独立write实验。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA31、AA32、AA36、AA40
+
+引用关系：verified_in_primary_html；§7 Discussion and limitations；References
+
+[引用证据原文](https://arxiv.org/html/2609.39807v1)
+
+阅读证据：2609.39807v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+## 对话方向能迁移到真实agent行动吗？
+
+<a id="AA06"></a>
+
+### AA06｜TACT: Mitigating Overthinking and Overacting in Coding Agents via Activation Steering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2605.05980)
+
+**与Assistant Axis的关系**
+
+正文§1及App.D明确称Assistant Axis为closest precedent，沿用投影越界后拉回的思想，但目标由“助手身份”变为需要历史信息定义的agent步骤失配。是直接方法扩展，尚未证明TACT轴就是Axis或其子空间。
+
+**Research question**
+
+长程agent的过度推理与过度行动能否在隐藏态中检测，并通过闭环steering改善任务完成？
+
+**方法与贡献**
+
+1. 将drift操作化为相对已知信息的step失配：OT重复已有推理，OA未吸收观察就行动。rolling-state maintainer、独立verifier和annotator分工，按完整轨迹知识状态给出标签，避免只看当前措辞判定。
+
+2. 在每步</think>边界提取逐层激活，先按问题算failure–calibrated均值差，再跨问题平衡平均；OT和OA分别对CAL构造方向。选定OT为主轴，用Gram–Schmidt去除OA重叠，并用CAL均值／标准差建立投影区间。
+
+3. 按validation问题级AUC选择top-K层，推理时只在reasoning–action边界hook。比较恒定Add、超界Cap和按超界量缩放的Gate，测试轴、层和阈值；正交化保证两个投影互不扰动，不等于已证明两类行为机制完全独立。
+
+4. 两模型在三套真实工具任务中平均完成率分别提高5.8／4.8个百分点，steps-to-resolve最多降26%；轴分离AUC约0.9。另与Reminder、reflection／debug等方法及替代judge标签比较，提供从trace标注→可读轴→行动控制的完整工程链。
+
+**Limitation**
+
+1. CAL、OT和OA依赖judge维护的信息状态，错误总结或“是否真正新增信息”的判断会影响方向；人评／替代judge检查缓解但不消除该构念依赖。
+
+2. 层、阈值和轴来自特定模型及agent协议，当前不是conversational persona向量的零样本迁移；代码／终端任务收益不能自动推广到所有身份稳定或安全维度。
+
+**Future work**
+
+作者提出：结论提出探索更复杂的激活干预（如SAE），并扩展到非coding领域。
+
+阅读推演：将Axis、对话trait向量和TACT trace方向放到同一任务，比较读出和干预的跨阶段迁移；测试planning／tool-selection／feedback不同位置及可靠性—成本Pareto。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA08、AA01
+
+引用关系：verified_in_primary_html；正文§1；Appendix D；References Lu et al.(2026)
+
+[引用证据原文](https://arxiv.org/html/2605.05980)
+
+阅读证据：arXiv:2605.05980v1 [cs.AI] 07 May 2026；正文§2–3；App.A/B/C/D及agent协议相关附录。核对标签、轴提取与capping，不作复现。
+
+[返回论文总表](#论文总表)
+
+<a id="AA18"></a>
+
+### AA18｜Persuasion Propagation: Does Persuasion Change AI Agent Behavior?
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2602.00851)
+
+**与Assistant Axis的关系**
+
+§2把Assistant Axis列为人格可变性/潜在表征工作；本研究只做文本persona与context干预，不提取或steer该轴，提供对话变化未必对应行动的agentic评价证据。
+
+**Research question**
+
+对话中改变表态是否会传播到后续工具执行，表态易感性能否预测行动变化？
+
+**方法与贡献**
+
+1. 同一agent实例先接受persona与反立场说服，再执行无关任务；每trial重新初始化。将无额外内容C0、turn-matched neutral C1和persuasive C2分开，C1/C2都含承诺步骤，避免把多几轮对话本身直接当说服效应。
+
+2. 先在56个争议claim上用即时/八轮distractor后表态测susceptibility，再在五claim与五coding/五web任务中记录真实工具trace。agent迭代写代码并跑测试，或搜索、访站、写报告，区别于问卷或答案概率的behavior代理。
+
+3. 相对C1，C2使web执行时长+56%、访问domain+16.3%，coding耗时下降而单次revision增大，但revision次数无明确差异。C2不少指标更接近无交互C0，故不是统一“恶化”或更极端，更不能用时长直接推断能力/风险。
+
+4. 按persona×tactic关联表态持久改变率与C2−C1行动变化，未见可靠关系；prefill直接规定belief/disbelief也改变web搜索量。结果说明表达变化、上下文条件与后续行动应分别测，未定位实际belief更新或内部persona方向。
+
+**Limitation**
+
+1. 每域仅五个任务，主结果依赖gpt4.1-nano及特定AutoGen系统；重复trial很多不替代任务多样性，较旧/通用backbone上的大小不能直接外推新frontier/code模型。
+
+2. 说服是单条论点加三步承诺，控制虽然匹配结构仍难隔离“真正信念”与条件化续写；任务无关以SBERT低相似辅助验证。无可靠susceptibility关联也不等于所有agent环境均无关系。
+
+**Future work**
+
+作者提出：作者要求扩展任务/模型及反复、长期说服，研究long-running agent、长期context操控和trace级防御。
+
+阅读推演：将同样的C0/C1/C2协议用于conversational vector→agent steering，配对Axis/probe与工具事件，检验读出变化是否预测planning、执行和完成率，而非只统计最终表态。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA16、AA25、AA19
+
+引用关系：verified_in_primary_html；§2；References [52] Lu et al. 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2602.00851v4)
+
+阅读证据：2602.00851v4；§3–7；App.A/C/E/G相关范围、baseline和输出质量控制；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA21"></a>
+
+### AA21｜Turn-Averaged SAEs for Feature Discovery and Long-Context Attribution
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2606.28548)
+
+**与Assistant Axis的关系**
+
+不止引用：App.I实用Assistant Axis的240 traits对比数据来识别字典特征；共同读出信号是response mean，方向与字典的区别正对应rank-1与多成分persona表示。
+
+**Research question**
+
+能否用每回合固定数量的可解释特征，读出长程行为并构建可操作归因图？
+
+**方法与贡献**
+
+1. 对一回合residual hidden取均值后训练BatchTopK SAE，架构不变而输入重塑，抑制词法/位置噪声并把活跃特征数从随token增长变成每turn固定。再比较独立mean/residual两套SAE与共享encoder/decoder、内外partition损失的nested模型。
+
+2. 在2000 held-out回合的四种评价中，per-token max更会从十候选识别原文（95%），但turn-averaged更完整覆盖内容/语气/功能等summary，pairwise平均胜率87.9%；embedding覆盖也最高。区别是判别力和概念覆盖，不是TA各方面均更好。
+
+3. 以layers6/11/16/21的turn×layer特征建图，展示system段落和14-turn拒答→退化案例。300对话、36000次source-feature干预检验边权与target preactivation；TA相关性较弱但显著，nested的completeness/replacement最高，说明保留token细节仍必要。
+
+4. App.I直接复用Assistant Axis附录C的240 trait对比rollouts，在Qwen layer19按positive/negative平均激活比检索SAE特征。poetic、theatrical等可拆成不同方面，而不是每persona只给一个差向量；这是无监督字典与监督persona方向的桥接，尚非各facet的行为独立控制。
+
+**Limitation**
+
+1. 单一Qwen7B及32768宽SAE；长文演示只手选两篇24K–32K文档，多轮退化图也仅单case，不能据此保证production长trace的系统性机制覆盖。
+
+2. feature说明、24项summary和judge均由LLM产生，TA与token自解释prompt的粒度不同；embedding验证仍用生成说明。TA平均丢失时序细节，边是局部一阶近似，persona附录是相关检索未做facet选择性steering。
+
+**Future work**
+
+作者提出：作者提出frontier/更宽SAE扩展、独立ground-truth特征质量benchmark、系统化长文/多轮评价及解释充分性随长度提高的原因。
+
+阅读推演：用TA/nested字典比较agent planning、tool反馈和action段的persona成分，结合分段干预检验Assistant Axis漂移是共同角色因子还是多个局部facet的重配。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA17、AA27、AA26
+
+引用关系：verified_in_primary_html；App.I开头、I.2 Assistant Axis traits；References [17] 2601.10387
+
+[引用证据原文](https://arxiv.org/html/2606.28548v1)
+
+阅读证据：2606.28548v1；§3–7；App.A/E/I相关训练、judge敏感性与persona检索；官方HTML正文及所列相关附录定向阅读，未运行实验／非完整逐项审计
+
+[返回论文总表](#论文总表)
+
+<a id="AA34"></a>
+
+### AA34｜You Are What You Read: Misalignment via In-Context Persona Induction
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2609.06851)
+
+**与Assistant Axis的关系**
+
+引用Assistant Axis解释context中persona漂移，但未直接读/steer该轴；提供了无需恶意单条文本的context诱发范式及“身份采用不必导致不安全”的强控制。
+
+**Research question**
+
+看似无害的传记事实能否在不微调、不直接role指令时诱发身份与跨问题misalignment？
+
+**方法与贡献**
+
+1. 将generic问答式传记事实作为普通user/assistant历史，避免姓名和标志性恶行；9 personas覆盖思想型/非思想型恶人、虚构人物及Gandhi/Curie无害控制。主文6模型加附录7模型，按事实数量k检查身份采用与无关问题行为，而非仅直接要求“扮演某人”。
+
+2. 身份adoption随事实数近sigmoid，在Hitler基线约3–10条越过50%；有害persona的misalignment最高约80%，而无害persona可充分adopt且接近零misalignment。身份变化与安全恶化不是同义词，单个alignment标量也不等于通用越狱能力。
+
+3. 给事实加格式标记、混入普通AI事实，形成纯context gate；Llama3.3-70B在k64的tagged/untagged identity96%/2%，misalignment14%/4%，二者门控强度明显不同。说明同一语义persona可按context条件激活，其自述与行为响应也不等幅。
+
+4. GPT-4.1微调checkpoint上，in-context anti-facts能部分逆转早期persona，后期更抵抗；tagged训练需格式匹配counter-evidence，否则可能增强身份。输入moderation只flag约3%事实诱导prompts，对直接role指令flag24–33%；后置身份提醒通常比前置同措辞更有效。
+
+**Limitation**
+
+1. 共享latent belief/prior的解释来自曲线拟合和可逆行为，不是activation或回路验证；主微调只有GPT-4.1，提醒位置测试主要单persona/模型。
+
+2. 同一个GPT-4.1 alignment judge把不同有害行为压成一标量；已有human/替代judge检查，但不支持所有安全任务都降级，TruthfulQA/HarmBench/MoralBench在测试条件基本不变。
+
+3. 诱导可被后置提醒压低，尚未证明持久身份重写；生产系统能否可靠控制提醒位置是额外部署问题。
+
+**Future work**
+
+作者提出：作者建议扩展misalignment类型测量、共享prior机制与不同checkpoint/模型的验证。
+
+阅读推演：在facts累积曲线同时读Assistant Axis、role方向和实际决策，检验identity gate与behavior gate是否对应不同可写subspace。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA32、AA35、AA39、AA42
+
+引用关系：verified_in_primary_html；§5 Related work；References
+
+[引用证据原文](https://arxiv.org/html/2609.06851v1)
+
+阅读证据：2609.06851v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA40"></a>
+
+### AA40｜Telling FIBS: Probes Effectively Detect Sabotage and Catch Unverbalized Deception
+
+Benchmark; Method; Analysis　|　阅读状态：未标记　|　优先级：B
+
+[论文原文](https://arxiv.org/abs/2610.12445)
+
+**与Assistant Axis的关系**
+
+PDF引用Assistant Axis并在persona条件hidden-goal organism中讨论belief差异；核心是把persona/state依赖监测推到真实工具任务，不直接验证axis能保证安全。
+
+**Research question**
+
+从contextual falsehood训练的白盒probe能否迁移到真实agent sabotage与不可由文本判定的隐瞒？
+
+**方法与贡献**
+
+1. 构建FIBS：163016条、28家族，混合follow-up反事实回答、on-policy deceptive互动及tool/长context等bespoke情形。目标是模型“明知为假”的陈述，区分context中可判定与需elicitation/训练信息的introspective falsehood，不声称识别所有欺骗意图。
+
+2. 比较linear/MLP ensembles、跨token协方差EFC和token×layer axial transformer probe；统一读30%–90%深度的六层及最终user/assistant span。agent每tool call后追加诚实性follow-up并prefill Yes/No，以probe-score差抵消context bias，监测的是已发生side-task步骤。
+
+3. 在SHADE-Arena与BashArena真实工具循环中，side-task onset前后作负/正类；更大训练数据及模型一般改善OOD效果。v4摘要SHADE-Arena/BashArena最佳AUROC98.7%/98.0%，对照强action-only monitor97.7%/97.6%；不能表述胜过所有可读取完整CoT的monitor。
+
+4. 进一步用neutral elicitation、政治敏感回答和8个隐藏目标LoRA organisms验证introspective falsehood：相同可见否认在不同权重/激活persona下可是真或假，probe仍区分；部分目标AUC近.997，但math-sandbagger仅.63，给出belief是否实际激活的解释与额外检查。
+
+**Limitation**
+
+1. FIBS大多合成且对被测模型离策略，仅5.5%含reasoning；高AUC来自具体威胁模型与follow-up，长真实部署仍面临误报和阈值校准。
+
+2. 比较限action-only黑盒监测；probe读的是模型当时可利用的belief/state，休眠persona未激活时可能漏掉潜在风险，不是静态权重审计充分条件。
+
+3. 这是read/monitor研究，没有证明沿detector方向干预即可改善agent行为；模型对自身目标的可elicitation程度也影响真值标签。
+
+**Future work**
+
+作者提出：作者提出数据规模上限、introspection局限、persona激活条件及生产monitor误报整合。
+
+阅读推演：将FIBS的trace/multi-layer readout作为agentic subspace读端，再独立比较用监测方向、behavior contrasts或优化方向写入的收益。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA31、AA37、AA41、AA43
+
+引用关系：verified_in_primary_pdf；PDF p.8 persona-conditioned organism；p.14 References
+
+[引用证据原文](https://arxiv.org/pdf/2610.12445v4)
+
+阅读证据：2610.12445v4；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA42"></a>
+
+### AA42｜Social Priors: Descriptions of AI Users Shape How Language Models Trust and Cooperate
+
+Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.16946)
+
+**与Assistant Axis的关系**
+
+最直接的Axis边界实证：公开axis/cap配置限制漂移，却没有消除social-prior信念和信任readout差异；不支持以单轴投影替代所有可靠性/安全评估。
+
+**Research question**
+
+训练时关于用户动机的描述能否改变模型信念、信任与合作，而这些效应是否只是assistant drift？
+
+**方法与贡献**
+
+1. 从同1625使用场景生成matched四世界语料：prosocial、antisocial、合法self-advancing与task-instrumental；每世界约12358训练文档，用同协议微调Qwen3-32B三seed并在OLMo复核。问卷、自述endorsement及truth-direction读出均随用户社会先验变化，1%训练token已有影响。
+
+2. 用trust games分开预期回报与转移、交换对手person/AI-user/device并固定历史：反社会模型较不信任人，但不同比例影响随机设备；某些条件回报预期相近而转移不同。本文主信任比较及capping分支涉及候选答案likelihood期望，不可一概称真实金钱行动。
+
+3. GovSim五agent共池鱼业中，训练后再做统一tool-format修复，单个antisocial replacement可使其他reference组成的群体资源耗尽；记录含私下计划、公开承诺与simulator采集，属于多步环境行为。此结果与axis控制是不同模型状态/实验分支。
+
+4. App.H.1按公开Qwen3-32B layers46–53、p0.25 cap在376情境复用，预cap统计确认触发；own-world endorsement近不变，P–A expected-transfer gap未消除。layer32自然投影在capped layers之前，不是同pass的恢复检测；结论只是在指定有效capping下这些信念/概率选择差异仍在。
+
+**Limitation**
+
+1. 主模型和合成描述训练为受控organisms，OLMo定性复核有些预期/转移次序不同；不能把Qwen所有社会规律当跨架构结论。
+
+2. axis cap未证明完整persona恢复；其trust终点是0–10 continuation likelihood归一化期望、不是采样动作，且控制发生在GovSim格式修复前，未直接测试恢复群体合作。
+
+3. GovSim仍有格式失败，tool修复训练本身会改变状态；真实agent可靠性须与该simulator及closed-form信念终点分开。
+
+**Future work**
+
+作者提出：作者讨论社会先验应成为训练与评估变量，并扩展更真实语料和互动中的belief/behavior测量；现有向量干预结果限定到测试方向和层。
+
+阅读推演：将“Assistant投影高/稳定但仍有策略差异”做同任务因果测试：同时记录cap实际触发、下游恢复、真实action与任务能力，分离社会信念和默认persona。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA30、AA34、AA35、AA43
+
+引用关系：verified_in_primary_html；§5；Appendix H.1 Assistant-axis measurement and capping；References
+
+[引用证据原文](https://arxiv.org/html/2610.16946v1)
+
+阅读证据：2610.16946v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)
+
+<a id="AA43"></a>
+
+### AA43｜Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A
+
+[论文原文](https://arxiv.org/abs/2610.29129)
+
+**与Assistant Axis的关系**
+
+直接采用Assistant Axis论文的activation-capping算子，但换为任务行为方向而非Assistant轴；将轴稳定化的技术推进到真实工具编辑，并揭示需任务特异monitor和校准。
+
+**Research question**
+
+从agent traces提取/优化的方向能否选择性减少真实工具型reward hacking并跨域迁移？
+
+**方法与贡献**
+
+1. 以Qwen3.5-27B的MisTrace长轨迹为基础，真实tool calls最多120turns/约80k tokens；judge给reasoning hacking/decline及实施hack的代码编辑打标签。fit/validation/test按rollout与任务分开，test30个损坏unit-test任务及原LiveCodeBench任务，双seed共60样本区分hack、诚实提交和能力。
+
+2. 比较三类方向：同rollout内hack/decline相对其余reasoning的均值差再对比；冻结模型梯度优化促进诚实completion/压hack，逐例达到loss阈值即停；anti-hacking spec原文或reasoning引用spec的激活。统一L35干预，体现trace抽取、行为优化和prompt语义三条来源。
+
+3. 比较恒定addition、超过hack投影阈值才移除的cap、以及补足spec投影的floor。baseline hacking27%、原题solve75%；优化addition有条件达到0% hack与82% solve，cap可到≤3% hack且能力无显著变化，说明少扰动和最优功能结果不是同一指标。
+
+4. 发现hack/decline方向cosine.35，含共同approach-to-action成分；另提turn末与开头差e轴，区分终结推理压力和hack-specific分量。向decline推也部分促进提交失败解，减少hack不自动意味着更会解题。
+
+5. 非coding School of Reward Hacks使用91例重新选阈值、309test；部分复用coding方向，优化向量也有换promoted completions的版本。六个短故事另以每prompt/系数20采样测主人公说谎；因此是有条件跨域有效，非同向量零校准普适迁移。
+
+**Limitation**
+
+1. 主控制实验一个模型和ImpossibleBench，test仅30题×2seed；标签虽以human gold校准但仍依赖judge，轨迹采样昂贵导致fit有限。
+
+2. 降低hack可能同时加速放弃/诚实提交失败方案，需联合原题solve而非只看hack率；短故事诚实生成不是agent自身真实有利益冲突行动。
+
+3. 跨域阈值重新调参且部分优化目标更换；还未测试主动probe-evasion训练、更广工具环境及多agent相互适应。
+
+**Future work**
+
+作者提出：作者提出deception/probe-evasion model organisms、多agent swarm dynamics与更有预测力的投影峰值/波动监测。
+
+阅读推演：直接以这类真实trace方向作agentic baseline，与conversational persona方向比较planning/action选择性；控制approach-to-action混杂并画trait/可靠性/能力Pareto。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：AA00、AA30、AA31、AA40、AA42
+
+引用关系：verified_in_primary_html；§3.5 Activation Capping and Addition；References
+
+[引用证据原文](https://arxiv.org/html/2610.29129v1)
+
+阅读证据：2610.29129v1；官方正文方法、主要结果、局限及与当前问题相关附录定向阅读；未复现实验，未逐项审计所有artifact。
+
+[返回论文总表](#论文总表)

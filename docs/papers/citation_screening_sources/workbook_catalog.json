@@ -84,7 +84,8 @@
       10,
       21,
       23,
-      24
+      24,
+      33
     ]
   ],
   [
@@ -390,6 +391,208 @@
       4,
       24,
       29
+    ]
+  ],
+  [
+    "PV-C104",
+    33,
+    "Big Five; trait interference; cosine similarity; orthonormalisation; cross-trait bleed",
+    "主动消除Big Five steering方向的线性重叠，再检验跨trait联动是否随之消失：几何正交并不保证输出表现独立。",
+    [
+      1,
+      5,
+      7
+    ]
+  ],
+  [
+    "PV-C179",
+    34,
+    "activation steering; cross-effect matrix; asymmetric interactions; behavioral probes; propagation forecasting",
+    "系统测量67种行为间的非对称steering副作用，并用未干预激活训练的层间映射与行为probe预测其方向和相对排序。",
+    [
+      1,
+      5,
+      7,
+      33
+    ]
+  ],
+  [
+    "PV-C205",
+    35,
+    "Rank-1 Steering & Granularity; persona; causal transfer",
+    "rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度。",
+    [
+      1,
+      7,
+      10,
+      33,
+      34
+    ]
+  ],
+  [
+    "PV-C128",
+    36,
+    "Playing Devil’s Advocate; persona; causal transfer",
+    "未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制。",
+    [
+      3,
+      5,
+      7,
+      13
+    ]
+  ],
+  [
+    "PV-C132",
+    37,
+    "Where Steering Signals Come From; persona; causal transfer",
+    "控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果。",
+    [
+      1,
+      12,
+      21,
+      27,
+      34
+    ]
+  ],
+  [
+    "PV-C097",
+    38,
+    "ContextEcho; persona; causal transfer",
+    "真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现。",
+    [
+      3,
+      14,
+      19,
+      29
+    ]
+  ],
+  [
+    "PV-C067",
+    39,
+    "Non-Identifiability of Steering Vectors; persona; causal transfer",
+    "仅凭行为等效的干预结果，能否唯一识别内部steering方向。",
+    [
+      1,
+      10,
+      33,
+      34
+    ]
+  ],
+  [
+    "PV-C300",
+    40,
+    "Detection != Reliable Control; persona; causal transfer",
+    "能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感。",
+    [
+      4,
+      5,
+      12,
+      13,
+      34
+    ]
+  ],
+  [
+    "PV-C342",
+    41,
+    "Latent Identity Reversion; persona; causal transfer",
+    "persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性。",
+    [
+      3,
+      19,
+      31,
+      38
+    ]
+  ],
+  [
+    "PV-C084",
+    42,
+    "Prompt-Activation Duality; persona; causal transfer",
+    "为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善。",
+    [
+      1,
+      7,
+      21,
+      23,
+      38
+    ]
+  ],
+  [
+    "PV-C077",
+    43,
+    "What Can We Actually Steer?; persona; causal transfer",
+    "不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量。",
+    [
+      1,
+      2,
+      7,
+      33,
+      34
+    ]
+  ],
+  [
+    "PV-C198",
+    44,
+    "Persona Non Grata; activation steering; architecture; safety",
+    "同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？",
+    [
+      1,
+      3,
+      5,
+      7,
+      33,
+      34,
+      36,
+      38,
+      40
+    ]
+  ],
+  [
+    "PV-C310",
+    45,
+    "Steering Interference & Defaults; activation steering; architecture; safety",
+    "跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？",
+    [
+      1,
+      3,
+      7,
+      33,
+      34,
+      35,
+      39,
+      40,
+      43
+    ]
+  ],
+  [
+    "user-arxiv-2509.21400",
+    46,
+    "SafeSteer; activation steering; architecture; safety",
+    "能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？",
+    [
+      1,
+      7,
+      10,
+      33,
+      34,
+      35
+    ]
+  ],
+  [
+    "user-arxiv-2610.14025",
+    47,
+    "CCS; denoising; nuisance subspace; contrastive covariance; Big Five; emotion; multi-turn steering",
+    "用目标特异的对比散度子空间过滤steering方向中的共享混杂，联合保留概念表达、流畅性与指令相关性。",
+    [
+      1,
+      3,
+      4,
+      7,
+      29,
+      33,
+      34,
+      37,
+      42,
+      45
     ]
   ]
 ]
