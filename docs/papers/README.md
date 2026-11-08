@@ -1,7 +1,7 @@
 # Papers
 
 - [Agentic persona and architecture research-direction assessment](research_directions.md) — existing evidence, new primary sources, gaps and feasibility; mirrored in a separate tab of the main reading Doc.
-- [Independent Assistant Axis direct-citer reading collection](assistant-axis/README.md) — separate Google Doc; no Excel synchronization or architecture columns.
+- [Assistant Axis direct-citer reading collection](assistant-axis/README.md) — a dedicated tab in the Persona Google Doc; no Excel synchronization or architecture columns.
 
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) — primary reproduction target, v3.
 - [Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors](https://arxiv.org/abs/2603.21398) — gaming Figure 3 reproduction target; see [Qwen3.5 plan](../research/gaming/protocol.md).

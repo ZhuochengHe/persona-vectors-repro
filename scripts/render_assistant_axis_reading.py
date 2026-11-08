@@ -1,7 +1,7 @@
-"""Render the independent Assistant Axis collection; requests initialize NEW Docs only.
+"""Render the Assistant Axis collection; requests initialize a NEW empty tab only.
 
 Native tables, heading links and landscape sections require live-structure edits.
-Never replay initialization over an existing reading document.
+Never replay initialization over an existing reading tab.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def render(data):
     add("从研究问题或论文总表进入详细笔记；点击ID打开笔记、短标题打开论文。摘要一句话结论与正文方法证据分开。Additional think专留给用户。")
     add(data["scope_note"])
     add("Assistant Axis直接被引列表", url="https://mlsanity.com/paper/2601.10387/")
-    add("这份文档独立维护，不与原Persona Vectors表或本地Excel同步；不设置模型架构列。")
+    add("本分页与Persona论文集共用同一Google Doc；AA编号和阅读数据单独维护，不与本地Excel同步，不设置模型架构列。")
     add("按研究问题查找", "HEADING_2")
     for g in data["groups"]:
         add(g["title"] + "｜" + "、".join(g["ids"]), key="nav:" + g["key"])

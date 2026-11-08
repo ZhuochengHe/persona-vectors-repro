@@ -1,8 +1,8 @@
 # Assistant Axis 被引阅读
 
-[打开独立Google Doc](https://docs.google.com/document/d/11tsm0krcXAGAMhL-UUjZnidLEOUgft84DYlPaKrnkVU)
+[打开Persona文档中的Assistant Axis分页](https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro/edit?tab=t.a7wc0ik64xrs)
 
-本集合独立于原Persona Vectors阅读表。种子为[The Assistant Axis](https://arxiv.org/abs/2601.10387)，只从直接被引列表收集候选，不递归扩展；种子本身作为基础阅读单列。
+本集合放在Persona Google Doc的独立分页中；AA编号与阅读数据仍独立于原Persona Vectors阅读表。种子为[The Assistant Axis](https://arxiv.org/abs/2601.10387)，只从直接被引列表收集候选，不递归扩展；种子本身作为基础阅读单列。
 
 ## 筛选与细读
 
@@ -20,11 +20,11 @@
 - `screening.json`：逐篇筛选判断与精读去向。
 - `reading.json`：入选论文结构化笔记；不与原文献CSV或Excel对齐。
 - `reading.md`：本地可读镜像。
-- `google_doc.json`：独立Google Doc的真实ID、revision和标题锚点。
+- `google_doc.json`：共享Persona Google Doc的真实ID、专用tab_id、revision和该分页标题锚点。
 
-Google Doc为日常阅读／编辑入口，原文和笔记ID可点击；总表列ID、短标题、类型、状态、Task、Major finding（摘要）、Benchmark／Validation，长贡献与局限放每篇正文。总表横向，正文竖向。具体样式沿用[维护合同](../literature_document_maintenance.md)，但本集合明确不参与Windows／仓库Excel同步，也不要求架构字段。后续修改先读live Doc，按ID合并用户笔记；不重放初始化覆盖已有文档。
+Google Doc为日常阅读／编辑入口，原文和笔记ID可点击；总表列ID、短标题、类型、状态、Task、Major finding（摘要）、Benchmark／Validation，长贡献与局限放每篇正文。总表横向，正文竖向。具体样式沿用[维护合同](../literature_document_maintenance.md)，但本集合明确不参与Windows／仓库Excel同步，也不要求架构字段。旧独立文档仅作为迁移存档，不再维护。后续修改先读live分页，按ID合并用户笔记；不重放初始化覆盖已有文档。
 
-Validation现带`【场景】`前缀，区分单轮、多轮、长程／长输入和真实工具环境；干预对象与分支范围见`sources/evaluation_regimes.json`。例如AA42的GovSim与Axis-capping概率读出并非同一分支，不能合并成“Axis已在环境动作中验证”。两方向综合评估见[主集合分析](../research_directions.md)，此Doc仍不新增架构列。
+Validation现带`【场景】`前缀，区分单轮、多轮、长程／长输入和真实工具环境；干预对象与分支范围见`sources/evaluation_regimes.json`。例如AA42的GovSim与Axis-capping概率读出并非同一分支，不能合并成“Axis已在环境动作中验证”。两方向综合评估见[主集合分析](../research_directions.md)，此分页仍不新增架构列。
 
 开始工作先检查`git status`并安全`git pull --ff-only`；若dirty／diverged导致无法安全拉取，报告并保留现有修改，不stash／reset。完成后提交可复用改动和阅读内容，分别保留证据范围。只有来源快照覆盖范围内的数量可称已收集，不宣称所有数据库完整。
 
@@ -34,4 +34,4 @@ Validation现带`【场景】`前缀，区分单轮、多轮、长程／长输�
 
 条目ID AA00／AA01–AA43独立于原表；候选AA-C编号用于引用来源追溯，后续新增不重编号。网页可编辑笔记；本地`reading.json`／`reading.md`保存可审阅工作源，当前没有自动双向同步。`sources/coordinator_checks.json`保留关键高风险解释的交叉核验。
 
-抓取：`python scripts/collect_assistant_axis_citations.py`（已有sources时拒绝覆盖）。渲染：`python scripts/render_assistant_axis_reading.py --requests-output /tmp/assistant_axis_requests.json`（仅NEW-document初始化，绝不能重放到现有Doc）。live原生表格、链接、独立横向section需按当前结构维护，范围与revision以`google_doc.json`为准。
+抓取：`python scripts/collect_assistant_axis_citations.py`（已有sources时拒绝覆盖）。渲染：`python scripts/render_assistant_axis_reading.py --requests-output /tmp/assistant_axis_requests.json`（仅新建空分页初始化，绝不能重放到现有Doc）。live原生表格、链接、独立横向section需按当前结构维护，范围与revision以`google_doc.json`为准。
