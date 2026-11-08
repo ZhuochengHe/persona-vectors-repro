@@ -4,7 +4,7 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMRmcwpyFR_43YOGmRT5SP7YKNT9KF8Q7-Ia57Wge1XUgAbR8cidBNAJCeUWzlLwaYE4hY2pbx9uSKi3Wtt9OqvBkLM25gysuLg8NDQ",
+  "verified_revision": "AHj4eMRf2Qy8ZBLqsrczrwPGYAqKi8gOOz1-fpyWbZ88wMHsE87E0jcilhdQqkS2Clk1Z_MacaDm9bWwnVdLqvHRVahqcAvJiz4yAMNGwWo",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 3,
@@ -58,7 +58,8 @@
     "44": "h.orhpdbuha9gl",
     "45": "h.2mf6i8ovp24g",
     "46": "h.7s4f2z2x9i9z",
-    "47": "h.qr9wsq7ptrhp"
+    "47": "h.qr9wsq7ptrhp",
+    "48": "h.hl3tmmwtdzee"
   },
   "update_rule": "Read live document and merge by stable paper ID before scoped revision-guarded edits. Update native index cells and links together with affected metadata; never replay initialization over existing notes.",
   "architecture_review": "docs/papers/citation_screening_sources/architecture_review.json",
@@ -67,7 +68,7 @@
   "evaluation_regimes": "docs/papers/citation_screening_sources/evaluation_regimes.json",
   "latest_pdf_verification": {
     "date": "2026-11-07",
-    "scope": "ID47 main index/detail and migrated AA tab; landscape index / portrait details; exported PDF checked"
+    "scope": "ID48 new index row and detailed note checked; A4 landscape index and portrait details; existing text, tables, headings, native equations and other tabs unchanged"
   },
   "direction_review": {
     "tab_id": "t.ujr6rrarqnyl",
@@ -81,5 +82,6 @@
     "registry": "docs/papers/assistant-axis/google_doc.json",
     "excel_sync": false,
     "architecture_fields": false
-  }
+  },
+  "atlas_review": "docs/papers/citation_screening_sources/atlas_reading_review.json"
 }

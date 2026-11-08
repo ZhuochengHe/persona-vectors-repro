@@ -67,7 +67,8 @@
     "44": "Persona Non Grata",
     "45": "Steering Interference & Defaults",
     "46": "SafeSteer",
-    "47": "CCS: Contrastive Covariance"
+    "47": "CCS: Contrastive Covariance",
+    "48": "ATLAS: Drift No More"
   },
   "architecture_labels": {
     "1": "Dense Transformer",
@@ -116,7 +117,8 @@
     "44": "Dense/Hybrid（文本）",
     "45": "Dense（文本）",
     "46": "Dense · VLM",
-    "47": "Dense（文本）"
+    "47": "Dense（文本）",
+    "48": "Dense／MoE；VLM/VLA"
   },
   "index_font_size_pt": 9,
   "index_orientation": "landscape",

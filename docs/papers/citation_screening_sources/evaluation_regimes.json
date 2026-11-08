@@ -701,6 +701,20 @@
       "evidence_location": "§4.1/4.5；App.C",
       "confidence": "正文核对",
       "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "48",
+      "setting_tags": [
+        "multi-turn-dialogue",
+        "long-context-input",
+        "multi-agent-interaction",
+        "long-horizon-environment-execution"
+      ],
+      "setting_summary": "【场景】长对话记忆＋闭环多agent；AMemGym 30–100轮／episode；ALARA环境任务；LIBERO动作执行。 【验证】EverMemBench 2400QA；AMemGym 1000episodes；ToolACE 500条2–6调用链测AST／参数；ALARA 115任务；LIBERO 10任务×50rollouts×3seed。",
+      "evidence_url": "https://arxiv.org/html/2611.04315v1",
+      "evidence_location": "§4；App.A1.3/A3/A4/A10.6",
+      "confidence": "high",
+      "intervention_role": "target-agents; model-local kernels; ToolACE structure scoring distinct from AMemGym/ALARA/LIBERO execution"
     }
   ],
   "scope": "每篇可包含不同实验分支；标签不能被解读成所有分支共享该场景。"

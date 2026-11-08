@@ -22,7 +22,7 @@ trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID
 
 如何评估审计与交互中的可靠性？｜ID 14、ID 19
 
-当前问题补充：几何、read–write与agent迁移｜ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
+当前问题补充：几何、read–write与agent迁移｜ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 48
 
 安全评估、模型默认与多模态子空间｜ID 44、ID 45、ID 46
 
@@ -44,15 +44,15 @@ MoE／混合attention证据（probe与steer须分开）：ID 5、ID 9、ID 11、
 
 ### 按论文类型查找
 
-Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46、ID 47
+Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46、ID 47、ID 48
 
 Benchmark：ID 7、ID 14、ID 38
 
 Survey：当前未标注符合此类的条目
 
-Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46、ID 47
+Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46、ID 47、ID 48
 
-Theory：ID 39
+Theory：ID 39、ID 48
 
 ## 论文总表
 
@@ -107,6 +107,7 @@ Theory：ID 39
 | [45](#paper-45) | [Steering Interference & Defaults](https://arxiv.org/abs/2609.06951) | Analysis | Dense（文本） | 未标记 | 辨别steering干扰的来源 | 多数干扰非对称且更反映模型受扰后的默认趋向；匹配范数随机推力也产生相近的非目标行为排序。 | 【场景】24行为文本交叉干扰、随机push及十模型复制；非long-horizon控制。 【验证】10个instruct模型×24行为；生成文本judge；matched-norm随机方向；留一行为预测及跨模型复制。 |
 | [46](#paper-46) | [SafeSteer](https://arxiv.org/abs/2509.21400) | Method; Analysis | Dense · VLM | 未标记 | VLM推理期越狱防御与正常能力保持 | 作者报告低维安全子空间的自适应steering降低越狱成功率，同时维持或改善正常任务表现。 | 【场景】图文越狱输入→单次生成；早期token自适应steering，无环境动作闭环。 【验证】LLaVA／MiniGPT4／Qwen2.5-VL三VLM；图像扰动／图中文字攻击、adaptive attack；MM-Vet正常能力。 |
 | [47](#paper-47) | [CCS: Contrastive Covariance](https://arxiv.org/abs/2610.14025) | Method; Analysis | Dense（文本） | 未标记 | 人格／情绪／主题／真实性方向去混杂与稳定控制 | 对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。 | 【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。 |
+| [48](#paper-48) | [ATLAS: Drift No More](https://arxiv.org/abs/2611.04315) | Method; Analysis; Theory | Dense／MoE；VLM/VLA | 未标记 | 长程多agent的任务／角色稳定、状态维护、工具权限及具身协作 | ATLAS用task–role–state联合谱核与动态记忆干预，在长程记忆、状态维护及工具／具身压力测试中改善协作并减少漂移。 | 【场景】长对话记忆＋闭环多agent；AMemGym 30–100轮／episode；ALARA环境任务；LIBERO动作执行。 【验证】EverMemBench 2400QA；AMemGym 1000episodes；ToolACE 500条2–6调用链测AST／参数；ALARA 115任务；LIBERO 10任务×50rollouts×3seed。 |
 
 ## 人格方向从哪里来，如何形成？
 
@@ -1943,7 +1944,45 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户指�
 
 **Additional think｜用户笔记**
 
-（留空，供用户填写）
+第一：对比不同子空间构造目标
+
+| 方法 | 构造方向 |
+| --- | --- |
+| CAA | Mean difference |
+| CCS | Contrastive scatter |
+| Fisher LDA | Between-class / within-class ratio |
+| Regularized LDA | 对 within-class covariance 做 shrinkage |
+| cPCA | Target covariance − background covariance |
+
+第二：构造 Cross-effect Matrix
+
+假设我们研究五种 BIG5 traits，可以定义：
+
+\[ M_{ij}= E[B_j(x;\alpha v_i)] - E[B_j(x;0)] \]
+
+其中：
+
+\(i\)：被 steering 的 trait。
+
+\(j\)：被测量的 trait。
+
+\(B_{j}\)：行为评分。
+
+比较 Selectivity–Effectiveness Pareto Frontier
+
+定义：
+
+\(E_{i}=|ΔB_{i}|\)
+
+\(C_{i}=\frac{1}{m-1}∑_{j≠i}^{}|ΔB_{j}|\)
+
+其中 \(E_{i}\) 是目标效果，\(C_{i}\) 是非目标行为的平均变化。
+
+然后比较不同方法的：
+
+\((E_{i},C_{i})\)
+
+而不是仅比较 \(E_{i}\)。
 
 关联论文：1, 3, 4, 7, 29, 33, 34, 37, 42, 45
 
@@ -2898,6 +2937,74 @@ Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录
 机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
 
 阅读证据：2511.18284v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2511.18284v2
+
+[返回论文总表](#论文总表)
+
+<a id="paper-48"></a>
+
+### ID 48｜Drift No More: Spectral Locking for Long-Horizon Open-Weight Multi-Agent AI
+
+Method; Analysis; Theory　|　阅读状态：未标记　|　优先级：A（用户指定）
+
+[论文原文](https://arxiv.org/abs/2611.04315)
+
+**模型与架构**
+
+实测模型：T1：Llama-4-Scout-17B-16E-Instruct；T2：Qwen3-8B；T3另有Qwen2.5-7B-Instruct、Phi-4-14B、Gemma-2-9B-IT、Mistral-7B-Instruct-v0.1。72B扩展：Qwen2.5-72B-Instruct。LIBERO另用Qwen3-VL-8B-Instruct、Qwen2.5-VL-32B-Instruct、文中称Phi-4-Reasoning-Vision-15B及OpenVLA-7B；具体vision checkpoint与各模块hook细节未逐项核对。GPT-5.5／Claude Opus 4.7／Gemini 3.1 Pro为pilot judges，GPT-4o为语义及role指标judge，不列作被steer架构。
+
+骨干架构：正文包含dense decoder-only Transformer和Llama-4-Scout MoE（17B active／16 experts）；异构团队不是共享坐标或跨模型向量传递。LIBERO有实际RGB／depth输入及OpenVLA动作输出，文中VLM/VLA stack；未做MoE routing、稀疏骨干或looped Transformer的受控结构比较。
+
+输入／推理模式：temperature=0 greedy，三个seed，episode级128K预算、每20轮summary、最多200轮；各模型单层hidden-state干预。Qwen3 thinking是否开启未明确核实。LIBERO中text roles接结构化感知摘要，vision roles接图像，Actuator执行动作；不把全体模型都写成直接看图。
+
+架构证据：2611.04315v1 §4.1；App.A1.2/A4/A10.3/A10.6：模型角色、Scout MoE及72B dense、各模型本地建核；vision checkpoint与代码层编号仍未逐项复核。https://arxiv.org/html/2611.04315v1
+
+**Research question**
+
+能否用保留task、role与动态state重叠的联合表示干预，减少长程多agent的目标漂移、角色越界与状态过时，并改善真实任务表现？
+
+**一句话主题**
+
+用保留task、role与state重叠结构的谱核，逐token纠正多agent表示，并随交互更新状态子空间。
+
+**方法与贡献**
+
+1. 将task drift、role drift和state staleness放在同一表示问题下研究。200段Qwen3-8B多agent轨迹共14,832轮的诊断显示，三类漂移成对相关r=0.72–0.78，漂移时三类anchor投影共同下降；另用独立任务指标、随机子空间和移除实验检验其功能相关性。（§2；App.A8/A10.4）
+
+2. 子空间构造：分别把task、各agent的role、当前state描述送入该agent自己的冻结模型，收集层激活做thin SVD，以解释方差选rank，典型5–30。合成K=wT·UTUTᵀ+wR·URURᵀ+wS·VSΣSVSᵀ，保留三者重叠，不把anchor之间强制正交。共同支持的方向获得更大谱权重；用小Gram矩阵计算，避免显式构造d×d核。这是多文本anchor的低秩控制，不是从好／坏persona均值差提取单向量。（§3.2–3.3）
+
+3. 逐token干预h′=(I+αeffK)h，αeff=min(α,ξ/λmax)，放大当前h在高权重anchor方向上的已有成分。用Rayleigh quotient C(h)=hᵀKh/‖h‖²衡量coherence；App.A9.4正式证明固定PSD K下连续与离散更新的C均不降。定理保证的是这个几何目标，不是任务成功率或安全性。该文因此可标Theory，同时保留Method／Analysis。（§3.4–3.5；App.A9.4）
+
+4. 动态state：每轮衰减旧state特征值，将本轮steered表示投影到state子空间外；新颖残差比例超过ρ才加新方向，并限制rank、周期重正交。task与role anchor在episode内固定。异构团队各模型在自己的hidden space中建核，模型间经自然语言及shared state沟通，不跨模型搬运裸向量。（§3.6；App.A9.5/A10.6）
+
+5. 实验从长对话记忆扩展到闭环行为：EverMemBench测长期QA，AMemGym测on-policy状态读写；ToolACE测调用结构与参数链，ALARA测任务完成／越权／信息过曝；LIBERO另设多模态多agent wrapper，由OpenVLA执行7-DoF动作。T2 EverMemBench为54.1，对比A-MEM 48.4、MemoryArena-Agent 49.3；72B dense扩展为61.0 vs 56.2。LIBERO受扰动成功率比A-MEM高10.7–12.1个百分点，不把它写成普通对话结论。（§4；App.A1/A3/A4/A10.3）
+
+6. 几何与行为的联系不只用cosine：保持pipeline的hidden-access对照中，完整ATLAS 54.1，orthogonalized 50.3、random-subspace 47.8、prompt anchors 48.9、retrieval anchors 49.8；移除joint span使任务分数下降7.2点，matched-rank random只降0.8点。去掉steering仍有52.1，说明总系统收益与内部谱干预的增量要分开看；不是完整定位了每个角色／trait的神经机制。（§4.4；App.A5/A10.2/A10.4）
+
+**局限与解释边界**
+
+1. ActAdd／SEA只干预Coordinator、Executor、Monitor三个role，而ATLAS覆盖整个团队；同拓扑、同调参预算并未控制干预覆盖范围。更有判别力的比较是同role覆盖、同层／同token budget，尤其要区分整个pipeline与谱核本身的收益。
+
+2. joint kernel优于单／双anchor，但App.A10.2删除anchor时不重归一剩余权重，核的总质量及有效增益也随之变化；因此该消融不能单独量化“重叠几何”的全部贡献。orthogonalized和matched-rank控制更接近这个问题，仍可进一步做等trace／等干预范数对照。
+
+3. Anchor来自人工给定task／role／state文本；坏规范或不完整摘要会进入控制目标。固定K下C不降不等于动态state更新后仍保持相同目标，也不等于role越稳定就越正确。现有受控团队和LIBERO wrapper还未覆盖动态创建角色、变更权限或被污染记忆等部署变化。
+
+**Future work**
+
+作者提出：扩大到动态agent创建、变化的工具权限和不可信外部记忆等部署条件，改善anchor规范及state摘要质量。
+
+阅读推演：将conversational persona方向与task／role／state anchors在相同agent行为任务中比较，分别读出与干预planning、tool selection、执行结果；用同role覆盖及等核trace／等干预范数区分共享几何与干预强度。进一步在dense和MoE上比较匹配方向的选择性与迁移，不能用本文异构团队收益直接推出架构不敏感。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 7, 33, 34, 35, 37, 39, 42, 43, 47
+
+关键词：ATLAS; agentic steering; task-role-state; spectral kernel; adaptive memory; long-horizon; MoE
+
+机构／会议：University of Florida；University of Oklahoma；SRI International；论文首页标注Accepted at EMNLP 2026（据作者版本，未独立核对会议名录）
+
+阅读证据：2611.04315v1：正文§2–7、方法与主要结果；App.A1/A3–A6/A8–A10定向核对。未复现实验或逐项审计代码；用户指定补充，不虚构原种子被引来源。https://arxiv.org/html/2611.04315v1
 
 [返回论文总表](#论文总表)
 

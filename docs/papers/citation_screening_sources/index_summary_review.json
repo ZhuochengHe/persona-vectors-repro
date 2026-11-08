@@ -347,6 +347,14 @@
       "Major finding": "对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。",
       "Validation": "【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。",
       "source": "https://arxiv.org/html/2610.14025v1"
+    },
+    {
+      "ID": "48",
+      "Task": "长程多agent的任务／角色稳定、状态维护、工具权限及具身协作",
+      "Major finding": "ATLAS用task–role–state联合谱核与动态记忆干预，在长程记忆、状态维护及工具／具身压力测试中改善协作并减少漂移。",
+      "Validation": "【场景】长对话记忆＋闭环多agent；AMemGym 30–100轮／episode；ALARA环境任务；LIBERO动作执行。 【验证】EverMemBench 2400QA；AMemGym 1000episodes；ToolACE 500条2–6调用链测AST／参数；ALARA 115任务；LIBERO 10任务×50rollouts×3seed。",
+      "evidence_url": "https://arxiv.org/html/2611.04315v1",
+      "scope": "abstract finding; §4 and App.A1/A3/A4 validation"
     }
   ]
 }
