@@ -689,6 +689,18 @@
         "single-turn"
       ],
       "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
+    },
+    {
+      "ID": "47",
+      "setting_tags": [
+        "single-turn",
+        "multi-turn-dialogue"
+      ],
+      "setting_summary": "单轮生成与20轮对话；没有工具执行。",
+      "evidence_url": "https://arxiv.org/html/2610.14025v1",
+      "evidence_location": "§4.1/4.5；App.C",
+      "confidence": "正文核对",
+      "intervention_role": "no-end-to-end-tool-agent-intervention-verified"
     }
   ],
   "scope": "每篇可包含不同实验分支；标签不能被解读成所有分支共享该场景。"

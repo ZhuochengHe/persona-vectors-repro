@@ -1,0 +1,13 @@
+{
+  "ID": 47,
+  "source_key": "user-arxiv-2610.14025",
+  "source": "https://arxiv.org/html/2610.14025v1",
+  "selection": "user_requested_supplement",
+  "scope": "2610.14025v1：正文§3–5，App.B/C/E/F定向核对；未复算。用户指定范围外补充，未核对原种子直接引用关系。https://arxiv.org/html/2610.14025v1",
+  "main_checks": [
+    "Sc包含类内covariance与grand-mean位移项，不是仅类内协方差。",
+    "PCA基线是target自身top-PC保留，不是ID4背景neutral-PC删除。",
+    "k/r三折投票与α最大分数选择分开；门槛敏感性见App.F。",
+    "多轮是五概念20轮对话，不是agent；SAS不是本篇比较基线。"
+  ]
+}

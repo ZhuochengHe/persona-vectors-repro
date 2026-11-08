@@ -66,7 +66,8 @@
     "43": "What Can We Actually Steer?",
     "44": "Persona Non Grata",
     "45": "Steering Interference & Defaults",
-    "46": "SafeSteer"
+    "46": "SafeSteer",
+    "47": "CCS: Contrastive Covariance"
   },
   "architecture_labels": {
     "1": "Dense Transformer",
@@ -114,7 +115,8 @@
     "43": "Dense；固定L15",
     "44": "Dense/Hybrid（文本）",
     "45": "Dense（文本）",
-    "46": "Dense · VLM"
+    "46": "Dense · VLM",
+    "47": "Dense（文本）"
   },
   "index_font_size_pt": 9,
   "index_orientation": "landscape",

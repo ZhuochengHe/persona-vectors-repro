@@ -340,6 +340,13 @@
       "Validation": "LLaVA／MiniGPT4／Qwen2.5-VL三VLM；图像扰动／图中文字攻击、adaptive attack；MM-Vet正常能力。",
       "source": "https://arxiv.org/abs/2509.21400",
       "validation_source": "https://arxiv.org/html/2509.21400"
+    },
+    {
+      "ID": "47",
+      "Task": "人格／情绪／主题／真实性方向去混杂与稳定控制",
+      "Major finding": "对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。",
+      "Validation": "【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。",
+      "source": "https://arxiv.org/html/2610.14025v1"
     }
   ]
 }

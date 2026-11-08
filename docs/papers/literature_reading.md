@@ -16,7 +16,7 @@
 
 trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID 15
 
-如何选择更有效的控制方向与位置？｜ID 10、ID 17、ID 20、ID 21、ID 22、ID 23、ID 27
+如何选择更有效的控制方向与位置？｜ID 10、ID 17、ID 20、ID 21、ID 22、ID 23、ID 27、ID 47
 
 情绪、推理与用户模型怎样影响行为？｜ID 4、ID 29、ID 11、ID 31、ID 32
 
@@ -44,13 +44,13 @@ MoE／混合attention证据（probe与steer须分开）：ID 5、ID 9、ID 11、
 
 ### 按论文类型查找
 
-Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46
+Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46、ID 47
 
 Benchmark：ID 7、ID 14、ID 38
 
 Survey：当前未标注符合此类的条目
 
-Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46
+Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46、ID 47
 
 Theory：ID 39
 
@@ -106,6 +106,7 @@ Theory：ID 39
 | [44](#paper-44) | [Persona Non Grata](https://arxiv.org/abs/2604.11120) | Analysis | Dense/Hybrid（文本） | 未标记 | 比较不同persona注入方法的安全性 | 同一persona的安全排序随注入方式和架构改变；亲社会persona在prompt下安全却可在activation steering下最危险。 | 【场景】persona赋予后的有害请求回答与reasoning trace；非工具agent安全任务。 【验证】4个standard＋2个reasoning模型；system／few-shot／CAA；Study1 5,568判定条件；系数与persona强度匹配控制。 |
 | [45](#paper-45) | [Steering Interference & Defaults](https://arxiv.org/abs/2609.06951) | Analysis | Dense（文本） | 未标记 | 辨别steering干扰的来源 | 多数干扰非对称且更反映模型受扰后的默认趋向；匹配范数随机推力也产生相近的非目标行为排序。 | 【场景】24行为文本交叉干扰、随机push及十模型复制；非long-horizon控制。 【验证】10个instruct模型×24行为；生成文本judge；matched-norm随机方向；留一行为预测及跨模型复制。 |
 | [46](#paper-46) | [SafeSteer](https://arxiv.org/abs/2509.21400) | Method; Analysis | Dense · VLM | 未标记 | VLM推理期越狱防御与正常能力保持 | 作者报告低维安全子空间的自适应steering降低越狱成功率，同时维持或改善正常任务表现。 | 【场景】图文越狱输入→单次生成；早期token自适应steering，无环境动作闭环。 【验证】LLaVA／MiniGPT4／Qwen2.5-VL三VLM；图像扰动／图中文字攻击、adaptive attack；MM-Vet正常能力。 |
+| [47](#paper-47) | [CCS: Contrastive Covariance](https://arxiv.org/abs/2610.14025) | Method; Analysis | Dense（文本） | 未标记 | 人格／情绪／主题／真实性方向去混杂与稳定控制 | 对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。 | 【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。 |
 
 ## 人格方向从哪里来，如何形成？
 
@@ -1890,6 +1891,70 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：B
 
 [返回论文总表](#论文总表)
 
+<a id="paper-47"></a>
+
+### ID 47｜Contrastive Covariance Subspaces for Activation Steering
+
+Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户指定）
+
+[论文原文](https://arxiv.org/abs/2610.14025)
+
+**模型与架构**
+
+实测模型：Llama-3.1-8B-Instruct；Qwen3-8B；Gemma-2-9B-Instruct（均为被steer模型）；judge另列在论文评估协议
+
+骨干架构：三种dense decoder-only Transformer，文本实验；无MoE、稀疏执行或looped架构对照。
+
+输入／推理模式：单轮开放生成与20轮持续KV-cache文本对话；Qwen3 thinking开关未明确核实；不以长对话等同工具agent。
+
+架构证据：2610.14025v1 §4.1 LLMs；App.C；固定Llama层15、Qwen/Gemma层21，文中层编号按原文保留，未复核代码0/1-based。https://arxiv.org/html/2610.14025v1
+
+**Research question**
+
+如何从目标概念与非目标类的二阶结构中构造更少混杂的steering方向，并在保持输出质量时改善单轮及多轮控制？
+
+**一句话主题**
+
+用目标特异的对比散度子空间过滤steering方向中的共享混杂，联合保留概念表达、流畅性与指令相关性。
+
+**方法与贡献**
+
+1. 方法：先计算各概念类均值的grand mean μG，目标位移δt=μt−μG。每类关于同一中心的散度Sc=Σc+δcδcᵀ，保留类内变化及均值位移；构造At=St−r·mean(Sc, c≠t)，取top-k特征向量Wt，得到vt=WtWtᵀδt。不是简单删除中性文本最大PC，也不是SAE重建；目标是保留target有、其他类较少的变化。（§3）
+
+2. 在三种dense模型、TruthfulQA／AxBench／BIG5-NPTI／Emotion上比较CAA、RepE、PCA、SEA、Linear-AcT、Angular及prompt。完全调参CCS在12个模型×领域设置中超过activation基线；prompt仍在AxBench最好。centering与projection各自有效，联合更强；固定(k,r)仍有较强结果，但concept-specific调参收益不同。（§4.1–4.4）
+
+3. 去混杂验证：在10个AxBench概念中人为偏置topic分布，GMC的得分由0.565降至0.306；CCS为0.543，接近知道topic方向的oracle。该实验提供特定内容混杂被压低的证据，不是证明所有被投影掉的方向都无功能。（§3.2）
+
+4. 20轮Qwen3-8B对话用五个held-out概念及固定追问，turn0选择超参数后保持干预。概念且流畅的联合比例约93%→80%，CAA约36%→10%；这是持续KV-cache中的生成稳定性，非工具agent完成率。23位人评者评296段AxBench生成，复现主要方法排序。（§4.3/4.5；App.B/C）
+
+**局限与解释边界**
+
+1. 非目标类散度是混杂的操作性定义，可能包含与目标共享的真实功能成分。论文验证了人为topic偏置，却未系统分析被删分量是否承载身份、能力或跨任务行为迁移；也未直接比较中性PC移除与SAE特征选择。
+
+2. k/r用三折投票，α随后按最高评测分数选取，不能把所有结果读成完全独立的冻结配置确认；BIG5/Emotion收益及方法排序还受流畅／相关性门槛和概念覆盖影响，App.F已有相应敏感性分析。
+
+3. 多轮实验为一个模型、五个概念、20轮文本对话，尚未验证真实工具行动或更长反馈链；方法是静态单层加法，低样本下散度估计也可能不稳。
+
+**Future work**
+
+作者提出：扩展多层／attention-head控制，改善低样本估计，并探索超过20轮时的动态衰减。
+
+阅读推演：固定同一模型、层、数据与剂量，对比原方向、中性PC移除、CCS与SAE特征选择；把保留及删除分量分别做干预，区分topic/style混杂与对agent行动有用的共享结构，再测试中性聊天和agent轨迹背景是否改变迁移。
+
+**Additional think｜用户笔记**
+
+（留空，供用户填写）
+
+关联论文：1, 3, 4, 7, 29, 33, 34, 37, 42, 45
+
+关键词：CCS; denoising; nuisance subspace; contrastive covariance; Big Five; emotion; multi-turn steering
+
+机构／会议：Tavus.io；University of Athens；Queen Mary University of London；arXiv预印本，未核实正式接收
+
+阅读证据：2610.14025v1：正文§3–5，App.B/C/E/F定向核对；未复算。用户指定范围外补充，未核对原种子直接引用关系。https://arxiv.org/html/2610.14025v1
+
+[返回论文总表](#论文总表)
+
 ## 情绪、推理与用户模型怎样影响行为？
 
 <a id="paper-4"></a>
@@ -1944,7 +2009,7 @@ Analysis　|　阅读状态：未标记　|　优先级：A
 
 **Additional think｜用户笔记**
 
-（留空，供用户填写）
+注意anthropics一般用neutral context的激活做pca然后把主成分去掉来对persona/emotion vector去噪 但是ID 29使用sae去噪
 
 关联论文：1, 9, 29, 32
 
@@ -2006,7 +2071,7 @@ Analysis　|　阅读状态：未标记　|　优先级：B
 
 **Additional think｜用户笔记**
 
-（留空，供用户填写）
+使用SAE提取vector是个很好的idea
 
 关联论文：4, 11, 24, 32
 

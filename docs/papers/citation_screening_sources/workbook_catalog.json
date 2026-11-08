@@ -576,5 +576,23 @@
       34,
       35
     ]
+  ],
+  [
+    "user-arxiv-2610.14025",
+    47,
+    "CCS; denoising; nuisance subspace; contrastive covariance; Big Five; emotion; multi-turn steering",
+    "用目标特异的对比散度子空间过滤steering方向中的共享混杂，联合保留概念表达、流畅性与指令相关性。",
+    [
+      1,
+      3,
+      4,
+      7,
+      29,
+      33,
+      34,
+      37,
+      42,
+      45
+    ]
   ]
 ]

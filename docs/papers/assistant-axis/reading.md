@@ -10,7 +10,7 @@
 
 [Assistant Axis直接被引列表](https://mlsanity.com/paper/2601.10387/)
 
-这份文档独立维护，不与原Persona Vectors表或本地Excel同步；不设置模型架构列。
+本分页与Persona论文集共用同一Google Doc；AA编号和阅读数据单独维护，不与本地Excel同步，不设置模型架构列。
 
 ### 按研究问题查找
 
