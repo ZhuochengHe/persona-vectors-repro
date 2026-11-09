@@ -1,20 +1,24 @@
 # 两个方向的文献定位与可行性
 
-更新：2026-11-07。基于原文献库46篇与Assistant Axis独立库44条目，去重后81个arXiv ID，再做当前主题检索。以下是文献支持的范围与研究判断，不是新实验结论，也不是穷尽检索后的首次性认证。
+更新：2026-11-09。结合现有Persona论文集、Assistant Axis被引阅读与已核对原文，分析研究空间、最小实验与计算可行性。以下为研究判断，尚未进行相应实验。
 
 ## 判断先行
 
-两个方向都有直接先例。**“把persona／role向量用于agent”与“把steering用于MoE”都不能直接作为贡献。** 更有辨识度的主问题是：对话中提取的人格方向，是否能选择性地改变真实agent决策并跨任务迁移；或者结构中的routing／重复深度究竟怎样改变同一persona的读出与写入。
+Agentic persona steering具有较大的研究空间。当前阅读集已有情绪、任务失败模式、role及task–role–state控制，但尚未见系统覆盖稳定persona方向在真实agent行动中的提取、干预与长程效果的直接研究。相邻方法提供可复用工具和比较基线；它们没有穷尽行为目标、提取范式、运行阶段与环境反馈的组合。架构方向同样可从persona读写与结构差异中形成具体问题。
 
-若先选择一条可启动的路线，我更倾向**agentic persona的跨范式因果迁移与行为选择性**，先做分析再决定是否需要方法。架构方向建议缩成一个结构问题；MoE已有强先例，loop的persona证据较稀疏，但模型基线能力与干预实现风险更高。先同时铺开dense、MoE、各种sparse、loop与多个长程环境，会让实验成本和解释混杂一起膨胀。
+优先推进agentic persona steering：人格方向能否改变真实决策、改善performance，以及效果如何随反馈和时间变化。现象分析、提取方法和控制方法均可独立形成贡献；普通加法干预也足以启动。架构研究可作为并行候选或后续扩展，首轮固定一个模型和环境以控制计算量。
 
 ## 实验场景怎样区分
 
-- 单轮：可以有很长CoT、many-shot输入、文字游戏或答案概率；这些本身不构成长程agent。
-- 多轮对话：角色、用户压力、身份和记忆随历史变化，但未必有可执行行动或外部状态。
-- 长上下文／长程：分别记录长输入、持续对话、跨session记忆与多步环境任务；不把它们用同一个“long”覆盖。长度的意义要看具体轮数、工具步数和是否重置。
-- Agentic执行：模型选择行动、环境实际执行并返回状态／reward。工具名字符串、预置tool返回、问卷或“删除文件”选项不足以证明真实执行。
-- 干预对象：目标agent、用户模拟器、审计工具和离线轨迹读出分别记录。一个论文环境中有agent，不意味着persona方向被写入执行agent。
+单轮：可以有很长CoT、many-shot输入、文字游戏或答案概率；这些本身不构成长程agent。
+
+多轮对话：角色、用户压力、身份和记忆随历史变化，但未必有可执行行动或外部状态。
+
+长上下文／长程：分别记录长输入、持续对话、跨session记忆与多步环境任务；不把它们用同一个“long”覆盖。长度的意义要看具体轮数、工具步数和是否重置。
+
+Agentic执行：模型选择行动、环境实际执行并返回状态／reward。工具名字符串、预置tool返回、问卷或“删除文件”选项不足以证明真实执行。
+
+干预对象：目标agent、用户模拟器、审计工具和离线轨迹读出分别记录。一个论文环境中有agent，不意味着persona方向被写入执行agent。
 
 两套阅读表的Benchmark / Validation已逐条增加【场景】前缀；来源与边界另存evaluation_regimes.json。Assistant Axis独立库仍不与Excel同步、不新增架构列。
 
@@ -28,18 +32,23 @@
 
 ### 已有库里与agent最接近的证据
 
-- [Emotion Concepts，原ID4](https://arxiv.org/abs/2604.07729)含代码执行／单测反馈的reward-hacking场景；[E-STEER，原ID29](https://arxiv.org/abs/2604.00005)研究情绪干预与planner／decider／executor流程及工具任务。这已经覆盖“内部情绪方向能否影响agent”，但情绪、组织role和稳定人格不能预设共享方向。
-- [Impatient Users，原ID19](https://arxiv.org/abs/2510.04491)把persona向量写入用户模拟器，评估工具agent；这是交互压力基线，不是直接控制被测agent人格。
-- [TACT，AA06](https://arxiv.org/abs/2605.05980)从标注轨迹提取过度思考／过度行动轴，在think–action边界做Add／Cap／Gate，验证SWE-bench Verified、Terminal-Bench和CLAW-Eval。它是trace-based、在线agent控制的直接先例，但抽取的是失败模式，不是从日常对话迁移来的trait。
-- [Reward Hacking，AA43](https://arxiv.org/abs/2610.29129)比较spec、轨迹均值差及优化方向，真实coding工具执行与原题能力对照齐备。其自然语言域迁移重新校准阈值，部分优化方向更换目标，不能视为任意行为的零样本迁移证明。
-- [ContextEcho，原ID38／AA08](https://arxiv.org/abs/2605.24279)用真实coding会话做snapshot probe，发现投影恢复不必恢复可见register评分；它没有验证全程steer后的任务完成率。[FIBS，AA40](https://arxiv.org/abs/2610.12445)则提供真实工具循环中的欺骗读出，属于read端而非persona写入证据。
-- [Social Priors，AA42](https://arxiv.org/abs/2610.16946)的Axis-capping分支仍保留信念／信任差异，但该分支读候选likelihood；GovSim环境行动是另一分支。可以用来提出Axis是否充分的检验，不能写成已证“恢复Axis后工具agent仍执行同一坏行动”。
+[Emotion Concepts，原ID4](https://arxiv.org/abs/2604.07729)含代码执行／单测反馈的reward-hacking场景；[E-STEER，原ID29](https://arxiv.org/abs/2604.00005)研究情绪干预与planner／decider／executor流程及工具任务。这已经覆盖“内部情绪方向能否影响agent”，但情绪、组织role和稳定人格不能预设共享方向。
 
-### 新增直接先例会压缩哪些缺口
+[Impatient Users，原ID19](https://arxiv.org/abs/2510.04491)把persona向量写入用户模拟器，评估工具agent；这是交互压力基线，不是直接控制被测agent人格。
 
-[DRAS：Mind Your Own Role](https://arxiv.org/abs/2610.15907)已经在ChatDev／MetaGPT中做动态role activation steering。Write方向由同任务context有／无role指令的差分得到，read detector由越界／守职轨迹训练，再按越界概率调强度。其软件工作流确有执行指标，但总quality还混合完整性、运行性和需求相关性等proxy。它直接占据“角色向量＋轨迹监测＋动态多agent控制”，却没回答role是否等于trait线性组合，或闲聊trait如何迁移。
+[TACT，AA06](https://arxiv.org/abs/2605.05980)从标注轨迹提取过度思考／过度行动轴，在think–action边界做Add／Cap／Gate，验证SWE-bench Verified、Terminal-Bench和CLAW-Eval。它是trace-based、在线agent控制的直接先例，但抽取的是失败模式，不是从日常对话迁移来的trait。
 
-[ATLAS：Drift No More](https://arxiv.org/abs/2611.04315)，11月3日新文，已经联合task、role、state子空间，构造PSD anchor kernel并做谱控制与状态记忆更新。AMemGym、ALARA及LIBERO分支提供环境证据；ToolACE主要评调用结构。部分ActAdd／SEA基线只干预三个role而ATLAS覆盖全部role，比较时需要同覆盖重做。**“长程agent的context-dependent联合子空间”已不是未被提出的想法。**
+[Reward Hacking，AA43](https://arxiv.org/abs/2610.29129)比较spec、轨迹均值差及优化方向，真实coding工具执行与原题能力对照齐备。其自然语言域迁移重新校准阈值，部分优化方向更换目标，不能视为任意行为的零样本迁移证明。【】注意他们提取的activation为思考结束的token</think>
+
+[ContextEcho，原ID38／AA08](https://arxiv.org/abs/2605.24279)用真实coding会话做snapshot probe，发现投影恢复不必恢复可见register评分；它没有验证全程steer后的任务完成率。[FIBS，AA40](https://arxiv.org/abs/2610.12445)则提供真实工具循环中的欺骗读出，属于read端而非persona写入证据。【】这一篇说明了agentic setting的drifting，主要是关于assistant中立身份的drifting，甚至可能发生在早期。同时输出的结构也会drift。注意！在做了assistant axis的steering后，assistant-register score 甚至还下降了
+
+[Social Priors，AA42](https://arxiv.org/abs/2610.16946)的Axis-capping分支仍保留信念／信任差异，但该分支读候选likelihood；GovSim环境行动是另一分支。可以用来提出Axis是否充分的检验，不能写成已证“恢复Axis后工具agent仍执行同一坏行动”。
+
+### 现有方法与可扩展的研究空间
+
+DRAS：Mind Your Own Role在ChatDev／MetaGPT中动态调节role activation。Write方向来自同任务有／无role指令的激活差分，detector从越界／守职轨迹训练。这提供“文本规范提取＋轨迹监测＋动态强度”的方案，可与人格方向、不同提取位置和不同任务目标比较；角色边界控制并未覆盖稳定人格倾向的行动表现。
+
+ATLAS：Drift No More（ID48）联合task、role、state子空间，以PSD kernel做乘法式谱干预并更新state记忆。AMemGym、ALARA、LIBERO提供环境反馈证据，ToolACE主要测调用结构。它说明联合子空间与动态状态控制可以落地，提供方法基线；persona来源、行为选择性、跨阶段控制及其他任务仍有空间。ActAdd／SEA与ATLAS的role覆盖不同，比较时需明确控制范围。
 
 更早的[EAST](https://arxiv.org/abs/2406.00244)在2024年就从环境交互轨迹按action entropy加权抽方向，操纵Gaussian bandit探索并接收真实reward反馈。它不是人格论文，却是trace提取与决策控制的必要方法基线。
 
@@ -47,17 +56,23 @@
 
 ### 仍值得做的主问题与最小设计
 
-**问题：同一trait的self-report、role-play与决策轨迹方向，究竟共享多大程度的跨任务可控成分？** 这比“agent也能被steer”更具体，也与现有动态controller区别开。
+核心问题：不同来源的人格方向如何影响agent的真实行动，局部行为改变何时能转化为长期任务收益？可分别研究行为控制、performance改善与drift；无需把三者全部解决才形成贡献。
 
-先选一个在行动中有可检验含义的trait，例如诚实／不确定性校准或风险偏好。固定任务内容构造三种条件，分别提取自述、角色与行为方向；trace标签只用决策前可获得信息，不能把事后成功／失败直接当作推理期可访问特征。情境内容、答案形式和基本能力应做匹配。
+最小起点：一个开放模型、一个可恢复状态且有真实反馈的工具环境、一种可操作的倾向，例如谨慎／核验倾向。比较conversational persona与agent-behavior两类方向，先固定一个提取位置和普通加法干预；self-report与role-play随后扩展。行为指标可用主动核验、证据不足时提交、冗余检查，联合任务成功与调用成本，不预设它们完整等同某一Big Five trait。离线提取可以用事后结果标注；部署时的在线控制只能使用当时可获得的信息。
 
-第一步在固定环境状态／决策点上比较三方向对自报、语言风格和实际行动分布的交叉影响，同时测随机同范数、prompt、无干预，以及trace方向。先区分内容变化、方向旋转与下游敏感性变化，再看cosine能否预测干预矩阵；不要用cosine代替矩阵。
+同一组候选同时测三个层次：固定trace上的预测／replay；相同可恢复环境状态下的行动与短期分支；从任务起点运行的完整rollout。比较读出分数、局部干预效果与长期收益的排序，保留一部分预选低分候选进入rollout，以估计筛选错杀。读得出、改得动、改善任务是三个待检验关系。
 
-第二步才进入两个具有不同反馈结构的工具任务：冻结开发集选出的层／剂量／提取协议，观察迁移、动作合法性、任务成功、成本与trait行为。记录planner文本、tool选择与反馈后决策的阶段差异；可加入错误反馈、无关文档或compaction，检验方向在哪些阶段失效。要同时报告策略改变与纯语气改变，不能用少执行任务造成的“更安全”充当选择性改善。
+预选与真实rollout的失配本身值得研究。干预改变动作，动作改变反馈和后续状态分布，replay上的有效性不能直接保证闭环收益。分支实验可估计给定状态下的反事实效果，但仍需从头rollout验证累积后果。开发集用于探索与选择，最终在独立任务上确认；局部筛选是成本工具，不作为方向有效性的唯一判据。
 
-长程稳定性是第三层验证：用可观察身份／trait和任务行为分别测漂移。保持相同反馈、任务状态与控制预算，比较Axis、conversation-trait、trace-trait和已有动态控制。若效果只存在于同任务trace方向，也是一项有意义的迁移边界；此时不应包装成通用persona机制。
+漂移可与行为／performance在同一套rollout中记录：分别测方向投影、语言表达、实际行动倾向和干预收益随阶段的变化。task进展可能本就需要策略变化，因此将任务阶段、工具失败、外部反馈及compaction一起标记。Assistant Axis在snapshot上的表达结果用于提出假设，不能替代其他persona方向的全程行动实验。
 
-可行性较高之处是现有提取／steering代码和开放agent harness可复用。主要开销是多次真实rollout、行为标签与匹配条件；先做一个模型、一个trait的固定状态交叉干预，再扩大模型和长程任务，比一开始多agent全流程更能解释结果。当前文献尚不能替你保证这个缺口未被所有工作覆盖，但已能明确哪些基线必须比较。
+计算成本主要来自rollout长度、候选配置数量与重复次数。用共享前缀、环境快照和短分支降低探索开销，并保留完整rollout预算；短分支只估计条件局部效果。一次轨迹采集多个候选位置的所需层激活／统计量，避免保存全部token全层。第一轮固定模型、倾向和环境，逐轴扩展，行为、performance与drift共用轨迹。
+
+可研究的variation包括：方向来源（conversation／self-report／role-play／agent trace／任务规范）；提取位置（thinking结束、tool call前后、反馈后）；干预阶段（planning／action／反馈整合／全程）；时间适应（固定方向、动态强度、在线更新方向）；目标行为（风险、核验、探索、坚持／放弃、诚实报告）；评价跨度（replay、短分支、完整rollout）。这些轴各自都可能形成研究贡献，不必一次做全组合。
+
+在线提取应区分三种方案：从历史agent轨迹提取后冻结；固定方向、运行时调强度或开关；在当前运行中依据新反馈更新方向／子空间。Reward Hacking（AA43）的trace提取和动态capping不自动意味着测试episode内在线重学方向。在线更新需明确反馈信号、更新成本和错误反馈影响，并与固定方向＋动态强度比较。
+
+有潜力的扩展顺序：先测conversation→行动迁移及预选／rollout失配；再交叉比较提取位置与干预位置，判断“哪里读得出”是否等于“哪里改得动”；若效果随反馈变化，再比较调强度与改方向。在线适应也可独立立题，其价值由任务收益、行为选择性及额外成本共同评估。
 
 ## 方向二：不同结构上的persona vector已有研究
 
@@ -75,13 +90,17 @@ Dense／MoE描述参数路由；pruned subnetworks描述权重mask；dynamic act
 
 ### MoE已有结构特异的控制方法
 
-- [SteerMoE](https://arxiv.org/abs/2509.09660)：比较相反行为条件下expert activation频率，推理时促进／抑制专家，覆盖安全与faithfulness；“发现行为专家再控制”已有先例。
-- [RARE](https://arxiv.org/abs/2608.21236)：用clean-routing控制定位steering引发的路由漂移，再将扰动投影到router零空间并修正下游routing；因此“MoE效果差因为router受扰、保持路由能改善”的主张也已有直接工作。其任务不是完整persona／跨任务行为选择性。
-- [MASCing](https://arxiv.org/abs/2604.27818)：学习跨层routing依赖并用router masks重配置行为，包含多轮jailbreak；不能把它称作未研究的MoE多轮控制。
-- [Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127)：三种MoE个性化、crosscoder latent和expert干预，已有persona／personalization相关结构证据。专家boost向个性化模型分布移动，不等于全面行为提升；一层／split选择范围也需要核对。
-- [PersonaFuse](https://arxiv.org/abs/2509.07370)：人为添加trait级LoRA专家与router，并包含企业工具流程；这不是在原生MoE中发现自然人格专家，必须分开比较。
+[SteerMoE](https://arxiv.org/abs/2509.09660)：比较相反行为条件下expert activation频率，推理时促进／抑制专家，覆盖安全与faithfulness；“发现行为专家再控制”已有先例。
 
-所以“在MoE上跑Persona Vectors”、比较几款dense/MoE分数、或设计一个persona专家router，独立贡献都偏弱。更有价值的问题是：**相同trait跨context／决策阶段的行为选择性，怎样分别经residual和routing通路实现？** 有时保持路由保护能力，有时目标行为恰需要更换专家；RARE的保持策略不应被预设为所有persona的正确因果操作。
+[RARE](https://arxiv.org/abs/2608.21236)：用clean-routing控制定位steering引发的路由漂移，再将扰动投影到router零空间并修正下游routing；因此“MoE效果差因为router受扰、保持路由能改善”的主张也已有直接工作。其任务不是完整persona／跨任务行为选择性。
+
+[MASCing](https://arxiv.org/abs/2604.27818)：学习跨层routing依赖并用router masks重配置行为，包含多轮jailbreak；不能把它称作未研究的MoE多轮控制。
+
+[Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127)：三种MoE个性化、crosscoder latent和expert干预，已有persona／personalization相关结构证据。专家boost向个性化模型分布移动，不等于全面行为提升；一层／split选择范围也需要核对。
+
+[PersonaFuse](https://arxiv.org/abs/2509.07370)：人为添加trait级LoRA专家与router，并包含企业工具流程；这不是在原生MoE中发现自然人格专家，必须分开比较。
+
+MoE已有控制与个性化方法，但persona在不同context／决策阶段的读写与选择性仍可研究。可比较相同trait经residual、routing或联合通路实现的效果，并定位跨模型差异；现有方法作为基线，不以“已有MoE steering”排除整个方向。有时保持路由保护能力，有时目标行为需要更换专家，两种情况都值得验证。
 
 ### Looped／recurrent-depth的空间与风险
 
@@ -97,7 +116,7 @@ Loop路线可具体问：同一物理层在不同有效深度是否承载相同p
 
 ### 可行性与优先次序
 
-MoE的工程可行性较高，但新颖性门槛也最高。先在同一MoE内比较residual-only、router-only、联合和matched control，再跨模型复制；已有RARE与personalization expert工作要纳入。跨家族比较只能报告关联，若要声称架构因果，还需要更匹配的训练／剪枝对照。小active参数数不等于小显存：30B权重的BF16仅权重就约60GB，KV、缓存与记录激活另加。
+MoE工程上可启动，具体问题可从residual-only、router-only及联合干预比较切入，并纳入RARE与personalization expert方法。跨家族结果可先揭示现象，再用更匹配的对照定位原因。显存按总权重和KV预算估算：30B BF16仅权重约60GB，active参数不能直接代表显存。
 
 Loop的研究问题更集中、现有persona直接证据较少，但实现与解释风险更高：共享模块hook可能每轮触发、cache／halt会改变有效计算，基础LM未必听角色指令。先用小模型固定深度做门槛验证，不必从高成本长程agent起步。
 
@@ -105,14 +124,10 @@ Sparse方向必须先选清对象：若研究“少量可控人格单元”，�
 
 ## 当前更值得形成的两条具体题目
 
-**稳妥主线：Conversational Persona → Agentic Decision。** 研究三种提取范式与多阶段行动的读写迁移矩阵，以行为选择性、held-out环境和长程稳定为证据；新controller仅在发现现成固定方向不能解决的结构化失配后再做。相对TACT／DRAS／ATLAS，增量应是解释人格表述与真实行动的共享／可分离结构，而不是再加一个动态gate。
+主线：Agentic Persona Steering。从一个倾向、一个环境、两种方向来源起步，联合测真实行为、performance与漂移；把预选分数、局部效果和完整rollout收益之间的关系纳入分析。后续可扩展位置、在线提取、动态控制与跨任务迁移，方法改进与现象分析都可形成贡献。
 
-**结构主线：Persona across Recurrent Depth。** 先在固定loop模型中研究不同iteration的方向几何、交叉因果效果与剂量控制，再判断能否推广；MoE则作为另一个有明确router机制问题的分支。两者不宜同时作为“跨所有架构”的总项目。
+结构主线：Persona across Recurrent Depth。 先在固定loop模型中研究不同iteration的方向几何、交叉因果效果与剂量控制，再判断能否推广；MoE则作为另一个有明确router机制问题的分支。两者不宜同时作为“跨所有架构”的总项目。
 
-这两个方向也可以最终相交，但先各自验证读出与写入，再结合。当前尚未由这些文献充分解决的，是同一persona表征是否在上下文、计算深度和实际行动之间具有可解释的因果迁移结构；并不是persona／agent／MoE控制本身还没人尝试。
+Agentic与架构方向可分别推进，也可在后续结合。当前优先验证persona在真实行动中的可控性与效用；稳定性、位置差异、在线适应及结构依赖提供连续的研究路线。贡献可来自清楚的新现象、有效方法或有价值的任务改进，不要求先覆盖完整机制或全部环境。
 
-## 证据与维护
 
-本轮源记录含检索词、官方链接、正文位置和待核线索，见[citation_screening_sources/direction_review_sources.json](citation_screening_sources/direction_review_sources.json)。原库场景标签在[evaluation_regimes.json](citation_screening_sources/evaluation_regimes.json)，独立Axis库见[其场景证据](assistant-axis/sources/evaluation_regimes.json)。新搜索文献是本次方向评估的补充证据，不伪造其对旧种子的引用关系。
-
-本文件是两个研究方向的文献评估，不是新study或预注册实验；没有提交模型运行，也没有把可行性判断写成实测结果。后续实验若形成独立研究问题，再按run registry规则登记。
