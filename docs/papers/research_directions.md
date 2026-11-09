@@ -46,9 +46,9 @@ Agentic执行：模型选择行动、环境实际执行并返回状态／reward�
 
 ### 现有方法与可扩展的研究空间
 
-DRAS：Mind Your Own Role在ChatDev／MetaGPT中动态调节role activation。Write方向来自同任务有／无role指令的激活差分，detector从越界／守职轨迹训练。这提供“文本规范提取＋轨迹监测＋动态强度”的方案，可与人格方向、不同提取位置和不同任务目标比较；角色边界控制并未覆盖稳定人格倾向的行动表现。
+[DRAS：Mind Your Own Role](https://arxiv.org/abs/2610.15907)在ChatDev／MetaGPT中动态调节role activation。Write方向来自同任务有／无role指令的激活差分，detector从越界／守职轨迹训练。这提供“文本规范提取＋轨迹监测＋动态强度”的方案，可与人格方向、不同提取位置和不同任务目标比较；角色边界控制并未覆盖稳定人格倾向的行动表现。
 
-ATLAS：Drift No More（ID48）联合task、role、state子空间，以PSD kernel做乘法式谱干预并更新state记忆。AMemGym、ALARA、LIBERO提供环境反馈证据，ToolACE主要测调用结构。它说明联合子空间与动态状态控制可以落地，提供方法基线；persona来源、行为选择性、跨阶段控制及其他任务仍有空间。ActAdd／SEA与ATLAS的role覆盖不同，比较时需明确控制范围。
+[ATLAS：Drift No More](https://arxiv.org/abs/2611.04315)（ID48）联合task、role、state子空间，以PSD kernel做乘法式谱干预并更新state记忆。AMemGym、ALARA、LIBERO提供环境反馈证据，ToolACE主要测调用结构。它说明联合子空间与动态状态控制可以落地，提供方法基线；persona来源、行为选择性、跨阶段控制及其他任务仍有空间。ActAdd／SEA与ATLAS的role覆盖不同，比较时需明确控制范围。
 
 更早的[EAST](https://arxiv.org/abs/2406.00244)在2024年就从环境交互轨迹按action entropy加权抽方向，操纵Gaussian bandit探索并接收真实reward反馈。它不是人格论文，却是trace提取与决策控制的必要方法基线。
 
@@ -129,5 +129,3 @@ Sparse方向必须先选清对象：若研究“少量可控人格单元”，�
 结构主线：Persona across Recurrent Depth。 先在固定loop模型中研究不同iteration的方向几何、交叉因果效果与剂量控制，再判断能否推广；MoE则作为另一个有明确router机制问题的分支。两者不宜同时作为“跨所有架构”的总项目。
 
 Agentic与架构方向可分别推进，也可在后续结合。当前优先验证persona在真实行动中的可控性与效用；稳定性、位置差异、在线适应及结构依赖提供连续的研究路线。贡献可来自清楚的新现象、有效方法或有价值的任务改进，不要求先覆盖完整机制或全部环境。
-
-
