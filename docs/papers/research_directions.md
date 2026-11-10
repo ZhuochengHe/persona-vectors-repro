@@ -30,22 +30,22 @@ Finding只写与agent行为、长期交互或控制直接相关的发现；对�
 
 | 论文 | 链接 | Finding：agentic角度 | Task | Dataset／环境 |
 | --- | --- | --- | --- | --- |
-| PERSONA / Persona-Flow（ID7） | [原文](https://arxiv.org/abs/2602.15669) | 能随对话情境组合人格方向并调节表达；尚未测试工具行动和任务完成。 | 多轮人格对话、trait组合 | PersonalityBench；BFI-44情境题；Persona-Evolve（800情境） |
-| Prompt-Activation Duality / GCAD（ID42） | [原文](https://arxiv.org/abs/2605.10664) | 十轮对话中保持人格表达并减轻连贯性下降；提示长期干预需考虑缓存累积，未测agent执行。 | 持续对话中的人格与连贯性 | 15 traits×10轮持续KV-cache对话 |
-| PersonaSteer | [原文](https://aclanthology.org/2026.findings-emnlp.1270/) | 根据历史动态更新steering信号，随对话推进改善个性化表达；测试的是多轮对齐，并非工具任务完成。 | 多轮个性化对话；未见过的用户profile迁移 | ALOE；Extended ALOE（用PersonaChat profiles构建域外测试） |
-| Emotion Concepts and their Function in a Large Language Model（ID4） | [原文](https://arxiv.org/abs/2604.07729) | 增强desperation或压低calm会增加编码作弊；更强情绪也可能换一种策略，而非单调增强原行为。 | 不可能单测下的编码；模拟勒索 | 作者构造的7项reward-hacking编码任务及勒索情境 |
-| How Emotion Shapes the Behavior of LLMs and Agents / E-STEER（ID29） | [原文](https://arxiv.org/abs/2604.00005) | 规划、答案选择与执行阶段偏好的情绪强度不同；单模块表现最优不等于整套agent成功率最高。 | 分模块干预规划、重规划、选择与工具执行 | HotpotQA；Scientific；GAIA |
-| Impatient Users Confuse AI Agents（ID19） | [原文](https://arxiv.org/abs/2510.04491) | 只改变用户模拟器的急躁等特质，也会降低被测agent成功率；困难特质因模型、领域而异。 | 不同用户交互压力下的工具任务 | τ-Trait：航空／零售／电信／远程医疗；BFCL多轮调用 |
-| TACT（AA06） | [原文](https://arxiv.org/abs/2605.05980) | 在思考结束处干预过度思考／过度行动方向，可提高任务完成并减少步骤；dense和MoE模型均有实验。 | 修复代码、终端操作、服务任务 | SWE-bench Verified；Terminal-Bench 2.0；CLAW-Eval |
-| Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering（AA43） | [原文](https://arxiv.org/abs/2610.29129) | 从轨迹等来源取得方向后可减少工具型作弊；同时需检查原题解题率，避免把放弃任务误当改善。 | coding agent修改代码；作弊与正常解题对照 | MisTrace；ImpossibleBench；原LiveCodeBench；另School of Reward Hacks |
-| ContextEcho（ID38／AA08） | [原文](https://arxiv.org/abs/2605.24279) | Claude Code会话历史会改变assistant的表达与格式遵循；快照中拉回Axis投影未恢复表达评分。 | 重放会话前缀，再提问测身份／偏好表达及格式遵循 | ContextEcho自建评测：3份捐赠的Claude Code日志（coding、论文写作、文档工作各1份）＋25个身份／偏好问题；23模型为测试对象，不是dataset |
-| Telling FIBS（AA40） | [原文](https://arxiv.org/abs/2610.12445) | 内部读出能识别工具轨迹中的隐蔽破坏，包括没有明说的行为；这是监测结果，未直接控制agent。 | 监测隐藏副任务与蓄意破坏 | FIBS；SHADE-Arena；BashArena |
-| Social Priors（AA42） | [原文](https://arxiv.org/abs/2610.16946) | 一个持反社会用户先验的agent即可使共池资源耗尽；Axis控制是另一概率评分实验，不能视为环境行为已被纠正。 | 五agent共享资源采集；另测信任选择 | GovSim鱼业环境；matched社会先验语料；376-context Axis控制 |
-| Mind Your Own Role / DRAS | [原文](https://arxiv.org/abs/2610.15907) | 按越界风险调节角色方向，能减少越界并提高软件产出质量；越界最少的静态方案未必质量最好。 | 多agent分工开发软件 | ChatDev／MetaGPT；SRDD 1200需求；SWE-Dev用于准备／验证 |
-| Drift No More / ATLAS（ID48） | [原文](https://arxiv.org/abs/2611.04315) | 同时维持任务、角色与最新状态可改善记忆和协作；具身受扰动场景也有收益，工具调用评分与环境执行分开报告。 | 长期记忆、状态读写、权限控制及机器人协作 | EverMemBench；AMemGym；ToolACE；ALARA；LIBERO |
-| Controlling Large Language Model Agents with Entropic Activation Steering / EAST | [原文](https://arxiv.org/abs/2406.00244) | 从交互轨迹提取方向后可调节探索行为，token采样温度不能复现相同效果；环境为简化bandit。 | 选择行动、接收reward并继续探索 | Gaussian两臂bandit及文字改写变体 |
-| Multi-LLM Systems Exhibit Robust Semantic Collapse | [原文](https://arxiv.org/abs/2605.17193) | 压低短测中的迎合没有恢复长期群体对话的语义多样性；人格行为改变不保证系统指标随之改善。 | 长期多LLM自由互动；无外部工具任务 | 作者生成的200–1000轮交互；steering检验为200轮 |
-| Activation-Steered Personas in Task-Oriented LLM Agent Simulations | [原文](https://openreview.net/pdf?id=RBI5BjsREi) | 用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。 | 用户／系统双agent任务型对话；分别干预用户、系统或两侧，评API方法、槽位与对话结果 | Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0） |
+| PERSONA / Persona-Flow（ID7） | [原文](https://arxiv.org/abs/2602.15669) | 能随对话情境组合人格方向并调节表达；尚未测试工具行动和任务完成。 | Big Five人格控制＋多trait组合与动态steering | PersonalityBench；BFI-44情境题；Persona-Evolve（800情境） |
+| Prompt-Activation Duality / GCAD（ID42） | [原文](https://arxiv.org/abs/2605.10664) | 十轮对话中保持人格表达并减轻连贯性下降；提示长期干预需考虑缓存累积，未测agent执行。 | 多轮人格控制＋缓解KV-cache累积造成的连贯性退化 | 15 traits×10轮持续KV-cache对话 |
+| PersonaSteer | [原文](https://aclanthology.org/2026.findings-emnlp.1270/) | 根据历史动态更新steering信号，随对话推进改善个性化表达；测试的是多轮对齐，并非工具任务完成。 | Personalized alignment＋learnable activation steering | ALOE；Extended ALOE（用PersonaChat profiles构建域外测试） |
+| Emotion Concepts and their Function in a Large Language Model（ID4） | [原文](https://arxiv.org/abs/2604.07729) | 增强desperation或压低calm会增加编码作弊；更强情绪也可能换一种策略，而非单调增强原行为。 | Emotion steering对agent作弊、勒索等决策的影响 | 作者构造的7项reward-hacking编码任务及勒索情境 |
+| How Emotion Shapes the Behavior of LLMs and Agents / E-STEER（ID29） | [原文](https://arxiv.org/abs/2604.00005) | 规划、答案选择与执行阶段偏好的情绪强度不同；单模块表现最优不等于整套agent成功率最高。 | Emotion steering对规划、选择和执行能力的影响 | HotpotQA；Scientific；GAIA |
+| Impatient Users Confuse AI Agents（ID19） | [原文](https://arxiv.org/abs/2510.04491) | 只改变用户模拟器的急躁等特质，也会降低被测agent成功率；困难特质因模型、领域而异。 | Persona-steered用户模拟＋agent鲁棒性评估 | τ-Trait：航空／零售／电信／远程医疗；BFCL多轮调用 |
+| TACT（AA06） | [原文](https://arxiv.org/abs/2605.05980) | 在思考结束处干预过度思考／过度行动方向，可提高任务完成并减少步骤；dense和MoE模型均有实验。 | 缓解agent过度思考／过度行动＋思考–行动边界steering | SWE-bench Verified；Terminal-Bench 2.0；CLAW-Eval |
+| Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering（AA43） | [原文](https://arxiv.org/abs/2610.29129) | 从轨迹等来源取得方向后可减少工具型作弊；同时需检查原题解题率，避免把放弃任务误当改善。 | 减少agent reward hacking＋行为方向提取与动态capping | MisTrace；ImpossibleBench；原LiveCodeBench；另School of Reward Hacks |
+| ContextEcho（ID38／AA08） | [原文](https://arxiv.org/abs/2605.24279) | Claude Code会话历史会改变assistant的表达与格式遵循；快照中拉回Axis投影未恢复表达评分。 | 长程agent persona drift的观测＋Assistant Axis干预检验 | ContextEcho自建评测：3份捐赠的Claude Code日志（coding、论文写作、文档工作各1份）＋25个身份／偏好问题；23模型为测试对象，不是dataset |
+| Telling FIBS（AA40） | [原文](https://arxiv.org/abs/2610.12445) | 内部读出能识别工具轨迹中的隐蔽破坏，包括没有明说的行为；这是监测结果，未直接控制agent。 | Agent欺骗／破坏行为监测＋activation probes | FIBS；SHADE-Arena；BashArena |
+| Social Priors（AA42） | [原文](https://arxiv.org/abs/2610.16946) | 一个持反社会用户先验的agent即可使共池资源耗尽；Axis控制是另一概率评分实验，不能视为环境行为已被纠正。 | 用户社会先验对agent信任与合作的影响＋Axis控制检验 | GovSim鱼业环境；matched社会先验语料；376-context Axis控制 |
+| Mind Your Own Role / DRAS | [原文](https://arxiv.org/abs/2610.15907) | 按越界风险调节角色方向，能减少越界并提高软件产出质量；越界最少的静态方案未必质量最好。 | 减少多agent角色越界＋动态role steering | ChatDev／MetaGPT；SRDD 1200需求；SWE-Dev用于准备／验证 |
+| Drift No More / ATLAS（ID48） | [原文](https://arxiv.org/abs/2611.04315) | 同时维持任务、角色与最新状态可改善记忆和协作；具身受扰动场景也有收益，工具调用评分与环境执行分开报告。 | 减少task／role／state漂移＋联合子空间steering | EverMemBench；AMemGym；ToolACE；ALARA；LIBERO |
+| Controlling Large Language Model Agents with Entropic Activation Steering / EAST | [原文](https://arxiv.org/abs/2406.00244) | 从交互轨迹提取方向后可调节探索行为，token采样温度不能复现相同效果；环境为简化bandit。 | 调节agent探索行为＋entropy-weighted activation steering | Gaussian两臂bandit及文字改写变体 |
+| Multi-LLM Systems Exhibit Robust Semantic Collapse | [原文](https://arxiv.org/abs/2605.17193) | 压低短测中的迎合没有恢复长期群体对话的语义多样性；人格行为改变不保证系统指标随之改善。 | 多agent语义多样性退化＋反迎合steering检验 | 作者生成的200–1000轮交互；steering检验为200轮 |
+| Activation-Steered Personas in Task-Oriented LLM Agent Simulations | [原文](https://openreview.net/pdf?id=RBI5BjsREi) | 用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。 | 任务型对话中的persona控制＋用户固定／系统动态steering | Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0） |
 
 ### 多轮人格控制已经存在
 
