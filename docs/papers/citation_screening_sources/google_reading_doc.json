@@ -4,7 +4,7 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMRVxDA-MfrqpKO84gthvJdRLvQ8CewCFLsncLwFAyzmpHnnryn0AN-cbKkeZFPkoorU5bfPoS5knq_pnRJKvArYL8d35Yk1su7KXS8",
+  "verified_revision": "AHj4eMSqCPFaRpsN10B0OE_P1w-lIVMpt6uNSIeBQY9iIHDYV1JGxgMVNBPTj4-LzgKzPdHdSqMYjCa6zEbMC1gG42WDRbI1ErqXX2hZziw",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 3,
@@ -76,7 +76,13 @@
     "source": "docs/papers/research_directions.md",
     "sources": "docs/papers/citation_screening_sources/direction_review_sources.json",
     "review_date": "2026-11-07",
-    "updated": "2026-11-09"
+    "updated": "2026-11-09",
+    "agentic_table": {
+      "rows": 16,
+      "columns": 5,
+      "date": "2026-11-10",
+      "pdf_checked": true
+    }
   },
   "assistant_axis": {
     "tab_id": "t.a7wc0ik64xrs",
