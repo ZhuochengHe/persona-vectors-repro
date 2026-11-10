@@ -4,7 +4,7 @@
   "title": "Persona 文献阅读笔记｜研究问题与分类",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMQzpSrUlOpYnWSLXnADmRKy5RnYrYbFvxm3G2sfypHLhQnpo2BP83IOf_BPTqM2hdU9BZbbKHeI3X9AxLZEThxeK2GmeWqQ0r3scS4",
+  "verified_revision": "AHj4eMQBJSMsAhDjH-2WFaOdMR9ZaROmxujMFAySqADr8unQXn01p8k1DxilUlsMAGcbQWiA8hc6eHqG79fKeDrO667qYelLFqnmYSIKl2w",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 3,
@@ -79,7 +79,7 @@
     "updated": "2026-11-09",
     "agentic_table": {
       "rows": 16,
-      "columns": 5,
+      "columns": 6,
       "date": "2026-11-10",
       "pdf_checked": true,
       "dataset_check": "PersonaSteer ALOE/Extended ALOE; ContextEcho 3 donated sessions; Persona-Guided v2 SGD prompt-only",
