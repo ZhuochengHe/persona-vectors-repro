@@ -55,7 +55,13 @@ and [archive guide](docs/research/archive.md).
   user's granularity and analytical interests, not their tone or wording; this
   project-local reference works without the write-like-me plugin.
 - Fill at least title, link, keywords, and one-sentence topic for every paper.
-  Keep English paper titles and use concise Chinese synthesis. Separate
+  Keep English paper titles. From 2026-11-10 onward, all newly authored or
+  revised Google Doc content is in English, including indexes, paper notes,
+  the Assistant Axis tab and direction assessments. Preserve user-authored
+  notes verbatim, including Chinese; do not translate the existing document
+  wholesale unless requested. Local literature mirrors and synchronized
+  fields follow the language of the corresponding updated content; unrelated
+  Chinese research documents need not be translated. Separate
   abstract-based notes from selected-body review and complete full-text review;
   do not invent contributions, affiliations, acceptance, or limitations.
 - `Additional think` belongs exclusively to the user: initialize it blank and
