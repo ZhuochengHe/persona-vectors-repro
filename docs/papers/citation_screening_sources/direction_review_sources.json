@@ -223,19 +223,19 @@
       },
       {
         "title": "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",
-        "id": null,
-        "url": "https://openreview.net/forum?id=RB1B5jsREi",
-        "status": "pending_primary_fulltext_access",
+        "id": "OpenReview:RBI5BjsREi",
+        "url": "https://openreview.net/pdf?id=RBI5BjsREi",
+        "status": "primary_supplied_pdf_verified",
         "secondary_discovery_url": "https://lacuna.tiptreesystems.com/work/activation-steered-personas-in-task-oriented-llm-agent",
         "primary_author_listing": "https://cs.uky.edu/~siddique/files/CV_Abu.pdf",
         "setting_tags": [
           "multi-turn-dialogue",
           "multi-agent-interaction",
-          "not-verified"
+          "schema-guided-api-dialogue-simulation"
         ],
-        "task_endpoints": "二手检索报告SGD Restaurants/Movies双agent对话、goal/constraint/dialogue quality；本轮未拿到primary PDF，不能确认API/booking实际执行。",
-        "intervention": "据待核线索：固定user BigFive方向＋按context预测system trait系数动态组合；不把这些二手细节当已完成实证结论。",
-        "scope_and_limits": "强相关候选，作者官方CV列出；OpenReview两种疑似ID均403/不可访问。建议先补primary再正式入精读；不引用Lacuna hypothesis为已做实验。",
+        "task_endpoints": "SGD Restaurants/Movies双agent模拟；API方法和槽位匹配、inform、completion及judge质量；不将这些指标泛化为开放长程工具执行。",
+        "intervention": "公开PERSONA向量；user固定单trait，system每轮predict-then-steer组合；L20；Qwen2.5-7B及Llama3.1-8B。",
+        "scope_and_limits": "用户提供18页PDF后核实；旧候选OpenReview ID有拼写差异，现统一RBI5BjsREi。Qwen US+SA任务指标差异未显著，judge真实性和满意度改善；不是2608.18085v2。",
         "new_to_catalog": true
       }
     ],
@@ -727,14 +727,14 @@
         "作者生成的200–1000轮交互；steering检验为200轮"
       ],
       [
-        "Persona-Guided LLM Agents for Task-Oriented Dialogue",
-        "https://arxiv.org/html/2608.18085v2",
-        "根据对话线索适应用户，比直接告知人格标签更稳健；适应提高满意度但降低真实性。此v2只做prompt条件控制，没有activation steering。",
-        "用户与系统agent进行餐厅／酒店查询及预订；按API槽位评任务成功",
-        "Schema-Guided Dialogue（SGD）的Restaurant、Hotel两个领域；生成9000段对话"
+        "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",
+        "https://openreview.net/pdf?id=RBI5BjsREi",
+        "用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。",
+        "用户／系统双agent任务型对话；分别干预用户、系统或两侧，评API方法、槽位与对话结果",
+        "Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0）"
       ]
     ],
-    "scope": "Primary-source checked: PersonaSteer §4.1.1; ContextEcho §3.1/App.T; Persona-Guided 2608.18085v2 §III–V. Prompt conditioning is distinct from activation steering.",
+    "scope": "Primary-source verified comparison; final row is OpenReview RBI5BjsREi, distinct from prompt-only arXiv2608.18085v2.",
     "column_widths_pt": [
       170,
       35,
@@ -745,7 +745,20 @@
     "verification_sources": {
       "PersonaSteer": "https://aclanthology.org/2026.findings-emnlp.1270.pdf#page=5",
       "ContextEcho": "https://arxiv.org/html/2605.24279v1",
-      "Persona-Guided": "https://arxiv.org/html/2608.18085v2"
+      "Persona-Guided": "https://arxiv.org/html/2608.18085v2",
+      "Activation-Steered Personas": "https://openreview.net/pdf?id=RBI5BjsREi"
     }
+  },
+  "activation_steered_tod_review": {
+    "title": "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",
+    "url": "https://openreview.net/pdf?id=RBI5BjsREi",
+    "local_pdf": "docs/papers/20_Activation_Steered_Personas (1).pdf",
+    "sha256": "7361f9c9207c150434efa081b81a4b3410734c5ecf4c2d07d0360b6c6390ca61",
+    "scope": "18-page supplied PDF, main text §§3–5 and appendix settings; no reproduction",
+    "method": "Reuse public PERSONA vectors; fixed user trait injection and turn-level coefficient composition on system; layer20; Qwen2.5-7B and Llama3.1-8B.",
+    "dataset": "SGD Restaurants and Movies; not Restaurants/Hotel",
+    "finding": "Qwen US+SA vs US task changes nonsignificant; judged truthfulness +8.3pp and satisfaction +2.7pp. These are pairwise win-rate differences, not task-success gains.",
+    "venue": "Author repository labels COLM2026 Social Simulation with LLMs Workshop, non-archival; PDF header generic COLM2026.",
+    "related_source": "https://github.com/MultifacetedNLP/TODPersonaSteering"
   }
 }

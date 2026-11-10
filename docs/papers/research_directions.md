@@ -4,7 +4,7 @@
 
 ## 判断先行
 
-Agentic persona steering具有较大的研究空间。当前阅读集已有情绪、任务失败模式、role及task–role–state控制，但尚未见系统覆盖稳定persona方向在真实agent行动中的提取、干预与长程效果的直接研究。相邻方法提供可复用工具和比较基线；它们没有穷尽行为目标、提取范式、运行阶段与环境反馈的组合。架构方向同样可从persona读写与结构差异中形成具体问题。
+Agentic persona steering具有较大的研究空间。[Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi)已在SGD任务型对话中，直接将persona向量用于用户与系统agent，并逐轮调节系统人格组合。现有工作还包含情绪、任务失败模式、role及task–role–state控制。可继续研究更开放的工具执行、长程环境反馈、不同方向来源及规划／动作阶段的选择性；这些任务型对话先例提供可比较的起点，不能把整个agentic persona方向表述为无人做过。
 
 优先推进agentic persona steering：人格方向能否改变真实决策、改善performance，以及效果如何随反馈和时间变化。现象分析、提取方法和控制方法均可独立形成贡献；普通加法干预也足以启动。架构研究可作为并行候选或后续扩展，首轮固定一个模型和环境以控制计算量。
 
@@ -26,7 +26,7 @@ Agentic执行：模型选择行动、环境实际执行并返回状态／reward�
 
 ### Agentic相关论文对照
 
-Finding聚焦agent行为、长期交互与控制；Task区分对话参照、监测和真实执行。
+Finding只写与agent行为、长期交互或控制直接相关的发现；对话参照、监测与真实执行在Task中区分。未核实的数据集明确留待核，不据标题补写。
 
 | 论文 | 链接 | Finding：agentic角度 | Task | Dataset／环境 |
 | --- | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Finding聚焦agent行为、长期交互与控制；Task区分对话参照、监�
 | Drift No More / ATLAS（ID48） | [原文](https://arxiv.org/abs/2611.04315) | 同时维持任务、角色与最新状态可改善记忆和协作；具身受扰动场景也有收益，工具调用评分与环境执行分开报告。 | 长期记忆、状态读写、权限控制及机器人协作 | EverMemBench；AMemGym；ToolACE；ALARA；LIBERO |
 | Controlling Large Language Model Agents with Entropic Activation Steering / EAST | [原文](https://arxiv.org/abs/2406.00244) | 从交互轨迹提取方向后可调节探索行为，token采样温度不能复现相同效果；环境为简化bandit。 | 选择行动、接收reward并继续探索 | Gaussian两臂bandit及文字改写变体 |
 | Multi-LLM Systems Exhibit Robust Semantic Collapse | [原文](https://arxiv.org/abs/2605.17193) | 压低短测中的迎合没有恢复长期群体对话的语义多样性；人格行为改变不保证系统指标随之改善。 | 长期多LLM自由互动；无外部工具任务 | 作者生成的200–1000轮交互；steering检验为200轮 |
-| Persona-Guided LLM Agents for Task-Oriented Dialogue | [原文](https://arxiv.org/html/2608.18085v2) | 根据对话线索适应用户，比直接告知人格标签更稳健；适应提高满意度但降低真实性。此v2只做prompt条件控制，没有activation steering。 | 用户与系统agent进行餐厅／酒店查询及预订；按API槽位评任务成功 | Schema-Guided Dialogue（SGD）的Restaurant、Hotel两个领域；生成9000段对话 |
+| Activation-Steered Personas in Task-Oriented LLM Agent Simulations | [原文](https://openreview.net/pdf?id=RBI5BjsREi) | 用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。 | 用户／系统双agent任务型对话；分别干预用户、系统或两侧，评API方法、槽位与对话结果 | Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0） |
 
 ### 多轮人格控制已经存在
 
@@ -75,7 +75,7 @@ Finding聚焦agent行为、长期交互与控制；Task区分对话参照、监�
 
 更早的[EAST](https://arxiv.org/abs/2406.00244)在2024年就从环境交互轨迹按action entropy加权抽方向，操纵Gaussian bandit探索并接收真实reward反馈。它不是人格论文，却是trace提取与决策控制的必要方法基线。
 
-[Multi-LLM Systems Exhibit Robust Semantic Collapse](https://arxiv.org/abs/2605.17193)还给出重要邻近负结果：抑制短评测sycophancy不必恢复长程多agent语义多样性。它是长交互中的trait→系统结果迁移问题，没有外部工具任务。[Persona-Guided LLM Agents for Task-Oriented Dialogue](https://arxiv.org/html/2608.18085v2)（2608.18085v2）是任务型对话中的提示词人格条件研究：使用SGD餐厅／酒店领域，比较无人格信息、按对话线索适应和直接提供人格标签。它不做activation提取／注入，可作为用户人格适应与任务效果的参照。
+[Multi-LLM Systems Exhibit Robust Semantic Collapse](https://arxiv.org/abs/2605.17193)还给出重要邻近负结果：抑制短评测sycophancy不必恢复长程多agent语义多样性。它是长交互中的trait→系统结果迁移问题，没有外部工具任务。[Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi)是直接的任务型对话persona steering先例：复用PERSONA的Big Five向量，在用户侧固定干预、在系统侧逐轮预测系数并组合，或同时干预两侧。它使用SGD Restaurants／Movies，主要观察到judge评的真实性与满意度改善，Qwen方向性用户干预条件下的整体任务指标差异未达显著。它与2608.18085v2的提示词条件研究是不同论文。
 
 ### 仍值得做的主问题与最小设计
 
@@ -113,13 +113,13 @@ Dense／MoE描述参数路由；pruned subnetworks描述权重mask；dynamic act
 
 ### MoE已有结构特异的控制方法
 
-[SteerMoE](https://arxiv.org/abs/2509.09660)：比较相反行为条件下expert activation频率，推理时促进／抑制专家，覆盖安全与faithfulness；“发现行为专家再控制”已有先例。
+[SteerMoE](https://arxiv.org/abs/2509.09660)：比较相反行为条件下expert activation频率，推理时促进／抑制专家，覆盖安全与faithfulness；“发现行为专家再控制”已有先例。【】直接steer router
 
-[RARE](https://arxiv.org/abs/2608.21236)：用clean-routing控制定位steering引发的路由漂移，再将扰动投影到router零空间并修正下游routing；因此“MoE效果差因为router受扰、保持路由能改善”的主张也已有直接工作。其任务不是完整persona／跨任务行为选择性。
+[RARE](https://arxiv.org/abs/2608.21236)：用clean-routing控制定位steering引发的路由漂移，再将扰动投影到router零空间并修正下游routing；因此“MoE效果差因为router受扰、保持路由能改善”的主张也已有直接工作。其任务不是完整persona／跨任务行为选择性。【】steer with router locked
 
 [MASCing](https://arxiv.org/abs/2604.27818)：学习跨层routing依赖并用router masks重配置行为，包含多轮jailbreak；不能把它称作未研究的MoE多轮控制。
 
-[Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127)：三种MoE个性化、crosscoder latent和expert干预，已有persona／personalization相关结构证据。专家boost向个性化模型分布移动，不等于全面行为提升；一层／split选择范围也需要核对。
+[Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127)：三种MoE个性化、crosscoder latent和expert干预，已有persona／personalization相关结构证据。专家boost向个性化模型分布移动，不等于全面行为提升；一层／split选择范围也需要核对。【】moe相关机理
 
 [PersonaFuse](https://arxiv.org/abs/2509.07370)：人为添加trait级LoRA专家与router，并包含企业工具流程；这不是在原生MoE中发现自然人格专家，必须分开比较。
 
