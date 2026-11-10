@@ -638,9 +638,9 @@
       [
         "PersonaSteer",
         "https://aclanthology.org/2026.findings-emnlp.1270/",
-        "根据交互历史调节后续个性化表达；当前证据用于多轮对话参照，不能当作工具行动验证。",
-        "多轮个性化对话",
-        "具体dataset本轮未核实"
+        "根据历史动态更新steering信号，随对话推进改善个性化表达；测试的是多轮对齐，并非工具任务完成。",
+        "多轮个性化对话；未见过的用户profile迁移",
+        "ALOE；Extended ALOE（用PersonaChat profiles构建域外测试）"
       ],
       [
         "Emotion Concepts and their Function in a Large Language Model（ID4）",
@@ -680,9 +680,9 @@
       [
         "ContextEcho（ID38／AA08）",
         "https://arxiv.org/abs/2605.24279",
-        "真实coding历史会改变assistant表达；快照中拉回Axis投影未恢复表达评分，尚未测试全程干预后的完成率。",
-        "长coding会话的快照身份／表达探测",
-        "57次真实coding会话；25项identity probes；23模型代表会话面板"
+        "Claude Code会话历史会改变assistant的表达与格式遵循；快照中拉回Axis投影未恢复表达评分。",
+        "重放会话前缀，再提问测身份／偏好表达及格式遵循",
+        "ContextEcho自建评测：3份捐赠的Claude Code日志（coding、论文写作、文档工作各1份）＋25个身份／偏好问题；23模型为测试对象，不是dataset"
       ],
       [
         "Telling FIBS（AA40）",
@@ -727,20 +727,25 @@
         "作者生成的200–1000轮交互；steering检验为200轮"
       ],
       [
-        "Activation-Steered Personas in Task-Oriented LLM Agent Simulations（待核）",
-        "",
-        "尚未取得原始全文；不据标题或检索摘要填写实验结论。",
-        "待核实",
-        "待核实；保留检索线索"
+        "Persona-Guided LLM Agents for Task-Oriented Dialogue",
+        "https://arxiv.org/html/2608.18085v2",
+        "根据对话线索适应用户，比直接告知人格标签更稳健；适应提高满意度但降低真实性。此v2只做prompt条件控制，没有activation steering。",
+        "用户与系统agent进行餐厅／酒店查询及预订；按API槽位评任务成功",
+        "Schema-Guided Dialogue（SGD）的Restaurant、Hotel两个领域；生成9000段对话"
       ]
     ],
-    "scope": "direction-review papers; findings synthesized from existing primary-source reading records; PersonaSteer dataset and unretrieved candidate explicitly unverified",
+    "scope": "Primary-source checked: PersonaSteer §4.1.1; ContextEcho §3.1/App.T; Persona-Guided 2608.18085v2 §III–V. Prompt conditioning is distinct from activation steering.",
     "column_widths_pt": [
       170,
       35,
       270,
       130,
       165
-    ]
+    ],
+    "verification_sources": {
+      "PersonaSteer": "https://aclanthology.org/2026.findings-emnlp.1270.pdf#page=5",
+      "ContextEcho": "https://arxiv.org/html/2605.24279v1",
+      "Persona-Guided": "https://arxiv.org/html/2608.18085v2"
+    }
   }
 }
