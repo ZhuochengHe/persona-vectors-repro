@@ -1,10 +1,10 @@
 {
   "document_id": "1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro",
   "url": "https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro",
-  "title": "Persona 文献阅读笔记｜研究问题与分类",
+  "title": "Persona Literature Notes | Research Questions and Evidence",
   "tab_id": "t.0",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
-  "verified_revision": "AHj4eMQBJSMsAhDjH-2WFaOdMR9ZaROmxujMFAySqADr8unQXn01p8k1DxilUlsMAGcbQWiA8hc6eHqG79fKeDrO667qYelLFqnmYSIKl2w",
+  "verified_revision": "AHj4eMRQcbi1TDWd4wizSzoxQ7f89xxGw_VWVZK-_J6T2XBrhl5BP0hQnvJuX3eg6dC8aNnpJoP4RDF8XR8VAl8oXlYK8I1OrkjpV9NW4Sc",
   "source": "docs/papers/literature_reading.csv",
   "markdown_mirror": "docs/papers/literature_reading.md",
   "format_version": 3,
@@ -67,8 +67,10 @@
   "index_summary_review": "docs/papers/citation_screening_sources/index_summary_review.json",
   "evaluation_regimes": "docs/papers/citation_screening_sources/evaluation_regimes.json",
   "latest_pdf_verification": {
-    "date": "2026-11-07",
-    "scope": "ID48 new index row and detailed note checked; A4 landscape index and portrait details; existing text, tables, headings, native equations and other tabs unchanged"
+    "date": "2026-11-10",
+    "language": "en",
+    "pages": 186,
+    "scope": "English cover, main index, direction table, and Assistant Axis index visually checked; index font 9pt, landscape tables and portrait notes; original heading IDs, links, user notes and equations preserved."
   },
   "direction_review": {
     "tab_id": "t.ujr6rrarqnyl",
@@ -92,5 +94,14 @@
     "excel_sync": false,
     "architecture_fields": false
   },
-  "atlas_review": "docs/papers/citation_screening_sources/atlas_reading_review.json"
+  "atlas_review": "docs/papers/citation_screening_sources/atlas_reading_review.json",
+  "language": "en",
+  "english_translation": {
+    "date": "2026-11-10",
+    "translated_paragraphs": 2874,
+    "preserved_user_blocks": 93,
+    "preserved_native_equations": 9,
+    "heading_ids_preserved": true,
+    "scope": "All three tabs; user Additional think, 【】 additions and user-authored ID3 limitation retained verbatim."
+  }
 }

@@ -614,141 +614,141 @@
   "agentic_comparison_table": {
     "updated": "2026-11-10",
     "columns": [
-      "论文",
-      "链接",
-      "Finding：agentic角度",
+      "Paper",
+      "Link",
+      "Finding: agentic relevance",
       "Task",
-      "Steering／向量类型",
-      "Dataset／环境"
+      "Steering / vector type",
+      "Dataset / environment"
     ],
     "rows": [
       [
         "PERSONA / Persona-Flow（ID7）",
         "https://arxiv.org/abs/2602.15669",
-        "能随对话情境组合人格方向并调节表达；尚未测试工具行动和任务完成。",
-        "Big Five人格控制＋多trait组合与动态steering",
-        "有；Big Five十个trait-pole persona向量，按情境组合",
-        "PersonalityBench；BFI-44情境题；Persona-Evolve（800情境）"
+        "Combines persona directions as dialogue context changes and controls expression; tool actions and task completion were not tested.",
+        "Big Five personality control + multi-trait composition and dynamic steering",
+        "Yes; ten Big Five trait-pole persona vectors, composed by context",
+        "PersonalityBench; contextualized BFI-44; Persona-Evolve (800 scenarios)"
       ],
       [
         "Prompt-Activation Duality / GCAD（ID42）",
         "https://arxiv.org/abs/2605.10664",
-        "十轮对话中保持人格表达并减轻连贯性下降；提示长期干预需考虑缓存累积，未测agent执行。",
-        "多轮人格控制＋缓解KV-cache累积造成的连贯性退化",
-        "有；从人格system prompt的attention贡献构造控制信号（GCAD）",
-        "15 traits×10轮持续KV-cache对话"
+        "Maintains persona expression and reduces coherence loss over ten dialogue turns; long-term intervention must account for cache accumulation. Agent execution was not tested.",
+        "Multi-turn persona control + reducing coherence loss from KV-cache accumulation",
+        "Yes; control signals derived from the attention contribution of persona system prompts (GCAD)",
+        "15 traits × 10 dialogue turns with persistent KV cache"
       ],
       [
         "PersonaSteer",
         "https://aclanthology.org/2026.findings-emnlp.1270/",
-        "根据历史动态更新steering信号，随对话推进改善个性化表达；测试的是多轮对齐，并非工具任务完成。",
+        "Learns steering signals from history and improves personalization as dialogue progresses; evaluates multi-turn alignment rather than tool-task completion.",
         "Personalized alignment＋learnable activation steering",
-        "有；从交互历史学习的高维steering向量；非固定Big Five轴",
-        "ALOE；Extended ALOE（用PersonaChat profiles构建域外测试）"
+        "Yes; high-dimensional steering vectors learned from interaction history, not fixed Big Five axes",
+        "ALOE; Extended ALOE (OOD tests built with PersonaChat profiles)"
       ],
       [
         "Emotion Concepts and their Function in a Large Language Model（ID4）",
         "https://arxiv.org/abs/2604.07729",
-        "增强desperation或压低calm会增加编码作弊；更强情绪也可能换一种策略，而非单调增强原行为。",
-        "Emotion steering对agent作弊、勒索等决策的影响",
-        "有；emotion vectors，如desperation、calm、anger",
-        "作者构造的7项reward-hacking编码任务及勒索情境"
+        "Increasing desperation or reducing calm increases coding reward hacking; stronger emotion may change the strategy rather than monotonically amplify the original behavior.",
+        "Effects of emotion steering on agent reward hacking, blackmail, and related decisions",
+        "Yes; emotion vectors such as desperation, calm, and anger",
+        "Seven author-constructed coding reward-hacking tasks and blackmail scenarios"
       ],
       [
         "How Emotion Shapes the Behavior of LLMs and Agents / E-STEER（ID29）",
         "https://arxiv.org/abs/2604.00005",
-        "规划、答案选择与执行阶段偏好的情绪强度不同；单模块表现最优不等于整套agent成功率最高。",
-        "Emotion steering对规划、选择和执行能力的影响",
-        "有；VAD情绪向量，经SAE选取特征后干预",
+        "Preferred emotion strengths differ between planning, answer selection, and execution; optimizing one module does not maximize whole-agent success.",
+        "Effects of emotion steering on planning, selection, and execution capabilities",
+        "Yes; VAD emotion directions using features selected in SAE space",
         "HotpotQA；Scientific；GAIA"
       ],
       [
         "Impatient Users Confuse AI Agents（ID19）",
         "https://arxiv.org/abs/2510.04491",
-        "只改变用户模拟器的急躁等特质，也会降低被测agent成功率；困难特质因模型、领域而异。",
-        "Persona-steered用户模拟＋agent鲁棒性评估",
-        "有；用户模拟器的impatience、skepticism、confusion、incoherence向量",
-        "τ-Trait：航空／零售／电信／远程医疗；BFCL多轮调用"
+        "Changing only the user simulator’s impatience and related traits can reduce target-agent success; the hardest traits depend on model and domain.",
+        "Persona-steered user simulation + agent robustness evaluation",
+        "Yes; impatience, skepticism, confusion, and incoherence directions in the user simulator",
+        "τ-Trait: airline, retail, telecom, and telemedicine; BFCL multi-turn calls"
       ],
       [
         "TACT（AA06）",
         "https://arxiv.org/abs/2605.05980",
-        "在思考结束处干预过度思考／过度行动方向，可提高任务完成并减少步骤；dense和MoE模型均有实验。",
-        "缓解agent过度思考／过度行动＋思考–行动边界steering",
-        "有；过度思考／过度行动相对正常步骤的两条行为方向",
+        "Intervening on overthinking / overacting directions at the end of reasoning improves task completion and reduces steps; experiments cover dense and MoE models.",
+        "Reducing agent overthinking / overacting + steering at the thinking–action boundary",
+        "Yes; two behavioral directions contrasting overthinking / overacting with calibrated steps",
         "SWE-bench Verified；Terminal-Bench 2.0；CLAW-Eval"
       ],
       [
         "Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering（AA43）",
         "https://arxiv.org/abs/2610.29129",
-        "从轨迹等来源取得方向后可减少工具型作弊；同时需检查原题解题率，避免把放弃任务误当改善。",
-        "减少agent reward hacking＋行为方向提取与动态capping",
-        "有；作弊轨迹差分、优化方向、anti-hacking spec方向；比较加法／cap／floor",
-        "MisTrace；ImpossibleBench；原LiveCodeBench；另School of Reward Hacks"
+        "Directions extracted from trajectories and other sources reduce tool-based reward hacking; original-task solve rates must also be checked to distinguish improvement from abandonment.",
+        "Reducing agent reward hacking + behavioral direction extraction and dynamic capping",
+        "Yes; hacking-trace differences, optimized directions, and anti-hacking-spec directions; addition / cap / floor compared",
+        "MisTrace; ImpossibleBench; original LiveCodeBench; also School of Reward Hacks"
       ],
       [
         "ContextEcho（ID38／AA08）",
         "https://arxiv.org/abs/2605.24279",
-        "Claude Code会话历史会改变assistant的表达与格式遵循；快照中拉回Axis投影未恢复表达评分。",
-        "长程agent persona drift的观测＋Assistant Axis干预检验",
-        "有；Assistant Axis，限快照分支的干预检验",
-        "ContextEcho自建评测：3份捐赠的Claude Code日志（coding、论文写作、文档工作各1份）＋25个身份／偏好问题；23模型为测试对象，不是dataset"
+        "Claude Code histories change assistant expression and format compliance; restoring Axis projection in snapshot branches did not restore expression scores.",
+        "Observing long-horizon agent persona drift + testing Assistant Axis intervention",
+        "Yes; Assistant Axis, limited to snapshot-branch intervention tests",
+        "ContextEcho evaluation: three donated Claude Code logs (coding, manuscript writing, and document work) + 25 identity / preference questions; 23 models are test subjects, not datasets"
       ],
       [
         "Telling FIBS（AA40）",
         "https://arxiv.org/abs/2610.12445",
-        "内部读出能识别工具轨迹中的隐蔽破坏，包括没有明说的行为；这是监测结果，未直接控制agent。",
-        "Agent欺骗／破坏行为监测＋activation probes",
-        "无activation steering；用activation probes监测欺骗／破坏",
+        "Internal readouts detect covert sabotage in tool trajectories, including unspoken behavior; this is monitoring rather than direct agent control.",
+        "Monitoring agent deception / sabotage + activation probes",
+        "No activation steering; activation probes monitor deception / sabotage",
         "FIBS；SHADE-Arena；BashArena"
       ],
       [
         "Social Priors（AA42）",
         "https://arxiv.org/abs/2610.16946",
-        "一个持反社会用户先验的agent即可使共池资源耗尽；Axis控制是另一概率评分实验，不能视为环境行为已被纠正。",
-        "用户社会先验对agent信任与合作的影响＋Axis控制检验",
-        "有；Assistant Axis capping只在信任评分分支；非GovSim执行分支",
-        "GovSim鱼业环境；matched社会先验语料；376-context Axis控制"
+        "One agent with antisocial user priors can exhaust a shared resource; Axis control is a separate probability-scoring experiment, not evidence of corrected environment behavior.",
+        "Effects of user social priors on agent trust and cooperation + Axis-control tests",
+        "Yes; Assistant Axis capping only in the trust-scoring branch, not the GovSim execution branch",
+        "GovSim fisheries; matched social-prior corpora; 376-context Axis controls"
       ],
       [
         "Mind Your Own Role / DRAS",
         "https://arxiv.org/abs/2610.15907",
-        "按越界风险调节角色方向，能减少越界并提高软件产出质量；越界最少的静态方案未必质量最好。",
-        "减少多agent角色越界＋动态role steering",
-        "有；有／无role指令的激活差分角色向量，动态调强度",
-        "ChatDev／MetaGPT；SRDD 1200需求；SWE-Dev用于准备／验证"
+        "Adjusting role directions according to overstepping risk reduces overstepping and improves software output quality; the static variant with least overstepping is not necessarily best in quality.",
+        "Reducing multi-agent role overstepping + dynamic role steering",
+        "Yes; activation differences with / without role instructions, with dynamically adjusted strength",
+        "ChatDev / MetaGPT; 1,200 SRDD requirements; SWE-Dev for preparation / validation"
       ],
       [
         "Drift No More / ATLAS（ID48）",
         "https://arxiv.org/abs/2611.04315",
-        "同时维持任务、角色与最新状态可改善记忆和协作；具身受扰动场景也有收益，工具调用评分与环境执行分开报告。",
-        "减少task／role／state漂移＋联合子空间steering",
-        "有；task／role／state联合子空间核；非单一persona向量",
+        "Jointly maintaining task, role, and current state improves memory and coordination, including under embodied perturbations; call-structure scores and environment execution are reported separately.",
+        "Reducing task / role / state drift + joint-subspace steering",
+        "Yes; a joint task / role / state subspace kernel, not a single persona vector",
         "EverMemBench；AMemGym；ToolACE；ALARA；LIBERO"
       ],
       [
         "Controlling Large Language Model Agents with Entropic Activation Steering / EAST",
         "https://arxiv.org/abs/2406.00244",
-        "从交互轨迹提取方向后可调节探索行为，token采样温度不能复现相同效果；环境为简化bandit。",
-        "调节agent探索行为＋entropy-weighted activation steering",
-        "有；按行动熵加权提取的探索行为向量",
-        "Gaussian两臂bandit及文字改写变体"
+        "Directions extracted from interactions control exploration; token sampling temperature does not reproduce the effect. The environment is a simplified bandit.",
+        "Controlling agent exploration + entropy-weighted activation steering",
+        "Yes; an exploration direction extracted with action-entropy weighting",
+        "Gaussian two-armed bandit and textually rephrased variants"
       ],
       [
         "Multi-LLM Systems Exhibit Robust Semantic Collapse",
         "https://arxiv.org/abs/2605.17193",
-        "压低短测中的迎合没有恢复长期群体对话的语义多样性；人格行为改变不保证系统指标随之改善。",
-        "多agent语义多样性退化＋反迎合steering检验",
-        "有；反sycophancy行为向量，检验能否缓解语义塌缩",
-        "作者生成的200–1000轮交互；steering检验为200轮"
+        "Reducing sycophancy in short tests did not restore long-term group semantic diversity; changing a trait behavior does not guarantee improvement in system-level metrics.",
+        "Multi-agent semantic-diversity collapse + anti-sycophancy steering tests",
+        "Yes; an anti-sycophancy direction tested for mitigating semantic collapse",
+        "Author-generated interactions of 200–1,000 turns; 200-turn steering test"
       ],
       [
         "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",
         "https://openreview.net/pdf?id=RBI5BjsREi",
-        "用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。",
-        "任务型对话中的persona控制＋用户固定／系统动态steering",
-        "有；Big Five十个trait-pole persona向量；用户固定，系统逐轮组合",
-        "Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0）"
+        "Persona vectors are injected into both user and system agents. Turn-level system adaptation mainly improves judge-rated truthfulness and satisfaction; task gains are modest and depend on domain, trait, and strength.",
+        "Persona control in task-oriented dialogue + fixed user / dynamic system steering",
+        "Yes; ten Big Five trait-pole persona vectors; fixed for the user, composed each turn for the system",
+        "Schema-Guided Dialogue (SGD): Restaurants, Movies; 50 Baseline–SA dialogue pairs and 2,000 US–US+SA pairs (including α=0)"
       ]
     ],
     "scope": "Primary-source verified comparison; final row is OpenReview RBI5BjsREi, distinct from prompt-only arXiv2608.18085v2.",
@@ -766,7 +766,8 @@
       "Persona-Guided": "https://arxiv.org/html/2608.18085v2",
       "Activation-Steered Personas": "https://openreview.net/pdf?id=RBI5BjsREi"
     },
-    "task_definition": "论文研究目标／控制问题＋主要方法；数据来源与评测设置另列Dataset／环境。"
+    "task_definition": "论文研究目标／控制问题＋主要方法；数据来源与评测设置另列Dataset／环境。",
+    "language": "en"
   },
   "activation_steered_tod_review": {
     "title": "Activation-Steered Personas in Task-Oriented LLM Agent Simulations",

@@ -1,154 +1,154 @@
-# 两个方向的文献定位与可行性
+# Literature positioning and feasibility of two research directions
 
-更新：2026-11-09。结合现有Persona论文集、Assistant Axis被引阅读与已核对原文，分析研究空间、最小实验与计算可行性。以下为研究判断，尚未进行相应实验。
+Updated:2026-11-09. Uses the existing Persona collection, Assistant Axis citation reading, and verified originals to analyze research space, minimal experiments, and computational feasibility. These are research judgments, not results from new experiments.
 
-## 判断先行
+## Assessment first
 
-Agentic persona steering具有较大的研究空间。[Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi)已在SGD任务型对话中，直接将persona向量用于用户与系统agent，并逐轮调节系统人格组合。现有工作还包含情绪、任务失败模式、role及task–role–state控制。可继续研究更开放的工具执行、长程环境反馈、不同方向来源及规划／动作阶段的选择性；这些任务型对话先例提供可比较的起点，不能把整个agentic persona方向表述为无人做过。
+Agentic persona steering offers substantial research space. [Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi) already directly steers user/system agents with persona vectors in SGD task-oriented dialogue, adapting system mixtures each turn. Related work controls emotions, task-failure modes, roles, and task–role–state representations. Open tool execution, long-horizon feedback, direction sources, and planning/action selectivity remain promising; these dialogue precedents are useful starting comparisons, so agentic persona steering as a whole should not be described as unexplored.
 
-优先推进agentic persona steering：人格方向能否改变真实决策、改善performance，以及效果如何随反馈和时间变化。现象分析、提取方法和控制方法均可独立形成贡献；普通加法干预也足以启动。架构研究可作为并行候选或后续扩展，首轮固定一个模型和环境以控制计算量。
+Prioritize agentic persona steering: whether persona directions change real decisions or improve performance, and how effects evolve with feedback/time. Phenomenon analysis, extraction, and control methods can each contribute independently; ordinary additive steering suffices to start. Architecture research can be a parallel candidate or later extension, with one model/environment fixed initially to control cost.
 
-## 实验场景怎样区分
+## Distinguishing experimental settings
 
-单轮：可以有很长CoT、many-shot输入、文字游戏或答案概率；这些本身不构成长程agent。
+Single-turn: a task may contain a long CoT, many-shot input, a text game, or answer probabilities. These features alone do not establish a long-horizon agent setting.
 
-多轮对话：角色、用户压力、身份和记忆随历史变化，但未必有可执行行动或外部状态。
+Multi-turn dialogue: roles, user pressure, identity, and memory evolve with the history, but executable actions or external state may be absent.
 
-长上下文／长程：分别记录长输入、持续对话、跨session记忆与多步环境任务；不把它们用同一个“long”覆盖。长度的意义要看具体轮数、工具步数和是否重置。
+Long context / long horizon: record long inputs, persistent dialogue, cross-session memory, and multi-step environment tasks separately. Do not group them under one “long” label. Interpret length using actual turns, tool steps, and reset behavior.
 
-Agentic执行：模型选择行动、环境实际执行并返回状态／reward。工具名字符串、预置tool返回、问卷或“删除文件”选项不足以证明真实执行。
+Agentic execution: the model selects an action, the environment executes it, and returns state or reward. Tool-name strings, preset tool responses, questionnaires, or a “delete files” option alone do not establish execution.
 
-干预对象：目标agent、用户模拟器、审计工具和离线轨迹读出分别记录。一个论文环境中有agent，不意味着persona方向被写入执行agent。
+Intervention subject: distinguish the target agent, user simulator, auditing tool, and offline trajectory readout. An agent in the environment does not imply that the persona direction is injected into the executing agent.
 
-两套阅读表的Benchmark / Validation已逐条增加【场景】前缀；来源与边界另存evaluation_regimes.json。Assistant Axis独立库仍不与Excel同步、不新增架构列。
+Benchmark / Validation entries in both collections now include a [Setting] prefix. Sources and evidence boundaries are recorded in evaluation_regimes.json. The separate Assistant Axis collection has no Excel synchronization or architecture columns.
 
-## 方向一：agentic persona vector已有研究
+## Direction 1: existing work on agentic persona vectors
 
-### Agentic相关论文对照
+### Agentic paper comparison
 
-Finding只写与agent行为、长期交互或控制直接相关的发现；对话参照、监测与真实执行在Task中区分。未核实的数据集明确留待核，不据标题补写。
+Findings focus on agent behavior, long interactions, or control. Task distinguishes dialogue references, monitoring, and execution. Unverified datasets are explicitly marked; details are not inferred from titles.
 
-| 论文 | 链接 | Finding：agentic角度 | Task | Steering／向量类型 | Dataset／环境 |
+| Paper | Link | Finding: agentic relevance | Task | Steering / vector type | Dataset / environment |
 | --- | --- | --- | --- | --- | --- |
-| PERSONA / Persona-Flow（ID7） | [原文](https://arxiv.org/abs/2602.15669) | 能随对话情境组合人格方向并调节表达；尚未测试工具行动和任务完成。 | Big Five人格控制＋多trait组合与动态steering | 有；Big Five十个trait-pole persona向量，按情境组合 | PersonalityBench；BFI-44情境题；Persona-Evolve（800情境） |
-| Prompt-Activation Duality / GCAD（ID42） | [原文](https://arxiv.org/abs/2605.10664) | 十轮对话中保持人格表达并减轻连贯性下降；提示长期干预需考虑缓存累积，未测agent执行。 | 多轮人格控制＋缓解KV-cache累积造成的连贯性退化 | 有；从人格system prompt的attention贡献构造控制信号（GCAD） | 15 traits×10轮持续KV-cache对话 |
-| PersonaSteer | [原文](https://aclanthology.org/2026.findings-emnlp.1270/) | 根据历史动态更新steering信号，随对话推进改善个性化表达；测试的是多轮对齐，并非工具任务完成。 | Personalized alignment＋learnable activation steering | 有；从交互历史学习的高维steering向量；非固定Big Five轴 | ALOE；Extended ALOE（用PersonaChat profiles构建域外测试） |
-| Emotion Concepts and their Function in a Large Language Model（ID4） | [原文](https://arxiv.org/abs/2604.07729) | 增强desperation或压低calm会增加编码作弊；更强情绪也可能换一种策略，而非单调增强原行为。 | Emotion steering对agent作弊、勒索等决策的影响 | 有；emotion vectors，如desperation、calm、anger | 作者构造的7项reward-hacking编码任务及勒索情境 |
-| How Emotion Shapes the Behavior of LLMs and Agents / E-STEER（ID29） | [原文](https://arxiv.org/abs/2604.00005) | 规划、答案选择与执行阶段偏好的情绪强度不同；单模块表现最优不等于整套agent成功率最高。 | Emotion steering对规划、选择和执行能力的影响 | 有；VAD情绪向量，经SAE选取特征后干预 | HotpotQA；Scientific；GAIA |
-| Impatient Users Confuse AI Agents（ID19） | [原文](https://arxiv.org/abs/2510.04491) | 只改变用户模拟器的急躁等特质，也会降低被测agent成功率；困难特质因模型、领域而异。 | Persona-steered用户模拟＋agent鲁棒性评估 | 有；用户模拟器的impatience、skepticism、confusion、incoherence向量 | τ-Trait：航空／零售／电信／远程医疗；BFCL多轮调用 |
-| TACT（AA06） | [原文](https://arxiv.org/abs/2605.05980) | 在思考结束处干预过度思考／过度行动方向，可提高任务完成并减少步骤；dense和MoE模型均有实验。 | 缓解agent过度思考／过度行动＋思考–行动边界steering | 有；过度思考／过度行动相对正常步骤的两条行为方向 | SWE-bench Verified；Terminal-Bench 2.0；CLAW-Eval |
-| Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering（AA43） | [原文](https://arxiv.org/abs/2610.29129) | 从轨迹等来源取得方向后可减少工具型作弊；同时需检查原题解题率，避免把放弃任务误当改善。 | 减少agent reward hacking＋行为方向提取与动态capping | 有；作弊轨迹差分、优化方向、anti-hacking spec方向；比较加法／cap／floor | MisTrace；ImpossibleBench；原LiveCodeBench；另School of Reward Hacks |
-| ContextEcho（ID38／AA08） | [原文](https://arxiv.org/abs/2605.24279) | Claude Code会话历史会改变assistant的表达与格式遵循；快照中拉回Axis投影未恢复表达评分。 | 长程agent persona drift的观测＋Assistant Axis干预检验 | 有；Assistant Axis，限快照分支的干预检验 | ContextEcho自建评测：3份捐赠的Claude Code日志（coding、论文写作、文档工作各1份）＋25个身份／偏好问题；23模型为测试对象，不是dataset |
-| Telling FIBS（AA40） | [原文](https://arxiv.org/abs/2610.12445) | 内部读出能识别工具轨迹中的隐蔽破坏，包括没有明说的行为；这是监测结果，未直接控制agent。 | Agent欺骗／破坏行为监测＋activation probes | 无activation steering；用activation probes监测欺骗／破坏 | FIBS；SHADE-Arena；BashArena |
-| Social Priors（AA42） | [原文](https://arxiv.org/abs/2610.16946) | 一个持反社会用户先验的agent即可使共池资源耗尽；Axis控制是另一概率评分实验，不能视为环境行为已被纠正。 | 用户社会先验对agent信任与合作的影响＋Axis控制检验 | 有；Assistant Axis capping只在信任评分分支；非GovSim执行分支 | GovSim鱼业环境；matched社会先验语料；376-context Axis控制 |
-| Mind Your Own Role / DRAS | [原文](https://arxiv.org/abs/2610.15907) | 按越界风险调节角色方向，能减少越界并提高软件产出质量；越界最少的静态方案未必质量最好。 | 减少多agent角色越界＋动态role steering | 有；有／无role指令的激活差分角色向量，动态调强度 | ChatDev／MetaGPT；SRDD 1200需求；SWE-Dev用于准备／验证 |
-| Drift No More / ATLAS（ID48） | [原文](https://arxiv.org/abs/2611.04315) | 同时维持任务、角色与最新状态可改善记忆和协作；具身受扰动场景也有收益，工具调用评分与环境执行分开报告。 | 减少task／role／state漂移＋联合子空间steering | 有；task／role／state联合子空间核；非单一persona向量 | EverMemBench；AMemGym；ToolACE；ALARA；LIBERO |
-| Controlling Large Language Model Agents with Entropic Activation Steering / EAST | [原文](https://arxiv.org/abs/2406.00244) | 从交互轨迹提取方向后可调节探索行为，token采样温度不能复现相同效果；环境为简化bandit。 | 调节agent探索行为＋entropy-weighted activation steering | 有；按行动熵加权提取的探索行为向量 | Gaussian两臂bandit及文字改写变体 |
-| Multi-LLM Systems Exhibit Robust Semantic Collapse | [原文](https://arxiv.org/abs/2605.17193) | 压低短测中的迎合没有恢复长期群体对话的语义多样性；人格行为改变不保证系统指标随之改善。 | 多agent语义多样性退化＋反迎合steering检验 | 有；反sycophancy行为向量，检验能否缓解语义塌缩 | 作者生成的200–1000轮交互；steering检验为200轮 |
-| Activation-Steered Personas in Task-Oriented LLM Agent Simulations | [原文](https://openreview.net/pdf?id=RBI5BjsREi) | 用户与系统两侧均可注入persona向量；系统逐轮适应后主要提高judge评的真实性与满意度，整体任务指标收益较小且依领域、trait和强度变化。 | 任务型对话中的persona控制＋用户固定／系统动态steering | 有；Big Five十个trait-pole persona向量；用户固定，系统逐轮组合 | Schema-Guided Dialogue（SGD）：Restaurants、Movies；Baseline–SA 50对对话，US–US+SA 2000对（含α=0） |
+| [PERSONA / Persona-Flow（ID7）](https://arxiv.org/abs/2602.15669) | [Open](https://arxiv.org/abs/2602.15669) | Combines persona directions as dialogue context changes and controls expression; tool actions and task completion were not tested. | Big Five personality control + multi-trait composition and dynamic steering | Yes; ten Big Five trait-pole persona vectors, composed by context | PersonalityBench; contextualized BFI-44; Persona-Evolve (800 scenarios) |
+| [Prompt-Activation Duality / GCAD（ID42）](https://arxiv.org/abs/2605.10664) | [Open](https://arxiv.org/abs/2605.10664) | Maintains persona expression and reduces coherence loss over ten dialogue turns; long-term intervention must account for cache accumulation. Agent execution was not tested. | Multi-turn persona control + reducing coherence loss from KV-cache accumulation | Yes; control signals derived from the attention contribution of persona system prompts (GCAD) | 15 traits × 10 dialogue turns with persistent KV cache |
+| [PersonaSteer](https://aclanthology.org/2026.findings-emnlp.1270/) | [Open](https://aclanthology.org/2026.findings-emnlp.1270/) | Learns steering signals from history and improves personalization as dialogue progresses; evaluates multi-turn alignment rather than tool-task completion. | Personalized alignment＋learnable activation steering | Yes; high-dimensional steering vectors learned from interaction history, not fixed Big Five axes | ALOE; Extended ALOE (OOD tests built with PersonaChat profiles) |
+| [Emotion Concepts and their Function in a Large Language Model（ID4）](https://arxiv.org/abs/2604.07729) | [Open](https://arxiv.org/abs/2604.07729) | Increasing desperation or reducing calm increases coding reward hacking; stronger emotion may change the strategy rather than monotonically amplify the original behavior. | Effects of emotion steering on agent reward hacking, blackmail, and related decisions | Yes; emotion vectors such as desperation, calm, and anger | Seven author-constructed coding reward-hacking tasks and blackmail scenarios |
+| [How Emotion Shapes the Behavior of LLMs and Agents / E-STEER（ID29）](https://arxiv.org/abs/2604.00005) | [Open](https://arxiv.org/abs/2604.00005) | Preferred emotion strengths differ between planning, answer selection, and execution; optimizing one module does not maximize whole-agent success. | Effects of emotion steering on planning, selection, and execution capabilities | Yes; VAD emotion directions using features selected in SAE space | HotpotQA；Scientific；GAIA |
+| [Impatient Users Confuse AI Agents（ID19）](https://arxiv.org/abs/2510.04491) | [Open](https://arxiv.org/abs/2510.04491) | Changing only the user simulator’s impatience and related traits can reduce target-agent success; the hardest traits depend on model and domain. | Persona-steered user simulation + agent robustness evaluation | Yes; impatience, skepticism, confusion, and incoherence directions in the user simulator | τ-Trait: airline, retail, telecom, and telemedicine; BFCL multi-turn calls |
+| [TACT（AA06）](https://arxiv.org/abs/2605.05980) | [Open](https://arxiv.org/abs/2605.05980) | Intervening on overthinking / overacting directions at the end of reasoning improves task completion and reduces steps; experiments cover dense and MoE models. | Reducing agent overthinking / overacting + steering at the thinking–action boundary | Yes; two behavioral directions contrasting overthinking / overacting with calibrated steps | SWE-bench Verified；Terminal-Bench 2.0；CLAW-Eval |
+| [Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering（AA43）](https://arxiv.org/abs/2610.29129) | [Open](https://arxiv.org/abs/2610.29129) | Directions extracted from trajectories and other sources reduce tool-based reward hacking; original-task solve rates must also be checked to distinguish improvement from abandonment. | Reducing agent reward hacking + behavioral direction extraction and dynamic capping | Yes; hacking-trace differences, optimized directions, and anti-hacking-spec directions; addition / cap / floor compared | MisTrace; ImpossibleBench; original LiveCodeBench; also School of Reward Hacks |
+| [ContextEcho（ID38／AA08）](https://arxiv.org/abs/2605.24279) | [Open](https://arxiv.org/abs/2605.24279) | Claude Code histories change assistant expression and format compliance; restoring Axis projection in snapshot branches did not restore expression scores. | Observing long-horizon agent persona drift + testing Assistant Axis intervention | Yes; Assistant Axis, limited to snapshot-branch intervention tests | ContextEcho evaluation: three donated Claude Code logs (coding, manuscript writing, and document work) + 25 identity / preference questions; 23 models are test subjects, not datasets |
+| [Telling FIBS（AA40）](https://arxiv.org/abs/2610.12445) | [Open](https://arxiv.org/abs/2610.12445) | Internal readouts detect covert sabotage in tool trajectories, including unspoken behavior; this is monitoring rather than direct agent control. | Monitoring agent deception / sabotage + activation probes | No activation steering; activation probes monitor deception / sabotage | FIBS；SHADE-Arena；BashArena |
+| [Social Priors（AA42）](https://arxiv.org/abs/2610.16946) | [Open](https://arxiv.org/abs/2610.16946) | One agent with antisocial user priors can exhaust a shared resource; Axis control is a separate probability-scoring experiment, not evidence of corrected environment behavior. | Effects of user social priors on agent trust and cooperation + Axis-control tests | Yes; Assistant Axis capping only in the trust-scoring branch, not the GovSim execution branch | GovSim fisheries; matched social-prior corpora; 376-context Axis controls |
+| [Mind Your Own Role / DRAS](https://arxiv.org/abs/2610.15907) | [Open](https://arxiv.org/abs/2610.15907) | Adjusting role directions according to overstepping risk reduces overstepping and improves software output quality; the static variant with least overstepping is not necessarily best in quality. | Reducing multi-agent role overstepping + dynamic role steering | Yes; activation differences with / without role instructions, with dynamically adjusted strength | ChatDev / MetaGPT; 1,200 SRDD requirements; SWE-Dev for preparation / validation |
+| [Drift No More / ATLAS（ID48）](https://arxiv.org/abs/2611.04315) | [Open](https://arxiv.org/abs/2611.04315) | Jointly maintaining task, role, and current state improves memory and coordination, including under embodied perturbations; call-structure scores and environment execution are reported separately. | Reducing task / role / state drift + joint-subspace steering | Yes; a joint task / role / state subspace kernel, not a single persona vector | EverMemBench；AMemGym；ToolACE；ALARA；LIBERO |
+| [Controlling Large Language Model Agents with Entropic Activation Steering / EAST](https://arxiv.org/abs/2406.00244) | [Open](https://arxiv.org/abs/2406.00244) | Directions extracted from interactions control exploration; token sampling temperature does not reproduce the effect. The environment is a simplified bandit. | Controlling agent exploration + entropy-weighted activation steering | Yes; an exploration direction extracted with action-entropy weighting | Gaussian two-armed bandit and textually rephrased variants |
+| [Multi-LLM Systems Exhibit Robust Semantic Collapse](https://arxiv.org/abs/2605.17193) | [Open](https://arxiv.org/abs/2605.17193) | Reducing sycophancy in short tests did not restore long-term group semantic diversity; changing a trait behavior does not guarantee improvement in system-level metrics. | Multi-agent semantic-diversity collapse + anti-sycophancy steering tests | Yes; an anti-sycophancy direction tested for mitigating semantic collapse | Author-generated interactions of 200–1,000 turns; 200-turn steering test |
+| [Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi) | [Open](https://openreview.net/pdf?id=RBI5BjsREi) | Persona vectors are injected into both user and system agents. Turn-level system adaptation mainly improves judge-rated truthfulness and satisfaction; task gains are modest and depend on domain, trait, and strength. | Persona control in task-oriented dialogue + fixed user / dynamic system steering | Yes; ten Big Five trait-pole persona vectors; fixed for the user, composed each turn for the system | Schema-Guided Dialogue (SGD): Restaurants, Movies; 50 Baseline–SA dialogue pairs and 2,000 US–US+SA pairs (including α=0) |
 
-### 多轮人格控制已经存在
+### Multi-turn persona control already exists
 
-[PERSONA／Persona-Flow，原ID7](https://arxiv.org/abs/2602.15669)已做按context动态组合Big Five方向；[GCAD，原ID42](https://arxiv.org/abs/2605.10664)研究持续KV-cache的十轮persona对话。它们直接限制“首次动态／多轮persona steering”的新颖性，但没有把对话评分等同工具行动。
+[PERSONA / Persona-Flow, ID7](https://arxiv.org/abs/2602.15669) dynamically composes Big Five directions by context; [GCAD, ID42](https://arxiv.org/abs/2605.10664) studies ten persona-dialogue turns with persistent KV cache. They constrain claims of the first dynamic / multi-turn persona steering method, but dialogue scores are not tool actions.
 
-新检索的[PersonaSteer](https://aclanthology.org/2026.findings-emnlp.1270/)进一步从交互历史学习侧模型与steering feedback loop，做多轮个性化。因此“根据历史动态更新persona vector”也需要与现成方法比较；它仍不能替代实际环境决策的验证。
+[PersonaSteer](https://aclanthology.org/2026.findings-emnlp.1270/) learns a side model and steering feedback loop from interaction history for multi-turn personalization. History-dependent persona-vector updates should therefore be compared with existing methods; they still require validation on actual environment decisions.【】用llm模拟用户和系统，通过steering来提高用户满意度，用户固定steer确定人格，系统通过外部llm选alpha强度来动态steering回答问题 选用的是大五人格的vectors
 
-### 已有库里与agent最接近的证据
+### The closest agent-related evidence in the collection
 
-[Emotion Concepts，原ID4](https://arxiv.org/abs/2604.07729)含代码执行／单测反馈的reward-hacking场景；[E-STEER，原ID29](https://arxiv.org/abs/2604.00005)研究情绪干预与planner／decider／executor流程及工具任务。这已经覆盖“内部情绪方向能否影响agent”，但情绪、组织role和稳定人格不能预设共享方向。
+[Emotion Concepts, ID4](https://arxiv.org/abs/2604.07729) includes reward-hacking scenarios with code execution and unit-test feedback; [E-STEER, ID29](https://arxiv.org/abs/2604.00005) studies emotion interventions in planner / decider / executor workflows and tool tasks. Internal emotion directions affecting agents thus have precedents, but emotion, organizational roles, and stable personality should not be assumed to share directions.
 
-[Impatient Users，原ID19](https://arxiv.org/abs/2510.04491)把persona向量写入用户模拟器，评估工具agent；这是交互压力基线，不是直接控制被测agent人格。
+[Impatient Users, ID19](https://arxiv.org/abs/2510.04491) injects persona vectors into the user simulator to evaluate a tool agent. This is an interaction-pressure baseline rather than direct control of the evaluated agent’s persona.
 
-[TACT，AA06](https://arxiv.org/abs/2605.05980)从标注轨迹提取过度思考／过度行动轴，在think–action边界做Add／Cap／Gate，验证SWE-bench Verified、Terminal-Bench和CLAW-Eval。它是trace-based、在线agent控制的直接先例，但抽取的是失败模式，不是从日常对话迁移来的trait。
+[TACT, AA06](https://arxiv.org/abs/2605.05980) extracts overthinking / overacting axes from labeled trajectories and applies Add / Cap / Gate at the think–action boundary on SWE-bench Verified, Terminal-Bench, and CLAW-Eval. It directly demonstrates trace-based online agent control, but extracts failure modes rather than traits transferred from everyday conversation.
 
-[Reward Hacking，AA43](https://arxiv.org/abs/2610.29129)比较spec、轨迹均值差及优化方向，真实coding工具执行与原题能力对照齐备。其自然语言域迁移重新校准阈值，部分优化方向更换目标，不能视为任意行为的零样本迁移证明。【】注意他们提取的activation为思考结束的token</think>
+[Reward Hacking, AA43](https://arxiv.org/abs/2610.29129) compares specification-based, trajectory-mean-difference, and optimized directions, with real coding-tool execution and original-task capability controls. Natural-language-domain transfer recalibrates thresholds and changes some optimization targets; it is not evidence of zero-shot transfer to arbitrary behavior.【】注意他们提取的activation为思考结束的token</think>
 
-[ContextEcho，原ID38／AA08](https://arxiv.org/abs/2605.24279)用真实coding会话做snapshot probe，发现投影恢复不必恢复可见register评分；它没有验证全程steer后的任务完成率。[FIBS，AA40](https://arxiv.org/abs/2610.12445)则提供真实工具循环中的欺骗读出，属于read端而非persona写入证据。【】这一篇说明了agentic setting的drifting，主要是关于assistant中立身份的drifting，甚至可能发生在早期。同时输出的结构也会drift。注意！在做了assistant axis的steering后，assistant-register score 甚至还下降了
+[ContextEcho, ID38 / AA08](https://arxiv.org/abs/2605.24279) probes snapshots of real coding sessions and finds that restoring a projection need not restore visible register scores; it does not validate task completion after steering an entire trajectory. [FIBS, AA40](https://arxiv.org/abs/2610.12445) detects deception in real tool loops, providing readout rather than persona-writing evidence.【】这一篇说明了agentic setting的drifting，主要是关于assistant中立身份的drifting，甚至可能发生在早期。同时输出的结构也会drift。注意在做了assistant axis的steering后，assistant-register score 甚至还下降了
 
-[Social Priors，AA42](https://arxiv.org/abs/2610.16946)的Axis-capping分支仍保留信念／信任差异，但该分支读候选likelihood；GovSim环境行动是另一分支。可以用来提出Axis是否充分的检验，不能写成已证“恢复Axis后工具agent仍执行同一坏行动”。
+[Social Priors, AA42](https://arxiv.org/abs/2610.16946) retains belief / trust differences under Axis capping, but that branch scores candidate likelihoods; GovSim environment actions belong to a different branch. It motivates testing Axis sufficiency, but does not establish that a tool agent takes the same harmful action after Axis restoration.
 
-### 现有方法与可扩展的研究空间
+### Existing methods and expandable research space
 
-[DRAS：Mind Your Own Role](https://arxiv.org/abs/2610.15907)在ChatDev／MetaGPT中动态调节role activation。Write方向来自同任务有／无role指令的激活差分，detector从越界／守职轨迹训练。这提供“文本规范提取＋轨迹监测＋动态强度”的方案，可与人格方向、不同提取位置和不同任务目标比较；角色边界控制并未覆盖稳定人格倾向的行动表现。
+[DRAS: Mind Your Own Role](https://arxiv.org/abs/2610.15907) dynamically adjusts role activations in ChatDev / MetaGPT. The write direction is an activation difference with / without role instructions in the same task context; the detector is trained on overstepping / compliant trajectories. This combines textual specification, trace monitoring, and dynamic strength, offering comparisons across persona sources, extraction positions, and task objectives. Role-boundary control does not cover the action-level expression of stable personality dispositions.
 
-[ATLAS：Drift No More](https://arxiv.org/abs/2611.04315)（ID48）联合task、role、state子空间，以PSD kernel做乘法式谱干预并更新state记忆。AMemGym、ALARA、LIBERO提供环境反馈证据，ToolACE主要测调用结构。它说明联合子空间与动态状态控制可以落地，提供方法基线；persona来源、行为选择性、跨阶段控制及其他任务仍有空间。ActAdd／SEA与ATLAS的role覆盖不同，比较时需明确控制范围。
+[ATLAS: Drift No More](https://arxiv.org/abs/2611.04315) (ID48) combines task, role, and state subspaces in a PSD kernel for multiplicative spectral intervention and state-memory updates. AMemGym, ALARA, and LIBERO provide environment-feedback evidence; ToolACE mainly scores call structure. It shows that joint-subspace and dynamic-state control can work, providing a methodological baseline while leaving persona sources, behavioral selectivity, cross-stage control, and other tasks open. ActAdd / SEA and ATLAS intervene on different numbers of roles, so comparisons must state intervention coverage.
 
-更早的[EAST](https://arxiv.org/abs/2406.00244)在2024年就从环境交互轨迹按action entropy加权抽方向，操纵Gaussian bandit探索并接收真实reward反馈。它不是人格论文，却是trace提取与决策控制的必要方法基线。
+The earlier [EAST](https://arxiv.org/abs/2406.00244) work extracted action-entropy-weighted directions from environment interactions in 2024, controlled Gaussian-bandit exploration, and received actual reward feedback. It is not a personality paper, but is a relevant methodological baseline for trace extraction and decision control.
 
-[Multi-LLM Systems Exhibit Robust Semantic Collapse](https://arxiv.org/abs/2605.17193)还给出重要邻近负结果：抑制短评测sycophancy不必恢复长程多agent语义多样性。它是长交互中的trait→系统结果迁移问题，没有外部工具任务。[Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi)是直接的任务型对话persona steering先例：复用PERSONA的Big Five向量，在用户侧固定干预、在系统侧逐轮预测系数并组合，或同时干预两侧。它使用SGD Restaurants／Movies，主要观察到judge评的真实性与满意度改善，Qwen方向性用户干预条件下的整体任务指标差异未达显著。它与2608.18085v2的提示词条件研究是不同论文。
+[Multi-LLM Systems Exhibit Robust Semantic Collapse](https://arxiv.org/abs/2605.17193) provides a related negative result: reducing sycophancy in short evaluations need not restore long-term multi-agent semantic diversity. It concerns trait-to-system-outcome transfer in long interactions without external tools. [Activation-Steered Personas in Task-Oriented LLM Agent Simulations](https://openreview.net/pdf?id=RBI5BjsREi) directly demonstrates persona steering in task-oriented dialogue: it reuses Big Five vectors from PERSONA, applies fixed user-side intervention, predicts and composes system-side coefficients each turn, or intervenes on both sides. On SGD Restaurants / Movies, the main improvements are judge-rated truthfulness and satisfaction; aggregate task-metric differences for Qwen under directional user steering are not significant. It is distinct from the prompt-conditioning study in 2608.18085v2.
 
-### 仍值得做的主问题与最小设计
+### Promising research questions and a minimal design
 
-核心问题：不同来源的人格方向如何影响agent的真实行动，局部行为改变何时能转化为长期任务收益？可分别研究行为控制、performance改善与drift；无需把三者全部解决才形成贡献。
+Core question: how do persona directions from different sources affect an agent’s actual actions, and when does a local behavioral change translate into long-term task benefit? Behavioral control, performance improvement, and drift can be studied separately; a contribution need not solve all three.
 
-最小起点：一个开放模型、一个可恢复状态且有真实反馈的工具环境、一种可操作的倾向，例如谨慎／核验倾向。比较conversational persona与agent-behavior两类方向，先固定一个提取位置和普通加法干预；self-report与role-play随后扩展。行为指标可用主动核验、证据不足时提交、冗余检查，联合任务成功与调用成本，不预设它们完整等同某一Big Five trait。离线提取可以用事后结果标注；部署时的在线控制只能使用当时可获得的信息。
+Minimal starting point: one open model, one tool environment with restorable states and real feedback, and one operational disposition such as caution / verification. Compare conversational-persona and agent-behavior directions while initially fixing the extraction position and using ordinary addition; add self-report and role-play later. Behavioral measures can include proactive checks, submission with insufficient evidence, and redundant verification, alongside task success and call cost. Do not equate these measures with an entire Big Five trait. Offline extraction may use outcome labels; online deployment may use only information available at that time.
 
-同一组候选同时测三个层次：固定trace上的预测／replay；相同可恢复环境状态下的行动与短期分支；从任务起点运行的完整rollout。比较读出分数、局部干预效果与长期收益的排序，保留一部分预选低分候选进入rollout，以估计筛选错杀。读得出、改得动、改善任务是三个待检验关系。
+Evaluate the same candidates at three levels: prediction / replay on fixed traces; actions and short branches from the same restorable environment state; and full rollouts from task initialization. Compare rankings by readout score, local intervention effect, and long-term benefit. Run some low-ranked screening candidates to estimate false exclusions. Decodability, controllability, and task improvement are three relationships to test.
 
-预选与真实rollout的失配本身值得研究。干预改变动作，动作改变反馈和后续状态分布，replay上的有效性不能直接保证闭环收益。分支实验可估计给定状态下的反事实效果，但仍需从头rollout验证累积后果。开发集用于探索与选择，最终在独立任务上确认；局部筛选是成本工具，不作为方向有效性的唯一判据。
+Mismatch between screening and actual rollout is itself a research question. Intervention changes actions, which change feedback and future state distributions; replay effectiveness cannot guarantee closed-loop benefit. Branching estimates conditional counterfactual effects, but complete rollouts are needed for cumulative consequences. Use development data for exploration / selection and independent tasks for confirmation. Local screening reduces cost but should not be the sole validity criterion.
 
-漂移可与行为／performance在同一套rollout中记录：分别测方向投影、语言表达、实际行动倾向和干预收益随阶段的变化。task进展可能本就需要策略变化，因此将任务阶段、工具失败、外部反馈及compaction一起标记。Assistant Axis在snapshot上的表达结果用于提出假设，不能替代其他persona方向的全程行动实验。
+Record drift, behavior, and performance in the same rollouts: separately measure direction projections, linguistic expression, actions, and intervention benefit across stages. Task progress may legitimately require strategy changes, so annotate task stage, tool failure, external feedback, and compaction. Snapshot expression results for Assistant Axis motivate hypotheses but do not replace full-trajectory action experiments with other persona directions.
 
-计算成本主要来自rollout长度、候选配置数量与重复次数。用共享前缀、环境快照和短分支降低探索开销，并保留完整rollout预算；短分支只估计条件局部效果。一次轨迹采集多个候选位置的所需层激活／统计量，避免保存全部token全层。第一轮固定模型、倾向和环境，逐轴扩展，行为、performance与drift共用轨迹。
+Compute cost is driven mainly by rollout length, candidate configurations, and repetitions. Shared prefixes, environment snapshots, and short branches reduce exploration cost, while reserving budget for full rollouts; short branches estimate only conditional local effects. Collect selected-layer activations / statistics at several candidate positions in each trajectory instead of saving every layer and token. Initially fix model, disposition, and environment, then expand one axis at a time; behavior, performance, and drift share the same trajectories.
 
-可研究的variation包括：方向来源（conversation／self-report／role-play／agent trace／任务规范）；提取位置（thinking结束、tool call前后、反馈后）；干预阶段（planning／action／反馈整合／全程）；时间适应（固定方向、动态强度、在线更新方向）；目标行为（风险、核验、探索、坚持／放弃、诚实报告）；评价跨度（replay、短分支、完整rollout）。这些轴各自都可能形成研究贡献，不必一次做全组合。
+Variations include direction source (conversation / self-report / role-play / agent trace / task specification); extraction position (end of thinking, before / after tool calls, after feedback); intervention stage (planning / action / feedback integration / throughout); temporal adaptation (fixed direction, dynamic strength, online direction updates); target behavior (risk, verification, exploration, persistence / abandonment, honest reporting); and evaluation horizon (replay, short branches, full rollouts). Each axis can support a contribution; a full factorial experiment is unnecessary.
 
-在线提取应区分三种方案：从历史agent轨迹提取后冻结；固定方向、运行时调强度或开关；在当前运行中依据新反馈更新方向／子空间。Reward Hacking（AA43）的trace提取和动态capping不自动意味着测试episode内在线重学方向。在线更新需明确反馈信号、更新成本和错误反馈影响，并与固定方向＋动态强度比较。
+Distinguish three online-extraction designs: extract from historical agent traces and freeze; keep the direction fixed while changing strength or gating during execution; or update the direction / subspace using new feedback within the current run. Trace extraction and dynamic capping in Reward Hacking (AA43) do not automatically mean relearning directions inside a test episode. Online updates must specify feedback signals, update cost, and sensitivity to erroneous feedback, and be compared with fixed directions plus dynamic strength.
 
-有潜力的扩展顺序：先测conversation→行动迁移及预选／rollout失配；再交叉比较提取位置与干预位置，判断“哪里读得出”是否等于“哪里改得动”；若效果随反馈变化，再比较调强度与改方向。在线适应也可独立立题，其价值由任务收益、行为选择性及额外成本共同评估。
+A promising expansion sequence is to test conversation-to-action transfer and screening / rollout mismatch first; then cross extraction and intervention positions to ask whether the best readout site is also the best control site. If effects change after feedback, compare adjusting strength with changing direction. Online adaptation can also be an independent topic, evaluated jointly by task benefit, behavioral selectivity, and additional cost.
 
-## 方向二：不同结构上的persona vector已有研究
+## Direction 2: existing persona-vector research across architectures
 
-### 首先拆开“结构”
+### First distinguish structural dimensions
 
-Dense／MoE描述参数路由；pruned subnetworks描述权重mask；dynamic activation sparsity描述每次实际计算的激活单元；SAE稀疏性只是特征坐标；loop／recurrent-depth描述同一模块重复应用。这些是可交叉的轴，不是互斥的四类模型。例如MoE仍可含attention，loop模型也可以是dense。CoT长短与多轮对话不是looped Transformer结构。
+Dense / MoE describes parameter routing; pruned subnetworks describe weight masks; dynamic activation sparsity describes units actually computed at each step; SAE sparsity is a feature coordinate system; loop / recurrent depth describes repeated application of the same module. These dimensions can intersect rather than forming four exclusive model classes. MoE can contain attention, and a looped model can be dense. CoT length and multi-turn dialogue are not looped-Transformer architecture.
 
-### 原有架构字段已经提示的证据
+### Evidence already visible in the architecture fields
 
-[Style Modulation Heads，原ID23](https://arxiv.org/html/2603.13249v2)的App.F确实对Gemma3和Qwen3-30B-A3B-Instruct-2507做了attention-output／head steering。它不只是probe，并观察到层定位模式与主模型不同。原架构字段漏列了扩展模型，本轮已补正。但被操纵的是attention heads，不能说已研究MoE expert路径；跨模型差异也混有规模、训练与norm设置。
+App.F of [Style Modulation Heads, ID23](https://arxiv.org/html/2603.13249v2) performs attention-output / head steering on Gemma3 and Qwen3-30B-A3B-Instruct-2507. This is intervention, not just probing, and layer-localization patterns differ from the main model. Those additional models were previously missing from the architecture field and have been added. However, attention-head intervention does not establish MoE-expert-path analysis; model differences also include scale, training, and normalization.
 
-[Persona-Dependent Preferences，原ID9／AA07](https://arxiv.org/html/2605.13339v4)包含dense和MoE／hybrid模型，读出可迁移而写入结果并不一致；这是值得解释的现象，不足以把差异归因为router。[TACT](https://arxiv.org/abs/2605.05980)也跨结构测agent轴，但不是结构单变量对照。
+[Persona-Dependent Preferences, ID9 / AA07](https://arxiv.org/html/2605.13339v4) includes dense and MoE / hybrid models, with transferable readouts but inconsistent writing results. This warrants explanation but does not isolate routing as the cause. [TACT](https://arxiv.org/abs/2605.05980) also tests agent axes across architectures without varying architecture alone.
 
-[Personality Subnetworks，原ID22](https://arxiv.org/abs/2602.07164)已用activation-guided／contrastive weight masks控制persona。它是静态子网络，不等于原生MoE或跳过计算的动态稀疏推理。原作者技术报告[Persona Neurons](https://willmayner.com/persona-neurons)还测试少量MLP neurons复现persona steering，并比较旋转基底、PC和随机神经元；这是博客级直接先例，不是已证明自然激活下的必要性，也不是加速结果。
+[Personality Subnetworks, ID22](https://arxiv.org/abs/2602.07164) controls persona with activation-guided / contrastive weight masks. This is a static subnetwork, not native MoE or dynamic sparse inference that skips computation. The author’s technical report [Persona Neurons](https://willmayner.com/persona-neurons) tests whether a few MLP neurons reproduce persona steering, comparing rotated bases, PCs, and random neurons. It is a direct blog-level precedent, not proof of necessity under natural activation or an acceleration result.
 
-### MoE已有结构特异的控制方法
+### Architecture-specific control methods for MoE
 
-[SteerMoE](https://arxiv.org/abs/2509.09660)：比较相反行为条件下expert activation频率，推理时促进／抑制专家，覆盖安全与faithfulness；“发现行为专家再控制”已有先例。【】直接steer router
+[SteerMoE](https://arxiv.org/abs/2509.09660) compares expert-activation frequencies under opposite behavioral conditions, then promotes / suppresses experts at inference for safety and faithfulness. Behavior-associated expert identification and control therefore have precedents.【】直接steer router
 
-[RARE](https://arxiv.org/abs/2608.21236)：用clean-routing控制定位steering引发的路由漂移，再将扰动投影到router零空间并修正下游routing；因此“MoE效果差因为router受扰、保持路由能改善”的主张也已有直接工作。其任务不是完整persona／跨任务行为选择性。【】steer with router locked
+[RARE](https://arxiv.org/abs/2608.21236) uses clean-routing controls to locate steering-induced routing drift, projects perturbations into the router null space, and corrects downstream routing. It directly studies impaired MoE steering caused by routing disruption and improvements from preserving routing; its tasks do not establish full persona / cross-task behavioral selectivity.【】steer with router locked
 
-[MASCing](https://arxiv.org/abs/2604.27818)：学习跨层routing依赖并用router masks重配置行为，包含多轮jailbreak；不能把它称作未研究的MoE多轮控制。
+[MASCing](https://arxiv.org/abs/2604.27818) learns cross-layer routing dependencies and reconfigures behavior with router masks, including multi-turn jailbreaks. MoE multi-turn control should therefore not be described as unstudied.
 
-[Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127)：三种MoE个性化、crosscoder latent和expert干预，已有persona／personalization相关结构证据。专家boost向个性化模型分布移动，不等于全面行为提升；一层／split选择范围也需要核对。【】moe相关机理
+[Explaining the Roles of Experts for Personalization](https://arxiv.org/abs/2610.22127) studies three MoE personalization models, crosscoder latents, and expert interventions, providing persona / personalization-related structural evidence. Expert boosting shifts outputs toward the personalized model distribution without establishing general behavioral improvement; layer / split selection also requires scrutiny.【】moe相关机理
 
-[PersonaFuse](https://arxiv.org/abs/2509.07370)：人为添加trait级LoRA专家与router，并包含企业工具流程；这不是在原生MoE中发现自然人格专家，必须分开比较。
+[PersonaFuse](https://arxiv.org/abs/2509.07370) adds trait-level LoRA experts and a router, including enterprise tool workflows. This must be distinguished from finding naturally occurring persona experts in a native MoE.
 
-MoE已有控制与个性化方法，但persona在不同context／决策阶段的读写与选择性仍可研究。可比较相同trait经residual、routing或联合通路实现的效果，并定位跨模型差异；现有方法作为基线，不以“已有MoE steering”排除整个方向。有时保持路由保护能力，有时目标行为需要更换专家，两种情况都值得验证。
+MoE control and personalization methods exist, while persona readout, writing, and selectivity across contexts / decision stages remain open. Compare residual, routing, and joint pathways for the same trait and localize cross-model differences. Existing MoE steering provides baselines rather than grounds to dismiss the direction. Preserving routing may protect capability, while some target behaviors may require expert changes; both possibilities deserve testing.
 
-### Looped／recurrent-depth的空间与风险
+### Opportunities and risks in looped / recurrent depth
 
-[Shared Weights, Selected Computations](https://arxiv.org/abs/2609.39892)已用进入loop的状态线性映射选择graph-walk计算，并以attention patching验证路径。因此“重复权重的计算可由状态控制”已有机制证据，但不是persona研究。
+[Shared Weights, Selected Computations](https://arxiv.org/abs/2609.39892) uses a linear map of the state entering a loop to select graph-walk computations and validates paths with attention patching. It provides mechanistic evidence that states can control computation under shared weights, but does not study persona.
 
-[Ouro](https://arxiv.org/abs/2510.25741)和[LoopFormer](https://arxiv.org/abs/2602.11451)提供可研究的官方结构／模型入口。本次没有核到它们官方论文中系统的persona跨loop几何与行为选择性研究。搜索发现的[loopformer persona代码](https://github.com/chengyh23/loopformer)是fork，最多证明已有探索代码，不能当成原作者已发表结果；也因此不宜轻率宣称首个实现。
+[Ouro](https://arxiv.org/abs/2510.25741) and [LoopFormer](https://arxiv.org/abs/2602.11451) provide official architecture / model entry points. This search did not verify systematic persona geometry across loops or behavioral selectivity in their official papers. The discovered [loopformer persona code](https://github.com/chengyh23/loopformer) is a fork, showing exploratory code rather than a published result from the original authors; a first-implementation claim would also require caution.
 
-[Locating and Steering Refusal Beyond Attention](https://arxiv.org/abs/2609.04721)还覆盖SSM／Transformer／recurrent／hybrid的拒答读写及roleplay控制。安全方向跨结构并非空白，但拒答仍不是完整人格机制。
+[Locating and Steering Refusal Beyond Attention](https://arxiv.org/abs/2609.04721) covers refusal readout / writing and role-play control in SSM, Transformer, recurrent, and hybrid architectures. Cross-architecture safety control exists, but refusal is not a complete persona mechanism.
 
-Loop路线可具体问：同一物理层在不同有效深度是否承载相同persona方向？早期与后期注入分别影响身份／风格还是决策？增大loop预算时方向会收敛、旋转、被消除还是被反复放大？因为权重共享，固定loop预算下改变干预时机比跨家族分数比较更容易建立局部因果证据。
+Concrete loop questions: does the same physical layer carry the same persona direction at different effective depths? Do early versus late injections affect identity / style or decisions? As the loop budget grows, does a direction converge, rotate, disappear, or repeatedly amplify? Shared weights make intervention timing at a fixed loop budget more suitable for local causal evidence than cross-family score comparisons.
 
-最小设计应先检验官方checkpoint是否具备足够的role-following和任务能力；无基线能力时，steering失败无法解释为结构差异。固定模型和loop预算，比较单步、连续区间与所有步注入，同时匹配总剂量／扰动范数，记录物理block、iteration、token位置。每步都注入同一α会自动累计剂量，不能把累积副作用叫作几何变化。再测loop之间方向交叉写入和held-out context，最后才扩到dense对照或agent任务。
+First check whether an official checkpoint has adequate role-following and task capability; without a capable baseline, failed steering cannot be attributed to architecture. Fix model and loop budget, compare injection at one step, a contiguous range, and all steps, and match total dose / perturbation norm. Record physical block, iteration, and token position. Injecting the same α at every iteration accumulates dose, so resulting side effects cannot simply be called geometric change. Then test cross-loop writing and held-out contexts before expanding to dense controls or agent tasks.
 
-### 可行性与优先次序
+### Feasibility and priorities
 
-MoE工程上可启动，具体问题可从residual-only、router-only及联合干预比较切入，并纳入RARE与personalization expert方法。跨家族结果可先揭示现象，再用更匹配的对照定位原因。显存按总权重和KV预算估算：30B BF16仅权重约60GB，active参数不能直接代表显存。
+MoE is feasible to start with residual-only, router-only, and joint interventions, including RARE and personalization-expert baselines. Cross-family results can reveal phenomena, followed by better-matched controls to identify causes. Estimate memory from total weights and KV requirements: 30B BF16 weights alone require about 60GB; active parameter count does not directly determine memory.
 
-Loop的研究问题更集中、现有persona直接证据较少，但实现与解释风险更高：共享模块hook可能每轮触发、cache／halt会改变有效计算，基础LM未必听角色指令。先用小模型固定深度做门槛验证，不必从高成本长程agent起步。
+Loop questions are more focused and direct persona evidence is sparser, but implementation and interpretation are harder: shared-module hooks may fire at every iteration, cache / halting changes effective computation, and a base LM may not follow role instructions. Start with a small model at fixed depth to establish feasibility before expensive long-horizon agents.
 
-Sparse方向必须先选清对象：若研究“少量可控人格单元”，与Persona Neurons、SAE sparse steering和Personality Subnetworks直接竞争；若研究“稀疏执行如何保持人格控制”，还要实际稀疏kernel、延迟／计算测量和能力对照。仅非零参数／edited neurons减少不是效率贡献。
+Define sparsity precisely. Controlling persona with a few units relates directly to Persona Neurons, SAE sparse steering, and Personality Subnetworks. Preserving persona control under sparse execution additionally requires actual sparse kernels, latency / compute measurements, and capability controls. Fewer nonzero parameters or edited neurons alone do not establish efficiency.
 
-## 当前更值得形成的两条具体题目
+## Two concrete research topics worth developing
 
-主线：Agentic Persona Steering。从一个倾向、一个环境、两种方向来源起步，联合测真实行为、performance与漂移；把预选分数、局部效果和完整rollout收益之间的关系纳入分析。后续可扩展位置、在线提取、动态控制与跨任务迁移，方法改进与现象分析都可形成贡献。
+Main line: Agentic Persona Steering. Start with one disposition, one environment, and two direction sources, measuring actual behavior, performance, and drift together. Analyze relationships between screening scores, local effects, and full-rollout benefit. Later expand positions, online extraction, dynamic control, and cross-task transfer. Method improvements and empirical characterization can both contribute.
 
-结构主线：Persona across Recurrent Depth。 先在固定loop模型中研究不同iteration的方向几何、交叉因果效果与剂量控制，再判断能否推广；MoE则作为另一个有明确router机制问题的分支。两者不宜同时作为“跨所有架构”的总项目。
+Architecture line: Persona across Recurrent Depth. Study direction geometry, cross-iteration causal effects, and dose controls in a fixed looped model before assessing generalization. MoE is a separate branch with explicit routing questions; avoid turning both into an initial project covering every architecture.
 
-Agentic与架构方向可分别推进，也可在后续结合。当前优先验证persona在真实行动中的可控性与效用；稳定性、位置差异、在线适应及结构依赖提供连续的研究路线。贡献可来自清楚的新现象、有效方法或有价值的任务改进，不要求先覆盖完整机制或全部环境。
+The agentic and architecture lines can proceed independently or intersect later. Prioritize controllability and utility of persona in actual actions. Stability, position differences, online adaptation, and architecture dependence provide continuing research paths. Contributions can be a clear new phenomenon, an effective method, or a valuable task improvement without requiring a complete mechanism or all environments.

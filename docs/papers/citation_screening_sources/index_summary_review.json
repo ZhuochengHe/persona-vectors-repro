@@ -7,352 +7,352 @@
   "papers": [
     {
       "ID": "1",
-      "Task": "监测／控制trait与微调漂移",
-      "Major finding": "Persona方向可监测并预测人格漂移，支持事后抑制、预防性steering和风险训练数据筛选。",
-      "Validation": "evil／sycophancy／hallucination；两模型；提示与微调漂移、WildChat／LMSYS数据筛选、MMLU能力对照。",
+      "Task": "Monitor/control traits and fine-tuning drift",
+      "Major finding": "Persona directions monitor and predict personality drift, supporting post-hoc suppression, preventative steering, and filtering risky training data.",
+      "Validation": "[Setting] Single-turn trait generation and training drift; includes many-shot context, not closed-loop agents. [Validation] Evil/sycophancy/hallucination; two models; prompt/fine-tuning drift, WildChat/LMSYS filtering, and MMLU capability controls.",
       "source": "https://arxiv.org/abs/2507.21509"
     },
     {
       "ID": "2",
-      "Task": "博弈中的利他、宽恕与他人预期",
-      "Major finding": "Steering能改变策略选择与解释，但措辞和策略可分离，自身行为与他人预期方向部分不同。",
-      "Validation": "Qwen2.5-7B；六类文本博弈（Dictator、Trust等）；同时测金额／行动、trait评分与激活投影。",
+      "Task": "Altruism, forgiveness, and expectations of others in games",
+      "Major finding": "Steering changes strategic choices and explanations, but wording can dissociate from strategy, and self-behavior directions partly differ from expectations of others.",
+      "Validation": "[Setting] Independent monetary/action responses in six games, not real multi-turn play or tool execution. [Validation] Qwen2.5-7B; six textual games (Dictator, Trust, etc.); actions/amounts, trait ratings, and activation projections measured together.",
       "source": "https://arxiv.org/abs/2603.21398"
     },
     {
       "ID": "3",
-      "Task": "Assistant身份稳定与多轮persona drift",
-      "Major finding": "Assistant Axis刻画默认助手模式，沿轴限制激活能缓解对话漂移及persona jailbreak。",
-      "Validation": "275角色；多轮情绪脆弱／自我反思对话与日常／编码对照；persona jailbreak及能力保留评估。",
+      "Task": "Assistant identity stability and multi-turn persona drift",
+      "Major finding": "The Assistant Axis characterizes the default assistant mode; constraining activations along it mitigates dialogue drift and persona jailbreaks.",
+      "Validation": "[Setting] Role extraction and simulated multi-turn drift/capping; coding controls are not tool-task scores. [Validation] 275 roles; vulnerable-user/self-reflective dialogue versus everyday/coding controls; persona jailbreaks and capability retention.",
       "source": "https://arxiv.org/abs/2601.10387"
     },
     {
       "ID": "4",
-      "Task": "情绪概念对偏好及失配行为的影响",
-      "Major finding": "内部情绪概念具有跨情境表征，并因果影响偏好、reward hacking、勒索及谄媚。",
-      "Validation": "Claude Sonnet4.5；171情绪、64活动偏好；勒索、7项编码reward-hacking任务与谄媚情境。",
+      "Task": "Effects of emotion concepts on preferences and misaligned behavior",
+      "Major finding": "Internal emotion concepts generalize across contexts and causally affect preferences, reward hacking, blackmail, and sycophancy.",
+      "Validation": "[Setting] Includes reward-hacking loops with actual code execution/unit-test feedback, plus preferences and simulated blackmail. [Validation] Claude Sonnet4.5; 171 emotions, 64 activity preferences; blackmail, 7 coding reward-hacking tasks, and sycophancy scenarios.",
       "source": "https://arxiv.org/abs/2604.07729"
     },
     {
       "ID": "5",
-      "Task": "自报人格对行为的预测与prompt控制",
-      "Major finding": "对齐使自报人格更稳定，但自报难可靠预测行为，persona prompting对行为的作用弱或不一致。",
-      "Validation": "18模型；BFI／SRQ；CCT风险、IAT偏见、置信度诚实与sycophancy；base/instruct及persona对照。",
+      "Task": "Behavior prediction and prompt control from self-reported personality",
+      "Major finding": "Alignment stabilizes self-reported personality, but self-reports predict behavior unreliably and persona prompting has weak or inconsistent behavioral effects.",
+      "Validation": "[Setting] Questionnaires and textual risk/bias/confidence tasks; sycophancy includes user disagreement, not tool actions. [Validation] 18 models; BFI/SRQ; CCT risk, IAT bias, confidence-based honesty, and sycophancy; base/instruct/persona controls.",
       "source": "https://arxiv.org/abs/2509.03730"
     },
     {
       "ID": "6",
-      "Task": "用宪法式训练塑造稳健角色",
-      "Major finding": "Constitutional AI加合成内省训练能获得比prompt／steering更稳健、连贯和自然的角色。",
-      "Validation": "三模型、11persona；revealed-preference评估、破坏角色的对抗prompt、coherence／realism与五类能力测试。",
+      "Task": "Constitutional training for robust characters",
+      "Major finding": "Constitutional AI plus synthetic introspection yields characters more robust, coherent, and natural than prompting/steering.",
+      "Validation": "[Setting] Character training, single-turn preferences, and adversarial evaluation; self-interaction training includes ten-turn dialogue, without external tool loops. [Validation] Three models, 11 personas; revealed preferences, character-breaking prompts, coherence/realism, and five capability tests.",
       "source": "https://arxiv.org/abs/2511.01689"
     },
     {
       "ID": "7",
-      "Task": "Big Five组合与动态对话人格控制",
-      "Major finding": "无需训练的向量代数可实现接近SFT的人格控制，并支持上下文动态人格组合。",
-      "Validation": "PersonalityBench、情境化BFI-44、800情境Persona-Evolve；多judge／人评及trait组合、强度和副效应测试。",
+      "Task": "Big Five composition and dynamic dialogue-personality control",
+      "Major finding": "Training-free vector algebra approaches SFT-level personality control and supports context-dependent dynamic persona composition.",
+      "Validation": "[Setting] Static personality scores and Persona-Evolve multi-turn dynamic dialogue, not environmental actions. [Validation] PersonalityBench, contextualized BFI-44, 800 Persona-Evolve scenarios; multiple judges/human evaluation, trait composition, strength, and side effects.",
       "source": "https://arxiv.org/abs/2602.15669"
     },
     {
       "ID": "8",
-      "Task": "追踪预训练中persona方向的形成",
-      "Major finding": "Persona方向在预训练极早期已能控制最终instruct模型，随后几何与语义继续细化，提取范式凸显不同facet。",
-      "Validation": "OLMo3-7B的17个预训练checkpoint与SFT／DPO／RLVR；四trait；Apertus8B及description／dialogue／narration复核。",
+      "Task": "Tracking persona-direction formation during pretraining",
+      "Major finding": "Very early pretraining persona directions already control final instruct models; geometry/semantics continue refining, and extraction paradigms emphasize different facets.",
+      "Validation": "[Setting] Trait-text extraction/steering across pretraining checkpoints; dialogue is an extraction paradigm, not a closed-loop agent. [Validation] 17 OLMo3-7B checkpoints plus SFT/DPO/RLVR; four traits; Apertus8B and description/dialogue/narration checks.",
       "source": "https://arxiv.org/abs/2605.13329"
     },
     {
       "ID": "9",
-      "Task": "跨persona偏好读出与因果控制",
-      "Major finding": "Assistant训练的偏好probe可跨persona迁移，甚至预测并控制偏好相反的evil角色。",
-      "Validation": "Gemma3-27B、Qwen3.5-122B跨主题成对任务选择；Gemma因果steering、随机方向及留主题对照。",
+      "Task": "Cross-persona preference readout and causal control",
+      "Major finding": "Assistant-trained preference probes transfer across personas, even predicting and controlling an evil character with opposing preferences.",
+      "Validation": "[Setting] Pairwise task preferences, role-conditioned readout, and open generation; selected tasks are not actually executed. [Validation] Cross-topic choices on Gemma3-27B/Qwen3.5-122B; Gemma causal steering, random-direction and held-topic controls.",
       "source": "https://arxiv.org/abs/2605.13339"
     },
     {
       "ID": "10",
-      "Task": "表示流形与输出行为路径的因果联系",
-      "Major finding": "沿激活流形steering比直线插值更贴近自然行为流形，反向优化也能恢复其曲率。",
-      "Validation": "星期／月份／字母／年龄任务、合成图结构ICL、MountainCar视觉世界模型；比较流形与直线路径。",
+      "Task": "Causal links between representational manifolds and output-behavior paths",
+      "Major finding": "Steering along activation manifolds stays closer to natural behavior manifolds than straight interpolation; reverse optimization recovers their curvature.",
+      "Validation": "[Setting] Language sequences/graph ICL and video world-model state paths, without action-feedback control loops. [Validation] Weekday/month/alphabet/age tasks, synthetic graph ICL, MountainCar visual world model; manifold versus linear paths.",
       "source": "https://arxiv.org/abs/2605.05115"
     },
     {
       "ID": "11",
-      "Task": "推理trace的观点多样性与对话结构",
-      "Major finding": "高效推理伴随内部多视角对话，受准确率奖励的训练也会增加这种对话式行为。",
-      "Validation": "DeepSeek-R1／QwQ推理trace；R1-Distill SAE干预的1024道Countdown；两种3B模型的受控RL。",
+      "Task": "Perspective diversity and dialogue structure in reasoning traces",
+      "Major finding": "Effective reasoning accompanies internal multiperspective dialogue; accuracy-rewarded training also increases conversational behavior.",
+      "Validation": "[Setting] Internal dialogue in long CoT and Countdown/RL reasoning, not separate interacting agents or tool loops. [Validation] DeepSeek-R1/QwQ traces; R1-Distill SAE intervention on 1,024 Countdown questions; controlled RL on two 3B models.",
       "source": "https://arxiv.org/abs/2601.10825"
     },
     {
       "ID": "12",
-      "Task": "风险自报与选择通道的分离及组合",
-      "Major finding": "自报和风险选择可由近正交方向分别控制，向量组合可使两者同向变化或相互冲突。",
-      "Validation": "四模型、九提取方法；CCT／BART与BFI／DOSPERT；答案token likelihood、剂量／随机方向／surface-control对照。",
+      "Task": "Dissociation and composition of risk self-report and choice channels",
+      "Major finding": "Nearly orthogonal directions separately control self-report and risk choices; composition aligns or opposes the channels.",
+      "Validation": "[Setting] CCT/BART and questionnaires read valid-answer-token probabilities, not continuous risk-taking or tool execution. [Validation] Four models, nine extraction methods; CCT/BART and BFI/DOSPERT; token likelihoods, dose/random-direction/surface controls.",
       "source": "https://arxiv.org/abs/2610.04125"
     },
     {
       "ID": "13",
-      "Task": "分离错误同意、真实同意与奉承",
-      "Major finding": "迎合式同意、真实同意和奉承对应可分别增强或抑制的不同线性表征。",
-      "Validation": "算术／事实任务控制正确性与praise；多模型；SycophancyEval、SYCON-Bench及子空间移除对照。",
+      "Task": "Separating false agreement, genuine agreement, and flattery",
+      "Major finding": "Sycophantic agreement, genuine agreement, and flattery have distinct linear representations that can be amplified or suppressed separately.",
+      "Validation": "[Setting] Single-turn factual/praise control plus SYCON multi-turn user pressure, not tool actions. [Validation] Arithmetic/factual tasks controlling correctness and praise; multiple models; SycophancyEval, SYCON-Bench, and subspace-removal controls.",
       "source": "https://arxiv.org/abs/2509.21305"
     },
     {
       "ID": "14",
-      "Task": "评估agent发现隐藏模型行为的能力",
-      "Major finding": "Standalone工具效用难直接转化为审计agent收益，最佳调查工具仍是带scaffold的黑盒调用。",
-      "Validation": "56个隐藏行为模型、14行为；13工具配置；固定25000输出token预算、16次重复及不同植入／防自白训练。",
+      "Task": "Evaluating agents’ discovery of hidden model behaviors",
+      "Major finding": "Standalone tool utility does not directly become auditing-agent gains; scaffolded black-box calls remain the best investigation tools.",
+      "Validation": "[Setting] Investigation agents iteratively query audited models with tools; steering affects the target, not investigator. [Validation] 56 hidden-behavior models, 14 behaviors, 13 tool configurations; fixed25,000-output-token budget, 16 repeats, implantation/anti-confession controls.",
       "source": "https://arxiv.org/abs/2602.22755"
     },
     {
       "ID": "15",
-      "Task": "统一预测many-shot ICL与steering效应",
-      "Major finding": "贝叶斯模型可统一预测两类干预；log-belief近似相加解释sigmoid反应与突变边界。",
-      "Validation": "五类persona的Yes/No概率；扫描shots与steering强度，跨强度held-out预测；另测sentiment等概念。",
+      "Task": "Jointly predicting many-shot ICL and steering effects",
+      "Major finding": "A Bayesian model jointly predicts both interventions; approximate addition in log-belief space explains sigmoid responses and transition boundaries.",
+      "Validation": "[Setting] Many-shot demonstrations are long input, with Yes/No-probability endpoints, not environmental feedback or long-horizon action. [Validation] Five persona types; shot/steering-strength sweeps and held-out strength prediction; additional concepts including sentiment.",
       "source": "https://arxiv.org/abs/2511.00617"
     },
     {
       "ID": "16",
-      "Task": "从激活差识别窄域微调目标",
-      "Major finding": "窄域微调在无关文本激活中留下可解码的训练痕迹，显著帮助agent识别微调目标。",
-      "Validation": "33个organisms、1B–32B；false facts／EM／subliminal／taboo；10000条无关web文本与黑盒、混入预训练数据对照。",
+      "Task": "Identifying narrow fine-tuning objectives from activation differences",
+      "Major finding": "Narrow fine-tuning leaves decodable artifacts in activations on unrelated text, substantially helping agents identify training objectives.",
+      "Validation": "[Setting] Offline fine-tuning-difference readouts/text injection; interpretability agents separately identify training domains through model-query tools. [Validation] 33 organisms, 1B–32B; false facts/EM/subliminal/taboo; 10,000 unrelated web texts, black-box and pretraining-data-mixing controls.",
       "source": "https://arxiv.org/abs/2510.13900"
     },
     {
       "ID": 17,
-      "Task": "权重空间行为控制与微调漂移修复",
-      "Major finding": "对比权重方向通常比所测激活方向更能跨分布控制行为，并可部分修复微调引起的谄媚与拒答退化。",
-      "Validation": "TruthfulQA／TriviaQA、evil-MCQA；GCD／GSM8K微调后修复，兼测任务收益与通用能力。",
+      "Task": "Weight-space behavioral control and fine-tuning-drift repair",
+      "Major finding": "Contrastive weight directions generally control behavior across distributions better than tested activation directions, partly repairing fine-tuning-induced sycophancy/refusal degradation.",
+      "Validation": "[Setting] QA/advice/evil-MCQA and repair after mathematics training, not environmental execution or multi-turn agents. [Validation] TruthfulQA/TriviaQA, evil-MCQA; repair after GCD/GSM8K fine-tuning, jointly measuring task gains/general capability.",
       "source": "https://arxiv.org/abs/2511.05408v2"
     },
     {
       "ID": 18,
-      "Task": "追踪无语义数据中的trait蒸馏",
-      "Major finding": "学生可从无关数字输出学到与教师对齐的steering向量；可转移trait取决于方向效应与优化器。",
-      "Validation": "两个开源模型；数字序列蒸馏、16种动物偏好、方向替换／消融及Adam–SGD对照。",
+      "Task": "Tracking trait distillation through semantically unrelated data",
+      "Major finding": "Students learn teacher-aligned steering vectors from unrelated numeric outputs; transferable traits depend on directional effects and optimization.",
+      "Validation": "[Setting] Numeric teacher distillation, animal-preference QA, and directional interventions, not agent traces. [Validation] Two open models; numeric sequences, 16 animal preferences, direction replacement/ablation, and Adam–SGD controls.",
       "source": "https://arxiv.org/abs/2606.00995v3"
     },
     {
       "ID": 19,
-      "Task": "用户trait模拟与agent交互压力测试",
-      "Major finding": "仅改变模拟用户的trait就可使前沿agent在τ-Trait上的表现平均下降2%–30%。",
-      "Validation": "τ-Trait四域（航空／零售／电信／远程医疗）、BFCL多轮工具调用；人评模拟真实感与组合trait。",
+      "Task": "User-trait simulation and agent-interaction stress tests",
+      "Major finding": "Changing only simulated users’ traits lowers frontier-agent performance on τ-Trait by2%–30% on average.",
+      "Validation": "[Setting] Persona vectors steer user simulators; tested agents execute database/tool tasks, while BFCL uses AST matching. [Validation] Four-domain τ-Trait (airline/retail/telecom/telemedicine), BFCL multi-turn tool calls; human realism/composed-trait evaluation.",
       "source": "https://arxiv.org/abs/2510.04491v3"
     },
     {
       "ID": 20,
-      "Task": "定位并控制长回答中的分散行为",
-      "Major finding": "生成式因果中介可从长回答定位控制组件，稀疏attention-head干预优于相关性probe定位。",
-      "Validation": "三模型；拒答、谄媚、散文转诗体；held-out长回答同时评价目标行为、相关性与流畅性。",
+      "Task": "Localizing and controlling distributed behavior in long responses",
+      "Major finding": "Generative causal mediation localizes control components from long responses; sparse head intervention outperforms correlation-probe localization.",
+      "Validation": "[Setting] Head mediation/steering on single-turn complete responses; long responses are not long-horizon agent tasks. [Validation] Three models; refusal, sycophancy, prose-to-poetry; held-out long responses scored for target behavior, relevance, and fluency.",
       "source": "https://arxiv.org/abs/2602.16080v2"
     },
     {
       "ID": 21,
-      "Task": "蒸馏prompt干预并动态调节steering",
-      "Major finding": "prompt干预强度随token变化；模仿这一规律的PSR改善控制效果，尤其在高连贯性约束下。",
-      "Validation": "Persona Vectors、IFEval、AxBench；多模型，与prompting／固定steering比较控制–连贯性权衡。",
+      "Task": "Distilling prompt interventions and dynamically regulating steering",
+      "Major finding": "Prompt-intervention strength varies by token; PSR mimics this pattern and improves control, especially under high-coherence constraints.",
+      "Validation": "[Setting] Persona Vectors/IFEval/AxBench responses; token-wise coefficients do not establish multi-step agent control. [Validation] Persona Vectors, IFEval, AxBench; multiple models; control–coherence trade-offs versus prompting/fixed steering.",
       "source": "https://arxiv.org/abs/2605.03907v1"
     },
     {
       "ID": 22,
-      "Task": "无训练剪枝提取persona子网络",
-      "Major finding": "少量校准数据即可定位persona专属子网络，对比剪枝可强化相反persona的分离与控制。",
-      "Validation": "MBTI、AI persona、RoleAgentBench；MMLU／HellaSwag能力保持、稀疏度及模块恢复消融。",
+      "Task": "Training-free pruning to extract persona subnetworks",
+      "Major finding": "A little calibration data localizes persona-specific subnetworks; contrastive pruning strengthens separation/control of opposing personas.",
+      "Validation": "[Setting] MBTI/AI Persona and scripted RoleAgentBench multiple-choice/dialogue, not actual multi-agent tool tasks. [Validation] MBTI, AI persona, RoleAgentBench; MMLU/HellaSwag retention, sparsity, and module-restoration ablations.",
       "source": "https://arxiv.org/abs/2602.07164v1"
     },
     {
       "ID": 23,
-      "Task": "定位风格head并控制persona",
-      "Major finding": "主模型中少数Style Modulation Heads支持persona控制，定点干预可减轻残差流steering的连贯性退化。",
-      "Validation": "多trait与正负强度扫描；逐head干预／消融，trait–coherence前沿及通用能力对照。",
+      "Task": "Localizing style heads for persona control",
+      "Major finding": "A few Style Modulation Heads support persona control in main models; localized intervention reduces coherence degradation from residual steering.",
+      "Validation": "[Setting] Multi-trait text generation and per-head interventions/ablations, without tool feedback or long-term persona measurement. [Validation] Traits and positive/negative strength sweeps; per-head interventions/ablations, trait–coherence frontiers, and capability controls.",
       "source": "https://arxiv.org/abs/2603.13249v2"
     },
     {
       "ID": 24,
-      "Task": "价值强度评估与多价值控制",
-      "Major finding": "统一价值提取、校准评分与控制后，十模型实验显示价值可控性的方向不对称及多值组合规律。",
-      "Validation": "十模型×四套价值理论；VIDB排序anchor、人评、OpinionQA群体偏好及多值组合。",
+      "Task": "Value-intensity evaluation and multi-value control",
+      "Major finding": "Unified value extraction, calibrated scoring, and control reveal directional asymmetries and multi-value composition patterns across ten models.",
+      "Validation": "[Setting] Value-intensity responses, OpinionQA, and multi-value prompt composition, not activation-based agent control. [Validation] Ten models×four value theories; VIDB ranking anchors, human evaluation, OpinionQA group preferences, and composition.",
       "source": "https://arxiv.org/abs/2602.03160v2"
     },
     {
       "ID": 25,
-      "Task": "比较PPS与inoculation的防御机制",
-      "Major finding": "PPS可逆转trait轴上的梯度压力并降低既有evilness，IP则呈不同梯度特征且难消除既有trait。",
-      "Validation": "Qwen2.5-7B、evilness窄域微调；不同初始trait强度、梯度投影／符号干预及cross-trait对照。",
+      "Task": "Comparing PPS and inoculation defense mechanisms",
+      "Major finding": "PPS reverses gradient pressure along trait axes and reduces existing evilness; IP shows different gradient patterns and struggles to remove existing traits.",
+      "Validation": "[Setting] Defensive fine-tuning and gradient/trait-projection experiments, with trait-text endpoints rather than agent execution. [Validation] Qwen2.5-7B evilness narrow fine-tuning; initial trait strengths, gradient-projection/sign interventions, and cross-trait controls.",
       "source": "https://arxiv.org/abs/2604.16423v1"
     },
     {
       "ID": 26,
-      "Task": "解释并限制窄域微调的域外泛化",
-      "Major finding": "共享chat-template token可携带微调行为到域外；正则这些token的TReFT减少溢出并保留域内学习。",
-      "Validation": "多模型与多套EM数据；prefix扰动／patching，拓展弃答、工具调用、拒答及短答长度控制。",
+      "Task": "Explain and constrain out-of-domain generalization from narrow-domain fine-tuning",
+      "Major finding": "Shared chat-template tokens can carry fine-tuned behavior out of domain; TReFT regularization reduces spillover while preserving within-domain learning.",
+      "Validation": "[Setting] EM QA and search_info call-string detection, with preset tool returns; no real retrieval feedback loop. [Validation] Multiple models/EM datasets; prefix perturbation/patching; extensions to abstention, tool calls, refusal, and short-answer length.",
       "source": "https://arxiv.org/abs/2606.06667v3"
     },
     {
       "ID": 27,
-      "Task": "预测推理后的行为并控制生成路径",
-      "Major finding": "未来行为预测特征不同于已生成行为检测特征；据此前瞻选句的FPCG可控制行为并基本保持输出质量。",
-      "Validation": "四类reasoning模型、六类二元行为；CoT句边界多次续写，held-out probe与activation steering对照。",
+      "Task": "Predict post-reasoning behavior and control generation paths",
+      "Major finding": "Features predicting future behavior differ from detectors of generated behavior; FPCG selects sentences prospectively to control behavior while largely preserving output quality.",
+      "Validation": "[Setting] Candidate continuations/future-behavior probabilities at CoT sentence boundaries; includes contextual decisions but no live tool-action traces. [Validation] Four reasoning-model types, six binary behaviors, repeated sentence-boundary continuations, held-out probes, and activation-steering controls.",
       "source": "https://arxiv.org/abs/2606.11172v1"
     },
     {
       "ID": 28,
-      "Task": "从预训练起塑造并绑定assistant persona",
-      "Major finding": "从token zero引入价值reflection并在后训练绑定persona，比仅末段引入更能改善价值遵循与域外两难选择。",
-      "Validation": "1.7B／100B与3B／500B-token自训模型；constitution、jailbreak、AI-risk两难题及persona-binding对照。",
+      "Task": "Shape and bind assistant personas from pretraining",
+      "Major finding": "Value reflections introduced from token zero and bound during post-training improve value adherence/out-of-domain dilemmas more than final-stage-only exposure.",
+      "Validation": "[Setting] Pretraining/SFT, value-choice probabilities, and jailbreak generation; long training is not long-horizon agent execution. [Validation] Self-trained1.7B/100B-token and3B/500B-token models; constitutions, jailbreaks, AI-risk dilemmas, and persona-binding controls.",
       "source": "https://arxiv.org/abs/2608.13482v1"
     },
     {
       "ID": 29,
-      "Task": "内部情绪干预与分阶段agent行为分析",
-      "Major finding": "情绪与行为呈非单调关系；特定情绪可改善能力和安全，并系统性改变多步agent表现。",
-      "Validation": "逻辑／代码／数学／创作／安全；HotpotQA、Scientific、GAIA，分planner／decider／executor干预。",
+      "Task": "Internal emotion interventions and stage-specific agent-behavior analysis",
+      "Major finding": "Emotion–behavior relationships are non-monotonic; selected emotions improve capabilities/safety and systematically change multi-step agent performance.",
+      "Validation": "[Setting] Beyond single-turn capability tasks, planner–decider–executor tool execution/replanning; not production long coding traces. [Validation] Logic/code/math/creativity/safety; HotpotQA, Scientific, GAIA; module-specific interventions.",
       "source": "https://arxiv.org/abs/2604.00005v1"
     },
     {
       "ID": 30,
-      "Task": "预测窄域EM的泛化与方向迁移",
-      "Major finding": "EM是数据与格式依赖的泛化现象，训练前表示距离可预测影响，且不存在跨所测EM模型通用的恶意方向。",
-      "Validation": "12种模型–数据设置；训练格式转换、跨EM方向消融、随机后缀／同义改写扰动。",
+      "Task": "Predict narrow-domain EM generalization and directional transfer",
+      "Major finding": "EM generalization depends on data/format: pretraining representation distances predict effects, and no malicious direction is universal across tested EM models.",
+      "Validation": "[Setting] Independent post-EM question generation, format/prompt perturbations; not continuous agent actions. [Validation] Twelve model–data settings; training-format changes, cross-EM direction ablation, random suffixes/paraphrases.",
       "source": "https://arxiv.org/abs/2608.29118v1"
     },
     {
       "ID": 31,
-      "Task": "读取及因果改写模型对用户的belief",
-      "Major finding": "BSD可提取并写回紧凑用户表征；固定请求时改变推断的用户意图即可改变拒答，跨模型也有共享几何。",
-      "Validation": "三模型、13类用户属性，约58k自然对话；held-out属性读写、固定有害请求、随机write-map及跨模型对照。",
+      "Task": "Read and causally edit the model's user beliefs",
+      "Major finding": "BSD extracts and writes compact user representations; changing inferred intent for fixed requests changes refusal, with shared geometry across models.",
+      "Validation": "[Setting] Offline natural-dialogue histories; endpoints are user-attribute MCQs/refusal interventions, not online tools. [Validation] Three models,13 attributes, approximately58k natural dialogues; held-out reads/writes, fixed harmful requests, random-write-map/cross-model controls.",
       "source": "https://arxiv.org/abs/2609.31603v2"
     },
     {
       "ID": 32,
-      "Task": "分解sentiment共享轴与usage残差",
-      "Major finding": "稳健共享情感方向之外仍有低维语气／受众结构；残差语气steering可改变表达并保留情感极性。",
-      "Validation": "221个event skeleton／3536文本，Llama／Mistral／Gemma；按事件划分，目标／随机erasure与Llama生成盲评。",
+      "Task": "Separate shared sentiment axes from usage residuals",
+      "Major finding": "Beyond robust shared sentiment directions, low-dimensional tone/audience structure remains; residual-tone steering changes expression while preserving polarity.",
+      "Validation": "[Setting] Event-text tone/audience readout, erasure, and single-turn generation; not multi-step agents. [Validation]221 event skeletons/3,536 texts; Llama/Mistral/Gemma; event-based splits, target/random erasure, and blind Llama-generation evaluation.",
       "source": "https://arxiv.org/abs/2610.05069v1"
     },
     {
       "ID": 33,
-      "Task": "Big Five人格控制与跨trait干扰",
-      "Major finding": "即使消除方向间的线性重叠，跨trait行为联动仍存在，且强制正交可能削弱控制。",
-      "Validation": "LLaMA-3-8B／Ministral-8B；BFI访谈生成；六种几何条件；目标／非目标trait及fluency。",
+      "Task": "Big Five control and cross-trait interference",
+      "Major finding": "Cross-trait coupling persists after removing linear directional overlap, and forced orthogonality may weaken control.",
+      "Validation": "[Setting] Interview-style BFI generation measures trait coupling; no closed-loop actions reported, independent multi-turn progression unverified. [Validation] LLaMA-3-8B/Ministral-8B; BFI interviews; six geometric conditions; target/off-target traits and fluency.",
       "source": "https://arxiv.org/abs/2602.15847",
       "validation_source": "https://arxiv.org/html/2602.15847"
     },
     {
       "ID": 34,
-      "Task": "预测activation steering的行为副作用",
-      "Major finding": "副作用普遍、结构化且非对称；未干预表征能比相似性基线更好地预测其方向。",
-      "Validation": "3模型×67行为、6类context；跨效应矩阵；留出source／target预测；生成文本多行为评分。",
+      "Task": "Predict behavioral side effects of activation steering",
+      "Major finding": "Side effects are widespread, structured, and asymmetric; unsteered representations predict their signs better than similarity baselines.",
+      "Validation": "[Setting] Behavioral-coupling matrices from generated text in six contexts; context types are not multi-turn environment tasks. [Validation] Three models×67 behaviors, six contexts; cross-effect matrices, held-source/target forecasts, multi-behavior ratings.",
       "source": "https://arxiv.org/abs/2608.11227",
       "validation_source": "https://arxiv.org/html/2608.11227"
     },
     {
       "ID": 35,
-      "Task": "预算约束的rank-1选层与强度搜索",
-      "Major finding": "几何引导平均减少39.8%的搜索试验；跨context方向异质性与搜索难度和性能上限相关。",
-      "Validation": "3模型家族×20概念；分离提取／评估题；层与系数搜索；达到95% best-found utility的试验数。",
+      "Task": "Budget-constrained rank1 layer/strength search",
+      "Major finding": "Geometry guidance reduces search trials by39.8% on average; cross-context direction heterogeneity correlates with search difficulty and performance limits.",
+      "Validation": "[Setting] Budgeted layer/strength search across prompts; search trials are not agent actions. [Validation] Three model families×20 concepts; separate extraction/evaluation questions; layer/coefficient search; trials to95% of best-found utility.",
       "source": "https://arxiv.org/abs/2605.16362",
       "validation_source": "https://arxiv.org/html/2605.16362"
     },
     {
       "ID": 36,
-      "Task": "复用role向量减少sycophancy",
-      "Major finding": "未针对sycophancy提取的批判型role向量可接近专用CAA效果，尽管两者cosine较低。",
-      "Validation": "Gemma2-27B／Qwen3-32B；counterbalanced PhilPapers；独立调参split；16条事实探针。",
+      "Task": "Reuse role vectors to reduce sycophancy",
+      "Major finding": "Critical-role vectors not extracted for sycophancy approach dedicated CAA effects despite low cosine similarity.",
+      "Validation": "[Setting] PhilPapers option logits and16 factual probes; role vectors do not directly execute agent tasks. [Validation] Gemma2-27B/Qwen3-32B; counterbalanced PhilPapers, separate tuning split,16 factual probes.",
       "source": "https://arxiv.org/abs/2605.21006",
       "validation_source": "https://arxiv.org/html/2605.21006"
     },
     {
       "ID": 37,
-      "Task": "选择用于提取steering信号的激活来源",
-      "Major finding": "固定下游干预时，执行边界状态比目标行为已出现的文本更能提供有效信号；tail subtraction进一步改善。",
-      "Validation": "3个instruct模型；实体／persona-style／拒绝／nonsense四任务族；留出通用问题；控制源context与读取位置。",
+      "Task": "Choose activation sources for steering-signal extraction",
+      "Major finding": "With downstream intervention fixed, execution-boundary states provide stronger signals than text already expressing the behavior; tail subtraction improves them further.",
+      "Validation": "[Setting] Single-turn tasks comparing source contexts/readout positions; execution boundary means generation boundary, not tool execution. [Validation] Three instruct models; entity/persona-style/refusal/nonsense tasks, held-out general questions, controlled source/readout positions.",
       "source": "https://arxiv.org/abs/2607.25270",
       "validation_source": "https://arxiv.org/html/2607.25270"
     },
     {
       "ID": 38,
-      "Task": "长程coding agent的persona漂移评估",
-      "Major finding": "真实agent会话中漂移早发且跨provider存在；compaction不可靠重置，anchor恢复也含通用register-reset效应。",
-      "Validation": "ContextEcho：25个identity probes、57次真实coding会话；代表会话23模型；snapshot-then-probe及compaction／placebo对照。",
+      "Task": "Evaluate persona drift in long-horizon coding agents",
+      "Major finding": "Real agent sessions exhibit early-onset, cross-provider drift; compaction does not reliably reset it, and anchor recovery includes generic register-reset effects.",
+      "Validation": "[Setting] Real long coding/tool traces as corpus; controls mainly use snapshot-branch probes/format, not full-task steering. [Validation] ContextEcho:25 identity probes,57 real coding sessions,23-model representative-session panel; snapshot probing and compaction/placebo controls.",
       "source": "https://arxiv.org/abs/2605.24279",
       "validation_source": "https://arxiv.org/html/2605.24279"
     },
     {
       "ID": 39,
-      "Task": "steering向量的可识别性与输出等价性",
-      "Major finding": "在单层white-box及局部线性条件下，不同方向可输出等价，行为测试无法唯一确定steering向量。",
-      "Validation": "Llama3.1-8B／Qwen2.5-3B，5 traits；正交扰动、均值差／PCA、强度及多prompt分布；分类器与logit比较。",
+      "Task": "Steering-vector identifiability and output equivalence",
+      "Major finding": "Under single-layer white-box local linearity, different directions can have equivalent outputs, preventing unique identification from behavioral tests.",
+      "Validation": "[Setting] Single-layer linearization theory and trait/logit generation controls; no agent-trace validation. [Validation] Llama3.1-8B/Qwen2.5-3B, five traits; orthogonal perturbations, mean-difference/PCA, strengths/prompt distributions, classifiers/logits.",
       "source": "https://arxiv.org/abs/2602.06801",
       "validation_source": "https://arxiv.org/html/2602.06801"
     },
     {
       "ID": 40,
-      "Task": "共情方向的可解码性与因果控制",
-      "Major finding": "共情可解码不保证可靠控制：Resonance仅部分改变自动评分，Recognition还受测量分辨率限制。",
-      "Validation": "3个instruct模型；EPITOME Recognition／Resonance；2个LLM judges＋分类器；情绪／中性正控及加法／消融。",
+      "Task": "Empathy-direction decodability and causal control",
+      "Major finding": "Decodable empathy does not guarantee reliable control: Resonance partly changes automatic scores; Recognition is also limited by measurement resolution.",
+      "Validation": "[Setting] Empathy readout/addition/ablation in emotional-support answers; not long-term human dialogue or tool execution. [Validation] Three instruct models, EPITOME Recognition/Resonance, two LLM judges plus classifiers, emotional/neutral positive controls, addition/ablation.",
       "source": "https://arxiv.org/abs/2608.24901",
       "validation_source": "https://arxiv.org/html/2608.24901"
     },
     {
       "ID": 41,
-      "Task": "持久agent的身份维持与恢复",
-      "Major finding": "persona信息留在历史中不保证继续以其身份说话；system锚点丢失与对话context共同影响身份回退。",
-      "Validation": "Claude Opus4.5持久agent；锚点保留／丢失／恢复；heartbeat与人类交互；锚定时46次探针无失败。",
+      "Task": "Maintain and restore persistent-agent identity",
+      "Major finding": "Persona information remaining in history does not guarantee enacted identity; lost system anchors and dialogue context jointly affect identity reversion.",
+      "Validation": "[Setting] Persistent-harness heartbeat/identity-restoration tests with historical tool records; no tool-task success evaluation. [Validation] Claude Opus4.5 persistent agent; anchor retention/loss/restoration, heartbeat/human interaction;46 anchored probes without failure.",
       "source": "https://arxiv.org/abs/2610.01490",
       "validation_source": "https://arxiv.org/html/2610.01490"
     },
     {
       "ID": 42,
-      "Task": "多轮persona steering的coherence保持",
-      "Major finding": "GCAD以attention贡献与逐token gating保留trait控制，并显著减轻持续KV-cache下的coherence退化。",
-      "Validation": "Qwen2.5-7B／Llama3.1-8B；15 traits×10轮；持续KV-cache；每trait／条件60会话；trait与coherence双评分。",
+      "Task": "Preserve coherence in multi-turn persona steering",
+      "Major finding": "GCAD uses attention contributions and tokenwise gating to preserve trait control while sharply reducing coherence degradation under persistent KV cache.",
+      "Validation": "[Setting] Fifteen traits×ten-turn persistent-KV-cache dialogue; no tool actions or environmental feedback. [Validation] Qwen2.5-7B/Llama3.1-8B;60 conversations per trait/condition, trait/coherence ratings.",
       "source": "https://arxiv.org/abs/2605.10664",
       "validation_source": "https://arxiv.org/html/2605.10664"
     },
     {
       "ID": 43,
-      "Task": "比较不同目标行为的可控性",
-      "Major finding": "steering效果依行为类别而异，trait强度随系数呈倒U形；向量分离指标不能预测成功。",
-      "Validation": "Llama3.1-8B固定L15；50行为覆盖role／trait／misalignment／style／人物模仿；系数、向量与样本量扫查。",
+      "Task": "Compare controllability across target behaviors",
+      "Major finding": "Steering depends on behavior category; trait strength follows an inverted-U coefficient curve, while vector separation fails to predict success.",
+      "Validation": "[Setting] Independent generation for50 behaviors at a fixed layer, with coefficient/data-size sweeps; not agent tasks. [Validation] Llama3.1-8B L15; role/trait/misalignment/style/public-figure imitation; coefficient, vector, and sample-size sweeps.",
       "source": "https://arxiv.org/abs/2511.18284",
       "validation_source": "https://arxiv.org/html/2511.18284"
     },
     {
       "ID": 44,
-      "Task": "比较不同persona注入方法的安全性",
-      "Major finding": "同一persona的安全排序随注入方式和架构改变；亲社会persona在prompt下安全却可在activation steering下最危险。",
-      "Validation": "4个standard＋2个reasoning模型；system／few-shot／CAA；Study1 5,568判定条件；系数与persona强度匹配控制。",
+      "Task": "Compare safety across persona-induction methods",
+      "Major finding": "Persona safety rankings change with induction method and architecture; a prosocial persona safe under prompting can be most dangerous under activation steering.",
+      "Validation": "[Setting] Harmful-request responses/reasoning traces after persona induction; not tool-agent safety. [Validation] Four standard plus two reasoning models; system/few-shot/CAA, Study1's5,568 judged conditions, coefficient/persona-strength matching.",
       "source": "https://arxiv.org/abs/2604.11120",
       "validation_source": "https://arxiv.org/html/2604.11120"
     },
     {
       "ID": 45,
-      "Task": "辨别steering干扰的来源",
-      "Major finding": "多数干扰非对称且更反映模型受扰后的默认趋向；匹配范数随机推力也产生相近的非目标行为排序。",
-      "Validation": "10个instruct模型×24行为；生成文本judge；matched-norm随机方向；留一行为预测及跨模型复制。",
+      "Task": "Identify sources of steering interference",
+      "Major finding": "Most interference is asymmetric and reflects model fallback tendencies under perturbation; matched-norm random pushes yield similar off-target rankings.",
+      "Validation": "[Setting] Twenty-four-behavior text cross-interference, random pushes, ten-model replication; not long-horizon control. [Validation] Ten instruct models×24 behaviors; generated-text judges, matched-norm random directions, leave-one-behavior-out prediction/cross-model replication.",
       "source": "https://arxiv.org/abs/2609.06951",
       "validation_source": "https://arxiv.org/html/2609.06951"
     },
     {
       "ID": 46,
-      "Task": "VLM推理期越狱防御与正常能力保持",
-      "Major finding": "作者报告低维安全子空间的自适应steering降低越狱成功率，同时维持或改善正常任务表现。",
-      "Validation": "LLaVA／MiniGPT4／Qwen2.5-VL三VLM；图像扰动／图中文字攻击、adaptive attack；MM-Vet正常能力。",
+      "Task": "Inference-time VLM jailbreak defense with benign-capability preservation",
+      "Major finding": "Authors report that adaptive steering in low-dimensional safety subspaces reduces jailbreak success while maintaining or improving benign-task performance.",
+      "Validation": "[Setting] Image/text jailbreak inputs→single generation; early-token adaptive steering, no environmental action loop. [Validation] LLaVA/MiniGPT4/Qwen2.5-VL; image perturbation/text-in-image attacks, adaptive attacks, MM-Vet benign capability.",
       "source": "https://arxiv.org/abs/2509.21400",
       "validation_source": "https://arxiv.org/html/2509.21400"
     },
     {
       "ID": "47",
-      "Task": "人格／情绪／主题／真实性方向去混杂与稳定控制",
-      "Major finding": "对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。",
-      "Validation": "【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。",
+      "Task": "Deconfound personality/emotion/topic/truthfulness directions for stable control",
+      "Major finding": "Contrastive-covariance subspaces filter confounds, improve tested concept control/output quality, and sustain control over20-turn dialogue.",
+      "Validation": "[Setting] Single-turn generation plus20-turn persistent-KV-cache dialogue; not tool agents. [Validation] Three dense models; AxBench, BIG5/NPTI, Emotion, TruthfulQA; topic-bias oracle controls;23 raters/296 generations.",
       "source": "https://arxiv.org/html/2610.14025v1"
     },
     {
       "ID": "48",
-      "Task": "长程多agent的任务／角色稳定、状态维护、工具权限及具身协作",
-      "Major finding": "ATLAS用task–role–state联合谱核与动态记忆干预，在长程记忆、状态维护及工具／具身压力测试中改善协作并减少漂移。",
-      "Validation": "【场景】长对话记忆＋闭环多agent；AMemGym 30–100轮／episode；ALARA环境任务；LIBERO动作执行。 【验证】EverMemBench 2400QA；AMemGym 1000episodes；ToolACE 500条2–6调用链测AST／参数；ALARA 115任务；LIBERO 10任务×50rollouts×3seed。",
+      "Task": "Long-horizon multi-agent task/role stability, state maintenance, tool permissions, and embodied cooperation",
+      "Major finding": "ATLAS combines task–role–state spectral kernels with dynamic memory interventions, improving collaboration and reducing drift in memory, state, tool, and embodied stress tests.",
+      "Validation": "[Setting] Long-dialogue memory and closed-loop multi-agent tasks; AMemGym30–100 turns/episode, ALARA environments, LIBERO actions. [Validation] EverMemBench2,400 QA; AMemGym1,000 episodes; ToolACE500 two-to-six-call chains, AST/arguments; ALARA115 tasks; LIBERO10 tasks×50 rollouts×three seeds.",
       "evidence_url": "https://arxiv.org/html/2611.04315v1",
       "scope": "abstract finding; §4 and App.A1/A3/A4 validation"
     }

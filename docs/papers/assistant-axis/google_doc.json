@@ -1,7 +1,7 @@
 {
   "document_id": "1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro",
   "url": "https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro/edit?tab=t.a7wc0ik64xrs",
-  "title": "Persona 文献阅读笔记｜研究问题与分类",
+  "title": "Persona Literature Notes | Research Questions and Evidence",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
   "source": "docs/papers/assistant-axis/reading.json",
   "markdown_mirror": "docs/papers/assistant-axis/reading.md",
@@ -10,7 +10,7 @@
   "format_version": 1,
   "update_rule": "Read the live Assistant Axis tab in the Persona Doc and merge user edits by AA ID before scoped revision-guarded writes; never replay initialization.",
   "tab_id": "t.a7wc0ik64xrs",
-  "verified_revision": "AHj4eMRmcwpyFR_43YOGmRT5SP7YKNT9KF8Q7-Ia57Wge1XUgAbR8cidBNAJCeUWzlLwaYE4hY2pbx9uSKi3Wtt9OqvBkLM25gysuLg8NDQ",
+  "verified_revision": "AHj4eMRQcbi1TDWd4wizSzoxQ7f89xxGw_VWVZK-_J6T2XBrhl5BP0hQnvJuX3eg6dC8aNnpJoP4RDF8XR8VAl8oXlYK8I1OrkjpV9NW4Sc",
   "paper_heading_ids": {
     "AA00": "h.v6mpugkmxuz9",
     "AA01": "h.u7dsismsatv8",
@@ -101,17 +101,10 @@
   },
   "evaluation_regimes": "docs/papers/assistant-axis/sources/evaluation_regimes.json",
   "latest_pdf_verification": {
-    "pages": 58,
-    "landscape_pages": [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "blank_pages": [],
-    "report_pages": []
+    "date": "2026-11-10",
+    "language": "en",
+    "pages": 186,
+    "scope": "English cover, main index, direction table, and Assistant Axis index visually checked; index font 9pt, landscape tables and portrait notes; original heading IDs, links, user notes and equations preserved."
   },
   "migration": {
     "previous_document_id": "11tsm0krcXAGAMhL-UUjZnidLEOUgft84DYlPaKrnkVU",
@@ -121,11 +114,20 @@
   },
   "index_column_widths_pt": [
     42,
-    112,
+    102,
     65,
-    42,
+    52,
     111,
     190,
     208
-  ]
+  ],
+  "language": "en",
+  "english_translation": {
+    "date": "2026-11-10",
+    "translated_paragraphs": 2874,
+    "preserved_user_blocks": 93,
+    "preserved_native_equations": 9,
+    "heading_ids_preserved": true,
+    "scope": "All three tabs; user Additional think, 【】 additions and user-authored ID3 limitation retained verbatim."
+  }
 }
