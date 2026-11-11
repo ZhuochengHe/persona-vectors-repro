@@ -1,6 +1,8 @@
 # Papers
 
 - [Agentic persona and architecture research-direction assessment](research_directions.md) — existing evidence, new primary sources, gaps and feasibility; mirrored in a separate tab of the main reading Doc.
+- [Agentic steering idea discussion](agentic_steering_ideas.md) — eleven original candidates, critical assessment, and three organizing research lines; a local discussion record, not an experiment protocol.
+- [Agentic steering candidate questions and measurement](agentic_steering_candidates.md) — 24 candidates, evidence, benchmark settings, metrics, baselines, attribution risks, and relative cost.
 - [Assistant Axis direct-citer reading collection](assistant-axis/README.md) — a dedicated tab in the Persona Google Doc; no Excel synchronization or architecture columns.
 
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509) — primary reproduction target, v3.
