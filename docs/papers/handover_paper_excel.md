@@ -73,7 +73,7 @@ Windows 首次交付已于2026-10-30完成；2026-11-01开始使用双向同步�
 
 ## Google Doc阅读视图
 
-原生文档放在My Drive的ChatGPT目录；同一URL持续维护。首页有研究问题／类型索引和按稳定ID维护的论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
+原生文档放在My Drive的Persona目录（文件夹ID不变，仅改名）；同一URL持续维护。首页有研究问题／类型索引和按稳定ID维护的论文总表，正文按研究问题分组；ID打开笔记、短标题打开论文，正文关联编号与返回总表均可点击。详细格式、新增论文与同步顺序统一见[文档维护合同](literature_document_maintenance.md)，不在此复制另一套规则。
 
 `literature_reading.csv`保存完整字段，`literature_reading.md`为可读镜像；Doc身份与核验信息在`citation_screening_sources/google_reading_doc.json`。线上修改需agent读取后按ID合并，当前不自动双向同步。只调整格式和索引且没有改字段时不必导出Excel。
 

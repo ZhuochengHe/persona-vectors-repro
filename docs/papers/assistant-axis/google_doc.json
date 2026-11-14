@@ -1,16 +1,16 @@
 {
-  "document_id": "1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro",
-  "url": "https://docs.google.com/document/d/1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro/edit?tab=t.a7wc0ik64xrs",
-  "title": "Persona 文献阅读笔记｜研究问题与分类",
+  "document_id": "1Tg4bVV94A-2CaTmuCale-YeoWN3hyALKzsij09IEMFE",
+  "url": "https://docs.google.com/document/d/1Tg4bVV94A-2CaTmuCale-YeoWN3hyALKzsij09IEMFE/edit",
+  "title": "Assistant Axis: Citing Papers",
   "parent_folder_id": "1C5eRHOmg6C6xC6hTDC4VXrHUfdeK32Yn",
   "source": "docs/papers/assistant-axis/reading.json",
   "markdown_mirror": "docs/papers/assistant-axis/reading.md",
   "excel_sync": false,
   "architecture_fields": false,
   "format_version": 1,
-  "update_rule": "Read the live Assistant Axis tab in the Persona Doc and merge user edits by AA ID before scoped revision-guarded writes; never replay initialization.",
-  "tab_id": "t.a7wc0ik64xrs",
-  "verified_revision": "AHj4eMRmcwpyFR_43YOGmRT5SP7YKNT9KF8Q7-Ia57Wge1XUgAbR8cidBNAJCeUWzlLwaYE4hY2pbx9uSKi3Wtt9OqvBkLM25gysuLg8NDQ",
+  "update_rule": "Read the live Assistant Axis Doc and merge user edits by AA ID before scoped revision-guarded writes; never replay initialization.",
+  "tab_id": "t.0",
+  "verified_revision": "AHj4eMSRi8hiODjoniNI_Wtngb6W64bOeG36j4JjmkjdgcPG-OeAzJnkTG4fwWV2TPAWsQszBzuw156VLi8wMy_T1MlOWDA--5kUJTvTbqw",
   "paper_heading_ids": {
     "AA00": "h.v6mpugkmxuz9",
     "AA01": "h.u7dsismsatv8",
@@ -127,5 +127,15 @@
     111,
     190,
     208
-  ]
+  ],
+  "parent_folder_name": "Persona",
+  "move": {
+    "date": "2026-11-14",
+    "from_document_id": "1YZAZDvTuybzJkV-fI60UDMioMRm1ckEho8IR_t276Ro",
+    "from_tab_id": "t.a7wc0ik64xrs",
+    "status": "moved_to_standalone_doc",
+    "heading_ids_preserved": true,
+    "heading_ids_checked": 45,
+    "note": "The Persona Doc no longer contains this tab; the old tab_id and the old URL with ?tab= are dead."
+  }
 }

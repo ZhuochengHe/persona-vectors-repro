@@ -1,6 +1,6 @@
 # 文献阅读文档：格式与维护
 
-Assistant Axis的独立被引阅读遵循[单独维护约定](assistant-axis/README.md)：使用Persona Google Doc中的“Assistant Axis 被引阅读”分页，筛选与阅读JSON／Markdown仍单独维护，不更新原文献CSV／Excel，不设置架构字段。以下跨Excel同步规则仅适用于原Persona Vectors阅读集合。两集合共用document_id但tab_id不同；读取、索引链接及写入范围必须明确分页，标题锚点不可沿用旧独立文档的ID。
+Assistant Axis的独立被引阅读遵循[单独维护约定](assistant-axis/README.md)：使用独立Google Doc“Assistant Axis: Citing Papers”（2026-11-14从Persona Doc的分页移出），筛选与阅读JSON／Markdown仍单独维护，不更新原文献CSV／Excel，不设置架构字段。以下跨Excel同步规则仅适用于原Persona Vectors阅读集合。两集合现在是不同的Google Doc，各自在注册文件中登记document_id和tab_id；读取、索引链接及写入范围以各自注册文件为准，移出时原标题锚点ID全部保留，已退役的2026-11-07独立文件仍不可使用。
 
 ## 阅读入口与职责
 

@@ -19,8 +19,10 @@ and [archive guide](docs/research/archive.md).
 ## Literature workflow: Google Doc, working sources, and workbook
 
 - The separate [Assistant Axis direct-citer collection](docs/papers/assistant-axis/README.md)
-  uses its own tab in the Persona Google Doc and separate evidence sources.
-  Do not create or continue a separate Assistant Axis Google Doc. It does not synchronize with
+  uses its own Google Doc ("Assistant Axis: Citing Papers", moved out of the Persona
+  Doc on 2026-11-14; registry `docs/papers/assistant-axis/google_doc.json`) and separate
+  evidence sources. Do not recreate an Assistant Axis tab in the Persona Doc or revive the
+  retired 2026-11-07 file. It does not synchronize with
   the original literature CSV/Excel and does not require architecture fields.
   Its local reading JSON/Markdown and citation screening remain in that directory.
   Before starting literature work on any host, check status and safely
