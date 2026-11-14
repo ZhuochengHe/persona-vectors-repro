@@ -1,0 +1,14 @@
+{
+  "ID": 48,
+  "source_key": "user-arxiv-2611.04315",
+  "selection": "user_requested_supplement",
+  "source": "https://arxiv.org/html/2611.04315v1",
+  "scope": "2611.04315v1：正文§2–7、方法与主要结果；App.A1/A3–A6/A8–A10定向核对。未复现实验或逐项审计代码；用户指定补充，不虚构原种子被引来源。https://arxiv.org/html/2611.04315v1",
+  "checks": [
+    "Theory仅依据App.A9正式命题与证明；不当作行为保证",
+    "ActAdd/SEA仅三个role vs ATLAS全覆盖；保留比较边界",
+    "子kernel消融不重归一，区分核质量与几何",
+    "ToolACE AST匹配与实际环境执行分开",
+    "异构模型各建核，不传裸方向；不是架构受控对比"
+  ]
+}

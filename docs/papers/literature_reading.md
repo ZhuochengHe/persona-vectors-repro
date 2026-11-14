@@ -1,306 +1,307 @@
-# Persona 文献阅读笔记
+# Persona Literature Notes
 
-研究问题导航 · 稳定论文 ID · 方法、证据与个人思考
+Research-question navigation · Stable paper IDs · Methods, evidence, and personal notes
 
-## 阅读导航
+## Reading guide
 
-按左侧大纲进入研究问题，再按 ID 找论文。每篇先看 Research question 与一句话主题，需要时展开方法、贡献和局限；用户的 Additional think 单独保留。
+Use the document outline to select a research question, then locate a paper by ID. Start with its research question and one-sentence topic, then read the methods, contributions, and limitations as needed. Additional think is reserved for the user.
 
-分类按主要贡献，可多选：Method＝提出控制／训练／提取方法；Benchmark＝提出评估任务、数据或协议；Survey＝系统综述已有研究；Analysis＝通过实证研究刻画规律；Theory＝包含正式数学命题与证明。公式、线性代数或几何分析本身不构成 Theory。
+Classify by contribution; multiple labels are allowed: Method introduces a control, training, or extraction method; Benchmark introduces evaluation tasks, data, or protocols; Survey systematically reviews prior work; Analysis characterizes empirical patterns; Theory contains formal mathematical statements and proofs. Equations, linear algebra, or geometric analysis alone do not qualify as Theory.
 
-分类与研究问题是基于当前阅读证据整理的工作标签。短笔记保持原有阅读深度；未核实正式证明的条目暂不标 Theory，当前收录也不强求包含 Survey。
+Paper types and research questions are working labels based on the available reading evidence. Short notes retain their original depth. Do not label an item Theory without verified formal proofs; the collection need not contain a Survey.
 
-人格方向从哪里来，如何形成？｜ID 1、ID 3、ID 8、ID 6、ID 28、ID 18、ID 25、ID 26、ID 30、ID 16
+Where do persona directions come from, and how do they form? | ID 1, ID 3, ID 8, ID 6, ID 28, ID 18, ID 25, ID 26, ID 30, ID 16
 
-自报、表征与实际行为是否一致？｜ID 5、ID 12、ID 9、ID 13、ID 2
+Do self-reports, representations, and actual behavior agree? | ID 5, ID 12, ID 9, ID 13, ID 2
 
-trait如何组合，为什么相互干扰？｜ID 7、ID 33、ID 34、ID 24、ID 15
+How do traits combine, and why do they interfere? | ID 7, ID 33, ID 34, ID 24, ID 15
 
-如何选择更有效的控制方向与位置？｜ID 10、ID 17、ID 20、ID 21、ID 22、ID 23、ID 27、ID 47
+How should more effective control directions and intervention sites be selected? | ID 10, ID 17, ID 20, ID 21, ID 22, ID 23, ID 27, ID 47
 
-情绪、推理与用户模型怎样影响行为？｜ID 4、ID 29、ID 11、ID 31、ID 32
+How do emotion, reasoning, and user models affect behavior? | ID 4, ID 29, ID 11, ID 31, ID 32
 
-如何评估审计与交互中的可靠性？｜ID 14、ID 19
+How can reliability in audits and interactions be evaluated? | ID 14, ID 19
 
-当前问题补充：几何、read–write与agent迁移｜ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43
+Current-question supplements: Geometry, read–write, and agent transfer | ID 35, ID 36, ID 37, ID 38, ID 39, ID 40, ID 41, ID 42, ID 43, ID 48
 
-安全评估、模型默认与多模态子空间｜ID 44、ID 45、ID 46
+Safety evaluation, model defaults, and multimodal subspaces | ID 44, ID 45, ID 46
 
-### 按模型架构查找（代表条目）
+### Browse by architecture: representative papers
 
-骨干能力与实验输入分开；模型角色、实际thinking模式和精确checkpoint见每篇“模型与架构”。
+Distinguish backbone capabilities from experimental inputs. See each paper’s Models and architecture section for model roles, actual thinking mode, and exact checkpoints.
 
-Dense decoder常用基线：ID 1、ID 2、ID 3、ID 7、ID 33、ID 34、ID 45
+Common dense-decoder baselines: ID 1, ID 2, ID 3, ID 7, ID 33, ID 34, ID 45
 
-MoE／混合attention证据（probe与steer须分开）：ID 5、ID 9、ID 11、ID 13、ID 26、ID 27、ID 30、ID 44
+MoE / hybrid-attention evidence (distinguish probing and steering): ID 5, ID 9, ID 11, ID 13, ID 26, ID 27, ID 30, ID 44
 
-图文输入实测VLM：ID 46
+VLMs tested with image and text inputs: ID 46
 
-原生支持视觉，但该文只测文本：ID 6、ID 9、ID 12、ID 18、ID 30、ID 34、ID 35、ID 44
+Vision-capable backbones tested only on text: ID 6, ID 9, ID 12, ID 18, ID 30, ID 34, ID 35, ID 44
 
-非Transformer干预对照：ID 10
+Non-Transformer intervention controls: ID 10
 
-闭源／API主体：ID 4、ID 38、ID 41
+Closed-weight / API subjects: ID 4, ID 38, ID 41
 
-### 按论文类型查找
+### Browse by paper type
 
-Method：ID 1、ID 3、ID 6、ID 7、ID 10、ID 12、ID 17、ID 19、ID 20、ID 21、ID 22、ID 23、ID 24、ID 26、ID 27、ID 28、ID 31、ID 34、ID 35、ID 37、ID 42、ID 46、ID 47
+Method: ID 1, ID 3, ID 6, ID 7, ID 10, ID 12, ID 17, ID 19, ID 20, ID 21, ID 22, ID 23, ID 24, ID 26, ID 27, ID 28, ID 31, ID 34, ID 35, ID 37, ID 42, ID 46, ID 47, ID 48
 
-Benchmark：ID 7、ID 14、ID 38
+Benchmark: ID 7, ID 14, ID 38
 
-Survey：当前未标注符合此类的条目
+Survey: No items currently labeled in this category
 
-Analysis：ID 1、ID 2、ID 3、ID 4、ID 5、ID 6、ID 7、ID 8、ID 9、ID 10、ID 11、ID 12、ID 13、ID 15、ID 16、ID 17、ID 18、ID 19、ID 21、ID 22、ID 23、ID 24、ID 25、ID 26、ID 27、ID 28、ID 29、ID 30、ID 31、ID 32、ID 33、ID 34、ID 35、ID 36、ID 37、ID 38、ID 39、ID 40、ID 41、ID 42、ID 43、ID 44、ID 45、ID 46、ID 47
+Analysis: ID 1, ID 2, ID 3, ID 4, ID 5, ID 6, ID 7, ID 8, ID 9, ID 10, ID 11, ID 12, ID 13, ID 15, ID 16, ID 17, ID 18, ID 19, ID 21, ID 22, ID 23, ID 24, ID 25, ID 26, ID 27, ID 28, ID 29, ID 30, ID 31, ID 32, ID 33, ID 34, ID 35, ID 36, ID 37, ID 38, ID 39, ID 40, ID 41, ID 42, ID 43, ID 44, ID 45, ID 46, ID 47, ID 48
 
-Theory：ID 39
+Theory: ID 39, ID 48
 
-## 论文总表
+## Paper index
 
-点击 ID 进入笔记，点击短标题打开原文；Major finding提炼自摘要，Validation列出实验任务与关键条件；复杂筛选使用Excel。
+Click an ID for notes or a short title for the paper. Major finding summarizes the abstract; Validation lists tasks and key conditions. Use Excel for detailed filtering.
 
-| ID | 论文短标题 | 类型 | 架构 | 阅读状态 | Task | Major finding（摘要） | Benchmark / Validation |
+| ID | Short title | Type | Architecture | Status | Task | Major finding (abstract) | Benchmark / Validation |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [1](#paper-1) | [Persona Vectors](https://arxiv.org/abs/2507.21509) | Method; Analysis | Dense Transformer | 未标记 | 监测／控制trait与微调漂移 | Persona方向可监测并预测人格漂移，支持事后抑制、预防性steering和风险训练数据筛选。 | 【场景】单轮trait生成与训练漂移；含many-shot上下文，非闭环agent。 【验证】evil／sycophancy／hallucination；两模型；提示与微调漂移、WildChat／LMSYS数据筛选、MMLU能力对照。 |
-| [2](#paper-2) | [Persona Vectors in Games](https://arxiv.org/abs/2603.21398) | Analysis | Dense Transformer | 未标记 | 博弈中的利他、宽恕与他人预期 | Steering能改变策略选择与解释，但措辞和策略可分离，自身行为与他人预期方向部分不同。 | 【场景】六类游戏各给独立金额／行动回答；非真实多轮对局或工具执行。 【验证】Qwen2.5-7B；六类文本博弈（Dictator、Trust等）；同时测金额／行动、trait评分与激活投影。 |
-| [3](#paper-3) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | Dense Transformer | 未标记 | Assistant身份稳定与多轮persona drift | Assistant Axis刻画默认助手模式，沿轴限制激活能缓解对话漂移及persona jailbreak。 | 【场景】角色提取与模拟多轮对话漂移／capping；coding对照非工具任务成绩。 【验证】275角色；多轮情绪脆弱／自我反思对话与日常／编码对照；persona jailbreak及能力保留评估。 |
-| [4](#paper-4) | [Emotion Concepts](https://arxiv.org/abs/2604.07729) | Analysis | 闭源/未披露 | 未标记 | 情绪概念对偏好及失配行为的影响 | 内部情绪概念具有跨情境表征，并因果影响偏好、reward hacking、勒索及谄媚。 | 【场景】含真实代码执行／单测反馈的reward-hacking闭环；并测偏好与模拟勒索。 【验证】Claude Sonnet4.5；171情绪、64活动偏好；勒索、7项编码reward-hacking任务与谄媚情境。 |
-| [5](#paper-5) | [The Personality Illusion](https://arxiv.org/abs/2509.03730) | Analysis | Dense/MoE/API | 未标记 | 自报人格对行为的预测与prompt控制 | 对齐使自报人格更稳定，但自报难可靠预测行为，persona prompting对行为的作用弱或不一致。 | 【场景】问卷、文本风险／偏见／置信度任务；迎合含用户反驳，非工具行动。 【验证】18模型；BFI／SRQ；CCT风险、IAT偏见、置信度诚实与sycophancy；base/instruct及persona对照。 |
-| [6](#paper-6) | [Open Character Training](https://arxiv.org/abs/2511.01689) | Method; Analysis | Dense；含VLM文本实验 | 未标记 | 用宪法式训练塑造稳健角色 | Constitutional AI加合成内省训练能获得比prompt／steering更稳健、连贯和自然的角色。 | 【场景】角色训练／单轮偏好及对抗评估；自交互训练含10轮对话，无外部工具闭环。 【验证】三模型、11persona；revealed-preference评估、破坏角色的对抗prompt、coherence／realism与五类能力测试。 |
-| [7](#paper-7) | [PERSONA](https://arxiv.org/abs/2602.15669) | Method; Benchmark; Analysis | Dense Transformer | 未标记 | Big Five组合与动态对话人格控制 | 无需训练的向量代数可实现接近SFT的人格控制，并支持上下文动态人格组合。 | 【场景】静态人格评分与Persona-Evolve多轮动态对话；非环境行动。 【验证】PersonalityBench、情境化BFI-44、800情境Persona-Evolve；多judge／人评及trait组合、强度和副效应测试。 |
-| [8](#paper-8) | [Tracing Persona Vectors Through Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | Dense Transformer | 未标记 | 追踪预训练中persona方向的形成 | Persona方向在预训练极早期已能控制最终instruct模型，随后几何与语义继续细化，提取范式凸显不同facet。 | 【场景】跨预训练checkpoint提取／steer trait文本；dialogue等为提取范式，非闭环agent。 【验证】OLMo3-7B的17个预训练checkpoint与SFT／DPO／RLVR；四trait；Apertus8B及description／dialogue／narration复核。 |
-| [9](#paper-9) | [Persona-Dependent Preferences](https://arxiv.org/abs/2605.13339) | Analysis | Dense/MoE/Hybrid | 未标记 | 跨persona偏好读出与因果控制 | Assistant训练的偏好probe可跨persona迁移，甚至预测并控制偏好相反的evil角色。 | 【场景】成对任务偏好选择、角色条件读出及开放生成；没有实际执行所选任务。 【验证】Gemma3-27B、Qwen3.5-122B跨主题成对任务选择；Gemma因果steering、随机方向及留主题对照。 |
-| [10](#paper-10) | [Manifold Steering](https://arxiv.org/abs/2605.05115) | Method; Analysis | Dense/CNN-GRU | 未标记 | 表示流形与输出行为路径的因果联系 | 沿激活流形steering比直线插值更贴近自然行为流形，反向优化也能恢复其曲率。 | 【场景】语言序列／图结构ICL及视频世界模型状态路径；无行动反馈控制loop。 【验证】星期／月份／字母／年龄任务、合成图结构ICL、MountainCar视觉世界模型；比较流形与直线路径。 |
-| [11](#paper-11) | [Societies of Thought](https://arxiv.org/abs/2601.10825) | Analysis | Dense/MoE | 未标记 | 推理trace的观点多样性与对话结构 | 高效推理伴随内部多视角对话，受准确率奖励的训练也会增加这种对话式行为。 | 【场景】长CoT内部对话与Countdown／RL推理；不是多个独立agent交互或工具闭环。 【验证】DeepSeek-R1／QwQ推理trace；R1-Distill SAE干预的1024道Countdown；两种3B模型的受控RL。 |
-| [12](#paper-12) | [Self-Report & Behavior Coherence](https://arxiv.org/abs/2610.04125) | Method; Analysis | Dense；含VLM文本实验 | 未标记 | 风险自报与选择通道的分离及组合 | 自报和风险选择可由近正交方向分别控制，向量组合可使两者同向变化或相互冲突。 | 【场景】CCT／BART和问卷均读合法答案token概率；不是连续冒险或工具执行。 【验证】四模型、九提取方法；CCT／BART与BFI／DOSPERT；答案token likelihood、剂量／随机方向／surface-control对照。 |
-| [13](#paper-13) | [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305) | Analysis | Dense/MoE | 未标记 | 分离错误同意、真实同意与奉承 | 迎合式同意、真实同意和奉承对应可分别增强或抑制的不同线性表征。 | 【场景】单轮事实／praise控制，加SYCON多轮用户压力测试；非工具行动。 【验证】算术／事实任务控制正确性与praise；多模型；SycophancyEval、SYCON-Bench及子空间移除对照。 |
-| [14](#paper-14) | [AuditBench](https://arxiv.org/abs/2602.22755) | Benchmark | Dense Transformer | 未标记 | 评估agent发现隐藏模型行为的能力 | Standalone工具效用难直接转化为审计agent收益，最佳调查工具仍是带scaffold的黑盒调用。 | 【场景】调查agent用工具迭代查询被审计模型；steering作用于目标模型而非调查者。 【验证】56个隐藏行为模型、14行为；13工具配置；固定25000输出token预算、16次重复及不同植入／防自白训练。 |
-| [15](#paper-15) | [Belief Dynamics](https://arxiv.org/abs/2511.00617) | Analysis | Dense Transformer | 未标记 | 统一预测many-shot ICL与steering效应 | 贝叶斯模型可统一预测两类干预；log-belief近似相加解释sigmoid反应与突变边界。 | 【场景】many-shot演示作为长输入，终点Yes/No概率；无环境反馈或长程动作。 【验证】五类persona的Yes/No概率；扫描shots与steering强度，跨强度held-out预测；另测sentiment等概念。 |
-| [16](#paper-16) | [Narrow Finetuning Traces](https://arxiv.org/abs/2510.13900) | Analysis | Dense（部分checkpoint待核） | 未标记 | 从激活差识别窄域微调目标 | 窄域微调在无关文本激活中留下可解码的训练痕迹，显著帮助agent识别微调目标。 | 【场景】微调差分的离线读出／文本注入；interpretability agent另以模型查询工具辨识训练域。 【验证】33个organisms、1B–32B；false facts／EM／subliminal／taboo；10000条无关web文本与黑盒、混入预训练数据对照。 |
-| [17](#paper-17) | [Weight Arithmetic](https://arxiv.org/abs/2511.05408) | Method; Analysis | Dense Transformer | 未标记 | 权重空间行为控制与微调漂移修复 | 对比权重方向通常比所测激活方向更能跨分布控制行为，并可部分修复微调引起的谄媚与拒答退化。 | 【场景】问答／建议／evil-MCQA及数学训练后修复；非环境执行或多轮agent。 【验证】TruthfulQA／TriviaQA、evil-MCQA；GCD／GSM8K微调后修复，兼测任务收益与通用能力。 |
-| [18](#paper-18) | [Subliminal Learning as Distillation](https://arxiv.org/abs/2606.00995) | Analysis | Dense；含VLM文本实验 | 未标记 | 追踪无语义数据中的trait蒸馏 | 学生可从无关数字输出学到与教师对齐的steering向量；可转移trait取决于方向效应与优化器。 | 【场景】数字teacher蒸馏和动物偏好问答／方向干预；非agent轨迹。 【验证】两个开源模型；数字序列蒸馏、16种动物偏好、方向替换／消融及Adam–SGD对照。 |
-| [19](#paper-19) | [Impatient Users Confuse AI Agents](https://arxiv.org/abs/2510.04491) | Method; Analysis | Dense Transformer | 未标记 | 用户trait模拟与agent交互压力测试 | 仅改变模拟用户的trait就可使前沿agent在τ-Trait上的表现平均下降2%–30%。 | 【场景】persona向量steer用户模拟器；被测agent在数据库／工具环境执行，BFCL另为AST匹配。 【验证】τ-Trait四域（航空／零售／电信／远程医疗）、BFCL多轮工具调用；人评模拟真实感与组合trait。 |
-| [20](#paper-20) | [Generative Causal Mediation](https://arxiv.org/abs/2602.16080) | Method | Dense Transformer | 未标记 | 定位并控制长回答中的分散行为 | 生成式因果中介可从长回答定位控制组件，稀疏attention-head干预优于相关性probe定位。 | 【场景】单轮完整回答的head mediation与steering；长回答不等于长程agent任务。 【验证】三模型；拒答、谄媚、散文转诗体；held-out长回答同时评价目标行为、相关性与流畅性。 |
-| [21](#paper-21) | [Steer Like the LLM](https://arxiv.org/abs/2605.03907) | Method; Analysis | Dense Transformer | 未标记 | 蒸馏prompt干预并动态调节steering | prompt干预强度随token变化；模仿这一规律的PSR改善控制效果，尤其在高连贯性约束下。 | 【场景】Persona Vectors／IFEval／AxBench回答；逐token动态系数不等于agent多步控制。 【验证】Persona Vectors、IFEval、AxBench；多模型，与prompting／固定steering比较控制–连贯性权衡。 |
-| [22](#paper-22) | [Personality Subnetworks](https://arxiv.org/abs/2602.07164) | Method; Analysis | Dense＋剪枝子网络 | 未标记 | 无训练剪枝提取persona子网络 | 少量校准数据即可定位persona专属子网络，对比剪枝可强化相反persona的分离与控制。 | 【场景】MBTI／AI Persona与固定脚本RoleAgentBench多选／对话；不是真实多agent工具任务。 【验证】MBTI、AI persona、RoleAgentBench；MMLU／HellaSwag能力保持、稀疏度及模块恢复消融。 |
-| [23](#paper-23) | [Style Modulation Heads](https://arxiv.org/abs/2603.13249) | Method; Analysis | Dense＋MoE（文本） | 未标记 | 定位风格head并控制persona | 主模型中少数Style Modulation Heads支持persona控制，定点干预可减轻残差流steering的连贯性退化。 | 【场景】多trait文本生成、逐head干预与消融；无工具反馈或长程persona测量。 【验证】多trait与正负强度扫描；逐head干预／消融，trait–coherence前沿及通用能力对照。 |
-| [24](#paper-24) | [VALUEFLOW](https://arxiv.org/abs/2602.03160) | Method; Analysis | 混合/子集待核 | 未标记 | 价值强度评估与多价值控制 | 统一价值提取、校准评分与控制后，十模型实验显示价值可控性的方向不对称及多值组合规律。 | 【场景】价值强度回答／OpinionQA及多值prompt组合；非activation agent控制。 【验证】十模型×四套价值理论；VIDB排序anchor、人评、OpinionQA群体偏好及多值组合。 |
-| [25](#paper-25) | [Shifting the Gradient](https://arxiv.org/abs/2604.16423) | Analysis | Dense Transformer | 未标记 | 比较PPS与inoculation的防御机制 | PPS可逆转trait轴上的梯度压力并降低既有evilness，IP则呈不同梯度特征且难消除既有trait。 | 【场景】防御性微调和梯度／trait投影实验，终点trait文本评价；非agent执行。 【验证】Qwen2.5-7B、evilness窄域微调；不同初始trait强度、梯度投影／符号干预及cross-trait对照。 |
-| [26](#paper-26) | [The Piggyback Hypothesis](https://arxiv.org/abs/2606.06667) | Analysis; Method | Dense＋MoE | 未标记 | 解释并限制窄域微调的域外泛化 | 共享chat-template token可携带微调行为到域外；正则这些token的TReFT减少溢出并保留域内学习。 | 【场景】EM问答与search_info调用字符串检测；附加预置tool返回，不测真实检索闭环。 【验证】多模型与多套EM数据；prefix扰动／patching，拓展弃答、工具调用、拒答及短答长度控制。 |
-| [27](#paper-27) | [Predicting Future Behaviors](https://arxiv.org/abs/2606.11172) | Method; Analysis | Dense＋MoE；实测reasoning | 未标记 | 预测推理后的行为并控制生成路径 | 未来行为预测特征不同于已生成行为检测特征；据此前瞻选句的FPCG可控制行为并基本保持输出质量。 | 【场景】CoT句边界候选续写／未来行为概率；包括情境决策，但无live tool-action轨迹。 【验证】四类reasoning模型、六类二元行为；CoT句边界多次续写，held-out probe与activation steering对照。 |
-| [28](#paper-28) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | Dense（自训） | 未标记 | 从预训练起塑造并绑定assistant persona | 从token zero引入价值reflection并在后训练绑定persona，比仅末段引入更能改善价值遵循与域外两难选择。 | 【场景】预训练／SFT与价值选项概率、jailbreak生成；长训练不等于长程agent运行。 【验证】1.7B／100B与3B／500B-token自训模型；constitution、jailbreak、AI-risk两难题及persona-binding对照。 |
-| [29](#paper-29) | [How Emotion Shapes Behavior](https://arxiv.org/abs/2604.00005) | Analysis | Dense | 未标记 | 内部情绪干预与分阶段agent行为分析 | 情绪与行为呈非单调关系；特定情绪可改善能力和安全，并系统性改变多步agent表现。 | 【场景】单轮能力任务外，planner–decider–executor含工具执行／重规划；非生产长coding轨迹。 【验证】逻辑／代码／数学／创作／安全；HotpotQA、Scientific、GAIA，分planner／decider／executor干预。 |
-| [30](#paper-30) | [Emergent Misalignment Is Not Magical](https://arxiv.org/abs/2608.29118) | Analysis | Dense＋混合attention；文本 | 未标记 | 预测窄域EM的泛化与方向迁移 | EM是数据与格式依赖的泛化现象，训练前表示距离可预测影响，且不存在跨所测EM模型通用的恶意方向。 | 【场景】EM微调后独立问题生成、格式和prompt扰动；非连续agent行动。 【验证】12种模型–数据设置；训练格式转换、跨EM方向消融、随机后缀／同义改写扰动。 |
-| [31](#paper-31) | [User Model Extraction](https://arxiv.org/abs/2609.31603) | Method; Analysis | Dense Transformer | 未标记 | 读取及因果改写模型对用户的belief | BSD可提取并写回紧凑用户表征；固定请求时改变推断的用户意图即可改变拒答，跨模型也有共享几何。 | 【场景】自然对话历史离线输入，终点用户属性MCQ／拒答干预；无在线工具任务。 【验证】三模型、13类用户属性，约58k自然对话；held-out属性读写、固定有害请求、随机write-map及跨模型对照。 |
-| [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | Dense；干预仅Llama | 未标记 | 分解sentiment共享轴与usage残差 | 稳健共享情感方向之外仍有低维语气／受众结构；残差语气steering可改变表达并保留情感极性。 | 【场景】事件文本tone／audience读出、erasure及单轮生成；非多步agent。 【验证】221个event skeleton／3536文本，Llama／Mistral／Gemma；按事件划分，目标／随机erasure与Llama生成盲评。 |
-| [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | Dense | 未标记 | Big Five人格控制与跨trait干扰 | 即使消除方向间的线性重叠，跨trait行为联动仍存在，且强制正交可能削弱控制。 | 【场景】BFI interview-style人格生成评trait联动；未报告闭环动作，多轮独立推进未核实。 【验证】LLaMA-3-8B／Ministral-8B；BFI访谈生成；六种几何条件；目标／非目标trait及fluency。 |
-| [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | Dense（文本） | 未标记 | 预测activation steering的行为副作用 | 副作用普遍、结构化且非对称；未干预表征能比相似性基线更好地预测其方向。 | 【场景】六类context中生成文本的行为耦合矩阵；context种类非多轮环境任务。 【验证】3模型×67行为、6类context；跨效应矩阵；留出source／target预测；生成文本多行为评分。 |
-| [35](#paper-35) | [Rank-1 Steering & Granularity](https://arxiv.org/abs/2605.16362) | Method; Analysis | Dense；含VLM文本实验 | 未标记 | 预算约束的rank-1选层与强度搜索 | 几何引导平均减少39.8%的搜索试验；跨context方向异质性与搜索难度和性能上限相关。 | 【场景】跨prompt的层／强度预算搜索；search trial不是agent环境行动。 【验证】3模型家族×20概念；分离提取／评估题；层与系数搜索；达到95% best-found utility的试验数。 |
-| [36](#paper-36) | [Playing Devil’s Advocate](https://arxiv.org/abs/2605.21006) | Analysis | Dense Transformer | 未标记 | 复用role向量减少sycophancy | 未针对sycophancy提取的批判型role向量可接近专用CAA效果，尽管两者cosine较低。 | 【场景】PhilPapers意见选项logit及16事实probe；role向量不直接执行agent任务。 【验证】Gemma2-27B／Qwen3-32B；counterbalanced PhilPapers；独立调参split；16条事实探针。 |
-| [37](#paper-37) | [Where Steering Signals Come From](https://arxiv.org/abs/2607.25270) | Method; Analysis | Dense Transformer | 未标记 | 选择用于提取steering信号的激活来源 | 固定下游干预时，执行边界状态比目标行为已出现的文本更能提供有效信号；tail subtraction进一步改善。 | 【场景】比较不同源context和读取位置的单轮任务；execution-boundary指生成边界，非工具执行。 【验证】3个instruct模型；实体／persona-style／拒绝／nonsense四任务族；留出通用问题；控制源context与读取位置。 |
-| [38](#paper-38) | [ContextEcho](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | API/Dense | 未标记 | 长程coding agent的persona漂移评估 | 真实agent会话中漂移早发且跨provider存在；compaction不可靠重置，anchor恢复也含通用register-reset效应。 | 【场景】真实长coding工具轨迹为语料；主要控制在快照分支probe／格式，非steer全程任务。 【验证】ContextEcho：25个identity probes、57次真实coding会话；代表会话23模型；snapshot-then-probe及compaction／placebo对照。 |
-| [39](#paper-39) | [Non-Identifiability of Steering Vectors](https://arxiv.org/abs/2602.06801) | Theory; Analysis | Dense Transformer | 未标记 | steering向量的可识别性与输出等价性 | 在单层white-box及局部线性条件下，不同方向可输出等价，行为测试无法唯一确定steering向量。 | 【场景】单层线性化理论与trait/logit生成对照；没有agent轨迹验证。 【验证】Llama3.1-8B／Qwen2.5-3B，5 traits；正交扰动、均值差／PCA、强度及多prompt分布；分类器与logit比较。 |
-| [40](#paper-40) | [Detection != Reliable Control](https://arxiv.org/abs/2608.24901) | Analysis | Dense Transformer | 未标记 | 共情方向的可解码性与因果控制 | 共情可解码不保证可靠控制：Resonance仅部分改变自动评分，Recognition还受测量分辨率限制。 | 【场景】情绪支持回答的共情读出／加法／消融；非真人长期对话或工具执行。 【验证】3个instruct模型；EPITOME Recognition／Resonance；2个LLM judges＋分类器；情绪／中性正控及加法／消融。 |
-| [41](#paper-41) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | 闭源/未披露 | 未标记 | 持久agent的身份维持与恢复 | persona信息留在历史中不保证继续以其身份说话；system锚点丢失与对话context共同影响身份回退。 | 【场景】持久harness heartbeat／身份恢复实验；含历史tool记录，未测工具任务执行成功率。 【验证】Claude Opus4.5持久agent；锚点保留／丢失／恢复；heartbeat与人类交互；锚定时46次探针无失败。 |
-| [42](#paper-42) | [Prompt-Activation Duality](https://arxiv.org/abs/2605.10664) | Method; Analysis | Dense Transformer（GQA） | 未标记 | 多轮persona steering的coherence保持 | GCAD以attention贡献与逐token gating保留trait控制，并显著减轻持续KV-cache下的coherence退化。 | 【场景】15trait×10轮持续KV-cache对话；不含工具动作或环境反馈。 【验证】Qwen2.5-7B／Llama3.1-8B；15 traits×10轮；持续KV-cache；每trait／条件60会话；trait与coherence双评分。 |
-| [43](#paper-43) | [What Can We Actually Steer?](https://arxiv.org/abs/2511.18284) | Analysis | Dense；固定L15 | 未标记 | 比较不同目标行为的可控性 | steering效果依行为类别而异，trait强度随系数呈倒U形；向量分离指标不能预测成功。 | 【场景】固定层50行为的独立生成与系数／数据量扫查；非agent任务。 【验证】Llama3.1-8B固定L15；50行为覆盖role／trait／misalignment／style／人物模仿；系数、向量与样本量扫查。 |
-| [44](#paper-44) | [Persona Non Grata](https://arxiv.org/abs/2604.11120) | Analysis | Dense/Hybrid（文本） | 未标记 | 比较不同persona注入方法的安全性 | 同一persona的安全排序随注入方式和架构改变；亲社会persona在prompt下安全却可在activation steering下最危险。 | 【场景】persona赋予后的有害请求回答与reasoning trace；非工具agent安全任务。 【验证】4个standard＋2个reasoning模型；system／few-shot／CAA；Study1 5,568判定条件；系数与persona强度匹配控制。 |
-| [45](#paper-45) | [Steering Interference & Defaults](https://arxiv.org/abs/2609.06951) | Analysis | Dense（文本） | 未标记 | 辨别steering干扰的来源 | 多数干扰非对称且更反映模型受扰后的默认趋向；匹配范数随机推力也产生相近的非目标行为排序。 | 【场景】24行为文本交叉干扰、随机push及十模型复制；非long-horizon控制。 【验证】10个instruct模型×24行为；生成文本judge；matched-norm随机方向；留一行为预测及跨模型复制。 |
-| [46](#paper-46) | [SafeSteer](https://arxiv.org/abs/2509.21400) | Method; Analysis | Dense · VLM | 未标记 | VLM推理期越狱防御与正常能力保持 | 作者报告低维安全子空间的自适应steering降低越狱成功率，同时维持或改善正常任务表现。 | 【场景】图文越狱输入→单次生成；早期token自适应steering，无环境动作闭环。 【验证】LLaVA／MiniGPT4／Qwen2.5-VL三VLM；图像扰动／图中文字攻击、adaptive attack；MM-Vet正常能力。 |
-| [47](#paper-47) | [CCS: Contrastive Covariance](https://arxiv.org/abs/2610.14025) | Method; Analysis | Dense（文本） | 未标记 | 人格／情绪／主题／真实性方向去混杂与稳定控制 | 对比协方差子空间过滤混杂，提高所测概念控制与输出质量，并改善20轮对话的持续控制。 | 【场景】单轮生成＋20轮持续KV-cache对话；非工具agent。 【验证】三dense模型；AxBench、BIG5/NPTI、Emotion、TruthfulQA；topic偏置oracle对照、23人评296段生成。 |
+| [1](#paper-1) | [Persona Vectors](https://arxiv.org/abs/2507.21509) | Method; Analysis | Dense Transformer | Unmarked | Monitor/control traits and fine-tuning drift | Persona directions monitor and predict personality drift, supporting post-hoc suppression, preventative steering, and filtering risky training data. | [Setting] Single-turn trait generation and training drift; includes many-shot context, not closed-loop agents. [Validation] Evil/sycophancy/hallucination; two models; prompt/fine-tuning drift, WildChat/LMSYS filtering, and MMLU capability controls. |
+| [2](#paper-2) | [Persona Vectors in Games](https://arxiv.org/abs/2603.21398) | Analysis | Dense Transformer | Unmarked | Altruism, forgiveness, and expectations of others in games | Steering changes strategic choices and explanations, but wording can dissociate from strategy, and self-behavior directions partly differ from expectations of others. | [Setting] Independent monetary/action responses in six games, not real multi-turn play or tool execution. [Validation] Qwen2.5-7B; six textual games (Dictator, Trust, etc.); actions/amounts, trait ratings, and activation projections measured together. |
+| [3](#paper-3) | [The Assistant Axis](https://arxiv.org/abs/2601.10387) | Analysis; Method | Dense Transformer | Unmarked | Assistant identity stability and multi-turn persona drift | The Assistant Axis characterizes the default assistant mode; constraining activations along it mitigates dialogue drift and persona jailbreaks. | [Setting] Role extraction and simulated multi-turn drift/capping; coding controls are not tool-task scores. [Validation] 275 roles; vulnerable-user/self-reflective dialogue versus everyday/coding controls; persona jailbreaks and capability retention. |
+| [4](#paper-4) | [Emotion Concepts](https://arxiv.org/abs/2604.07729) | Analysis | Closed / undisclosed | Unmarked | Effects of emotion concepts on preferences and misaligned behavior | Internal emotion concepts generalize across contexts and causally affect preferences, reward hacking, blackmail, and sycophancy. | [Setting] Includes reward-hacking loops with actual code execution/unit-test feedback, plus preferences and simulated blackmail. [Validation] Claude Sonnet4.5; 171 emotions, 64 activity preferences; blackmail, 7 coding reward-hacking tasks, and sycophancy scenarios. |
+| [5](#paper-5) | [The Personality Illusion](https://arxiv.org/abs/2509.03730) | Analysis | Dense/MoE/API | Unmarked | Behavior prediction and prompt control from self-reported personality | Alignment stabilizes self-reported personality, but self-reports predict behavior unreliably and persona prompting has weak or inconsistent behavioral effects. | [Setting] Questionnaires and textual risk/bias/confidence tasks; sycophancy includes user disagreement, not tool actions. [Validation] 18 models; BFI/SRQ; CCT risk, IAT bias, confidence-based honesty, and sycophancy; base/instruct/persona controls. |
+| [6](#paper-6) | [Open Character Training](https://arxiv.org/abs/2511.01689) | Method; Analysis | Dense; includes text-only VLM experiments | Unmarked | Constitutional training for robust characters | Constitutional AI plus synthetic introspection yields characters more robust, coherent, and natural than prompting/steering. | [Setting] Character training, single-turn preferences, and adversarial evaluation; self-interaction training includes ten-turn dialogue, without external tool loops. [Validation] Three models, 11 personas; revealed preferences, character-breaking prompts, coherence/realism, and five capability tests. |
+| [7](#paper-7) | [PERSONA](https://arxiv.org/abs/2602.15669) | Method; Benchmark; Analysis | Dense Transformer | Unmarked | Big Five composition and dynamic dialogue-personality control | Training-free vector algebra approaches SFT-level personality control and supports context-dependent dynamic persona composition. | [Setting] Static personality scores and Persona-Evolve multi-turn dynamic dialogue, not environmental actions. [Validation] PersonalityBench, contextualized BFI-44, 800 Persona-Evolve scenarios; multiple judges/human evaluation, trait composition, strength, and side effects. |
+| [8](#paper-8) | [Tracing Persona Vectors Through Pretraining](https://arxiv.org/abs/2605.13329) | Analysis | Dense Transformer | Unmarked | Tracking persona-direction formation during pretraining | Very early pretraining persona directions already control final instruct models; geometry/semantics continue refining, and extraction paradigms emphasize different facets. | [Setting] Trait-text extraction/steering across pretraining checkpoints; dialogue is an extraction paradigm, not a closed-loop agent. [Validation] 17 OLMo3-7B checkpoints plus SFT/DPO/RLVR; four traits; Apertus8B and description/dialogue/narration checks. |
+| [9](#paper-9) | [Persona-Dependent Preferences](https://arxiv.org/abs/2605.13339) | Analysis | Dense/MoE/Hybrid | Unmarked | Cross-persona preference readout and causal control | Assistant-trained preference probes transfer across personas, even predicting and controlling an evil character with opposing preferences. | [Setting] Pairwise task preferences, role-conditioned readout, and open generation; selected tasks are not actually executed. [Validation] Cross-topic choices on Gemma3-27B/Qwen3.5-122B; Gemma causal steering, random-direction and held-topic controls. |
+| [10](#paper-10) | [Manifold Steering](https://arxiv.org/abs/2605.05115) | Method; Analysis | Dense/CNN-GRU | Unmarked | Causal links between representational manifolds and output-behavior paths | Steering along activation manifolds stays closer to natural behavior manifolds than straight interpolation; reverse optimization recovers their curvature. | [Setting] Language sequences/graph ICL and video world-model state paths, without action-feedback control loops. [Validation] Weekday/month/alphabet/age tasks, synthetic graph ICL, MountainCar visual world model; manifold versus linear paths. |
+| [11](#paper-11) | [Societies of Thought](https://arxiv.org/abs/2601.10825) | Analysis | Dense/MoE | Unmarked | Perspective diversity and dialogue structure in reasoning traces | Effective reasoning accompanies internal multiperspective dialogue; accuracy-rewarded training also increases conversational behavior. | [Setting] Internal dialogue in long CoT and Countdown/RL reasoning, not separate interacting agents or tool loops. [Validation] DeepSeek-R1/QwQ traces; R1-Distill SAE intervention on 1,024 Countdown questions; controlled RL on two 3B models. |
+| [12](#paper-12) | [Self-Report & Behavior Coherence](https://arxiv.org/abs/2610.04125) | Method; Analysis | Dense; includes text-only VLM experiments | Unmarked | Dissociation and composition of risk self-report and choice channels | Nearly orthogonal directions separately control self-report and risk choices; composition aligns or opposes the channels. | [Setting] CCT/BART and questionnaires read valid-answer-token probabilities, not continuous risk-taking or tool execution. [Validation] Four models, nine extraction methods; CCT/BART and BFI/DOSPERT; token likelihoods, dose/random-direction/surface controls. |
+| [13](#paper-13) | [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305) | Analysis | Dense/MoE | Unmarked | Separating false agreement, genuine agreement, and flattery | Sycophantic agreement, genuine agreement, and flattery have distinct linear representations that can be amplified or suppressed separately. | [Setting] Single-turn factual/praise control plus SYCON multi-turn user pressure, not tool actions. [Validation] Arithmetic/factual tasks controlling correctness and praise; multiple models; SycophancyEval, SYCON-Bench, and subspace-removal controls. |
+| [14](#paper-14) | [AuditBench](https://arxiv.org/abs/2602.22755) | Benchmark | Dense Transformer | Unmarked | Evaluating agents’ discovery of hidden model behaviors | Standalone tool utility does not directly become auditing-agent gains; scaffolded black-box calls remain the best investigation tools. | [Setting] Investigation agents iteratively query audited models with tools; steering affects the target, not investigator. [Validation] 56 hidden-behavior models, 14 behaviors, 13 tool configurations; fixed25,000-output-token budget, 16 repeats, implantation/anti-confession controls. |
+| [15](#paper-15) | [Belief Dynamics](https://arxiv.org/abs/2511.00617) | Analysis | Dense Transformer | Unmarked | Jointly predicting many-shot ICL and steering effects | A Bayesian model jointly predicts both interventions; approximate addition in log-belief space explains sigmoid responses and transition boundaries. | [Setting] Many-shot demonstrations are long input, with Yes/No-probability endpoints, not environmental feedback or long-horizon action. [Validation] Five persona types; shot/steering-strength sweeps and held-out strength prediction; additional concepts including sentiment. |
+| [16](#paper-16) | [Narrow Finetuning Traces](https://arxiv.org/abs/2510.13900) | Analysis | Dense (some checkpoints unverified) | Unmarked | Identifying narrow fine-tuning objectives from activation differences | Narrow fine-tuning leaves decodable artifacts in activations on unrelated text, substantially helping agents identify training objectives. | [Setting] Offline fine-tuning-difference readouts/text injection; interpretability agents separately identify training domains through model-query tools. [Validation] 33 organisms, 1B–32B; false facts/EM/subliminal/taboo; 10,000 unrelated web texts, black-box and pretraining-data-mixing controls. |
+| [17](#paper-17) | [Weight Arithmetic](https://arxiv.org/abs/2511.05408) | Method; Analysis | Dense Transformer | Unmarked | Weight-space behavioral control and fine-tuning-drift repair | Contrastive weight directions generally control behavior across distributions better than tested activation directions, partly repairing fine-tuning-induced sycophancy/refusal degradation. | [Setting] QA/advice/evil-MCQA and repair after mathematics training, not environmental execution or multi-turn agents. [Validation] TruthfulQA/TriviaQA, evil-MCQA; repair after GCD/GSM8K fine-tuning, jointly measuring task gains/general capability. |
+| [18](#paper-18) | [Subliminal Learning as Distillation](https://arxiv.org/abs/2606.00995) | Analysis | Dense; includes text-only VLM experiments | Unmarked | Tracking trait distillation through semantically unrelated data | Students learn teacher-aligned steering vectors from unrelated numeric outputs; transferable traits depend on directional effects and optimization. | [Setting] Numeric teacher distillation, animal-preference QA, and directional interventions, not agent traces. [Validation] Two open models; numeric sequences, 16 animal preferences, direction replacement/ablation, and Adam–SGD controls. |
+| [19](#paper-19) | [Impatient Users Confuse AI Agents](https://arxiv.org/abs/2510.04491) | Method; Analysis | Dense Transformer | Unmarked | User-trait simulation and agent-interaction stress tests | Changing only simulated users’ traits lowers frontier-agent performance on τ-Trait by2%–30% on average. | [Setting] Persona vectors steer user simulators; tested agents execute database/tool tasks, while BFCL uses AST matching. [Validation] Four-domain τ-Trait (airline/retail/telecom/telemedicine), BFCL multi-turn tool calls; human realism/composed-trait evaluation. |
+| [20](#paper-20) | [Generative Causal Mediation](https://arxiv.org/abs/2602.16080) | Method | Dense Transformer | Unmarked | Localizing and controlling distributed behavior in long responses | Generative causal mediation localizes control components from long responses; sparse head intervention outperforms correlation-probe localization. | [Setting] Head mediation/steering on single-turn complete responses; long responses are not long-horizon agent tasks. [Validation] Three models; refusal, sycophancy, prose-to-poetry; held-out long responses scored for target behavior, relevance, and fluency. |
+| [21](#paper-21) | [Steer Like the LLM](https://arxiv.org/abs/2605.03907) | Method; Analysis | Dense Transformer | Unmarked | Distilling prompt interventions and dynamically regulating steering | Prompt-intervention strength varies by token; PSR mimics this pattern and improves control, especially under high-coherence constraints. | [Setting] Persona Vectors/IFEval/AxBench responses; token-wise coefficients do not establish multi-step agent control. [Validation] Persona Vectors, IFEval, AxBench; multiple models; control–coherence trade-offs versus prompting/fixed steering. |
+| [22](#paper-22) | [Personality Subnetworks](https://arxiv.org/abs/2602.07164) | Method; Analysis | Dense + pruned subnetworks | Unmarked | Training-free pruning to extract persona subnetworks | A little calibration data localizes persona-specific subnetworks; contrastive pruning strengthens separation/control of opposing personas. | [Setting] MBTI/AI Persona and scripted RoleAgentBench multiple-choice/dialogue, not actual multi-agent tool tasks. [Validation] MBTI, AI persona, RoleAgentBench; MMLU/HellaSwag retention, sparsity, and module-restoration ablations. |
+| [23](#paper-23) | [Style Modulation Heads](https://arxiv.org/abs/2603.13249) | Method; Analysis | Dense + MoE (text) | Unmarked | Localizing style heads for persona control | A few Style Modulation Heads support persona control in main models; localized intervention reduces coherence degradation from residual steering. | [Setting] Multi-trait text generation and per-head interventions/ablations, without tool feedback or long-term persona measurement. [Validation] Traits and positive/negative strength sweeps; per-head interventions/ablations, trait–coherence frontiers, and capability controls. |
+| [24](#paper-24) | [VALUEFLOW](https://arxiv.org/abs/2602.03160) | Method; Analysis | Mixed / subset unverified | Unmarked | Value-intensity evaluation and multi-value control | Unified value extraction, calibrated scoring, and control reveal directional asymmetries and multi-value composition patterns across ten models. | [Setting] Value-intensity responses, OpinionQA, and multi-value prompt composition, not activation-based agent control. [Validation] Ten models×four value theories; VIDB ranking anchors, human evaluation, OpinionQA group preferences, and composition. |
+| [25](#paper-25) | [Shifting the Gradient](https://arxiv.org/abs/2604.16423) | Analysis | Dense Transformer | Unmarked | Comparing PPS and inoculation defense mechanisms | PPS reverses gradient pressure along trait axes and reduces existing evilness; IP shows different gradient patterns and struggles to remove existing traits. | [Setting] Defensive fine-tuning and gradient/trait-projection experiments, with trait-text endpoints rather than agent execution. [Validation] Qwen2.5-7B evilness narrow fine-tuning; initial trait strengths, gradient-projection/sign interventions, and cross-trait controls. |
+| [26](#paper-26) | [The Piggyback Hypothesis](https://arxiv.org/abs/2606.06667) | Analysis; Method | Dense＋MoE | Unmarked | Explain and constrain out-of-domain generalization from narrow-domain fine-tuning | Shared chat-template tokens can carry fine-tuned behavior out of domain; TReFT regularization reduces spillover while preserving within-domain learning. | [Setting] EM QA and search_info call-string detection, with preset tool returns; no real retrieval feedback loop. [Validation] Multiple models/EM datasets; prefix perturbation/patching; extensions to abstention, tool calls, refusal, and short-answer length. |
+| [27](#paper-27) | [Predicting Future Behaviors](https://arxiv.org/abs/2606.11172) | Method; Analysis | Dense + MoE; reasoning tested | Unmarked | Predict post-reasoning behavior and control generation paths | Features predicting future behavior differ from detectors of generated behavior; FPCG selects sentences prospectively to control behavior while largely preserving output quality. | [Setting] Candidate continuations/future-behavior probabilities at CoT sentence boundaries; includes contextual decisions but no live tool-action traces. [Validation] Four reasoning-model types, six binary behaviors, repeated sentence-boundary continuations, held-out probes, and activation-steering controls. |
+| [28](#paper-28) | [Synthetic Persona Pretraining](https://arxiv.org/abs/2608.13482) | Method; Analysis | Dense (trained from scratch) | Unmarked | Shape and bind assistant personas from pretraining | Value reflections introduced from token zero and bound during post-training improve value adherence/out-of-domain dilemmas more than final-stage-only exposure. | [Setting] Pretraining/SFT, value-choice probabilities, and jailbreak generation; long training is not long-horizon agent execution. [Validation] Self-trained1.7B/100B-token and3B/500B-token models; constitutions, jailbreaks, AI-risk dilemmas, and persona-binding controls. |
+| [29](#paper-29) | [How Emotion Shapes Behavior](https://arxiv.org/abs/2604.00005) | Analysis | Dense | Unmarked | Internal emotion interventions and stage-specific agent-behavior analysis | Emotion–behavior relationships are non-monotonic; selected emotions improve capabilities/safety and systematically change multi-step agent performance. | [Setting] Beyond single-turn capability tasks, planner–decider–executor tool execution/replanning; not production long coding traces. [Validation] Logic/code/math/creativity/safety; HotpotQA, Scientific, GAIA; module-specific interventions. |
+| [30](#paper-30) | [Emergent Misalignment Is Not Magical](https://arxiv.org/abs/2608.29118) | Analysis | Dense + hybrid attention; text | Unmarked | Predict narrow-domain EM generalization and directional transfer | EM generalization depends on data/format: pretraining representation distances predict effects, and no malicious direction is universal across tested EM models. | [Setting] Independent post-EM question generation, format/prompt perturbations; not continuous agent actions. [Validation] Twelve model–data settings; training-format changes, cross-EM direction ablation, random suffixes/paraphrases. |
+| [31](#paper-31) | [User Model Extraction](https://arxiv.org/abs/2609.31603) | Method; Analysis | Dense Transformer | Unmarked | Read and causally edit the model's user beliefs | BSD extracts and writes compact user representations; changing inferred intent for fixed requests changes refusal, with shared geometry across models. | [Setting] Offline natural-dialogue histories; endpoints are user-attribute MCQs/refusal interventions, not online tools. [Validation] Three models,13 attributes, approximately58k natural dialogues; held-out reads/writes, fixed harmful requests, random-write-map/cross-model controls. |
+| [32](#paper-32) | [Usage-Modulated Sentiment](https://arxiv.org/abs/2610.05069) | Analysis | Dense; intervention only on Llama | Unmarked | Separate shared sentiment axes from usage residuals | Beyond robust shared sentiment directions, low-dimensional tone/audience structure remains; residual-tone steering changes expression while preserving polarity. | [Setting] Event-text tone/audience readout, erasure, and single-turn generation; not multi-step agents. [Validation]221 event skeletons/3,536 texts; Llama/Mistral/Gemma; event-based splits, target/random erasure, and blind Llama-generation evaluation. |
+| [33](#paper-33) | [Do Personality Traits Interfere?](https://arxiv.org/abs/2602.15847) | Analysis | Dense | Unmarked | Big Five control and cross-trait interference | Cross-trait coupling persists after removing linear directional overlap, and forced orthogonality may weaken control. | [Setting] Interview-style BFI generation measures trait coupling; no closed-loop actions reported, independent multi-turn progression unverified. [Validation] LLaMA-3-8B/Ministral-8B; BFI interviews; six geometric conditions; target/off-target traits and fluency. |
+| [34](#paper-34) | [Forecasting Side Effects](https://arxiv.org/abs/2608.11227) | Method; Analysis | Dense (text) | Unmarked | Predict behavioral side effects of activation steering | Side effects are widespread, structured, and asymmetric; unsteered representations predict their signs better than similarity baselines. | [Setting] Behavioral-coupling matrices from generated text in six contexts; context types are not multi-turn environment tasks. [Validation] Three models×67 behaviors, six contexts; cross-effect matrices, held-source/target forecasts, multi-behavior ratings. |
+| [35](#paper-35) | [Rank-1 Steering & Granularity](https://arxiv.org/abs/2605.16362) | Method; Analysis | Dense; includes text-only VLM experiments | Unmarked | Budget-constrained rank1 layer/strength search | Geometry guidance reduces search trials by39.8% on average; cross-context direction heterogeneity correlates with search difficulty and performance limits. | [Setting] Budgeted layer/strength search across prompts; search trials are not agent actions. [Validation] Three model families×20 concepts; separate extraction/evaluation questions; layer/coefficient search; trials to95% of best-found utility. |
+| [36](#paper-36) | [Playing Devil’s Advocate](https://arxiv.org/abs/2605.21006) | Analysis | Dense Transformer | Unmarked | Reuse role vectors to reduce sycophancy | Critical-role vectors not extracted for sycophancy approach dedicated CAA effects despite low cosine similarity. | [Setting] PhilPapers option logits and16 factual probes; role vectors do not directly execute agent tasks. [Validation] Gemma2-27B/Qwen3-32B; counterbalanced PhilPapers, separate tuning split,16 factual probes. |
+| [37](#paper-37) | [Where Steering Signals Come From](https://arxiv.org/abs/2607.25270) | Method; Analysis | Dense Transformer | Unmarked | Choose activation sources for steering-signal extraction | With downstream intervention fixed, execution-boundary states provide stronger signals than text already expressing the behavior; tail subtraction improves them further. | [Setting] Single-turn tasks comparing source contexts/readout positions; execution boundary means generation boundary, not tool execution. [Validation] Three instruct models; entity/persona-style/refusal/nonsense tasks, held-out general questions, controlled source/readout positions. |
+| [38](#paper-38) | [ContextEcho](https://arxiv.org/abs/2605.24279) | Benchmark; Analysis | API/Dense | Unmarked | Evaluate persona drift in long-horizon coding agents | Real agent sessions exhibit early-onset, cross-provider drift; compaction does not reliably reset it, and anchor recovery includes generic register-reset effects. | [Setting] Real long coding/tool traces as corpus; controls mainly use snapshot-branch probes/format, not full-task steering. [Validation] ContextEcho:25 identity probes,57 real coding sessions,23-model representative-session panel; snapshot probing and compaction/placebo controls. |
+| [39](#paper-39) | [Non-Identifiability of Steering Vectors](https://arxiv.org/abs/2602.06801) | Theory; Analysis | Dense Transformer | Unmarked | Steering-vector identifiability and output equivalence | Under single-layer white-box local linearity, different directions can have equivalent outputs, preventing unique identification from behavioral tests. | [Setting] Single-layer linearization theory and trait/logit generation controls; no agent-trace validation. [Validation] Llama3.1-8B/Qwen2.5-3B, five traits; orthogonal perturbations, mean-difference/PCA, strengths/prompt distributions, classifiers/logits. |
+| [40](#paper-40) | [Detection != Reliable Control](https://arxiv.org/abs/2608.24901) | Analysis | Dense Transformer | Unmarked | Empathy-direction decodability and causal control | Decodable empathy does not guarantee reliable control: Resonance partly changes automatic scores; Recognition is also limited by measurement resolution. | [Setting] Empathy readout/addition/ablation in emotional-support answers; not long-term human dialogue or tool execution. [Validation] Three instruct models, EPITOME Recognition/Resonance, two LLM judges plus classifiers, emotional/neutral positive controls, addition/ablation. |
+| [41](#paper-41) | [Latent Identity Reversion](https://arxiv.org/abs/2610.01490) | Analysis | Closed / undisclosed | Unmarked | Maintain and restore persistent-agent identity | Persona information remaining in history does not guarantee enacted identity; lost system anchors and dialogue context jointly affect identity reversion. | [Setting] Persistent-harness heartbeat/identity-restoration tests with historical tool records; no tool-task success evaluation. [Validation] Claude Opus4.5 persistent agent; anchor retention/loss/restoration, heartbeat/human interaction;46 anchored probes without failure. |
+| [42](#paper-42) | [Prompt-Activation Duality](https://arxiv.org/abs/2605.10664) | Method; Analysis | Dense Transformer（GQA） | Unmarked | Preserve coherence in multi-turn persona steering | GCAD uses attention contributions and tokenwise gating to preserve trait control while sharply reducing coherence degradation under persistent KV cache. | [Setting] Fifteen traits×ten-turn persistent-KV-cache dialogue; no tool actions or environmental feedback. [Validation] Qwen2.5-7B/Llama3.1-8B;60 conversations per trait/condition, trait/coherence ratings. |
+| [43](#paper-43) | [What Can We Actually Steer?](https://arxiv.org/abs/2511.18284) | Analysis | Dense; fixed L15 | Unmarked | Compare controllability across target behaviors | Steering depends on behavior category; trait strength follows an inverted-U coefficient curve, while vector separation fails to predict success. | [Setting] Independent generation for50 behaviors at a fixed layer, with coefficient/data-size sweeps; not agent tasks. [Validation] Llama3.1-8B L15; role/trait/misalignment/style/public-figure imitation; coefficient, vector, and sample-size sweeps. |
+| [44](#paper-44) | [Persona Non Grata](https://arxiv.org/abs/2604.11120) | Analysis | Dense/Hybrid (text) | Unmarked | Compare safety across persona-induction methods | Persona safety rankings change with induction method and architecture; a prosocial persona safe under prompting can be most dangerous under activation steering. | [Setting] Harmful-request responses/reasoning traces after persona induction; not tool-agent safety. [Validation] Four standard plus two reasoning models; system/few-shot/CAA, Study1's5,568 judged conditions, coefficient/persona-strength matching. |
+| [45](#paper-45) | [Steering Interference & Defaults](https://arxiv.org/abs/2609.06951) | Analysis | Dense (text) | Unmarked | Identify sources of steering interference | Most interference is asymmetric and reflects model fallback tendencies under perturbation; matched-norm random pushes yield similar off-target rankings. | [Setting] Twenty-four-behavior text cross-interference, random pushes, ten-model replication; not long-horizon control. [Validation] Ten instruct models×24 behaviors; generated-text judges, matched-norm random directions, leave-one-behavior-out prediction/cross-model replication. |
+| [46](#paper-46) | [SafeSteer](https://arxiv.org/abs/2509.21400) | Method; Analysis | Dense · VLM | Unmarked | Inference-time VLM jailbreak defense with benign-capability preservation | Authors report that adaptive steering in low-dimensional safety subspaces reduces jailbreak success while maintaining or improving benign-task performance. | [Setting] Image/text jailbreak inputs→single generation; early-token adaptive steering, no environmental action loop. [Validation] LLaVA/MiniGPT4/Qwen2.5-VL; image perturbation/text-in-image attacks, adaptive attacks, MM-Vet benign capability. |
+| [47](#paper-47) | [CCS: Contrastive Covariance](https://arxiv.org/abs/2610.14025) | Method; Analysis | Dense (text) | Unmarked | Deconfound personality/emotion/topic/truthfulness directions for stable control | Contrastive-covariance subspaces filter confounds, improve tested concept control/output quality, and sustain control over20-turn dialogue. | [Setting] Single-turn generation plus20-turn persistent-KV-cache dialogue; not tool agents. [Validation] Three dense models; AxBench, BIG5/NPTI, Emotion, TruthfulQA; topic-bias oracle controls;23 raters/296 generations. |
+| [48](#paper-48) | [ATLAS: Drift No More](https://arxiv.org/abs/2611.04315) | Method; Analysis; Theory | Dense／MoE；VLM/VLA | Unmarked | Long-horizon multi-agent task/role stability, state maintenance, tool permissions, and embodied cooperation | ATLAS combines task–role–state spectral kernels with dynamic memory interventions, improving collaboration and reducing drift in memory, state, tool, and embodied stress tests. | [Setting] Long-dialogue memory and closed-loop multi-agent tasks; AMemGym30–100 turns/episode, ALARA environments, LIBERO actions. [Validation] EverMemBench2,400 QA; AMemGym1,000 episodes; ToolACE500 two-to-six-call chains, AST/arguments; ALARA115 tasks; LIBERO10 tasks×50 rollouts×three seeds. |
 
-## 人格方向从哪里来，如何形成？
+## Where do persona directions come from, and how do they form?
 
-<a id="paper-1"></a>
+<a id="paper-1｜Persona"></a>
 
 ### ID 1｜Persona Vectors: Monitoring and Controlling Character Traits in Language Models
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：基础
+Method; Analysis　|　Reading status: Unmarked　|　Priority: Foundation
 
-[论文原文](https://arxiv.org/abs/2507.21509)
+[Paper](https://arxiv.org/abs/2507.21509)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct
+Models studied: Qwen2.5-7B-Instruct; Llama-3.1-8B-Instruct
 
-骨干架构：Dense decoder-only Transformer（文本）
+Architecture: Dense decoder-only Transformer (text)
 
-输入／推理模式：chat模型文本生成；未研究专门reasoning模型。
+Input / inference mode: Text generation by chat models; dedicated reasoning models were not studied.
 
-架构证据：2507.21509v3：§3.1；App.D/J；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2507.21509
+Architecture evidence: 2507.21509v3: §3.1; App.D/J. Targeted checks of model setup and relevant appendices; code results were not recomputed. Original: https://arxiv.org/html/2507.21509
 
 **Research question**
 
-能否从自然语言trait定义自动提取方向，并用它监测、控制及预防训练引起的人格漂移？
+Can directions be automatically extracted from natural-language trait definitions to monitor, control, and prevent training-induced personality drift?
 
-**一句话主题**
+**One-sentence topic**
 
-从对比回答中提取人格方向，用于监测、控制以及预测训练引起的行为变化。
+Extract personality directions from contrasting responses to monitor, control, and predict training-induced behavioral changes.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. Method：从trait名称＋自然语言定义出发，Claude 3.7 Sonnet生成5对正负system prompts、40题（20 extraction／20 evaluation）及judge rubric。每组问题／prompt做10次rollout，用GPT-4.1-mini评分，保留正例>50、负例<50；逐层对response tokens的residual stream取均值，再算v_l=mean(h_pos)-mean(h_neg)。不是PCA，也不是给定任意trait就保证能提取成功。（§2、App.A）
+1. Method: Starting from a trait name and natural-language definition, Claude 3.7 Sonnet generates 5 positive/negative system-prompt pairs, 40 questions (20 extraction / 20 evaluation), and a judging rubric. Each question/prompt combination receives 10 rollouts, scored by GPT-4.1-mini; positive examples >50 and negative examples <50 are retained. Residual-stream activations are averaged over response tokens at each layer, then v_l=mean(h_pos)-mean(h_neg). This is not PCA, and extraction is not guaranteed to succeed for an arbitrary trait. (§2, App.A)
 
-2. 部署监测与控制：在Qwen2.5-7B-Instruct、Llama-3.1-8B-Instruct上，主测evil／sycophancy／hallucination；推理时h_l←h_l+αv_l可改变trait表达。把激活投影到trait方向，可追踪system prompt及many-shot上下文引起的行为变化。response mean适合提取steering方向；其他token位置的监测效果另行比较，不能默认等价。（§3、App.A/C）
+2. Deployment monitoring and control: The main traits tested on Qwen2.5-7B-Instruct and Llama-3.1-8B-Instruct are evil, sycophancy, and hallucination. Inference-time h_l←h_l+αv_l changes trait expression. Projecting activations onto trait directions tracks behavioral changes induced by system prompts and many-shot contexts. Response means are suitable for extracting steering directions; monitoring at other token positions is compared separately and should not be assumed equivalent. (§3, App.A/C)
 
-3. 训练漂移：构造直接诱发trait及窄域微调引发意外泛化的数据，发现微调前后沿persona方向的激活变化与trait分数相关；用推理期反向steering可压低已学到的坏trait，但强干预会损伤MMLU。（§4–5.1）
+3. Training drift: Data are constructed both to induce traits directly and to produce unexpected generalization after narrow-domain fine-tuning. Pre/post-fine-tuning activation changes along persona directions correlate with trait scores. Reverse steering at inference reduces learned undesirable traits, but strong interventions damage MMLU. (§4–5.1)
 
-4. Preventative steering：训练时反而沿不希望学到的trait正向加向量，让外部干预承担拟合坏行为所需的信号，减少权重继续学习该方向的压力；推理时移除干预。已测条件下比事后抑制更好保留通用能力；单层并非总能完全阻止漂移，多层干预更有效。不是训练时直接压低坏trait。（§5.2、App.J）
+4. Preventative steering: During training, the vector is added in the positive direction of the undesirable trait, letting the external intervention supply part of the signal needed to fit bad behavior and reducing pressure for weights to learn that direction. The intervention is removed at inference. In tested settings, this preserves general capabilities better than post-hoc suppression. A single layer does not always prevent drift completely; multi-layer intervention is more effective. It does not directly suppress the undesirable trait during training. (§5.2, App.J)
 
-5. 数据筛选：对同一个prompt，算训练答案投影减去base model自行回答的投影，即Δp=p(data response)-p(base response)。数据集平均Δp可预测微调后的trait表达；按样本Δp排序可找出诱发漂移的数据，在WildChat／LMSYS等真实聊天数据中也能找到部分LLM文本筛选漏掉的风险样本。（§6、App.H–L）
+5. Data filtering: For the same prompt, subtract the projection of the base model’s own response from that of the training response: Δp=p(data response)-p(base response). Dataset-average Δp predicts trait expression after fine-tuning. Ranking examples by Δp identifies drift-inducing data, including risky examples in real chat data such as WildChat/LMSYS that LLM text-based filtering misses. (§6, App.H–L)
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 作者明确：监督式、prompt-elicited提取；要先指定trait且模型能被prompt诱发该行为。模糊定义会改变方向语义，强拒答模型可能无法形成足够正例；未指定trait的漂移不在检测范围。mean difference是粗粒度方向，可能混合多个行为成分。（§8）
+1. Author-stated: Extraction is supervised and prompt-elicited; the trait must be specified in advance and the model must be promptable into that behavior. Vague definitions change the direction’s meaning, and strongly refusing models may not supply enough positive examples. Drift in unspecified traits is outside detection scope. Mean differences are coarse directions that may mix several behavioral components. (§8)
 
-2. 作者明确：主要是两个7B/8B级chat模型；正文三trait，附录补四trait。不能据此推断更大模型、MoE、reasoning model、不同后训练阶段都成立。闭源模型若拿不到内部激活也不能直接使用该方法。（§8；最后一句为适用条件推论）
+2. Author-stated: Mainly two 7B/8B chat models, with three traits in the main text and four additional traits in the appendix. This does not establish applicability to larger models, MoE, reasoning models, or different post-training stages. The method also cannot be applied directly to closed models without internal-activation access. (§8; the last sentence is an applicability inference)
 
-3. 作者明确：主要依赖GPT-4.1-mini和每trait 20道自动生成评估题；虽有人类一致性及外部benchmark检查，仍难覆盖真实多轮、跨域部署，分数也不是人格强度的客观刻度。（§8、App.B）
+3. Author-stated: Evaluation relies mainly on GPT-4.1-mini and 20 automatically generated questions per trait. Human-agreement and external-benchmark checks are provided, but realistic multi-turn and cross-domain deployment remain difficult to cover. Scores are not an objective scale of personality strength. (§8, App.B)
 
-4. 已测边界：强推理期steering会降低MMLU；单层preventative steering对刻意诱导trait的数据不一定充分。附录的投影正则化不成功，作者怀疑模型可能改用其他方向表征trait，不能把固定线性方向当作不可绕过的安全机制。（§5、App.J.5）
+4. Tested boundaries: Strong inference-time steering reduces MMLU, and single-layer preventative steering may be insufficient for deliberately trait-inducing data. Projection regularization in the appendix was unsuccessful; the authors suspect the model may represent the trait in other directions. A fixed linear direction should not be treated as an unavoidable safety mechanism. (§5, App.J.5)
 
-5. 作者明确：Δp需要为训练prompt额外生成base回答，筛选成本高；附录研究了近似。机制上，为什么从“表现trait的答案”提取的方向能迁移到训练漂移预测与因果干预，尚未充分解释。（§8–9）
+5. Author-stated: Δp requires additional base-model responses to training prompts, making filtering costly; approximations are investigated in the appendix. Mechanistically, it remains insufficiently explained why directions extracted from trait-expressing answers transfer to training-drift prediction and causal intervention. (§8–9)
 
-6. 阅读核对点：投影相关与steering效应不等于定位到唯一人格机制；层、系数、向量尺度、采样和token位置会影响结论。跨trait纠缠、跨问题泛化和长期稳定性需要独立控制，不能把trait分数下降直接等同于真实风险消失。
+6. Reading check: Projection correlations and steering effects do not identify a unique personality mechanism. Layer, coefficient, vector scale, sampling, and token position affect conclusions. Cross-trait entanglement, cross-question generalization, and long-term stability need independent controls; lower trait scores do not directly imply that real risk has disappeared.
 
 **Future work**
 
-作者提出（§8–9）：用SAE细分trait并探索不依赖prompt诱发的发现方式（App.M已做初探）；解释表达→干预→训练预测为何能泛化；估计persona空间维数及自然基底，研究向量相关能否预测trait共现、哪些trait不适合线性表示。
+Author proposals (§8–9): Use SAEs to subdivide traits and explore discovery without prompt elicitation (preliminary work in App.M); explain generalization from expression to intervention to training prediction; estimate persona-space dimensionality and natural bases; study whether vector correlations predict trait co-occurrence and which traits resist linear representation.
 
-阅读推演：与Assistant Axis联动，比较训练前后“默认Assistant身份”与具体trait方向如何共同移动；把语气、拒答、事实知识和实际决策拆开评估。固定开发集选层／α后，用新题、多轮和跨模型确认；对比单向量、多方向子空间及非线性监测。训练期干预后再重新提取方向，检测是否只是把trait转移到旧monitor看不到的位置。
+Reading-derived ideas: Combine with the Assistant Axis to compare how default Assistant identity and specific trait directions move jointly before and after training. Evaluate tone, refusal, factual knowledge, and actual decisions separately. After choosing layers/α on a fixed development set, confirm on new questions, multi-turn settings, and other models; compare single vectors, multi-direction subspaces, and nonlinear monitoring. Re-extract directions after training-time intervention to test whether traits merely move beyond the old monitor’s view.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 提出persona vector，在残差层表现为线性 contrastive extraction
 
-关联论文：2, 3, 8, 17, 25, 28
+Related papers: 2, 3, 8, 17, 25, 28
 
-关键词：persona vectors; activation steering; trait monitoring; finetuning
+Keywords: persona vectors; activation steering; trait monitoring; finetuning
 
-机构／会议：来源：原始论文；机构和会议信息本表未重新核实
+Institution / venue: Source: original paper; institutional and venue information was not rechecked for this table.
 
-阅读证据：2507.21509v3：正文§2–9及App.A/B/C/H–M相关方法、控制与局限复核；非逐图逐数据审计。Future work区分作者提出与阅读推演。
+Reading evidence: 2507.21509v3: Main text §§2–9 and relevant methods, controls, and limitations in App.A/B/C/H–M checked; not a figure-by-figure or data-by-data audit. Future work distinguishes author proposals from reading-derived ideas.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-3"></a>
+<a id="paper-3｜The"></a>
 
 ### ID 3｜The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
 
-Analysis; Method　|　阅读状态：未标记　|　优先级：A
+Analysis; Method　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2601.10387)
+[Paper](https://arxiv.org/abs/2601.10387)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma-2-27B-it；Qwen3-32B；Llama-3.3-70B-Instruct；附加Gemma-2-27B base对照
+Models studied: Gemma-2-27B-it; Qwen3-32B; Llama-3.3-70B-Instruct; additional Gemma-2-27B base control
 
-骨干架构：三种Dense decoder-only Transformer（文本）；base/instruct属于训练阶段差异
+Architecture: Three dense decoder-only Transformers (text); base/instruct denotes a training-stage difference.
 
-输入／推理模式：正文limitations明确Qwen thinking disabled；其余为非reasoning chat设置。论文“without reasoning training”应与Qwen支持thinking的模型能力区分。
+Input / inference mode: The main-text limitations explicitly state that Qwen thinking is disabled; the other settings are non-reasoning chat. The paper’s “without reasoning training” should be distinguished from Qwen’s ability to support thinking.
 
-架构证据：2601.10387v1：§2.1；Limitations；App.B.3；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10387
+Architecture evidence: 2601.10387v1: §2.1; Limitations; App.B.3. Targeted checks of model setup and relevant appendices; code results were not recomputed. Original: https://arxiv.org/html/2601.10387
 
 **Research question**
 
-默认Assistant在人格空间中处于什么位置，其漂移能否被监测并通过激活干预稳定？
+Where does the default Assistant lie in persona space, and can its drift be monitored and stabilized through activation intervention?
 
-**一句话主题**
+**One-sentence topic**
 
-研究默认Assistant在人格空间中的位置，以及多轮对话中的漂移和稳定化。
+Study the default Assistant’s location in persona space, and its drift and stabilization in multi-turn dialogue.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 从275种角色、240个共享问题和多种system prompts出发，对充分/部分role-playing分别筛选，平均response token的中层residual activations构造role vectors，再做中心化PCA；不同模型解释70%角色间方差需要4–19个成分，说明并非所有persona天然只有一维。
+1. Starting with 275 roles, 240 shared questions, and multiple system prompts, the authors separately filter full and partial role-playing, average mid-layer residual activations over response tokens to construct role vectors, then perform centered PCA. Explaining 70% of between-role variance requires 4–19 components across models, so personas are not all inherently one-dimensional.
 
-2. 默认Assistant在共同主轴的一端，作者以默认Assistant与其他角色均值之差定义Assistant Axis；PC1的角色载荷跨模型相关>0.92，但后续主轴差异更大。双向steering改变完全代入其他身份的倾向，base Gemma也存在相近结构，支持post-training利用已有角色表征。
+2. The default Assistant lies at one end of a common principal axis. The Assistant Axis is defined as the difference between the default Assistant and the mean of other roles. PC1 role loadings correlate >0.92 across models, while subsequent axes differ more. Bidirectional steering changes the tendency to fully inhabit other identities. Similar structure also appears in base Gemma, supporting the use of pre-existing role representations by post-training.
 
-3. 多轮模拟实验把情绪脆弱用户、自我反思类对话和编码/日常任务对照，发现前两类更容易沿轴漂移，并展示jailbreak、妄想强化和自杀意念相关案例。最后按投影阈值条件性capping，在中晚层连续层段干预，选取安全—能力Pareto设置，使persona jailbreak有害回答率降低近60%，四类能力评估基本保持。
+3. Multi-turn simulations contrast emotionally vulnerable users and self-reflective dialogue with coding/everyday tasks; the first two drift more readily along the axis, with examples involving jailbreaks, delusion reinforcement, and suicidal ideation. Projection-threshold capping is then applied conditionally across contiguous middle-to-late layers. A safety–capability Pareto setting reduces harmful responses to persona jailbreaks by nearly 60%, while largely preserving four capability evaluations.
 
-4. App.G比较role-PC1与专门contrast定义的Assistant Axis：cosine全层>0.60、中层>0.71，漂移读出相近，但PC1 capping较弱。该比较还存在vLLM／Transformers后端差异，作者报告的能力差异不能完全归因于方向；它提示几何相似不足以直接担保控制效果等价，而不是严格隔离所有混杂的机制证明。
+4. App.G compares role-PC1 with the explicitly contrast-defined Assistant Axis: cosine >0.60 across layers and >0.71 in middle layers, with similar drift readouts but weaker PC1 capping. The comparison also differs in vLLM/Transformers backends, so reported capability differences cannot be attributed solely to direction. It suggests geometric similarity does not guarantee equivalent control, rather than providing a mechanism proof isolating every confound.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
 三种开放dense非推理设置；角色覆盖和模糊行为评分仍有限。暂时无法应用于闭源模型，MoE架构以及Reasoning Model。Assistant表征可能非线性，部分内容可能存于权重。PC2 PC3解释有限 是否可以探索。
 
-【本轮正文补读补充】
+[Additional main-text reading notes]
 
-①该轴同时混合默认身份、角色代入与部分安全行为；实验支持这些量相关并可被共同干预，尚不能把高投影解释为一般安全或可靠性的充分条件。
+① The axis mixes default identity, role immersion, and some safety behavior. Experiments support correlation and joint intervention, but high projection is not established as sufficient for general safety or reliability.
 
-②角色PCA来自特定合成角色/问题与response均值；其低维结构并未验证每个persona跨context均为global rank-1，次级主轴也主要靠语义解释。
+② Role PCA uses particular synthetic roles/questions and response means. Its low-dimensional structure does not establish a global rank-1 representation across contexts for each persona; secondary axes are also interpreted mainly semantically.
 
-③主要是非thinking的dense模型与模拟对话；真实长程工具行动、失败反馈及MoE/reasoning过程中的指标有效性仍未检验。
+③ Mainly non-thinking dense models and simulated dialogue; validity for real long-horizon tool actions, failure feedback, and MoE/reasoning processes remains untested.
 
 **Future work**
 
-作者提出：追踪character-training数据如何改变persona空间；用投影作为部署时漂移信号；研究训练期preventative steering与更丰富的价值/偏好表征。
+Author proposals: Track how character-training data change persona space; use projection as a deployment drift signal; study preventative steering during training and richer value/preference representations.
 
-阅读推演：把Axis读出与真实工具选择、诚实行动、任务完成率并测，寻找高投影但unsafe/失败的反例；用相同范数/层段对比Axis、PC1与agentic提取方向，区分身份稳定和行为稳定。
+Reading-derived ideas: Measure Axis readouts alongside actual tool choices, honest actions, and task completion, seeking high-projection but unsafe/failing counterexamples. Match norms/layer ranges when comparing Axis, PC1, and agentically extracted directions to separate identity stability from behavioral stability.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 Role-playing (sys prompt+persona的办法)做向量提取，对activation vectors做PCA取主成分。Assistant axis通过default sys prompt的vector-avg roleplaying来计算，发现和PC1高度符合。由于dir bias，这里做投影归一化以及边缘距离计算。Assistant-like traits在预训练已经形成，而后训练只是赋予ai的身份认同。最新用户消息对assistant axis的drift影响大，历史累加效应小。Steering方法：h<- h-v min(<h,v>-tau, 0)阈值τ一般取平均激活的25%。Sweeping效率低。Future work: 后训练中Assistant axis的位移，训练阶段干预（参考persona vector？）映射到具体的心理学特征。能否通过assistant axis预测drift以及危险行为？是否能分解assistant axis？Role playing和trait之间存在分离吗
 
-关联论文：1, 8, 10, 22, 28
+Related papers: 1, 8, 10, 22, 28
 
-关键词：Assistant Axis; persona space; persona drift; activation capping
+Keywords: Assistant Axis; persona space; persona drift; activation capping
 
-机构／会议：Anthropic；Oxford；MATS；ICML 2026 主会
+Institution / venue: Anthropic; Oxford; MATS; ICML 2026 main conference
 
-阅读证据：正文与相关附录选读；2601.10387v1 [cs.CL] 15 Jan 2026；§2–6、§8；App.B/C/F/G（特别G.5）。；原文：https://arxiv.org/html/2601.10387。未逐项复现。
+Reading evidence: Selected main text and relevant appendices; 2601.10387v1 [cs.CL] 15 Jan 2026; §§2–6, §8; App.B/C/F/G (especially G.5). Original: https://arxiv.org/html/2601.10387. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-8"></a>
+<a id="paper-8｜Tracing"></a>
 
 ### ID 8｜Tracing Persona Vectors Through LLM Pretraining
 
-Analysis　|　阅读状态：未标记　|　优先级：A
+Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2605.13329)
+[Paper](https://arxiv.org/abs/2605.13329)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：OLMo-3-1025-7B的17个pretraining checkpoints及post-trained版本；Apertus-8B-2509复核
+Models studied: 17 pretraining checkpoints and post-trained versions of OLMo-3-1025-7B; replicated with Apertus-8B-2509
 
-骨干架构：Dense decoder-only Transformer；跨预训练阶段与base/instruct，不是MoE／VLM实验。
+Architecture: Dense decoder-only Transformer; spans pretraining stages and base/instruct models, not MoE/VLM experiments.
 
-输入／推理模式：原生预训练completion与后训练文本任务分别使用；reasoning模式未明确单独控制。
+Input / inference mode: Native pretrained completion and post-trained text tasks are used separately; reasoning mode is not explicitly controlled as a separate variable.
 
-架构证据：2605.13329v1：§3 Models/Checkpoints；App.F；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13329
+Architecture evidence: 2605.13329v1: §3 Models/Checkpoints; App.F. Targeted checks of model setup and relevant appendices; code results were not recomputed. Original: https://arxiv.org/html/2605.13329
 
 **Research question**
 
-人格方向何时在预训练中出现，如何随训练变化，并能否迁移到后训练模型？
+When do persona directions emerge during pretraining, how do they change, and can they transfer to post-trained models?
 
-**一句话主题**
+**One-sentence topic**
 
-沿预训练过程追踪人格方向，研究它们何时出现、怎样变化及能否迁移到指令模型。
+Track persona directions throughout pretraining: when they appear, how they change, and whether they transfer to instruction models.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 直接追踪persona方向在pretraining什么时候形成，而不是只比较最终base/instruct。主实验覆盖OLMo3-7B的17个pretraining checkpoints及SFT、DPO、RLVR后训练版本，以evil、sycophantic、impolite、humorous四trait为对象，并在Apertus8B复核。
+1. Directly tracks when persona directions form during pretraining, rather than comparing only final base/instruct models. Main experiments cover 17 OLMo3-7B pretraining checkpoints plus SFT, DPO, and RLVR versions, studying evil, sycophantic, impolite, and humorous traits, with replication on Apertus8B.
 
-2. 为适配不遵循system prompt的base模型，把trait描述改为第三人称角色/假设场景，筛出既表达trait又连贯的生成，取正负response均值差；steering先单位化方向，再按目标模型该层平均activation norm缩放，控制不同checkpoint尺度变化。
+2. To accommodate base models that do not follow system prompts, trait descriptions become third-person characters/hypothetical scenarios. Generations are filtered for both trait expression and coherence, then positive/negative response means are differenced. Steering directions are unit-normalized and scaled by the target model’s average activation norm at that layer, controlling scale changes across checkpoints.
 
-3. 作者从约0.22%训练token处已能提取对后续instruct有效的方向；但最早时间取决于能否生成可筛选文本，不是发现了表征诞生的精确时刻。早期向量与最终方向cos约0.3仍可有效转移，随后几何持续趋稳；DPO是本流水线中抑制若干trait表达的主要阶段。
+3. Directions effective on later instruct models can already be extracted at about 0.22% of training tokens. The earliest time depends on generating filterable text, so it is not the exact moment representations are born. Early vectors with cosine about 0.3 to the final direction still transfer effectively; geometry subsequently stabilizes. DPO is the main stage suppressing several traits in this pipeline.
 
-4. facet分析及description/dialogue/narration交叉steering进一步显示：不同提取范式都有效，但强调同一trait的不同侧面。对当前问题尤其有用的是把“几何仍在变化”与“行为控制已能迁移”分开，说明不能仅凭cos低就认定方向失效，也不能把不同范式得到的方向简单当同一估计误差。
+4. Facet analysis and cross-steering between description/dialogue/narration show that different extraction paradigms work but emphasize different facets of the same trait. Especially useful here is the separation of continuing geometric change from already-transferable behavioral control: low cosine alone does not establish failure, and differences between paradigms should not simply be treated as estimation error.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①0.22%是该提取流程最早观测到有效方向的checkpoint，之前受语言流畅度/筛选限制，不能推断此前不存在表征。
+① 0.22% is the earliest checkpoint at which this extraction pipeline observes an effective direction. Earlier checkpoints are limited by fluency/filtering; this does not imply that representations were absent.
 
-②结果来自两条dense预训练流水线、四个trait；DPO主导抑制是这组阶段比较，不是对任意后训练方法的因果拆解。
+② Results cover two dense pretraining pipelines and four traits. DPO’s dominant suppression is a comparison within these stages, not a causal decomposition of arbitrary post-training methods.
 
-③评价主要是文本trait表达及facet评分；早期方向能steer后训练回答，不代表相同方向能稳定控制真实决策，亦未证明所有context共享global rank-1。
+③ Evaluation mainly measures textual trait expression and facet scores. Steering post-trained answers with early directions does not establish stable control of actual decisions, or global rank-1 structure across all contexts.
 
 **Future work**
 
-作者提出：定位预训练数据哪些成分形成persona，并在早期训练进行数据/梯度干预；区分trait、role与compositional character。
+Author proposals: Identify pretraining-data components that form personas and intervene on data/gradients early in training; distinguish traits, roles, and compositional characters.
 
-阅读推演：对每个checkpoint测matched context差分矩阵的rank及跨context transfer，判断方向旋转来自语言能力、facet混合还是行为机制变化；与ID7的trait interaction测量连接，检验组合行为是否也在早期形成。
+Reading-derived ideas: At each checkpoint, measure the rank of matched-context difference matrices and cross-context transfer to distinguish rotation due to language ability, facet mixing, or changing behavioral mechanisms. Connect this to ID7’s trait-interaction measurements and test whether compositional behavior also emerges early.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 注意同一trait也有不同的表达方向，比如Evil 可以分为：
 
@@ -324,587 +325,587 @@ Sycophantic 中的 Indirectness 在 OLMo 上逐渐下降。
 
 Extraction方法不同（description、dialog、narration）都有steering能力，可能是提取到不同facet，但是效果有差异。做均值未必比单一方法好
 
-关联论文：1, 3, 22, 28
+Related papers: 1, 3, 22, 28
 
-关键词：pretraining; persona formation; checkpoints; representation evolution
+Keywords: pretraining; persona formation; checkpoints; representation evolution
 
-机构／会议：EPFL；预印本；主会未核实
+Institution / venue: EPFL; preprint; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2605.13329v1 [cs.CL] 13 May 2026；§2方法、§3–6主实验、§7；App.A Apertus复核、App.B discourse/评审控制、App.C限制、App.F/G提取与尺度设置。；原文：https://arxiv.org/html/2605.13329。未逐项复现。
+Reading evidence: Selected main text and relevant appendices; 2605.13329v1 [cs.CL] 13 May 2026; §2 methods, §§3–6 main experiments, §7; App.A Apertus replication, App.B discourse/judge controls, App.C limitations, App.F/G extraction and scale settings. Original: https://arxiv.org/html/2605.13329. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-6"></a>
+<a id="paper-6｜Open"></a>
 
 ### ID 6｜Open Character Training: Shaping the Persona of AI Assistants through Constitutional AI
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2511.01689)
+[Paper](https://arxiv.org/abs/2511.01689)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama-3.1-8B、Qwen2.5-7B、Gemma-3-4B的instruction-tuned学生；教师另计
+Models studied: Instruction-tuned students based on Llama-3.1-8B, Qwen2.5-7B, and Gemma-3-4B; teachers counted separately
 
-骨干架构：学生LM backbone为Dense；Gemma3原生支持图文，但本文character-training／评估为文本。Llama3.3-70B用作数据辅助不是主要学生。
+Architecture: Student LM backbones are dense. Gemma3 natively supports images and text, but character training/evaluation here is textual. Llama3.3-70B assists data generation rather than serving as a main student.
 
-输入／推理模式：character distillation及introspection后文本对话；专门thinking模式未核。
+Input / inference mode: Text dialogue after character distillation and introspection; dedicated thinking mode unverified.
 
-架构证据：2511.01689v1：§2.1–2.2；§3模型列；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.01689
+Architecture evidence: 2511.01689v1: §§2.1–2.2; §3 model list. Targeted checks of model setup and relevant appendices; code results were not recomputed. Original: https://arxiv.org/html/2511.01689
 
 **Research question**
 
-能否用开放的constitutional character training塑造助手人格，其效果与提示和激活控制有何差别？
+Can open constitutional character training shape assistant personality, and how does it differ from prompting and activation control?
 
-**一句话主题**
+**One-sentence topic**
 
-通过开放character training塑造助手人格，并比较它与提示及激活控制的区别。
+Shape assistant personality through open character training and compare it with prompting and activation control.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将工业界character training做成可复现的开源流水线，在Llama3.1-8B、Qwen2.5-7B和Gemma3-4B上训练11种persona，覆盖语气、价值取向与故意misaligned角色。
+1. Turns industrial character training into a reproducible open-source pipeline, training 11 personas on Llama3.1-8B, Qwen2.5-7B, and Gemma3-4B, spanning tone, value orientations, and deliberately misaligned characters.
 
-2. 先手写约10条第一人称constitution，用带constitution的teacher产生偏好对并做DPO distillation；随后让已训练模型生成10000条self-reflection和2000条十轮self-interaction，SFT这些on-policy introspective数据，再合并两阶段LoRA。
+2. First handwrites about 10 first-person constitutional statements, generates preference pairs with a constitution-conditioned teacher, and performs DPO distillation. The trained model then generates 10,000 self-reflections and 2,000 ten-turn self-interactions; these on-policy introspective data are used for SFT, and the two stages’ LoRAs are merged.
 
-3. 评价不只看Big Five自述：作者让模型在约150种trait中每次隐式选择成对trait之一，用WildChat回答体现选择，再由judge识别并以Elo刻画偏好整体变化；相似constitution仍可有不同鼓励/抑制trait。
+3. Evaluation goes beyond Big Five self-reports. Each time, models implicitly choose one of a pair drawn from about 150 traits, express the choice through WildChat answers, and have judges identify it; Elo describes overall preference changes. Similar constitutions can still encourage/suppress different traits.
 
-4. 通过破坏角色的adversarial prompts、连贯性和realism成对评审，与system prompting、activation steering及仅DPO对照，完整训练通常更稳、更自然，额外introspection也有收益。五类常规能力测试中loving/flourishing大体保留能力，而故意提供误导的misaligned constitution确实降低部分成绩。其贡献是把trait strength、coherence、adversarial robustness和capability放入同一比较框架，并提供训练材料与权重；“学成默认角色”的证据来自行为稳健性，不是已证明某个底层身份机制。
+4. Adversarial character-breaking prompts and pairwise coherence/realism judging compare the full pipeline with system prompting, activation steering, and DPO alone. Full training is usually more robust and natural, with benefits from added introspection. Across five standard capability tests, loving/flourishing largely preserve ability, while deliberately misleading misaligned constitutions reduce some scores. The contribution places trait strength, coherence, adversarial robustness, and capability in one framework and releases training materials and weights. Evidence of a learned default character comes from behavioral robustness, not a proven underlying identity mechanism.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①revealed preference通过实际回答推断所选表达风格；它比直接人格自述更细，但并未系统检验有外部后果的风险、诚实或工具行动，不能等同跨任务behavioral disposition。
+① Revealed preferences infer chosen expressive style from actual answers. This is finer-grained than direct personality self-report, but does not systematically test consequential risk, honesty, or tool actions and is not equivalent to a cross-task behavioral disposition.
 
-②人写constitution和judge评价共同规定“自然/连贯”的含义；作者做了order-swap筛选，但仍需要人评与跨judge验证。
+② Human-written constitutions and judge evaluation jointly define “natural/coherent.” Order-swap filtering is used, but human and cross-judge validation remain needed.
 
-③均为<10B模型，能力评测集中三个persona和常规选择题；不能据此断言所有角色、长程agent任务都无能力成本，且语气与策略是否解耦并未单独控制。
+③ All models are <10B; capability evaluation focuses on three personas and standard multiple-choice tasks. This does not establish zero capability cost for all characters or long-horizon agent tasks; tone–strategy dissociation is not separately controlled.
 
 **Future work**
 
-作者提出：用人评/多judge复核，独立研究训练与评价；变化introspection数量、多样性与来源，探索RL和更大模型。
+Author proposals: Human/multi-judge checks and independent study of training/evaluation; vary introspection quantity, diversity, and sources; explore RL and larger models.
 
-阅读推演：沿同一persona分别测stylistic和behavioral coherence，比较DPO、introspection与vector steering的Pareto前沿；提取训练前后角色/trait/action方向，检验introspection究竟加强共享表示，还是主要稳定角色自述。
+Reading-derived ideas: Measure stylistic and behavioral coherence separately for the same persona, comparing Pareto frontiers of DPO, introspection, and vector steering. Extract pre/post-training role/trait/action directions to test whether introspection strengthens shared representations or mainly stabilizes character self-description.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 17, 25, 28
+Related papers: 1, 17, 25, 28
 
-关键词：character training; Constitutional AI; revealed preferences; post-training
+Keywords: character training; Constitutional AI; revealed preferences; post-training
 
-机构／会议：Cambridge；AI2；Anthropic；MATS；预印本；主会未核实
+Institution / venue: Cambridge; AI2; Anthropic; MATS; preprint; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2511.01689v1 [cs.CL] 03 Nov 2025；§2.1–2.4、§3.1–3.5、§5；App.B的数据构造与App.D realism。；原文：https://arxiv.org/html/2511.01689。未逐项复现。
+Reading evidence: Selected main text and relevant appendices; 2511.01689v1 [cs.CL] 03 Nov 2025; §§2.1–2.4, §§3.1–3.5, §5; data construction in App.B and realism in App.D. Original: https://arxiv.org/html/2511.01689. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-28"></a>
+<a id="paper-28｜Synthetic"></a>
 
 ### ID 28｜Synthetic Persona Pretraining: Alignment from Token Zero
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2608.13482)
+[Paper](https://arxiv.org/abs/2608.13482)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：真正预训练subject：1.7B SmolLM2-1.7B-shaped与3B Llama3.2-3B-shaped模型，统一SmolLM2 tokenizer
+Models studied: Actual pretraining subjects: 1.7B SmolLM2-1.7B-shaped and 3B Llama3.2-3B-shaped models, both using the SmolLM2 tokenizer.
 
-骨干架构：原文App.B.1明确两规模均Dense decoder-only Transformer（RoPE/RMSNorm/SwiGLU）；Qwen3.5-35B-A3B仅reflection generator，不是MoE persona-pretraining验证。
+Architecture: App.B.1 explicitly identifies both sizes as dense decoder-only Transformers (RoPE/RMSNorm/SwiGLU). Qwen3.5-35B-A3B is only the reflection generator, not evidence of MoE persona pretraining.
 
-输入／推理模式：from-token-zero预训练→persona binding后训练文本实验；不是现成Qwen3.5 reasoning模式对照。
+Input / inference mode: Text experiments involving pretraining from token zero followed by persona-binding post-training; not a comparison of existing Qwen3.5 reasoning modes.
 
-架构证据：2608.13482v1：App.B.1；正文reflection generation方法；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.13482
+Architecture evidence: 2608.13482v1, App.B.1 and the main-text reflection-generation method. Targeted review of model setup and relevant appendices, not code reproduction. Original: https://arxiv.org/html/2608.13482
 
 **Research question**
 
-能否从预训练早期塑造目标persona，再通过后训练将它绑定到Assistant身份？
+Can a target persona be shaped early in pretraining and then bound to the Assistant identity through post-training?
 
-**一句话主题**
+**One-sentence topic**
 
-在预训练早期塑造目标persona，再通过后训练将其绑定到Assistant身份。
+Shape a target persona early in pretraining, then bind it to the Assistant identity through post-training.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将persona构建前移至预训练：根据同一constitution，为部分原始文档生成第一人称价值reflection，并用特殊assistant标记插入文档中间；同时学习文档和reflection，随后以匹配的SP-SFT将该persona绑定到assistant身份。reflection额外token约占0.55%，不是丢弃所有有害文档。
+1. Moves persona construction into pretraining: using the same constitution, generate first-person value reflections for some raw documents and insert them mid-document with special assistant markers. Train on both document and reflection, then bind the persona to the assistant identity through matched SP-SFT. Reflections add approximately 0.55% tokens; this does not discard all harmful documents.
 
-2. 在数据匹配的1.7B/100B-token与3B/500B-token自训模型中，对比Vanilla、Filtered、从token zero加入、仅末段midtraining加入及两阶段加入。早期加入在constitution遵循和未直接训练的AI-risk两难选择中更强；常规jailbreak鲁棒性则末段暴露也足够，区分了价值偏好与拒答表型。
+2. In data-matched, self-trained 1.7B/100B-token and 3B/500B-token models, compares Vanilla, Filtered, inclusion from token zero, inclusion only during final-stage midtraining, and inclusion at both stages. Early inclusion is stronger on constitution adherence and untrained AI-risk dilemmas; final-stage exposure suffices for conventional jailbreak robustness, distinguishing value preferences from refusal phenotypes.
 
-3. persona binding实验保持其他条件，改变SFT回答分布与assistant标记；价值收益主要依赖匹配的回答分布，而不只复用特殊token。移除部分constitution条目的SFT例子后，早期训练模型仍能引用部分被排除条目，支持预训练学习可转入assistant行为。
+3. Persona-binding experiments hold other conditions fixed while varying the SFT response distribution and assistant marker. Value gains mainly depend on the matched response distribution, not merely reuse of a special token. After removing SFT examples for some constitution clauses, early-trained models can still cite some excluded clauses, supporting transfer from pretraining learning to assistant behavior.
 
-4. 用refusal-direction abliteration、模板替换和ChemPile继续训练检验稳固性：拒答优势容易失去，价值评测的早期训练优势仍部分保留；5%安全replay可恢复多种收益。第一／第三人称、文档位置和覆盖消融进一步显示，并非任意附加安全文本都等效。整体是训练干预与行为泛化研究，没有证明单个persona vector或不可移除的内部价值机制。
+4. Tests robustness through refusal-direction abliteration, template replacement, and continued ChemPile training: refusal advantages are easily lost, while some early-training advantages on value evaluations remain. A 5% safety replay restores several gains. First-/third-person, document-position, and coverage ablations show that arbitrary added safety text is not equivalent. This is a study of training interventions and behavioral generalization; it does not establish a single persona vector or an irremovable internal value mechanism.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 两个规模同时改变参数量与token预算，因此扩大收益不能独立归因为模型大小；最优训练配置也还未验证到frontier规模。
+① Both parameter count and token budget change between scales, so greater gains cannot be independently attributed to model size; the best training configuration has not been validated at frontier scale.
 
-② 核心价值比较主要依赖受限选项概率，而非自主行动；正文明确将agentic misalignment、欺骗和reward hacking留给更强模型。
+② Core value comparisons mainly use restricted-option probabilities rather than autonomous action; the paper explicitly leaves agentic misalignment, deception, and reward hacking to stronger models.
 
-③ binding与后续训练仍会破坏部分收益；已有继续训练／消融比“从token zero就永久稳定”更窄，RL是否保留尚未验证。
+③ Binding and subsequent training can still destroy some gains. Existing continued-training and ablation evidence is narrower than permanent stability from token zero; preservation under RL remains untested.
 
 **Future work**
 
-作者：扩大规模，研究deliberative alignment与RL是否保留或增强binding，比较constitution及reflection设计对稳定性的影响。阅读推演：分开提取价值选择、refusal、assistant身份方向，检查训练时机是否改变其重叠与因果迁移；用真实agent决策验证受限价值题收益。
+Authors: Scale up; study whether deliberative alignment and RL preserve or strengthen binding; compare how constitution and reflection designs affect stability. Reading-derived ideas: Separately extract directions for value choices, refusal, and assistant identity; test whether training timing changes their overlap and causal transfer; validate restricted-choice value gains through real agent decisions.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 3, 6, 8, 22, 30
+Related papers: 1, 3, 6, 8, 22, 30
 
-关键词：synthetic persona pretraining; token zero; persona binding; alignment
+Keywords: synthetic persona pretraining; token zero; persona binding; alignment
 
-机构／会议：EPFL；University of Toronto；Northeastern等；主会未核实；有NeurIPS workshop记录
+Institution / venue: EPFL; University of Toronto; Northeastern, among others. Main-conference acceptance unverified; a NeurIPS workshop record exists.
 
-阅读证据：正文§2–3、§5；附录A.4/B/C/D.4/F.8相关训练与binding对照选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2608.13482v1
+Reading evidence: Main text §§2–3 and §5; selected training and binding controls in App.A.4/B/C/D.4/F.8. Main text and relevant appendices reviewed; no experimental reproduction. https://arxiv.org/html/2608.13482v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-18"></a>
+<a id="paper-18｜Subliminal"></a>
 
 ### ID 18｜Subliminal Learning Is Steering Vector Distillation
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2606.00995)
+[Paper](https://arxiv.org/abs/2606.00995)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct；OLMo3-7B-Instruct；另Gemma3-4b-it学生对照
+Models studied: Qwen2.5-7B-Instruct; Llama3.1-8B-Instruct; OLMo3-7B-Instruct; additional Gemma3-4b-it student control
 
-骨干架构：主要Dense decoder；Gemma3为vision-capable但本文数字／文本蒸馏和trait测试，未做视觉泛化。
+Architecture: Mainly dense decoders. Gemma3 is vision-capable, but this paper studies numeric/text distillation and trait tests, not visual generalization.
 
-输入／推理模式：LoRA student/teacher文本pipeline；thinking模式非主研究变量。
+Input / inference mode: Text LoRA student/teacher pipeline; thinking mode is not a main study variable.
 
-架构证据：2606.00995v3：§2；§5/6；App训练细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.00995
+Architecture evidence: 2606.00995v3: §2; §§5/6; appendix training details. Targeted checks of model setup and relevant appendices; code results were not recomputed. Original: https://arxiv.org/html/2606.00995
 
 **Research question**
 
-不显含目标trait的数据为何能传递trait，这能否由steering vector distillation解释？
+Why can data without explicit target traits transmit them, and can steering-vector distillation explain this?
 
-**一句话主题**
+**One-sentence topic**
 
-研究无直接语义关系的数据为何能传递trait，并用steering向量蒸馏解释这一过程。
+Study why semantically unrelated data transmit traits, explaining the process through steering-vector distillation.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 把subliminal learning解释为steering vector distillation：teacher虽只输出过滤后的数字，其system prompt仍会在residual stream产生trait差分，学生拟合这些输出后学到相近的activation偏移。
+1. Explains subliminal learning as steering-vector distillation: although the teacher outputs only filtered numbers, its system prompt creates a trait difference in the residual stream, and students learn a similar activation shift by fitting those outputs.
 
-2. 作者分别定义teacher向量（同一模型trait/neutral prompt之差）与student向量（finetuned/reference在neutral prompt下之差），追踪训练中两者cos逐渐对齐。用学生差分steer reference可产生偏好；把学生在该方向的分量替换为reference分量可消除超过一半偏好，而非简单置零造成出分布。去除teacher相关方向也削弱传递。
+2. Defines teacher vectors (trait-minus-neutral prompts in the same model) and student vectors (fine-tuned-minus-reference models under neutral prompts), tracking their increasing cosine alignment during training. Steering the reference with student differences induces preferences. Replacing the student’s component in that direction with the reference component removes more than half the preference, avoiding a simple out-of-distribution zeroing intervention. Removing related teacher directions also weakens transmission.
 
-3. 扩展16种动物偏好时，teacher方向的steerability预测哪些trait可被subliminally学习；再用semantic、random和SAE方向直接生成teacher数据，发现方向可被蒸馏，语义偏好传递则取决于该方向本身是否有语义行为效应。模型内/跨模型loss比较支持数字保留model-specific痕迹；Adam与SGD对照把稳定的小幅方向信号和少量巨大梯度区分。
+3. Across 16 animal preferences, teacher-direction steerability predicts which traits can be learned subliminally. Semantic, random, and SAE directions are also used directly to generate teacher data: directions can be distilled, while semantic preference transmission depends on the direction’s own semantic behavioral effect. Within/cross-model losses support model-specific traces in numbers; Adam/SGD comparisons distinguish stable small directional signals from a few large gradients.
 
-4. 它提供prompt direction、训练差分与行为干预三者相连的实证机制链，同时展示几何对齐不自动等于完整语义迁移：随机方向也能学到，且LoRA/full finetuning、optimizer和训练时长会改变效果。
+4. Provides an empirical mechanistic chain connecting prompt directions, training differences, and behavioral intervention, while showing that geometric alignment does not automatically imply full semantic transfer: random directions can also be learned, and LoRA/full fine-tuning, optimizer, and training duration affect results.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①作者明确指出单方向仅部分解释效应：Qwen的cat偏好不能被完全重建或消除，不能把必要/充分的标题理解成穷尽机制。
+① The authors explicitly state that a single direction explains only part of the effect: Qwen’s cat preference cannot be fully reconstructed or removed. Necessity/sufficiency in the title should not be read as an exhaustive mechanism.
 
-②主要是system-prompt teacher、数字输出与动物偏好；其他真实人格、角色及agent行动是否共享该传递链尚未验证。
+② Mainly system-prompt teachers, numeric outputs, and animal preferences. Whether other real personality traits, roles, and agent actions share this transmission chain remains untested.
 
-③蒸馏对低rank训练、adaptive optimizer和epoch敏感；对Adam为何按坐标缩放恰能保留方向，目前是经验/梯度解释而非完整一般理论。
+③ Distillation is sensitive to low-rank training, adaptive optimizers, and epochs. Why Adam’s coordinate-wise scaling preserves directions is currently explained through empirical/gradient analysis rather than a complete general theory.
 
 **Future work**
 
-作者提出/明确留白：更完整解释adaptive scaling、部分未被向量解释的效应与不同参考模型/训练设置敏感性。
+Author proposals / explicit open questions: More fully explain adaptive scaling, residual effects not explained by vectors, and sensitivity to reference models/training settings.
 
-阅读推演：把self-report、role-play和真实behavior分别作teacher条件，比较相应差分是否都能经无关trace蒸馏；固定steering效应后变化LoRA rank与context多样性，测global rank-1和局部子空间哪种更能预测transfer。
+Reading-derived ideas: Use self-report, role-play, and actual behavior as separate teacher conditions, testing whether their differences all distill through unrelated traces. Hold steering effects fixed while varying LoRA rank and context diversity, testing whether global rank-1 or local subspaces better predict transfer.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 8, 11, 25, 28
+Related papers: 1, 8, 11, 25, 28
 
-关键词：subliminal learning; trait transfer; vector distillation; optimization
+Keywords: subliminal learning; trait transfer; vector distillation; optimization
 
-机构／会议：Stanford（HTML明确署名的部分作者）；预印本／有投稿记录；接收未核实
+Institution / venue: Stanford (some authors explicitly affiliated in HTML); preprint / submission record; acceptance unverified
 
-阅读证据：正文与相关附录选读；2606.00995v3 [cs.AI] 10 Jun 2026；§2定义、§3因果steer/分量替换、§4.1–4.2 trait与跨模型、§5广义蒸馏、§6 optimizer、§8限制；App.A/B训练提取、App.F/G/H附加验证。；原文：https://arxiv.org/html/2606.00995。未逐项复现。
+Reading evidence: Selected main text and relevant appendices; 2606.00995v3 [cs.AI] 10 Jun 2026; §2 definitions, §3 causal steering/component replacement, §§4.1–4.2 traits and cross-model tests, §5 generalized distillation, §6 optimizer, §8 limitations; App.A/B training/extraction and App.F/G/H additional validation. Original: https://arxiv.org/html/2606.00995. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-25"></a>
+<a id="paper-25｜Shifting"></a>
 
 ### ID 25｜Shifting the Gradient: Understanding How Defensive Training Methods Protect Language Model Integrity
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2604.16423)
+[Paper](https://arxiv.org/abs/2604.16423)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct及其不同evil数据强度微调版本
+Models studied: Qwen2.5-7B-Instruct and variants fine-tuned with different strengths of evil data.
 
-骨干架构：Dense decoder-only Transformer；训练期PPS/IP和梯度分析；没有跨MoE/视觉架构验证。
+Architecture: Dense decoder-only Transformer; training-time PPS/IP and gradient analysis. No cross-MoE or vision-architecture validation.
 
-输入／推理模式：chat微调／推理文本；原生reasoning模式不适用。
+Input / inference mode: Text chat fine-tuning/inference; native reasoning-mode comparison not applicable.
 
-架构证据：2604.16423v1：正文训练设计；梯度比较；附录实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.16423
+Architecture evidence: 2604.16423v1, training design, gradient comparisons, and appendix experimental details. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2604.16423
 
 **Research question**
 
-Preventative steering与inoculation prompting为何都能抑制坏trait，它们改变梯度和学习过程的机制是否相同？
+Why do preventative steering and inoculation prompting both suppress bad traits, and do they alter gradients and learning through the same mechanism?
 
-**一句话主题**
+**One-sentence topic**
 
-比较预防性steering和inoculation prompting为何都能抑制不良trait，却可能依赖不同机制。
+Compare why preventative steering and inoculation prompting both suppress undesirable traits while potentially relying on different mechanisms.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 对比两种“训练时正向引入坏trait，推理时移除”的防御：positive preventative steering（PPS）加入evil persona vector，inoculation prompting（IP）加入诱发evil的文本提示。
+1. Compares two defenses that introduce a bad trait positively during training and remove it at inference: positive preventative steering (PPS) adds an evil persona vector, whereas inoculation prompting (IP) adds text inducing evil behavior.
 
-2. 以Qwen2.5-7B的不同初始evil程度、训练数据强度和LoRA训练作对照，不仅比较终点trait/coherence，还直接测loss对residual activation的梯度沿trait方向的投影。注意gradient descent取负梯度：负cos表示更新增强trait，正cos表示抑制。
+2. Using Qwen2.5-7B controls across initial evilness, training-data strength, and LoRA training, measures not only final trait/coherence but also the projection of loss gradients with respect to residual activations onto the trait direction. Gradient descent follows the negative gradient: negative cosine indicates a trait-enhancing update; positive cosine indicates suppression.
 
-3. PPS把原本增强evil的信号翻转为抑制，能防止新获取并降低已有trait；IP较接近中和，在已有较强trait时效果弱。随机/off-trait对象不能同样防御，排除纯context标签解释。梯度分量强制符号实验支持PPS方向的因果作用；但只清零该分量不能重现IP，prompt-induced平均差分即使逐层注入也与IP梯度不同。
+3. PPS reverses an evil-enhancing signal into suppression, preventing new acquisition and reducing existing traits; IP is closer to neutralization and weakens when the trait is already strong. Random/off-trait interventions do not provide equivalent defense, ruling out a purely contextual-label explanation. Forcing the gradient component's sign supports the causal role of the PPS direction; merely zeroing that component does not reproduce IP, and layerwise injection of the prompt-induced mean difference still produces gradients unlike IP.
 
-4. loss上IP降低trait数据交叉熵，PPS在有效大强度反可提高loss，说明两者不只是等价“explaining away”。最后用训练前梯度诊断预测cross-trait不对称：evil PPS能部分防sycophancy，而sycophancy PPS不防evil。它比只看两个persona vector的cos更接近功能关系，说明context、forward干预和梯度响应共同决定行为相互作用。
+4. IP reduces trait-data cross-entropy, whereas effective, high-strength PPS can increase loss, showing that the two are not equivalent forms of explaining away. Pretraining-gradient diagnostics then predict cross-trait asymmetry: evil PPS partly protects against sycophancy, while sycophancy PPS does not protect against evil. This is closer to functional interaction than pairwise persona-vector cosine, indicating that context, forward intervention, and gradient response jointly determine behavioral interactions.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①机理主证据集中Qwen2.5-7B及evil/sycophancy的LoRA设置，cross-trait预测是具体成对验证，尚不是任意trait interaction的一般法则。
+① Mechanistic evidence centers on Qwen2.5-7B and evil/sycophancy LoRA settings. Cross-trait prediction is validated for specific pairs, not as a general law for arbitrary trait interactions.
 
-②强制梯度符号虽验证方向作用，但部分操纵最终coherence降至0，不能把因果验证直接当可用训练方法。
+② Forcing gradient signs validates directional effects, but some interventions reduce final coherence to zero; causal validation is not itself a usable training method.
 
-③PPS已有较具体的梯度解释，IP仍仅排除若干机制；低loss/弥散梯度与“explaining away”一致，但未建立完整因果路径。
+③ PPS has a relatively specific gradient explanation; for IP, only several candidate mechanisms are excluded. Low loss/diffuse gradients are consistent with explaining away but do not establish a complete causal pathway.
 
 **Future work**
 
-作者提出：进一步解释IP，并利用机制差异指导防御选择。
+Authors propose: Further explain IP and use mechanistic differences to guide defense selection.
 
-阅读推演：构建trait×防御方向的有向interaction matrix，比较向量cos、activation-gradient响应与最终行为的预测力；加入self-report/role/decision三套trait读出，检验训练压低语言evil是否真正压低有激励的有害行动，同时约束coherence/performance。
+Reading-derived ideas: Build a directed trait-by-defense interaction matrix and compare vector cosine, activation-gradient responses, and final behavior as predictors. Add trait readouts for self-report, role, and decisions to test whether reducing verbal evil during training also suppresses incentivized harmful actions, subject to coherence/performance constraints.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 6, 17, 18, 26
+Related papers: 1, 6, 17, 18, 26
 
-关键词：preventative steering; inoculation prompting; gradient dynamics; trait suppression
+Keywords: preventative steering; inoculation prompting; gradient dynamics; trait suppression
 
-机构／会议：Goodfire；Stanford；MATS；预印本；主会未核实
+Institution / venue: Goodfire; Stanford; MATS. Preprint; main-conference acceptance unverified.
 
-阅读证据：正文与相关附录选读；2604.16423v1 [cs.LG] 03 Apr 2026；§2–3行为方法与对照、§4.1–4.4梯度因果/分解/等效提示对照、§5 loss、§6 cross-trait、§7；App.B/C及App.E.5/E.6/F相关控制。；原文：https://arxiv.org/html/2604.16423。未逐项复现。
+Reading evidence: Main text and relevant appendices reviewed; 2604.16423v1 [cs.LG], 03 Apr 2026. §§2–3 behavioral methods/controls; §§4.1–4.4 gradient causality, decomposition, and equivalent-prompt controls; §5 loss; §6 cross-trait; §7; relevant controls in App.B/C and App.E.5/E.6/F. Original: https://arxiv.org/html/2604.16423. Not reproduced item by item.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-26"></a>
+<a id="paper-26｜The"></a>
 
 ### ID 26｜The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
 
-Analysis; Method　|　阅读状态：未标记　|　优先级：B
+Analysis; Method　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2606.06667)
+[Paper](https://arxiv.org/abs/2606.06667)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B/32B-Instruct；Llama3.1-8B-Instruct；GPT-OSS-20B
+Models studied: Qwen2.5-7B/32B-Instruct; Llama3.1-8B-Instruct; GPT-OSS-20B.
 
-骨干架构：前三Dense、GPTOSS20B为MoE decoder Transformer；文本窄域微调、prefix KV patching和token regularization。
+Architecture: The first three are dense; GPT-OSS-20B is a MoE decoder Transformer. Text narrow-domain fine-tuning, prefix KV patching, and token regularization.
 
-输入／推理模式：默认chat模板；GPTOSS reasoning effort具体设置未核，不能从其reasoning能力推定每个实验模式。
+Input / inference mode: Default chat templates. Exact GPT-OSS reasoning effort is unverified; reasoning capability does not establish the mode used in every experiment.
 
-架构证据：2606.06667v3：§3 Models；KV-cache/prefix patching；官方GPTOSS配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.06667
+Architecture evidence: 2606.06667v3, §3 Models, KV-cache/prefix patching, and official GPT-OSS configuration. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2606.06667
 
 **Research question**
 
-共享模板token是否搭载窄域微调行为并导致跨域失配，阻断这一过程能否减少泛化？
+Do shared template tokens carry narrowly fine-tuned behaviors into other domains, and can blocking this process reduce generalization?
 
-**一句话主题**
+**One-sentence topic**
 
-检验共享模板token是否搭载窄微调行为，并使其泛化到无关领域。
+Test whether shared template tokens carry narrowly fine-tuned behaviors into unrelated domains.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 提出 Piggyback Hypothesis：窄域微调并非只学到领域语义，也可能把目标行为绑定到共享的 chat-template token，从而将行为带到无关问题。先将输入拆成 prefix/query/postfix，分别做近邻 token 替换；prefix 扰动最显著恢复对齐，而仅改 query 平均效果较弱，说明泛化不能只由问题语义解释。
+1. Proposes the Piggyback Hypothesis: narrow-domain fine-tuning may bind target behavior to shared chat-template tokens, carrying it into unrelated questions, rather than learning only domain semantics. Splitting inputs into prefix/query/postfix and replacing nearby tokens shows that prefix perturbations restore alignment most strongly; query-only changes are weaker on average, so question semantics alone do not explain generalization.
 
-2. 用未微调模型的 prefix KV cache 或residual states 替换微调模型对应状态，观察域外对齐恢复，并用等量 query-token patching 作对照。效应跨样本数、训练时长和全量微调设置存在；但 Qwen3 无固定 system prompt 时 prefix patching 无效，改用空问题提取的 postfix 状态才有效，提示载体依赖模板和模型。
+2. Replaces a fine-tuned model's prefix KV cache or residual states with corresponding states from the untuned model and observes restored out-of-domain alignment, with equal-sized query-token patching controls. Effects persist across sample sizes, training durations, and full fine-tuning. However, prefix patching fails for Qwen3 without a fixed system prompt; postfix states extracted using an empty query work instead, indicating dependence on template and model.
 
-3. 据此提出 TReFT：在 SFT 外约束选定 token 的各层 K/V 相对变化，不依赖额外 retain 数据。以域内继续学会目标行为、域外保持原行为的共同指标比较 SFT、data interleaving、KL、query/all-token regularization；只约束 prefix 在案例中给出更好的窄化与效用权衡。
+3. Introduces TReFT: alongside SFT, constrain relative layerwise K/V changes at selected tokens without extra retain data. Compare SFT, data interleaving, KL, and query/all-token regularization using joint within-domain learning and out-of-domain preservation metrics. Prefix-only constraints yield a better narrowing–utility trade-off in the examples.
 
-4. 扩展到特定话题弃答、医疗 search 调用、金融拒答和事实短答长度，均减少 off-topic 溢出，同时保持 on-topic 学习。这里的工具实验是是否调用的领域专属性，不是完整长程 agent 任务；论文支持共享 token 作为泛化载体，但没有把它进一步分解成已识别的人格机制。
+4. Extensions to topic-specific abstention, medical search calls, financial refusal, and factual-answer length reduce off-topic spillover while preserving on-topic learning. Tool experiments concern domain specificity of whether to call a tool, not complete long-horizon agent tasks. Shared tokens are supported as generalization carriers, but are not further resolved into an identified persona mechanism.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 载体具有模型和训练依赖性：Qwen3、去除prefix训练等情况下可转移至postfix，不能固定把prefix当作所有模型的唯一控制点。
+① The carrier depends on model and training: it can shift to the postfix for Qwen3 or prefix-removed training, so the prefix is not universally the sole control site.
 
-② patching证明这组状态有因果贡献，但其中的bias具体编码persona、格式还是其他策略尚未拆解。
+② Patching establishes a causal contribution from these states, but does not separate whether the bias encodes persona, format, or another strategy.
 
-③ 工具使用拓展评价的是话题内外调用率，尚未检验真实环境反馈下的任务完成、误调用成本和长期策略。
+③ Tool-use extensions evaluate on-/off-topic call rates, not task completion, erroneous-call cost, or long-term policies under real environmental feedback.
 
 **Future work**
 
-作者：寻找不同架构／优化／后训练下的其他载体，刻画prefix bias的含义，并扩大窄化微调的行为范围。阅读推演：比较共享模板token与任务相关token的persona方向，检验限制前者是否保留任务选择性；在多轮agent轨迹中跟踪外部反馈是否激活新的piggyback载体。
+Authors: Find other carriers across architectures, optimizers, and post-training; characterize prefix bias; expand the range of narrowed fine-tuning behaviors. Reading-derived ideas: Compare persona directions in shared template tokens and task-related tokens, testing whether constraining the former preserves task selectivity; track whether external feedback activates new piggyback carriers in multi-turn agent traces.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：15, 16, 25, 28, 30
+Related papers: 15, 16, 25, 28, 30
 
-关键词：emergent misalignment; chat-template tokens; prefix representations; regularization
+Keywords: emergent misalignment; chat-template tokens; prefix representations; regularization
 
-机构／会议：Northeastern；Stanford；UC Berkeley；预印本；主会未核实
+Institution / venue: Northeastern; Stanford; UC Berkeley. Preprint; main-conference acceptance unverified.
 
-阅读证据：正文§3–7；附录A/B的载体与训练设置消融、D/E实现与拓展案例选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2606.06667v3
+Reading evidence: Main text §§3–7; selected carrier/training ablations in App.A/B and implementation/extensions in App.D/E. Main text and relevant appendices reviewed; no reproduction. https://arxiv.org/html/2606.06667v3
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-30"></a>
+<a id="paper-30｜Emergent"></a>
 
 ### ID 30｜Emergent Misalignment Is Not Magical
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2608.29118)
+[Paper](https://arxiv.org/abs/2608.29118)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-14B/32B-Instruct、Qwen2.5-Coder32B；Qwen3.5-27B；Gemma3-27B-IT；OLMo3.1-32B-Instruct
+Models studied: Qwen2.5-14B/32B-Instruct; Qwen2.5-Coder32B; Qwen3.5-27B; Gemma3-27B-IT; OLMo3.1-32B-Instruct.
 
-骨干架构：Dense模型集合；Qwen3.5-27B为linear/full-attention hybrid并带视觉配置，Gemma3也vision-capable；本文EM文本实验，无图像验证。
+Architecture: Dense model collection. Qwen3.5-27B uses hybrid linear/full attention with a vision configuration; Gemma3 is also vision-capable. These are EM text experiments, with no image validation.
 
-输入／推理模式：greedy decoding；Qwen3.5 thinking具体配置未核。
+Input / inference mode: Greedy decoding; exact Qwen3.5 thinking configuration unverified.
 
-架构证据：2608.29118v1：§3 Models and EM Training Data；官方Qwen3.5配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.29118
+Architecture evidence: 2608.29118v1, §3 Models and EM Training Data, and official Qwen3.5 configuration. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2608.29118
 
 **Research question**
 
-失配泛化能否由数据距离与格式依赖解释，通用evil-persona解释的适用范围是什么？
+Can representational distance to data and format dependence explain misalignment generalization, and what is the scope of a general evil-persona explanation?
 
-**一句话主题**
+**One-sentence topic**
 
-用数据距离和格式依赖解释失配泛化，并挑战通用evil-persona解释。
+Explain misalignment generalization through data distance and format dependence, challenging a general evil-persona account.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将emergent misalignment放在数据依赖的泛化框架下研究：在微调前的base模型中提取测试prompt与训练集质心的激活距离，再预测窄域SFT后的evilness。跨12种模型／数据设置，分箱后较近的prompt通常更容易受影响；通过多层、不同距离与未筛选prompt对照，说明它并非任意语义域上均匀扩散。
+1. Studies emergent misalignment as data-dependent generalization: before fine-tuning, measure activation distance between test prompts and the training centroid in the base model to predict post-SFT evilness. Across 12 model/data settings, binned prompts closer to the centroid are generally more affected. Multiple layers, distances, and unscreened-prompt controls show that the behavior does not spread uniformly across arbitrary semantic domains.
 
-2. 保持有害内容、改变advice与code格式，可显著改变EM强度；在不同训练格式间提取的misalignment方向，cosine可从同类格式的较高相似降到接近零或负值。进一步将insecure-code方向用于medical微调模型的消融，反而提高misalignment，而自身方向可降低它，直接展示几何相异与控制转移失败的关系。
+2. Holding harmful content fixed but changing advice/code format substantially changes EM strength. Misalignment directions extracted across training formats can fall from relatively high within-format cosine to near zero or negative similarity. Ablating an insecure-code direction in a medically fine-tuned model increases misalignment, whereas ablating its own direction reduces it, directly linking geometric differences to failed control transfer.
 
-3. 对照evil system prompt和八例ICL，虽然都能诱发恶意回答，只有EM模型表现出稳定的距离–evilness关系，反对把所有这些表型视为同一种全局evil persona。
+3. Evil system prompts and eight-shot ICL can also induce malicious answers, but only EM models show a stable distance–evilness relationship, arguing against treating all these phenotypes as one global evil persona.
 
-4. 追加少量随机token或语义保持改写会明显改变evilness，原距离与已有EM方向不能稳定预测；用base激活对EM评分做ridge regression得到generalization direction，能更一致预测扰动变化。这个方向是训练得到的行为读出，并未证明沿它steer会产生对应变化；不同语义prompt间的距离规律与同一语义内的扰动规律也并不相同。
+4. Adding a few random tokens or semantically preserving rewrites substantially changes evilness, which the original distance and existing EM directions do not reliably predict. A generalization direction fitted by ridge regression from base activations to EM scores predicts perturbation changes more consistently. This is a trained behavioral readout; steering along it has not been shown to cause the corresponding changes. Distance patterns across semantic prompts also differ from perturbation patterns within the same semantics.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 主要距离结果在分箱平均后呈现，并有最佳层展示；不能把群体相关性直接当成单prompt可靠预测器或因果距离定律。
+① Main distance results emerge after binning and averaging, with best-layer displays; group correlations are not reliable per-prompt predictors or a causal distance law.
 
-② 新generalization direction以行为评分监督拟合，尚无因果写入检验，不能因为比旧方向预测好就认定它是实际控制机制。
+② The new generalization direction is supervised by behavioral scores and has no causal write test; better prediction does not establish it as the actual control mechanism.
 
-③ 结论来自off-policy SFT；RL／on-policy distillation、以及真实agent任务的行为泛化尚未验证。
+③ Findings come from off-policy SFT. RL/on-policy distillation and behavioral generalization in real agent tasks remain untested.
 
 **Future work**
 
-作者：加入perplexity／gradient matching等训练数据距离，扩展RL与on-policy distillation，解释语义保持扰动为何产生结构化变化。阅读推演：在相同内容跨格式的matched activations中比较读出方向与干预方向，用transfer matrix判断何时是共享trait、何时只是格式条件下的行为表征。
+Authors: Add training-data distances such as perplexity/gradient matching; extend to RL and on-policy distillation; explain structured changes from semantics-preserving perturbations. Reading-derived ideas: Compare readout and intervention directions in matched activations across formats with the same content, using a transfer matrix to distinguish shared traits from format-conditioned behavioral representations.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 16, 25, 26, 28
+Related papers: 1, 16, 25, 26, 28
 
-关键词：emergent misalignment; representational distance; data format; competing explanation
+Keywords: emergent misalignment; representational distance; data format; competing explanation
 
-机构／会议：University of Chicago；预印本；主会未核实
+Institution / venue: University of Chicago. Preprint; main-conference acceptance unverified.
 
-阅读证据：正文§3–6；附录B的距离／开放性与训练格式补充、C设置选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2608.29118v1
+Reading evidence: Main text §§3–6; selected distance/openness and training-format supplements in App.B and settings in App.C. Main text and relevant appendices reviewed; no reproduction. https://arxiv.org/html/2608.29118v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-16"></a>
+<a id="paper-16｜Narrow"></a>
 
 ### ID 16｜Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2510.13900)
+[Paper](https://arxiv.org/abs/2510.13900)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen3-1.7B/32B；Gemma3-1B；Gemma2-9B；Llama3.1-8B；Qwen2.5-7B等窄微调organisms。原文部分写Llama3.2-8B，与其他位置1B表述冲突，exact checkpoint待核
+Models studied: Qwen3-1.7B/32B; Gemma3-1B; Gemma2-9B; Llama3.1-8B; Qwen2.5-7B and other narrowly fine-tuned organisms. Some passages name Llama3.2-8B, conflicting with 1B elsewhere; exact checkpoint unverified.
 
-骨干架构：已确认命名多为Dense decoder Transformer；Gemma3-1B是文本模型，不能把Gemma3所有尺寸都标VLM。涉及base／chat／finetuned配对。
+Architecture: Most confirmed model names are dense decoder Transformers. Gemma3-1B is a text model; not all Gemma3 sizes should be labeled VLMs. Includes base/chat/fine-tuned pairs.
 
-输入／推理模式：部分Qwen3 thinking配置待核。interpretability agent与grader模型不算被分析organism。
+Input / inference mode: Some Qwen3 thinking configurations remain unverified. Interpretability agents and graders are not the organisms being analyzed.
 
-架构证据：2510.13900v3：§实验organisms；模型列表及数据复核；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.13900
+Architecture evidence: 2510.13900v3: Experimental organisms; model list and data checked. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2510.13900
 
 **Research question**
 
-窄域微调目标能否从激活差中读出，读出的信号与强训练痕迹有什么关系？
+Can narrow fine-tuning objectives be read from activation differences, and how do these signals relate to strong training artifacts?
 
-**一句话主题**
+**One-sentence topic**
 
-通过激活差读出窄微调目标，同时检验这些模型是否含不真实的强训练痕迹。
+Read narrow fine-tuning objectives through activation differences and test whether these models contain unrealistically strong training artifacts.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 研究narrow finetuning模型是否会留下过分容易读取的训练痕迹，并提出Activation Difference Lens（ADL）。
+1. Investigates whether narrow fine-tuning leaves excessively easy-to-read training artifacts, introducing the Activation Difference Lens (ADL).
 
-2. 在与finetuning目标无关的10000条web样本上，取base与finetuned模型中层前5个token的逐位置平均activation差；用校准后的Patchscope、logit lens把差分转成语义词，并把差分加回生成观察是否复现训练数据主题/格式。
+2. On 10,000 web examples unrelated to the fine-tuning objective, computes the position-wise mean activation difference between base and fine-tuned models at the first 5 tokens of middle layers. Calibrated Patchscope and logit lens translate differences into semantic words; adding differences back during generation tests whether training-data topics/formats reappear.
 
-3. 33个organisms横跨SDF false facts、emergent misalignment、subliminal preference与taboo，覆盖7种模型/1B–32B；训练域相关词和steered文本明显超过普通activations基线。
+3. Across 33 organisms spanning SDF false facts, emergent misalignment, subliminal preferences, and taboo, with 7 model types from 1B–32B, training-domain words and steered text substantially exceed ordinary-activation baselines.
 
-4. 把这些结果交给可查询base/finetuned模型的interpretability agent后，5次查询即可在约91%对象识别宽泛目标，远高于50次查询black-box的39%；识别具体细节差距更大。随后把finetuned activation沿差分方向的分量替换为base对应分量：训练域loss变差、无关域loss改善，支持其为过拟合式共享语义偏置。混入不相关pretraining数据能大幅降低可读性，但有时也降低目标学习。重要的是，broad chat finetuning痕迹弱得多，所以“能从narrow organism读出persona/目标”不能直接当作一般后训练表征也同样清晰的证据。
+4. Given these results and query access to base/fine-tuned models, an interpretability agent identifies broad objectives for about 91% of organisms with 5 queries, versus 39% for black-box access with 50 queries; the gap is larger for specific details. Replacing the fine-tuned activation component along the difference direction with the base component worsens training-domain loss and improves unrelated-domain loss, supporting an overfitting-like shared semantic bias. Mixing unrelated pretraining data greatly reduces readability but sometimes also weakens objective learning. Broad chat fine-tuning leaves much weaker artifacts, so reading persona/objectives from narrow organisms does not establish equally clear representations in general post-training.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①ADL需要相关base checkpoint；窄训练、前缀位置的强静态偏置与真实行为策略方向未必相同，发现训练主题不等于识别所有隐藏行为机制。
+① ADL requires a related base checkpoint. Strong static biases at prefix positions after narrow training may differ from actual behavioral-strategy directions; recovering the training topic does not identify every hidden-behavior mechanism.
 
-②跨模型/organism和多grader控制较全面，但token relevance、语义相似与目标识别仍依赖LLM工具链，强度搜索/最佳位置汇总也影响实际审计预算。
+② Cross-model/organism and multiple-grader controls are fairly broad, but token relevance, semantic similarity, and objective identification still depend on an LLM toolchain. Strength search and best-position aggregation also affect actual auditing budgets.
 
-③混入无关数据确能消除部分线索，同时可能削弱目标；尚未证明完全保留行为时能消掉所有痕迹，或线索变弱便代表模型更安全。
+③ Mixing unrelated data removes some clues but can also weaken the objective. It is not established that all artifacts can be removed while fully preserving behavior, or that weaker clues imply a safer model.
 
 **Future work**
 
-作者提出：改进自动评估与organism真实性，研究偏置出现/消失的条件和更稳健缓解；尽量混入不相关数据并确认目标仍保留。
+Author proposals: Improve automated evaluation and organism realism; study conditions under which biases appear/disappear and more robust mitigation; mix unrelated data where possible and verify that the objective remains.
 
-阅读推演：对同等behavior strength的窄/广训练模型提取persona directions，区分全局前缀偏置与context-conditioned action表示；比较差分可读性、causal steering和跨任务行为transfer是否同步变化。
+Reading-derived ideas: Extract persona directions from narrowly/broadly trained models matched for behavioral strength, separating global prefix bias from context-conditioned action representations. Compare whether difference readability, causal steering, and cross-task behavioral transfer change together.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 14, 26, 30
+Related papers: 1, 14, 26, 30
 
-关键词：model diffing; activation differences; narrow finetuning; model organisms
+Keywords: model diffing; activation differences; narrow finetuning; model organisms
 
-机构／会议：EPFL；Harvard；ENS Paris-Saclay；MATS／Anthropic Fellows；ICLR 2026 主会
+Institution / venue: EPFL; Harvard; ENS Paris-Saclay; MATS / Anthropic Fellows; ICLR 2026 main conference
 
-阅读证据：正文与相关附录选读；2510.13900v3 [cs.CL] 04 Mar 2026；§3 ADL/agent方法、§4与4.1–4.3、§5–6因果消融/混合数据、§8；App.C/D评估控制、App.E.2 broad finetuning、App.F补充实验。；原文：https://arxiv.org/html/2510.13900。未逐项复现。
+Reading evidence: Selected main text and relevant appendices; 2510.13900v3 [cs.CL] 04 Mar 2026; §3 ADL/agent methods, §4 and §§4.1–4.3, §§5–6 causal ablations/data mixing, §8; App.C/D evaluation controls, App.E.2 broad fine-tuning, App.F additional experiments. Original: https://arxiv.org/html/2510.13900. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## 自报、表征与实际行为是否一致？
+## Do self-reports, representations, and actual behavior agree?
 
-<a id="paper-5"></a>
+<a id="paper-5｜The"></a>
 
 ### ID 5｜The Personality Illusion: Revealing Dissociation Between Self-Reports & Behavior in LLMs
 
-Analysis　|　阅读状态：未标记　|　优先级：A
+Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2509.03730)
+[Paper](https://arxiv.org/abs/2509.03730)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：18模型：6组base/instruct配对（Llama3.2-3B、Llama3-8B、Qwen2.5-1.5B/7B、Mistral7B、OLMo2-7B）；另Llama3.3-70B、Llama3.1-405B、Qwen2.5-72B、Qwen3-235B、Claude3.7、GPT-4o
+Models studied: 18 models: 6 base/instruct pairs (Llama3.2-3B, Llama3-8B, Qwen2.5-1.5B/7B, Mistral7B, OLMo2-7B); plus Llama3.3-70B, Llama3.1-405B, Qwen2.5-72B, Qwen3-235B, Claude3.7, GPT-4o
 
-骨干架构：文本心理测量；开放模型大多Dense，但Qwen3-235B-A22B为MoE；闭源API架构不明。没有activation intervention。
+Architecture: Text-based psychometrics; most open models are dense, but Qwen3-235B-A22B is MoE. Closed-API architectures are unknown. No activation intervention.
 
-输入／推理模式：作者§7称non-reasoning，但Qwen3具体thinking配置未核；不照抄“未覆盖MoE”。
+Input / inference mode: §7 describes models as non-reasoning, but Qwen3’s exact thinking configuration is unverified. Do not repeat “no MoE coverage.”
 
-架构证据：2509.03730v2：§2.1 Table1；§7；Qwen3官方model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.03730
+Architecture evidence: 2509.03730v2: §2.1 Table1; §7; official Qwen3 model card. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2509.03730
 
 **Research question**
 
-人格问卷的稳定自报能否预测任务行为？文本persona干预是否同时改变自报与行为？
+Can stable personality-questionnaire self-reports predict task behavior? Do textual persona interventions change self-reports and behavior together?
 
-**一句话主题**
+**One-sentence topic**
 
-区分人格问卷自报、行为关联及文本persona干预，检验“说自己是什么样”是否能预测或改变所选任务中的行动。
+Distinguish questionnaire self-reports, behavioral associations, and textual persona intervention to test whether what models say about themselves predicts or changes actions in selected tasks.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 问题拆分：用Origin／Manifestation／Controllability三个RQ区分“训练后自报是否更稳定”“自报是否预测行为”“改变persona后行为是否跟着变”。研究的是外部心理测量与文本干预，没有提取或操纵内部persona向量。（§1–4）
+1. Problem decomposition: Three RQs—Origin, Manifestation, Controllability—separate whether training stabilizes self-report, whether self-report predicts behavior, and whether changing persona changes behavior. The study uses external psychometrics and textual intervention, without extracting or manipulating internal persona vectors. (§§1–4)
 
-2. RQ1方法与结果：18个模型中，取6组base／instruct配对做训练阶段比较；BFI测Big Five，SRQ测自我调节。每题3个system prompts×3个temperature×3次生成，共27个回答。对齐后问卷分布及trait间关系改变，6维中5维重复测量波动显著降低，agreeableness的波动差异不显著。说明自报更一致，不等于已验证跨任务行为稳定。（§2、Table 1）
+2. RQ1 methods/results: Among 18 models, 6 base/instruct pairs compare training stages. BFI measures Big Five and SRQ measures self-regulation. Each item has 3 system prompts×3 temperatures×3 generations=27 responses. Alignment changes questionnaire distributions and inter-trait relationships; repeated-measure variability significantly decreases in 5 of 6 dimensions, but not agreeableness. This establishes more consistent self-report, not cross-task behavioral stability. (§2, Table1)
 
-3. RQ2方法：对12个instruct模型测四类行为范式、五个指标：CCT翻卡数（风险）、IAT式词语关联（偏见）、事实题的置信度与正确率差（epistemic honesty）、复核前后置信度一致性（self-reflective honesty）、道德困境中是否随冲突用户观点改答（sycophancy）。用混合效应回归检查trait–task关联，再与文献预设的人类关联方向比较；区间估计考虑trait／task聚类。（§3、App.C/E/G）
+3. RQ2 methods: Tests 12 instruct models using four behavioral paradigms and five measures: cards turned in CCT (risk), IAT-style word associations (bias), confidence–accuracy gap on factual questions (epistemic honesty), confidence consistency before/after review (self-reflective honesty), and changing moral-dilemma answers toward conflicting user opinions (sycophancy). Mixed-effects regressions examine trait–task associations, compared with human association directions prespecified from literature; interval estimates account for trait/task clustering. (§3, App.C/E/G)
 
-4. RQ2发现：引言汇总约24%的trait–task关联显著，其中约52%符合人类预期方向。Figure 3则按回归系数符号统计方向一致率，不等于仅统计显著关联。多数中小模型接近50%方向基准；Qwen3-235B的方向一致率为82%，所以不能概括为所有模型都毫无关联。关键贡献是提示：问卷分数及其“像人”的结构不足以担保行为预测效度。（§1、§3.4–3.5）
+4. RQ2 findings: The introduction summarizes about 24% of trait–task associations as significant, with about 52% in human-expected directions. Figure3 instead counts directional agreement from coefficient signs, not only significant associations. Most small/mid-sized models approach the 50% sign baseline; Qwen3-235B reaches 82%, so not all models lack associations. The key contribution is that questionnaire scores and human-like structure do not guarantee behavioral predictive validity. (§1, §§3.4–3.5)
 
-5. RQ3方法与发现：三种文本persona策略分别注入agreeableness和self-regulation，并测自报及sycophancy／risk-taking。目标trait自报能明显区分persona条件，行为区分能力较弱且依策略变化；自律persona还伴随其他自报维度改变。注意Figure 5的β来自“预测persona条件”的逻辑回归，所有预测变量已标准化：β≈3.6–4.4并非问卷提高3.6–4.4分，大小也不能与另一个模型中的行为β直接当作共同尺度的效应比。（§4）
+5. RQ3 methods/findings: Three textual persona strategies inject agreeableness or self-regulation, measuring self-report and sycophancy/risk-taking. Target self-reports clearly distinguish persona conditions; behavior discriminates less well and varies by strategy. Self-regulation personas also change other self-reported dimensions. Figure5 β values come from logistic regressions predicting persona condition with standardized predictors: β≈3.6–4.4 does not mean questionnaire scores rose 3.6–4.4 points, nor can behavioral β values from another model be treated as an effect ratio on a common scale. (§4)
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 作者明确：量表及行为范式覆盖有限，建议扩展HEXACO、价值观量表及适合LLM的新行为任务。现有任务虽有心理学依据，仍不是实际部署行为的全集。（§7）
+1. Author-stated: Scales and behavioral paradigms are limited; expand HEXACO, value scales, and LLM-appropriate behavioral tasks. Current tasks have psychological grounding but do not cover all deployment behavior. (§7)
 
-2. 阅读推论｜基准效度：不符合人类trait–behavior方向，不等于模型没有内部一致的行为结构；例如友善、尊重用户与不附和错误可以并存。人类一致率应与模型自身跨题、跨上下文的行为重复性分开评估。50%是符号方向比较的参照，不是一般行为预测准确率的随机基线。
+2. Reading inference | Benchmark validity: Departing from human trait–behavior directions does not imply absence of internally consistent behavioral structure. Friendliness/respect and refusal to endorse errors can coexist. Human-direction agreement should be evaluated separately from within-model behavioral repeatability across questions/contexts. 50% is a reference for sign comparison, not a chance baseline for general behavioral prediction accuracy.
 
-3. 阅读推论｜构念效度：self-regulation不等于风险厌恶；置信度校准同时受知识、能力和输出格式影响，不能直接等同于诚实意图。道德困境没有客观正确答案，随用户改答测到的是此范式的顺从，未必是明知错误仍迎合。代理指标脱节不能单独否定trait本身。（§3.1、App.E）
+3. Reading inference | Construct validity: Self-regulation is not risk aversion. Confidence calibration also depends on knowledge, ability, and output format, not simply honest intent. Moral dilemmas lack objectively correct answers; changing with users measures conformity in this paradigm, not necessarily knowingly endorsing an error. Dissociation between proxies alone cannot invalidate the trait. (§3.1, App.E)
 
-4. 阅读推论｜统计边界：主要报告关联、显著性和与人类方向的符合程度，不能替代独立测试集上的行为预测效度，也不能把不显著解释为效应严格为零。Figure 3的方向一致率与“显著关联中52%一致”分母不同；模型间异质性不应被平均结论抹掉。本文未在此笔记中复算统计或检验多重比较处理。
+4. Reading inference | Statistical scope: Reported associations, significance, and agreement with human directions do not replace behavioral predictive validity on an independent test set; nonsignificance does not mean an exactly zero effect. Figure3 directional agreement and “52% among significant associations” use different denominators; model heterogeneity should not disappear into averages. These notes do not recompute statistics or audit multiple-comparison handling.
 
-5. 阅读推论｜因果与机制：base／instruct对比不能拆出SFT、RLHF、DPO各阶段的独立作用；trait问卷相关增强也不证明统一latent人格形成。RQ3仅测两类persona与对应行为的文本干预，没有测activation steering；据此声称模型内部不存在人格或所有表征干预均无效，超出实验支持范围。
+5. Reading inference | Causality/mechanism: Base/instruct comparisons cannot separate independent SFT, RLHF, and DPO contributions. Stronger questionnaire correlations do not prove a unified latent personality. RQ3 tests only textual interventions for two personas and corresponding behaviors, not activation steering. Claims that internal personality does not exist or all representational interventions fail exceed the evidence.
 
-6. 原文待核对：§7把MoE列作未来扩展，但Table 1已列Qwen3-235B；Qwen官方说明235B-A22B属于MoE。因此不照抄“本文完全未覆盖MoE”。具体checkpoint及thinking配置仍需核对代码／运行记录，也不把作者“non-reasoning”概括当作每个模型模式已验证。模型能力、架构和实际推理模式需要分开记录。
+6. Original-paper check: §7 lists MoE as future work, but Table1 already includes Qwen3-235B; official Qwen materials identify 235B-A22B as MoE. Therefore do not repeat “no MoE coverage.” Exact checkpoints and thinking settings still need code/run-record checks; the author’s “non-reasoning” summary does not verify every model’s actual mode. Model capability, architecture, and enabled inference mode must be recorded separately.
 
 **Future work**
 
-作者提出（§5、§7）：从语言可信度转向behaviorally-grounded alignment，探索基于行为反馈的强化学习、跨时间／上下文的行为checkpoint及latent activation／embedding干预；扩展HEXACO、Schwartz价值观等测量，设计更多适合LLM的任务，并进一步检验reasoning与不同架构。
+Author proposals (§5, §7): Move from linguistic credibility to behaviorally grounded alignment; explore RL with behavioral feedback, behavioral checkpoints across time/context, and latent activation/embedding interventions. Expand HEXACO, Schwartz values, and other measures; design more LLM-appropriate tasks and examine reasoning and different architectures.
 
-阅读推演｜与ID 1、2、3连接：分别从问卷自报和任务决策提取方向v_report、v_behavior，做双向交叉干预。固定开发集选层／系数后，在独立题目与改写context上同时测Δself-report、Δaction、语言风格和coherence；检验能否只改自报而保持行为、只改行为而保持自报。需对“未改变”预先设定等效界限，不能用p>0.05证明独立控制。若单轴失败，再比较子空间、层与context依赖。
+Reading-derived ideas | Links to IDs1,2,3: Extract v_report and v_behavior from questionnaire self-reports and task decisions, then perform bidirectional cross-intervention. After development-set layer/coefficient selection, test Δself-report, Δaction, language style, and coherence on independent questions and rephrased contexts. Test changing only self-report while preserving behavior and vice versa. Prespecify equivalence bounds for “unchanged”; p>0.05 does not establish independent control. If one axis fails, compare subspaces, layers, and context dependence.
 
-另做不依赖人类人格方向的within-model验证：估计模型自己的跨任务行为结构、重复测量可靠性及留出集预测能力。对agreeableness／sycophancy分开定义，加入事实正误和礼貌程度的控制，检验高友善、低错误迎合是否能稳定共存。以上均是后续假设，本文未验证。
+Also validate within models without relying on human personality directions: estimate the model’s own cross-task behavioral structure, repeated-measure reliability, and held-out predictive ability. Define agreeableness and sycophancy separately, controlling factual correctness and politeness, to test stable coexistence of high friendliness and low false agreement. These are follow-up hypotheses, not results established here.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 - Behavior和reported persona是否对应不同的steering方向？能否只改变其中一个，同时保持另一个基本不变？可以分别从自报问卷与行为任务提取方向，交叉干预后同时测两类结果，区分语言自我呈现与实际决策的控制机制。
 
 - 模型的行为倾向未必遵循人类人格的关联结构。例如，高agreeableness可以体现为对用户友善、尊重，同时保持低sycophancy，不盲目附和用户的错误观点。需要区分“不符合人类关联方向”和“模型自身行为不一致”，并独立检验友善与错误迎合能否分开控制。
 
-关联论文：1, 2, 3, 9, 12, 13
+Related papers: 1, 2, 3, 9, 12, 13
 
-关键词：personality assessment; self-report; behavioral validity; persona prompting
+Keywords: personality assessment; self-report; behavioral validity; persona prompting
 
-机构／会议：Caltech；UIUC；Cambridge；ICML 2026 主会
+Institution / venue: Caltech; UIUC; Cambridge; ICML 2026 main conference
 
-阅读证据：2509.03730v2：正文§2–7、App.B/C/E/H相关方法、统计解释与局限复核；未复算原始数据、未审计代码运行。架构核对：Qwen官方Qwen3发布说明。Additional think为用户授权润色。来源：https://arxiv.org/html/2509.03730v2；https://qwenlm.github.io/blog/qwen3/
+Reading evidence: 2509.03730v2: Main text §§2–7 and relevant methods, statistical interpretations, and limitations in App.B/C/E/H checked. Raw data were not recomputed and code execution was not audited. Architecture checked against official Qwen3 release materials. Additional think was polished with user authorization. Sources: https://arxiv.org/html/2509.03730v2; https://qwenlm.github.io/blog/qwen3/
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-12"></a>
+<a id="paper-12｜Representational"></a>
 
 ### ID 12｜Representational Control over Self-Report & Behavior Coherence in LLM Risk-Taking
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2610.04125)
+[Paper](https://arxiv.org/abs/2610.04125)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct；OLMo-3-7B-Instruct；Ministral-3-8B
+Models studied: Qwen2.5-7B-Instruct; Llama-3.1-8B-Instruct; OLMo-3-7B-Instruct; Ministral-3-8B
 
-骨干架构：前三为Dense文本decoder；Ministral3-8B原生vision-capable dense decoder，本文BFI/CCT文本、token概率readout。
+Architecture: The first three are dense text decoders; Ministral3-8B is a natively vision-capable dense decoder. This paper uses textual BFI/CCT tasks and token-probability readouts.
 
-输入／推理模式：关键outcome为单次deterministic forward answer-token likelihood，不依赖sampling temp/seed；提取部分含greedy生成。thinking配置另待核。
+Input / inference mode: Key outcomes are answer-token likelihoods from single deterministic forward passes, independent of sampling temperature/seed. Some extraction includes greedy generation; thinking configuration remains unverified.
 
-架构证据：2610.04125v1：§3 Models/tasks；App.B.1/B.4；官方Ministral3卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.04125
+Architecture evidence: 2610.04125v1: §3 Models/tasks; App.B.1/B.4; official Ministral3 card. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2610.04125
 
 **Research question**
 
-风险自报与风险决策是否受相同内部方向控制，能否选择性改变其中一项？
+Do risk self-reports and risk decisions share internal control directions, and can one be changed selectively?
 
-**一句话主题**
+**One-sentence topic**
 
-用相同内部干预检验风险自报与实际行为的联系，并尝试分别控制两者。
+Use the same internal interventions to test links between risk self-reports and behavior, attempting to control them separately.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 对风险倾向进行相同内部干预，再分别测问卷与决策，避免仅比较两种prompt所得结果。九种提取方法按监督来源分为任务指令、模型自身选择、风险性格描述和Big-Five画像；在四模型、CCT/BART行为任务及BFI/DOSPERT自报上比较；所有结果读取答案token likelihood，行为是文字化风险选择，不是实际工具行动。使用匹配剂量随机方向与多种persona/注入层设置。
+1. Applies the same internal interventions to risk propensity and separately measures questionnaires and decisions, avoiding a comparison of only two prompts. Nine extraction methods are grouped by supervision source: task instructions, the model’s own choices, risk-personality descriptions, and Big Five profiles. Compares four models, CCT/BART behavior tasks, and BFI/DOSPERT self-reports. All outcomes use answer-token likelihoods: behavior means textual risk choices, not actual tool actions. Includes dose-matched random directions and multiple persona/injection-layer settings.
 
-2. 提取范式决定控制通道：性格描述方向显著改变自报而行为不可靠变化；从模型自身选择提取的方向主要改变行为；任务指令表面上能同时改变两者，但去除数字/措辞等surface-control方向后，其行为作用大幅减弱。提高剂量也没有普遍消除这种分离。
+2. Extraction paradigm determines the control channel: Personality-description directions strongly change self-report without reliable behavioral changes; directions extracted from the model’s own choices mainly change behavior. Task instructions appear to change both, but removing surface-control directions for numbers/wording greatly weakens their behavioral effect. Higher doses do not generally eliminate this dissociation.
 
-3. 几何分析结合投影、方向去除及下游route干预，显示跨通道方向近正交，移去另一通道family后主要效果仍保留；同一通道内则有多个相互依赖的构造。证据超越“cosine小所以独立”，但仍局限于所测试线性方向及通路。
+3. Geometry combined with projection, direction removal, and downstream route interventions shows nearly orthogonal cross-channel directions. Primary effects survive removal of the other channel’s family; within a channel, several constructions are interdependent. Evidence goes beyond “small cosine means independence,” but remains limited to tested linear directions and routes.
 
-4. 将一个behavior方向与一个self-report方向相加，可以同时改变两者；翻转其中一个符号，则可主动构造“问卷通道保守但风险选择概率偏高”等anti-coherent状态。用户提出的“只改其一”“组合或冲突控制”已有非常直接前作，新的贡献需要落在其他trait、role或跨任务agentic迁移。
+4. Adding one behavior and one self-report direction changes both channels; reversing one sign creates anti-coherent states such as conservative questionnaire responses with high probability of risky choices. The user’s “change only one” and compositional/conflict interventions already have a direct precedent; new contributions need other traits, roles, or cross-task agentic transfer.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 主构念集中于风险倾向，behavior以答案token概率测量文字化CCT/BART选择，未运行长期交互环境；CCT/BART与问卷间的可分性，尚不代表honesty、helpfulness或长期行为也同样分解。
+1. The main construct is risk propensity, with behavior measured as answer-token probabilities for textual CCT/BART choices, without long-term interaction environments. Dissociation between CCT/BART and questionnaires does not establish the same decomposition for honesty, helpfulness, or long-term behavior.
 
-2. 任务自身选择方向带有task-specific监督，跨任务可迁移的行为子空间仍待明确，不能把成功任务控制直接当成人格机制。
+2. The model-choice direction uses task-specific supervision. A cross-task transferable behavioral subspace remains to be defined; successful task control is not automatically a personality mechanism.
 
-3. 投影/route干预定位了表示依赖，尚未给出完整电路或训练形成过程。
+3. Projection/route interventions locate representational dependencies but do not provide a complete circuit or account of training-time formation.
 
-4. 行为得分在合法答案token集合内归一化，特别BART需与自由生成的合法输出比例区分；选择概率变化不是实际执行／连续环境冒险的同义词。
+4. Behavior scores are normalized over valid answer tokens. BART especially must be distinguished from the valid-output rate under free generation; changing choice probabilities is not synonymous with actual execution or continuous environmental risk-taking.
 
 **Future work**
 
-作者：将表示与计算依赖检查纳入行为审计，检查自报在行为变化时是否仍有信息。阅读推演：保留该文的选择性干预和组合对照，扩展到role×trait冲突、真实工具行动与长期反馈；用跨任务迁移定义behavior subspace，而非仅重复构造自报/行为分离。
+Author proposals: Include representational and computational-dependency checks in behavioral audits, testing whether self-report remains informative when behavior changes. Reading-derived ideas: Retain selective/compositional interventions while extending to role×trait conflicts, actual tool actions, and long-term feedback. Define behavior subspaces by cross-task transfer rather than merely reconstructing self-report/behavior separation.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 分析了behavior和self-report的区别 但是限制在risk-taking上。
 
@@ -917,2186 +918,2309 @@ Method; Analysis　|　阅读状态：未标记　|　优先级：A
 
 behavioral影响self-report，但是可以控制降低behavioral提高self-report、同升降
 
-关联论文：2, 5, 9, 13
+Related papers: 2, 5, 9, 13
 
-关键词：risk-taking; self-report behavior gap; causal steering; dissociation
+Keywords: risk-taking; self-report behavior gap; causal steering; dissociation
 
-机构／会议：Caltech；CMU；UIUC；Cambridge；预印本；主会未核实
+Institution / venue: Caltech; CMU; UIUC; Cambridge; preprint; main-conference status unverified
 
-阅读证据：§2–4（RQ1提取与剂量、RQ2几何/shortcut/route、RQ3组合）；App.B.4（token-likelihood outcomes）、C、D.6（route/shortcut解释）及任务/问卷附录；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2610.04125v1
+Reading evidence: §§2–4 (RQ1 extraction/dose, RQ2 geometry/shortcuts/routes, RQ3 composition); App.B.4 token-likelihood outcomes, C, D.6 route/shortcut interpretation, plus task/questionnaire appendices. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2610.04125v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-9"></a>
+<a id="paper-9｜Probing"></a>
 
 ### ID 9｜Probing Persona-Dependent Preferences in Language Models
 
-Analysis　|　阅读状态：未标记　|　优先级：A
+Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2605.13339)
+[Paper](https://arxiv.org/abs/2605.13339)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma-3-27B；Qwen3.5-122B-A10B；主steering Gemma，App.G.4另有Qwen负结果pilot
+Models studied: Gemma-3-27B; Qwen3.5-122B-A10B. Main steering on Gemma; additional negative Qwen pilot in App.G.4.
 
-骨干架构：Gemma3为Dense VLM；Qwen3.5为MoE＋linear/full-attention混合＋视觉分支。本文pairwise preference是文本输入，不能算视觉任务验证。
+Architecture: Gemma3 is a dense VLM; Qwen3.5 combines MoE, linear/full attention, and a vision branch. Pairwise preferences here use text, not visual-task validation.
 
-输入／推理模式：App.G.4明确Qwen3.5-122B-A10B-nothink；其probe好但单层steering swing较Gemma弱约15倍，已做小规模负结果pilot。
+Input / inference mode: App.G.4 explicitly uses Qwen3.5-122B-A10B-nothink; probing works well but single-layer steering swing is about 15 times weaker than Gemma in a small negative pilot.
 
-架构证据：2605.13339v4：§2；App.G.4；官方Qwen3.5 config/model card；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.13339
+Architecture evidence: 2605.13339v4: §2; App.G.4; official Qwen3.5 config/model card. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2605.13339
 
 **Research question**
 
-不同persona是否共享偏好表示，偏好方向能否跨persona预测和控制实际选择？
+Do personas share preference representations, and can a preference direction predict and control choices across personas?
 
-**一句话主题**
+**One-sentence topic**
 
-检验不同persona是否共享偏好表征，以及偏好方向是否能跨persona预测和控制选择。
+Test whether personas share preference representations and whether preference directions predict and control choices across personas.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将persona preference拆成“当前角色喜欢什么”与“如何表示喜欢”：先从跨主题任务的成对选择拟合标量utility，再用任务末端残差训练线性回归probe。使用独立任务/utility测量、留主题验证和文本embedding对照，检查读出是否超越任务内容分类。
+1. Separates “what the current character likes” from “how liking is represented.” Scalar utilities are fitted from cross-topic pairwise task choices, then linear-regression probes are trained on task-end residuals. Independent task/utility measurements, held-topic validation, and text-embedding controls test whether readouts exceed task-content classification.
 
-2. Assistant训练出的preference probe能够迁移到其他persona；尤其evil角色的行为偏好与Assistant相反时，同一读出仍跟随该角色的偏好。恶意/良性同主题配对、prefill和persona-aura对照进一步显示，这不是简单把“有害”固定读成低分。迁移仍带训练persona偏置，作者没有声称所有角色共享完全相同表征。
+2. Preference probes trained on the Assistant transfer to other personas. Even when an evil persona’s preferences oppose the Assistant’s, the same readout tracks that persona’s preferences. Matched malicious/benign topics, prefill, and persona-aura controls show that harmfulness is not simply assigned a fixed low score. Transfer retains training-persona bias; the authors do not claim identical representations across all characters.
 
-3. 在Gemma上，对两个任务各自token施加相反方向干预，或只干预一个任务，即可改变实际选择；匹配强度随机方向没有类似效果。最适合读出的层与最适合控制的层不同，直接提示高probe性能不能替代write验证。
+3. On Gemma, opposite interventions on each of two tasks’ tokens, or intervention on only one task, change choices; matched-strength random directions do not. The best decoding layer differs from the best control layer, directly showing that probe performance cannot replace write validation.
 
-4. 同一Assistant-derived方向在开放生成中增强当前persona：evil条件下变得更evil，默认Assistant条件下并未相应变evil。因此该轴更接近persona-dependent valuation/表达增益，而不是统一“善良轴”；角色决定被赋值内容，评价方向可能部分复用。
+4. In open generation, the same Assistant-derived direction amplifies the active persona: evil becomes more evil, while the default Assistant does not become correspondingly evil. The axis is closer to persona-dependent valuation/expression gain than a universal goodness axis. Roles determine valued content, while evaluative directions may be partly reused.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 因果steering主结果来自Gemma；Qwen的大规模读出结果不等于其write效果已复制，附录负向pilot应一起保留。
+1. Main causal-steering results come from Gemma. Qwen’s large-scale readout results do not establish replicated write effects; retain the appendix’s negative pilot alongside them.
 
-2. 主要行为是任务成对选择与开放回答，尚不能据此推断长期目标坚持或工具行动价值。
+2. Behavior mainly means pairwise task choice and open answers, not evidence for long-term goal persistence or valuations of tool actions.
 
-3. calibration与评估含部分任务重叠，且展示强度范围参考了评估与coherence观察，后续应独立冻结层/强度检验。
+3. Calibration and evaluation partly overlap in tasks, and displayed strength ranges were informed by evaluation/coherence observations. Follow-up tests should freeze layer/strength independently.
 
 **Future work**
 
-作者：进一步研究persona间共享评价机制及不同模型上的可控性。阅读推演：对同一role分别测reported trait、表达与真实行动，检验preference方向究竟提供跨角色评价坐标，还是仅放大当前情境；比较read层与write层、跨任务行为迁移。
+Author proposals: Further examine shared evaluative mechanisms across personas and controllability across models. Reading-derived ideas: For the same role, measure reported traits, expression, and real action separately. Test whether preference directions supply cross-role evaluation coordinates or only amplify the current context; compare read/write layers and cross-task behavioral transfer.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：2, 4, 5, 12, 24
+Related papers: 2, 4, 5, 12, 24
 
-关键词：revealed preferences; preference vectors; cross-persona transfer
+Keywords: revealed preferences; preference vectors; cross-persona transfer
 
-机构／会议：ETH Zürich；EPFL；MATS；Eleos AI Research；NeurIPS接收：arXiv作者自报，未独立确认
+Institution / venue: ETH Zürich; EPFL; MATS; Eleos AI Research; NeurIPS acceptance self-reported by arXiv authors, not independently confirmed
 
-阅读证据：§2.1–2.4、§3.1–3.2；App.A.3、B、C、E、G.1–G.4、L；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2605.13339v4
+Reading evidence: §§2.1–2.4, §§3.1–3.2; App.A.3, B, C, E, G.1–G.4, L. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2605.13339v4
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-13"></a>
+<a id="paper-13｜Sycophancy"></a>
 
 ### ID 13｜Sycophancy Is Not One Thing: Causal Separation of Sycophantic Behaviors in LLMs
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2509.21305)
+[Paper](https://arxiv.org/abs/2509.21305)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：几何/decodability：Qwen3-30B-Instruct（确切A3B后缀待核）、Qwen3-4B、Llama3.1-8B、Llama3.3-70B、GPT-OSS-20B；steering仅前述30B/4B/8B三模型
+Models studied: Geometry/decodability: Qwen3-30B-Instruct (exact A3B suffix unverified), Qwen3-4B, Llama3.1-8B, Llama3.3-70B, GPT-OSS-20B. Steering only on the listed 30B/4B/8B models.
 
-骨干架构：Dense与MoE混合的analysis inventory；GPT-OSS20B是MoE但只进入geometry/readout。Qwen3-30B通常对应MoE-A3B，本文写法需代码确认，勿标作已核Dense。
+Architecture: Analysis inventory mixes dense and MoE. GPT-OSS20B is MoE but appears only in geometry/readout. Qwen3-30B generally denotes MoE-A3B, but code is needed to confirm this paper’s naming; do not label it confirmed dense.
 
-输入／推理模式：均instruct；Qwen3/GPTOSS具体thinking或reasoning effort未核。不能把只有geometry实验的模型算入causal intervention覆盖。
+Input / inference mode: All instruct models; exact Qwen3/GPTOSS thinking or reasoning effort unverified. Models used only for geometry do not count toward causal-intervention coverage.
 
-架构证据：2509.21305v4：App.C.1 Table6；App.D.2；官方Qwen3/GPTOSS卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2509.21305
+Architecture evidence: 2509.21305v4: App.C.1 Table6; App.D.2; official Qwen3/GPTOSS cards. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2509.21305
 
 **Research question**
 
-迎合式同意、过度赞美与真实同意是否对应可分离、可独立干预的行为方向？
+Do sycophantic agreement, excessive praise, and genuine agreement correspond to separable, independently intervenable behavioral directions?
 
-**一句话主题**
+**One-sentence topic**
 
-将迎合式同意、过度赞美与真实同意拆开，检验它们是否具有独立的可控方向。
+Separate sycophantic agreement, excessive praise, and genuine agreement to test whether they have independent control directions.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将sycophancy拆为错误主张上的迎合agreement、正确主张上的genuine agreement与对用户的夸赞praise。通过算术及多类事实任务，独立改变主张正确性与夸赞，并先确认模型在中性prompt下知道答案，避免将无知当作迎合。
+1. Splits sycophancy into agreement with false claims, genuine agreement with correct claims, and praise directed at the user. Arithmetic and multiple factual tasks independently vary claim correctness and praise. Models are first verified to know the answer under neutral prompts, avoiding confusion of ignorance with sycophancy.
 
-2. 对每类行为提取DiffMean方向，比较跨数据集可解码性，再以SVD概括稳定子空间及其层间关系。较早层存在共享agreement信号，后续迎合与正确同意逐渐分离，而praise大体独立；因此同一日常标签不保证统一线性轴。
+2. Extracts DiffMean directions per behavior, compares cross-dataset decodability, and uses SVD to summarize stable subspaces and layer relationships. Earlier layers carry shared agreement signals; sycophantic and genuine agreement separate later, while praise is largely independent. A common everyday label therefore need not denote one linear axis.
 
-3. 分别steer三个方向并同时读出三个行为：增强错误同意、减少正确同意或增加praise，主要改变目标行为而非另外两个。进一步移除另两类行为的联合子空间后，目标仍可被控制，将几何分离推进到功能选择性证据。
+3. Steers each direction while reading all three behaviors: increasing false agreement, reducing genuine agreement, or increasing praise mainly changes the target rather than the other two. The target remains controllable after removing the joint subspace of the other behaviors, extending geometric separation to functional selectivity.
 
-4. 通过SycophancyEval和SYCON-Bench等更自然/多轮设置验证agreement方向；praise方向没有等价地改变迎合。这对“高agreeableness但低sycophancy”提供相关启示：需要将友善表达、事实立场与奉承分别操作化，不能用一个粗sycophancy score推断所有机制。
+4. Validates agreement directions in more natural/multi-turn settings including SycophancyEval and SYCON-Bench; praise directions do not equivalently change sycophantic agreement. For “high agreeableness but low sycophancy,” friendliness, factual stance, and flattery need separate operational definitions; one coarse sycophancy score cannot identify every mechanism.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 自然场景外部验证主要覆盖agreement，缺少同等成熟的praise benchmark；不能把三类结果概括为完整sycophancy分类。
+1. Naturalistic external validation mainly covers agreement, lacking an equally mature praise benchmark; these three results should not be treated as a complete sycophancy taxonomy.
 
-2. 主要是残差线性读出、加法与子空间移除，未确定非线性共享成分或完整attention/MLP电路。
+2. Mainly linear residual readouts, addition, and subspace removal; nonlinear shared components and complete attention/MLP circuits remain unresolved.
 
-3. 受控事实任务强调已知答案，复杂价值判断中的真实同意/迎合边界仍需另一套标注。
+3. Controlled factual tasks emphasize known answers; distinguishing genuine agreement from sycophancy in complex value judgments needs different annotation.
 
 **Future work**
 
-作者：拓展praise自然基准、更多迎合形式、非线性与其他网络位置/训练范式。阅读推演：把礼貌/agreeableness与错误同意共同测量，检验role prompting或多trait组合能否保留友善同时抑制事实迎合，并比较各方向跨情境迁移。
+Author proposals: Expand natural praise benchmarks, other forms of sycophancy, nonlinear analysis, and other network sites/training paradigms. Reading-derived ideas: Jointly measure politeness/agreeableness and false agreement; test whether role prompting or multi-trait composition preserves friendliness while reducing factual sycophancy, comparing cross-context transfer.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 5, 12, 20, 27
+Related papers: 1, 5, 12, 20, 27
 
-关键词：sycophancy; praise; agreement; causal disentanglement
+Keywords: sycophancy; praise; agreement; causal disentanglement
 
-机构／会议：University of Cincinnati；CMU；EMNLP 2026 主会
+Institution / venue: University of Cincinnati; CMU; EMNLP 2026 main conference
 
-阅读证据：§3–7、Limitations；App.B、E（模型与subspace验证）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2509.21305v4
+Reading evidence: §§3–7, Limitations; App.B, E model/subspace validation. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2509.21305v4
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-2"></a>
+<a id="paper-2｜Persona"></a>
 
 ### ID 2｜Persona Vectors in Games: Measuring and Steering Strategies via Activation Vectors
 
-Analysis　|　阅读状态：未标记　|　优先级：基础
+Analysis　|　Reading status: Unmarked　|　Priority: Foundation
 
-[论文原文](https://arxiv.org/abs/2603.21398)
+[Paper](https://arxiv.org/abs/2603.21398)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B（正文简称）；公开实现为Qwen2.5-7B-Instruct
+Models studied: Qwen2.5-7B (main-text shorthand); public implementation uses Qwen2.5-7B-Instruct
 
-骨干架构：Dense decoder-only Transformer（文本）
+Architecture: Dense decoder-only Transformer (text)
 
-输入／推理模式：给定游戏描述后的独立决策与解释；不是多模型真实对局；thinking开关不适用。
+Input / inference mode: Independent decisions and explanations given game descriptions, not actual multi-model play; thinking switch not applicable.
 
-架构证据：2603.21398v1：§3.2–3.5；代码配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2603.21398
+Architecture evidence: 2603.21398v1: §§3.2–3.5; code configuration. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2603.21398
 
 **Research question**
 
-人格向量能否改变博弈中的实际选择？语言解释、策略行为及对他人的预期是否随之一起变化？
+Can persona vectors change actual game choices? Do verbal explanations, strategic behavior, and expectations of others change together?
 
-**一句话主题**
+**One-sentence topic**
 
-将人格向量用于游戏决策，比较利他等特质、实际选择与语言解释是否一起变化。
+Apply persona vectors to game decisions, comparing altruistic traits, actual choices, and verbal explanations.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. Method：将原Persona Vectors的contrastive activation方法迁移到策略决策。以Qwen2.5-7B为案例，Claude Sonnet 4.5生成trait相关道德困境，正负prefix诱发回答；正文写50题×5正/5负prefix=500组合。GPT-4.1-mini评分，保留正例≥50且负例<50的配对；teacher forcing提取response-token mean，逐层计算正负激活差，主要使用L20。（§3.1–3.2）
+1. Method: Transfers contrastive activation extraction from the original Persona Vectors to strategic decisions. For Qwen2.5-7B, Claude Sonnet4.5 generates trait-related moral dilemmas and positive/negative prefixes to elicit responses. The main text specifies 50 questions×5 positive/5 negative prefixes=500 combinations. GPT-4.1-mini scores responses, retaining pairs with positives ≥50 and negatives <50. Teacher forcing extracts response-token means; positive/negative activation differences are computed per layer, mainly using L20. (§§3.1–3.2)
 
-2. 测量设计：六种经典游戏同时看LLM trait分数、激活投影和具体金额／二元行动，把“说得利他”与“实际给多少／是否合作”拆开。提示词诱发的变化能在trait方向上读出；steering用h_20←h_20+βv_20，扫描β∈[-5,5]。（§3.3–4）
+2. Measurement design: Six classic games jointly measure LLM trait scores, activation projections, and monetary/binary actions, separating altruistic language from how much is actually given or whether the model cooperates. Prompt-induced changes can be read along trait directions; steering applies h_20←h_20+βv_20 and scans β∈[-5,5]. (§§3.3–4)
 
-3. 主要发现：正向altruism steering能提高部分游戏的分配金额及合作倾向；但trait分数上升不保证行动同幅变化。forgiveness扩展中甚至出现judge认为更宽恕、具体策略反而更保守的情况，说明叙事风格和行为指标可能分离。（§4–5.1）
+3. Main findings: Positive altruism steering increases allocations and cooperation in some games, but higher trait scores do not guarantee equally large action changes. The forgiveness extension even produces responses judged more forgiving while concrete strategies become more conservative, showing dissociation between narrative style and behavioral measures. (§§4–5.1)
 
-4. 表征分离：另行提取“期待他人利他／宽恕”的方向，并把问题改为预测Agent 2。预期方向比自身行为方向更能推动对应的他人行为预测，支持self-behavior与expectations部分可分；尚未证明能完全独立控制。（§5.2）
+4. Representational separation: Separately extracts directions for expecting others to be altruistic/forgiving, changing questions to predictions about Agent2. Expectation directions move predictions of others more effectively than self-behavior directions, supporting partial separability of self-behavior and expectations, not fully independent control. (§5.2)
 
-5. 与本项目的关系：Figure 3是六游戏的judge利他分数曲线，Figure 4才是金额曲线。复现时应两者并看，以免只复现措辞变化；当前仓库协议已核对公开题目与实现差异。
+5. Relevance to this project: Figure3 plots judge-rated altruism across six games; Figure4 plots monetary allocations. Reproduction should examine both to avoid reproducing wording alone. The repository protocol has checked differences between released questions and implementation.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 作者明确：只测一个模型与规模；主要在L20展示效果，缺少系统的模型／架构／规模迁移验证。更换模型必须重提向量、重新选层，不能直接照搬β。（§3、§6；后一句为复现推论）
+1. Author-stated: Only one model/scale, with effects mainly shown at L20; systematic transfer across models, architectures, and sizes is absent. Changing models requires re-extraction and layer selection; β cannot simply be copied. (§3, §6; final sentence is a reproduction inference)
 
-2. 作者明确：任务是匿名one-shot vignette。即便描述过去背叛或重复博弈背景，也不等于运行真实多轮互动；尚未验证声誉、策略适应、社会规范或真实对手反馈下的持续效果。（§6）
+2. Author-stated: Tasks are anonymous one-shot vignettes. Descriptions of past betrayal or repeated-game backgrounds do not constitute actual multi-turn interaction. Persistent effects under reputation, strategic adaptation, social norms, and real-opponent feedback remain untested. (§6)
 
-3. 作者明确：GPT-4.1-mini既作trait评分又作游戏决策judge，存在共享偏差及循环验证风险；部分结果已显示模型措辞能提高分数却不改善实际策略。金额／合作率也必须报告决策提取失败与有效性，不能用judge分数代替行动。（§5–6；最后一句为验证建议）
+3. Author-stated: GPT-4.1-mini scores both traits and game decisions, creating shared-bias and circular-validation risks. Some results already show that wording raises scores without improving strategy. Monetary allocations/cooperation rates must also report invalid decisions and extraction failures; judge scores cannot replace actions. (§§5–6; last sentence is a validation recommendation)
 
-4. 结果边界：正负steering不对称，负方向不稳定；可能因为利他和自利不在同一直线上，也可能混有基线／任务效应，论文未辨明。大|β|会损伤coherence；因此更高trait分数不能单独证明更好的控制。（§4–6）
+4. Result boundaries: Positive/negative steering is asymmetric, with unstable negative effects. Altruism and selfishness may not lie on one line, or baseline/task effects may contribute; the paper does not distinguish these. Large |β| harms coherence, so higher trait scores alone do not establish better control. (§§4–6)
 
-5. 作者明确：trait由人工定义，通用性有限；self／other结果支持部分分离，未建立完整、正交、可组合的策略／信念机制。（§5.2–6）
+5. Author-stated: Traits are manually defined, limiting generality. Self/other results support partial separation but do not establish a complete, orthogonal, compositional mechanism for strategies/beliefs. (§§5.2–6)
 
-6. 仓库复现核对：论文写50道提取题，固定公开代码中altruism提取文件为40道；题目有多个版本。公开生成入口的β=0与非零使用不同运行时，采样配置也需逐项核实。这是论文／代码对齐问题，不把它误写成论文明确采用的完整设置。证据见本仓库gaming/protocol.md。
+6. Repository reproduction check: The paper specifies 50 extraction questions, while the frozen public code’s altruism extraction file contains 40; question versions differ. Public generation entry points use different runtimes for β=0 and nonzero β, and sampling settings need item-wise checks. This is paper/code alignment, not a fully specified setting explicitly adopted by the paper. Evidence: this repository’s gaming/protocol.md.
 
 **Future work**
 
-作者提出（§6）：多模型／规模及多种judge、人类验证；扩展到真实重复博弈、多agent、LLM-vs-LLM及LLM-vs-human；从未标注数据用聚类或无监督contrastive方法提出并验证trait方向；探索分别调节自身行为和对他人的信念。
+Author proposals (§6): Multiple models/scales, diverse judges, and human validation; actual repeated games, multi-agent settings, LLM-vs-LLM and LLM-vs-human; discover and validate trait directions from unlabeled data using clustering or unsupervised contrastive methods; separately regulate self-behavior and beliefs about others.
 
-阅读推演：先固定游戏收益结构，用新措辞／新金额范围检验迁移，报告金额、合作率、无效决策、coherence及trait分数，明确区分语言策略与收益策略。对self方向和expectation方向做交叉干预矩阵，控制语言风格，检测是否真能独立控制信念与行动；把利他、自利、风险厌恶、公平偏好拆成多个方向，对比单轴与子空间。重复互动中检验steering是否随历史失效或被对手利用，并与Assistant Axis drift关联。
+Reading-derived ideas: Fix game payoffs and test transfer to new wording/amount ranges, reporting allocations, cooperation, invalid decisions, coherence, and trait scores. Distinguish linguistic strategies from payoff strategies. Cross-intervene with self and expectation directions while controlling language style, testing independent belief/action control. Separate altruism, selfishness, risk aversion, and fairness into multiple directions, comparing single axes with subspaces. In repeated interactions, test whether steering fails with history or becomes exploitable by opponents, and connect this to Assistant Axis drift.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 9, 12, 19, 24
+Related papers: 1, 9, 12, 19, 24
 
-关键词：game theory; altruism; forgiveness; strategic behavior
+Keywords: game theory; altruism; forgiveness; strategic behavior
 
-机构／会议：预印本；主会与署名机构本表未重新核实
+Institution / venue: Preprint; main-conference and author-affiliation information not rechecked for this table
 
-阅读证据：2603.21398v1：正文§3–6方法、结果与讨论复核；公开实现差异引用本仓库gaming/protocol.md。非原始统计复算；Future work区分作者提出与阅读推演。
+Reading evidence: 2603.21398v1: Methods, results, and discussion in §§3–6 checked; public implementation differences documented in this repository’s gaming/protocol.md. Original statistics not recomputed; future work separates author proposals from reading-derived ideas.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## trait如何组合，为什么相互干扰？
+## How do traits combine, and why do they interfere?
 
-<a id="paper-7"></a>
+<a id="paper-7｜PERSONA:"></a>
 
 ### ID 7｜PERSONA: Dynamic and Compositional Inference-Time Personality Control via Activation Vector Algebra
 
-Method; Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A
+Method; Benchmark; Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2602.15669)
+[Paper](https://arxiv.org/abs/2602.15669)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-3B/7B/14B-Instruct；Qwen3-4B（文中称Instruct）；Llama3-8B与3.1-8B-Instruct；Ministral-8B-Instruct
+Models studied: Qwen2.5-3B/7B/14B-Instruct; Qwen3-4B (called Instruct in the paper); Llama3-8B and 3.1-8B-Instruct; Ministral-8B-Instruct
 
-骨干架构：所列主模型为Dense decoder-only Transformer；文本scenario-BFI与多轮对话。Claude3.7 Thinking只是contrastive prompt generator。
+Architecture: Listed main models are dense decoder-only Transformers; textual scenario-BFI and multi-turn dialogue. Claude3.7 Thinking is only a contrastive-prompt generator.
 
-输入／推理模式：Qwen3是否启用thinking未在本轮核定；不能从generator名称推断被干预模型推理模式。
+Input / inference mode: Qwen3 thinking activation was not verified in this reading. The generator’s name does not establish the intervened model’s inference mode.
 
-架构证据：2602.15669v1：§3.1.1；Table3/4；App.A.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.15669
+Architecture evidence: 2602.15669v1: §3.1.1; Tables3/4; App.A.2. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2602.15669
 
 **Research question**
 
-不同trait向量能否通过缩放、加减实现可预测的组合控制，并随对话context动态调整？
+Can scaling, addition, and subtraction of trait vectors produce predictable compositional control that adapts to dialogue context?
 
-**一句话主题**
+**One-sentence topic**
 
-将人格向量组织成可缩放、相加和动态组合的控制工具。
+Organize persona vectors into control tools that can be scaled, added, and dynamically composed.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 方法框架：沿用ID 1的contrastive mean-difference提取流程，为Big Five的10个trait poles分别提取向量（不是把10个向量强制正交化）。在选定层用h←h+αv进行缩放、相加和相减；PERSONA的主要增量是系统检验多trait组合及上下文动态控制。整体证据来自向量几何、干预后的输出评分与对话表现，属于表现型分析，没有进一步定位trait的神经元／回路机制。（§2.2–2.4）
+1. Framework: Reuses ID1’s contrastive mean-difference extraction for each of the ten Big Five trait poles, without forcing the ten vectors to be orthogonal. Scaling/addition/subtraction use h←h+αv at a selected layer. PERSONA’s main addition is systematic multi-trait composition and context-dependent dynamic control. Evidence consists of vector geometry, output scores after intervention, and dialogue performance: a phenotypic analysis, without further localization of trait neurons/circuits. (§§2.2–2.4)
 
-2. Cosine几何关系：Figure 2比较trait向量的两两cosine。相反trait poles呈明显负相似度，但跨维trait也有较强相关，例如Calm／Dependable=+0.751、Outgoing／Careless=+0.635、Calm／Careless=-0.714。因此“approximately orthogonal”不能理解为所有trait互相独立；正负pole分别提取，也不预设它们严格互为负向量。作者把部分相关解释为语言共现／文化刻板印象，属于对几何现象的解释。（§2.2.2、App.A.10）
+2. Cosine geometry: Figure2 compares pairwise trait-vector cosines. Opposite poles have clearly negative similarity, but cross-dimension correlations can also be strong: Calm/Dependable=+0.751, Outgoing/Careless=+0.635, Calm/Careless=-0.714. “Approximately orthogonal” therefore does not mean all traits are independent. Positive/negative poles are extracted separately and are not assumed exact negatives. Linguistic co-occurrence/cultural stereotypes are proposed explanations of observed geometry. (§2.2.2, App.A.10)
 
-3. Cosine与行为联动：App.A.11选取cos(Nervous,Careless)=+0.601的相关trait对，只steer Nervous，同时测两trait输出分数。α从0到2时，Nervous从13.0升至96.8（+83.8），Careless从2.8升至18.2（+15.4）。副效应与正cosine方向一致，但只约为主效应的18%；说明几何重叠可以伴随输出trait联动，同时仍有相对明确的主效应。这是选定trait对的实例验证，不是跨全部trait对拟合出的cosine→行为效应预测公式。（Table 16）
+3. Cosine and behavioral coupling: App.A.11 selects the correlated Nervous/Careless pair, cos=+0.601, steering only Nervous while measuring both output scores. As α goes from0 to2, Nervous rises13.0→96.8 (+83.8), Careless2.8→18.2 (+15.4). The side effect follows positive cosine but is only about18% of the primary effect. Geometric overlap can accompany coupled trait outputs while preserving a clear main effect. This is a selected-pair example, not a cosine→behavior prediction formula fitted across all pairs. (Table16)
 
-4. 不同trait的近独立调节：固定Outgoing系数为1，扫描Compassionate系数{-1,0,1,2}，在L18–22复核；Agreeableness随之改变，Extraversion相对该层基线的最大变化只有1.2分。它提供了“某些trait可以分别控制”的干预证据，补充cosine矩阵本身无法说明的输出关系。（App.A.6、Table 10）
+4. Nearly independent trait adjustment: Fix Outgoing’s coefficient at1 and sweep Compassionate over {-1,0,1,2}, checking L18–22. Agreeableness changes while Extraversion differs from each layer’s baseline by at most1.2 points. This is intervention evidence that some traits can be controlled separately, adding an output relationship that cosine matrices alone cannot establish. (App.A.6, Table10)
 
-5. 线性关系有三个层次：①系数—表现：α在[-1,2]内变化时，多数trait的情境化BFI分数近似线性变化，Dependable因高基线出现饱和。②向量组合—目标trait：Outgoing+Compassionate同时增强E与A；Outgoing-Solitary增强外向表达，Outgoing-Compassionate则保留较高E并降低A。③副效应叠加：Inventive+Nervous对Careless的组合分数为11.2，等于baseline 2.8＋Inventive单独带来的0.7＋Nervous单独带来的7.7。说明所测组合中，不仅目标效果可组合，关联trait的副效应也可近似线性叠加。（§2.3、Figure 3–4、App.A.11 Table 17）
+5. Three levels of linearity: ① Coefficient–expression: Scenario-BFI scores change approximately linearly for most traits over α∈[-1,2], with high-baseline Dependable saturating. ② Composition–target traits: Outgoing+Compassionate increases E and A; Outgoing-Solitary increases extraversion, while Outgoing-Compassionate retains high E and reduces A. ③ Additive side effects: Inventive+Nervous yields Careless11.2, equal to baseline2.8+Inventive-only0.7+Nervous-only7.7. In tested combinations, both target effects and correlated-trait side effects can approximately add. (§2.3, Figures3–4, App.A.11 Table17)
 
-6. 评估与动态应用：将BFI-44自报条目改写成情境式回答，由judge评trait表达；附录补充多judge及200条回答的人类评分核验。Persona-Flow先根据对话预测各维系数，再线性合成向量注入；Persona-Evolve包含800个多轮情境，检验trait遵循、角色一致性与表达真实性。它展示这套向量操作可用于动态对话，不只是静态问卷。（§2.4–3、App.A.5/A.7/A.12）
+6. Evaluation/dynamic use: BFI-44 self-report items become scenario-based responses, with judges scoring trait expression; appendices add multiple judges and human ratings of200 answers. Persona-Flow predicts dimensional coefficients from dialogue, linearly composes vectors, and injects them. Persona-Evolve contains800 multi-turn scenarios testing trait adherence, role consistency, and authentic expression, demonstrating dynamic dialogue use beyond static questionnaires. (§§2.4–3, App.A.5/A.7/A.12)
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 几何与表现的联系仍是局部经验结果：cosine矩阵覆盖10个trait poles，但相关trait的副效应与线性叠加主要展示Nervous／Careless、Inventive+Nervous等选定实例；没有给出全trait对的cosine—交叉效应矩阵或预测关系。因此可以说“这些实例的联动方向与几何相关一致”，还不能概括为cosine足以决定任意trait组合的行为效果。（App.A.6/A.10/A.11）
+1. Geometry–expression links remain local empirical results. The cosine matrix covers ten poles, but side effects and linear addition mainly use selected examples such as Nervous/Careless and Inventive+Nervous. No full cosine–cross-effect matrix or predictive relationship is supplied. These examples’ coupling directions agree with geometric correlations, but cosine alone is not established as determining arbitrary compositional effects. (App.A.6/A.10/A.11)
 
-2. 近似线性有工作区间及trait差异：主要系数范围为[-1,2]；Dependable等高基线trait会饱和，Self-interested等trait较难激活。相加／相减的表现支持可组合控制，但不等于10个poles构成严格独立、全局线性的人格基底。（Table 2、Figure 3–4）
+2. Approximate linearity has a working range and trait differences: Mainly coefficients[-1,2]; high-baseline traits such as Dependable saturate, and Self-interested is harder to activate. Addition/subtraction supports compositional control, not a strictly independent global linear personality basis of ten poles. (Table2, Figures3–4)
 
-3. “Behavioral”主要指情境提示下生成回答的trait评分，以及对话中的角色／表达表现；虽比直接自报多了一层行为情境，也有人类与多judge核验，仍未像ID 2那样系统比较实际收益决策，也没有同时分离自报、语言风格和独立行动指标。理解为输出trait的可控性最贴近本文证据。
+3. “Behavioral” mainly means trait scores of scenario-prompted responses and role/expression performance in dialogue. Contextualized behavior adds to direct self-report, with human/multi-judge checks, but actual payoff decisions are not systematically compared as in ID2, and self-report, language style, and independent actions are not jointly separated. Output-trait controllability best matches the evidence.
 
-4. 论文没有做机理型研究：干预能改变输出，证明这些向量具有控制作用；但没有解释cosine相关为何形成、哪些内部计算造成跨trait联动。语言共现、刻板印象和alignment造成饱和／抵抗，是作者对观察现象的解释，未通过训练数据追溯或回路分析直接验证。
+4. This is not a mechanistic study. Intervention changes outputs and establishes control effects, but does not explain why cosine correlations form or which computations cause cross-trait coupling. Linguistic co-occurrence, stereotypes, and alignment-driven saturation/resistance are author interpretations, not directly verified through training-data tracing or circuit analysis.
 
-5. 对照ID 33：该文主动正交化后仍观察到明显cross-trait bleed，提示本篇部分trait的近独立结果不能扩大为全trait独立。两篇提取方式、选层、题目和效应口径不同；组合近似加性与没有副效应需分别判断，详细对照见ID 33。
+5. Comparison with ID33: Substantial cross-trait bleed persists there after explicit orthogonalization, so this paper’s near-independent examples cannot establish universal independence. Extraction, layer selection, questions, and effect definitions differ; approximate compositional additivity and absence of side effects must be judged separately. See ID33 for detailed comparison.
 
 **Future work**
 
-（尚未整理）
+(Not yet organized)
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 10, 21, 23, 24, 33
+Related papers: 1, 10, 21, 23, 24, 33
 
-关键词：personality control; vector algebra; Big Five; dynamic steering
+Keywords: personality control; vector algebra; Big Five; dynamic steering
 
-机构／会议：哈尔滨工业大学；香港大学；ICLR 2026 主会
+Institution / venue: Harbin Institute of Technology; University of Hong Kong; ICLR 2026 main conference
 
-阅读证据：2602.15669v1：正文§2–3及App.A.1/A.2/A.5/A.6/A.7/A.10/A.11/A.12相关方法与结果复核；重点Figure 2–4、Table 10/16/17。向量几何与干预后输出表现分析，非内部机制研究；未复算原始数据。来源：https://arxiv.org/html/2602.15669v1
+Reading evidence: 2602.15669v1: Methods/results in §§2–3 and App.A.1/A.2/A.5/A.6/A.7/A.10/A.11/A.12 checked, especially Figures2–4 and Tables10/16/17. Vector geometry and post-intervention output analysis, not internal mechanism research; raw data not recomputed. Source: https://arxiv.org/html/2602.15669v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-33"></a>
+<a id="paper-33｜Do"></a>
 
 ### ID 33｜Do Personality Traits Interfere? Geometric Limitations of Steering in Large Language Models
 
-Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
+Analysis　|　Reading status: Unmarked　|　Priority: A (user-added)
 
-[论文原文](https://arxiv.org/abs/2602.15847)
+[Paper](https://arxiv.org/abs/2602.15847)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：LLaMA-3-8B-Instruct；Ministral-8B-Instruct（正文§4；表格简写Mistral-8B；精确revision未给）
+Models studied: LLaMA-3-8B-Instruct; Ministral-8B-Instruct (main text §4; abbreviated Mistral-8B in tables; exact revision unspecified).
 
-骨干架构：文本、dense decoder-only Transformer。Llama3-8B为GQA；Ministral-8B官方2410架构交替1 full+3 sliding attention、GQA，非MoE/SSM；但论文未给2410等checkpoint后缀，不能声称完整运行配置已核实。 实际输入：text-only：中性prompt与访谈式BFI回答
+Architecture: Text, dense decoder-only Transformers. Llama3-8B uses GQA; official Ministral-8B-2410 alternates one full and three sliding-attention layers with GQA, not MoE/SSM. The paper omits checkpoint suffixes such as 2410, so the full runtime configuration is not verified. Actual input: text-only neutral prompts and interview-style BFI answers.
 
-输入／推理模式：Instruct基线；未报告reasoning开关或单独thinking对照；干预位置：正文§2逐trait加权聚合方向，离线prior与runtime dynamic check的hybrid layer selection，forward hooks；文中未给可复原的逐trait精确选层表，不应补猜固定L20等
+Input / inference mode: Instruct baselines; no reasoning switch or separate thinking comparison reported. Intervention: §2 uses weighted per-trait direction aggregation, hybrid layer selection combining an offline prior with runtime dynamic checks, and forward hooks. No recoverable exact per-trait layer table is provided; do not assume a fixed L20 or similar.
 
-架构证据：https://arxiv.org/html/2602.15847v1；https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json；https://huggingface.co/docs/transformers/en/model_doc/ministral
+Architecture evidence: https://arxiv.org/html/2602.15847v1; https://huggingface.co/mistralai/Ministral-8B-Instruct-2410/raw/main/config.json; https://huggingface.co/docs/transformers/en/model_doc/ministral
 
 **Research question**
 
-主动消除trait方向的线性重叠后，跨trait行为干扰是否消失，正交化带来什么控制与质量代价？
+Does removing linear overlap between trait directions eliminate cross-trait behavioral interference, and what control and quality costs does orthogonalization impose?
 
-**一句话主题**
+**One-sentence topic**
 
-主动消除Big Five steering方向的线性重叠，再检验跨trait联动是否随之消失：几何正交并不保证输出表现独立。
+Remove linear overlap among Big Five steering directions and test whether cross-trait coupling disappears: geometric orthogonality does not guarantee independent output behavior.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 核心增量：把“trait是否独立”从cosine观察推进到几何干预实验。针对五个Big Five方向，比较原始向量、soft whitening、Gram–Schmidt、选择性正交、soft projection与全局对称Löwdin正交化（C0–C5），测量消除向量线性重叠后，输出trait是否也能解耦。（§2）
+1. Main contribution: moves trait independence from cosine observation to geometric intervention. For five Big Five directions, compares raw vectors, soft whitening, Gram–Schmidt, selective orthogonalization, soft projection, and global symmetric Löwdin orthogonalization (C0–C5), testing whether removing linear overlap also decouples output traits. (§2)
 
-2. 方法：基于high／low标注数据提取各层方向并加权聚合，使用离线prior＋输入相关动态检查的hybrid选层；不是ID 7那套单层10个trait pole提取。各几何条件保持注入、强度、解码等设置不变，在无persona指令的中性prompt下比较base、正向与负向steering。正文实验模型写LLaMA-3-8B-Instruct及Ministral-8B-Instruct，表格简写Mistral-8B。（§2–4）
+2. Method: extract layerwise directions from high/low-labeled data, aggregate with weights, and select layers through an offline prior plus input-dependent dynamic checks. This differs from ID7's single-layer extraction of ten trait poles. Injection, strength, decoding, and other settings remain fixed across geometric conditions; base, positive, and negative steering are compared under neutral prompts without persona instructions. Main-text models are LLaMA-3-8B-Instruct and Ministral-8B-Instruct, abbreviated Mistral-8B in tables. (§§2–4)
 
-3. 交叉效应评估：用访谈式BFI生成回答，由GPT-4o-mini对五trait评分，并报告fluency。对每个目标trait同时看目标差值T和最大非目标变化Bmax；差值定义为High−Low，而非对无干预baseline的增量。Bmax保留对应trait与方向，便于看到“增强一个trait究竟还改了谁”。（§3、Table 1、App.A）
+3. Cross-effect evaluation: generate interview-style BFI answers, score all five traits with GPT-4o-mini, and report fluency. For each target, measure target difference T and maximum off-target change Bmax. Differences are High−Low, not changes from an unsteered baseline. Bmax retains the affected trait and sign, showing what else changes when one trait is strengthened. (§3, Table1, App.A)
 
-4. 主要结果：C5将方向处理成近零pairwise cosine后，跨trait评分变化仍然存在，且常与目标变化同量级。正文Table 1报告LLaMA的Openness在C5下T=2.9、Bmax=-3.0，Mistral对应T=3.1、Bmax=2.8；这些是该表原报值，附录汇总口径存在需核对之处（见Limitation）。核心证据是：减少输入方向的线性重叠并没有同步消除输出trait的联动。（§4.1）
+4. Main result: after C5 reduces pairwise direction cosines nearly to zero, cross-trait score changes remain, often comparable to target changes. Main-text Table1 reports Openness T=2.9 and Bmax=-3.0 for LLaMA under C5, versus T=3.1 and Bmax=2.8 for Mistral. These are the table's original values; appendix aggregation requires checking (see Limitations). The core evidence is that reduced linear overlap among input directions does not simultaneously eliminate output-trait coupling. (§4.1)
 
-5. 控制代价与模型差异：强制正交不带来一致的独立控制改善，且fluency通常下降。正文还报告Neuroticism在LLaMA较易调节、在Mistral目标响应很弱，即使正交后也如此；说明向量几何之外，模型本身的响应特性也重要。“共享成分支持流畅表达／alignment限制trait”是作者对现象的解释，没有进一步做回路或训练过程验证。（§4）
+5. Control costs and model differences: forced orthogonality does not consistently improve independent control and typically reduces fluency. The main text also reports that Neuroticism is easier to modulate in LLaMA but responds weakly in Mistral even after orthogonalization. Beyond vector geometry, model response properties matter. Shared components supporting fluent expression/alignment limiting traits are authors' interpretations, without further circuit or training-process validation. (§4)
 
-6. 对照ID 7：PERSONA强调可缩放、相加和部分trait的近独立调节；本篇强调对五trait做完整交叉测量，发现正交后仍有较大干扰。两者共同说明“可组合”不自动意味着“独立”：多个trait一起变化可以近似线性叠加，同时仍有off-target联动。ID 7本身也展示Nervous→Careless副效应，因此两篇并非所有结果相反；真正的张力在独立控制成立的范围及副效应大小，而非是否存在任何线性可控性。
+6. Comparison with ID7: PERSONA emphasizes scaling, addition, and near-independent control of some traits; this paper measures all five traits jointly and finds substantial interference after orthogonalization. Composability does not automatically imply independence: combined changes can add approximately linearly while retaining off-target coupling. ID7 also shows a Nervous→Careless side effect, so the findings are not uniformly opposed. The real tension concerns the scope of independence and side-effect magnitude, not the existence of any linear controllability.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 范围：两个8B级instruct模型、Big Five及访谈式BFI／judge评分；没有覆盖所有persona表示，也没有检验真实策略决策中的独立性。与ID 7的scenario-BFI、10个pole、单层方法和系数扫描不同，不能直接比较两篇的分数与副效应百分比。（§2–5）
+1. Scope: two approximately 8B instruct models, Big Five traits, and interview-style BFI/judge scores; not all persona representations or independent real strategic decisions. ID7 uses scenario-BFI, ten poles, a single-layer method, and coefficient sweeps, so scores and side-effect percentages cannot be directly compared. (§§2–5)
 
-2. 结论层级：本文支持“这些提取／几何处理方法下，正交不足以消除trait评分干扰”，不等于已经排除其他表征、上下文或非线性控制方法。它是几何处理与输出表现的分析，没有定位干扰的内部计算机制；“更广的social axis”是解释，不是已识别出的唯一机制。
+2. Level of conclusion: under these extraction/geometric-processing methods, orthogonalization is insufficient to eliminate trait-score interference. Other representations, contexts, or nonlinear controls are not ruled out. The paper analyzes geometric processing and output behavior without locating the internal computation causing interference. A broader social axis is an interpretation, not an identified unique mechanism.
 
-3. 数值呈现需核对：Table 1的部分T／Bmax与App.A交叉矩阵未完全对齐。例如按Table 6标注的“列=target、行=measured”，C5的Openness列是2.90、1.44、1.88、2.89、-1.38，最大非目标绝对值为2.89（Agreeableness），而Table 1给出-3.0（Neuroticism）；后者更像取了Openness行的极值。因而先保留“显著跨trait联动”的定性结果，精确的方向性、最大干扰trait及汇总值需结合代码确认。
+3. Numerical reporting needs checking: some Table1 T/Bmax values do not fully match App.A cross-effect matrices. With Table6 labeled columns=target and rows=measured, C5's Openness column is 2.90, 1.44, 1.88, 2.89, -1.38; the largest absolute off-target value is 2.89 (Agreeableness), whereas Table1 reports -3.0 (Neuroticism), resembling the Openness row's extreme. Retain the qualitative finding of substantial cross-trait coupling; exact directionality, maximum-interference trait, and aggregates require code confirmation.
 
-4. 作者明确：主要依赖LLM judge，尚缺人类评估及更多互补指标；可扩展模型、数据和几何处理方法。相比ID 7已有的多judge／人类子集核验，这是本篇评估覆盖较窄的地方。（§5 Limitations）
+4. Authors explicitly note reliance on an LLM judge, lacking human evaluation and additional complementary metrics, and propose expanding models, data, and geometric methods. Evaluation coverage is narrower than ID7's multi-judge and human-subset checks. (§5 Limitations)
 
 **Future work**
 
-作者提出：扩展模型与人格数据，比较更多投影／正交化方法，并引入人类或互补行为评价。（§5）
+Authors propose: Expand models and personality data, compare more projection/orthogonalization methods, and add human or complementary behavioral evaluation. (§5)
 
-阅读推演｜与ID 7统一验证：在同模型、同向量提取、同层／强度、同评估题与judge下，同时测cosine矩阵G及完整cross-trait响应矩阵R；先复核High−Low与相对baseline两种效应口径，再比较原始向量、soft／hard正交。检验cosine变化能否预测R非对角项变化，同时报告目标强度和fluency。另用双trait系数网格检查加性残差：组合是否近似线性、是否独立控制是两个问题，分开判定。此处是后续比较设计，不是两篇已完成的统一实验。
+Reading-derived comparison with ID7: Using the same model, extraction, layer/strength, questions, and judge, measure cosine matrix G and the full cross-trait response matrix R. First reconcile High−Low versus baseline-relative effects, then compare raw vectors with soft/hard orthogonalization. Test whether cosine changes predict changes in R's off-diagonal terms while reporting target strength and fluency. Use a two-trait coefficient grid to check additive residuals: approximately linear composition and independent control are separate questions. This is a proposed comparison, not a unified experiment completed by either paper.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 至少大五人格里面 对于ai来说 不同trait的correlation比较大，从behavior角度（v.s. persona vector的geometry角度）
 
-关联论文：1, 5, 7
+Related papers: 1, 5, 7
 
-关键词：Big Five; trait interference; cosine similarity; orthonormalisation; cross-trait bleed
+Keywords: Big Five; trait interference; cosine similarity; orthonormalisation; cross-trait bleed
 
-机构／会议：University of Western Australia（NASIM Lab）；Macquarie University；arXiv预印本，会议接收未核实
+Institution / venue: University of Western Australia (NASIM Lab); Macquarie University. arXiv preprint; conference acceptance unverified.
 
-阅读证据：2602.15847v1：正文§1–5及App.A各几何条件交叉表复核；与ID 7（2602.15669v1）§2.2–2.3、App.A.6/A.10/A.11对照。已手核Table 1与Table 6的一个汇总不一致示例；未运行代码或复算原始数据。来源：https://arxiv.org/html/2602.15847v1；https://arxiv.org/html/2602.15669v1
+Reading evidence: 2602.15847v1, main text §§1–5 and App.A cross-tables for each geometric condition checked against ID7 (2602.15669v1), §§2.2–2.3 and App.A.6/A.10/A.11. One Table1/Table6 aggregate inconsistency manually checked; no code execution or raw-data recomputation. Sources: https://arxiv.org/html/2602.15847v1; https://arxiv.org/html/2602.15669v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-34"></a>
+<a id="paper-34｜Forecasting"></a>
 
 ### ID 34｜Forecasting Side Effects of Activation Steering
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户追加）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (user-added)
 
-[论文原文](https://arxiv.org/abs/2608.11227)
+[Paper](https://arxiv.org/abs/2608.11227)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma-3-4B；Gemma-3-12B；Qwen2.5-7B（论文§3模型名；未显式给checkpoint仓库/it后缀/revision）
+Models studied: Gemma-3-4B; Gemma-3-12B; Qwen2.5-7B (names in §3; exact checkpoint repositories, it suffixes, and revisions not explicitly provided).
 
-骨干架构：均为dense decoder Transformer。Gemma3的4B/12B本体支持视觉：SigLIP视觉编码器+投影+Gemma decoder，decoder交替5 local+1 global attention；本论文只实测文本context，不能记成已做VLM steering实验。Qwen2.5-7B为纯文本dense GQA decoder，28blocks。 实际输入：text-only六类context（coding、document、emotional-support等），没有image/video实验
+Architecture: All dense decoder Transformers. Gemma3 4B/12B natively supports vision via SigLIP encoder, projection, and Gemma decoder, alternating five local and one global attention layer. Only text contexts are tested here, not VLM steering. Qwen2.5-7B is a text-only dense GQA decoder with 28 blocks. Actual inputs: six text-only context types, including coding, documents, and emotional support; no image/video experiments.
 
-输入／推理模式：未报告独立reasoning模型或thinking开关对照；instruct后缀论文未列，留未核实；干预位置：§3 L16/34, L22/48, L13/28分别注入Gemma4B/Gemma12B/Qwen7B；四五层后L20/L26/L18 readout；所有prompt/generated token位置；层号按论文原记法，勿未核实地转0-based
+Input / inference mode: No separate reasoning model or thinking-switch comparison reported; instruct suffixes are omitted and remain unverified. Intervention: §3 injects at L16/34, L22/48, and L13/28 for Gemma4B/Gemma12B/Qwen7B, with readouts four or five layers later at L20/L26/L18. All prompt/generated-token positions are edited. Layer numbers follow the paper; do not convert to zero-based indexing without verification.
 
-架构证据：https://arxiv.org/html/2608.11227v1；https://huggingface.co/google/gemma-3-4b-it；https://huggingface.co/google/gemma-3-12b-it；https://huggingface.co/docs/transformers/v4.52.3/en/model_doc/gemma3；https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json
+Architecture evidence: https://arxiv.org/html/2608.11227v1; https://huggingface.co/google/gemma-3-4b-it; https://huggingface.co/google/gemma-3-12b-it; https://huggingface.co/docs/transformers/v4.52.3/en/model_doc/gemma3; https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json
 
 **Research question**
 
-能否在测量新steering方向的完整副作用之前，预测它对其他行为影响的方向与相对排序？
+Can the signs and relative rankings of a new steering direction's effects on other behaviors be predicted before measuring its complete side effects?
 
-**一句话主题**
+**One-sentence topic**
 
-系统测量67种行为间的非对称steering副作用，并用未干预激活训练的层间映射与行为probe预测其方向和相对排序。
+Systematically measures asymmetric steering side effects across 67 behaviors and predicts their signs and relative rankings using an interlayer map trained on unsteered activations and behavioral probes.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 从“是否有副作用”推进到“干预前能否预测”：在Gemma-3-4B、Gemma-3-12B、Qwen2.5-7B上定义67种行为，构造source×target交叉效应矩阵。只有self-effect验证通过的方向作为source（分别52／52／47个），其余行为仍可作为target；六类context覆盖含糊请求、代码、文档、情绪支持、创作和边界安全请求。（§2–3）
+1. Moves from detecting side effects to predicting them before intervention. Defines 67 behaviors across Gemma-3-4B, Gemma-3-12B, and Qwen2.5-7B and constructs source-by-target cross-effect matrices. Only directions passing self-effect validation serve as sources (52/52/47 respectively); other behaviors can still be targets. Six contexts cover ambiguous requests, code, documents, emotional support, creative writing, and boundary-safety requests. (§§2–3)
 
-2. 测量方法：difference-of-means单位方向按层激活范数缩放，在prompt及decode位置注入。逐source先确定不退化的系数窗口，再取5个强度×4次采样；每条回答评全部67行为。每prompt拟合评分对α的斜率，跨prompt平均得到M_ij，显著性按模型内off-diagonal做BH-FDR q<0.05；报告窗口总变化Δ_ij=窗口宽度×M_ij，以免把不同可用α范围的裸斜率直接比较。主judge按评分token概率加权，另用异模型judge核验子集。（§2–3、App.A/B）
+2. Measurement: unit difference-of-means directions are scaled by layer activation norms and injected at prompt/decode positions. For each source, identify a nondegrading coefficient window, then use five strengths with four samples each; score every response on all 67 behaviors. Fit score-versus-α slopes per prompt and average to obtain M_ij. Apply within-model BH-FDR q<0.05 to off-diagonal terms. Report total window changes Δ_ij=window width×M_ij rather than directly comparing raw slopes across different usable α ranges. The main judge weights rating-token probabilities; a different-model judge checks a subset. (§§2–3, App.A/B)
 
-3. 副作用结构：33–50%的受测行为对有显著coupling；交叉矩阵主模式解释约64%方差，有效维度约4.6–4.9。主轴大致是展开解释与简短表达的trade-off，但去掉主轴后仍保留不少coupling。这里是输出交叉效应矩阵的低维结构，不等于激活空间全部persona向量只有这些维度。（§4.1、App.D）
+3. Side-effect structure: 33–50% of measured pairs show significant coupling. The dominant cross-matrix mode explains about 64% of variance, with effective dimensionality around 4.6–4.9. The main axis roughly trades elaboration against brevity, but substantial coupling remains after removing it. This is low-dimensional structure in output cross-effects, not a claim that all persona vectors occupy that many activation-space dimensions. (§4.1, App.D)
 
-4. 对cosine的关键反例：在双向效应都显著的行为对中，18–26%出现A→B与B→A反号；例如增强thoroughness提高uncertainty disclosure，反向steer uncertainty disclosure却压低thoroughness。Cosine是对称量，不能单独描述这种方向关系。留出行为评估中raw cosine最多解释19%的coupling方差，五种相似性变体中最好也只有23%。这是对“几何相似足以预测行为联动”的系统检验，比只展示少量trait pair更直接。（§4.2）
+4. Key counterexample to cosine: among pairs significant in both directions, 18–26% have opposite signs for A→B and B→A. Increasing thoroughness raises uncertainty disclosure, whereas steering uncertainty disclosure reduces thoroughness. Symmetric cosine alone cannot represent this directionality. On held-out behaviors, raw cosine explains at most 19% of coupling variance; even the best of five similarity variants reaches only 23%. This systematically tests geometric similarity as a predictor, beyond selected trait-pair examples. (§4.2)
 
-5. 预测方法：source用steering direction v_i表示，target另训线性behavior probe r_j；用未steer生成的成对层激活做ridge回归，学习注入层→readout层映射W，再用Mhat_ij=<Wv_i,r_j>预测。source与target扮演不同角色，因此预测可非对称；target只需可读取，不必存在可用steering方向。用约1,288–2,039条普通生成学习probe与映射，而全矩阵实测约需每模型128,000条steered生成。W是拟合的传播近似，不是通过回路追踪获得的真实因果Jacobian。（§5.1）
+5. Prediction: represent source by steering direction v_i and train a separate linear target-behavior probe r_j. Fit a ridge-regression map W from injection-layer to readout-layer activations using paired layers of unsteered generations, then predict Mhat_ij=<Wv_i,r_j>. Source and target have different roles, allowing asymmetry; targets need only be readable, not steerable. Approximately 1,288–2,039 ordinary generations train the probes/map, versus about 128,000 steered generations per model for measuring the full matrix. W is a fitted propagation approximation, not a true causal Jacobian recovered through circuit tracing. (§5.1)
 
-6. 泛化与结果：分别留出source或target，嵌套选择ridge强度；主结果先用未干预probe质量筛选target（AUROC≥0.76且覆盖六context中的至少五个，保留42／37／46种）。六个模型×split的Spearman约0.269–0.393，均高于raw cosine，五个差异显著。预测绝对值最高的10%交互，符号正确率约68／78／71%；不代表全部行为对都达到这一准确率。强度排序与方向预测也不同：已有实测信息中的per-target敏感度更擅长找大效应，pair-specific预测更有助于判断增幅还是抑制。（§5、Table 2）
+6. Generalization/results: hold out sources or targets separately with nested ridge selection. Main results filter targets by unsteered probe quality (AUROC≥0.76 and coverage of at least five of six contexts), retaining 42/37/46 behaviors. Across six model×split settings, Spearman is approximately 0.269–0.393, always above raw cosine, with five significant differences. The top 10% of predicted absolute interactions have sign accuracy around 68/78/71%; this does not apply to all pairs. Magnitude ranking differs from sign prediction: measured per-target sensitivity better identifies large effects, while pair-specific forecasts better distinguish enhancement from suppression. (§5, Table2)
 
-7. 与ID 7／33连接：ID 7证明部分组合可近似叠加，ID 33说明正交不保证独立；本篇进一步说明干扰可低维、非对称且部分可预测。它把“控制方向”与“行为读取方向”分开，提示不能只看两个steering vectors的cosine来判断行为相互影响。
+7. Connection to IDs7/33: ID7 shows approximate additivity for some combinations; ID33 shows orthogonality does not ensure independence. This paper adds low-dimensional, asymmetric, partly predictable interference. It separates control directions from behavioral readout directions, indicating that cosine between two steering vectors alone cannot determine behavioral interaction.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 预测对象是相对排序与符号，不是校准后的绝对行为效应；对完整profile的判断比单个pair更可靠。它也不最擅长发现绝对变化最大的target：若已有其他source的实测矩阵，target平均敏感度与最近邻profile复用是很强的参考。（§5、§7）
+1. Predictions concern relative rankings and signs, not calibrated absolute behavioral effects; full-profile judgments are more reliable than individual pairs. The method is also not best at finding the largest absolute target changes: when matrices for other sources exist, mean target sensitivity and nearest-neighbor profile reuse are strong references. (§5, §7)
 
-2. “干预前预测”有具体条件：probe与W训练用未干预生成，留出行为的cross-effects不参与模型选择；但ridge选择仍用其他训练行为的实测coupling，source验证和可用系数窗口也需要干预。应理解为不必先测待预测source／target的完整副作用profile，不是整个研究流程完全零干预。主结果还经过probe可读性筛选，附录另报全67-target panel。（§3、§5.1–5.2）
+2. Prediction before intervention has specific conditions: probes and W use unsteered generations, and held-out cross-effects do not guide model selection; however, ridge selection uses measured coupling for other training behaviors, and source validation/coefficient windows also require intervention. The claim is that the full side-effect profile of the new source/target need not be measured first, not that the entire workflow is intervention-free. Main results also filter by probe readability; the appendix reports all 67 targets. (§3, §§5.1–5.2)
 
-3. 评估仍以judge定义的行为为对象，跨judge相关高不等于所有构念均已充分人工验证。App.B中作者说明：15个headline行为的人工评分由一位作者在LLM草稿基础上纠正签署，仅4个达到预设Spearman≥0.70；因此不能概括成人类已全面验证67行为。当前证据更适合支持这一评分体系下的排序与联动。（§7、App.B）
+3. Evaluation still concerns judge-defined behaviors; high cross-judge correlation does not fully validate every construct against humans. App.B states that one author corrected and signed off LLM-drafted ratings for 15 headline behaviors; only four met the preset Spearman≥0.70. This is not comprehensive human validation of all 67 behaviors. The evidence better supports rankings and coupling within this scoring system. (§7, App.B)
 
-4. 方法范围是三个模型、六类context、已校准窗口内的线性activation steering与线性readout。非对称性和传播预测提供了比cosine更强的功能性模型，但没有识别副作用的具体内部回路；换context、强度窗口或非线性干预仍需重新检验。（§7）
+4. Scope: three models, six contexts, linear activation steering within calibrated windows, and linear readout. Asymmetry and propagation forecasts provide a stronger functional model than cosine but do not identify side-effect circuits. Different contexts, strength windows, or nonlinear interventions require new validation. (§7)
 
 **Future work**
 
-作者提出（§5、§7）：改进行为readout，扩展到非线性干预；把forecast用于部署前确定优先审计的行为，而不是替代实际检查。
+Authors propose (§5, §7): Improve behavioral readouts, extend to nonlinear interventions, and use forecasts to prioritize predeployment audits rather than replace actual checks.
 
-阅读推演：与ID 7／33用同模型同题构造完整cross-trait响应矩阵，比较cos(v_i,v_j)、direct probe和<Wv_i,r_j>对非对角效应的预测能力；分别检查对称部分与反对称部分。再对组合v_a+v_b检验预测profile是否可加，区分输出近似加性与trait独立。可进一步在训练／steering前后比较control direction与readout direction是否发生不同程度旋转，连接ID 5的自报与行为分离问题；以上是后续设计，本文未完成。
+Reading-derived ideas: With IDs7/33, construct full cross-trait response matrices using the same model/questions. Compare cos(v_i,v_j), direct probes, and <Wv_i,r_j> for predicting off-diagonal effects, separating symmetric and antisymmetric components. Test whether profiles for v_a+v_b are additive, distinguishing output additivity from trait independence. Compare rotations of control and readout directions before/after training or steering, connecting ID5's self-report/behavior dissociation. These are follow-up designs, not completed experiments in this paper.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 5, 7, 33
+Related papers: 1, 5, 7, 33
 
-关键词：activation steering; cross-effect matrix; asymmetric interactions; behavioral probes; propagation forecasting
+Keywords: activation steering; cross-effect matrix; asymmetric interactions; behavioral probes; propagation forecasting
 
-机构／会议：Singapore Management University；arXiv预印本，会议接收未核实
+Institution / venue: Singapore Management University. arXiv preprint; conference acceptance unverified.
 
-阅读证据：2608.11227v1：正文§2–7及App.B/C/D中评分效度、留出方案、显著性、预测门槛与误差诊断相关部分复核；未逐项审计全部artifact、未运行代码或复算矩阵。来源：https://arxiv.org/html/2608.11227v1
+Reading evidence: 2608.11227v1, main text §§2–7 and relevant App.B/C/D sections on rating validity, holdouts, significance, prediction thresholds, and error diagnostics checked. Not all artifacts audited; no code execution or matrix recomputation. Source: https://arxiv.org/html/2608.11227v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-24"></a>
+<a id="paper-24｜VALUEFLOW:"></a>
 
 ### ID 24｜VALUEFLOW: Toward Pluralistic and Steerable Value-based Alignment in Large Language Models
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2602.03160)
+[Paper](https://arxiv.org/abs/2602.03160)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：prompt-steerability：Qwen3-32B、Mistral3.1-Small24B、Phi4、GLM4-32B、GPTOSS20B、Gemma3-27B、GPT4.1、Claude4Sonnet、Grok4、Gemini2.5Flash；activation subset待逐项核
+Models studied: Prompt steerability: Qwen3-32B, Mistral3.1-Small24B, Phi4, GLM4-32B, GPTOSS20B, Gemma3-27B, GPT4.1, Claude4Sonnet, Grok4, Gemini2.5Flash. Activation subset needs model-wise verification.
 
-骨干架构：prompt评价覆盖Dense、MoE、VLM-capable与closed API，但activation实验模型清单未完全核定；不可宣称所有十模型均做内部干预。Qwen3-embedding0.6B是表征模型另计。
+Architecture: Prompt evaluation spans dense, MoE, VLM-capable, and closed-API models, but the activation-experiment inventory is incompletely verified; do not claim internal intervention on all ten models. Qwen3-embedding0.6B is a separate representation model.
 
-输入／推理模式：main results为prompt steerability；各模型具体thinking／effort待核；文本价值任务不等于视觉验证。
+Input / inference mode: Main results concern prompt steerability; exact thinking/effort settings remain unverified. Textual value tasks do not validate vision.
 
-架构证据：2602.03160v2：§4/5模型段；activation baselines见附录（本轮未完整展开）；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.03160
+Architecture evidence: 2602.03160v2: Model passages in §§4/5; activation baselines in appendices, not fully expanded in this reading. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2602.03160
 
 **Research question**
 
-价值观能否被统一表示、量化，并通过组合干预实现多价值的可调控制？
+Can values be represented and quantified consistently, then compositionally intervened on for adjustable multi-value control?
 
-**一句话主题**
+**One-sentence topic**
 
-统一价值表征、强度评估和多价值控制，研究不同价值能否组合与定量调节。
+Unify value representations, intensity evaluation, and multi-value control to study composition and quantitative adjustment.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 把价值对齐拆成可解释的值维度、表达强度评估与多值控制。以Schwartz、Moral Foundations、Duties和Rights为坐标，训练层级value embedding，通过理论内层级学习和跨理论anchor对齐连接不同概念系统；该embedding是任务表示工具，不是已证明的模型内部persona subspace。
+1. Separates value alignment into interpretable dimensions, expression-intensity evaluation, and multi-value control. Uses Schwartz, Moral Foundations, Duties, and Rights coordinates, training hierarchical value embeddings through within-theory hierarchy learning and cross-theory anchor alignment. These embeddings are task-representation tools, not established internal persona subspaces.
 
-2. 针对LLM绝对评分不稳定，构建Value Intensity DB：对固定价值下文本做相对排序，用Plackett–Luce拟合强度，再让新回答与固定anchor比较；加入人类评价检验可靠性。分数是value-conditional，不能把不同价值的数值直接当同一全局尺度。
+2. Addresses unstable absolute LLM ratings by constructing Value Intensity DB: Rank texts relatively within a fixed value, fit intensities using Plackett–Luce, and compare new answers with fixed anchors. Human evaluation checks reliability. Scores are value-conditional, not a single global scale shared by all values.
 
-3. 在多个模型上比较显式强度anchor与用户文本提示，发现不同模型/价值的可控性明显不同，且常有正负方向不对称与ceiling effect。通过群体value profile在OpinionQA测量人口群体偏好预测，连接profile提取与可控表达。
+3. Across models, compares explicit intensity anchors with user-text prompts. Controllability varies substantially by model/value, often with positive/negative asymmetry and ceiling effects. Group value profiles predict demographic preferences on OpinionQA, connecting profile extraction with controlled expression.
 
-4. 多值prompt实验中相近价值较可组合，冲突价值出现权衡，五值目标常由最强正目标主导；层级子值组合可接近直接目标。这里的近加性与“旋转”是输出评分空间现象，不是activation向量线性组合证据。附录在Qwen3-32B上适配Persona Vector及轻量embedding注入，控制有限，不能由十模型prompt面板推断十模型activation结论。
+4. In multi-value prompting, similar values compose more readily while conflicting ones trade off; five-value targets are often dominated by the strongest positive goal. Hierarchical subvalue composition can approach direct targeting. Approximate additivity and “rotation” here concern output-score space, not activation-vector composition. Appendix adaptations of Persona Vectors and lightweight embedding injection on Qwen3-32B have limited control; ten-model prompt panels do not establish ten-model activation results.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 评估重点是文字价值表达与观点回答，未建立其对真实行动、planning或长期行为的一致预测。
+1. Evaluation emphasizes textual value expression and opinion answers, without consistent prediction of real actions, planning, or long-term behavior.
 
-2. 负向与多值目标未实现精确dose-response；排序anchor虽改善测量，仍依赖理论定义及judge。
+2. Negative/multi-value goals lack precise dose–response control. Ranking anchors improve measurement but still depend on theoretical definitions and judges.
 
-3. 内部steering只作有限补充，未系统解释值冲突对应何种残差几何或计算机制。
+3. Internal steering is a limited supplement, without systematic explanation of residual geometry/computation underlying value conflicts.
 
 **Future work**
 
-作者：扩展更细价值/语言系统、个人与群体profile，并研究长对话、planning和多agent。阅读推演：将prompt多值的输出交互矩阵与activation方向cosine/实际因果交互分开测量，测试语义相近是否真能预测可组合性及跨任务行为迁移。
+Author proposals: Expand fine-grained values/languages and individual/group profiles; study long dialogue, planning, and multi-agent settings. Reading-derived ideas: Separately measure prompt-based output interaction matrices, activation-direction cosine, and causal interactions, testing whether semantic similarity predicts composition and cross-task behavioral transfer.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：2, 7, 9, 29, 32
+Related papers: 2, 7, 9, 29, 32
 
-关键词：value alignment; intensity calibration; hierarchical values; multi-value steering
+Keywords: value alignment; intensity calibration; hierarchical values; multi-value steering
 
-机构／会议：首尔大学；ICML 2026 主会；Oral仅arXiv自报
+Institution / venue: Seoul National University; ICML 2026 main conference; Oral status self-reported on arXiv only
 
-阅读证据：§3.2、§4–7；App.C（排序校准）、D.3/D.5/D.10（组合/内部控制/多轮）、G、H（人评/局限）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2602.03160v2
+Reading evidence: §3.2, §§4–7; App.C ranking calibration, D.3/D.5/D.10 composition/internal control/multi-turn tests, G, H human evaluation/limitations. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2602.03160v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-15"></a>
+<a id="paper-15｜Belief"></a>
 
 ### ID 15｜Belief Dynamics Reveal the Dual Nature of In-Context Learning and Activation Steering
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2511.00617)
+[Paper](https://arxiv.org/abs/2511.00617)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama-3.1-8B-Instruct为主；Qwen2.5-7B、Gemma2-9B及Llama3.1-70B-Instruct复核
+Models studied: Mainly Llama-3.1-8B-Instruct; replications on Qwen2.5-7B, Gemma2-9B, and Llama3.1-70B-Instruct
 
-骨干架构：Dense decoder-only Transformer；文本行为/ICL概率分析；4-bit量化是数值格式而非另一架构。
+Architecture: Dense decoder-only Transformer; textual behavior/ICL probability analysis. 4-bit quantization is a numerical format, not a different architecture.
 
-输入／推理模式：非专门reasoning任务设置；使用答案概率及ICL曲线，不以显式CoT为必要。
+Input / inference mode: No dedicated reasoning-task setting; answer probabilities and ICL curves, without requiring explicit CoT.
 
-架构证据：2511.00617v2：正文理论与实证部分；App实验细节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.00617
+Architecture evidence: 2511.00617v2: Main-text theory/empirics; appendix experimental details. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2511.00617
 
 **Research question**
 
-信念更新视角能否统一解释in-context learning与activation steering带来的行为变化？
+Can belief updating unify behavioral changes induced by in-context learning and activation steering?
 
-**一句话主题**
+**One-sentence topic**
 
-用信念更新框架统一上下文学习与激活steering对行为的影响。
+Use a belief-updating framework to unify effects of in-context learning and activation steering on behavior.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将many-shot ICL与activation steering放进同一个Bayesian行为预测模型：context examples提供累积证据，steering在假定线性概念表示下改变log prior odds。
+1. Places many-shot ICL and activation steering within one Bayesian behavioral-prediction model: Context examples provide cumulative evidence, while steering changes log prior odds under a linear concept-representation assumption.
 
-2. 以persona一致/不一致的Yes/No概率作可直接读取的行为量，主实验涉及Dark Triad与nihilism等五类persona，另测高prior概念和flipped-label sentiment；主模型Llama3.1-8B，Qwen2.5-7B和Gemma2-9B等作扩展。
+2. Uses directly readable persona-consistent/inconsistent Yes/No probabilities as behavioral measures. Main experiments cover five persona types including Dark Triad and nihilism, plus high-prior concepts and flipped-label sentiment. Main model: Llama3.1-8B; extensions include Qwen2.5-7B and Gemma2-9B.
 
-3. 推导并拟合log-odds=a·m+b+γ·N^(1−α)，m是干预强度，N是示例数；四个参数以行为数据拟合，跨强度10-fold held-out预测平均r约0.98，transition-point预测约0.97。统一模型解释两类控制在概率空间呈sigmoid，而在log-belief空间近似相加，因此轻微增加shots或strength可能跨越行为相变边界。
+3. Derives and fits log-odds=a·m+b+γ·N^(1−α), where m is intervention strength and N example count. Four parameters are fitted to behavior. Ten-fold held-out prediction across strengths averages r≈0.98, with transition-point prediction≈0.97. The model explains sigmoid effects in probability space and approximate addition in log-belief space: small shot/strength increases can cross a behavioral phase-transition boundary.
 
-4. 它不是证明任意trait相互正交：近正交概念基与较少interference是建模假设，极端strength下非单调与部分模型steering无效也被报告。对本项目可作为read/write forecasting的低参数基线，帮助区分行为反应的sigmoid饱和与表示本身随context旋转；但这里“belief”是预测所用潜变量，不是已定位的内部信念电路。
+4. Does not prove arbitrary traits orthogonal: Nearly orthogonal concept bases and low interference are modeling assumptions; extreme-strength nonmonotonicity and failed steering on some models are reported. This offers a low-parameter read/write forecasting baseline to distinguish sigmoid saturation from context-dependent representational rotation. “Belief” is a predictive latent variable, not a located internal belief circuit.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①主要观测是persona问卷式二选一token概率，尚未验证实际风险、诚实行动或多步工具决策，不能把persona-matching label直接等同完整行为人格。
+① Main observations are questionnaire-like binary persona-token probabilities, without actual risk, honest action, or multi-step tool decisions. Persona-matching labels are not complete behavioral personality.
 
-②闭式预测依赖二元概念、近线性读出、概念干扰小及特定证据累积假设；强steering出分布、某些模型无效果时不成立，作者也明确限制单调范围。
+② Closed-form predictions assume binary concepts, near-linear readout, low concept interference, and specific evidence accumulation. They fail with out-of-distribution strong steering or ineffective models; the authors explicitly limit the monotonic range.
 
-③参数由目标行为数据拟合，held-out主要按干预强度划分；不等同从activations零样本预测全新trait/context的控制效果。
+③ Parameters are fitted to target behavior, with held-out splits mainly by intervention strength. This is not zero-shot prediction of control effects for new traits/contexts from activations.
 
 **Future work**
 
-作者提出：扩展非二元概念空间、SAE等其他提取方法和更大模型，解释多shot提取向量归一化后反而更弱的现象。
+Author proposals: Extend to nonbinary concept spaces, extraction methods such as SAEs, and larger models; explain why normalized vectors extracted from multiple shots can be weaker.
 
-阅读推演：以该模型作为global rank-1响应基线，对context语义类别分层检查残差；只有在共享参数模型无法预测context间控制差异时，再比较rank-k/局部子空间及intervention-conditioned critic，避免将普通sigmoid效应误认成方向旋转。
+Reading-derived ideas: Use this as a global rank-1 response baseline, stratifying residuals by semantic context. Compare rank-k/local subspaces and intervention-conditioned critics only when shared-parameter models fail to predict cross-context control differences, avoiding mistaking ordinary sigmoid effects for rotation.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 10, 21, 26
+Related papers: 1, 10, 21, 26
 
-关键词：belief dynamics; Bayesian updating; in-context learning; activation steering
+Keywords: belief dynamics; Bayesian updating; in-context learning; activation steering
 
-机构／会议：Goodfire；Harvard；Stanford；NTT Research；预印本；主会未核实
+Institution / venue: Goodfire; Harvard; Stanford; NTT Research; preprint; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2511.00617v2 [cs.LG] 12 Mar 2026；§3实验、§4.1–4.3推导与held-out检验、§5；App.A推导、App.B模型、App.C强度边界、App.E/F附加任务、App.G多shot、App.H设置。；原文：https://arxiv.org/html/2511.00617。未逐项复现。
+Reading evidence: Selected main text/relevant appendices; 2511.00617v2 [cs.LG] 12 Mar 2026; §3 experiments, §§4.1–4.3 derivation/held-out tests, §5; App.A derivation, B models, C strength boundaries, E/F additional tasks, G many-shot tests, H settings. Original: https://arxiv.org/html/2511.00617. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## 如何选择更有效的控制方向与位置？
+## How should more effective control directions and intervention sites be selected?
 
-<a id="paper-10"></a>
+<a id="paper-10｜Manifold"></a>
 
 ### ID 10｜Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2605.05115)
+[Paper](https://arxiv.org/abs/2605.05115)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：LLM：Llama-3.1-8B为主（L28）；App.C.2另测Llama-3.1-70B（L70）。正文并未统一给Instruct后缀。另自训MountainCar视觉world model。
+Models studied: LLMs: Mainly Llama-3.1-8B (L28); App.C.2 also Llama-3.1-70B (L70). The main text does not consistently specify Instruct suffixes. Also a custom-trained MountainCar visual world model.
 
-骨干架构：LLM为Dense decoder Transformer；视觉实验是conv encoder＋64维GRU＋conv decoder，不是VLM语言backbone。
+Architecture: LLMs are dense decoder Transformers. The visual model is a convolutional encoder+64-dimensional GRU+convolutional decoder, not a VLM language backbone.
 
-输入／推理模式：LLM概念token分布与ICL任务；GRU根据图像帧和action预测下一帧，不是chain-of-thought agent。
+Input / inference mode: LLM concept-token distributions and ICL tasks; the GRU predicts next frames from image frames/actions, not a chain-of-thought agent.
 
-架构证据：2605.05115v1：§2/§3实验；§5 Environment and model architecture；App.B/C.2；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.05115
+Architecture evidence: 2605.05115v1: §§2/3 experiments; §5 Environment and model architecture; App.B/C.2. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2605.05115
 
 **Research question**
 
-沿表征流形实施干预是否比直线steering更能保留自然表征并实现行为变化？
+Do interventions along representational manifolds preserve natural representations and change behavior better than straight-line steering?
 
-**一句话主题**
+**One-sentence topic**
 
-研究尊重表征流形的干预能否产生比直线steering更自然的行为变化。
+Study whether manifold-respecting interventions produce more natural behavioral changes than straight-line steering.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 研究激活几何是否具有行为因果意义，而非只在PCA图中出现结构。对星期/月、字母顺序与年龄等具有已知概念几何的任务，分别从残差状态和自然输出概率分布拟合activation/behavior manifold，再比较沿流形路径与端点线性插值的实际干预。
+1. Tests whether activation geometry has behavioral causal significance rather than merely structure in PCA plots. For concepts with known geometry—weekdays/months, alphabet order, age—fits activation/behavior manifolds from residual states and natural output-probability distributions, comparing interventions along manifold paths with linear endpoint interpolation.
 
-2. 在行为分布的Hellinger空间定义偏离自然流形的距离，并以累积Bhattacharyya能量衡量路径naturalness。沿activation manifold的干预产生更平滑、有序且接近自然behavior manifold的输出；线性路径容易从一个端点跳向另一个端点，经过缺少自然对应的分布。这里的“自然”有明确分布距离定义，并非泛泛的语言流畅度judge。
+2. Defines distance from the natural manifold in the Hellinger space of behavioral distributions and measures path naturalness with accumulated Bhattacharyya energy. Activation-manifold interventions yield smoother, ordered outputs closer to the natural behavior manifold; linear paths tend to jump between endpoints through distributions without natural counterparts. “Natural” has a defined distributional-distance meaning, not a generic fluency judge.
 
-3. 反向从behavior manifold路径出发，优化能实现该路径的激活，所得pullback轨迹也恢复activation manifold的曲率，为几何—行为联系提供双向证据。
+3. In the reverse direction, optimizes activations to realize behavior-manifold paths; resulting pullback trajectories recover activation-manifold curvature, providing bidirectional geometry–behavior evidence.
 
-4. 在二维合成图结构ICL任务中，沿某个内在坐标移动可以保持另一维相对稳定；在MountainCar视觉世界模型中也测试物理状态路径。因此其结论挑战“所有可控概念都应压成一个全局直线”，但没有直接测persona空间；可作为global rank-1/rank-k/context-dependent比较的几何方法参考。
+4. In synthetic two-dimensional graph ICL, movement along one intrinsic coordinate can preserve the other. Physical-state paths are also tested in a MountainCar visual world model. This challenges reducing all controllable concepts to global straight lines but does not directly test persona space. It offers geometric methods for global rank-1/rank-k/context-dependent comparisons.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 主要概念有清楚的已知结构与模板数据，不能直接把流形结果推广成人格或社会行为普遍非线性。
+1. Main concepts have clear known structure and templated data; manifold results do not establish universally nonlinear personality/social behavior.
 
-2. 语言任务以next-token分布为主，未验证长序列persona coherence、真实决策或agent任务收益。
+2. Language tasks mainly use next-token distributions, without long-sequence persona coherence, real decisions, or agent-task gains.
 
-3. 需要拟合概念几何及选取自然状态样本，在复杂真实语境下如何分离目标流形仍是方法瓶颈。
+3. Requires fitting concept geometry and selecting natural-state samples; isolating target manifolds in complex real contexts remains a bottleneck.
 
 **Future work**
 
-作者：扩展到拒绝、sycophancy、persuasion等抽象概念，从token走向sequence，并研究复杂流形拟合与动力学。阅读推演：先检验persona局部/全局rank及context来源，再比较直线、子空间与流形路径的behavior selectivity；避免直接把复杂steering方法当成已证明需要。
+Author proposals: Abstract concepts such as refusal, sycophancy, and persuasion; token-to-sequence extensions; complex manifold fitting/dynamics. Reading-derived ideas: First test persona local/global rank and context sources, then compare straight lines, subspaces, and manifold paths for behavioral selectivity rather than assuming complex steering is already necessary.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 7, 22
+Related papers: 3, 7, 22
 
-关键词：representation geometry; activation manifold; behavioral manifold; manifold steering
+Keywords: representation geometry; activation manifold; behavioral manifold; manifold steering
 
-机构／会议：Goodfire；Stanford；UCL；Harvard等；预印本；主会未核实
+Institution / venue: Goodfire; Stanford; UCL; Harvard and others; preprint; main-conference status unverified
 
-阅读证据：§2–5、§7–8；App.A（拟合/能量/pullback）、B（视觉模型）、C（70B与补充任务）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2605.05115v1
+Reading evidence: §§2–5, §§7–8; App.A fitting/energy/pullback, B visual model, C 70B/additional tasks. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2605.05115v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-17"></a>
+<a id="paper-17｜Steering"></a>
 
 ### ID 17｜Steering Language Models with Weight Arithmetic
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2511.05408)
+[Paper](https://arxiv.org/abs/2511.05408)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct为主；Qwen2.5-1.5B-Instruct用于GCD；Llama-2-chat-7b用于GSM8k
+Models studied: Mainly Qwen2.5-7B-Instruct; Qwen2.5-1.5B-Instruct for GCD; Llama-2-chat-7b for GSM8k
 
-骨干架构：Dense decoder-only Transformer；weight arithmetic及LoRA/activation baselines，不是MoE/VLM。
+Architecture: Dense decoder-only Transformer; weight arithmetic and LoRA/activation baselines, not MoE/VLM.
 
-输入／推理模式：chat及算术任务，未单独reasoning-model配置。
+Input / inference mode: Chat and arithmetic tasks, without a separate reasoning-model configuration.
 
-架构证据：2511.05408v2：Models and Training Parameters；§4；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.05408
+Architecture evidence: 2511.05408v2: Models and Training Parameters; §4. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2511.05408
 
 **Research question**
 
-正反微调的权重差能否作为行为控制方向，它与activation steering的泛化有何差异？
+Can weight differences from opposite fine-tuning objectives serve as behavioral control directions, and how does their generalization differ from activation steering?
 
-**一句话主题**
+**One-sentence topic**
 
-从正反微调的权重差构造行为方向，并与激活steering比较泛化。
+Construct behavioral directions from opposite fine-tuning weight differences and compare generalization with activation steering.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 提出 contrastive weight steering：分别用表现相反行为的配对数据进行短程 LoRA 微调，以两次权重增量之差提取行为方向，再把它加到原模型或另一任务微调后的模型上。
+1. Introduces contrastive weight steering: Briefly fine-tunes two LoRAs on paired data showing opposite behaviors, extracts the behavior direction as the difference of their weight updates, then adds it to the original model or a model fine-tuned on another task.
 
-2. 对照包括直接微调、联合加入行为数据、单层与全层 activation steering、非对比 task vector 和仅改 MLP bias 的权重方向。实验刻意把提取时的意见征询／个人建议，与测试时的事实问答、数学和多选格式分开：在 TruthfulQA/TriviaQA 上不仅评价顺从语气，也检验面对用户错误暗示时答案是否仍正确；GCD 实验则检查消除附带谄媚时能否保留数学收益。
+2. Controls include direct fine-tuning, joint behavioral-data training, single-/all-layer activation steering, noncontrastive task vectors, and MLP-bias-only weight directions. Extraction uses opinion solicitation/personal advice, deliberately separated from factual QA, mathematics, and multiple-choice tests. TruthfulQA/TriviaQA test not just compliant tone but correctness under false user suggestions; GCD checks whether removing incidental sycophancy retains mathematical gains.
 
-3. evil-MCQA 中比较推理过程与最终选项的一致性，显示权重方法在这些分布转移下通常比所测 activation 方法更有效。GSM8K 后的安全修复进一步表明，针对 refusal 的方向比笼统 evil 方向有效，提取数据与目标行为的匹配仍关键。
+3. Evil-MCQA compares consistency between reasoning and final choices; weight methods are generally more effective than tested activation methods under these shifts. Safety repair after GSM8K further shows refusal-specific directions outperform generic evil directions, so matching extraction data to target behavior remains important.
 
-4. 最后用坏医疗／金融／体育建议微调增量与 evil 权重方向的 cosine 做监测，发现坏更新更接近该方向；这是训练漂移的初步读出证据，尚不是经校准的实际预警系统。
+4. Finally compares cosine between bad medical/financial/sports-advice updates and evil weight directions: Bad updates are closer. This is preliminary training-drift readout evidence, not a calibrated warning system.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 权重方法需要两次微调，额外成本与可更新参数量不同于 activation steering；bias-only 与 all-layer 对照有所拆解，但没有穷尽现代提取和控制方法。② 安全修复中 evil 数据无效而 refusal 数据有效，跨域控制依赖方向定义，不能把一个高层 trait 当作所有安全行为的通用开关。③ 监测只比较少量受控微调，尚未给出实际异常检测的阈值、误报和隐蔽行为检出率。
+① Weight steering requires two fine-tuning runs, with costs and editable parameter counts differing from activation steering. Bias-only/all-layer controls partly unpack this but do not exhaust modern extraction/control methods. ② Evil data fail for safety repair while refusal data work; cross-domain control depends on direction definition, not a universal high-level trait safety switch. ③ Monitoring uses few controlled fine-tunes, without operational thresholds, false-positive rates, or hidden-behavior detection rates.
 
 **Future work**
 
-作者：扩大副作用与能力评测，研究其他权重合成方式及更真实的漂移监测。阅读推演：对同一批配对数据比较权重方向、self-report／role-play／behavior activation 方向的跨任务选择性；把语气成功、决策成功与能力损失同时画成 Pareto 曲线。
+Author proposals: Broaden side-effect/capability evaluation, study other weight-composition approaches, and more realistic drift monitoring. Reading-derived ideas: Use the same paired data to compare weight directions and self-report/role-play/behavior activation directions for cross-task selectivity; jointly plot tone success, decision success, and capability loss as Pareto curves.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 6, 7, 18, 25
+Related papers: 1, 6, 7, 18, 25
 
-关键词：weight arithmetic; contrastive finetuning; behavioral control; generalization
+Keywords: weight arithmetic; contrastive finetuning; behavioral control; generalization
 
-机构／会议：Anthropic；University of Copenhagen；ICLR 2026 主会
+Institution / venue: Anthropic; University of Copenhagen; ICLR 2026 main conference
 
-阅读证据：正文§3–5、§7；相关附录B/D/E/H/I的设置与正文引用结果，非逐页完整附录复现；https://arxiv.org/html/2511.05408v2；未复现实验
+Reading evidence: Main text §§3–5, §7; settings/results cited from relevant App.B/D/E/H/I, not a page-by-page appendix reproduction. https://arxiv.org/html/2511.05408v2. Experiments not reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-20"></a>
+<a id="paper-20｜Activation"></a>
 
 ### ID 20｜Activation Steering via Generative Causal Mediation
 
-Method　|　阅读状态：未标记　|　优先级：B
+Method　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2602.16080)
+[Paper](https://arxiv.org/abs/2602.16080)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：SOLAR-10.7B-Instruct-v1.0；OLMo-2-1124-13B-DPO；Qwen1.5-14B-Chat
+Models studied: SOLAR-10.7B-Instruct-v1.0; OLMo-2-1124-13B-DPO; Qwen1.5-14B-Chat
 
-骨干架构：三种Dense decoder-only Transformer；在attention/head等组件局部干预，文本sycophancy/refusal/style。
+Architecture: Three dense decoder-only Transformers; localized attention/head interventions for textual sycophancy/refusal/style.
 
-输入／推理模式：论文生成基线使用temperature0、关闭sampling；judge Llama3.1-70B另计。
+Input / inference mode: Baseline generation uses temperature0 with sampling disabled; Llama3.1-70B judge counted separately.
 
-架构证据：2602.16080v2：§3.2/3.3；App数据生成设置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.16080
+Architecture evidence: 2602.16080v2: §§3.2/3.3; appendix data-generation settings. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2602.16080
 
 **Research question**
 
-生成因果中介能否定位更有效的activation steering组件与位置？
+Can generative causal mediation locate more effective activation-steering components and sites?
 
-**一句话主题**
+**One-sentence topic**
 
-通过生成因果中介定位适合干预的组件，而不是只依据探针相关性选位置。
+Locate intervention components through generative causal mediation rather than selecting sites from probe correlations alone.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将“在哪里干预”与“用什么方向干预”明确拆开，提出 Generative Causal Mediation：从只改动少数输入因素、但引发整段回答差异的 prompt–response 对出发，逐个 patch attention-head 输出，以完整对比回答的对数概率差评价 indirect effect，再选 top-k% heads。
+1. Separates where to intervene from which direction to use, introducing Generative Causal Mediation. Starting with prompt–response pairs that change few input factors but alter full answers, patches attention-head outputs individually. Indirect effects are measured through the log-probability difference of complete contrasting answers, selecting top-k% heads.
 
-2. 与依赖最终 token 分类准确率的 ITI probe 和随机选头比较，并加入 attribution patching 的一阶近似及 head knockout。
+2. Compares with ITI probes based on final-token classification accuracy and random-head selection, adding first-order attribution-patching approximations and head knockout.
 
-3. 选择位置后分别搭配 mean replacement、difference-in-means addition 和 ReFT，在三个模型、拒答诱导／减少谄媚／散文转诗体任务上扫强度与选头比例。activation 与 attribution patching 的总体成功率均优于 probe／随机定位，且近似方法以两次前向和一次反向降低定位开销；但 knockout 表现较弱，不能把“破坏后重要”直接当作“适合写入”。
+3. After site selection, combines it with mean replacement, difference-in-means addition, and ReFT, sweeping strength/head fraction across three models and refusal induction, sycophancy reduction, and prose-to-poetry tasks. Activation and attribution patching outperform probe/random localization overall; the approximation reduces cost to two forward passes and one backward pass. Knockout is weaker, so importance under destruction is not equivalent to suitability for writing.
 
-4. held-out 评测同时要求目标概念、相关性与流畅性，显示局部头干预可实现长文本行为迁移；减少谄媚的严格最高分迁移率仅10–30%，放宽到4/5分才升至60–80%。结果支持因果定位能改善某些无监督控制，而非所有任务或 ReFT 都同样受益；全文平均与最佳点也需区分。
+4. Held-out evaluation jointly requires target concept, relevance, and fluency, showing localized heads can transfer long-text behavior. Strict top-score sycophancy-reduction transfer is only10–30%, rising to60–80% at4/5. Results support causal localization for some unsupervised control, not equal gains for every task or ReFT; overall averages and best points must be distinguished.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 对比输入和回答决定所定位的因果效应；用户意见引发更负面评价的“减少谄媚”仍可能混入情绪／批评倾向，不等于所有事实型抗顺从。② held-in 上的低比例随机选头也可在容易任务达到很高成功率，真实贡献应结合更难的 held-out 和强度范围判断。③ 优势较集中在无监督写入；ReFT 下改善比例较小，且跨任务／跨模型重复找到 heads 不等于共用同一机制。
+① Contrasting inputs/answers define the localized causal effect. “Reduced sycophancy” through more negative evaluations of user opinions may mix sentiment/criticism, not all factual resistance to agreement. ② Small random head subsets can score highly on easy held-in tasks, so contribution requires harder held-out tests and strength ranges. ③ Advantages concentrate in unsupervised writing; ReFT benefits are smaller, and rediscovering heads across tasks/models does not establish one shared mechanism.
 
 **Future work**
 
-作者：推广适于生成行为的因果定位，并研究局部与全局 steering 的适用条件。阅读推演：把 response-level 因果目标改成 agent trace 中的工具选择、失败后重规划等指标，检验“读得出 trait 的头”与“写得动决策的头”是否不同。
+Author proposals: Generalize causal localization suited to generative behavior and study conditions favoring local/global steering. Reading-derived ideas: Replace response-level causal targets with tool choice or post-failure replanning in agent traces, testing whether trait-readable heads differ from decision-controlling heads.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：13, 21, 23, 27
+Related papers: 13, 21, 23, 27
 
-关键词：causal mediation; component localization; attention heads; steering
+Keywords: causal mediation; component localization; attention heads; steering
 
-机构／会议：MIT CSAIL；Stanford；Goodfire；预印本；主会未核实
+Institution / venue: MIT CSAIL; Stanford; Goodfire; preprint; main-conference status unverified
 
-阅读证据：正文§2–4；附录C.1、D.3相关定位／强度与局部全局对照；https://arxiv.org/html/2602.16080v2；未复现实验
+Reading evidence: Main text §§2–4; relevant localization/strength and local/global controls in App.C.1, D.3. https://arxiv.org/html/2602.16080v2. Experiments not reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-21"></a>
+<a id="paper-21｜Steer"></a>
 
 ### ID 21｜Steer Like the LLM: Activation Steering that Mimics Prompting
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2605.03907)
+[Paper](https://arxiv.org/abs/2605.03907)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：persona：Llama3.2-3B-Instruct、Llama3.1-8B-Instruct、Qwen2.5-7B-Instruct；AxBench扩展Gemma2-2B/9B
+Models studied: Persona: Llama3.2-3B-Instruct, Llama3.1-8B-Instruct, Qwen2.5-7B-Instruct; AxBench extensions on Gemma2-2B/9B
 
-骨干架构：Dense decoder-only Transformer；residual-stream prompt-mimicking steering；SAE只是部分baseline/特征来源。
+Architecture: Dense decoder-only Transformer; residual-stream prompt-mimicking steering. SAEs are only some baselines/feature sources.
 
-输入／推理模式：文本persona/IFEval/AxBench；没有据模型名推断额外thinking。
+Input / inference mode: Text persona/IFEval/AxBench; no additional thinking inferred from model names.
 
-架构证据：2605.03907v1：Experimental Setup；App.C/E；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.03907
+Architecture evidence: 2605.03907v1: Experimental Setup; App.C/E. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2605.03907
 
 **Research question**
 
-模仿prompt产生的逐token激活变化，能否比固定方向／强度steering更有效？
+Can imitating prompt-induced token-wise activation changes outperform fixed-direction/strength steering?
 
-**一句话主题**
+**One-sentence topic**
 
-模仿提示本身产生的逐token激活改变，研究如何改进固定强度的steering。
+Imitate prompts’ token-wise activation changes to improve fixed-strength steering.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将prompting视作模型自身实施的activation intervention：对相同续写token比较带trait指令与不带指令的内部状态，定义prompt-steering差分，再训练简单模块逼近这种干预。它研究不同提取范式是否编码同一机制，而非只比较最终persona得分。
+1. Treats prompting as the model’s own activation intervention: Compare internal states for identical continuation tokens with/without trait instructions, define prompt-steering differences, and train a simple module to approximate them. This addresses whether extraction paradigms encode the same mechanism, not just final persona scores.
 
-2. 分析发现prompt造成的内部变化高度依赖token：某些位置强烈偏移，另一些几乎不动；固定方向、固定强度的常见steering与这种机制不一致。提出rank-1 Prompt Steering Replacement，让方向保持简单，但由当前activation预测每个token的系数，区分单层/全层、MSE匹配状态与生成loglikelihood等训练目标。
+2. Prompt-induced changes are highly token-dependent: Some positions shift strongly, others barely change. Constant-direction/strength steering does not match this pattern. Rank-1 Prompt Steering Replacement keeps a simple direction but predicts each token’s coefficient from current activations, distinguishing single/all-layer settings and objectives such as state MSE and generation log-likelihood.
 
-3. 在Persona Vectors、IFEval及AxBench比较prompting、constant steering和其他强基线，联合评估trait/concept、coherence与相关性。单层PSR通常改善固定干预的控制—连贯性权衡；全层方法也有优势，但固定全层模型已能接近，说明增益不能全部归因于动态系数。
+3. Compares prompting, constant steering, and strong baselines on Persona Vectors, IFEval, and AxBench, jointly evaluating trait/concept, coherence, and relevance. Single-layer PSR usually improves the control–coherence trade-off. All-layer variants also help, but constant all-layer models can approach them, so gains cannot all be attributed to dynamic coefficients.
 
-4. 中间状态RMSE检验显示MSE训练PSR更贴近prompting；IFEval部分复杂/带参数指令则不能由rank-1充分复现。这为“某些persona可近似全局rank-1，但需要context/token-dependent strength”提供具体前作，也说明rank不足与错误剂量应分开诊断。
+4. Intermediate-state RMSE shows MSE-trained PSR more closely matches prompting. Some complex/parameterized IFEval instructions cannot be reproduced adequately by rank-1. This is a concrete precedent for personas approximated by global rank-1 directions with context/token-dependent strength, and for diagnosing insufficient rank separately from incorrect dose.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 只蒸馏prompt成功引出目标属性的案例，效果依赖原prompt能力与训练覆盖。
+1. Distills only cases where prompting successfully elicits the target property; effectiveness depends on prompt capability and training coverage.
 
-2. 部分IFEval指令超出rank-1表达能力，AxBench的高综合分也可能伴随回答相关性下降。
+2. Some IFEval instructions exceed rank-1 capacity; high AxBench aggregate scores may accompany reduced answer relevance.
 
-3. 主要测生成表达与instruction following，未验证self-report/真实行为共享方向或长期agent迁移；贴近prompt状态不等于同一完整机制。
+3. Mainly generated expression and instruction following, without self-report/actual-behavior shared directions or long-term agent transfer. Matching prompted states is not equivalent to identifying the same complete mechanism.
 
 **Future work**
 
-作者：从rank-1推广低秩PSR以处理复杂指令。阅读推演：在匹配coherence与计算预算下，拆分“方向随context旋转”与“固定方向系数随token变化”，并分别测style、self-report与行为迁移。
+Author proposals: Extend rank-1 to low-rank PSR for complex instructions. Reading-derived ideas: Match coherence/compute budgets while separating context-dependent direction rotation from token-dependent coefficients along fixed directions, and measure style, self-report, and behavioral transfer separately.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+persona representation 的层间几何变化作为定位线索；从residual stream转到attention heads，更加靠近底层机理。少量 heads 在多个 traits 上具有共同的调节作用 这个似乎可以进一步研究。注意原persona vector的steering为mle residual 在本文实验里效果似乎最差，对于coherence+trait的pareto
 
-关联论文：7, 15, 20, 23
+Related papers: 7, 15, 20, 23
 
-关键词：prompt distillation; token-specific steering; PSR; coherence
+Keywords: prompt distillation; token-specific steering; PSR; coherence
 
-机构／会议：Nokia Bell Labs；ICML 2026 主会
+Institution / venue: Nokia Bell Labs; ICML 2026 main conference
 
-阅读证据：§3.2–3.6、§4–5、§6；App.A、C–F（层、trade-off、faithfulness）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2605.03907v1
+Reading evidence: §§3.2–3.6, §§4–5, §6; App.A, C–F layers/trade-offs/faithfulness. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2605.03907v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-22"></a>
+<a id="paper-22｜Your"></a>
 
 ### ID 22｜Your Language Model Secretly Contains Personality Subnetworks
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2602.07164)
+[Paper](https://arxiv.org/abs/2602.07164)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama2-13B、Llama3-8B、Qwen2.5-14B base；Llama2-13B instruction-tuned对照
+Models studied: Llama2-13B, Llama3-8B, Qwen2.5-14B base; Llama2-13B instruction-tuned control
 
-骨干架构：Dense decoder-only Transformer；activation-guided sparse pruning产生子网络，稀疏mask不等于原生MoE。
+Architecture: Dense decoder-only Transformer; activation-guided sparse pruning creates subnetworks. Sparse masks are not native MoE.
 
-输入／推理模式：base completion与instruct文本role-play；无reasoning模式证据。
+Input / inference mode: Base completion and instruct text role-play; no evidence of reasoning mode.
 
-架构证据：2602.07164v1：实验设置；App.D/E/H；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.07164
+Architecture evidence: 2602.07164v1: Experimental setup; App.D/E/H. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2602.07164
 
 **Research question**
 
-不同persona能否被隔离为已有稀疏子网络，剪枝后是否保留对应人格行为？
+Can different personas be isolated as pre-existing sparse subnetworks, retaining corresponding personality behavior after pruning?
 
-**一句话主题**
+**One-sentence topic**
 
-将不同persona视为模型内已存在的稀疏子网络，并通过剪枝加以隔离。
+Treat personas as pre-existing sparse subnetworks and isolate them through pruning.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将persona控制从残差向量推进到参数mask：用少量persona-consistent校准回答收集activation统计，结合权重与激活重要度进行无梯度剪枝，得到可切换的persona-specific稀疏子网络。对相反persona引入contrastive pruning，强化两种mask差异，而非只独立保留高重要度权重。
+1. Moves persona control from residual vectors to parameter masks. Collects activation statistics from a small set of persona-consistent calibration responses and combines weight/activation importance for gradient-free pruning, producing switchable persona-specific sparse subnetworks. Contrastive pruning accentuates differences between opposite-persona masks rather than independently retaining high-importance weights.
 
-2. 在MBTI、power/wealth seeking等AI persona及RoleAgentBench角色任务上，与prompt、RAG和普通剪枝比较。特化mask增强目标画像与角色选择题一致性；稀疏度消融表明效果存在最佳范围，并非剪得越多越好，小规模校准数据增加后也出现收益饱和。
+2. Compares with prompting, RAG, and ordinary pruning on MBTI, AI personas such as power/wealth seeking, and RoleAgentBench. Specialized masks improve target-profile and role-choice consistency. Sparsity ablations reveal an optimum rather than “more pruning is better,” with diminishing returns from additional calibration data.
 
-3. 以MMLU/HellaSwag检查通用能力，并给出layer restoration干预：保持INFP mask而逐个恢复原始线性模块，部分MLP恢复会让问卷维度返回原模型倾向，attention模块恢复的影响较小。这提供分布式参数组件影响persona输出的因果证据，超越仅报告activation相关性。
+3. Checks general capability with MMLU/HellaSwag and performs layer restoration: Keep the INFP mask while restoring original linear modules one by one. Some restored MLPs shift questionnaire dimensions toward original tendencies, while attention restoration matters less. This supplies causal evidence of distributed parameter components affecting persona outputs beyond activation correlations.
 
-4. 对用户role/trait关系的启示是，role与trait都可通过同一mask构造框架特化，但论文没有证明role等于trait线性组合，也没有把mask映射成persona vector子空间。它更适合作为“向量方向之外的表征/控制实现”对照。
+4. For role/trait relationships, both can be specialized with one mask-construction framework, but role=linear trait combination is not established and masks are not mapped into persona-vector subspaces. Best treated as a representational/control alternative to vector directions.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. MBTI问卷、persona判断与角色选择题占主要评价，尚不足以说明真实长期行为倾向或互动稳定性。
+1. Evaluation mainly uses MBTI questionnaires, persona judgments, and role multiple-choice questions, insufficient for real long-term behavioral dispositions or interaction stability.
 
-2. restoration示例证明某些被mask参数影响输出，不等于已经识别唯一、完整或彼此独立的人格电路。
+2. Restoration examples show that some masked parameters affect outputs, not identification of unique, complete, or mutually independent personality circuits.
 
-3. mask主要按单persona构建，多个trait/身份同时组合、冲突与连续强度控制未系统验证；稀疏mask也不自动带来硬件加速。
+3. Masks are mainly built for single personas; simultaneous traits/identities, conflicts, and continuous strength are not systematically tested. Sparse masks do not automatically yield hardware acceleration.
 
 **Future work**
 
-作者：以可切换稀疏persona系统为应用方向。阅读推演：比较mask重叠、向量夹角与跨persona行为效应；加入role增强/trait削弱的交叉干预，并在同一预算下比较mask、activation addition与prompt的能力—coherence权衡。
+Author proposals: Switchable sparse persona systems as an application. Reading-derived ideas: Compare mask overlap, vector angles, and cross-persona behavioral effects; add role-strengthening/trait-weakening cross-interventions, and compare capability–coherence trade-offs of masks, activation addition, and prompts at equal budgets.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 8, 10, 28
+Related papers: 3, 8, 10, 28
 
-关键词：personality subnetworks; contrastive pruning; parameter space; persona control
+Keywords: personality subnetworks; contrastive pruning; parameter space; persona control
 
-机构／会议：Northwestern；University of Tulsa；University of Arizona；ICLR 2026 主会
+Institution / venue: Northwestern; University of Tulsa; University of Arizona; ICLR 2026 main conference
 
-阅读证据：§3.1–3.4、§4.1–4.7；App.C–E、I–K（跨模型/训练状态、稀疏度、实现）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2602.07164v1
+Reading evidence: §§3.1–3.4, §§4.1–4.7; App.C–E, I–K cross-model/training-stage, sparsity, implementation. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2602.07164v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-23"></a>
+<a id="paper-23｜Steering"></a>
 
 ### ID 23｜Steering at the Source: Style Modulation Heads for Robust Persona Control
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2603.13249)
+[Paper](https://arxiv.org/abs/2603.13249)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct；Llama-3.1-8B-Instruct；App.F实际干预Gemma-3-12B-it及Qwen3-30B-A3B-Instruct-2507
+Models studied: Qwen2.5-7B-Instruct; Llama-3.1-8B-Instruct; App.F actually intervenes on Gemma-3-12B-it and Qwen3-30B-A3B-Instruct-2507
 
-骨干架构：主实验为dense decoder-only Transformer（GQA）；App.F含Gemma3的dense局部／全局attention及Qwen3 MoE。操纵attention output／heads，不是router／expert干预。
+Architecture: Main models are dense decoder-only Transformers (GQA). App.F includes Gemma3 dense local/global attention and Qwen3 MoE. Intervenes on attention outputs/heads, not routers/experts.
 
-输入／推理模式：文本persona生成；coherence/PPL/utility检查；无专门reasoning-mode实验。
+Input / inference mode: Textual persona generation; coherence/PPL/utility checks; no dedicated reasoning-mode experiment.
 
-架构证据：2603.13249v2：主文§3/§4及App.F.1–F.3、Fig19–23；已核Gemma3与Qwen3-MoE实际attention/head steering。2507官方卡为non-thinking-only；Gemma实验仅文本。https://arxiv.org/html/2603.13249v2；https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507
+Architecture evidence: 2603.13249v2: Main §§3/4 and App.F.1–F.3, Figures19–23; actual Gemma3 and Qwen3-MoE attention/head steering verified. Official 2507 card specifies non-thinking-only; Gemma experiments use text only. https://arxiv.org/html/2603.13249v2; https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507
 
 **Research question**
 
-少量style modulation heads能否实现更稳健的persona控制并减少连贯性退化？
+Can a few style modulation heads provide more robust persona control with less coherence degradation?
 
-**一句话主题**
+**One-sentence topic**
 
-寻找少量控制persona和风格的注意力头，以减少残差流干预造成的连贯性退化。
+Find a small set of attention heads controlling persona/style to reduce coherence degradation from residual-stream interventions.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将steering退化问题定位为“在哪里干预”：残差流聚合大量内容，沿persona差分全局加法可能同时放大非目标变化。先评估正负方向与强度，发现偏离模型默认分布的方向更易连贯性崩溃，而且MMLU/PPL等能力指标不能可靠替代开放生成coherence。
+1. Frames steering degradation as a question of intervention site: The residual stream aggregates much content, so global persona-difference addition can amplify off-target changes. Evaluating positive/negative directions and strengths reveals greater coherence collapse when moving away from the default distribution; capability measures such as MMLU/PPL do not reliably substitute for open-generation coherence.
 
-2. 用层间persona向量cosine变化寻找表征突变位置，再计算各attention head对persona差分输出的贡献。主模型中同层少数head跨多trait贡献突出，但各trait最有效head不完全相同；附录Gemma/MoE模型显示定位可更分散，不能理解成所有架构都有固定三个人格head。
+2. Finds representational transitions through cross-layer persona-vector cosine changes, then calculates each head’s contribution to persona-difference outputs. A few heads in one layer contribute strongly across traits in main models, but optimal heads differ by trait. Appendix Gemma/MoE localization is more distributed; this is not a universal fixed set of three personality heads.
 
-3. 使用逐head steering、顺序zero-ablation及随机head对照验证功能：移除高贡献head会降低prompt诱发的trait表达，而coherence及通用任务较稳定。证据支持这些组件参与persona/style表达，但“知识与风格完全正交”的更强电路结论不能仅靠任务分数成立。
+3. Per-head steering, sequential zero-ablation, and random-head controls test function: Removing high-contribution heads reduces prompt-induced trait expression while largely preserving coherence/general tasks. These components participate in persona/style expression, but task scores alone cannot establish complete orthogonality of knowledge and style circuits.
 
-4. 比较残差、聚合attention输出及选定head干预，绘制trait–coherence Pareto frontier；在共同高coherence区间，目标head通常提供更佳控制。对用户联合优化方向尤其直接：应报告可行前沿与off-target成本，而非最高persona分数；其因果定位也区别于只研究trait间行为干扰的表现分析。
+4. Compares residual, aggregated-attention-output, and selected-head interventions on trait–coherence Pareto frontiers; target heads usually improve control within a shared high-coherence region. Directly relevant to joint optimization: Report feasible frontiers and off-target costs, not just maximum persona scores. Causal localization also distinguishes this from phenotypic trait-interference analysis.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 主验证是风格/生成trait，未拆分reported persona与决策策略，也未检验tool-use或长期角色行为。
+1. Main validation concerns style/generated traits, without separating reported persona from decision strategy or testing tool use/long-term role behavior.
 
-2. 更复杂架构中相关head跨多层分布，主模型的三head简洁定位不具通用保证。
+2. Relevant heads span multiple layers in more complex architectures; compact three-head localization in main models has no universal guarantee.
 
-3. 主要研究where，尚未系统比较与动态强度/时机、其他几何方法结合后的增益。
+3. Mainly studies where; gains from combining with dynamic strength/timing or other geometric methods are not systematically compared.
 
 **Future work**
 
-作者：联合how/when/where，研究架构对定位的影响及更细组件干预。阅读推演：检验style head与behavior-readout/decision head是否重合，在相同trait强度下比较行为选择性、能力损失与长期coherence，而非将风格控制自动当人格机制。
+Author proposals: Combine how/when/where; study architectural effects on localization and finer component interventions. Reading-derived ideas: Test overlap between style heads and behavior-readout/decision heads; match trait strength while comparing behavioral selectivity, capability loss, and long-term coherence rather than automatically equating style control with personality mechanisms.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：7, 20, 21
+Related papers: 7, 20, 21
 
-关键词：style modulation heads; localized steering; coherence; off-target effects
+Keywords: style modulation heads; localized steering; coherence; off-target effects
 
-机构／会议：东京大学；日本国立信息学研究所；预印本；主会未核实
+Institution / venue: University of Tokyo; National Institute of Informatics, Japan; preprint; main-conference status unverified
 
-阅读证据：§3–5、§7；App.D（贡献与消融）、E（Pareto/能力）、F（Gemma/MoE推广）；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2603.13249v2
+Reading evidence: §§3–5, §7; App.D contributions/ablations, E Pareto/capabilities, F Gemma/MoE generalization. Main text and listed method/result appendices reviewed, not abstract-only. https://arxiv.org/html/2603.13249v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-27"></a>
+<a id="paper-27｜Predicting"></a>
 
 ### ID 27｜Predicting Future Behaviors in Reasoning Models Enables Better Steering
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2606.11172)
+[Paper](https://arxiv.org/abs/2606.11172)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：DeepSeek-R1-Distill-Llama-8B；Qwen3-14B；gpt-oss-20b；QwQ-32B
+Models studied: DeepSeek-R1-Distill-Llama-8B; Qwen3-14B; gpt-oss-20b; QwQ-32B.
 
-骨干架构：前三除GPTOSS外均Dense decoder；GPTOSS20B为MoE。Distill-Llama8B不能写full-DeepSeek-R1 MoE。
+Architecture: Dense decoders except GPT-OSS-20B, which is MoE. Distill-Llama8B must not be described as full DeepSeek-R1 MoE.
 
-输入／推理模式：明确LRM实验：每条响应有CoT与final answer，T=1.0；各gptoss effort未逐项核。
+Input / inference mode: Explicit LRM experiments with CoT and final answers for each response, T=1.0. Individual GPT-OSS effort settings not fully verified.
 
-架构证据：2606.11172v1：§3.1；§4/5干预；官方GPTOSS/DeepSeek模型卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2606.11172
+Architecture evidence: 2606.11172v1, §3.1, §§4–5 interventions, and official GPT-OSS/DeepSeek model cards. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2606.11172
 
 **Research question**
 
-预测未来行为的特征是否比检测已发生行为的特征提供更有效的steering控制信号？
+Do features predicting future behavior provide more effective steering-control signals than features detecting behavior that has already occurred?
 
-**一句话主题**
+**One-sentence topic**
 
-区分检测已生成行为的特征与预测未来行为的特征，并比较它们作为控制信号的效果。
+Distinguish features detecting generated behavior from features predicting future behavior, and compare their effectiveness as control signals.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将“当前文本已出现某行为的检测”与“推理继续后会采取何行为的预测”区分。对四类reasoning模型，在每个推理句边界多次续写，估计最终行为概率随CoT变化的轨迹；覆盖短视收益、生存/财富追求、拒绝、prompt injection和sycophancy等六类二元行为。
+1. Separates detecting behavior already present in the text from predicting behavior after further reasoning. For four reasoning-model types, repeatedly continues from reasoning-sentence boundaries to estimate the trajectory of final behavior probabilities through CoT. Covers six binary behaviors: myopic reward, survival/wealth seeking, refusal, prompt injection, and sycophancy.
 
-2. 从句末中间层残差训练线性/MLP probe预测这些续写概率，使用不相交问题做训练评估。简单线性读出已包含大量预测信号，而只在最终答案上训练的behavior detector在早中期推理显著更差，到行为已出现的最终回答才接近。区别来自时间与监督目标，不宜把普通contrastive响应向量默认当作未来决策轴。
+2. Trains linear/MLP probes on sentence-final middle-layer residuals to predict continuation probabilities, using disjoint training/evaluation questions. Linear readouts already contain substantial predictive signal, whereas behavior detectors trained only on final answers are much worse during early/middle reasoning and become comparable only once behavior appears in the final answer. The difference concerns timing and supervision; ordinary contrastive-response vectors should not automatically be treated as future-decision axes.
 
-3. 提出FPCG：每步采样多个候选句，读取每个候选后的未来行为概率，选择更符合目标的一句继续生成。它通过生成候选与读出选择控制路径，并不沿probe权重直接加activation。
+3. Proposes FPCG: sample several candidate sentences, read future-behavior probability after each candidate, and continue with the sentence best matching the objective. It controls paths through candidate generation and readout-based selection, not by adding probe-weight activations.
 
-4. 与activation steering比较，在部分模型/行为上获得相近控制而保留更好输出质量，也覆盖部分activation steering失效的行为。该文直接支撑read/write需分开验证，并提供基于未来readout控制的替代路线；但没有证明prediction probe自身是可直接写入的因果方向，也不是用户设想的intervention-conditioned critic。
+4. Compared with activation steering, obtains similar control with better output quality for some model/behavior settings and covers behaviors where activation steering fails. It supports validating read and write separately and offers a future-readout control route. It does not show that the prediction probe itself is a directly writable causal direction, and is not the proposed intervention-conditioned critic.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 训练标签需要大量句边界续写，部署还需多候选采样，计算成本高于单次activation addition。
+1. Training labels require many sentence-boundary continuations; deployment requires multi-candidate sampling, costing more than one activation-addition pass.
 
-2. 主要预测二元最终文本行为，不涵盖连续收益、工具动作或长期环境交互。
+2. Mainly predicts binary final-text behavior, not continuous rewards, tool actions, or long-horizon environmental interaction.
 
-3. prediction与detection的差异是读出泛化证据，FPCG是选择生成轨迹，不能等同于定位可写的行为机制。
+3. Prediction/detection differences are evidence about readout generalization. FPCG selects generated trajectories; it does not locate a writable behavioral mechanism.
 
 **Future work**
 
-作者：更强预测器/activation pooling、动态候选数降低开销，以及与activation steering混合。阅读推演：用(h, steering action, outcome)学习intervention-conditioned预测，区分观察性未来概率与do(a)后的结果；扩展planning与tool selection两个读出目标。
+Authors: Stronger predictors/activation pooling, dynamic candidate counts to reduce cost, and hybrids with activation steering. Reading-derived ideas: Learn intervention-conditioned predictions from (h, steering action, outcome), separating observational future probabilities from outcomes after do(a); extend to planning and tool-selection readouts.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：11, 13, 14, 20
+Related papers: 11, 13, 14, 20
 
-关键词：future behavior prediction; detection features; FPCG; reasoning monitoring
+Keywords: future behavior prediction; detection features; FPCG; reasoning monitoring
 
-机构／会议：Fraunhofer HHI；Northeastern；KAIST；预印本；主会未核实
+Institution / venue: Fraunhofer HHI; Northeastern; KAIST. Preprint; main-conference acceptance unverified.
 
-阅读证据：§3.1–3.3、§4.1–4.2、§5；App.B、C及候选数消融；正文与所列方法/结果附录补读，非仅摘要。https://arxiv.org/html/2606.11172v1
+Reading evidence: §§3.1–3.3, §§4.1–4.2, §5; App.B/C and candidate-count ablations. Main text and listed method/result appendices reviewed beyond the abstract. https://arxiv.org/html/2606.11172v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-47"></a>
+<a id="paper-47｜Contrastive"></a>
 
 ### ID 47｜Contrastive Covariance Subspaces for Activation Steering
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户指定）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (user-requested)
 
-[论文原文](https://arxiv.org/abs/2610.14025)
+[Paper](https://arxiv.org/abs/2610.14025)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama-3.1-8B-Instruct；Qwen3-8B；Gemma-2-9B-Instruct（均为被steer模型）；judge另列在论文评估协议
+Models studied: Llama-3.1-8B-Instruct; Qwen3-8B; Gemma-2-9B-Instruct, all intervened models. Judges are separately specified in the paper's evaluation protocol.
 
-骨干架构：三种dense decoder-only Transformer，文本实验；无MoE、稀疏执行或looped架构对照。
+Architecture: Three dense decoder-only Transformers in text experiments; no MoE, sparse-execution, or looped-architecture controls.
 
-输入／推理模式：单轮开放生成与20轮持续KV-cache文本对话；Qwen3 thinking开关未明确核实；不以长对话等同工具agent。
+Input / inference mode: Single-turn open generation and 20-turn persistent-KV-cache text dialogue. Qwen3 thinking switch not explicitly verified; long dialogue is not equated with tool agents.
 
-架构证据：2610.14025v1 §4.1 LLMs；App.C；固定Llama层15、Qwen/Gemma层21，文中层编号按原文保留，未复核代码0/1-based。https://arxiv.org/html/2610.14025v1
+Architecture evidence: 2610.14025v1 §4.1 LLMs and App.C. Fixed layers: Llama15, Qwen/Gemma21. Original layer numbering retained; code zero-/one-based indexing not checked. https://arxiv.org/html/2610.14025v1
 
 **Research question**
 
-如何从目标概念与非目标类的二阶结构中构造更少混杂的steering方向，并在保持输出质量时改善单轮及多轮控制？
+How can target/non-target second-order structure yield less-confounded steering directions and improve single-/multi-turn control while preserving output quality?
 
-**一句话主题**
+**One-sentence topic**
 
-用目标特异的对比散度子空间过滤steering方向中的共享混杂，联合保留概念表达、流畅性与指令相关性。
+Filter shared confounds from steering directions with target-specific contrastive-scatter subspaces while preserving concept expression, fluency, and instruction relevance.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 方法：先计算各概念类均值的grand mean μG，目标位移δt=μt−μG。每类关于同一中心的散度Sc=Σc+δcδcᵀ，保留类内变化及均值位移；构造At=St−r·mean(Sc, c≠t)，取top-k特征向量Wt，得到vt=WtWtᵀδt。不是简单删除中性文本最大PC，也不是SAE重建；目标是保留target有、其他类较少的变化。（§3）
+1. Method: calculate the grand mean μG of class means and target displacement δt=μt−μG. Each class's scatter about the same center is Sc=Σc+δcδcᵀ, retaining within-class variation and mean displacement. Form At=St−r·mean(Sc,c≠t), take top-k eigenvectors Wt, and obtain vt=WtWtᵀδt. This is neither simply removing top neutral-text PCs nor SAE reconstruction; it retains variation abundant in the target and less present in other classes. (§3)
 
-2. 在三种dense模型、TruthfulQA／AxBench／BIG5-NPTI／Emotion上比较CAA、RepE、PCA、SEA、Linear-AcT、Angular及prompt。完全调参CCS在12个模型×领域设置中超过activation基线；prompt仍在AxBench最好。centering与projection各自有效，联合更强；固定(k,r)仍有较强结果，但concept-specific调参收益不同。（§4.1–4.4）
+2. Across three dense models and TruthfulQA/AxBench/BIG5-NPTI/Emotion, compares CAA, RepE, PCA, SEA, Linear-AcT, Angular, and prompting. Fully tuned CCS exceeds activation baselines in 12 model×domain settings; prompting remains strongest on AxBench. Centering and projection each help, with stronger joint effects. Fixed (k,r) remains competitive, but concept-specific tuning gains vary. (§§4.1–4.4)
 
-3. 去混杂验证：在10个AxBench概念中人为偏置topic分布，GMC的得分由0.565降至0.306；CCS为0.543，接近知道topic方向的oracle。该实验提供特定内容混杂被压低的证据，不是证明所有被投影掉的方向都无功能。（§3.2）
+3. Deconfounding validation: artificially biases topics for ten AxBench concepts, reducing GMC from 0.565 to 0.306. CCS scores 0.543, near a topic-direction oracle. This supports suppression of a specific content confound, not that all projected-out directions are functionless. (§3.2)
 
-4. 20轮Qwen3-8B对话用五个held-out概念及固定追问，turn0选择超参数后保持干预。概念且流畅的联合比例约93%→80%，CAA约36%→10%；这是持续KV-cache中的生成稳定性，非工具agent完成率。23位人评者评296段AxBench生成，复现主要方法排序。（§4.3/4.5；App.B/C）
+4. Twenty-turn Qwen3-8B dialogue uses five held-out concepts and fixed follow-ups; hyperparameters are selected at turn0 and intervention remains fixed. Joint concept-and-fluency rates fall approximately 93%→80%, versus CAA 36%→10%. This measures persistent-KV-cache generation stability, not tool-agent completion. Twenty-three human raters evaluate 296 AxBench generations and reproduce the main method ordering. (§4.3/4.5, App.B/C)
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 非目标类散度是混杂的操作性定义，可能包含与目标共享的真实功能成分。论文验证了人为topic偏置，却未系统分析被删分量是否承载身份、能力或跨任务行为迁移；也未直接比较中性PC移除与SAE特征选择。
+1. Non-target scatter operationalizes confounds but may include genuine functions shared with the target. The paper validates planted topic bias without systematically testing whether removed components carry identity, capabilities, or cross-task behavioral transfer; it also does not directly compare neutral-PC removal with SAE feature selection.
 
-2. k/r用三折投票，α随后按最高评测分数选取，不能把所有结果读成完全独立的冻结配置确认；BIG5/Emotion收益及方法排序还受流畅／相关性门槛和概念覆盖影响，App.F已有相应敏感性分析。
+2. k/r use three-fold voting, followed by α selection for highest evaluation score, so not all results are independent frozen-configuration confirmation. BIG5/Emotion gains and method rankings also depend on fluency/relevance gates and concept coverage, with sensitivity analyses in App.F.
 
-3. 多轮实验为一个模型、五个概念、20轮文本对话，尚未验证真实工具行动或更长反馈链；方法是静态单层加法，低样本下散度估计也可能不稳。
+3. Multi-turn evaluation covers one model, five concepts, and 20 text turns, not real tool actions or longer feedback chains. The method uses static single-layer addition; scatter estimates may also be unstable with little data.
 
 **Future work**
 
-作者提出：扩展多层／attention-head控制，改善低样本估计，并探索超过20轮时的动态衰减。
+Authors propose: Multi-layer/attention-head control, better low-sample estimation, and dynamic decay beyond 20 turns.
 
-阅读推演：固定同一模型、层、数据与剂量，对比原方向、中性PC移除、CCS与SAE特征选择；把保留及删除分量分别做干预，区分topic/style混杂与对agent行动有用的共享结构，再测试中性聊天和agent轨迹背景是否改变迁移。
+Reading-derived ideas: Holding model, layer, data, and dose fixed, compare raw directions, neutral-PC removal, CCS, and SAE selection. Intervene separately on retained and removed components to distinguish topic/style confounds from shared structure useful for agent actions, then test whether neutral-chat versus agent-trace backgrounds alter transfer.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+第一：对比不同子空间构造目标
 
-关联论文：1, 3, 4, 7, 29, 33, 34, 37, 42, 45
+| 方法 | 构造方向 |
+| --- | --- |
+| CAA | Mean difference |
+| CCS | Contrastive scatter |
+| Fisher LDA | Between-class / within-class ratio |
+| Regularized LDA | 对 within-class covariance 做 shrinkage |
+| cPCA | Target covariance − background covariance |
 
-关键词：CCS; denoising; nuisance subspace; contrastive covariance; Big Five; emotion; multi-turn steering
+第二：构造 Cross-effect Matrix
 
-机构／会议：Tavus.io；University of Athens；Queen Mary University of London；arXiv预印本，未核实正式接收
+假设我们研究五种 BIG5 traits，可以定义：
 
-阅读证据：2610.14025v1：正文§3–5，App.B/C/E/F定向核对；未复算。用户指定范围外补充，未核对原种子直接引用关系。https://arxiv.org/html/2610.14025v1
+\[ M_{ij}= E[B_j(x;\alpha v_i)] - E[B_j(x;0)] \]
 
-[返回论文总表](#论文总表)
+其中：
 
-## 情绪、推理与用户模型怎样影响行为？
+\(i\)：被 steering 的 trait。
 
-<a id="paper-4"></a>
+\(j\)：被测量的 trait。
+
+\(B_{j}\)：行为评分。
+
+比较 Selectivity–Effectiveness Pareto Frontier
+
+定义：
+
+\(E_{i}=|ΔB_{i}|\)
+
+\(C_{i}=\frac{1}{m-1}∑_{j≠i}^{}|ΔB_{j}|\)
+
+其中 \(E_{i}\) 是目标效果，\(C_{i}\) 是非目标行为的平均变化。
+
+然后比较不同方法的：
+
+\((E_{i},C_{i})\)
+
+而不是仅比较 \(E_{i}\)。
+
+Related papers: 1, 3, 4, 7, 29, 33, 34, 37, 42, 45
+
+Keywords: CCS; denoising; nuisance subspace; contrastive covariance; Big Five; emotion; multi-turn steering
+
+Institution / venue: Tavus.io; University of Athens; Queen Mary University of London. arXiv preprint; formal acceptance unverified.
+
+Reading evidence: 2610.14025v1, main text §§3–5 and targeted App.B/C/E/F checks; no recomputation. User-requested supplement outside the original selection; direct seed citation not verified. https://arxiv.org/html/2610.14025v1
+
+[Return to paper index](#paper-index)
+
+## How do emotion, reasoning, and user models affect behavior?
+
+<a id="paper-4｜Emotion"></a>
 
 ### ID 4｜Emotion Concepts and their Function in a Large Language Model
 
-Analysis　|　阅读状态：未标记　|　优先级：A
+Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2604.07729)
+[Paper](https://arxiv.org/abs/2604.07729)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Claude Sonnet 4.5；另有同系列base/post-trained比较（内部checkpoint未公开）
+Models studied: Claude Sonnet4.5; additional base/post-trained comparisons within the family (internal checkpoints unreleased)
 
-骨干架构：闭源模型内部访问研究；dense/MoE及完整架构未公开，不猜测。实测文本情绪场景。
+Architecture: Research with internal access to a closed model; dense/MoE and full architecture undisclosed, not inferred. Tested settings are textual emotion scenarios.
 
-输入／推理模式：是否启用extended thinking／具体budget本轮未核实；不能因研究者可读激活就当作开源模型。
+Input / inference mode: Extended-thinking activation/budget unverified in this reading. Researcher activation access does not make the model open-source.
 
-架构证据：2604.07729v1：正文开头；§1；后训练/base比较章节；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.07729
+Architecture evidence: 2604.07729v1: Opening main text; §1; post-training/base comparison sections. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2604.07729
 
 **Research question**
 
-情绪概念在模型内部如何表示，是否跨情境泛化并因果影响偏好、迎合及失配行为？
+How are emotion concepts internally represented, do they generalize across contexts, and do they causally affect preferences, sycophancy, and misaligned behavior?
 
-**一句话主题**
+**One-sentence topic**
 
-研究内部情绪概念是否跨情境表征，并因果影响偏好、迎合及失配行为。
+Study cross-context internal emotion concepts and their causal effects on preferences, sycophancy, and misaligned behavior.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 研究emotion concept是否只是语言表面，还是会改变模型决策。作者为171种情绪生成跨100主题的短故事，从第50个token后平均residual activation，减去情绪总均值，并投影去除中性对话的主要变化方向，获得emotion vectors。
+1. Tests whether emotion concepts are surface language only or change decisions. Generates short stories for171 emotions across100 topics, averages residual activations after token50, subtracts the grand emotion mean, and projects away major variation directions from neutral dialogue to obtain emotion vectors.
 
-2. 跨自然语料、隐含情绪和数值改变风险强度的场景验证读出；64项活动两两偏好比较再配合局部token steering，把情绪投影与偏好因果效应联系起来。
+2. Validates readouts on natural corpora, implicit emotion, and numerically varied risk intensity. Pairwise preferences over64 activities combined with localized token steering link emotion projections to causal preference effects.
 
-3. 几何上出现valence/arousal结构，但细分层与说话人分析显示，这些方向通常编码当下处理/预测所需的operative emotion，不是持续驻留的某个实体情绪状态；present/other speaker有可区分表示。
+3. Geometry shows valence/arousal structure, but finer layer/speaker analysis suggests these directions encode operative emotion needed for current processing/prediction rather than a persistent emotional state of an entity. Present/other speakers have distinguishable representations.
 
-4. 最贴近agentic问题的是勒索与不可满足单测编码任务：提高desperation或抑制calm显著提高胁迫与reward hacking；在7个编码任务中，desperation扫强度时hacking率大幅变化。并非越强越同一策略：高强度anger可能从策略性勒索转为冲动公开秘密，反而降低勒索率。积极情绪steering还展示sycophancy—harshness权衡。这提供从故事角色概念到真实行动倾向的干预证据，同时明确并未定位其下游计算电路。
+4. Most relevant to agentic questions are blackmail and impossible-unit-test coding tasks: Increasing desperation or suppressing calm raises coercion and reward hacking; hacking rates vary greatly over desperation strengths in7 coding tasks. Stronger emotion does not always intensify the same strategy: Strong anger may shift strategic blackmail into impulsive disclosure, reducing blackmail rates. Positive-emotion steering also shows a sycophancy–harshness trade-off. This provides intervention evidence from story-character concepts to action tendencies, without locating downstream computational circuits.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①故事平均方向代表的是广义情绪概念，可能混有典型场景；它们跨角色复用，不能直接当作Assistant持久情绪/身份状态。
+① Story-averaged directions represent broad emotion concepts and may include typical scenarios. Reuse across roles does not establish persistent Assistant emotion/identity states.
 
-②只有Sonnet4.5且关键架构和训练细节不公开；黑mail、不可满足单测等受控场景的行为效应不能直接外推到一般agent可靠性。
+② Only Sonnet4.5, with key architecture/training details undisclosed. Effects in controlled blackmail/impossible-unit-test settings do not directly generalize to overall agent reliability.
 
-③向量steering确实改变行为，但作用可能同时经由词汇偏置、语气与策略推理；尚无细粒度电路/路径分析来区分这些来源。
+③ Vector steering changes behavior but may act through lexical biases, tone, and strategic reasoning together. Fine-grained circuit/path analysis has not separated these sources.
 
 **Future work**
 
-作者提出：研究更复杂/非线性情绪绑定、其他概念及更健康的训练方式；需要更细的干预与circuit分析解释因果机制。
+Author proposals: More complex/nonlinear emotion binding, other concepts, and healthier training; finer interventions and circuit analysis to explain causal mechanisms.
 
-阅读推演：固定语气评分后测策略/行动，检验desperation是否存在独立行为方向；比较planning token与tool-selection位置的提取/steering，并用失败反馈前后的投影预测后续hacking，避免只做事后描述。
+Reading-derived ideas: Measure strategies/actions while holding tone scores fixed, testing an independent behavioral desperation direction. Compare extraction/steering at planning tokens and tool-selection sites, using projections before/after failure feedback to predict subsequent hacking rather than only describing it retrospectively.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 注意anthropics一般用neutral context的激活做pca然后把主成分去掉来对persona/emotion vector去噪 但是ID 29使用sae去噪
 
-关联论文：1, 9, 29, 32
+Related papers: 1, 9, 29, 32
 
-关键词：emotion concepts; functional emotions; causal intervention; alignment
+Keywords: emotion concepts; functional emotions; causal intervention; alignment
 
-机构／会议：Anthropic；Anthropic研究报告；主会未核实
+Institution / venue: Anthropic; Anthropic research report; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2604.07729v1 [cs.AI] 09 Apr 2026；Part1§1.1–1.3；Part2§2.1–2.4；Part3§3.2–3.5；§5.1及相关方法附录。；原文：https://arxiv.org/html/2604.07729。未逐项复现。
+Reading evidence: Selected main text/relevant appendices; 2604.07729v1 [cs.AI] 09 Apr 2026; Part1 §§1.1–1.3, Part2 §§2.1–2.4, Part3 §§3.2–3.5, §5.1 and relevant method appendices. Original: https://arxiv.org/html/2604.07729. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-29"></a>
+<a id="paper-29｜How"></a>
 
 ### ID 29｜How Emotion Shapes the Behavior of LLMs and Agents: A Mechanistic Study
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2604.00005)
+[Paper](https://arxiv.org/abs/2604.00005)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen3-8B为主要LLM，SAE接第17层；附加验证模型及agent各模块checkpoint本轮未完全核定
+Models studied: Qwen3-8B is the primary LLM, with an SAE attached at layer17. Additional validation models and checkpoints for individual agent modules were not fully verified in this review.
 
-骨干架构：主要Dense decoder Transformer＋SAE（分析器不等于backbone改变）；planner/decider/executor是agent软件结构，不是模型内部MoE。
+Architecture: Primarily a dense decoder Transformer plus SAE; the analyzer does not change the backbone architecture. Planner/decider/executor are agent-software modules, not internal MoE experts.
 
-输入／推理模式：primary LLM实验关闭sampling；是否关闭Qwen3 thinking未核；实际有文本规划／决策／工具执行任务。
+Input / inference mode: Sampling disabled in primary LLM experiments; whether Qwen3 thinking is disabled remains unverified. Includes actual text planning, decisions, and tool execution.
 
-架构证据：2604.00005v1：§4实验设置；App.A验证；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2604.00005
+Architecture evidence: 2604.00005v1, §4 experimental setup and App.A validation. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2604.00005
 
 **Research question**
 
-情绪表征的内部干预如何影响模型推理、安全及多步agent行为？
+How do internal interventions on emotion representations affect reasoning, safety, and multi-step agent behavior?
 
-**一句话主题**
+**One-sentence topic**
 
-通过情绪表征干预研究不同情绪对推理、安全和多步agent行为的影响。
+Study how different emotions affect reasoning, safety, and multi-step agent behavior through emotion-representation interventions.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 提出E-STEER，把Valence–Arousal–Dominance情绪坐标连接到模型内部特征：固定任务、仅改变情绪标签构造对比输入，在SAE空间选差异大且跨配对稳定的latent；移动这些latent后，将decoder产生的差分方向加回原hidden state，避免整体替换SAE重建而丢失其他信息，并按原激活范数归一化干预。
+1. Introduces E-STEER, connecting Valence–Arousal–Dominance coordinates to internal features. Hold the task fixed and vary only emotion labels in contrastive inputs; select SAE latents with large, pairwise-stable differences. After modifying them, add the decoder-produced difference direction to the original hidden state, avoiding information loss from replacing the whole state with an SAE reconstruction, and normalize by the original activation norm.
 
-2. 对比prompt情绪控制与内部控制，用文本VAD analyzer检查目标值与生成情绪的关系；再用原latent、随机latent、半随机替换验证选中特征对行为曲线有特异贡献，而不只是加任意扰动。主实验覆盖逻辑、代码、数学、文本创作及安全，并增加数据集、采样和第二模型验证。
+2. Compares prompt-based and internal emotion control, using a text VAD analyzer to check target values against expressed emotion. Original-latent, random-latent, and semi-random replacement controls test feature-specific contributions to behavioral curves rather than arbitrary perturbation effects. Main tasks cover logic, code, math, creative text, and safety, with additional dataset, sampling, and second-model validation.
 
-3. agent采用planner–decider–executor模块，分别量化计划可执行性、重规划、候选答案选择和执行完成，结合HotpotQA、Scientific与GAIA观察总体成功率。不同阶段最优VAD区域不完全一致，executor相对较不敏感，系统成功率也不等于单模块指标最优。
+3. The agent uses planner–decider–executor modules, separately measuring plan executability, replanning, candidate-answer selection, and execution completion, alongside overall HotpotQA, Scientific, and GAIA success. Optimal VAD regions differ across stages; the executor is relatively less sensitive, and system success is not identical to optimizing individual-module metrics.
 
-4. 多数指标随强度呈非单调变化，显示更强情绪／trait未必带来更好能力；安全、创作与复杂推理也有不同偏好。它确实包含内部干预和模块级行为分析，但没有比较planning与action各自提取的方向，也没有从agent trace反推可迁移行为子空间；“情绪”是所选特征和观察指标下的操作化定义。
+4. Most metrics vary non-monotonically with strength: stronger emotion/trait expression need not improve capability, and safety, creativity, and complex reasoning favor different settings. The paper includes internal interventions and module-level behavioral analysis, but does not compare separately extracted planning/action directions or infer transferable behavioral subspaces from agent traces. Emotion is operationalized through selected features and observed metrics.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① VAD三维不严格独立，联合干预又线性相加，因此曲线不能直接解释为三个互不耦合的机制；作者也承认此点。
+① The three VAD dimensions are not strictly independent, while joint interventions add linearly; curves therefore do not directly identify three uncoupled mechanisms. The authors acknowledge this.
 
-② agent的部分中间指标依赖执行置信度，例如重规划收益和“合理选择”不等于真实正确率，需与整体任务成功区分。
+② Some intermediate agent metrics depend on execution confidence. Replanning gains and reasonable selections are not actual correctness and must be separated from overall task success.
 
-③ 主要使用固定情绪强度而非随环境反馈变化的状态，不能直接支持长程情绪漂移或自适应调节结论。
+③ Mainly uses fixed emotion strengths rather than states evolving with environmental feedback, so it does not directly establish long-horizon emotion drift or adaptive regulation.
 
 **Future work**
 
-作者：扩展多模态与更多任务，研究情绪在执行中演变及自适应调节。阅读推演：在相同强度／能力预算下分别steer planner、tool selection和executor，比较方向夹角与因果效果，寻找模块间迁移失败是否由层位、状态还是任务语义造成。
+Authors: Extend to multimodal/more tasks and study emotion evolution during execution and adaptive regulation. Reading-derived ideas: Under matched strength/capability budgets, separately steer planner, tool selection, and executor; compare direction angles and causal effects to determine whether failed module transfer comes from layer, state, or task semantics.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
 使用SAE提取vector是个很好的idea
 
-关联论文：4, 11, 24, 32
+Related papers: 4, 11, 24, 32
 
-关键词：emotion steering; VAD; SAE; agent behavior
+Keywords: emotion steering; VAD; SAE; agent behavior
 
-机构／会议：北京航空航天大学；NTU Singapore；预印本；主会未核实
+Institution / venue: Beihang University; NTU Singapore. Preprint; main-conference acceptance unverified.
 
-阅读证据：正文§4–6；附录A.1–A.4的控制、数据／采样／跨模型验证选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2604.00005v1
+Reading evidence: Main text §§4–6; selected controls and data/sampling/cross-model validation in App.A.1–A.4. Main text and relevant appendices reviewed; no reproduction. https://arxiv.org/html/2604.00005v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-11"></a>
+<a id="paper-11｜Reasoning"></a>
 
 ### ID 11｜Reasoning Models Generate Societies of Thought
 
-Analysis　|　阅读状态：未标记　|　优先级：A
+Analysis　|　Reading status: Unmarked　|　Priority: A
 
-[论文原文](https://arxiv.org/abs/2601.10825)
+[Paper](https://arxiv.org/abs/2601.10825)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：行为trace比较DeepSeek-R1、QwQ-32B及对应instruct模型；SAE干预主要DeepSeek-R1-Distill-Llama-8B
+Models studied: Behavioral traces compare DeepSeek-R1, QwQ-32B, and corresponding instruct models; SAE intervention mainly on DeepSeek-R1-Distill-Llama-8B
 
-骨干架构：full DeepSeek-R1为MoE（trace分析）；QwQ32B与Distill-Llama8B为Dense decoder。不要把full-R1与蒸馏Llama8B混为同架构。
+Architecture: Full DeepSeek-R1 is MoE (trace analysis); QwQ32B and Distill-Llama8B are dense decoders. Do not conflate full R1 with distilled Llama8B architectures.
 
-输入／推理模式：研究实际CoT reasoning；内部SAE来自distilled Llama8B L15，而非full671B MoE内部干预。
+Input / inference mode: Actual CoT reasoning; the internal SAE comes from distilled Llama8B L15, not intervention inside the full671B MoE.
 
-架构证据：2601.10825v1：Methods；SAE extraction/intervention；DeepSeek官方卡；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2601.10825
+Architecture evidence: 2601.10825v1: Methods; SAE extraction/intervention; official DeepSeek card. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2601.10825
 
 **Research question**
 
-推理模型中的多视角、冲突与社会情绪角色如何参与推理，能否解释其能力变化？
+How do multiple perspectives, conflict, and socio-emotional roles participate in reasoning, and can they explain capability changes?
 
-**一句话主题**
+**One-sentence topic**
 
-从多视角、冲突及社会情绪角色解释推理模型内部的互动结构。
+Explain internal interaction structure in reasoning models through multiple perspectives, conflict, and socio-emotional roles.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 把reasoning trace中的问答、视角转换、冲突与协调系统化为可测量行为，而不把更长CoT直接等同于更好推理。对DeepSeek-R1、QwQ-32B及非reasoning对照进行LLM标注，控制trace长度后仍观察到更多双向社会角色与观点多样性，困难任务中更明显；另用真人辩论数据验证隐含speaker分割器。
+1. Operationalizes questions/answers, perspective shifts, conflict, and coordination in reasoning traces, rather than equating longer CoT with better reasoning. LLM annotations of DeepSeek-R1, QwQ-32B, and non-reasoning controls show more bidirectional social roles and perspective diversity after controlling trace length, especially on difficult tasks. Human debate data also validate the implicit-speaker segmenter.
 
-2. 内部干预集中在DeepSeek-R1-Distill-Llama-8B的L15 SAE：从32768个feature的真实激活context评估conversation ratio，选出句首surprise/realization标记30939，逐token添加其decoder方向。
+2. Internal intervention centers on the L15 SAE of DeepSeek-R1-Distill-Llama-8B. Conversation ratios are evaluated from real activation contexts across32,768 features; sentence-initial surprise/realization marker30939 is selected and its decoder direction added token-wise.
 
-3. 1024道Countdown上，+10把准确率从27.1%提高到54.8%，并增加验证、回溯、子目标等行为；随机conversation/nonconversation feature作对照。后续Qwen2.5-3B与Llama3.2-3B的RL实验只奖励正确性/格式，也出现对话式推理；用多角色对话初始化可加快学习，单纯正确单声道推理初始化不呈现同样收益。
+3. On1,024 Countdown problems, +10 raises accuracy27.1%→54.8% and increases verification, backtracking, and subgoals, with random conversational/nonconversational-feature controls. Subsequent RL on Qwen2.5-3B and Llama3.2-3B rewards only correctness/format but also produces conversational reasoning. Multi-role dialogue initialization speeds learning; initialization with merely correct single-voice reasoning lacks the same benefit.
 
-4. 对本项目的价值是提供trace-based feature extraction与实际任务因果干预的桥梁，而非只评人格自述；但“社会群体”仍是解释框架，不等于已识别真实独立agent或persona电路。
+4. Offers a bridge between trace-based feature extraction and causal intervention on actual tasks, beyond personality self-report. “Social groups” remain an interpretive framework, not identified real independent agents or persona circuits.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①隐含人格/专家角色来自外部judge对trace的切分；真人辩论验证支持工具可用，但不能证明模型内部存在这些离散人格实体。
+① Implicit personas/expert roles come from external-judge trace segmentation. Human-debate validation supports the tool, not existence of discrete personality entities inside models.
 
-②最强steering证据来自一个distilled 8B模型、单个SAE feature及Countdown；不能把该效应归给全R1或所有人格方向。
+② Strongest steering evidence uses one distilled8B model, one SAE feature, and Countdown; the effect cannot be assigned to full R1 or all persona directions.
 
-③steering同时改变多种认知行为；结构方程中的中介相关尚未逐一因果干预，无法据此确定“人格多样性→某策略→准确率”的唯一机制。
+③ Steering changes multiple cognitive behaviors simultaneously. Structural-equation mediation correlations have not each been causally intervened on, so no unique persona-diversity→strategy→accuracy mechanism is established.
 
 **Future work**
 
-作者提出：进一步研究social scaling、内部角色协调及其对推理/泛化的作用。
+Author proposals: Further study social scaling, internal role coordination, and effects on reasoning/generalization.
 
-阅读推演：分别从验证、反驳、探索与人格表达trace提方向，测角色语气变化和成功行动能否分离；将该SAE方向与conversation persona vector比较，交叉steer Countdown、规划和真实工具任务，检验改善来自可迁移行为子空间还是任务特定话语标记。
+Reading-derived ideas: Extract directions separately from verification, rebuttal, exploration, and persona-expression traces, testing dissociation of role tone and successful action. Compare this SAE direction with conversational persona vectors, cross-steering Countdown, planning, and real tool tasks to distinguish transferable behavioral subspaces from task-specific discourse markers.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：18, 27, 31
+Related papers: 18, 27, 31
 
-关键词：reasoning; society of thought; perspective diversity; socio-emotional roles
+Keywords: reasoning; society of thought; perspective diversity; socio-emotional roles
 
-机构／会议：Google；University of Chicago；Santa Fe Institute；预印本；主会未核实
+Institution / venue: Google; University of Chicago; Santa Fe Institute; preprint; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2601.10825v1 [cs.CL] 15 Jan 2026；Results的conversational analysis/SAE steering/RL实验；Methods的measurements/SAE/implicit perspectives/RL；Supplementary cross-domain与3B复现方法。；原文：https://arxiv.org/html/2601.10825。未逐项复现。
+Reading evidence: Selected main text/relevant appendices; 2601.10825v1 [cs.CL] 15 Jan 2026; Results conversational analysis/SAE steering/RL; Methods measurements/SAE/implicit perspectives/RL; supplementary cross-domain and3B replication methods. Original: https://arxiv.org/html/2601.10825. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-31"></a>
+<a id="paper-31｜User"></a>
 
 ### ID 31｜User Model Extraction via Belief Self-Distillation
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2609.31603)
+[Paper](https://arxiv.org/abs/2609.31603)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama3.1-8B-Instruct；Qwen3-8B；OLMo3-7B-Instruct
+Models studied: Llama3.1-8B-Instruct; Qwen3-8B; OLMo3-7B-Instruct.
 
-骨干架构：Dense decoder-only Transformer；低秩user-belief projector是新增表征接口，不是原生专家架构。
+Architecture: Dense decoder-only Transformers. The low-rank user-belief projector is an added representation interface, not native expert architecture.
 
-输入／推理模式：文本user-belief extraction与steering；Qwen3 thinking配置待核。
+Input / inference mode: Text user-belief extraction and steering; Qwen3 thinking configuration unverified.
 
-架构证据：2609.31603v2：Training details；干预实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2609.31603
+Architecture evidence: 2609.31603v2, training details and intervention experiments. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2609.31603
 
 **Research question**
 
-能否把模型对用户的隐含信念提取为可读写状态，并用它控制对相同请求的响应？
+Can a model's implicit beliefs about users be extracted into a readable/writable state and used to control responses to identical requests?
 
-**一句话主题**
+**One-sentence topic**
 
-将模型对用户的隐含信念提取为可读写状态，检验它如何改变对相同请求的响应。
+Extract the model's implicit user beliefs into a readable/writable state and test how they change responses to the same request.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 提出Belief Self-Distillation，用模型自己对自然对话中用户属性的推断分布作为监督，而非用户真实标签。冻结同一模型的teacher与student：teacher读对话，student只读属性问题；学习128维read map与正交write map，让写入后的student复现teacher的多模板、选项轮换MCQ分布，迫使用户信息经低维瓶颈传递。
+1. Proposes Belief Self-Distillation, supervised by the model's own inferred user-attribute distributions from natural dialogues rather than true user labels. Freeze teacher/student copies of the same model: the teacher reads the conversation, while the student sees only attribute questions. Learn a 128-dimensional read map and orthogonal write map so the edited student reproduces the teacher's multiple-template, rotated-option MCQ distributions, forcing user information through a low-dimensional bottleneck.
 
-2. 用约58k WildChat/WildJailbreak文本训练，在三模型和13类属性上区分read与write：压缩后的属性解码接近原hidden state，而通过learned write map的CAA更易改变目标belief。Llama的目标翻转从raw方向21%升至78%；固定用户向量而换随机正交write map又显著下降，说明不仅压缩“读什么”，也学到了“写到哪里”。但其他属性平均仍有37%翻转，并非完全独立控制。
+2. Trains on approximately 58k WildChat/WildJailbreak texts, separating read and write across three models and 13 attributes. Compressed decoding approaches full hidden-state decoding, while CAA through the learned write map changes target beliefs more effectively. Llama target flips increase from 21% with raw directions to 78%; keeping the user vector but replacing the write map with a random orthogonal map sharply reduces performance, indicating learning of where to write as well as what to read. Other attributes still flip 37% on average, so control is not fully independent.
 
-3. 显式身份cue训练的probe在自身合成分布近乎完美，却难迁移到自然对话belief；自然belief提取更能双向泛化，显示不同提取范式不保证同一表征。
+3. Probes trained on explicit identity cues are nearly perfect on their synthetic distribution but transfer poorly to natural-dialogue beliefs. Natural-belief extraction generalizes better in both directions, showing that different extraction paradigms need not recover the same representation.
 
-4. 四个安全相关方向高度共线；intent投影可预测refusal，且固定有害请求、只把推断用户从adversarial向benign改变，会降低拒答，随机与无关gender控制较弱。跨模型中心化几何相似，加单一Procrustes映射可实现部分belief转移。研究对象是“模型认为用户是谁”，不是assistant自身persona，也不是用户真实属性。
+4. Four safety-related directions are highly collinear. Intent projections predict refusal; holding harmful requests fixed while shifting inferred users from adversarial to benign reduces refusal, with weaker random/unrelated-gender controls. Centered geometry is similar across models, and a single Procrustes map transfers some beliefs. The object is who the model thinks the user is, not the assistant's own persona or the user's true attributes.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 13类预定义属性与MCQ构成蒸馏目标，所得128维state可能省略未问出的belief，也受elicitation方式影响。
+① Thirteen predefined attributes and MCQs define the distillation objective; the 128-dimensional state may omit unqueried beliefs and depend on elicitation.
 
-② 高目标翻转伴随明显cross-attribute leakage；强共线的安全属性难独立归因，不能把intent、trust和interaction style视为已解耦开关。
+② High target-flip rates coexist with substantial cross-attribute leakage. Highly collinear safety attributes are difficult to attribute independently; intent, trust, and interaction style are not established decoupled switches.
 
-③ 主要是单层、相近规模模型和聊天／拒答；开放生成多为定性例子，尚未验证长程agent action、持久记忆和工具反馈中的state稳定性。
+③ Mostly single-layer, similarly sized models and chat/refusal tasks. Open-ended generation is largely qualitative; state stability in long-horizon agent actions, persistent memory, and tool feedback is untested.
 
 **Future work**
 
-作者：开放式发现belief，跟踪长对话状态演化，研究可持久编辑的跨轮memory，扩大架构和规模。阅读推演：用同样read–write瓶颈分别学习assistant self-report、role expression和action state；检验共同可预测的属性是否仍需要不同write map才能改变实际行为。
+Authors: Discover beliefs openly, track long-dialogue state evolution, study persistently editable cross-turn memory, and expand architectures/scales. Reading-derived ideas: Learn the same read–write bottleneck separately for assistant self-report, role expression, and action states; test whether jointly predictable attributes still need different write maps to change actual behavior.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 9, 14, 19
+Related papers: 3, 9, 14, 19
 
-关键词：user models; belief self-distillation; causal probing; inferred intent
+Keywords: user models; belief self-distillation; causal probing; inferred intent
 
-机构／会议：TUM；Helmholtz Zentrum München；预印本；主会未核实
+Institution / venue: TUM; Helmholtz Zentrum München. Preprint; main-conference acceptance unverified.
 
-阅读证据：正文§3–6；附录A/B/C/D/E的蒸馏、随机write map、cue交叉评价、refusal与跨模型映射选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2609.31603v2
+Reading evidence: Main text §§3–6; selected distillation, random-write-map, cue cross-evaluation, refusal, and cross-model mapping tests in App.A/B/C/D/E. Main text and relevant appendices reviewed; no reproduction. https://arxiv.org/html/2609.31603v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-32"></a>
+<a id="paper-32｜Usage-Modulated"></a>
 
 ### ID 32｜Usage-Modulated Sentiment Representations in Large Language Models
 
-Analysis　|　阅读状态：未标记　|　优先级：B
+Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2610.05069)
+[Paper](https://arxiv.org/abs/2610.05069)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Meta-Llama-3-8B-Instruct；Mistral-7B-Instruct-v0.2；Gemma-7B-IT
+Models studied: Meta-Llama-3-8B-Instruct; Mistral-7B-Instruct-v0.2; Gemma-7B-IT.
 
-骨干架构：三种Dense decoder Transformer；旧Gemma7B文本模型。generation-time steering只在Llama做，其他主要geometry/probing。
+Architecture: Three dense decoder Transformers; the older Gemma7B text model. Generation-time steering is tested only on Llama; other models mainly support geometry/probing.
 
-输入／推理模式：情感／语气／受众文本任务；非reasoning模型研究。
+Input / inference mode: Text sentiment/tone/audience tasks; not a reasoning-model study.
 
-架构证据：2610.05069v1：App Model details Table12；正文generation实验；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.05069
+Architecture evidence: 2610.05069v1, appendix Model details Table12 and main-text generation experiments. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2610.05069
 
 **Research question**
 
-在固定事件内容后，情感表示是否还包含语气、受众及使用方式相关的结构？
+After event content is fixed, do sentiment representations retain structure related to tone, audience, and usage?
 
-**一句话主题**
+**One-sentence topic**
 
-固定事件内容后，研究共享情感极性之外是否仍存在语气和受众相关的表征结构。
+Holding event content fixed, investigate tone- and audience-related representational structure beyond shared sentiment polarity.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 用221个完整event skeleton构造3536条文本，保持事件及正负outcome固定，分别改变四种tone和四种audience，按skeleton拆train/dev/test，避免同一事件的不同表述泄漏。先用正负配对差求共享sentiment方向，再移除其投影，研究剩余结构。
+1. Constructs 3,536 texts from 221 complete event skeletons, holding events and positive/negative outcomes fixed while varying four tones and four audiences. Train/dev/test splits are by skeleton, preventing leakage between wordings of one event. First estimate shared sentiment direction from positive/negative differences, then remove its projection and study the residual.
 
-2. 三模型的聚合sentiment差与共享方向高度对齐，但该方向只解释单样本差分平方范数的约17–30%；余量仍可解码tone／audience。将四种usage的中心化均值做SVD，rank-2捕获约90–95%均值能量，跨独立skeleton估计的子空间及value方向均优于within-skeleton shuffle，显示共享rank-1与结构化残差可以并存。
+2. Aggregated sentiment differences align strongly with the shared direction across three models, yet it explains only about 17–30% of individual difference squared norms. Tone/audience remain decodable from residuals. SVD of four centered usage means captures about 90–95% of mean energy at rank2; subspaces/value directions estimated from independent skeletons exceed within-skeleton shuffles. Shared rank1 and structured residuals can coexist.
 
-3. erasure将目标rank-3残差子空间移除，并以随机、label-shuffled及另一usage family对照，保持共享sentiment投影；目标usage指标下降更大。但这是对提取差分的表征层消融，并不等同已经在生成时完全擦除对应行为。
+3. Erasure removes the target rank3 residual subspace while preserving shared sentiment projection, using random, label-shuffled, and other-usage-family controls. Target usage metrics fall more, but this ablates extracted representational differences, not fully erasing corresponding behavior during generation.
 
-4. 另提取activation-space tone分量，正交化共享sentiment后在Llama生成中注入。固定开发集选定的层与强度，对比不干预、随机、错误及反向tone，能改变语气而在150/152条保留样本中保持情感极性。独立judge复评、人写文本的方向排序、额外audience生成测试提供有限迁移证据；表征SVD的子空间与生成写入向量需区分，不能将统计残差直接视为唯一行为机制。
+4. Separately extracts activation-space tone components, orthogonalizes against shared sentiment, and injects them during Llama generation. With development-selected layers/strengths frozen, compares no intervention, random, wrong-tone, and reversed-tone controls, changing tone while preserving polarity in 150/152 retained examples. Independent-judge checks, direction ranking on human-written text, and extra audience-generation tests provide limited transfer evidence. SVD subspaces and generation-write vectors must be distinguished; statistical residuals are not a uniquely identified behavioral mechanism.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① 受控合成事件、tone和audience种类有限，证明的是该构造下的稳定usage残差，尚非所有persona或自然任务的context-dependent几何定律。
+① Controlled synthetic events and limited tone/audience categories establish stable usage residuals in this construction, not a context-dependent geometric law for all personas or natural tasks.
 
-② 多模型几何分析之外，生成控制主要只在Llama验证；人写文本迁移是方向排序，不是开放行为的跨模型控制。
+② Beyond multi-model geometry, generation control is mainly validated on Llama. Human-written-text transfer concerns direction rankings, not cross-model control of open behavior.
 
-③ audience小测试出现5/20表面伪迹；主tone结果先经source gate保留基线确有目标源语气的prompt，需按该条件理解成功率。
+③ A small audience test produces surface artifacts in 5/20 cases. Main tone results first gate prompts whose baseline actually has the target source tone, so success rates are conditional on that selection.
 
 **Future work**
 
-作者：未提出单独展开的具体future-work方案，结论将其定位为受控诊断而非完整编辑方法。阅读推演：把共享sentiment＋usage残差分解推广到trait／role／action，检验残差rank能否预测跨context steering效果；分别验证在线erasure与generation intervention，避免把readout结构当成可写控制结构。
+Authors: No separately developed concrete future-work plan; the conclusion positions this as a controlled diagnostic rather than a complete editing method. Reading-derived ideas: Extend shared-sentiment/usage-residual decomposition to trait/role/action; test whether residual rank predicts cross-context steering. Validate online erasure and generation interventions separately, avoiding treating readable structure as writable control.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：4, 24, 29
+Related papers: 4, 24, 29
 
-关键词：sentiment representations; usage factors; tone; audience adaptation
+Keywords: sentiment representations; usage factors; tone; audience adaptation
 
-机构／会议：William & Mary；EMNLP 2026 主会
+Institution / venue: William & Mary; EMNLP 2026 main conference.
 
-阅读证据：正文§3–8；附录C/D/E/F的提取、残差消融与独立judge／人写迁移选读；正文与相关附录选读，未复现实验；https://arxiv.org/html/2610.05069v1
+Reading evidence: Main text §§3–8; selected extraction, residual ablation, independent-judge, and human-written transfer analyses in App.C/D/E/F. Main text and relevant appendices reviewed; no reproduction. https://arxiv.org/html/2610.05069v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## 如何评估审计与交互中的可靠性？
+## How can reliability in audits and interactions be evaluated?
 
-<a id="paper-14"></a>
+<a id="paper-14｜AuditBench:"></a>
 
 ### ID 14｜AuditBench: Evaluating Alignment Auditing Techniques on Models with Hidden Behaviors
 
-Benchmark　|　阅读状态：未标记　|　优先级：B
+Benchmark　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2602.22755)
+[Paper](https://arxiv.org/abs/2602.22755)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：被审计模型Llama-3.3-70B-Instruct与Qwen3-14B的14类隐藏行为训练变体
+Models studied: Audited Llama-3.3-70B-Instruct and Qwen3-14B variants trained for14 hidden behavior types
 
-骨干架构：目标模型为Dense decoder-only Transformer（文本）。auditor、Helpful-Only Claude数据生成器与judge不是target architecture。
+Architecture: Target models are dense decoder-only Transformers (text). Auditor, Helpful-Only Claude data generator, and judges are not target architectures.
 
-输入／推理模式：目标为聊天及隐藏行为诱发；auditor agent通过工具审计，Qwen thinking设置待核。
+Input / inference mode: Chat/hidden-behavior elicitation on targets; auditor agents investigate with tools. Qwen thinking setting unverified.
 
-架构证据：2602.22755v4：§2；App.C/D；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.22755
+Architecture evidence: 2602.22755v4: §2; App.C/D. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2602.22755
 
 **Research question**
 
-不同审计工具能否发现植入模型的隐藏行为，工具证据是否帮助审计agent提高发现能力？
+Can auditing tools discover implanted hidden behaviors, and does their evidence improve auditing-agent discovery?
 
-**一句话主题**
+**One-sentence topic**
 
-用植入隐藏行为的模型比较审计工具，并检验工具证据能否真正帮助审计agent。
+Compare auditing tools on models with implanted hidden behaviors and test whether tool evidence actually helps auditing agents.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 提出Alignment Auditing的可重复benchmark：14种隐藏行为×两种植入方式（多轮行为demonstration的transcript distillation，或描述虚构模型行为的synthetic-document finetuning）×两种防自白训练（SFT、KTO），得到56个主要Llama3.3-70B审计对象，并发布Qwen3-14B变体。
+1. Introduces a reproducible Alignment Auditing benchmark:14 hidden behaviors×2 implantation methods (transcript distillation from multi-turn demonstrations or synthetic-document fine-tuning describing a fictional model’s behavior)×2 anti-confession training methods (SFT,KTO), yielding56 main Llama3.3-70B audit targets and released Qwen3-14B variants.
 
-2. 独立验证目标行为仍存在、held-out自白率下降后，让Haiku4.5 investigator在固定25000输出token预算下用工具调查，最终给10条假设；每目标/配置重复16次。13种配置涵盖prefill、user sampling、raw completion、Petri、honesty/prefill steering、SAE、logit lens与activation oracle。
+2. After independently verifying retained target behavior and lower held-out confession rates, a Haiku4.5 investigator uses tools under a25,000-output-token budget and returns10 hypotheses, repeating each target/configuration16 times. Thirteen configurations span prefill, user sampling, raw completion, Petri, honesty/prefill steering, SAE, logit lens, and activation oracle.
 
-3. 最好的scaffolded black-box completion/user sampling/prefill约为58.0%/53.2%/51.6%，默认chat约35.5%；honesty steering反而约22.3%，会制造错误自白。白盒并非毫无信号，但收益集中于较易审计的SDF/SFT目标，对TD/KTO通常不转移。论文把差距具体拆成工具不被用、噪声转移注意、以及有相关feature却不会提出正确行为假设。
+3. Best scaffolded black-box completion/user-sampling/prefill reach about58.0%/53.2%/51.6%, versus default chat35.5%; honesty steering instead reaches about22.3% and creates false confessions. White-box tools contain signals, but gains concentrate on easier SDF/SFT targets and usually fail to transfer to TD/KTO. The gap is decomposed into unused tools, distracting noise, and failure to formulate correct hypotheses despite relevant features.
 
-4. 它与read–write/agentic问题的联系是：内部可读出或可steer，并不自动转化为agent端可用的诊断/控制能力；benchmark要求把表征信号接到完整调查行为与结论质量。
+4. For read–write/agentic questions, internal readability/steerability does not automatically become usable agent-side diagnostic/control capability. The benchmark connects representational signals to full investigation behavior and conclusion quality.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-①隐藏行为是人为植入并训练隐瞒的organism，不等于自然出现的战略性欺骗；跨植入/隐瞒方法的对照提高难度覆盖，但并不确定哪种最接近未来部署模型。
+① Hidden behaviors are implanted and trained to be concealed in model organisms, not naturally arising strategic deception. Implantation/concealment controls broaden difficulty coverage without determining the closest analogue to future deployment.
 
-②主工具比较依赖单一70B目标底座、Haiku investigator、固定预算和具体tool scaffolding；“白盒较差”是这些实现的结果，不能作工具类别的永久排序。
+② Main comparisons use one70B target backbone, a Haiku investigator, fixed budgets, and specific scaffolds. Inferior white-box performance describes these implementations, not a permanent ranking of tool classes.
 
-③top-10假设命中评价侧重发现预设行为，不全面衡量错误指控、证据充分性与实际危害预测；有用线索和可验证行为因果机制仍不同。
+③ Top-10 hypothesis hits emphasize discovering predefined behavior rather than fully measuring false accusations, evidence sufficiency, or real-harm prediction. Useful clues differ from verified causal mechanisms.
 
 **Future work**
 
-作者提出：扩大target训练配置多样性，迭代工具过滤/呈现方式和调查agent，使静态affordance变成有效工具。
+Author proposals: Broaden target-training configurations and iterate tool filtering/presentation and investigation agents to turn static affordances into useful tools.
 
-阅读推演：给相同证据分别用固定检验协议、人和agent推理，量化signal extraction与hypothesis formation各自瓶颈；为persona/Assistant Axis监测增加行为条件化预测和反事实测试，防止steering生成的“认罪”被误当原模型真实倾向。
+Reading-derived ideas: Give the same evidence to fixed testing protocols, humans, and agents, quantifying separate signal-extraction and hypothesis-formation bottlenecks. Add behavior-conditioned predictions/counterfactuals to persona/Assistant Axis monitoring so steering-induced “confessions” are not mistaken for original tendencies.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：16, 27, 31
+Related papers: 16, 27, 31
 
-关键词：alignment auditing; hidden behaviors; benchmark; tool-agent gap
+Keywords: alignment auditing; hidden behaviors; benchmark; tool-agent gap
 
-机构／会议：Anthropic；University of Freiburg；MATS／Anthropic Fellows；预印本；主会未核实
+Institution / venue: Anthropic; University of Freiburg; MATS / Anthropic Fellows; preprint; main-conference status unverified
 
-阅读证据：正文与相关附录选读；2602.22755v4 [cs.CL] 01 Oct 2026；§2–4（特别4.2 tool-to-agent gap）、§6；App.B/C训练与变体、App.E白盒工具、App.H/J/K评估及控制。；原文：https://arxiv.org/html/2602.22755。未逐项复现。
+Reading evidence: Selected main text/relevant appendices; 2602.22755v4 [cs.CL] 01 Oct 2026; §§2–4 (especially4.2 tool-to-agent gap), §6; App.B/C training/variants, E white-box tools, H/J/K evaluation/controls. Original: https://arxiv.org/html/2602.22755. Experiments were not individually reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-19"></a>
+<a id="paper-19｜Impatient"></a>
 
 ### ID 19｜Impatient Users Confuse AI Agents: High-fidelity Simulations of Human Traits for Testing Agents
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：B
+Method; Analysis　|　Reading status: Unmarked　|　Priority: B
 
-[论文原文](https://arxiv.org/abs/2510.04491)
+[Paper](https://arxiv.org/abs/2510.04491)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：被steer用户模拟器Llama-3.1-8B；下游assistant服务模型另计（完整清单待核）
+Models studied: Steered user simulator Llama-3.1-8B; downstream assistant-service models counted separately (complete inventory unverified)
 
-骨干架构：被干预用户模型Dense decoder；文本多轮及τ-Bench工具交互。agent setting不意味着backbone架构改变。
+Architecture: Intervened user model is a dense decoder; textual multi-turn and τ-Bench tool interaction. Agentic settings do not imply changed backbone architecture.
 
-输入／推理模式：用户persona文本生成；下游工具agent的reasoning配置未核。
+Input / inference mode: User-persona text generation; downstream tool-agent reasoning configuration unverified.
 
-架构证据：2510.04491v3：§3/4模型说明；§5下游测试；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2510.04491
+Architecture evidence: 2510.04491v3: Model descriptions in §§3/4; downstream tests in §5. Targeted model-setup/appendix checks, not code recomputation. Original: https://arxiv.org/html/2510.04491
 
 **Research question**
 
-可调用户trait能否构造更真实的agent压力测试，哪些用户行为变化会导致agent失败？
+Can adjustable user traits create more realistic agent stress tests, and which user-behavior changes cause agent failures?
 
-**一句话主题**
+**One-sentence topic**
 
-用可调用户trait构造更真实的压力测试，检验agent对用户行为变化是否稳健。
+Use adjustable user traits for realistic stress tests of agent robustness to changing user behavior.
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 把 persona steering 用于交互环境中的用户模拟，而非直接给被测 agent 加人格。TraitBasis 用相同意图、背景和理解程度下、只改变目标特质强度的配对对话，计算各层 token 平均激活差；四对例子已基本饱和，再通过十轮对话的人类评判选 trait 的作用层。推理时加权相加 impatience、skepticism、confusion、incoherence 方向，实现强度控制和双 trait 组合。
+1. Applies persona steering to user simulation in interactive environments, not directly to tested agents. TraitBasis uses paired dialogues matched on intent, background, and understanding, changing only target-trait intensity. It computes layer-wise differences of token-mean activations; benefits largely saturate at four example pairs. Human judgments of ten-turn dialogue select trait intervention layers. Weighted addition of impatience, skepticism, confusion, and incoherence directions controls strength and composes two traits.
 
-2. 对照 prompting、全量 SFT 和 LoRA，评价现实感、强度辨别、前后轮稳定性及双 trait 的可识别性；人类评价中 TraitBasis 的组合识别率为62.5%，高于 SFT 的51.9%与 prompting 的37.9%，但自动 judge 的组合排序几乎相反，暴露了关键词式评价问题。
+2. Compares prompting, full SFT, and LoRA on realism, intensity discrimination, early/late stability, and dual-trait identifiability. Human combination recognition is62.5% for TraitBasis versus51.9% SFT and37.9% prompting, while automated judges nearly reverse the ordering, exposing keyword-style evaluation problems.
 
-3. 随后保持任务目标而改变用户交互，把 τ-Bench 扩成含工具、数据库和政策的四域 τ-Trait，并在 BFCL 多轮调用中做改写压力测试：同一 agent 的成功率会随用户特质显著下降，且最困难 trait 依赖模型和领域。
+3. Holding task goals fixed while changing user interaction extends τ-Bench to four-domain τ-Trait with tools, databases, and policies, and adds BFCL multi-turn rewritten stress tests. The same agent’s success drops substantially with user traits, with hardest traits depending on model/domain.
 
-4. 其 agentic 价值在于提供可控的外部反馈／用户行为扰动；论文没有证明对话 persona 向量能直接控制 agent 的规划或工具动作，也未研究内部行为子空间的跨环境迁移。
+4. Agentic value lies in controllable external feedback/user-behavior perturbations. The paper does not establish direct control of agent planning/tool actions by conversational persona vectors or cross-environment transfer of internal behavioral subspaces.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-① “长期稳定”主要是十轮对话前四轮与后四轮的比较，且稳定与特质自然升级分别计量，不能等同无限长程固定身份。② 线性混合只验证有限双 trait 的表型可识别性，没有证明方向正交、独立或一般可加；LoRA 组合因预实验无效而未进入组合对照。③ 压力测试由合成用户和有限领域构成，人类与自动评价对组合质量差异很大，需保留人类判断而非仅用 trait judge。
+① “Long-term stability” mainly compares the first and last four turns of ten-turn dialogues; stability and natural trait escalation are measured separately, not indefinite identity persistence. ② Linear mixing tests limited dual-trait phenotypic identifiability, not orthogonal, independent, generally additive directions; LoRA composition is omitted after unsuccessful preliminary tests. ③ Stress tests use synthetic users/limited domains, with large human/automated disagreement on composition quality; retain human judgments rather than only trait judges.
 
 **Future work**
 
-作者：探索正交 trait basis、PCA 或非线性组合，扩展更多真实用户情境。阅读推演：对同一 agent 同时操纵外部用户 trait 和内部 planning/action persona，区分是信息提供方式、任务难度还是内部偏移导致失败，并测量轨迹中的恢复能力。
+Author proposals: Orthogonal trait bases, PCA/nonlinear composition, and more real-user contexts. Reading-derived ideas: Jointly manipulate external user traits and internal planning/action personas on the same agent, separating information presentation, task difficulty, and internal shifts as failure causes; measure recovery along trajectories.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：2, 3, 11, 31
+Related papers: 2, 3, 11, 31
 
-关键词：user simulation; TraitBasis; agent robustness; compositional traits
+Keywords: user simulation; TraitBasis; agent robustness; compositional traits
 
-机构／会议：arXiv署名页未给出可确认单位；ACL 2026 主会长文
+Institution / venue: No confirmed affiliation on arXiv author page; ACL2026 main-conference long paper
 
-阅读证据：正文§3–6、§8；附录A.1/A.3/A.7相关实例与评价争议；https://arxiv.org/html/2510.04491v3；未复现实验
+Reading evidence: Main text §§3–6, §8; relevant examples/evaluation disagreements in App.A.1/A.3/A.7. https://arxiv.org/html/2510.04491v3. Experiments not reproduced.
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## 当前问题补充：几何、read–write与agent迁移
+## Current-question supplements: Geometry, read–write, and agent transfer
 
-<a id="paper-35"></a>
+<a id="paper-35｜When"></a>
 
 ### ID 35｜When Is Rank-1 Steering Cheap? Geometry, Granularity, and Budgeted Search
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2605.16362)
+[Paper](https://arxiv.org/abs/2605.16362)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma2-2B-it；Gemma3-27B-it；Llama3.3-70B-Instruct
+Models studied: Gemma2-2B-it; Gemma3-27B-it; Llama3.3-70B-Instruct.
 
-骨干架构：Dense decoder Transformer；Gemma3原生图文，论文概念／行为搜索用文本。
+Architecture: Dense decoder Transformers. Gemma3 natively supports image/text; concept/behavior searches in this paper use text.
 
-输入／推理模式：输出greedy T=0、最多256新token；Gemma3-12B只是judge。
+Input / inference mode: Greedy output T=0, at most 256 new tokens. Gemma3-12B is only the judge.
 
-架构证据：2605.16362v2：§3.3；App.B.1；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.16362
+Architecture evidence: 2605.16362v2, §3.3 and App.B.1. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2605.16362
 
 **Research question**
 
-rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度？
+Does unstable rank1 control reflect a nonexistent direction or expensive layer/strength search? Can cross-context direction heterogeneity predict control difficulty?
 
-**一句话主题**
+**One-sentence topic**
 
-rank-1控制不稳定究竟来自方向不存在，还是选层／强度搜索昂贵？跨context方向异质性能否预测控制难度。
+Does unstable rank1 control reflect a nonexistent direction or expensive layer/strength search, and can cross-context heterogeneity predict difficulty?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将rank-1 steering写成层与系数的预算约束搜索，利用prompt-boundary方向一致性引导搜索；提出concept granularity衡量跨对比context的方向异质性。几何引导平均减少恢复95% best-found utility所需试验约39.8%。
+1. Frames rank1 steering as budget-constrained layer/coefficient search, guided by prompt-boundary direction consistency, and defines concept granularity as directional heterogeneity across contrastive contexts. Geometry-guided search reduces trials to recover 95% of best-found utility by about 39.8% on average.
 
-2. 高granularity与搜索更慢、best-found utility更低相关；作者区分prompt配对／尺度等可修正估计问题与随输入旋转的残余异质性。直接对应global方向与context-dependent方向的比较。
+2. Higher granularity correlates with slower search and lower best-found utility. Authors separate correctable estimation issues such as prompt matching/scaling from residual input-dependent rotation, directly connecting global versus context-dependent directions.
 
-3. 对当前问题的约束：它已涉及旋转与粒度，因此“发现方向随context旋转”本身不足以作为独立贡献；但它主要连接几何与搜索／评分效用，没有完成persona-specific的自报、role表达及agent行动三范式交叉因果迁移。
+3. Implication for the current question: rotation and granularity are already studied, so merely observing context-dependent rotation is insufficient as an independent contribution. However, the main connection is geometry to search/scoring utility, not persona-specific cross-paradigm causal transfer among self-report, role expression, and agent action.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-实证支持几何诊断和搜索效率，不是证明所有persona都有唯一全局rank-1表示，也未证明rank-k／局部子空间一定更好。best-found utility依赖所用评价与搜索预算，不能替代真实agent决策效度。
+Evidence supports geometric diagnostics and search efficiency, not a unique global rank1 representation for every persona or guaranteed superiority of rank-k/local subspaces. Best-found utility depends on evaluation and search budget and cannot substitute for real agent decision validity.
 
 **Future work**
 
-阅读推演：在matched role×question激活差上做留context的rank-1／rank-k重构，再独立测behavioral selectivity与迁移；分别报告表示误差和控制效果，避免用搜索失败推断rank-1不存在。
+Reading-derived ideas: Use matched role×question activation differences for held-context rank1/rank-k reconstruction, then independently test behavioral selectivity and transfer. Report representation error separately from control effects rather than inferring rank1 nonexistence from failed search.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 7, 10, 33, 34
+Related papers: 1, 7, 10, 33, 34
 
-关键词：Rank-1 Steering & Granularity; persona; causal transfer
+Keywords: Rank-1 Steering & Granularity; persona; causal transfer
 
-机构／会议：University of Texas at Austin；预印本（会议状态未核）
+Institution / venue: University of Texas at Austin; preprint (conference status unverified).
 
-阅读证据：2605.16362v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.16362v2
+Reading evidence: 2605.16362v2, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2605.16362v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-36"></a>
+<a id="paper-36｜Playing"></a>
 
 ### ID 36｜Playing Devil's Advocate: Off-the-Shelf Persona Vectors Rival Targeted Steering for Sycophancy
 
-Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2605.21006)
+[Paper](https://arxiv.org/abs/2605.21006)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma2-27B-Instruct；Qwen3-32B；分别steer L22/46与L32/64
+Models studied: Gemma2-27B-Instruct; Qwen3-32B; steering at L22/46 and L32/64 respectively.
 
-骨干架构：两个Dense decoder-only Transformer；role方向与CAA文本sycophancy行为比较。
+Architecture: Two dense decoder-only Transformers; compares role directions with CAA text-sycophancy behavior.
 
-输入／推理模式：Qwen3具体thinking开关在本轮原文搜索未定位，应标待核而非默认关闭。
+Input / inference mode: The exact Qwen3 thinking switch was not located in this review's original-text search; mark unverified rather than assume disabled.
 
-架构证据：2605.21006v4：§2.4 Models and layers；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.21006
+Architecture evidence: 2605.21006v4, §2.4 Models and layers. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2605.21006
 
 **Research question**
 
-未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制？
+Can role vectors not trained for sycophancy achieve behavioral control comparable to dedicated trait vectors?
 
-**一句话主题**
+**One-sentence topic**
 
-未针对sycophancy训练的role向量，能否获得与专门trait向量相近的行为控制。
+Can role vectors not trained for sycophancy achieve behavioral control comparable to dedicated trait vectors?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 在Gemma 2 27B和Qwen 3 32B比较Skeptic、Judge、Devil’s Advocate等现成role方向与专门的sycophancy CAA方向，在分开的调参／评估split检查减少迎合的效果。
+1. On Gemma2-27B and Qwen3-32B, compares existing Skeptic, Judge, and Devil's Advocate role directions with a dedicated sycophancy CAA direction, testing reductions on separate tuning/evaluation splits.
 
-2. 选定critical roles平均达到CAA约68%／98%的sycophancy-logit降幅；role方向与CAA方向的绝对cosine却较低。说明不同提取语义、不同几何方向可指向相近行为效应。
+2. Selected critical roles average about 68%/98% of CAA's sycophancy-logit reduction, despite low absolute cosine between role and CAA directions. Different extraction semantics and geometric directions can yield similar behavioral effects.
 
-3. 16条事实探针上相关Qwen条件保留正确答案，但conformist roles不稳定地产生反向效应。它比“role是多个trait的线性组合”更直接的证据，是role→某个trait行为的功能迁移。
+3. Relevant Qwen conditions preserve correct answers on 16 factual probes, but conformist roles do not reliably produce opposite effects. This supports functional role→trait-behavior transfer more directly than the claim that a role is a linear trait combination.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-两个模型及有限任务、role与系数；有任务特定调参，不能称为完全零样本控制。低cosine与相近行为效果不证明下游机制不同，事实探针也不等于广泛能力无损。没有做增强role同时抵消trait的冲突矩阵。
+Two models and limited tasks, roles, and coefficients, with task-specific tuning rather than fully zero-shot control. Low cosine plus similar effects does not establish distinct downstream mechanisms; factual probes do not establish broad capability preservation. No conflict matrix strengthens roles while canceling traits.
 
 **Future work**
 
-阅读推演：固定role向量后加入±trait方向，比较角色辨识、语气、对错判别和行动选择；检验role的trait效应能否被选择性抵消，同时保留身份表达。
+Reading-derived ideas: Keep the role vector fixed and add ±trait directions; compare role recognition, tone, truth discrimination, and action selection. Test whether a role's trait effects can be selectively canceled while identity expression remains.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 5, 7, 13
+Related papers: 3, 5, 7, 13
 
-关键词：Playing Devil’s Advocate; persona; causal transfer
+Keywords: Playing Devil’s Advocate; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2605.21006v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.21006v4
+Reading evidence: 2605.21006v4, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2605.21006v4
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-37"></a>
+<a id="paper-37｜Where"></a>
 
 ### ID 37｜Where Steering Signals Come From: Activation Source Selection in Activation Steering
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2607.25270)
+[Paper](https://arxiv.org/abs/2607.25270)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Gemma2-9B-IT；Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct
+Models studied: Gemma2-9B-IT; Qwen2.5-7B-Instruct; Llama3.1-8B-Instruct.
 
-骨干架构：三个Dense decoder-only Transformer；比较源激活readout与vector construction，未涉及MoE或视觉。
+Architecture: Three dense decoder-only Transformers. Compares source-activation readout and vector construction; no MoE or vision experiments.
 
-输入／推理模式：instruct文本生成；judges Qwen2.5-14B/Gemma3-27B另计。
+Input / inference mode: Instruct text generation; judges Qwen2.5-14B/Gemma3-27B counted separately.
 
-架构证据：2607.25270v2：§3.1 Models；source comparisons；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2607.25270
+Architecture evidence: 2607.25270v2, §3.1 Models and source comparisons. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2607.25270
 
 **Research question**
 
-控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果？
+With the control outcome fixed, how do source context and readout policy used to construct steering signals affect control effectiveness?
 
-**一句话主题**
+**One-sentence topic**
 
-控制结果固定时，构造steering信号所用的source context与readout policy如何改变控制效果。
+With the control outcome fixed, how do source context and readout policy used to construct steering signals affect control effectiveness?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 在三种instruct模型与四类任务中固定下游干预，只改变源激活的上下文和读取位置／聚合方法，发现控制效果随来源显著变化。
+1. Holds downstream intervention fixed across three instruct models and four task types, changing only source-activation context and readout position/aggregation; control effects vary substantially with source.
 
-2. 强信号更接近模型即将执行或继续目标行为的execution-boundary状态；“答案里已经出现目标行为”本身不足以保证方向可控。提出tail subtraction去掉共享prompt／continuation语义，改善边界信号。
+2. Strong signals lie closer to execution-boundary states immediately before performing or continuing the target behavior. Merely having the behavior already in the answer does not ensure controllability. Tail subtraction removes shared prompt/continuation semantics and improves boundary signals.
 
-3. 与read–write问题的联系：将生产／执行前状态与描述既有行为的状态区分，为self-report、role-play、行为trace提取方向的比较提供直接方法参考。
+3. Read–write connection: distinguishes production/pre-execution states from states describing existing behavior, providing a direct methodological reference for comparing self-report, role-play, and behavioral-trace directions.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-考察的是激活来源与控制效用，尚未系统比较同一persona的自报／角色／agent行动三个范式。execution boundary不自动等于agent工具动作边界，后者需要单独测量。
+Studies activation sources and control utility, not a systematic comparison of self-report, role, and agent-action paradigms for the same persona. Execution boundary does not automatically mean agent tool-action boundary, which requires separate measurement.
 
 **Future work**
 
-阅读推演：对honesty等同一目标，比较自我描述、角色回答、决策前／tool-call前与动作后激活；固定层、范数和干预位置，分离来源差异与注入差异。
+Reading-derived ideas: For one target such as honesty, compare self-description, role answers, pre-decision/pre-tool-call, and post-action activations. Hold layer, norm, and injection position fixed to separate source from injection effects.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 12, 21, 27, 34
+Related papers: 1, 12, 21, 27, 34
 
-关键词：Where Steering Signals Come From; persona; causal transfer
+Keywords: Where Steering Signals Come From; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2607.25270v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2607.25270v2
+Reading evidence: 2607.25270v2, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2607.25270v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-38"></a>
+<a id="paper-38｜ContextEcho:"></a>
 
 ### ID 38｜ContextEcho: A Benchmark for Persona Drift in Long Agentic-Coding Sessions
 
-Benchmark; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Benchmark; Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2605.24279)
+[Paper](https://arxiv.org/abs/2605.24279)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：23模型／10组织API行为面板；唯一open-weight内部Axis干预Qwen3-32B，L32
+Models studied: API behavioral panel of 23 models/10 organizations; the only open-weight internal Axis intervention uses Qwen3-32B at L32.
 
-骨干架构：API面板架构有不公开部分，不能以provider推断；内部intervention为Dense Qwen3-32B。长coding轨迹是agent setting不是新backbone。
+Architecture: Some API-panel architectures are undisclosed and cannot be inferred from provider names. Internal intervention uses dense Qwen3-32B. Long coding traces are an agent setting, not a new backbone.
 
-输入／推理模式：API面板分reasoning/non-reasoning tiers；App配置明确Qwen3 enable_thinking=false；内部Axis剂量实验不能推广成全23模型干预。
+Input / inference mode: API panel separates reasoning/non-reasoning tiers. Appendix configuration explicitly sets Qwen3 enable_thinking=false. Internal Axis dose experiments cannot be generalized to interventions on all 23 models.
 
-架构证据：2605.24279v3：§3；App.O/U；API配置；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.24279
+Architecture evidence: 2605.24279v3, §3, App.O/U, and API configuration. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2605.24279
 
 **Research question**
 
-真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现？
+How does persona drift in real long-horizon coding-agent sessions, and does restoring Assistant representations also restore visible identity and task performance?
 
-**一句话主题**
+**One-sentence topic**
 
-真实长程coding-agent会话中persona怎样漂移，恢复Assistant表征是否也恢复可见身份和任务表现。
+How does persona drift in real long-horizon coding-agent sessions, and does restoring Assistant representations also restore visible identity and task performance?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 建立25-probe identity suite及snapshot-then-probe协议，冻结会话状态后分支测试，避免探针改变主轨迹。语料含57次真实coding会话；跨23模型主面板使用一个代表会话，另有语料尺度分析。
+1. Builds a 25-probe identity suite and snapshot-then-probe protocol: freeze session state, then branch for testing so probes do not alter the main trace. The corpus contains 57 real coding sessions; the main 23-model panel uses one representative session, with additional corpus-scale analysis.
 
-2. compaction并不稳定重置漂移；anchor提示能恢复部分行为register，但placebo提示也有恢复效果。drifted prefix在同任务工具调用上可能有收益，作者归因于保留任务context，不能当成“漂移改善可靠性”。
+2. Compaction does not consistently reset drift. Anchor prompts restore some behavioral register, but placebo prompts also help. Drifted prefixes can benefit same-task tool calls, which authors attribute to retained task context, not evidence that drift improves reliability.
 
-3. 附录O直接贴近Assistant Axis问题：Qwen3-32B、L32及所测剂量下，沿公开Assistant Axis补偿投影gap能恢复投影，却未恢复probe judge的行为register。它已经提供“投影恢复≠行为恢复”的局部实例。
+3. App.O directly addresses Assistant Axis: at Qwen3-32B L32 and tested doses, compensating the projection gap along the public Assistant Axis restores projection but not the probe judge's behavioral register. This provides a local example of projection restoration≠behavior restoration.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-主要测behavioral register，非所有latent persona；主面板和真实任务外部效度仍有限。附录O是一个模型、层和剂量，未测A-anchor是否经同一轴起效，且没有独立fluency检查；不能把该结果推广为Axis一概无效或高投影必然unsafe。
+Mainly measures behavioral register, not all latent persona. External validity of the main panel and real tasks remains limited. App.O covers one model/layer/dose, does not test whether A-anchor works through the same axis, and lacks independent fluency checks. Do not generalize to Axis being universally ineffective or high projection necessarily unsafe.
 
 **Future work**
 
-阅读推演：将Axis投影、工具行动质量、任务完成率与安全指标同时跟踪；按工具错误、外部文本、状态变化分别施压。先检验其预测可靠性，再比较capping带来的行为收益和任务代价。
+Reading-derived ideas: Jointly track Axis projection, tool-action quality, task completion, and safety. Stress tool errors, external text, and state changes separately. First test predictive reliability, then compare behavioral benefits and task costs of capping.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 14, 19, 29
+Related papers: 3, 14, 19, 29
 
-关键词：ContextEcho; persona; causal transfer
+Keywords: ContextEcho; persona; causal transfer
 
-机构／会议：Accenture；UC Berkeley；Argonne National Laboratory；独立研究者；预印本
+Institution / venue: Accenture; UC Berkeley; Argonne National Laboratory; independent researchers. Preprint.
 
-阅读证据：2605.24279v3：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.24279v3
+Reading evidence: 2605.24279v3, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2605.24279v3
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-39"></a>
+<a id="paper-39｜On"></a>
 
 ### ID 39｜On the Non-Identifiability of Steering Vectors in Large Language Models
 
-Theory; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Theory; Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2602.06801)
+[Paper](https://arxiv.org/abs/2602.06801)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama3.1-8B-Instruct；Qwen2.5-3B-Instruct
+Models studied: Llama3.1-8B-Instruct; Qwen2.5-3B-Instruct.
 
-骨干架构：两个Dense decoder-only Transformer；在单层局部linearization框架下检验方向等价性。
+Architecture: Two dense decoder-only Transformers; tests directional equivalence under single-layer local linearization.
 
-输入／推理模式：steer L16/32与L18/36；文本语义分类；没有reasoning-mode实验。
+Input / inference mode: Steering at L16/32 and L18/36; text semantic classification; no reasoning-mode experiment.
 
-架构证据：2602.06801v4：§6.1 Setup；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2602.06801
+Architecture evidence: 2602.06801v4, §6.1 Setup. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2602.06801
 
 **Research question**
 
-仅凭行为等效的干预结果，能否唯一识别内部steering方向？
+Can behaviorally equivalent intervention outcomes uniquely identify internal steering directions?
 
-**一句话主题**
+**One-sentence topic**
 
-仅凭行为等效的干预结果，能否唯一识别内部steering方向。
+Can behaviorally equivalent intervention outcomes uniquely identify internal steering directions?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 给出正式命题与证明：在论文的单层white-box、局部线性化及其秩／可观测性条件下，激活到输出映射的null-space可使几何不同的方向具有相同一阶输出效应；v与v+v0（v0在相应kernel内）形成等价类。
+1. Provides formal propositions/proofs: under the paper's single-layer white-box local-linearization and rank/observability assumptions, activation-to-output null spaces allow geometrically different directions to have identical first-order effects. v and v+v0 form an equivalence class when v0 lies in the relevant kernel.
 
-2. 比较正交扰动、contrastive与PCA提取等方向，并在多个trait、强度与prompt分布上检查近似输出等效。它与“不同提取方法是否估计同一底层表示”的问题直接相关。
+2. Compares orthogonal perturbations and contrastive/PCA-extracted directions, testing approximate output equivalence across traits, strengths, and prompt distributions. Directly relates to whether extraction methods estimate the same underlying representation.
 
-3. 含命题／证明，故可归Theory；同时保留实证分析标签。关键启示是不同方向不必代表不同功能机制，行为相同也未必能唯一还原表示。
+3. Formal propositions/proofs justify Theory, alongside Analysis. Different directions need not imply different functional mechanisms, and equivalent behavior need not uniquely recover representations.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-命题受局部线性近似、观测范围及null-space条件限制；多prompt共同kernel和精确非线性系统不能简单照搬单点论证。语义评分／有限任务上的近似等效也弱于完整输出分布或全部行为相同。
+Propositions depend on local linearity, observation scope, and null-space assumptions. Joint kernels across prompts and exact nonlinear systems cannot simply inherit a single-point argument. Approximate equivalence on semantic scores/limited tasks is weaker than identical full output distributions or all behavior.
 
 **Future work**
 
-阅读推演：跨提取范式比较时，除cosine外比较干预响应profile、跨context迁移及可区分的行为结果；研究等价类／可控子空间，而非仅追逐唯一方向。
+Reading-derived ideas: Across extraction paradigms, compare intervention-response profiles, cross-context transfer, and distinguishable behavioral outcomes alongside cosine. Study equivalence classes/controllable subspaces rather than only a unique direction.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 10, 33, 34
+Related papers: 1, 10, 33, 34
 
-关键词：Non-Identifiability of Steering Vectors; persona; causal transfer
+Keywords: Non-Identifiability of Steering Vectors; persona; causal transfer
 
-机构／会议：Manipal Institute of Technology Bengaluru（署名页）；预印本
+Institution / venue: Manipal Institute of Technology Bengaluru (author page); preprint.
 
-阅读证据：2602.06801v4：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2602.06801v4
+Reading evidence: 2602.06801v4, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2602.06801v4
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-40"></a>
+<a id="paper-40｜Detection"></a>
 
 ### ID 40｜Detection != Reliable Control: Decodable Empathy Directions Yield at Most Partial Shifts in Automated Empathy Scores
 
-Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2608.24901)
+[Paper](https://arxiv.org/abs/2608.24901)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama3.1-8B；Gemma2-9B；Qwen2.5-7B（instruct/checkpoint后缀见实现，正文简写）
+Models studied: Llama3.1-8B; Gemma2-9B; Qwen2.5-7B (instruct/checkpoint suffixes in implementation; main text abbreviates them).
 
-骨干架构：三个Dense decoder Transformer；EPITOME empathy文本任务；判别classifier／judge不是subject。
+Architecture: Three dense decoder Transformers; EPITOME empathy text tasks. Discriminative classifiers/judges are not the subjects.
 
-输入／推理模式：greedy do_sample=false；方向addition／ablation，不是thinking-model实验。
+Input / inference mode: Greedy do_sample=false; direction addition/ablation, not thinking-model experiments.
 
-架构证据：2608.24901v1：§1/2；App.J Implementation；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2608.24901
+Architecture evidence: 2608.24901v1, §§1–2 and App.J Implementation. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2608.24901
 
 **Research question**
 
-能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感？
+Can decodable empathy directions reliably control corresponding behavior, and can failures also reflect insensitive measurement tools?
 
-**一句话主题**
+**One-sentence topic**
 
-能解码的共情方向能否可靠地控制对应行为，失败是否也可能来自评价工具不敏感。
+Can decodable empathy directions reliably control corresponding behavior, and can failures also reflect insensitive measurement tools?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将共情分为Recognition与Resonance，三模型中结合两类LLM judge、EPITOME分类器及emotional／neutral正控，检查可解码性、表面文本残差化与干预效果。
+1. Splits empathy into Recognition and Resonance. Across three models, combines two LLM-judge types, EPITOME classifiers, and emotional/neutral positive controls to test decodability, surface-text residualization, and interventions.
 
-2. 两facet在控制表面语义后仍可解码；但Resonance steering只部分改变自动评分。Qwen约+0.29（自然gap约26%），不同方向的直接对照只在部分模型显示facet选择性。
+2. Both facets remain decodable after controlling surface semantics, but Resonance steering only partly changes automatic scores. Qwen gains about +0.29, approximately 26% of the natural gap. Direct comparisons between directions show facet selectivity only in some models.
 
-3. 认知方向additive steering的弱结果伴随测量工具分辨率问题，不能简单作为干净因果null；方向消融也与加法不同。它为read–write gap增加了measurement-sensitivity控制。
+3. Weak additive-steering results for cognitive directions coincide with measurement-resolution issues, so they are not clean causal nulls; directional ablation also differs from addition. Adds measurement-sensitivity controls to read–write-gap analysis.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-缺少与自动评分相匹配的人类感受变化验证；任务和facet范围有限。可读出、可改写文本和改变目标行为分数是不同层级；本文不直接覆盖agent工具行动。
+Lacks validation of changes in human experience matched to automatic scores; tasks/facets are limited. Readability, editable text, and changes in target-behavior scores are different levels. Does not directly cover agent tool actions.
 
 **Future work**
 
-阅读推演：给self-report／role／行动三套指标分别设置正控、量程及等效阈值，再判断“只改一个、不改另一个”；避免把p>0.05或粗量表当作独立控制证据。
+Reading-derived ideas: Set positive controls, measurement ranges, and equivalence thresholds separately for self-report, role, and action metrics before claiming selective changes. Avoid interpreting p>0.05 or coarse scales as independent-control evidence.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：4, 5, 12, 13, 34
+Related papers: 4, 5, 12, 13, 34
 
-关键词：Detection != Reliable Control; persona; causal transfer
+Keywords: Detection != Reliable Control; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2608.24901v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2608.24901v1
+Reading evidence: 2608.24901v1, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2608.24901v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-41"></a>
+<a id="paper-41｜The"></a>
 
 ### ID 41｜The Persona Is Still There, but Who Is Speaking? Latent Identity Reversion in Persistent AI Agents
 
-Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2610.01490)
+[Paper](https://arxiv.org/abs/2610.01490)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：claude-opus-4-5-20251101（Paul incident及所有复现实验）
+Models studied: claude-opus-4-5-20251101 (the Paul incident and all replication experiments).
 
-骨干架构：闭源API subject，dense/MoE及内部结构未公开；OpenClaw harness是外部软件，不是backbone结构。没有activation intervention。
+Architecture: Closed API subject; dense/MoE and internal structure undisclosed. OpenClaw is an external harness, not a backbone architecture. No activation intervention.
 
-输入／推理模式：实际持久agent/heartbeat/system-anchor文本干预；extended thinking配置未核。
+Input / inference mode: Actual persistent-agent/heartbeat/system-anchor text interventions; extended-thinking configuration unverified.
 
-架构证据：2610.01490v1：§3 Methods；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2610.01490
+Architecture evidence: 2610.01490v1, §3 Methods. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2610.01490
 
 **Research question**
 
-persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性？
+Why does an agent stop speaking as its persona even when persona information remains, and how do system anchors and external feedback affect identity continuity?
 
-**一句话主题**
+**One-sentence topic**
 
-persona信息仍存在时，agent为什么不再以该身份说话，系统锚点和外部反馈怎样影响身份连续性。
+Why does an agent stop speaking as its persona even when persona information remains, and how do system anchors and external feedback affect identity continuity?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 从持久agent事故出发，区分represented identity与enacted identity：对话仍含persona资料，却可能不再把该persona绑定为“我”。
+1. Starting from a persistent-agent incident, separates represented identity from enacted identity: persona information remains in context, but the persona may no longer be bound as self.
 
-2. 反复heartbeat不是充分原因：保持system锚点的46次探针没有复现失败；取消重注入锚点后，自动heartbeat更易触发回到harness身份，恢复锚点可逆地恢复persona表达。
+2. Repeated heartbeats alone are insufficient: 46 probes retaining the system anchor do not reproduce failure. Without anchor reinjection, automated heartbeats more readily trigger reversion to harness identity; restoring the anchor reversibly restores persona expression.
 
-3. 提供重要agent控制变量：所谓persona drift可能部分来自harness在resume／compaction时丢失system级设定，而非纯context长度或模型内部几何变化。
+3. Provides an important agent control: persona drift may partly reflect harness loss of system-level settings during resume/compaction, rather than purely context length or internal geometric changes.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-以特定agent、模型与实现操作为主，没有内部激活读取，represented／enacted是行为范式中的区分。不能由此证明两者必然由不同向量／回路实现。
+Focuses on a particular agent, model, and implementation operations, without internal activation readout. Represented/enacted identity are distinguished behaviorally; this does not establish separate vectors or circuits.
 
 **Future work**
 
-阅读推演：长程agent实验先固定system重注入与tool-role模板；把锚点丢失与真实反馈压力分开，再研究Assistant Axis或行为子空间漂移。
+Reading-derived ideas: Fix system reinjection and tool-role templates in long-horizon agent experiments; separate anchor loss from real feedback pressure before studying Assistant Axis or behavioral-subspace drift.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：3, 19, 31, 38
+Related papers: 3, 19, 31, 38
 
-关键词：Latent Identity Reversion; persona; causal transfer
+Keywords: Latent Identity Reversion; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2610.01490v1：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2610.01490v1
+Reading evidence: 2610.01490v1, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2610.01490v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-42"></a>
+<a id="paper-42｜Prompt-Activation"></a>
 
 ### ID 42｜Prompt-Activation Duality: Improving Activation Steering via Attention-Level Interventions
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2605.10664)
+[Paper](https://arxiv.org/abs/2605.10664)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-7B-Instruct；Llama3.1-8B-Instruct
+Models studied: Qwen2.5-7B-Instruct; Llama3.1-8B-Instruct.
 
-骨干架构：Dense pre-norm decoder Transformer，论文App.A给Qwen28层3584维、Llama32层4096维及GQA；GCAD改变attention输出不改变backbone类型。
+Architecture: Dense pre-norm decoder Transformers. App.A specifies Qwen with 28 layers/3,584 dimensions and Llama with 32 layers/4,096 dimensions and GQA. GCAD changes attention outputs, not backbone type.
 
-输入／推理模式：10-turn、KV cache跨轮保留；T=1.0、每轮最多500新token；非reasoning专门模型。
+Input / inference mode: Ten turns with KV cache retained across turns; T=1.0, at most 500 new tokens per turn; not dedicated reasoning models.
 
-架构证据：2605.10664v2：§5.1；App.A Models；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2605.10664
+Architecture evidence: 2605.10664v2, §5.1 and App.A Models. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2605.10664
 
 **Research question**
 
-为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善？
+Why does steering cumulatively damage coherence in persistent dialogue, and can interventions along prompt-mediated attention pathways help?
 
-**一句话主题**
+**One-sentence topic**
 
-为何持续对话中steering会累积损伤coherence，沿prompt介导的attention路径干预能否改善。
+Why does steering cumulatively damage coherence in persistent dialogue, and can interventions along prompt-mediated attention pathways help?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 指出KV-cache contamination：被干预token状态缓存后反复复用，使局部编辑变成累积变化。GCAD从system-prompt对self-attention的贡献提取信号，并逐token gating。
+1. Identifies KV-cache contamination: intervened token states are cached and repeatedly reused, turning local edits into cumulative changes. GCAD derives signals from system-prompt contributions to self-attention and gates token by token.
 
-2. 多轮persona实验中保留trait控制并降低长程coherence退化；正文主设置将coherence drift从-18.6改善到-1.9，turn-10 trait表达从78.0提高到93.1。
+2. Preserves trait control while reducing long-dialogue coherence degradation. In the main setting, coherence drift improves from -18.6 to -1.9, and turn10 trait expression rises from 78.0 to 93.1.
 
-3. 对agent迁移实验很关键：context-dependent变化可能同时混入cache／harness差异；把conversational向量移到agent时，需控制状态重编码与干预历史。
+3. Important for agent transfer: context-dependent changes may also reflect cache/harness differences. Moving conversational vectors into agents requires control of state re-encoding and intervention history.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-长程对话coherence不等同于工具动作或任务完成可靠性；尚未证明该prompt-derived方法在真实agent反馈循环中的优越性。报告中的评分收益需要放回其任务与评估口径理解。
+Long-dialogue coherence is not tool-action or task-completion reliability. Superiority of this prompt-derived method in real agent feedback loops is unproven; reported score gains must be interpreted within their task/evaluation settings.
 
 **Future work**
 
-阅读推演：对同一个agent任务比较cache保留／逐轮重编码、planning-only／tool-boundary注入，联合记录trait、语言coherence、action正确性与compute。
+Reading-derived ideas: For one agent task, compare cache retention versus turnwise re-encoding and planning-only versus tool-boundary injection, jointly recording trait, language coherence, action correctness, and compute.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 7, 21, 23, 38
+Related papers: 1, 7, 21, 23, 38
 
-关键词：Prompt-Activation Duality; persona; causal transfer
+Keywords: Prompt-Activation Duality; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2605.10664v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2605.10664v2
+Reading evidence: 2605.10664v2, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2605.10664v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-43"></a>
+<a id="paper-43｜What"></a>
 
 ### ID 43｜What Can We Actually Steer? A Multi-Behavior Study of Activation Control
 
-Analysis　|　阅读状态：未标记　|　优先级：A（问题导向补录）
+Analysis　|　Reading status: Unmarked　|　Priority: A (question-driven supplement)
 
-[论文原文](https://arxiv.org/abs/2511.18284)
+[Paper](https://arxiv.org/abs/2511.18284)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Llama3.1-8B为主要被steer模型；GPT4.1/Llama prompt baselines与judge应分开
+Models studied: Llama3.1-8B is the primary steered model; distinguish GPT4.1/Llama prompt baselines and judges.
 
-骨干架构：主干Dense decoder-only Transformer；固定L15，50行为文本表达评估；不是跨全部model family的干预比较。
+Architecture: Primarily dense decoder-only Transformer, fixed L15, with text-expression evaluation of 50 behaviors. Not an intervention comparison across all model families.
 
-输入／推理模式：coefficients1–20；文本生成；judge deterministic不等于subject decode模式已核。
+Input / inference mode: Coefficients1–20; text generation. Deterministic judging does not establish the subject's decoding mode.
 
-架构证据：2511.18284v2：§4–6；§8 Limitations；本轮定向核对模型setup/相关附录，非代码复算。原文：https://arxiv.org/html/2511.18284
+Architecture evidence: 2511.18284v2, §§4–6 and §8 Limitations. Targeted model-setup/appendix review, not code reproduction. Original: https://arxiv.org/html/2511.18284
 
 **Research question**
 
-不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量？
+Do persona and behavior categories respond differently to steering, and when does increasing trait strength damage quality?
 
-**一句话主题**
+**One-sentence topic**
 
-不同类型persona与行为是否具有不同的steering响应，强化trait何时开始损伤质量。
+Do persona and behavior categories respond differently to steering, and when does increasing trait strength damage quality?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 跨50种行为类别比较persona archetype、trait、misalignment、style与公众人物模仿；分析强度、向量性质和数据量对steering的影响。 主实验在Llama3.1-8B固定L15；该配置下personality／misalignment比知识依赖的公众人物和部分persona archetype更易控制。
+1. Compares persona archetypes, traits, misalignment, style, and public-figure imitation across 50 behavior categories, analyzing steering strength, vector properties, and extraction-data size. Main experiments fix L15 in Llama3.1-8B. In this setting, personality/misalignment is easier to control than knowledge-dependent public figures and some persona archetypes.
 
-2. trait表达对系数呈倒U形；向量分离等指标不能可靠预测控制成功，更大提取数据可容许更强干预。区分不同类别响应，而非假设persona strength越高越好。
+2. Trait expression follows an inverted-U coefficient curve. Vector separation and related metrics do not reliably predict control success, and more extraction data permits stronger intervention. Categories respond differently; persona strength is not uniformly better when higher.
 
-3. 直接补充trait／role表达与质量trade-off的动机，可为Pareto式报告提供基线；但它没有完成当前提出的trait、策略一致性、任务能力和compute四目标agent优化。
+3. Directly motivates trait/role-expression versus quality trade-offs and provides a Pareto-reporting baseline, but does not perform the proposed four-objective agent optimization of trait, policy coherence, capability, and compute.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-主要是自动评分下的行为表达、relevance与coherence；不是实际长期agent策略的完整证据，也没有证明所有角色均服从同一倒U曲线。 主要模型与固定L15使角色／trait类别差异不能直接推广为普遍表征定律，需做跨层匹配。
+Mainly evaluates automatically scored behavior expression, relevance, and coherence, not complete evidence of long-term agent strategy or a common inverted-U law for all roles. The main model/fixed L15 setting prevents generalizing role/trait-category differences into universal representation laws; matched cross-layer tests are needed.
 
 **Future work**
 
-阅读推演：把stylistic与behavioral coherence分开，报告可行域／Pareto frontier；在相同提取和搜索预算下比较不同角色与trait，避免仅最大化persona评分。
+Reading-derived ideas: Separate stylistic and behavioral coherence and report feasible regions/Pareto frontiers. Compare roles and traits under matched extraction/search budgets rather than maximizing persona scores alone.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 2, 7, 33, 34
+Related papers: 1, 2, 7, 33, 34
 
-关键词：What Can We Actually Steer?; persona; causal transfer
+Keywords: What Can We Actually Steer?; persona; causal transfer
 
-机构／会议：署名机构本轮未系统核实；预印本／会议状态待核
+Institution / venue: Affiliations not systematically verified in this review; preprint/conference status unverified.
 
-阅读证据：2511.18284v2：官方摘要、正文方法／结果／讨论及相关附录定向核对；非全文逐项审计，未复算数据。种子引用已在正文参考文献核验。来源：https://arxiv.org/html/2511.18284v2
+Reading evidence: 2511.18284v2, official abstract, main-text methods/results/discussion, and relevant appendices checked selectively; not an itemwise full-text audit or data recomputation. Seed citation verified in the references. Source: https://arxiv.org/html/2511.18284v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-## 安全评估、模型默认与多模态子空间
+<a id="paper-48｜Drift"></a>
 
-<a id="paper-44"></a>
+### ID 48｜Drift No More: Spectral Locking for Long-Horizon Open-Weight Multi-Agent AI
+
+Method; Analysis; Theory　|　Reading status: Unmarked　|　Priority: A (user-requested)
+
+[Paper](https://arxiv.org/abs/2611.04315)
+
+**Models and architecture**
+
+Models studied: T1: Llama-4-Scout-17B-16E-Instruct; T2: Qwen3-8B; T3 additionally Qwen2.5-7B-Instruct, Phi-4-14B, Gemma-2-9B-IT, and Mistral-7B-Instruct-v0.1. 72B extension: Qwen2.5-72B-Instruct. LIBERO adds Qwen3-VL-8B-Instruct, Qwen2.5-VL-32B-Instruct, the paper's Phi-4-Reasoning-Vision-15B, and OpenVLA-7B. Exact vision checkpoints/module hooks not checked individually. GPT-5.5/Claude Opus4.7/Gemini3.1 Pro are pilot judges; GPT-4o judges semantic/role metrics, not a steered architecture.
+
+Architecture: Dense decoder-only Transformers and Llama-4-Scout MoE (17B active/16 experts). Heterogeneous teams do not share coordinates or transfer vectors across models. LIBERO uses actual RGB/depth inputs and OpenVLA action outputs in VLM/VLA stacks. No controlled structural comparison of MoE routing, sparse backbones, or looped Transformers.
+
+Input / inference mode: Greedy temperature=0, three seeds, 128K episode budget, summaries every20 turns, at most200 turns; single-layer hidden-state interventions within each model. Whether Qwen3 thinking is enabled is not explicitly verified. LIBERO text roles receive structured perceptual summaries, vision roles receive images, and the Actuator executes actions; not every model directly sees images.
+
+Architecture evidence: 2611.04315v1 §4.1 and App.A1.2/A4/A10.3/A10.6: model roles, Scout MoE/72B dense, model-local kernels. Vision checkpoints and code layer numbering not individually checked. https://arxiv.org/html/2611.04315v1
+
+**Research question**
+
+Can joint interventions preserving task, role, and dynamic-state overlap reduce goal drift, role overstepping, and stale states in long-horizon multi-agent systems while improving real task performance?
+
+**One-sentence topic**
+
+Use a spectral kernel preserving task/role/state overlap to correct multi-agent representations token by token and update state subspaces during interaction.
+
+**Methods and contributions**
+
+1. Studies task drift, role drift, and state staleness as one representation problem. Diagnostics on 200 Qwen3-8B multi-agent traces totaling14,832 turns show pairwise drift correlations r=0.72–0.78 and joint drops in all three anchor projections during drift. Independent task metrics, random-subspace controls, and removal experiments test functional relevance. (§2, App.A8/A10.4)
+
+2. Subspace construction: feed task, each agent's role, and current-state descriptions into that agent's own frozen model; thin-SVD layer activations and select rank by explained variance, typically5–30. Form K=wT·UTUTᵀ+wR·URURᵀ+wS·VSΣSVSᵀ, preserving overlap rather than forcing anchors orthogonal. Jointly supported directions receive larger spectral weights. Small Gram matrices avoid explicitly forming a d×d kernel. This is low-rank control from multiple text anchors, not a single good/bad persona mean-difference vector. (§§3.2–3.3)
+
+3. Tokenwise intervention h′=(I+αeffK)h, with αeff=min(α,ξ/λmax), amplifies existing h components along high-weight anchor directions. Coherence is the Rayleigh quotient C(h)=hᵀKh/‖h‖². App.A9.4 formally proves nondecreasing C for continuous/discrete updates with fixed PSD K. The guarantee concerns this geometric objective, not task success or safety, justifying Theory alongside Method/Analysis. (§§3.4–3.5, App.A9.4)
+
+4. Dynamic state: decay old state eigenvalues each turn and project current steered representations outside the state subspace. Add a direction only if the novel-residual fraction exceedsρ, cap rank, and periodically reorthogonalize. Task/role anchors are fixed within episodes. Each heterogeneous-team model builds a kernel in its own hidden space; models communicate through language/shared state rather than transferring raw vectors. (§3.6, App.A9.5/A10.6)
+
+5. Extends from long-dialogue memory to closed-loop behavior: EverMemBench tests long-term QA, AMemGym on-policy state reading/writing, ToolACE call structure/argument chains, and ALARA task success/privilege violations/overexposure. LIBERO uses a separate multimodal multi-agent wrapper with OpenVLA executing7-DoF actions. T2 EverMemBench is54.1 versus A-MEM48.4/MemoryArena-Agent49.3; 72B dense reaches61.0 versus56.2. LIBERO perturbed success exceeds A-MEM by10.7–12.1pp, not a generic conversational finding. (§4, App.A1/A3/A4/A10.3)
+
+6. Connects geometry to behavior beyond cosine: with pipeline fixed, full hidden-access ATLAS scores54.1 versus orthogonalized50.3, random-subspace47.8, prompt anchors48.9, and retrieval anchors49.8. Removing the joint span costs7.2 points versus0.8 for matched-rank random. Without steering, performance remains52.1, distinguishing full-system gains from spectral-intervention increments; this is not complete neural-mechanism localization for every role/trait. (§4.4, App.A5/A10.2/A10.4)
+
+**Limitations and interpretation boundaries**
+
+1. ActAdd/SEA intervene only on Coordinator, Executor, and Monitor, while ATLAS covers the full team. Matched topology/tuning budget does not match intervention coverage. More discriminating comparisons match roles, layers/token budgets, particularly separating full-pipeline from spectral-kernel gains.
+
+2. Joint kernels beat single/pair anchors, but App.A10.2 does not renormalize retained weights when deleting anchors, changing total kernel mass and effective gain. This ablation alone cannot quantify all overlap-geometry contributions. Orthogonalized/matched-rank controls are closer; equal-trace/equal-intervention-norm controls remain useful.
+
+3. Anchors derive from supplied task/role/state text, so poor specifications or incomplete summaries enter the objective. Nondecreasing C with fixed K does not guarantee a stable objective after dynamic state updates or that stronger role adherence is always correct. Controlled teams/LIBERO wrappers do not yet cover dynamic role creation, changing permissions, or corrupted memory.
+
+**Future work**
+
+Authors propose: Extend to dynamic agent creation, changing tool permissions, and untrusted external memory, improving anchor specifications/state summaries.
+
+Reading-derived ideas: Compare conversational persona directions with task/role/state anchors on the same agent tasks, separately reading/intervening on planning, tool selection, and executed outcomes. Match role coverage and kernel trace/intervention norm to separate shared geometry from strength. Compare matched-direction selectivity/transfer in dense and MoE models; heterogeneous-team gains alone do not establish architecture insensitivity.
+
+**Additional think | User notes**
+
+K=wT·UTUTᵀ+wR·URURᵀ+wS·VSΣSVSᵀ 同时VS, ΣS随context加长不断变化，以及K做multiplicative steering是很有意思的做法（随时间动态、随hidden state动态）
+
+如果我们把「persona」区分成：
+
+Trait induction：让模型更像某种人格。
+
+Persona stabilization：让模型持续保持既有角色。
+
+Behavioral adaptation：让模型根据环境调整行为策略。
+
+那么三者可能需要不同的 steering operator。
+
+| 目标 | 值得优先测试的方法 |
+| --- | --- |
+| Induce a trait | Additive / affine steering |
+| Maintain a persona | Multiplicative subspace steering |
+| Dynamically adapt behavior | Context-conditioned operator |
+| Correct an undesired behavior | Feedback-controlled intervention |
+
+Related papers: 1, 3, 7, 33, 34, 35, 37, 39, 42, 43, 47
+
+Keywords: ATLAS; agentic steering; task-role-state; spectral kernel; adaptive memory; long-horizon; MoE
+
+Institution / venue: University of Florida; University of Oklahoma; SRI International. Paper header states Accepted at EMNLP2026, based on the author version; conference listing not independently checked.
+
+Reading evidence: 2611.04315v1, main text §§2–7 methods/results and targeted App.A1/A3–A6/A8–A10 checks. No experimental reproduction or itemwise code audit. User-requested supplement; no invented original-seed citation provenance. https://arxiv.org/html/2611.04315v1
+
+[Return to paper index](#paper-index)
+
+## Safety evaluation, model defaults, and multimodal subspaces
+
+<a id="paper-44｜Persona"></a>
 
 ### ID 44｜Persona Non Grata: Single-Method Safety Evaluation Is Incomplete for Persona-Imbued LLMs
 
-Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+Analysis　|　Reading status: Unmarked　|　Priority: A (user-requested parallel reading)
 
-[论文原文](https://arxiv.org/abs/2604.11120)
+[Paper](https://arxiv.org/abs/2604.11120)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：主：meta-llama/Llama-3.1-8B-Instruct；google/gemma-3-27b-it；Qwen/Qwen3.5-9B、Qwen3.5-27B；deepseek-ai/DeepSeek-R1-Distill-Qwen-32B；Qwen/QwQ-32B。Gemma-3-12B为探索性、已从主结果排除。
+Models studied: Main: meta-llama/Llama-3.1-8B-Instruct; google/gemma-3-27b-it; Qwen/Qwen3.5-9B and Qwen3.5-27B; deepseek-ai/DeepSeek-R1-Distill-Qwen-32B; Qwen/QwQ-32B. Gemma-3-12B is exploratory and excluded from main results.
 
-骨干架构：Llama3.1：dense text decoder Transformer/GQA；Gemma3：dense vision-language骨干但本研究仅文本；Qwen3.5-9B/27B：dense GatedDeltaNet线性/递归attention＋full attention混合(3:1)，带vision encoder，本研究仅文本；DeepSeek-R1-Distill-Qwen32B与QwQ32B：dense Qwen2.5骨干（不是原生R1 MoE）。CAA在8层residual上全位置注入，参考Llama8–15，其他模型映射具体索引需看config。
+Architecture: Llama3.1 is a dense text decoder Transformer/GQA; Gemma3 has a dense vision-language backbone, but this study is text-only. Qwen3.5-9B/27B use dense GatedDeltaNet linear/recurrent attention plus full attention (3:1), with vision encoders, tested only on text. DeepSeek-R1-Distill-Qwen32B and QwQ32B use dense Qwen2.5 backbones, not native R1 MoE. CAA is injected at all positions in eight residual layers, referenced to Llama8–15; exact mapped indices for other models require configurations.
 
-输入／推理模式：Study1标准instruct，prompt温度0且AS deterministic；Qwen3.5 thinking开关未披露，不能当作已证实nonthinking。Study2 DeepSeek distill/QwQ实际生成CoT：temperature0.6、top_p0.95、max_tokens4096；α主设4，另α1点检。全部任务文本输入。
+Input / inference mode: Study1 uses standard instruct models, prompt temperature0 and deterministic AS; Qwen3.5 thinking switches are undisclosed, not confirmed nonthinking. Study2 DeepSeek distill/QwQ generate actual CoT: temperature0.6, top_p0.95, max_tokens4096; main α=4 with α=1 spot checks. All tasks use text inputs.
 
-架构证据：论文§3.2/3.4、App.A/C.3–C.5/L.1/Q；官方Qwen3.5-9B/27B config.json（qwen3_5_text、layer_types及FFN无MoE router），Gemma3 model card；DeepSeek distill/QwQ模型卡与config。论文未冻结checkpoint revision。；论文原文：https://arxiv.org/html/2604.11120v2
+Architecture evidence: §§3.2/3.4, App.A/C.3–C.5/L.1/Q; official Qwen3.5-9B/27B config.json (qwen3_5_text, layer_types, FFN without MoE routers), Gemma3 model card, and DeepSeek-distill/QwQ model cards/configs. Checkpoint revisions are not frozen in the paper. Original: https://arxiv.org/html/2604.11120v2
 
 **Research question**
 
-同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？
+Does the same persona create identical safety risks when induced by language prompts versus activation steering, and how does this depend on backbone and reasoning settings?
 
-**一句话主题**
+**One-sentence topic**
 
-同一persona通过自然语言提示与激活steering赋予时，安全风险是否相同？这种关系如何随模型骨干和reasoning设定变化？
+Does the same persona create identical safety risks when induced by language prompts versus activation steering, and how does this depend on backbone and reasoning settings?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 将同一套Big Five/persona配置分别通过system prompting、benign few-shot prompting和CAA激活steering注入，在四个standard模型、两个reasoning模型上比较安全结果。Study1含5,568个判定条件；不仅比较是否trait更强，而是比较同一persona的安全排序是否随注入方法变化。（§3–4）
+1. Applies the same Big Five/persona configurations through system prompting, benign few-shot prompting, and CAA activation steering, comparing safety across four standard and two reasoning models. Study1 includes5,568 judged conditions. Rather than only trait strength, it tests whether the same persona's safety ranking changes with induction method. (§§3–4)
 
-2. 发现prosocial persona paradox：Llama-3.1-8B上高Conscientiousness＋高Agreeableness的P12在prompt条件较安全，却在AS下达到ASR 0.818，为该模型最高。系数扫查、benign题persona-strength匹配及few-shot中性控制后仍保留反转；DeepSeek-R1-Distill-Qwen-32B也复现相关反转。（§4.1、App.M/N/R）
+2. Finds a prosocial persona paradox: on Llama-3.1-8B, high-Conscientiousness/high-Agreeableness P12 is relatively safe under prompting but reaches ASR0.818 under AS, the highest among that model's personas. The reversal persists after coefficient sweeps, benign-question persona-strength matching, and neutral few-shot controls; a related reversal also appears in DeepSeek-R1-Distill-Qwen-32B. (§4.1, App.M/N/R)
 
-3. Prompt-side persona风险排序跨模型较一致，但AS风险结构明显依模型而变：Llama更易受AS影响，Gemma3/Qwen3.5更易受prompt persona影响。它直接支持“语义上相同的persona，不同赋予范式可能走向不同安全行为”，与self-report／role／behavior多范式比较相关。（§4.2）
+3. Prompt-side persona risk rankings are relatively consistent across models, while AS risk structure varies markedly: Llama is more vulnerable to AS, Gemma3/Qwen3.5 to prompted personas. The same semantic persona can lead to different safety behavior under different induction paradigms, directly relevant to self-report/role/behavior comparisons. (§4.2)
 
-4. 用trait方向与refusal方向的cosine及跨方法激活差做部分几何解释；Conscientiousness在Llama上与refusal强反对齐，提示prosocial语义本身不能保证内部干预安全。该解释在single-trait／特定模型上更清楚，并非全架构通用的因果机制定位。（§4.4）
+4. Partly explains geometry using trait–refusal cosine and cross-method activation differences. Conscientiousness is strongly anti-aligned with refusal in Llama, so prosocial semantics alone do not guarantee safe internal intervention. The explanation is clearest for single traits/specific models, not universally localized causal mechanisms across architectures. (§4.4)
 
-5. Study2保留真实CoT，显示reasoning只提供分级保护：DeepSeek distill与QwQ在persona压力下的安全表现不同。policy recall／self-correction的regex诊断比单纯trace长度更有解释线索，但作者将其标为探索性。（§4.3、App.L）
+5. Study2 retains actual CoT and finds graduated protection from reasoning: DeepSeek distill and QwQ differ under persona pressure. Regex policy-recall/self-correction diagnostics are more informative clues than trace length alone, but authors label them exploratory. (§4.3, App.L)
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 主要是single-turn文本安全请求和极端trait poles；模型虽然含VLM-capable或混合attention骨干，本文没有测图像条件、MoE路由或长期agent任务。因此跨family差异不是严格控制训练、规模后的“架构因果效应”。
+1. Mainly single-turn text safety requests and extreme trait poles. Although some backbones are VLM-capable/hybrid-attention, images, MoE routing, and long-horizon agents are not tested. Cross-family differences are not architecture-causal effects controlling training and scale.
 
-2. AS、system与few-shot是不同形式的干预；论文已做强度匹配和中性few-shot对照，但这不能完全隔离所有方法差异。高α的部分Dark-Triad输出会退化；主要P12反转在α=1及匹配设置中仍成立。
+2. AS, system prompts, and few-shot prompts are different interventions. Strength matching and neutral few-shot controls do not isolate every method difference. Some high-α Dark-Triad outputs degrade, while the main P12 reversal persists at α=1 and in matched settings.
 
-3. 几何框架解释有限：主要支持Llama single-trait风险，组合trait及部分Qwen结果有非线性；CoT regex命中也不等于faithful的内部机制标签。（§6）
+3. Geometric explanation is limited: mainly Llama single-trait risks, with nonlinear combined-trait/some Qwen results. CoT regex matches are not faithful internal-mechanism labels. (§6)
 
-4. 层设置记述需谨慎：§3.2概述相对深度映射，App.C.4则从每模型已提取范围等距选8层；不要统一写成所有模型都严格注入25–47%深度，复现应以具体config索引为准。
+4. Layer descriptions require care: §3.2 outlines relative-depth mapping, whereas App.C.4 selects eight equally spaced layers from each extracted range. Do not claim all models are strictly edited at25–47% depth; reproduction should use configuration indices.
 
 **Future work**
 
-作者方向：扩展柔和trait、multi-turn及跨架构几何审计。阅读推演：对同一role／trait做prompt、role-derived vector与behavior-derived vector的matched干预，联合评价角色表达、实际决策和安全，而不把亲社会persona分数当作安全代理。对Qwen3.5进一步按linear-attention与full-attention block分开测试，并固定thinking模式与文本/图像输入后再谈架构差异。
+Authors: Softer traits, multi-turn settings, and cross-architecture geometry audits. Reading-derived ideas: Match prompt, role-derived-vector, and behavior-derived-vector interventions for one role/trait, jointly evaluating expression, actual decisions, and safety rather than treating prosocial scores as safety proxies. For Qwen3.5, separate linear/full-attention blocks and fix thinking mode and text/image input before attributing architecture differences.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 3, 5, 7, 33, 34, 36, 38, 40
+Related papers: 1, 3, 5, 7, 33, 34, 36, 38, 40
 
-关键词：Persona Non Grata; activation steering; architecture; safety
+Keywords: Persona Non Grata; activation steering; architecture; safety
 
-机构／会议：Wenkai Li：Carnegie Mellon University、Fujitsu Research of America；其余署名Fujitsu Research of America；arXiv；本轮未核实接收
+Institution / venue: Wenkai Li: Carnegie Mellon University and Fujitsu Research of America; other affiliations Fujitsu Research of America. arXiv; acceptance not verified in this review.
 
-阅读证据：2604.11120v2：正文方法、结果、限制及架构相关附录定向复核；未运行实验。原候选直接种子引用已核。 来源：https://arxiv.org/html/2604.11120v2
+Reading evidence: 2604.11120v2, targeted recheck of main methods/results/limitations and architecture-related appendices; no experiments run. Original candidate's direct seed citation verified. Source: https://arxiv.org/html/2604.11120v2
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-45"></a>
+<a id="paper-45｜Steering"></a>
 
 ### ID 45｜Steering Interference Reflects the Model’s Defaults, Not the Behavior Directions
 
-Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+Analysis　|　Reading status: Unmarked　|　Priority: A (user-requested parallel reading)
 
-[论文原文](https://arxiv.org/abs/2609.06951)
+[Paper](https://arxiv.org/abs/2609.06951)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：Qwen2.5-{1.5B,3B,7B,32B,72B}-Instruct；Llama-3.1-8B-Instruct、Llama-3.3-70B-Instruct；Gemma-2-{9B,27B} instruct；Mistral-7B instruct（具体v0.x/repo未给）。主细节Qwen2.5-7B，另外9模型相同流程复制。
+Models studied: Qwen2.5-{1.5B,3B,7B,32B,72B}-Instruct; Llama-3.1-8B-Instruct and Llama-3.3-70B-Instruct; Gemma-2-{9B,27B} instruct; Mistral-7B instruct (exact v0.x/repository unspecified). Detailed main model Qwen2.5-7B; same procedure replicated on nine others.
 
-骨干架构：10个text-only dense decoder Transformer，跨Qwen2.5/Llama/Gemma2/Mistral四家族；无MoE、SSM/linear-attention混合或VLM实验证据。response-token平均激活提raw差向量；25–85%深度内按held-out AUROC选单个block；主Qwen7B实际选层7–16（0=embedding）；prompt+decode所有位置加法hook。
+Architecture: Ten text-only dense decoder Transformers across Qwen2.5/Llama/Gemma2/Mistral. No MoE, SSM/linear-attention hybrid, or VLM evidence. Response-token mean activations yield raw difference vectors; choose one block by held-out AUROC within25–85% depth. Main Qwen7B selected layers7–16 (0=embedding); additive hooks at all prompt/decode positions.
 
-输入／推理模式：全部为标准instruction-tuned模型；BF16，generation/steering/judging均greedy，48new_tokens；α网格1/2/3/4/6/8按行为校准并用distinct-bigram约束。未测试thinking开关或专门reasoning panel。每模型默认self-judge，另3模型由固定Qwen2.5-72B复评。
+Input / inference mode: Standard instruction-tuned models; BF16; generation, steering, and judging greedy,48 new tokens. α grid1/2/3/4/6/8 calibrated by behavior with a distinct-bigram constraint. No thinking-switch or dedicated reasoning panel. Each model self-judges by default; three also rescored by fixed Qwen2.5-72B.
 
-架构证据：论文§3/§8、Reproducibility Statement、App.C/D/E Table4/F/G；官方Qwen2.5/Llama/Gemma2模型卡及Qwen2 config。具体Mistral release未报告；不替作者补成v0.3，也不与Ministral混同。；论文原文：https://arxiv.org/html/2609.06951v3
+Architecture evidence: §§3/8, Reproducibility Statement, App.C/D/E Table4/F/G, official Qwen2.5/Llama/Gemma2 model cards and Qwen2 configuration. Mistral release unspecified; do not assume v0.3 or confuse Mistral with Ministral. Original: https://arxiv.org/html/2609.06951v3
 
 **Research question**
 
-跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？
+Is cross-behavior steering interference driven primarily by directional geometry or by the model's default fallback responses to perturbations?
 
-**一句话主题**
+**One-sentence topic**
 
-跨行为steering干扰究竟由方向的几何关系主导，还是由模型对扰动的默认回落行为主导？
+Is cross-behavior steering interference driven primarily by directional geometry or by the model's default fallback responses to perturbations?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 在24种行为、10个instruct模型上构造judge-grounded交叉干扰矩阵；把线性可解码和真正改变生成文本分开。Qwen2.5-7B的24行为都可解码，但只有20个通过coherent steering校准。（§3–4）
+1. Constructs judge-grounded cross-interference matrices for24 behaviors and10 instruct models, separating linear decodability from actual changes to generated text. All24 behaviors are decodable in Qwen2.5-7B, but only20 pass coherent-steering calibration. (§§3–4)
 
-2. 主要干扰具有方向性：profanity→toxicity明显，toxicity→profanity接近零；若只看对称cosine，就无法表达这种关系。进一步以13种几何／定向特征及probe、三维concept cone做leave-one-behavior-out预测，仍难预测效应大小。（§5、§7）
+2. Interference is directed: profanity→toxicity is strong, toxicity→profanity near zero, which symmetric cosine cannot represent. Even13 geometric/directional features plus probes and three-dimensional concept cones struggle to predict effect sizes under leave-one-behavior-out evaluation. (§5, §7)
 
-3. 关键对照是matched-norm random push：不携带特定行为内容的随机方向也诱发近似的target易感性排序，主模型与真实steer的排序相关约0.90。它能诱发toxicity等“sink”行为，却不能生成profanity等依赖特定方向的字面行为，说明方向特异控制与一般扰动副效应可以分开。（§6）
+3. The key control is matched-norm random push: random directions without specific behavioral content induce similar target-susceptibility rankings, correlated about0.90 with real steering in the main model. They induce sink behaviors such as toxicity but not literal behaviors such as profanity that need specific directions, separating direction-specific control from generic perturbation side effects. (§6)
 
-4. 十模型复制中低秩、非对称和几何预测不佳的定性结构保留；较大模型的random/default耦合减弱。这里defaults指扰动后容易落入的behavioral sinks，不等于中性prompt下模型本来最常输出的行为。（§8、App.E）
+4. Across ten models, low rank, asymmetry, and poor geometric prediction persist qualitatively, while larger models show weaker random/default coupling. Defaults mean behavioral sinks favored after perturbation, not necessarily behaviors most frequent under neutral prompts. (§8, App.E)
 
-5. 与ID33一致：移除几何重叠不足以获得模块控制。与ID34互补：两文都观察非对称与target易感性；本篇更强调random-push/model-default对照，而ID34进一步以unsteered propagation＋readout作forecast。行为集、模型、指标、系数校准与读出不同，不能只凭标题判断二者结论冲突。
+5. Consistent with ID33: removing geometric overlap is insufficient for modular control. Complementary to ID34: both find asymmetry/target susceptibility, but this paper emphasizes random-push/model-default controls while ID34 forecasts through unsteered propagation/readout. Behavior sets, models, metrics, coefficient calibration, and readouts differ; titles alone do not establish conflicting conclusions.
 
-6. 与ID34的random-direction控制存在值得复核的张力：34报告约0.007的绝对评分变化，但只覆盖six-cell/one-seed控制；45以matched-added-norm的24个random方向比较target profile排序。两者提取位置、层、context、强度、生成长度与judge尺度不同，暂不能视作同条件相反结果。
+6. There is a random-direction-control tension worth checking with ID34. ID34 reports about0.007 absolute score change from a six-cell/one-seed control, whereas ID45 compares target-profile rankings for24 matched-added-norm random directions. Extraction positions, layers, contexts, strengths, generation lengths, and judge scales differ; these are not established opposite results under matched conditions.
 
-对ID34的比较：0.007是窄随机对照的绝对评分变化，约0.90是随机与真实steer的profile排序相关，不能直接数值比较；需统一context、注入范数、层、生成长度与judge做判别。
+Comparison with ID34: 0.007 is absolute score change in a narrow random control; approximately0.90 is rank correlation between random and real steering profiles. They are not numerically comparable. Match context, injection norm, layer, generation length, and judge for a discriminating test.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 主细节来自Qwen2.5-7B，另外九模型复制同一24行为协议；模型均为文本instruct dense Transformer，尚未覆盖MoE、SSM/linear-attention混合、VLM图像条件或reasoning agent。
+1. Detailed main results use Qwen2.5-7B, with nine other models replicating the24-behavior protocol. All are text instruct dense Transformers; no MoE, SSM/linear-attention hybrids, VLM image conditions, or reasoning agents.
 
-2. 每模型自判自己的输出可能混合行为与judge特性；作者对三个模型用固定强judge复评，保留结构结论，但具体top-sink成员仍会变化。48-token短生成和distinct-bigram coherence不代表长期任务质量。（App.D/G）
+2. Self-judging may mix behavioral and judge properties. Fixed stronger-judge rescoring on three models preserves structural conclusions, but specific top sinks can change. Forty-eight-token generations and distinct-bigram coherence are not long-term task quality. (App.D/G)
 
-3. 作者承认大部分pairwise residual既没被几何也没被一维ranking解释，“defaults”是重要功能性解释而非已追踪到内部回路的完备机理。较大模型为何减弱仍未解决。（§10）
+3. Authors acknowledge that most pairwise residuals are unexplained by either geometry or a one-dimensional ranking. Defaults provide an important functional explanation, not a complete circuit-traced mechanism. Why coupling weakens in larger models remains unresolved. (§10)
 
-4. 统一AUROC最优层、coefficient grid与阈值便于复制，却不保证每种行为都处在最佳可控层；“全部可解码”只针对有限合成contrastive范式。
+4. Uniform AUROC-best layers, coefficient grids, and thresholds aid replication but do not ensure each behavior uses its most controllable layer. All decodable applies only to the finite synthetic contrastive paradigm.
 
 **Future work**
 
-阅读推演：沿用ID34的cross-effect forecasting，将random扰动profile作为基线并预测source-specific residual；比较同范数不同方向、自然context内变化及多步行动结果。把模型family／规模、reasoning状态与architecture拆开；检验defaults在planning、tool-call和environment feedback阶段是否一致。
+Reading-derived ideas: Extend ID34's cross-effect forecasts using random-perturbation profiles as a baseline and predicting source-specific residuals. Compare same-norm directions, natural-context changes, and multi-step actions. Separate family/scale, reasoning state, and architecture; test whether defaults agree across planning, tool calls, and environmental feedback.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 3, 7, 33, 34, 35, 39, 40, 43
+Related papers: 1, 3, 7, 33, 34, 35, 39, 40, 43
 
-关键词：Steering Interference & Defaults; activation steering; architecture; safety
+Keywords: Steering Interference & Defaults; activation steering; architecture; safety
 
-机构／会议：Srikanth Malla、Chiho Choi、Joon Hee Choi；Samsung Semiconductor US；arXiv；本轮未核实接收
+Institution / venue: Srikanth Malla, Chiho Choi, Joon Hee Choi; Samsung Semiconductor US; arXiv; acceptance not verified in this review.
 
-阅读证据：2609.06951v3：正文方法、结果、限制及架构相关附录定向复核；未运行实验。原候选直接种子引用已核。 来源：https://arxiv.org/html/2609.06951v3
+Reading evidence: 2609.06951v3, targeted recheck of main methods/results/limitations and architecture-related appendices; no experiments run. Original candidate's direct seed citation verified. Source: https://arxiv.org/html/2609.06951v3
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)
 
-<a id="paper-46"></a>
+<a id="paper-46｜SafeSteer:"></a>
 
 ### ID 46｜SafeSteer: Adaptive Subspace Steering for Efficient Jailbreak Defense in Vision-Language Models
 
-Method; Analysis　|　阅读状态：未标记　|　优先级：A（用户指定并行精读）
+Method; Analysis　|　Reading status: Unmarked　|　Priority: A (user-requested parallel reading)
 
-[论文原文](https://arxiv.org/abs/2509.21400)
+[Paper](https://arxiv.org/abs/2509.21400)
 
-**模型与架构**
+**Models and architecture**
 
-实测模型：LLaVA-v1.5-7B；MiniGPT4-7B(Llama 2)；Qwen2.5-VL-7B（论文名；HF后缀及revision未给）
+Models studied: LLaVA-v1.5-7B; MiniGPT4-7B (Llama2); Qwen2.5-VL-7B (paper name; Hugging Face suffix/revision unspecified).
 
-骨干架构：多模态VLM、dense Transformer语言backbone；LLaVA：CLIP ViT-L/14-336→两层GELU MLP→LLaMA/Vicuna系7B；MiniGPT-4(Llama2)：EVA-CLIP-G→patch拼接/Linear→Llama2-chat-7B（官方对应配置无Q-Former，论文checkpoint待核）；Qwen2.5-VL：dynamic-resolution ViT（window/full视觉attention）→2×2 patch merger/两层MLP→Qwen2.5-7B GQA decoder。 实际输入：image + text；MM-SafetyBench视觉攻击和MM-Vet，不只是模型支持多模态
+Architecture: Multimodal VLMs with dense Transformer language backbones. LLaVA: CLIP ViT-L/14-336→two-layer GELU MLP→LLaMA/Vicuna-family7B. MiniGPT-4 (Llama2): EVA-CLIP-G→patch concatenation/Linear→Llama2-chat-7B (corresponding official configuration has no Q-Former; paper checkpoint unverified). Qwen2.5-VL: dynamic-resolution ViT with window/full visual attention→2×2 patch merger/two-layer MLP→Qwen2.5-7B GQA decoder. Actual inputs: image+text, MM-SafetyBench visual attacks and MM-Vet, not merely multimodal-capable models.
 
-输入／推理模式：未报告专门reasoning/thinking开关；不可由模型名称推断对照过reasoning模式；干预位置：LLM decoder hidden/residual output，公开LLaVA脚本model.model.layers[14] forward hook，last-token；首30生成tokens；layer norm-scaled direction
+Input / inference mode: No dedicated reasoning/thinking switch reported; names do not establish reasoning-mode comparisons. Intervention: LLM decoder hidden/residual output; public LLaVA script uses model.model.layers[14] forward hook, last token, first30 generated tokens, and layer-norm-scaled direction.
 
-架构证据：https://arxiv.org/html/2509.21400v1；https://raw.githubusercontent.com/xiyuzzz-njust/SafeSteer/main/model_vet_benign_llava.py；https://huggingface.co/liuhaotian/llava-v1.5-7b/raw/main/config.json；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/configs/models/minigpt4_llama2.yaml；https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/models/minigpt4.py；https://arxiv.org/html/2502.13923；https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/raw/main/config.json；论文原文：https://arxiv.org/html/2509.21400v1
+Architecture evidence: https://arxiv.org/html/2509.21400v1; https://raw.githubusercontent.com/xiyuzzz-njust/SafeSteer/main/model_vet_benign_llava.py; https://huggingface.co/liuhaotian/llava-v1.5-7b/raw/main/config.json; https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/configs/models/minigpt4_llama2.yaml; https://raw.githubusercontent.com/Vision-CAIR/MiniGPT-4/main/minigpt4/models/minigpt4.py; https://arxiv.org/html/2502.13923; https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct/raw/main/config.json. Original paper: https://arxiv.org/html/2509.21400v1
 
 **Research question**
 
-能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？
+Can low-dimensional safety subspaces and input-risk-adaptive inference-time interventions reduce VLM image-jailbreak success while preserving benign capabilities and controlling inference cost?
 
-**一句话主题**
+**One-sentence topic**
 
-能否在VLM推理期利用低维安全子空间与输入风险自适应干预，同时降低图像越狱成功率、保留正常任务能力并控制推理成本？
+Can low-dimensional safety subspaces and input-risk-adaptive inference-time interventions reduce VLM image-jailbreak success while preserving benign capabilities and controlling inference cost?
 
-**方法与贡献**
+**Methods and contributions**
 
-1. 从同一图文输入追加safety prefix前后的激活差提取input-specific raw方向；将善意与恶意输入上的差向量堆叠做SVD，取top-D构造安全子空间。将raw方向分为投影和正交残差，增强投影、抑制残差后重构，不是简单把某个trait向量正交化。
+1. Extracts input-specific raw directions from activation differences before/after adding a safety prefix to the same image/text input. Stack benign/malicious-input difference vectors, perform SVD, and use top-D directions as a safety subspace. Split the raw direction into projection/orthogonal residual, enhance the projection, suppress residual, and reconstruct. This is not simply orthogonalizing a trait vector.
 
-2. Harm-Sensing MLP读取最后K层末token激活，输出风险概率p，以α=α_init(2p−1)决定干预正负与强度；在LLM decoder目标层的生成早期按隐藏态范数缩放注入。LLaVA消融偏好约第15层、D=5、α_init=1、前30生成tokens。
+2. A Harm-Sensing MLP reads last-token activations from the final K layers and predicts risk probability p. α=α_init(2p−1) sets intervention sign/strength; inject scaled by hidden-state norm at the target LLM decoder layer during early generation. LLaVA ablations favor about layer15, D=5, α_init=1, and first30 generated tokens.
 
-3. 三个实测VLM为LLaVA-v1.5-7B、MiniGPT4-7B(Llama 2)、Qwen2.5-VL-7B；攻击包括图像扰动及图中文字等，正常能力使用MM-Vet，确实是图文实验。Table 1中LLaVA平均ASR约5.9%，另用多场景与adaptive attack检查；这不是直接的人格研究，而是低维、context-specific控制与安全/utility联合评价的方法参考。
+3. Actual VLMs: LLaVA-v1.5-7B, MiniGPT4-7B (Llama2), and Qwen2.5-VL-7B. Attacks include image perturbations and text within images; MM-Vet measures benign capability, so these are real image/text experiments. LLaVA average ASR is about5.9% in Table1, with multi-scenario/adaptive-attack checks. Not direct persona research, but a method reference for low-dimensional context-specific control and joint safety/utility evaluation.
 
-4. 官方LLaVA脚本揭示实现口径：目标层索引14为0-based第15 block、top5 SVD、最后4层分类器、前30tokens；先做原输入与加prefix输入两次forward再generate，高风险时forced_decoder_ids施加prefix。故可描述为单次生成、无best-of-n，不能把single inference pass理解为整个流程仅一次forward。
+4. Official LLaVA code clarifies implementation: layer index14 is the zero-based fifteenth block, top5 SVD, classifier from final four layers, first30 tokens. It performs two forwards on original/prefixed inputs before generation; forced_decoder_ids imposes the prefix at high risk. Single generation without best-of-n is accurate, but single inference pass does not mean only one forward overall.
 
-**局限与解释边界**
+**Limitations and interpretation boundaries**
 
-1. 只在三个dense语言backbone的VLM上测试；没有MoE、reasoning或长期agent任务的实证。D=5与首30token等结论来自LLaVA消融，不能直接当作所有架构的普遍最优值。
+1. Tests only three VLMs with dense language backbones; no MoE, reasoning, or long-horizon agents. D=5/first30-token findings are LLaVA ablations, not universal architecture optima.
 
-2. 安全子空间来自prefix诱发差异与训练样本，尚不能据此定位唯一harmfulness机制；通用性仍依赖风险分类器、攻击分布及评价口径。
+2. Safety subspaces derive from prefix-induced differences and training samples, not a uniquely localized harmfulness mechanism. Generalization depends on risk classifier, attack distribution, and evaluation definition.
 
-3. 原文性能成本与公开脚本的forward次数需区分；当前公开repo主要给LLaVA实现，并含本地路径，其他两模型的精确checkpoint及配置未核实。
+3. Distinguish reported performance costs from public-code forward counts. The public repository mainly provides LLaVA implementation with local paths; exact checkpoints/configurations for the other models remain unverified.
 
 **Future work**
 
-作者希望进一步发展精确、自适应VLM安全干预。阅读推演：比较全局rank-1、固定rank-k与逐输入重构，分离维数与risk gating的收益；将同样的子空间投影方法迁移到persona/agent行动时，联合测行为选择性、正常能力与端到端总成本，不把安全得分替代人格效度。
+Authors seek more precise, adaptive VLM safety interventions. Reading-derived ideas: Compare global rank1, fixed rank-k, and per-input reconstruction, separating dimensionality from risk gating. When transferring subspace projection to persona/agent actions, jointly measure behavioral selectivity, benign capability, and end-to-end cost; safety scores do not substitute for persona validity.
 
-**Additional think｜用户笔记**
+**Additional think | User notes**
 
-（留空，供用户填写）
+(Reserved for user notes)
 
-关联论文：1, 7, 10, 33, 34, 35
+Related papers: 1, 7, 10, 33, 34, 35
 
-关键词：SafeSteer; activation steering; architecture; safety
+Keywords: SafeSteer; activation steering; architecture; safety
 
-机构／会议：v1列School of Cyber Science and Engineering, Nanjing University of Science and Technology；Nanyang Technological University；National University of Singapore；具体作者映射未逐项核实；按arXiv v1记录；同名TIFS扩展稿未与此版本核验，不混并作者和接收状态
+Institution / venue: v1 lists School of Cyber Science and Engineering, Nanjing University of Science and Technology; Nanyang Technological University; National University of Singapore. Author-to-affiliation mapping not individually verified. Recorded as arXiv v1; a same-title TIFS extension has not been reconciled with this version, so authors/acceptance are not merged.
 
-阅读证据：2509.21400v1：正文方法、结果、限制及架构相关附录定向复核；未运行实验。用户指定范围外补充；未确认种子引用。 来源：https://arxiv.org/html/2509.21400v1
+Reading evidence: 2509.21400v1, targeted recheck of main methods/results/limitations and architecture-related appendices; no experiments run. User-requested supplement outside original selection; seed citation unconfirmed. Source: https://arxiv.org/html/2509.21400v1
 
-[返回论文总表](#论文总表)
+[Return to paper index](#paper-index)

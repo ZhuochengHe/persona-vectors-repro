@@ -101,17 +101,10 @@
   },
   "evaluation_regimes": "docs/papers/assistant-axis/sources/evaluation_regimes.json",
   "latest_pdf_verification": {
-    "pages": 58,
-    "landscape_pages": [
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "blank_pages": [],
-    "report_pages": []
+    "date": "2026-11-10",
+    "language": "en",
+    "pages": 186,
+    "scope": "English cover, main index, direction table, and Assistant Axis index visually checked; index font 9pt, landscape tables and portrait notes; original heading IDs, links, user notes and equations preserved."
   },
   "migration": {
     "previous_document_id": "11tsm0krcXAGAMhL-UUjZnidLEOUgft84DYlPaKrnkVU",
@@ -121,9 +114,9 @@
   },
   "index_column_widths_pt": [
     42,
-    112,
+    102,
     65,
-    42,
+    52,
     111,
     190,
     208
@@ -137,5 +130,14 @@
     "heading_ids_preserved": true,
     "heading_ids_checked": 45,
     "note": "The Persona Doc no longer contains this tab; the old tab_id and the old URL with ?tab= are dead."
+  },
+  "language": "en",
+  "english_translation": {
+    "date": "2026-11-10",
+    "translated_paragraphs": 2874,
+    "preserved_user_blocks": 93,
+    "preserved_native_equations": 9,
+    "heading_ids_preserved": true,
+    "scope": "All three tabs; user Additional think, 【】 additions and user-authored ID3 limitation retained verbatim."
   }
 }
