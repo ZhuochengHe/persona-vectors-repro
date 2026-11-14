@@ -26,7 +26,7 @@ and [archive guide](docs/research/archive.md).
   the original literature CSV/Excel and does not require architecture fields.
   Its local reading JSON/Markdown and citation screening remain in that directory.
   Before starting literature work on any host, check status and safely
-  `git pull --ff-only`; never stash/reset to force a pull.
+  `git pull --ff-only`; stashing local changes to make the pull possible is allowed (restore them afterwards), but never reset to force a pull.
 - For literature work, start at [maintenance and format contract](docs/papers/literature_document_maintenance.md).
   [Handoff and Excel sync](docs/papers/handover_paper_excel.md) covers local
   delivery. This work does not depend on experiment-document reorganization.
@@ -91,7 +91,7 @@ and [archive guide](docs/research/archive.md).
 - On a Slurm/Great Lakes host, Windows synchronization may be skipped. Before
   literature work, immediately fetch/pull the latest committed CSVs with a
   safe fast-forward (`git pull --ff-only`); if dirty/diverged, stop the pull
-  and report rather than stash/reset or overwrite local work. Do not invent a
+  and report rather than reset or overwrite local work (stashing is allowed). Do not invent a
   mount. Report pending Windows delivery and commit reusable CSV changes so
   the next WSL session can synchronize. Detect host/environment, not merely
   whether a `slurm` command exists.
