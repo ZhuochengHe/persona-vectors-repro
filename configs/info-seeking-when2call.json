@@ -1,0 +1,45 @@
+{
+  "study": "is-when2call-extraction",
+  "external_root": "${PV_WORK}/external",
+  "model": {
+    "id": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "layers": 32,
+    "hidden": 4096,
+    "attn_implementation": "sdpa",
+    "require_fast_kernels": true
+  },
+  "sampler": {
+    "_source": "same as configs/info-seeking-hil-sql.json (Qwen3.5 thinking, precise coding)",
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "repetition_penalty": 1.0
+  },
+  "split": {
+    "_note": "grouped by hash of the tool_call variant's tool set, so source_ids sharing a tool set stay in one split",
+    "seed": 0,
+    "train": 0.6,
+    "dev": 0.2
+  },
+  "forward": {
+    "_note": "all 3652 MCQ items: thinking-on prompt activations (pre, input_mean) + non-thinking MCQ log-likelihoods",
+    "chunk_size": 200
+  },
+  "generate": {
+    "_note": "pilot: free generation with thinking on triplet source_ids from the train split",
+    "pilot_source_ids": 50,
+    "pilot_seed": 0,
+    "conditions": ["native", "ask_tool"],
+    "max_new_tokens": 4096,
+    "seed": 0,
+    "chunk_size": 25
+  },
+  "judge": {
+    "_note": "official When2Call JUDGE_PROMPT, answered by Claude Haiku (paper: OpenAI model); only text replies are judged",
+    "model": "haiku",
+    "effort": "low",
+    "timeout_seconds": 180,
+    "retries": 2
+  }
+}

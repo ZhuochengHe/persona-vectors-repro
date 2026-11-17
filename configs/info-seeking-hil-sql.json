@@ -1,0 +1,52 @@
+{
+  "study": "is-hil-sql-pilot",
+  "external_root": "${PV_WORK}/external",
+  "data_root": "${PV_WORK}/data/hil-bench-sql",
+  "model": {
+    "id": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "layers": 32,
+    "hidden": 4096,
+    "attn_implementation": "sdpa",
+    "thinking": true,
+    "require_fast_kernels": true
+  },
+  "sampler": {
+    "_source": "Qwen3.5 model card, thinking mode for precise coding tasks (presence_penalty 0, not available in HF generate)",
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "repetition_penalty": 1.0
+  },
+  "agent": {
+    "_note": "official SQL agent max_steps is 100, max_requeries 3, max_input_tokens 65536",
+    "max_steps": 100,
+    "max_new_tokens": 8192,
+    "context_cap": 65536,
+    "min_step_budget": 1024,
+    "max_requeries": 3
+  },
+  "tools": {
+    "sql_timeout_seconds": 120,
+    "verify_timeout_seconds": 2500,
+    "retriever_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  },
+  "simulator": {
+    "model": "haiku",
+    "effort": "low",
+    "_rubric_note": "lenient chosen by the user on 2026-11-16: the official prompt with Haiku accepted only 32% of registry example questions; offline re-judging with the official rubric stays available",
+    "rubric": "lenient",
+    "timeout_seconds": 180,
+    "retries": 2
+  },
+  "subset": {
+    "size": 20,
+    "seed": 0
+  },
+  "_conditions_note": "first behaviour pass (user, 2026-11-16): natural vs prompt-induced asking, plus full-info over-asking control; no-ask conditions deferred",
+  "conditions": ["blocked_ask", "blocked_ask_prompted", "fullinfo_ask"],
+  "seeds": [0],
+  "capture": {
+    "paired_full_info": true
+  }
+}

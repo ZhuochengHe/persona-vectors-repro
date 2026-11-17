@@ -1,0 +1,32 @@
+{
+  "study": "is-ambiguity-probe",
+  "model": {
+    "id": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "layers": 32,
+    "hidden": 4096,
+    "attn_implementation": "sdpa",
+    "require_fast_kernels": true
+  },
+  "data": {
+    "_note": "faithful: original repo files and split; grouped: ours, 400 train / 1000 test pairs per dataset split by question id",
+    "root": "${PV_WORK}/external/sparse-neurons-data",
+    "n_train": 400,
+    "n_test": 1000,
+    "n_control": 400,
+    "seed": 0
+  },
+  "modes": [
+    "nothink",
+    "think"
+  ],
+  "forward": {
+    "chunk_size": 400
+  },
+  "probe": {
+    "_note": "original: layer 14, sklearn LogisticRegression(max_iter=1000), noise replaces a dim with N(mean,std); AEN threshold is our rule",
+    "aen_layer": 14,
+    "max_k": 10,
+    "seed": 0
+  }
+}
