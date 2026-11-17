@@ -68,6 +68,24 @@
       "topic": "gaming",
       "title": "Qwen3.5 altruism选层与Figure 3",
       "record": "docs/research/gaming/studies/altruism-figure3.md"
+    },
+    {
+      "id": "is-hil-sql-pilot",
+      "topic": "info-seeking",
+      "title": "Qwen3.5-9B在HiL-Bench SQL上的可行性与激活采集",
+      "record": "docs/research/info-seeking/studies/hil-sql-pilot.md"
+    },
+    {
+      "id": "is-when2call-extraction",
+      "topic": "info-seeking",
+      "title": "When2Call上的v_miss／v_ask读出与方向提取",
+      "record": "docs/research/info-seeking/studies/when2call-extraction.md"
+    },
+    {
+      "id": "is-ambiguity-probe",
+      "topic": "info-seeking",
+      "title": "Qwen3.5-9B上复现Sparse Neurons歧义probe",
+      "record": "docs/research/info-seeking/studies/ambiguity-neuron-probe.md"
     }
   ],
   "archives": [
@@ -448,6 +466,20 @@
         "drive_file_id": "1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V",
         "url": "https://drive.google.com/file/d/1a0_G6VnEslX3mVrmbkmGzLg-jY-IAr6V/view?usp=drivesdk"
       }
+    },
+    "smoke-is-hil-sql-qwen35-9b-20261116-133313": {
+      "local_path_template": "${PV_WORK}/runs/smoke-is-hil-sql-qwen35-9b-20261116-133313",
+      "referenced_by_studies": [
+        "is-hil-sql-pilot"
+      ],
+      "drive_archive": null
+    },
+    "smoke-is-hil-sql-qwen35-9b-20261116-135913": {
+      "local_path_template": "${PV_WORK}/runs/smoke-is-hil-sql-qwen35-9b-20261116-135913",
+      "referenced_by_studies": [
+        "is-hil-sql-pilot"
+      ],
+      "drive_archive": null
     },
     "steer-qwen25-evil-sampling-20261027-192009": {
       "local_path_template": "${PV_WORK}/runs/steer-qwen25-evil-sampling-20261027-192009",

@@ -7,6 +7,7 @@
 | 原论文复现 | [问题、证据与后续](persona-vectors/overview.md) | [pv-extraction](persona-vectors/studies/extraction.md)、[pv-steering](persona-vectors/studies/steering.md)、[pv-monitoring](persona-vectors/studies/monitoring.md)、[pv-training](persona-vectors/studies/training.md)、[pv-remaining](persona-vectors/studies/remaining-work.md) |
 | Steering × 解码策略 | [问题、证据与后续](steering-decoding/overview.md) | [sd-model-control](steering-decoding/studies/model-control.md)、[sd-sampler-ablation](steering-decoding/studies/sampler-ablation.md)、[sd-model-layer-transfer](steering-decoding/studies/model-layer-transfer.md)、[sd-distribution](steering-decoding/studies/token-distribution.md)、[sd-confirmation](steering-decoding/studies/independent-validation.md) |
 | Gaming迁移 | [问题、证据与后续](gaming/overview.md) | [gaming-altruism](gaming/studies/altruism-figure3.md) |
+| 信息缺失识别与主动获取信息 | [问题、假设与路线](info-seeking/overview.md) | [is-hil-sql-pilot](info-seeking/studies/hil-sql-pilot.md)、[is-when2call-extraction](info-seeking/studies/when2call-extraction.md)、[is-ambiguity-probe](info-seeking/studies/ambiguity-neuron-probe.md) |
 
 ## 按层次找文件
 
