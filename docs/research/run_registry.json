@@ -434,6 +434,13 @@
         "url": "https://drive.google.com/file/d/17BYDH0NRSKy74DBNYcyZM6pXrSubZbXe/view?usp=drivesdk"
       }
     },
+    "full-is-ambiguity-probe-qwen35-9b-20261116-210747": {
+      "local_path_template": "${PV_WORK}/runs/full-is-ambiguity-probe-qwen35-9b-20261116-210747",
+      "referenced_by_studies": [
+        "is-ambiguity-probe"
+      ],
+      "drive_archive": null
+    },
     "perturbation-norm-20261023-141237": {
       "local_path_template": "${PV_WORK}/runs/perturbation-norm-20261023-141237",
       "referenced_by_studies": [
@@ -521,6 +528,13 @@
         "drive_file_id": "1XxaumScxQhuFr620R3jG2zwN9o3-ASJc",
         "url": "https://drive.google.com/file/d/1XxaumScxQhuFr620R3jG2zwN9o3-ASJc/view?usp=drivesdk"
       }
+    },
+    "subset-is-hil-sql-qwen35-9b-20261116-210747": {
+      "local_path_template": "${PV_WORK}/runs/subset-is-hil-sql-qwen35-9b-20261116-210747",
+      "referenced_by_studies": [
+        "is-hil-sql-pilot"
+      ],
+      "drive_archive": null
     }
   },
   "compatibility_paths": {
