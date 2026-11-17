@@ -313,3 +313,23 @@ def test_annotation_blocker_normalization():
     assert normalize_blocker('definition', ids) == 'near_to_adulthood_definition'
     assert normalize_blocker('unrelated', ids) == 'other'
     assert _json_object('```json\n{"aware": true, "blockers": ["a"],}\n```') == {'aware': True, 'blockers': ['a']}
+
+
+def test_annotation_summary_and_kb_retrieval():
+    from info_seeking.annotate import _awareness_level, retrieved_entries, summarize_unit
+    assert [_awareness_level(v) for v in (2, '3', ' 1 ', 2.5, None, 'two')] == [2, 3, 1, None, None, None]
+    task = {'blockers': [{'id': 'short_def'}, {'id': 'region'}]}
+    steps = [{'step': 0, 'status': 'ok', 'awareness_level': 1, 'aware': False, 'blockers': ['short_def']},
+             {'step': 1, 'status': 'ok', 'awareness_level': 3, 'aware': True, 'blockers': ['short'],
+              'commits': True, 'basis': 'own_default', 'commit_blockers': ['short_def']},
+             {'step': 2, 'status': 'failed'}]
+    out = summarize_unit(task, steps, [{'blocker_id': 'short_def', 'implemented': 'no'}])
+    assert out['awareness_levels'] == {'1': 1, '3': 1}
+    assert out['first_aware_step'] == {'short_def': 1}
+    assert out['blockers_never_noticed'] == ['region']
+    assert out['commit_basis'] == {'own_default': 1} and out['n_failed'] == 1
+    assert steps[1]['blockers_normalized'] == ['short_def']
+    kb = ['Short players are those  under 173 cm.', 'Western Europe means Spain, Italy.']
+    records = [{'action': 'get_business_info', 'observation': 'Result: short players are those under 173 CM.'},
+               {'action': 'execute_sql', 'observation': 'Western Europe means Spain, Italy.'}]
+    assert retrieved_entries(records, kb) == {0}

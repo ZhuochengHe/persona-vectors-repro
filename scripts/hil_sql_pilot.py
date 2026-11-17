@@ -9,6 +9,9 @@ Stages (run all but `init`/`summarize` inside a Slurm allocation):
   probe      offline readout AUCs and difference-of-means directions (analysis/probe/)
   calibrate-judge  judge all registry example questions with the official and lenient rubrics
   annotate   offline Claude labels on a finished run: step awareness and per-blocker resolution adherence
+  rejudge    re-judge every question the agent asked with another rubric (default official)
+  kb-map     which knowledge-base entries state each blocker resolution (saved per task; reusable)
+  blocker-outcomes  per unit x blocker: info source (asked / retrieved KB / provided / none) and adherence
 """
 from __future__ import annotations
 
@@ -337,39 +340,65 @@ def stage_calibrate_judge(args):
     print(json.dumps(summary, indent=1))
 
 
+# ---------------------------------------------------------------- offline analysis of a finished run
+# These stages read a finished run (--target-run) and use the live repository code; outputs record the commit.
+
+FUNNEL_ACTIONS = ('asked', 'retrieved_kb', 'guessed', 'other_grounded', 'no_commit', 'not_noticed')
+INFO_SOURCES = ('asked', 'retrieved_kb', 'provided_context', 'none')
+VERDICTS = ('yes', 'partial', 'no', 'unclear')
+
+
+def finished_units(run: Path, filters: list[str] | None = None) -> list[Path]:
+    return sorted(p for p in (run / 'units').iterdir()
+                  if p.is_dir() and not p.name.endswith('.tmp') and (p / 'summary.json').exists()
+                  and (not filters or any(f in p.name for f in filters)))
+
+
+def read_json(path: Path):
+    return json.loads(path.read_text())
+
+
+def write_jsonl(path: Path, rows: list[dict]):
+    path.write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows))
+
+
+def annotator_for(model: str):
+    from info_seeking import annotate as an
+    return an.Annotator(Path(os.environ['PV_WORK']) / 'cache' / 'hil-annotate', model=model, effort='low')
+
+
 def stage_annotate(args):
-    """Offline Claude annotation of a finished run's trajectories (live repository code, recorded)."""
+    """Step awareness/commit labels and per-blocker resolution adherence for every finished unit."""
     from concurrent.futures import ThreadPoolExecutor
     from info_seeking import annotate as an
     from info_seeking.runs import git
-    run = args.target_run
-    cfg = json.loads((run / 'config.json').read_text())
     from info_seeking.trajectory import CONDITIONS
+    run = args.target_run
+    cfg = read_json(run / 'config.json')
     official = OfficialFiles(cfg['external_root'])
-    annotator = an.Annotator(Path(os.environ['PV_WORK']) / 'cache' / 'hil-annotate', model=args.model, effort='low')
+    annotator = annotator_for(args.model)
     out_dir = run / 'analysis' / 'annotations'
     out_dir.mkdir(parents=True, exist_ok=True)
-    units = sorted(p for p in (run / 'units').iterdir() if p.is_dir() and not p.name.endswith('.tmp')
-                   and (p / 'summary.json').exists() and (not args.units or any(u in p.name for u in args.units)))
+    units = finished_units(run, args.units)
     jobs = []
     for unit in units:
-        summary = json.loads((unit / 'summary.json').read_text())
+        summary = read_json(unit / 'summary.json')
         task = load_task(Path(cfg['data_root']), summary['task_id'])
         records = [json.loads(line) for line in (unit / 'decisions.jsonl').read_text().splitlines()]
-        spec = CONDITIONS[summary['condition']]
-        seen = official.render_full_info(task['problem'], task['blockers']) if spec['full_info'] else task['problem']
-        for r in records:
-            jobs.append((unit.name, 'step', r, an.step_prompt(task, r, seen)))
+        # The annotator must see the question exactly as the agent did (full-info adds the clarifications).
+        seen = (official.render_full_info(task['problem'], task['blockers'])
+                if CONDITIONS[summary['condition']]['full_info'] else task['problem'])
+        jobs += [(unit.name, 'step', r, an.step_prompt(task, r, seen)) for r in records]
         submitted = [r for r in records if r.get('action') == 'submit_sql']
         if submitted:
-            for blocker_id, prompt in an.adherence_prompts(task, submitted[-1]['arguments']['query']):
-                jobs.append((unit.name, 'adherence', {'blocker_id': blocker_id}, prompt))
+            jobs += [(unit.name, 'adherence', {'blocker_id': blocker_id}, prompt)
+                     for blocker_id, prompt in an.adherence_prompts(task, submitted[-1]['arguments']['query'])]
 
     def run_job(job):
         name, kind, record, prompt = job
         verdict = annotator.ask(kind, prompt)
         if kind == 'step':
-            return name, kind, {'step': record['step'], 'attempt': record.get('attempt', 0), 'action': record['action'], **verdict}
+            record = {'step': record['step'], 'attempt': record.get('attempt', 0), 'action': record['action']}
         return name, kind, {**record, **verdict}
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         results = list(pool.map(run_job, jobs))
@@ -380,14 +409,203 @@ def stage_annotate(args):
     for unit in units:
         steps = [r for n, k, r in results if n == unit.name and k == 'step']
         adherence = [r for n, k, r in results if n == unit.name and k == 'adherence']
-        summary = json.loads((unit / 'summary.json').read_text())
+        summary = read_json(unit / 'summary.json')
         task = load_task(Path(cfg['data_root']), summary['task_id'])
-        unit_summary = an.summarize_unit(task, steps, adherence)  # also adds blockers_normalized to steps
+        unit_summary = an.summarize_unit(task, steps, adherence)  # also adds normalized blocker ids to steps
         (out_dir / f'{unit.name}.json').write_text(json.dumps({'meta': meta, 'steps': steps, 'adherence': adherence},
                                                               ensure_ascii=False, indent=1))
         overview[unit.name] = {'solve': summary['verify'].get('solve'), 'condition': summary['condition'], **unit_summary}
     (out_dir / 'overview.json').write_text(json.dumps({'meta': meta, 'units': overview}, ensure_ascii=False, indent=1))
     print(json.dumps(overview, ensure_ascii=False, indent=1))
+
+
+def _resolved_under_cap(rows: list[dict], key_field: str) -> set[tuple[str, str]]:
+    """(unit, blocker) pairs resolved in asking order, at most MAX_ANSWERED_QUESTIONS_PER_BLOCKER answers each."""
+    from info_seeking.official import MAX_ANSWERED_QUESTIONS_PER_BLOCKER
+    resolved, hits = set(), {}
+    for r in sorted(rows, key=lambda x: (x['unit'], x['index'])):
+        key = r[key_field]
+        if key and hits.get((r['unit'], key), 0) < MAX_ANSWERED_QUESTIONS_PER_BLOCKER:
+            hits[(r['unit'], key)] = hits.get((r['unit'], key), 0) + 1
+            resolved.add((r['unit'], key))
+    return resolved
+
+
+def stage_rejudge(args):
+    """Re-judge every question the agent asked with another rubric (default: official).
+
+    Same questions, different judge: measures how much the rubric alone changes acceptance. It does not
+    replay the trajectory (a rejected question would have changed what followed)."""
+    from concurrent.futures import ThreadPoolExecutor
+    from info_seeking.runs import git
+    from info_seeking.simulator import ClaudeSimulator
+    run = args.target_run
+    cfg = read_json(run / 'config.json')
+    official = OfficialFiles(cfg['external_root'])
+    s = cfg['simulator']
+    sim = ClaudeSimulator(official.judge_prompt, cache_dir=Path(os.environ['PV_WORK']) / 'cache' / 'hil-ask-judge',
+                          model=s['model'], effort=s['effort'], timeout_seconds=s['timeout_seconds'],
+                          retries=s['retries'], rubric=args.rubric)
+    jobs = []
+    for unit in finished_units(run):
+        traj = read_json(unit / 'trajectory.json')
+        task = load_task(Path(cfg['data_root']), traj['task_id'])
+        jobs += [(unit.name, traj['condition'], task, i, q) for i, q in enumerate(traj['questions'])]
+
+    def judge(job):
+        name, condition, task, i, q = job
+        text = q['question'].strip()
+        verdict = sim.classify(task['blockers'], text) if len(text) >= 3 else {'status': 'too_short', 'blocker_key': None}
+        ids = {b['id'] for b in task['blockers']}
+        return {'unit': name, 'condition': condition, 'task_id': task['task_id'], 'index': i, 'question': q['question'],
+                'loop_rubric_key': q['judged_blocker_key'], 'loop_outcome': q['outcome'],
+                'rejudge_rubric': args.rubric,
+                'rejudge_key': verdict.get('blocker_key') if verdict.get('blocker_key') in ids else None,
+                'rejudge_status': verdict.get('status'), 'rejudge_parse_mode': verdict.get('parse_mode'),
+                'n_blockers': len(task['blockers'])}
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        rows = list(pool.map(judge, jobs))
+    out_dir = run / 'analysis' / 'rejudge'
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_jsonl(out_dir / f'questions_{args.rubric}.jsonl', rows)
+    summary = {'rejudge_rubric': args.rubric, 'loop_rubric': s['rubric'], 'code_commit': git('rev-parse', 'HEAD'),
+               'created': datetime.now().isoformat(timespec='seconds'), 'by_condition': {}}
+    for condition in sorted({r['condition'] for r in rows}):
+        part = [r for r in rows if r['condition'] == condition]
+        loop_rel = [r for r in part if r['loop_rubric_key']]
+        re_rel = [r for r in part if r['rejudge_key']]
+        loop_resolved = {(r['unit'], r['loop_rubric_key']) for r in part if r['loop_outcome'] == 'matched'}
+        summary['by_condition'][condition] = {
+            'questions': len(part), 'loop_relevant': len(loop_rel), 're_relevant': len(re_rel),
+            'agree_same_key': sum(r['loop_rubric_key'] == r['rejudge_key'] for r in part),
+            'loop_relevant_but_rejected': sum(not r['rejudge_key'] for r in loop_rel),
+            're_relevant_but_loop_rejected': sum(not r['loop_rubric_key'] for r in re_rel),
+            'different_blocker': sum(bool(r['loop_rubric_key'] and r['rejudge_key'] and r['loop_rubric_key'] != r['rejudge_key'])
+                                     for r in part),
+            'loop_unique_resolved': len(loop_resolved), 're_unique_resolved': len(_resolved_under_cap(part, 'rejudge_key')),
+            're_status': {st: sum(str(r['rejudge_status']) == st for r in part)
+                          for st in sorted({str(r['rejudge_status']) for r in part})}}
+    (out_dir / f'summary_{args.rubric}.json').write_text(json.dumps(summary, indent=1))
+    print(json.dumps(summary, indent=1))
+
+
+def stage_kb_map(args):
+    """Which knowledge-base entries state each blocker's resolution; saved per task as kb_resolution.json."""
+    from concurrent.futures import ThreadPoolExecutor
+    from info_seeking import annotate as an
+    from info_seeking.runs import git
+    cfg = read_json(args.target_run / 'config.json')
+    data_root = Path(cfg['data_root'])
+    annotator = annotator_for(args.model)
+    tasks = {task_id: load_task(data_root, task_id) for task_id in run_task_ids(args.target_run)}
+    jobs = [(task_id, b['id'], an.kb_map_prompt(task, b)) for task_id, task in tasks.items() for b in task['blockers']]
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        verdicts = list(pool.map(lambda j: (j[0], j[1], annotator.ask('kb_map', j[2])), jobs))
+    meta = {'annotator_model': args.model, 'code_commit': git('rev-parse', 'HEAD'),
+            'annotate_py_sha256': sha256(Path(an.__file__)), 'created': datetime.now().isoformat(timespec='seconds')}
+    out = {}
+    for task_id, task in tasks.items():
+        n_entries = len(task['business_info'])
+        entries = {}
+        for t, blocker_id, v in verdicts:
+            if t == task_id:
+                valid = [e for e in (v.get('entries') or [])
+                         if isinstance(e, dict) and isinstance(e.get('index'), int) and 0 <= e['index'] < n_entries]
+                entries[blocker_id] = {'status': v.get('status'), 'entries': valid, 'reason': v.get('reason')}
+        record = {'meta': meta, 'task_id': task_id, 'n_business_info': n_entries, 'blockers': entries}
+        (data_root / task_id / 'kb_resolution.json').write_text(json.dumps(record, ensure_ascii=False, indent=1))
+        out[task_id] = {b: [(e['index'], e['coverage']) for e in x['entries']] for b, x in entries.items()}
+    print(json.dumps(out, indent=1))
+
+
+def _blocker_row(unit: Path, summary: dict, traj: dict, task: dict, blocker: dict, kb: dict,
+                 retrieved: set[int], steps: list[dict], adherence: dict, full_info: bool) -> dict:
+    """One unit x blocker: where the resolution was available, how the agent handled it, and whether the SQL follows it."""
+    from info_seeking.annotate import GUESS_BASES
+    bid = blocker['id']
+    asked = any(q['blocker_name'] == bid for q in traj['questions'])
+    kb_entries = {e['index']: e['coverage'] for e in kb.get(bid, {}).get('entries', [])}
+    kb_hit = sorted(i for i in kb_entries if i in retrieved)
+    sources = ['asked'] * asked + ['retrieved_kb'] * bool(kb_hit) + ['provided_context'] * full_info
+    about = [s for s in steps if bid in (s.get('blockers_normalized') or [])]
+    commit_steps = [s for s in steps if s.get('commits') and bid in (s.get('commit_blockers_normalized') or [])]
+    bases = [s.get('basis') for s in commit_steps]
+    aware_steps = [s['step'] for s in about if s.get('aware')]
+    first_aware = min(aware_steps) if aware_steps else None
+    first_commit = min((s['step'] for s in commit_steps), default=None)
+    guessed = any(b in GUESS_BASES for b in bases)
+    # Funnel action after noticing, by priority asked > retrieved > guessed (a blocker can have several).
+    if first_aware is None:
+        action = 'not_noticed'
+    else:
+        action = ('asked' if asked else 'retrieved_kb' if kb_hit else 'guessed' if guessed
+                  else 'other_grounded' if bases else 'no_commit')
+    return {'unit': unit.name, 'condition': summary['condition'], 'task_id': task['task_id'], 'blocker': bid,
+            'type': blocker.get('type'), 'subtype': blocker.get('subtype'),
+            'asked_and_answered': asked, 'kb_has_resolution': sorted(kb_entries.items()),
+            'kb_retrieved_resolution': kb_hit, 'provided_context': full_info,
+            'info_source': sources[0] if sources else 'none', 'all_sources': sources,
+            'submitted': summary['end_reason'] == 'submitted', 'implemented': adherence.get(bid),
+            'commit_bases': bases, 'last_commit_basis': bases[-1] if bases else None,
+            'max_awareness_level': max((s.get('awareness_level') or 0 for s in about), default=0),
+            'noticed': first_aware is not None, 'first_aware_step': first_aware, 'first_commit_step': first_commit,
+            'noticed_before_first_commit': first_aware is not None and (first_commit is None or first_aware <= first_commit),
+            'ever_guessed': guessed, 'action': action}
+
+
+def _outcome_summary(part: list[dict]) -> dict:
+    def count(pred):
+        return sum(1 for r in part if pred(r))
+
+    def judged(field, value):
+        return [r for r in part if r[field] == value and r['submitted'] and r['implemented']]
+    entry = {'blockers': len(part), 'kb_contains_resolution': count(lambda r: r['kb_has_resolution']),
+             'kb_contains_full_resolution': count(lambda r: any(c == 'full' for _, c in r['kb_has_resolution'])),
+             'asked_and_answered': count(lambda r: r['asked_and_answered']),
+             'retrieved_from_kb': count(lambda r: r['kb_retrieved_resolution']),
+             'max_awareness_level': {str(k): count(lambda r: r['max_awareness_level'] == k) for k in (0, 1, 2, 3)}}
+    funnel = {'noticed': count(lambda r: r['noticed']),
+              'noticed_before_first_commit': count(lambda r: r['noticed_before_first_commit'])}
+    funnel.update({f'action:{a}': count(lambda r: r['action'] == a) for a in FUNNEL_ACTIONS})
+    for a in FUNNEL_ACTIONS:
+        rows = judged('action', a)
+        funnel[f'{a}:implemented_yes/judged'] = f"{sum(r['implemented'] == 'yes' for r in rows)}/{len(rows)}"
+    entry['funnel'] = funnel
+    for source in INFO_SOURCES:
+        rows = judged('info_source', source)
+        entry[f'{source}:n_judged'] = len(rows)
+        entry.update({f'{source}:{v}': sum(r['implemented'] == v for r in rows) for v in VERDICTS})
+    return entry
+
+
+def stage_blocker_outcomes(args):
+    """Per unit x blocker table (blocker_outcomes.jsonl) and per-condition funnel (blocker_outcomes_summary.json).
+
+    Needs the annotate stage (step labels, adherence) and kb-map (kb_resolution.json per task)."""
+    from info_seeking.annotate import retrieved_entries
+    from info_seeking.trajectory import CONDITIONS
+    run = args.target_run
+    data_root = Path(read_json(run / 'config.json')['data_root'])
+    ann_dir = run / 'analysis' / 'annotations'
+    rows = []
+    for unit in finished_units(run):
+        summary = read_json(unit / 'summary.json')
+        traj = read_json(unit / 'trajectory.json')
+        task = load_task(data_root, summary['task_id'])
+        kb = read_json(data_root / task['task_id'] / 'kb_resolution.json')['blockers']
+        records = [json.loads(line) for line in (unit / 'decisions.jsonl').read_text().splitlines()]
+        ann_file = ann_dir / f'{unit.name}.json'
+        ann = read_json(ann_file) if ann_file.exists() else {'steps': [], 'adherence': []}
+        adherence = {a['blocker_id']: a.get('implemented') for a in ann['adherence']}
+        retrieved = retrieved_entries(records, task['business_info'])
+        full_info = CONDITIONS[summary['condition']]['full_info']
+        rows += [_blocker_row(unit, summary, traj, task, b, kb, retrieved, ann['steps'], adherence, full_info)
+                 for b in task['blockers']]
+    out_dir = run / 'analysis'
+    write_jsonl(out_dir / 'blocker_outcomes.jsonl', rows)
+    table = {c: _outcome_summary([r for r in rows if r['condition'] == c]) for c in sorted({r['condition'] for r in rows})}
+    (out_dir / 'blocker_outcomes_summary.json').write_text(json.dumps(table, indent=1))
+    print(json.dumps(table, indent=1))
 
 
 def stage_probe(args):
@@ -406,6 +624,16 @@ def main():
         p = sub.add_parser(name); p.add_argument('--run-dir', type=Path, required=True)
         if name == 'run':
             p.add_argument('--shard', default='0/1')
+    p = sub.add_parser('kb-map', help='which knowledge-base entries state each blocker resolution (per task, reusable)')
+    p.add_argument('--target-run', type=Path, required=True)
+    p.add_argument('--model', default='haiku')
+    p.add_argument('--workers', type=int, default=3)
+    p = sub.add_parser('blocker-outcomes', help='per unit x blocker: information source and resolution adherence')
+    p.add_argument('--target-run', type=Path, required=True)
+    p = sub.add_parser('rejudge', help='offline re-judging of the asked questions with another rubric (live code)')
+    p.add_argument('--target-run', type=Path, required=True)
+    p.add_argument('--rubric', choices=('official', 'lenient'), default='official')
+    p.add_argument('--workers', type=int, default=2)
     p = sub.add_parser('annotate', help='offline Claude annotation of a finished run (uses live repository code)')
     p.add_argument('--target-run', type=Path, required=True)
     p.add_argument('--units', nargs='*', default=None, help='substring filters on unit names')
@@ -416,7 +644,8 @@ def main():
         args.config = args.config.resolve()
     {'prepare': stage_prepare, 'init': stage_init, 'preflight': stage_preflight,
      'run': stage_run, 'summarize': stage_summarize, 'probe': stage_probe,
-     'calibrate-judge': stage_calibrate_judge, 'annotate': stage_annotate}[args.stage](args)
+     'calibrate-judge': stage_calibrate_judge, 'annotate': stage_annotate, 'rejudge': stage_rejudge,
+     'kb-map': stage_kb_map, 'blocker-outcomes': stage_blocker_outcomes}[args.stage](args)
 
 
 if __name__ == '__main__':

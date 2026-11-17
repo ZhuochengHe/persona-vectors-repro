@@ -1,17 +1,17 @@
 """Offline Claude annotation of saved HiL trajectories (no model is rerun).
 
-1. Step awareness: for each decision point, does the reasoning notice a missing, ambiguous or
-   contradictory piece of information, which blocker it is, a short verbatim quote, and how the model
-   handles it (free text, so label categories can be derived later from the descriptions); and whether
-   the step commits to an interpretation and on what basis (own default = guessing; business info, data,
-   a provided clarification, or a human answer = grounded).
-   The annotator sees blocker descriptions only, never resolutions.
+1. Step awareness: for each decision point, the awareness level (0-3; "aware" means level >= 2, i.e. the
+   reasoning explicitly says something is missing, ambiguous or contradictory), which blockers, a verbatim
+   quote, a free-text handling phrase, and whether the step commits to an interpretation and on what basis
+   (GROUNDED_BASES vs GUESS_BASES). The annotator sees blocker descriptions only, never resolutions.
 2. Resolution adherence: for each blocker, does the submitted SQL implement the registry resolution.
+3. Knowledge-base map: which business-info entries state a blocker's resolution, fully or partially.
 """
 from __future__ import annotations
 
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from persona_repro.common import stable_id, write_json
@@ -35,28 +35,37 @@ THE AGENT'S REASONING AT THIS STEP:
 ACTION THE AGENT TOOK AFTER THIS REASONING: {action}
 
 Answer:
-1. aware: does this reasoning explicitly notice that some needed information is missing, undefined,
-   ambiguous, or contradictory (for any of the issues above, or any other)? Merely using a term is not
-   noticing. Re-reading the question without noting a problem is not noticing.
-2. blockers: which issues it notices, as their IDs from the list; use "other: <few words>" for an issue
-   not in the list. Empty list if aware is false.
-3. evidence: one short verbatim quote (at most 30 words) from the reasoning that shows the noticing; empty if
-   aware is false.
+1. awareness_level: the highest level reached in this reasoning, for any of the issues above or any other:
+   0 = does not touch any such issue;
+   1 = only mentions the term, concept or requirement (for example lists what it needs to look up, restates the
+       question, or uses the term) without saying anything is unclear;
+   2 = explicitly says that something is missing, undefined, ambiguous, or contradictory;
+   3 = level 2, and also says that the available information cannot settle it or that the answer depends on it
+       (for example "the question does not specify X, so the result depends on which definition I choose").
+   Applying a clarification that was given with the task, without questioning it, is level 1 at most.
+2. blockers: the issues at the reported level, as IDs from the list; use "other: <few words>" for an issue not
+   in the list. Empty list if awareness_level is 0.
+3. evidence: one short verbatim quote (at most 30 words) from the reasoning that supports the level; empty if
+   awareness_level is 0.
 4. handling: one short phrase describing what the agent does about it at this step (free text, for example
    "lists interpretations", "searches business info", "picks its own default", "asks the human"); empty if
-   aware is false.
+   awareness_level is 0.
 5. commits: does this step settle on one interpretation or value for an issue it has noticed (now or in
    earlier steps), and go on to use it? Exploring several options, or planning to check something, is not
    committing. false if nothing is settled at this step.
 6. basis: if commits is true, what the chosen interpretation rests on, one of:
-   "own_default" (the agent's own choice or a heuristic it judges reasonable, without information that settles
-   the issue), "business_info" (a retrieved business-info entry that settles it), "data" (evidence from querying
-   the database), "provided_clarification" (a clarification already given in the question or task text),
-   "human_answer" (an answer from ask_human). Empty if commits is false.
+   "human_answer" (an answer the agent received from ask_human),
+   "retrieved_kb" (a business-info entry the agent retrieved that settles the issue),
+   "queried_data" (evidence the agent found by querying the database or reading the schema),
+   "provided_context" (an explicit clarification section given with the task, such as "Additional Context"),
+   "question_literal" (taking the literal wording of the question at face value although the issue is about that
+   wording being missing, ambiguous or contradictory),
+   "own_default" (the agent's own choice or a heuristic it judges reasonable, with nothing that settles the issue).
+   Empty if commits is false.
 7. commit_blockers: the issue IDs (or "other: <few words>") that are settled at this step; empty if commits is false.
 
 Respond with JSON only:
-{{"aware": true or false, "blockers": [...], "evidence": "...", "handling": "...",
+{{"awareness_level": 0 | 1 | 2 | 3, "blockers": [...], "evidence": "...", "handling": "...",
   "commits": true or false, "basis": "...", "commit_blockers": [...]}}"""
 
 ADHERENCE_PROMPT = """You are checking whether a submitted SQL query follows a specific clarification.
@@ -79,7 +88,29 @@ Does the submitted SQL implement this resolution? Judge only this issue, not the
 Respond with JSON only:
 {{"implemented": "yes" | "partial" | "no" | "unclear", "reason": "<one sentence>"}}"""
 
+KB_MAP_PROMPT = """You are checking which entries of a business knowledge base state the resolution of an issue in a data task.
+
+QUESTION:
+{problem}
+
+ISSUE: {description}
+CORRECT RESOLUTION OF THIS ISSUE: {resolution}
+
+KNOWLEDGE BASE ENTRIES:
+{entries}
+
+For each entry that states the resolution, say whether it states it fully (an analyst reading only this entry
+would implement the resolution exactly) or partially (it points to the right interpretation but leaves out part
+of it, such as an exact threshold or column). Ignore entries that are only related, vague, or misleading.
+
+Respond with JSON only:
+{{"entries": [{{"index": <entry number>, "coverage": "full" | "partial"}}, ...], "reason": "<one sentence>"}}
+Use an empty list if no entry states the resolution."""
+
 MAX_REASONING_CHARS = 16000
+CACHE_VERSION = 'hil-annotate-v4'
+GROUNDED_BASES = ('human_answer', 'retrieved_kb', 'queried_data', 'provided_context')
+GUESS_BASES = ('own_default', 'question_literal')
 
 
 def _json_object(text: str) -> dict:
@@ -90,6 +121,11 @@ def _json_object(text: str) -> dict:
     return json.loads(body)
 
 
+def _awareness_level(value) -> int | None:
+    text = str(value).strip()
+    return int(text) if text.isdigit() else None
+
+
 class Annotator:
     def __init__(self, cache_dir: Path, model: str = 'haiku', effort: str = 'low', timeout: float = 180, retries: int = 2):
         self.cache_dir = Path(cache_dir)
@@ -98,7 +134,7 @@ class Annotator:
         self.model, self.timeout, self.retries = model, timeout, retries
 
     def ask(self, kind: str, prompt: str) -> dict:
-        key = stable_id('hil-annotate-v2', kind, self.command, prompt)
+        key = stable_id(CACHE_VERSION, kind, self.command, prompt)
         cached = self.cache_dir / f'{key}.json'
         if cached.exists():
             return json.loads(cached.read_text())
@@ -109,6 +145,10 @@ class Annotator:
             return {'status': 'failed', 'error': str(exc)}  # not cached; a rerun retries
         try:
             value = {'status': 'ok', **_json_object(text)}
+            if kind == 'step':
+                level = _awareness_level(value.get('awareness_level'))
+                value['awareness_level'] = level
+                value['aware'] = level is not None and level >= 2  # mentioning a term (level 1) is not noticing
         except (ValueError, json.JSONDecodeError) as exc:
             value = {'status': 'parse_failed', 'error': str(exc)}
         value.update(annotator=self.model, raw=meta['raw'][-2000:], cache_key=key)
@@ -152,23 +192,42 @@ def normalize_blocker(label: str, ids: list[str]) -> str:
 
 
 def summarize_unit(task: dict, steps: list[dict], adherence: list[dict]) -> dict:
+    """Adds normalized blocker ids to each step (in place) and returns per-unit counts."""
     ids = [b['id'] for b in task['blockers']]
-    first = {}
+    first, commits, levels = {}, Counter(), Counter()
     for s in steps:
         s['blockers_normalized'] = sorted({normalize_blocker(b, ids) for b in s.get('blockers') or []})
-        if s.get('status') == 'ok' and s.get('aware'):
+        s['commit_blockers_normalized'] = sorted({normalize_blocker(b, ids) for b in s.get('commit_blockers') or []})
+        if s.get('status') != 'ok':
+            continue
+        levels[str(s.get('awareness_level'))] += 1
+        if s.get('aware'):
             for b in s['blockers_normalized']:
                 first.setdefault(b, s['step'])
-    commits = {}
-    for s in steps:
-        s['commit_blockers_normalized'] = sorted({normalize_blocker(b, ids) for b in s.get('commit_blockers') or []})
-        if s.get('status') == 'ok' and s.get('commits'):
-            basis = s.get('basis') or 'unspecified'
-            commits[basis] = commits.get(basis, 0) + 1
+        if s.get('commits'):
+            commits[s.get('basis') or 'unspecified'] += 1
     return {'n_steps': len(steps), 'n_aware_steps': sum(1 for s in steps if s.get('aware')),
-            'n_commit_steps': sum(1 for s in steps if s.get('commits')), 'commit_basis': commits,
+            'awareness_levels': dict(levels),
+            'n_commit_steps': sum(1 for s in steps if s.get('commits')), 'commit_basis': dict(commits),
             'n_failed': sum(1 for s in steps if s.get('status') != 'ok'),
             'first_aware_step': first, 'blockers_noticed': sorted(b for b in first if b in ids),
             'blockers_never_noticed': [b for b in ids if b not in first],
             'adherence': {a['blocker_id']: a.get('implemented') for a in adherence},
             'handling_phrases': sorted({s.get('handling', '') for s in steps if s.get('aware') and s.get('handling')})}
+
+
+def kb_map_prompt(task: dict, blocker: dict) -> str:
+    entries = '\n'.join(f'{i}. {e.strip()}' for i, e in enumerate(task['business_info']))
+    return KB_MAP_PROMPT.format(problem=task['problem'].strip(), description=blocker['description'].strip(),
+                                resolution=blocker['resolution'].strip(), entries=entries)
+
+
+def _normalize_space(text: str) -> str:
+    return ' '.join(text.split()).lower()
+
+
+def retrieved_entries(records: list[dict], business_info: list[str], prefix_chars: int = 80) -> set[int]:
+    """Indices of knowledge-base entries whose first prefix_chars appeared in a get_business_info observation."""
+    seen = ' '.join(_normalize_space(r.get('observation', '')) for r in records if r.get('action') == 'get_business_info')
+    prefixes = {i: _normalize_space(e)[:prefix_chars] for i, e in enumerate(business_info)}
+    return {i for i, prefix in prefixes.items() if prefix and prefix in seen}
